@@ -91,6 +91,7 @@ branch = "mine:assembly-fdroid-variant"
 [[entry]]
 pr = 2564
 summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
+fixup = "patches/managed-host-colors.patch"
 
 [[entry]]
 pr = 2530

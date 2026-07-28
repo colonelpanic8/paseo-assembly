@@ -1,0 +1,255 @@
+diff --git a/docs/managed-hosts.md b/docs/managed-hosts.md
+index 0ec93214a..ad5b98e89 100644
+--- a/docs/managed-hosts.md
++++ b/docs/managed-hosts.md
+@@ -15,12 +15,14 @@ different path.
+     {
+       "label": "Ryzen",
+       "endpoint": "ryzen-shine:6767",
++      "color": "blue",
+       "password": "direct-connection-password"
+     },
+     {
+       "label": "Mac mini",
+       "endpoint": "mac-demarco-mini:443",
+       "useTls": true,
++      "color": "purple",
+       "password": "another-password"
+     }
+   ]
+@@ -34,6 +36,11 @@ retried until its first successful enrollment; normal host reconnection owns sub
+ The presence of at least one valid managed host suppresses the browser-style `localhost:6767`
+ fallback. Desktop-managed local daemon bootstrap is unchanged.
+ 
++Set an entry's optional `color` to `blue`, `green`, `amber`, `orange`, `red`, or `purple` to
++declaratively tint that host throughout the client. On every desktop startup, a configured color is
++reconciled onto both new and already-enrolled hosts, so machine-managed configuration remains
++authoritative. Omitting `color` leaves the client's saved selection unchanged.
++
+ Managed entries currently become ordinary saved host connections after the first successful probe.
+ That means direct passwords are persisted in the app's AsyncStorage just like passwords entered in
+ the Add Host form. Encrypting the source file protects configuration at rest in the configuration
+diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
+index 6a4801c05..512ab7dce 100644
+--- a/packages/app/src/runtime/host-runtime.test.ts
++++ b/packages/app/src/runtime/host-runtime.test.ts
+@@ -3316,12 +3316,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+           endpoint: "ryzen-shine:6767",
+           useTls: false,
+           password: "ryzen-secret",
++          color: "blue",
+         },
+         {
+           label: "Mac mini",
+           endpoint: "mac-demarco-mini:443",
+           useTls: true,
+           password: "mac-secret",
++          color: "purple",
+         },
+       ],
+     };
+@@ -3346,7 +3348,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+       storage: createMemoryHostRuntimeStorage(),
+     });
+ 
+-    const hostsAdded = onceHostListMatches(store, () => store.getHosts().length === 2);
++    const managedHostsAreColored = () => {
++      const hosts = store.getHosts();
++      return (
++        hosts.length === 2 &&
++        typeof hosts[0]?.color === "string" &&
++        typeof hosts[1]?.color === "string"
++      );
++    };
++    const hostsAdded = onceHostListMatches(store, managedHostsAreColored);
+     store.boot();
+     await hostsAdded;
+ 
+@@ -3374,6 +3384,67 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+         .map((host) => host.label)
+         .sort(),
+     ).toEqual(["Mac mini", "Ryzen"]);
++    expect(Object.fromEntries(store.getHosts().map((host) => [host.label, host.color]))).toEqual({
++      "Mac mini": "purple",
++      Ryzen: "blue",
++    });
++
++    store.syncHosts([]);
++  });
++
++  it("reconciles a managed color onto an already enrolled host without probing it", async () => {
++    const connection: HostConnection = {
++      id: "direct:ryzen-shine:6767",
++      type: "directTcp",
++      endpoint: "ryzen-shine:6767",
++      useTls: false,
++    };
++    const storedHost = {
++      ...makeHost({
++        serverId: "srv_ryzen",
++        label: "Ryzen",
++        connections: [connection],
++        preferredConnectionId: connection.id,
++      }),
++      color: "red" as const,
++    };
++    const store = new HostRuntimeStore({
++      deps: {
++        createClient: () => new FakeDaemonClient() as unknown as DaemonClient,
++        connectToDaemon: async ({ host }) => ({
++          client: makeConnectedProbeClient(5) as unknown as DaemonClient,
++          serverId: host.serverId,
++          hostname: host.label ?? null,
++        }),
++        getClientId: async () => "cid_test_runtime",
++        readInitialConnectionHint: () => null,
++        readManagedHostRegistry: async () => ({
++          version: 1,
++          hosts: [
++            {
++              label: "Ryzen",
++              endpoint: "ryzen-shine:6767",
++              useTls: false,
++              color: "green",
++            },
++          ],
++        }),
++      },
++      storage: createMemoryHostRuntimeStorage({
++        "@paseo:daemon-registry": JSON.stringify([storedHost]),
++      }),
++    });
++    const probeAndUpsert = vi.spyOn(store, "probeAndUpsertConnection");
++
++    const colorReconciled = onceHostListMatches(
++      store,
++      () => store.getHosts()[0]?.color === "green",
++    );
++    store.boot();
++    await colorReconciled;
++
++    expect(probeAndUpsert).not.toHaveBeenCalled();
++    expect(store.getHosts().find((host) => host.serverId === "srv_ryzen")?.color).toBe("green");
+ 
+     store.syncHosts([]);
+   });
+diff --git a/packages/app/src/runtime/host-runtime.ts b/packages/app/src/runtime/host-runtime.ts
+index 9dc01040a..c79ec1593 100644
+--- a/packages/app/src/runtime/host-runtime.ts
++++ b/packages/app/src/runtime/host-runtime.ts
+@@ -8,6 +8,7 @@ import {
+ } from "@getpaseo/client/internal/daemon-client";
+ import {
+   connectionFromListen,
++  hostHasConnection,
+   normalizeStoredHostProfile,
+   upsertHostConnectionInProfiles,
+   registryHasConnection,
+@@ -1356,6 +1357,7 @@ interface ManagedHostBootstrapInput {
+   label: string;
+   endpoint: string;
+   connection: HostConnection;
++  color?: HostColorKey;
+ }
+ 
+ export class HostRuntimeStore {
+@@ -1500,22 +1502,33 @@ export class HostRuntimeStore {
+         label: host.label,
+         endpoint,
+         connection,
++        color: host.color,
+       });
+     }
+     return hasValidHost;
+   }
+ 
+   private async bootstrapManagedHost(input: ManagedHostBootstrapInput): Promise<void> {
+-    const { connection, endpoint, label } = input;
++    const { color, connection, endpoint, label } = input;
+     let attempt = 0;
+-    while (!registryHasConnection(this.hosts, connection)) {
++    while (true) {
+       attempt += 1;
+       try {
+-        await this.probeAndUpsertConnection({
+-          connection,
+-          label,
+-          timeoutMs: DEFAULT_LOCALHOST_BOOTSTRAP_TIMEOUT_MS,
+-        });
++        const existingHost = this.hosts.find((host) => hostHasConnection(host, connection));
++        const serverId =
++          existingHost?.serverId ??
++          (
++            await this.probeAndUpsertConnection({
++              connection,
++              label,
++              timeoutMs: DEFAULT_LOCALHOST_BOOTSTRAP_TIMEOUT_MS,
++            })
++          ).serverId;
++        const currentHost = this.hosts.find((host) => host.serverId === serverId);
++        if (color !== undefined && currentHost?.color !== color) {
++          await this.setHostColor(serverId, color);
++        }
++        return;
+       } catch (error) {
+         if (attempt === 1 || attempt % 10 === 0) {
+           console.warn("[HostRuntime] managed host bootstrap probe failed", {
+diff --git a/packages/protocol/src/managed-hosts.test.ts b/packages/protocol/src/managed-hosts.test.ts
+index bf1103a2a..be70dd436 100644
+--- a/packages/protocol/src/managed-hosts.test.ts
++++ b/packages/protocol/src/managed-hosts.test.ts
+@@ -11,6 +11,7 @@ describe("ManagedHostRegistrySchema", () => {
+             label: " Ryzen ",
+             endpoint: " ryzen-shine:6767 ",
+             password: "secret",
++            color: "blue",
+           },
+         ],
+       }),
+@@ -22,6 +23,7 @@ describe("ManagedHostRegistrySchema", () => {
+           endpoint: "ryzen-shine:6767",
+           useTls: false,
+           password: "secret",
++          color: "blue",
+         },
+       ],
+     });
+@@ -30,4 +32,13 @@ describe("ManagedHostRegistrySchema", () => {
+   it("rejects unsupported registry versions", () => {
+     expect(() => ManagedHostRegistrySchema.parse({ version: 2, hosts: [] })).toThrow();
+   });
++
++  it("rejects unsupported host colors", () => {
++    expect(() =>
++      ManagedHostRegistrySchema.parse({
++        version: 1,
++        hosts: [{ label: "Ryzen", endpoint: "ryzen-shine:6767", color: "cyan" }],
++      }),
++    ).toThrow();
++  });
+ });
+diff --git a/packages/protocol/src/managed-hosts.ts b/packages/protocol/src/managed-hosts.ts
+index 5b91ccde3..73a0ce76f 100644
+--- a/packages/protocol/src/managed-hosts.ts
++++ b/packages/protocol/src/managed-hosts.ts
+@@ -1,10 +1,20 @@
+ import { z } from "zod";
+ 
++export const MANAGED_HOST_COLOR_KEYS = [
++  "blue",
++  "green",
++  "amber",
++  "orange",
++  "red",
++  "purple",
++] as const;
++
+ export const ManagedHostSchema = z.object({
+   label: z.string().trim().min(1),
+   endpoint: z.string().trim().min(1),
+   useTls: z.boolean().default(false),
+   password: z.string().min(1).optional(),
++  color: z.enum(MANAGED_HOST_COLOR_KEYS).optional(),
+ });
+ 
+ export const ManagedHostRegistrySchema = z.object({
