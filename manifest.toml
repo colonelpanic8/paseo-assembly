@@ -43,14 +43,25 @@ summary = "Add agent snoozing to workspace tabs"
 [[entry]]
 branch = "mine:assembly-fdroid-variant"
 
-[[entry]]
-pr = 2526
-summary = "Show recently archived workspaces in the status sidebar"
+# NOT YET BUILT: this removal has not been through `fork-fold build`. The last
+# assembled tree still carries 2526 and the duplicate it causes.
+#
+# 2526 ("Show recently archived workspaces in the status sidebar") was CLOSED and
+# re-authored into 2529. Never re-add it: carrying both merges two
+# <SidebarArchivedGroup> renders into sidebar-status-list.tsx, so the sidebar
+# shows the "Recently archived" group twice. `prune` cannot catch this -- 2526's
+# commits never landed in the base, so it is not "contained in base" and would
+# sit here through every prune. Discovery cannot re-add it either (`add
+# --prs-from` sees open PRs only), so the only re-add path is by hand.
+#
+# patches/status-sidebar-archived-host-label.patch went with it: that fixup only
+# threaded showHostLabels through to 2526's `showHostLabels={showHostLabels}`
+# call site. 2529's own render hardcodes the prop, so with 2526 gone the patch
+# has no consumer. Left on disk, unreferenced.
 
 [[entry]]
 pr = 2529
 summary = "Expand status-grouped sidebar workspace cards"
-fixup = "patches/status-sidebar-archived-host-label.patch"
 
 [[entry]]
 pr = 2530
