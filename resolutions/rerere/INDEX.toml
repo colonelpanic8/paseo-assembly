@@ -50,6 +50,18 @@ paths = ["packages/app/src/components/sidebar/sidebar-archived-group.test.tsx"]
 recorded = "2026-07-28T18:00:54.368001775+00:00"
 
 [[resolution]]
+entry = "pr-2530"
+hash = "3e3655e54d47003bdd12802e596b268d01c03f68"
+paths = ["packages/app/src/components/combined-model-selector.tsx"]
+recorded = "2026-07-28T18:21:06.425943198+00:00"
+
+[[resolution]]
+entry = "pr-2530"
+hash = "962e0545a4fd100cf483770e7af6e5a1ebfa7c57"
+paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
+recorded = "2026-07-28T18:21:06.425946154+00:00"
+
+[[resolution]]
 entry = "pr-2532"
 hash = "6b4f922c43be68a9b7a0d41b42d6b00f71aad58f"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
@@ -60,3 +72,9 @@ entry = "pr-2532"
 hash = "934ec96612d0cdb17bd18d8991405580cd02c20a"
 paths = ["packages/app/src/hooks/use-settings/storage.ts"]
 recorded = "2026-07-28T10:56:51.235458226+00:00"
+
+[[resolution]]
+entry = "pr-2556"
+hash = "e3a444a7bff4f928298fda99f82abb35ac8c60d0"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-07-28T18:22:04.248508175+00:00"

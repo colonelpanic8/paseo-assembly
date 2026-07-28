@@ -77,6 +77,10 @@ summary = "fix(nix): shrink desktop runtime output"
 pr = 2553
 summary = "build(android): add Nix toolchain and release runner"
 
+[[entry]]
+pr = 2556
+summary = "Build Paseo Desktop from the Nix flake on macOS"
+
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
 # Entries merge in order onto the base. Three kinds:
