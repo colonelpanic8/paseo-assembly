@@ -35,6 +35,10 @@ summary = "Add managed desktop host enrollment"
 [[entry]]
 pr = 2521
 summary = "Add shortcut for next workspace needing attention"
+
+[[entry]]
+pr = 2525
+summary = "Add agent snoozing to workspace tabs"
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
 # Entries merge in order onto the base. Three kinds:
