@@ -22,17 +22,18 @@
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
       "pr-2556": "b12e3b63b91eb262630294719772558c2838844b",
       "pr-2559": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8",
+      "pr-2564": "6d5e5f555154889230302af0a348adbed9b21602",
       "status-sidebar-archived-host-label": "84c50e7004291ba0f802c2700262c63a46177d62"
     }
   },
   "build": {
-    "generated": "2026-07-28T19:56:44.173772754+00:00",
+    "generated": "2026-07-28T20:27:27.201055589+00:00",
     "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
-    "commit": "6d4b01eae8627521490493ae77f21544dafdace5",
-    "pre_provenance_commit": "6d4b01eae8627521490493ae77f21544dafdace5",
-    "tree": "55d9a57c1f6c828887f781d9642e2ed10ba1608f",
-    "built_tree": "55d9a57c1f6c828887f781d9642e2ed10ba1608f",
-    "previous_tree": "a9606feec1e5f5f6e4a3701440ac536867aa03c8",
+    "commit": "516dc3c0a7ad07972249d05db926692e64ba3abf",
+    "pre_provenance_commit": "516dc3c0a7ad07972249d05db926692e64ba3abf",
+    "tree": "67d8425720e9374044deedb55223343f137ba645",
+    "built_tree": "67d8425720e9374044deedb55223343f137ba645",
+    "previous_tree": "55d9a57c1f6c828887f781d9642e2ed10ba1608f",
     "tree_changed": true,
     "conflicts": 6,
     "manifest_entries": [
@@ -67,22 +68,16 @@
         "pin": "cca2a3a7029165ee9936d3352706a3b945045904"
       },
       {
-        "name": "pr-2525",
-        "kind": "pr",
-        "source": "upstream#2525",
-        "pin": "528e5a7241be5ea14c96db15e9f88e945c2dc6f8"
-      },
-      {
         "name": "assembly-fdroid-variant",
         "kind": "branch",
         "source": "mine:assembly-fdroid-variant",
         "pin": "721a7d806e545284e2b79ce86377d65fd460bafe"
       },
       {
-        "name": "pr-2529",
+        "name": "pr-2564",
         "kind": "pr",
-        "source": "upstream#2529",
-        "pin": "94581468a857618109d2335bb452de95e35ba52d"
+        "source": "upstream#2564",
+        "pin": "6d5e5f555154889230302af0a348adbed9b21602"
       },
       {
         "name": "pr-2530",
@@ -174,20 +169,14 @@
         "resolution": "rerere"
       },
       {
-        "name": "pr-2525",
-        "oid": "528e5a7241be5ea14c96db15e9f88e945c2dc6f8",
-        "status": "merged",
-        "conflicted": false
-      },
-      {
         "name": "assembly-fdroid-variant",
         "oid": "721a7d806e545284e2b79ce86377d65fd460bafe",
         "status": "merged",
         "conflicted": false
       },
       {
-        "name": "pr-2529",
-        "oid": "94581468a857618109d2335bb452de95e35ba52d",
+        "name": "pr-2564",
+        "oid": "6d5e5f555154889230302af0a348adbed9b21602",
         "status": "merged",
         "conflicted": false
       },

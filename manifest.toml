@@ -36,9 +36,22 @@ summary = "Add managed desktop host enrollment"
 pr = 2521
 summary = "Add shortcut for next workspace needing attention"
 
-[[entry]]
-pr = 2525
-summary = "Add agent snoozing to workspace tabs"
+# EXCLUDED: 2525 ("Add agent snoozing to workspace tabs") is carried via the
+# combined PR 2564 below (branch mine:status-sidebar-snooze), which merges
+# 2525 + 2529 and adds a sidebar snooze quick action on top. Do not re-add
+# 2525 while 2564 is carried: its head is an ancestor of the combined branch, so
+# carrying both merges the same snooze commits twice and any later divergence
+# of the PR (rebase, review fixups) lands as duplicate/conflicting hunks.
+#
+# CAUTION: unlike the 2526 exclusion below, 2525 is still OPEN upstream,
+# so `fork-fold add --prs-from colonelpanic8` WILL append it again ("not
+# already carried" only checks the manifest). After any --prs-from sweep,
+# delete the re-added 2525 (and 2529) entries before building. If either PR
+# merges upstream, drop the combined branch instead and re-admit the survivor.
+#
+# [[entry]]
+# pr = 2525
+# summary = "Add agent snoozing to workspace tabs"
 
 [[entry]]
 branch = "mine:assembly-fdroid-variant"
@@ -59,9 +72,25 @@ branch = "mine:assembly-fdroid-variant"
 # call site. 2529's own render hardcodes the prop, so with 2526 gone the patch
 # has no consumer. Left on disk, unreferenced.
 
+# EXCLUDED: 2529 ("Redesign the status-grouped sidebar") is carried via the
+# combined PR 2564 directly below. Same rules as the 2525 exclusion
+# above: do not re-add while the combined branch is carried, and expect
+# `add --prs-from` to re-append it because the PR is still open.
+#
+# [[entry]]
+# pr = 2529
+# summary = "Expand status-grouped sidebar workspace cards"
+
+# Combined PR superseding 2525 and 2529: merges both PR heads onto upstream
+# main and adds a hover-revealed snooze quick action next to archive on the
+# status-sidebar workspace cards (needs both parents, so it cannot live in
+# either parent PR). Carried by PR number, not as mine:status-sidebar-snooze,
+# so `add --prs-from colonelpanic8` counts it as already carried instead of
+# appending a duplicate. If it merges upstream, prune it AND keep the excluded
+# parents out (their content will then be in the base).
 [[entry]]
-pr = 2529
-summary = "Expand status-grouped sidebar workspace cards"
+pr = 2564
+summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
 
 [[entry]]
 pr = 2530
