@@ -41,7 +41,7 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Reproduce locked assembly
+      - name: Check out locked assembly
         id: assembly
         shell: bash
         run: |
@@ -52,37 +52,14 @@ jobs:
           git clone \
             --filter=blob:none \
             --no-checkout \
-            https://github.com/getpaseo/paseo \
+            https://github.com/colonelpanic8/paseo \
             .worktrees/source
-          git -C .worktrees/source remote add upstream https://github.com/getpaseo/paseo
-          git -C .worktrees/source remote add mine https://github.com/colonelpanic8/paseo
-          git -C .worktrees/source config user.name github-actions
-          git -C .worktrees/source config user.email github-actions@github.com
+          git -C .worktrees/source fetch --no-tags origin assembled
+          git -C .worktrees/source worktree add --detach ../build FETCH_HEAD
 
-          jq -r '
-            ["upstream", .pins.base],
-            (
-              .build.manifest_entries[]
-              | select(.kind == "pr")
-              | ["upstream", .pin]
-            ),
-            (
-              .build.manifest_entries[]
-              | select(.kind == "branch")
-              | [(.source | split(":")[0]), .pin]
-            )
-            | @tsv
-          ' manifest.lock.json |
-            sort -u |
-            while IFS=$'\t' read -r remote oid; do
-              git -C .worktrees/source fetch --no-tags "$remote" "$oid"
-            done
-
-          nix develop -c fork-fold build
-          nix develop -c fork-fold build --locked
           actual_tree="$(git -C .worktrees/build rev-parse 'HEAD^{tree}')"
           if [[ "$actual_tree" != "$expected_tree" ]]; then
-            echo "::error::Assembly tree mismatch: expected $expected_tree, got $actual_tree"
+            echo "::error::Published assembly tree mismatch: expected $expected_tree, got $actual_tree"
             exit 1
           fi
 

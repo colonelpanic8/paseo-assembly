@@ -1,8 +1,9 @@
 # Paseo Assembly F-Droid channel
 
-The workflow in `.github/workflows/fdroid.yml` reconstructs the exact tree
-recorded in `manifest.lock.json`, builds the `sh.paseo.assembly` Android
-variant from source, signs it, and publishes a signed F-Droid repository to
+The workflow in `.github/workflows/fdroid.yml` checks out the published
+`assembled` branch, refuses to continue unless its tree exactly matches
+`manifest.lock.json`, builds the `sh.paseo.assembly` Android variant from
+source, signs it, and publishes a signed F-Droid repository to
 `colonelpanic8/paseo-assembly-fdroid`.
 
 ## Signing material
