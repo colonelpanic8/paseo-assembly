@@ -1,0 +1,8 @@
+# Informational index of tracked rerere pairs: which entry's merge
+# produced which conflict hash. Auditability only, never load-bearing;
+# replay uses the pair directories, verification uses the lock tree.
+[[resolution]]
+entry = "pr-2521"
+hash = "7ed9c5e95502c0e87ae2d3d0fed06cfc40a9fd64"
+paths = ["packages/app/src/stores/keyboard-shortcuts-store.test.ts"]
+recorded = "2026-07-28T10:12:52.761737057+00:00"

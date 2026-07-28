@@ -19,9 +19,22 @@
     in
     {
       devShells = forAllSystems (system: {
-        default = fork-fold.lib.mkMaintenanceShell {
-          pkgs = nixpkgs.legacyPackages.${system};
-        };
+        default =
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+            fork-fold-package =
+              fork-fold.packages.${system}.default.overrideAttrs (old: {
+                nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.git ];
+              });
+          in
+          pkgs.mkShell {
+            packages = [
+              fork-fold-package
+              pkgs.git
+              pkgs.gh
+              pkgs.just
+            ];
+          };
       });
     };
 }

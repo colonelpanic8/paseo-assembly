@@ -19,6 +19,22 @@ tag_prefix = "paseo-assembled"
 [[entry]]
 pr = 2506
 summary = "fix(nix): restore desktop app icon matching"
+
+[[entry]]
+pr = 2514
+summary = "Add multi-account profiles for Claude and Codex"
+
+[[entry]]
+pr = 2517
+summary = "Reveal composer control shortcuts while holding Mod"
+
+[[entry]]
+pr = 2520
+summary = "Add managed desktop host enrollment"
+
+[[entry]]
+pr = 2521
+summary = "Add shortcut for next workspace needing attention"
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
 # Entries merge in order onto the base. Three kinds:

@@ -3,25 +3,53 @@
   "pins": {
     "base": "cbbf6c1684fb0415b7949e684d152f5f7453e769",
     "entries": {
-      "pr-2506": "34f57caa6402d3d19fcf734827be85c9a0d932e4"
+      "pr-2506": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
+      "pr-2514": "2e2cf9f1e42f1b571aacf77c6b4ba1f18a8eeefe",
+      "pr-2517": "28a71701d4b21d241d33b1f57fe4428eb17146b2",
+      "pr-2520": "df7016226c3d4dee3c3371a7e7117c12ff03ff55",
+      "pr-2521": "371deeca430772292f3e19550a7ab3fd35163ec1"
     }
   },
   "build": {
-    "generated": "2026-07-28T09:19:49.057308569+00:00",
+    "generated": "2026-07-28T10:12:52.768876534+00:00",
     "base": "cbbf6c1684fb0415b7949e684d152f5f7453e769",
-    "commit": "ab9a0cd636e69fa44a29f66c6c11e59dd6ebe9d2",
-    "pre_provenance_commit": "ab9a0cd636e69fa44a29f66c6c11e59dd6ebe9d2",
-    "tree": "7bb038c73da6004bc12c7687040e7d7d9831d79f",
-    "built_tree": "7bb038c73da6004bc12c7687040e7d7d9831d79f",
-    "previous_tree": null,
+    "commit": "f02cd75e0a82a4fbb43f52dd9103671814044646",
+    "pre_provenance_commit": "f02cd75e0a82a4fbb43f52dd9103671814044646",
+    "tree": "9450f5c809f23cce0d2c4a46354c54273fed304e",
+    "built_tree": "9450f5c809f23cce0d2c4a46354c54273fed304e",
+    "previous_tree": "7bb038c73da6004bc12c7687040e7d7d9831d79f",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 1,
     "manifest_entries": [
       {
         "name": "pr-2506",
         "kind": "pr",
         "source": "upstream#2506",
         "pin": "34f57caa6402d3d19fcf734827be85c9a0d932e4"
+      },
+      {
+        "name": "pr-2514",
+        "kind": "pr",
+        "source": "upstream#2514",
+        "pin": "2e2cf9f1e42f1b571aacf77c6b4ba1f18a8eeefe"
+      },
+      {
+        "name": "pr-2517",
+        "kind": "pr",
+        "source": "upstream#2517",
+        "pin": "28a71701d4b21d241d33b1f57fe4428eb17146b2"
+      },
+      {
+        "name": "pr-2520",
+        "kind": "pr",
+        "source": "upstream#2520",
+        "pin": "df7016226c3d4dee3c3371a7e7117c12ff03ff55"
+      },
+      {
+        "name": "pr-2521",
+        "kind": "pr",
+        "source": "upstream#2521",
+        "pin": "371deeca430772292f3e19550a7ab3fd35163ec1"
       }
     ],
     "results": [
@@ -30,6 +58,31 @@
         "oid": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
         "status": "merged",
         "conflicted": false
+      },
+      {
+        "name": "pr-2514",
+        "oid": "2e2cf9f1e42f1b571aacf77c6b4ba1f18a8eeefe",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2517",
+        "oid": "28a71701d4b21d241d33b1f57fe4428eb17146b2",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2520",
+        "oid": "df7016226c3d4dee3c3371a7e7117c12ff03ff55",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2521",
+        "oid": "371deeca430772292f3e19550a7ab3fd35163ec1",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:7ed9c5e95502c0e87ae2d3d0fed06cfc40a9fd64"
       }
     ]
   }
