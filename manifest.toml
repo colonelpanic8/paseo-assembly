@@ -68,6 +68,15 @@ patch = "patches/assembled-npm-deps-hash.patch"
 [[entry]]
 pr = 2536
 summary = "Use portable Bash shebangs"
+
+[[entry]]
+pr = 2550
+summary = "fix(nix): shrink desktop runtime output"
+
+[[entry]]
+pr = 2553
+summary = "build(android): add Nix toolchain and release runner"
+
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
 # Entries merge in order onto the base. Three kinds:
@@ -80,6 +89,3 @@ summary = "Use portable Bash shebangs"
 #
 # [[entry]]
 # patch = "patches/example.patch" # tracked patch applied on top (escape hatch)
-
-[[entry]]
-branch = "mine:nix-shrink-desktop"

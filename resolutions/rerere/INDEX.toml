@@ -20,6 +20,36 @@ paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-07-28T10:56:08.482299330+00:00"
 
 [[resolution]]
+entry = "pr-2529"
+hash = "1780a780dd4944b9ace9ae99565a842c2ecde695"
+paths = ["packages/app/src/components/sidebar/sidebar-archived-group.tsx"]
+recorded = "2026-07-28T18:00:54.367998639+00:00"
+
+[[resolution]]
+entry = "pr-2529"
+hash = "9d615c9c37d67c48f3d6d5f30d36d244c50af1ff"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-07-28T18:00:54.368000533+00:00"
+
+[[resolution]]
+entry = "pr-2529"
+hash = "bff2ba22e95c1eef07dad7da909ab378a483ad00"
+paths = ["packages/app/src/hooks/use-archived-workspaces.test.ts"]
+recorded = "2026-07-28T18:00:54.368000904+00:00"
+
+[[resolution]]
+entry = "pr-2529"
+hash = "df42aee7192e67202632681b567a8d8934034175"
+paths = ["packages/app/src/hooks/use-archived-workspaces.ts"]
+recorded = "2026-07-28T18:00:54.368001234+00:00"
+
+[[resolution]]
+entry = "pr-2529"
+hash = "fcfa9e5aaa855890a7003d9ee82130934f91cf0a"
+paths = ["packages/app/src/components/sidebar/sidebar-archived-group.test.tsx"]
+recorded = "2026-07-28T18:00:54.368001775+00:00"
+
+[[resolution]]
 entry = "pr-2532"
 hash = "6b4f922c43be68a9b7a0d41b42d6b00f71aad58f"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
