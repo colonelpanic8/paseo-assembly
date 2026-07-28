@@ -1,0 +1,234 @@
+{
+  lib,
+  stdenv,
+  buildNpmPackage,
+  nodejs_22,
+  python3,
+  makeWrapper,
+  autoPatchelfHook,
+  copyDesktopItems,
+  makeDesktopItem,
+  electron,
+  libuv,
+  # Reuse the daemon's prebuilt npm-deps FOD. Same lockfile, same content —
+  # without this, the desktop drv produces a separately-named store path
+  # (`paseo-desktop-<v>-npm-deps`) and refetches the entire registry. Override
+  # the upstream hash via `paseo.override { npmDepsHash = "..."; }`.
+  paseo,
+  # Build provenance. Unlike the daemon, the client bundle cannot read this at
+  # runtime — `expo export` inlines EXPO_PUBLIC_* into the bundle, so it has to
+  # be known here at build time. See nix/build-info.nix.
+  buildCommit ? null,
+  buildCommitDate ? null,
+  buildRepoUrl ? null,
+}:
+<<<<<<<
+
+let
+  buildInfo = import ./build-info.nix { inherit lib; } {
+    inherit buildCommit buildCommitDate buildRepoUrl;
+  };
+in
+
+buildNpmPackage rec {
+=======
+buildNpmPackage {
+>>>>>>>
+  pname = "paseo-desktop";
+  version = (builtins.fromJSON (builtins.readFile ../package.json)).version;
+
+  src = lib.cleanSourceWith {
+    src = ./..;
+    filter = path: type: let
+      baseName = builtins.baseNameOf path;
+      relPath = lib.removePrefix (toString ./..) path;
+    in
+      # Exclude mobile-only platform code (we only need the web/electron build)
+      !(lib.hasPrefix "/packages/app/android" relPath)
+      && !(lib.hasPrefix "/packages/app/ios" relPath)
+      # Website is unrelated to the desktop app
+      && !(lib.hasPrefix "/packages/website" relPath)
+      # Test fixtures and build artifacts
+      && !(lib.hasSuffix ".test.ts" baseName)
+      && !(lib.hasSuffix ".e2e.test.ts" baseName)
+      && baseName != "node_modules"
+      && baseName != ".git"
+      && baseName != ".paseo"
+      && baseName != ".DS_Store"
+      && baseName != "release";
+  };
+
+  nodejs = nodejs_22;
+  inherit (paseo) npmDeps;
+
+  # Prevent onnxruntime-node's install script from running during automatic
+  # npm rebuild. We manually rebuild only node-pty in buildPhase.
+  npmRebuildFlags = ["--ignore-scripts"];
+
+  nativeBuildInputs =
+    [
+      python3 # for node-gyp (node-pty)
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      autoPatchelfHook
+      makeWrapper
+      copyDesktopItems
+    ];
+
+  buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
+    libuv
+    stdenv.cc.cc.lib # libstdc++ for sherpa-onnx prebuilt binaries
+  ];
+
+  dontNpmBuild = true;
+
+  env = {
+    EXPO_NO_TELEMETRY = "1";
+    # Expo's web build pulls in some pre-bundled assets; ensure it doesn't try
+    # to phone home during the build.
+    CI = "1";
+  }
+  # Inlined into the renderer bundle by `expo export` below.
+  // buildInfo.expoPublicEnv;
+
+  buildPhase = ''
+    runHook preBuild
+
+    # Native deps (terminal emulation; libuv-linked on Linux)
+    npm rebuild node-pty
+
+    # Server workspaces (highlight + relay + protocol + client + server + cli)
+    npm run build:server
+
+    # App workspace deps not covered by build:server
+    npm run build --workspace=@getpaseo/expo-two-way-audio
+
+    # Expo web export for the Electron renderer
+    ( cd packages/app && PASEO_WEB_PLATFORM=electron npx expo export --platform web )
+
+    # Desktop main process
+    npm run build:main --workspace=@getpaseo/desktop
+
+    ${lib.optionalString stdenv.hostPlatform.isDarwin ''
+      # Let electron-builder create the native bundle layout (including helper
+      # app names and bundle identifiers), but source Electron from nixpkgs
+      # instead of downloading a release at build time. electron-builder edits
+      # the copied helper plists, so stage a writable distribution rather than
+      # pointing it directly at the read-only Nix store.
+      electron_dist="$NIX_BUILD_TOP/electron-dist"
+      mkdir -p "$electron_dist"
+      cp -R ${electron}/Applications/Electron.app "$electron_dist/"
+      chmod -R u+w "$electron_dist/Electron.app"
+      (
+        cd packages/desktop
+        CSC_IDENTITY_AUTO_DISCOVERY=false \
+          ../../node_modules/.bin/electron-builder \
+            --config electron-builder.yml \
+            --dir \
+            --mac \
+            --publish never \
+            --config.electronDist="$electron_dist" \
+            --config.mac.notarize=false
+      )
+    ''}
+
+    runHook postBuild
+  '';
+
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/bin
+
+    ${lib.optionalString stdenv.hostPlatform.isLinux ''
+      mkdir -p $out/share/paseo-desktop
+
+      # Materialize only the desktop and daemon runtime graphs. Copying the
+      # complete monorepo used to ship every build-time dependency (including
+      # Electron, Expo tooling, and cross-platform builder binaries), making the
+      # desktop output larger than 2 GiB.
+      PASEO_TRACE_DESKTOP=1 node scripts/trace-daemon.mjs > desktop-files.txt
+
+      while IFS= read -r path; do
+        [ -z "$path" ] && continue
+        mkdir -p "$out/share/paseo-desktop/$(dirname "$path")"
+        cp -a "$path" "$out/share/paseo-desktop/$path"
+      done < desktop-files.txt
+
+<<<<<<<
+      # Keep the same unpackaged monorepo layout expected by main.js.
+      cp package.json $out/share/paseo-desktop/
+      mkdir -p $out/share/paseo-desktop/packages/app
+      cp -a packages/app/dist $out/share/paseo-desktop/packages/app/
+=======
+    # Launcher wraps nixpkgs electron.
+    # --no-sandbox: Chromium's setuid sandbox can't live in /nix/store
+    # (immutable, no setuid). Acceptable for v1; a follow-up can wire
+    # `security.wrappers` via a NixOS module for users who want the sandbox.
+    #
+    # EXPO_DEV_URL: We run unpackaged via `electron path/to/main.js`, so
+    # `app.isPackaged` is false. In that mode main.ts loads `DEV_SERVER_URL`
+    # (defaults to http://localhost:8081 — the Expo dev server, which doesn't
+    # exist here). Point it at the `paseo://` protocol handler instead, which
+    # serves from `__dirname/../../app/dist` (our install layout matches).
+    makeWrapper ${electron}/bin/electron $out/bin/paseo-desktop \
+      --add-flags "$out/share/paseo-desktop/packages/desktop/dist/main.js" \
+      --add-flags "--no-sandbox" \
+      --set EXPO_DEV_URL "paseo://app/" ${lib.escapeShellArgs buildInfo.wrapperArgs}
+>>>>>>>
+
+      # Skills directory referenced at runtime by some agents
+      if [ -d skills ]; then
+        cp -a skills $out/share/paseo-desktop/
+      fi
+
+      # Hicolor icon for desktop environments
+      install -Dm644 packages/desktop/assets/icon.png \
+        $out/share/icons/hicolor/512x512/apps/paseo-desktop.png
+
+      # Chromium's setuid sandbox cannot live in the immutable Nix store.
+      makeWrapper ${electron}/bin/electron $out/bin/paseo-desktop \
+        --add-flags "$out/share/paseo-desktop/packages/desktop/dist/main.js" \
+        --add-flags "--no-sandbox" \
+        --add-flags "--class=paseo-desktop" \
+        --set EXPO_DEV_URL "paseo://app/" \
+        --set CHROME_DESKTOP "paseo-desktop.desktop"
+
+      copyDesktopItems
+    ''}
+
+    ${lib.optionalString stdenv.hostPlatform.isDarwin ''
+      app="$(find packages/desktop/release -maxdepth 3 -type d -name Paseo.app -print -quit)"
+      if [ -z "$app" ]; then
+        echo "electron-builder did not produce Paseo.app" >&2
+        exit 1
+      fi
+      mkdir -p "$out/Applications"
+      cp -R "$app" "$out/Applications/Paseo.app"
+      ln -s ../Applications/Paseo.app/Contents/MacOS/Paseo "$out/bin/paseo-desktop"
+    ''}
+
+    runHook postInstall
+  '';
+
+  desktopItems = lib.optionals stdenv.hostPlatform.isLinux [
+    (makeDesktopItem {
+      name = "paseo-desktop";
+      desktopName = "Paseo";
+      genericName = "AI Coding Agents";
+      comment = "Self-hosted daemon for AI coding agents";
+      exec = "paseo-desktop";
+      icon = "paseo-desktop";
+      categories = ["Development"];
+      startupWMClass = "paseo-desktop";
+    })
+  ];
+
+  meta = {
+    description = "Paseo desktop app (Electron wrapper)";
+    homepage = "https://github.com/getpaseo/paseo";
+    license = lib.licenses.agpl3Plus;
+    mainProgram = "paseo-desktop";
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+  };
+}

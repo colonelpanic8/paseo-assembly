@@ -4,6 +4,7 @@
     "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
     "entries": {
       "assembled-npm-deps-hash": "1387ad1f26348ac21d6c0b302591128e464451e6",
+      "assembly-build-provenance": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
       "nix-shrink-desktop": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
       "pr-2506": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
@@ -25,15 +26,15 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T19:07:05.029817191+00:00",
+    "generated": "2026-07-28T19:37:27.451837172+00:00",
     "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
-    "commit": "032a9471dfd1fb33658cfbaf63a392533cce3b99",
-    "pre_provenance_commit": "032a9471dfd1fb33658cfbaf63a392533cce3b99",
-    "tree": "c096b0e6cb7b22aa036a0186395bfb7ef3a89df1",
-    "built_tree": "c096b0e6cb7b22aa036a0186395bfb7ef3a89df1",
+    "commit": "6d8b9ac33aa9155a25b2a3f92f732a90b1d841ec",
+    "pre_provenance_commit": "6d8b9ac33aa9155a25b2a3f92f732a90b1d841ec",
+    "tree": "aaa22a8ae856066ccbc74a0445068e9a677a65a8",
+    "built_tree": "aaa22a8ae856066ccbc74a0445068e9a677a65a8",
     "previous_tree": "c096b0e6cb7b22aa036a0186395bfb7ef3a89df1",
-    "tree_changed": false,
-    "conflicts": 6,
+    "tree_changed": true,
+    "conflicts": 1,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -137,6 +138,12 @@
         "kind": "pr",
         "source": "upstream#2559",
         "pin": "95a06a8b60083393712686aaf1eb9531ca85785d"
+      },
+      {
+        "name": "assembly-build-provenance",
+        "kind": "branch",
+        "source": "mine:assembly-build-provenance",
+        "pin": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac"
       }
     ],
     "results": [
@@ -248,6 +255,13 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "assembly-build-provenance",
+        "oid": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:30223b09a66bd3964a102b766c052388a4df314b,d9bbe6ccd92dcbee87a1ba414e1e29b53f7f1676"
       }
     ]
   }

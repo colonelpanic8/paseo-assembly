@@ -2,6 +2,18 @@
 # produced which conflict hash. Auditability only, never load-bearing;
 # replay uses the pair directories, verification uses the lock tree.
 [[resolution]]
+entry = "assembly-build-provenance"
+hash = "30223b09a66bd3964a102b766c052388a4df314b"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-07-28T19:37:27.444679911+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
+hash = "d9bbe6ccd92dcbee87a1ba414e1e29b53f7f1676"
+paths = ["flake.nix"]
+recorded = "2026-07-28T19:37:27.444681824+00:00"
+
+[[resolution]]
 entry = "pr-2521"
 hash = "7ed9c5e95502c0e87ae2d3d0fed06cfc40a9fd64"
 paths = ["packages/app/src/stores/keyboard-shortcuts-store.test.ts"]
