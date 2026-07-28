@@ -8,7 +8,7 @@
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
       "nix-shrink-desktop": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
-      "pr-2514": "d013863eda60f51aa3b65299939042ef4f25969a",
+      "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
       "pr-2517": "89e6ea4b546cc059b6cd16374955da38c791cb1d",
       "pr-2520": "735cd4a99d2aaa951aa4979f1a030502db5d35e1",
       "pr-2521": "cca2a3a7029165ee9936d3352706a3b945045904",
@@ -27,13 +27,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T20:41:56.078175148+00:00",
+    "generated": "2026-07-28T20:46:14.457235628+00:00",
     "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
-    "commit": "809129bc77ebcce0fe734f8609188762a201aa0c",
-    "pre_provenance_commit": "809129bc77ebcce0fe734f8609188762a201aa0c",
-    "tree": "e3e78f10f202c81d13d6983ff3f6fabae10db049",
-    "built_tree": "e3e78f10f202c81d13d6983ff3f6fabae10db049",
-    "previous_tree": "67d8425720e9374044deedb55223343f137ba645",
+    "commit": "85a8202fba8c30562db1f7537cebc1ced2e7092a",
+    "pre_provenance_commit": "85a8202fba8c30562db1f7537cebc1ced2e7092a",
+    "tree": "fc6f994b5ce981307a0510c96b0562437392726f",
+    "built_tree": "fc6f994b5ce981307a0510c96b0562437392726f",
+    "previous_tree": "e3e78f10f202c81d13d6983ff3f6fabae10db049",
     "tree_changed": true,
     "conflicts": 6,
     "manifest_entries": [
@@ -47,7 +47,7 @@
         "name": "pr-2514",
         "kind": "pr",
         "source": "upstream#2514",
-        "pin": "d013863eda60f51aa3b65299939042ef4f25969a"
+        "pin": "5dc9f3b39102635b72db99bc6fb9894940dfe17b"
       },
       {
         "name": "pr-2517",
@@ -146,7 +146,7 @@
       },
       {
         "name": "pr-2514",
-        "oid": "d013863eda60f51aa3b65299939042ef4f25969a",
+        "oid": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
         "status": "merged",
         "conflicted": false
       },
