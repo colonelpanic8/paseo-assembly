@@ -52,6 +52,9 @@ pr = 2529
 summary = "Expand status-grouped sidebar workspace cards"
 
 [[entry]]
+patch = "patches/status-sidebar-archived-host-label.patch"
+
+[[entry]]
 pr = 2530
 summary = "Add cross-provider model search"
 

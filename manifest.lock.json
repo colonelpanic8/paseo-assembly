@@ -15,17 +15,18 @@
       "pr-2529": "54e525caca983f1c5831b80daa0b48f044142096",
       "pr-2530": "d7a7f061fbb27696573cb68abe1e87a9a2ce1025",
       "pr-2532": "3eb0c60fd5e1744f8e01fb495cc6ea82814e0b36",
-      "pr-2536": "0f4d653ef2d8541c023fd09bf878740ac5a16e37"
+      "pr-2536": "0f4d653ef2d8541c023fd09bf878740ac5a16e37",
+      "status-sidebar-archived-host-label": "84c50e7004291ba0f802c2700262c63a46177d62"
     }
   },
   "build": {
-    "generated": "2026-07-28T16:20:00.771186581+00:00",
+    "generated": "2026-07-28T16:42:43.040426192+00:00",
     "base": "f0d7eeb98cb0ed3f940502b42fde6ba2e5eca242",
-    "commit": "1304c91a1f4a965b80e73264e19370c240dc5b2d",
-    "pre_provenance_commit": "1304c91a1f4a965b80e73264e19370c240dc5b2d",
-    "tree": "149381445e2fdfadd6d2215ca94b28c5a43b2e96",
-    "built_tree": "149381445e2fdfadd6d2215ca94b28c5a43b2e96",
-    "previous_tree": "a46c0460678ec5d9628d627b6d2c3af1423a6f86",
+    "commit": "8d98934579f62ed438795fa904772c808f339ce9",
+    "pre_provenance_commit": "8d98934579f62ed438795fa904772c808f339ce9",
+    "tree": "1da1b7d7e2f59f1993b35f11bd4f0c303b02d46c",
+    "built_tree": "1da1b7d7e2f59f1993b35f11bd4f0c303b02d46c",
+    "previous_tree": "3b2c46c2d8fd0a68257355e8b9b6a8c17157f68d",
     "tree_changed": true,
     "conflicts": 3,
     "manifest_entries": [
@@ -82,6 +83,12 @@
         "kind": "pr",
         "source": "upstream#2529",
         "pin": "54e525caca983f1c5831b80daa0b48f044142096"
+      },
+      {
+        "name": "status-sidebar-archived-host-label",
+        "kind": "patch",
+        "source": "patches/status-sidebar-archived-host-label.patch",
+        "pin": "84c50e7004291ba0f802c2700262c63a46177d62"
       },
       {
         "name": "pr-2530",
@@ -164,6 +171,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "status-sidebar-archived-host-label",
+        "oid": "84c50e7004291ba0f802c2700262c63a46177d62",
+        "status": "applied",
+        "conflicted": false
       },
       {
         "name": "pr-2530",
