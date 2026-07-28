@@ -14,19 +14,20 @@
       "pr-2526": "310b2162d9e52c3ec17f006f0506a93902405763",
       "pr-2529": "54e525caca983f1c5831b80daa0b48f044142096",
       "pr-2530": "d7a7f061fbb27696573cb68abe1e87a9a2ce1025",
-      "pr-2532": "3eb0c60fd5e1744f8e01fb495cc6ea82814e0b36"
+      "pr-2532": "3eb0c60fd5e1744f8e01fb495cc6ea82814e0b36",
+      "pr-2536": "0f4d653ef2d8541c023fd09bf878740ac5a16e37"
     }
   },
   "build": {
-    "generated": "2026-07-28T10:57:24.852255899+00:00",
+    "generated": "2026-07-28T11:39:33.092271936+00:00",
     "base": "f0d7eeb98cb0ed3f940502b42fde6ba2e5eca242",
-    "commit": "6f230eb35ce86652cee8f5a25052214eed0e4c16",
-    "pre_provenance_commit": "6f230eb35ce86652cee8f5a25052214eed0e4c16",
-    "tree": "a498acb597e4a477ce771ddd6fb19807834c6028",
-    "built_tree": "a498acb597e4a477ce771ddd6fb19807834c6028",
+    "commit": "ffb3eeb24645ba61fc1273810e2a485da7d0607e",
+    "pre_provenance_commit": "ffb3eeb24645ba61fc1273810e2a485da7d0607e",
+    "tree": "a46c0460678ec5d9628d627b6d2c3af1423a6f86",
+    "built_tree": "a46c0460678ec5d9628d627b6d2c3af1423a6f86",
     "previous_tree": "a498acb597e4a477ce771ddd6fb19807834c6028",
-    "tree_changed": false,
-    "conflicts": 3,
+    "tree_changed": true,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -99,6 +100,12 @@
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
         "pin": "1387ad1f26348ac21d6c0b302591128e464451e6"
+      },
+      {
+        "name": "pr-2536",
+        "kind": "pr",
+        "source": "upstream#2536",
+        "pin": "0f4d653ef2d8541c023fd09bf878740ac5a16e37"
       }
     ],
     "results": [
@@ -175,6 +182,12 @@
         "name": "assembled-npm-deps-hash",
         "oid": "1387ad1f26348ac21d6c0b302591128e464451e6",
         "status": "applied",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2536",
+        "oid": "0f4d653ef2d8541c023fd09bf878740ac5a16e37",
+        "status": "merged",
         "conflicted": false
       }
     ]

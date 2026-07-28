@@ -61,6 +61,10 @@ summary = "Add configurable composer command and skill triggers"
 
 [[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"
+
+[[entry]]
+pr = 2536
+summary = "Use portable Bash shebangs"
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
 # Entries merge in order onto the base. Three kinds:
