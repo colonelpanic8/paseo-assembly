@@ -81,6 +81,10 @@ summary = "build(android): add Nix toolchain and release runner"
 pr = 2556
 summary = "Build Paseo Desktop from the Nix flake on macOS"
 
+[[entry]]
+pr = 2559
+summary = "Stop attachment GC from deleting rendered image previews"
+
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
 # Entries merge in order onto the base. Three kinds:

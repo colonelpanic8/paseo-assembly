@@ -75,6 +75,18 @@ recorded = "2026-07-28T10:56:51.235458226+00:00"
 
 [[resolution]]
 entry = "pr-2556"
+hash = "d1b60b10c809b9fc7576e6cfd7405b46f6f91a10"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-07-28T18:51:39.730435046+00:00"
+
+[[resolution]]
+entry = "pr-2556"
 hash = "e3a444a7bff4f928298fda99f82abb35ac8c60d0"
 paths = ["nix/desktop-package.nix"]
 recorded = "2026-07-28T18:22:04.248508175+00:00"
+
+[[resolution]]
+entry = "pr-2559"
+hash = "a4818bca6660c3c94bcbd217633491bdec121115"
+paths = ["packages/app/src/components/message.tsx"]
+recorded = "2026-07-28T18:52:01.154832830+00:00"
