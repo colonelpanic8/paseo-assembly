@@ -4,6 +4,14 @@ This repository is a [fork-fold](https://github.com/colonelpanic8/fork-fold)
 stack: a build recipe assembling an upstream base plus an ordered set of live
 topic branches into a single branch, with tracked conflict resolutions.
 
+## Repository checkout
+
+- Work directly in this assembler repository's primary checkout. Do not create
+  or use a separate Git worktree for repository maintenance unless the user
+  explicitly requests one.
+- This does not prohibit the temporary build worktrees that `fork-fold` creates
+  and manages as part of its normal operation.
+
 ## Model
 
 - `manifest.toml` is INTENT: named remotes, the base, and the ordered entries
