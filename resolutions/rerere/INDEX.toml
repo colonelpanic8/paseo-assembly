@@ -87,6 +87,18 @@ recorded = "2026-07-28T18:21:06.425946154+00:00"
 
 [[resolution]]
 entry = "pr-2532"
+hash = "517812f89629df389ced188acdc34f8db6c9b48f"
+paths = ["packages/app/src/components/message.tsx"]
+recorded = "2026-07-28T20:57:07.459573942+00:00"
+
+[[resolution]]
+entry = "pr-2532"
+hash = "5ba4b078a1aa5f53c817d7422dd32505b23a89ad"
+paths = ["packages/server/src/server/agent/providers/mock-load-test-agent.ts"]
+recorded = "2026-07-28T20:57:07.459576266+00:00"
+
+[[resolution]]
+entry = "pr-2532"
 hash = "6b4f922c43be68a9b7a0d41b42d6b00f71aad58f"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-07-28T10:56:51.235455651+00:00"

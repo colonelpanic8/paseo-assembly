@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
+    "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
     "entries": {
       "assembled-npm-deps-hash": "1387ad1f26348ac21d6c0b302591128e464451e6",
       "assembly-build-provenance": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
@@ -27,15 +27,15 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T20:46:14.457235628+00:00",
-    "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
-    "commit": "85a8202fba8c30562db1f7537cebc1ced2e7092a",
-    "pre_provenance_commit": "85a8202fba8c30562db1f7537cebc1ced2e7092a",
-    "tree": "fc6f994b5ce981307a0510c96b0562437392726f",
-    "built_tree": "fc6f994b5ce981307a0510c96b0562437392726f",
-    "previous_tree": "e3e78f10f202c81d13d6983ff3f6fabae10db049",
+    "generated": "2026-07-28T20:57:07.751295739+00:00",
+    "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
+    "commit": "15905e40beee17d8277533c44591fc6d97d146fa",
+    "pre_provenance_commit": "15905e40beee17d8277533c44591fc6d97d146fa",
+    "tree": "b7ecd57f244d9c10032df87a385db91106ae289d",
+    "built_tree": "b7ecd57f244d9c10032df87a385db91106ae289d",
+    "previous_tree": "fc6f994b5ce981307a0510c96b0562437392726f",
     "tree_changed": true,
-    "conflicts": 6,
+    "conflicts": 5,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -124,12 +124,6 @@
         "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
-        "name": "pr-2559",
-        "kind": "pr",
-        "source": "upstream#2559",
-        "pin": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8"
-      },
-      {
         "name": "assembly-build-provenance",
         "kind": "branch",
         "source": "mine:assembly-build-provenance",
@@ -194,7 +188,7 @@
         "oid": "ba81d40af57ffed4578051454690b09aea44a70e",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:517812f89629df389ced188acdc34f8db6c9b48f,5ba4b078a1aa5f53c817d7422dd32505b23a89ad"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -227,13 +221,6 @@
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
-      },
-      {
-        "name": "pr-2559",
-        "oid": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8",
-        "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere"
       },
       {
         "name": "assembly-build-provenance",
