@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "pins": {
+    "base": "cbbf6c1684fb0415b7949e684d152f5f7453e769",
+    "entries": {
+      "pr-2506": "34f57caa6402d3d19fcf734827be85c9a0d932e4"
+    }
+  },
+  "build": {
+    "generated": "2026-07-28T09:19:49.057308569+00:00",
+    "base": "cbbf6c1684fb0415b7949e684d152f5f7453e769",
+    "commit": "ab9a0cd636e69fa44a29f66c6c11e59dd6ebe9d2",
+    "pre_provenance_commit": "ab9a0cd636e69fa44a29f66c6c11e59dd6ebe9d2",
+    "tree": "7bb038c73da6004bc12c7687040e7d7d9831d79f",
+    "built_tree": "7bb038c73da6004bc12c7687040e7d7d9831d79f",
+    "previous_tree": null,
+    "tree_changed": true,
+    "conflicts": 0,
+    "manifest_entries": [
+      {
+        "name": "pr-2506",
+        "kind": "pr",
+        "source": "upstream#2506",
+        "pin": "34f57caa6402d3d19fcf734827be85c9a0d932e4"
+      }
+    ],
+    "results": [
+      {
+        "name": "pr-2506",
+        "oid": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
+        "status": "merged",
+        "conflicted": false
+      }
+    ]
+  }
+}
