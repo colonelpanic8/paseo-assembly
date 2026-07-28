@@ -7,40 +7,40 @@
       "assembly-build-provenance": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
       "nix-shrink-desktop": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
-      "pr-2506": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
+      "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
       "pr-2514": "d013863eda60f51aa3b65299939042ef4f25969a",
       "pr-2517": "89e6ea4b546cc059b6cd16374955da38c791cb1d",
       "pr-2520": "735cd4a99d2aaa951aa4979f1a030502db5d35e1",
-      "pr-2521": "371deeca430772292f3e19550a7ab3fd35163ec1",
+      "pr-2521": "cca2a3a7029165ee9936d3352706a3b945045904",
       "pr-2525": "528e5a7241be5ea14c96db15e9f88e945c2dc6f8",
       "pr-2526": "39de257504eb65658dfb864c17c4fe292e99dfe4",
-      "pr-2529": "0de0ff3161749f9e74372ce6253e70319593a785",
+      "pr-2529": "94581468a857618109d2335bb452de95e35ba52d",
       "pr-2530": "bee4b234df094367197d47c82fa3307ff5fb5027",
       "pr-2532": "ba81d40af57ffed4578051454690b09aea44a70e",
       "pr-2536": "0f4d653ef2d8541c023fd09bf878740ac5a16e37",
       "pr-2550": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
-      "pr-2553": "9c265c16f4e2db9dcfab3651d8e8ed597d4d8a9b",
-      "pr-2556": "061485925f62df8bdca5e837867215673c8c689e",
-      "pr-2559": "95a06a8b60083393712686aaf1eb9531ca85785d",
+      "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
+      "pr-2556": "b12e3b63b91eb262630294719772558c2838844b",
+      "pr-2559": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8",
       "status-sidebar-archived-host-label": "84c50e7004291ba0f802c2700262c63a46177d62"
     }
   },
   "build": {
-    "generated": "2026-07-28T19:37:27.451837172+00:00",
+    "generated": "2026-07-28T19:44:34.258319258+00:00",
     "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
-    "commit": "6d8b9ac33aa9155a25b2a3f92f732a90b1d841ec",
-    "pre_provenance_commit": "6d8b9ac33aa9155a25b2a3f92f732a90b1d841ec",
-    "tree": "aaa22a8ae856066ccbc74a0445068e9a677a65a8",
-    "built_tree": "aaa22a8ae856066ccbc74a0445068e9a677a65a8",
-    "previous_tree": "c096b0e6cb7b22aa036a0186395bfb7ef3a89df1",
+    "commit": "e3741e8ff187ff7c3c500ede00a1c3fc7fcbfb20",
+    "pre_provenance_commit": "e3741e8ff187ff7c3c500ede00a1c3fc7fcbfb20",
+    "tree": "a9606feec1e5f5f6e4a3701440ac536867aa03c8",
+    "built_tree": "a9606feec1e5f5f6e4a3701440ac536867aa03c8",
+    "previous_tree": "a912362e47808ff68ffac56fd22a0521abbd192a",
     "tree_changed": true,
-    "conflicts": 1,
+    "conflicts": 7,
     "manifest_entries": [
       {
         "name": "pr-2506",
         "kind": "pr",
         "source": "upstream#2506",
-        "pin": "34f57caa6402d3d19fcf734827be85c9a0d932e4"
+        "pin": "792d40df6f73c8ae3c2c81a0727afaa93db01832"
       },
       {
         "name": "pr-2514",
@@ -64,7 +64,7 @@
         "name": "pr-2521",
         "kind": "pr",
         "source": "upstream#2521",
-        "pin": "371deeca430772292f3e19550a7ab3fd35163ec1"
+        "pin": "cca2a3a7029165ee9936d3352706a3b945045904"
       },
       {
         "name": "pr-2525",
@@ -88,7 +88,7 @@
         "name": "pr-2529",
         "kind": "pr",
         "source": "upstream#2529",
-        "pin": "0de0ff3161749f9e74372ce6253e70319593a785",
+        "pin": "94581468a857618109d2335bb452de95e35ba52d",
         "fixup": "84c50e7004291ba0f802c2700262c63a46177d62"
       },
       {
@@ -125,31 +125,33 @@
         "name": "pr-2553",
         "kind": "pr",
         "source": "upstream#2553",
-        "pin": "9c265c16f4e2db9dcfab3651d8e8ed597d4d8a9b"
+        "pin": "4a4d0120189df09c793244405be3958b9713bdec"
       },
       {
         "name": "pr-2556",
         "kind": "pr",
         "source": "upstream#2556",
-        "pin": "061485925f62df8bdca5e837867215673c8c689e"
+        "pin": "b12e3b63b91eb262630294719772558c2838844b",
+        "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
         "name": "pr-2559",
         "kind": "pr",
         "source": "upstream#2559",
-        "pin": "95a06a8b60083393712686aaf1eb9531ca85785d"
+        "pin": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8"
       },
       {
         "name": "assembly-build-provenance",
         "kind": "branch",
         "source": "mine:assembly-build-provenance",
-        "pin": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac"
+        "pin": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
+        "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
       }
     ],
     "results": [
       {
         "name": "pr-2506",
-        "oid": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
+        "oid": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
         "status": "merged",
         "conflicted": false
       },
@@ -173,7 +175,7 @@
       },
       {
         "name": "pr-2521",
-        "oid": "371deeca430772292f3e19550a7ab3fd35163ec1",
+        "oid": "cca2a3a7029165ee9936d3352706a3b945045904",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -198,7 +200,7 @@
       },
       {
         "name": "pr-2529",
-        "oid": "0de0ff3161749f9e74372ce6253e70319593a785",
+        "oid": "94581468a857618109d2335bb452de95e35ba52d",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -238,20 +240,21 @@
       },
       {
         "name": "pr-2553",
-        "oid": "9c265c16f4e2db9dcfab3651d8e8ed597d4d8a9b",
+        "oid": "4a4d0120189df09c793244405be3958b9713bdec",
         "status": "merged",
         "conflicted": false
       },
       {
         "name": "pr-2556",
-        "oid": "061485925f62df8bdca5e837867215673c8c689e",
+        "oid": "b12e3b63b91eb262630294719772558c2838844b",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere",
+        "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
         "name": "pr-2559",
-        "oid": "95a06a8b60083393712686aaf1eb9531ca85785d",
+        "oid": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -261,7 +264,8 @@
         "oid": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:30223b09a66bd3964a102b766c052388a4df314b,d9bbe6ccd92dcbee87a1ba414e1e29b53f7f1676"
+        "resolution": "rerere",
+        "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
       }
     ]
   }

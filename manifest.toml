@@ -78,6 +78,7 @@ summary = "build(android): add Nix toolchain and release runner"
 [[entry]]
 pr = 2556
 summary = "Build Paseo Desktop from the Nix flake on macOS"
+fixup = "patches/desktop-package-version-rec.patch"
 
 [[entry]]
 pr = 2559
@@ -85,6 +86,7 @@ summary = "Stop attachment GC from deleting rendered image previews"
 
 [[entry]]
 branch = "mine:assembly-build-provenance"
+fixup = "patches/desktop-provenance-wrapper-args.patch"
 
 # submodule = "upstream"  # optional: source base objects from this submodule path
 

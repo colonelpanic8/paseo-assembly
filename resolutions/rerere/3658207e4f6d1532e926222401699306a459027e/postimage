@@ -1,0 +1,379 @@
+import { memo, useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { View, Text, Pressable, type PressableStateCallbackType } from "react-native";
+import { StyleSheet, withUnistyles } from "react-native-unistyles";
+import Animated, { FadeIn, FadeInUp, FadeOut, LinearTransition } from "react-native-reanimated";
+import { useMutation } from "@tanstack/react-query";
+import { Archive, ArchiveRestore, ChevronDown, ChevronRight } from "lucide-react-native";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { isWeb as platformIsWeb } from "@/constants/platform";
+import { useToast } from "@/contexts/toast-context";
+import type { ArchivedWorkspaceEntry } from "@/hooks/use-archived-workspaces";
+import { ARCHIVED_GROUP_KEY } from "@/hooks/sidebar-status-view-model";
+import { getHostRuntimeStore } from "@/runtime/host-runtime";
+import { useSidebarCollapsedSectionsStore } from "@/stores/sidebar-collapsed-sections-store";
+import { SidebarGroupToggleRow } from "@/components/sidebar/sidebar-group-toggle-row";
+import { useLimitedSidebarGroup } from "@/components/sidebar/use-limited-sidebar-group";
+import type { Theme } from "@/styles/theme";
+
+const foregroundMutedColorMapping = (theme: Theme) => ({ color: theme.colors.foregroundMuted });
+const ARCHIVED_GROUP_ENTERING = FadeIn.duration(140);
+const ARCHIVED_GROUP_EXITING = FadeOut.duration(120);
+const ARCHIVED_ROW_ENTERING = FadeInUp.duration(220);
+const ARCHIVED_ROW_EXITING = FadeOut.duration(120);
+const ARCHIVED_ROW_LAYOUT = LinearTransition.duration(180);
+const BUSY_ACCESSIBILITY_STATE = { busy: true } as const;
+
+// Deliberately shorter than the shared sidebar group limit. This is a tail you
+// glance at right after a mis-archive, not a list you browse; show-more covers
+// the rest.
+const INITIAL_VISIBLE_ARCHIVED_ROWS = 5;
+
+const ThemedArchive = withUnistyles(Archive);
+const ThemedArchiveRestore = withUnistyles(ArchiveRestore);
+const ThemedChevronDown = withUnistyles(ChevronDown);
+const ThemedChevronRight = withUnistyles(ChevronRight);
+const ThemedLoadingSpinner = withUnistyles(LoadingSpinner);
+
+/**
+ * The greyed-out tail of status mode: the last few workspaces you archived,
+ * newest first, so a mis-archive is one click away from being undone. These rows
+ * are not navigable — an archived workspace has no live surface to open — so the
+ * only action is unarchive.
+ */
+export function SidebarArchivedGroup({
+  entries,
+  hostLabelByServerId,
+  showHostLabels,
+}: {
+  entries: ArchivedWorkspaceEntry[];
+  hostLabelByServerId: ReadonlyMap<string, string>;
+  showHostLabels: boolean;
+}) {
+  const collapsed = useSidebarCollapsedSectionsStore((state) =>
+    state.collapsedStatusGroupKeys.has(ARCHIVED_GROUP_KEY),
+  );
+  const {
+    visibleItems: visibleEntries,
+    expanded,
+    canToggle,
+    toggleExpanded,
+  } = useLimitedSidebarGroup(entries, INITIAL_VISIBLE_ARCHIVED_ROWS);
+  const isReceivingArchive = entries.some((entry) => entry.phase === "archiving");
+
+  if (entries.length === 0) {
+    return null;
+  }
+
+  return (
+    <Animated.View
+      entering={isReceivingArchive ? ARCHIVED_GROUP_ENTERING : undefined}
+      exiting={ARCHIVED_GROUP_EXITING}
+      layout={ARCHIVED_ROW_LAYOUT}
+      collapsable={false}
+    >
+      <View style={styles.groupBlock}>
+        <ArchivedGroupHeader collapsed={collapsed} />
+        {!collapsed ? (
+          <View testID="sidebar-archived-group-rows">
+            {visibleEntries.map((entry) => (
+              <ArchivedWorkspaceRow
+                key={entry.workspaceKey}
+                entry={entry}
+                subtitle={buildArchivedRowSubtitle({
+                  projectName: entry.projectName,
+                  hostLabel: showHostLabels
+                    ? (hostLabelByServerId.get(entry.serverId) ?? entry.serverId)
+                    : null,
+                })}
+              />
+            ))}
+            {canToggle ? (
+              <SidebarGroupToggleRow
+                expanded={expanded}
+                onPress={toggleExpanded}
+                testID="sidebar-archived-show-more"
+              />
+            ) : null}
+          </View>
+        ) : null}
+      </View>
+    </Animated.View>
+  );
+}
+
+function buildArchivedRowSubtitle({
+  projectName,
+  hostLabel,
+}: {
+  projectName: string;
+  hostLabel: string | null;
+}): string {
+  if (!hostLabel) {
+    return projectName;
+  }
+  return projectName ? `${projectName} · ${hostLabel}` : hostLabel;
+}
+
+function ArchivedGroupHeader({ collapsed }: { collapsed: boolean }) {
+  const { t } = useTranslation();
+  const [isHovered, setIsHovered] = useState(false);
+  const toggleStatusGroupCollapsed = useSidebarCollapsedSectionsStore(
+    (state) => state.toggleStatusGroupCollapsed,
+  );
+  const label = t("sidebar.workspace.archived.groupTitle");
+  const handlePress = useCallback(() => {
+    toggleStatusGroupCollapsed(ARCHIVED_GROUP_KEY);
+  }, [toggleStatusGroupCollapsed]);
+  const handleHoverIn = useCallback(() => setIsHovered(true), []);
+  const handleHoverOut = useCallback(() => setIsHovered(false), []);
+  const rowStyle = useCallback(
+    ({ pressed }: PressableStateCallbackType) => [
+      styles.groupRow,
+      isHovered && styles.groupRowHovered,
+      pressed && styles.groupRowPressed,
+    ],
+    [isHovered],
+  );
+  const accessibilityState = useMemo(() => ({ expanded: !collapsed }), [collapsed]);
+
+  return (
+    <View onPointerEnter={handleHoverIn} onPointerLeave={handleHoverOut}>
+      <Pressable
+        accessibilityRole={platformIsWeb ? undefined : "button"}
+        accessibilityLabel={`${label} group`}
+        accessibilityState={accessibilityState}
+        style={rowStyle}
+        onPress={handlePress}
+        testID={`sidebar-status-group-${ARCHIVED_GROUP_KEY}`}
+      >
+        <View style={styles.groupRowLeft}>
+          <View style={styles.groupLeadingVisualSlot}>
+            <ArchivedGroupLeadingVisual collapsed={collapsed} showChevron={isHovered} />
+          </View>
+          <Text style={styles.groupTitle} numberOfLines={1}>
+            {label}
+          </Text>
+        </View>
+      </Pressable>
+    </View>
+  );
+}
+
+function ArchivedGroupLeadingVisual({
+  collapsed,
+  showChevron,
+}: {
+  collapsed: boolean;
+  showChevron: boolean;
+}) {
+  if (!showChevron) {
+    return <ThemedArchive size={14} uniProps={foregroundMutedColorMapping} />;
+  }
+  if (collapsed) {
+    return <ThemedChevronRight size={14} uniProps={foregroundMutedColorMapping} />;
+  }
+  return <ThemedChevronDown size={14} uniProps={foregroundMutedColorMapping} />;
+}
+
+const ArchivedWorkspaceRow = memo(function ArchivedWorkspaceRow({
+  entry,
+  subtitle,
+}: {
+  entry: ArchivedWorkspaceEntry;
+  subtitle: string;
+}) {
+  const { t } = useTranslation();
+  const toast = useToast();
+  const [isHovered, setIsHovered] = useState(false);
+  const isArchiving = entry.phase === "archiving";
+
+  const unarchiveMutation = useMutation({
+    mutationFn: async () => {
+      const client = getHostRuntimeStore().getClient(entry.serverId);
+      if (!client) {
+        throw new Error(t("workspace.terminal.hostDisconnected"));
+      }
+      // The daemon picks unarchive vs. worktree restore; the client never decides.
+      await client.restoreWorkspace(entry.workspaceId);
+    },
+    onError: (error: unknown) => {
+      toast.error(
+        error instanceof Error ? error.message : t("sidebar.workspace.archived.unarchiveFailed"),
+      );
+    },
+  });
+
+  const isUnarchiving = unarchiveMutation.isPending;
+  const handleUnarchive = useCallback(() => {
+    if (isArchiving || isUnarchiving) return;
+    unarchiveMutation.mutate();
+  }, [isArchiving, isUnarchiving, unarchiveMutation]);
+
+  const handleHoverIn = useCallback(() => setIsHovered(true), []);
+  const handleHoverOut = useCallback(() => setIsHovered(false), []);
+
+  return (
+    <Animated.View
+      entering={isArchiving ? ARCHIVED_ROW_ENTERING : undefined}
+      exiting={ARCHIVED_ROW_EXITING}
+      layout={ARCHIVED_ROW_LAYOUT}
+      collapsable={false}
+    >
+      <View
+        style={styles.rowContainer}
+        onPointerEnter={handleHoverIn}
+        onPointerLeave={handleHoverOut}
+      >
+        <View style={[styles.row, isHovered && styles.rowHovered]}>
+          <View style={styles.rowTextGroup}>
+            <Text style={styles.rowName} numberOfLines={1}>
+              {entry.name}
+            </Text>
+            {subtitle ? (
+              <Text style={styles.rowSubtitle} numberOfLines={1}>
+                {subtitle}
+              </Text>
+            ) : null}
+          </View>
+          {/*
+            Always mounted and always visible. Unarchive is this row's only action,
+            so hiding it behind hover would strand it on touch and make the tail
+            look inert on desktop. Hover only lifts it out of its greyed resting
+            state — opacity never changes the slot's geometry, per docs/hover.md.
+            While the row is still animating in, the slot holds a spinner instead
+            and takes no input.
+          */}
+          <View
+            style={[
+              styles.unarchiveSlot,
+              !isArchiving && !isHovered && styles.unarchiveSlotResting,
+            ]}
+            pointerEvents={isArchiving ? "none" : "auto"}
+          >
+            {isArchiving ? (
+              <View
+                accessible
+                accessibilityLabel={t("sidebar.workspace.actions.archiving")}
+                accessibilityState={BUSY_ACCESSIBILITY_STATE}
+                testID={`sidebar-archived-pending-${entry.workspaceKey}`}
+              >
+                <ThemedLoadingSpinner size="small" uniProps={foregroundMutedColorMapping} />
+              </View>
+            ) : (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={t(
+                  isUnarchiving
+                    ? "sidebar.workspace.archived.unarchiving"
+                    : "sidebar.workspace.archived.unarchive",
+                )}
+                disabled={isUnarchiving}
+                onPress={handleUnarchive}
+                style={styles.unarchiveButton}
+                testID={`sidebar-archived-unarchive-${entry.workspaceKey}`}
+              >
+                <ThemedArchiveRestore size={14} uniProps={foregroundMutedColorMapping} />
+              </Pressable>
+            )}
+          </View>
+        </View>
+      </View>
+    </Animated.View>
+  );
+});
+
+const styles = StyleSheet.create((theme) => ({
+  groupBlock: {
+    marginBottom: theme.spacing[1],
+    // The whole tail reads as receded: it is history, not live state.
+    opacity: 0.55,
+  },
+  groupRow: {
+    minHeight: 36,
+    paddingVertical: theme.spacing[2],
+    paddingHorizontal: theme.spacing[2],
+    borderRadius: theme.borderRadius.lg,
+    marginBottom: theme.spacing[2],
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: theme.spacing[2],
+    userSelect: "none",
+  },
+  groupRowHovered: {
+    backgroundColor: theme.colors.surfaceSidebarHover,
+  },
+  groupRowPressed: {
+    backgroundColor: theme.colors.surface2,
+  },
+  groupRowLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    flex: 1,
+    minWidth: 0,
+  },
+  groupLeadingVisualSlot: {
+    position: "relative",
+    width: theme.iconSize.md,
+    height: theme.iconSize.md,
+    flexShrink: 0,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  groupTitle: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.sm,
+    fontWeight: "400",
+    minWidth: 0,
+    flexShrink: 1,
+  },
+  rowContainer: {
+    position: "relative",
+  },
+  row: {
+    minHeight: 36,
+    marginBottom: theme.spacing[1],
+    paddingVertical: theme.spacing[2],
+    paddingLeft: theme.spacing[2],
+    paddingRight: theme.spacing[3],
+    borderRadius: theme.borderRadius.lg,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    userSelect: "none",
+  },
+  rowHovered: {
+    backgroundColor: theme.colors.surfaceSidebarHover,
+  },
+  rowTextGroup: {
+    flex: 1,
+    minWidth: 0,
+  },
+  rowName: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.sm,
+    fontWeight: "400",
+  },
+  rowSubtitle: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+  },
+  unarchiveSlot: {
+    width: theme.iconSize.md,
+    height: theme.iconSize.md,
+    flexShrink: 0,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  // The group already sits at reduced opacity; this only needs to pull the icon
+  // back a little further so it reads as available, not as the row's subject.
+  unarchiveSlotResting: {
+    opacity: 0.7,
+  },
+  unarchiveButton: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+}));

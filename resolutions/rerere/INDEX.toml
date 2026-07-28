@@ -9,6 +9,12 @@ recorded = "2026-07-28T19:37:27.444679911+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
+hash = "9f6ec111c1d08157be88ff8fcd9ab43025ef0be5"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-07-28T19:44:15.456571174+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
 hash = "d9bbe6ccd92dcbee87a1ba414e1e29b53f7f1676"
 paths = ["flake.nix"]
 recorded = "2026-07-28T19:37:27.444681824+00:00"
@@ -36,6 +42,12 @@ entry = "pr-2529"
 hash = "1780a780dd4944b9ace9ae99565a842c2ecde695"
 paths = ["packages/app/src/components/sidebar/sidebar-archived-group.tsx"]
 recorded = "2026-07-28T18:00:54.367998639+00:00"
+
+[[resolution]]
+entry = "pr-2529"
+hash = "3658207e4f6d1532e926222401699306a459027e"
+paths = ["packages/app/src/components/sidebar/sidebar-archived-group.tsx"]
+recorded = "2026-07-28T19:39:38.974798113+00:00"
 
 [[resolution]]
 entry = "pr-2529"
@@ -84,6 +96,12 @@ entry = "pr-2532"
 hash = "934ec96612d0cdb17bd18d8991405580cd02c20a"
 paths = ["packages/app/src/hooks/use-settings/storage.ts"]
 recorded = "2026-07-28T10:56:51.235458226+00:00"
+
+[[resolution]]
+entry = "pr-2556"
+hash = "c3472a32c5632bd5f2bc746532556d82d32403e8"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-07-28T19:41:44.138242950+00:00"
 
 [[resolution]]
 entry = "pr-2556"
