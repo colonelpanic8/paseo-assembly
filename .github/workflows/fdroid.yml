@@ -48,6 +48,7 @@ jobs:
           set -euo pipefail
 
           expected_tree="$(jq -r '.build.tree' manifest.lock.json)"
+          nix develop -c fork-fold build
           nix develop -c fork-fold build --locked
           actual_tree="$(git -C .worktrees/build rev-parse 'HEAD^{tree}')"
           if [[ "$actual_tree" != "$expected_tree" ]]; then
