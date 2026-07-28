@@ -39,6 +39,12 @@ summary = "Add shortcut for next workspace needing attention"
 [[entry]]
 pr = 2525
 summary = "Add agent snoozing to workspace tabs"
+
+[[entry]]
+branch = "mine:assembly-fdroid-variant"
+
+[[entry]]
+patch = "patches/assembled-npm-deps-hash.patch"
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
 # Entries merge in order onto the base. Three kinds:

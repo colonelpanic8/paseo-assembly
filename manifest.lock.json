@@ -3,6 +3,8 @@
   "pins": {
     "base": "cbbf6c1684fb0415b7949e684d152f5f7453e769",
     "entries": {
+      "assembled-npm-deps-hash": "1387ad1f26348ac21d6c0b302591128e464451e6",
+      "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
       "pr-2506": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
       "pr-2514": "2e2cf9f1e42f1b571aacf77c6b4ba1f18a8eeefe",
       "pr-2517": "28a71701d4b21d241d33b1f57fe4428eb17146b2",
@@ -12,15 +14,15 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T10:39:35.367868003+00:00",
+    "generated": "2026-07-28T10:44:38.429892252+00:00",
     "base": "cbbf6c1684fb0415b7949e684d152f5f7453e769",
-    "commit": "45d48e167f78901c209c677237d830ea09935564",
-    "pre_provenance_commit": "45d48e167f78901c209c677237d830ea09935564",
-    "tree": "649f8629027d3de5a0dd93dbfb53ad7c1c09d581",
-    "built_tree": "649f8629027d3de5a0dd93dbfb53ad7c1c09d581",
-    "previous_tree": "a9b5ebe3f31adbb4eb11dfa5e7417bc01ee1adb6",
+    "commit": "56ad10a979bd76719ca39f600e35e4a61ecf5adf",
+    "pre_provenance_commit": "56ad10a979bd76719ca39f600e35e4a61ecf5adf",
+    "tree": "207172372eddf7db0a3b12796e694c0fa6f3cbfd",
+    "built_tree": "207172372eddf7db0a3b12796e694c0fa6f3cbfd",
+    "previous_tree": "4840a7817682758e082b16bc6715ba29e468f2c9",
     "tree_changed": true,
-    "conflicts": 1,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -57,6 +59,18 @@
         "kind": "pr",
         "source": "upstream#2525",
         "pin": "528e5a7241be5ea14c96db15e9f88e945c2dc6f8"
+      },
+      {
+        "name": "assembly-fdroid-variant",
+        "kind": "branch",
+        "source": "mine:assembly-fdroid-variant",
+        "pin": "721a7d806e545284e2b79ce86377d65fd460bafe"
+      },
+      {
+        "name": "assembled-npm-deps-hash",
+        "kind": "patch",
+        "source": "patches/assembled-npm-deps-hash.patch",
+        "pin": "1387ad1f26348ac21d6c0b302591128e464451e6"
       }
     ],
     "results": [
@@ -95,6 +109,18 @@
         "name": "pr-2525",
         "oid": "528e5a7241be5ea14c96db15e9f88e945c2dc6f8",
         "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "assembly-fdroid-variant",
+        "oid": "721a7d806e545284e2b79ce86377d65fd460bafe",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "assembled-npm-deps-hash",
+        "oid": "1387ad1f26348ac21d6c0b302591128e464451e6",
+        "status": "applied",
         "conflicted": false
       }
     ]
