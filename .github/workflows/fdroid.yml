@@ -17,7 +17,7 @@ on:
 
 concurrency:
   group: fdroid-assembly
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -54,14 +54,22 @@ jobs:
             --no-checkout \
             https://github.com/colonelpanic8/paseo \
             .worktrees/source
-          git -C .worktrees/source fetch --no-tags origin assembled
-          git -C .worktrees/source worktree add --detach ../build FETCH_HEAD
 
-          actual_tree="$(git -C .worktrees/build rev-parse 'HEAD^{tree}')"
+          actual_tree=""
+          for attempt in {1..20}; do
+            git -C .worktrees/source fetch --force --no-tags origin assembled
+            actual_tree="$(git -C .worktrees/source rev-parse 'FETCH_HEAD^{tree}')"
+            [[ "$actual_tree" == "$expected_tree" ]] && break
+
+            echo "Published assembly is not current yet (attempt ${attempt}/20); waiting 15s."
+            sleep 15
+          done
+
           if [[ "$actual_tree" != "$expected_tree" ]]; then
             echo "::error::Published assembly tree mismatch: expected $expected_tree, got $actual_tree"
             exit 1
           fi
+          git -C .worktrees/source worktree add --detach ../build FETCH_HEAD
 
           base_version="$(node -p "require('./.worktrees/build/package.json').version.split('-')[0]")"
           native_version_code="$((100000000 + GITHUB_RUN_NUMBER))"
