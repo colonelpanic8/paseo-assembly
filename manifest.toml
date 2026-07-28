@@ -44,6 +44,22 @@ summary = "Add agent snoozing to workspace tabs"
 branch = "mine:assembly-fdroid-variant"
 
 [[entry]]
+pr = 2526
+summary = "Show recently archived workspaces in the status sidebar"
+
+[[entry]]
+pr = 2529
+summary = "Expand status-grouped sidebar workspace cards"
+
+[[entry]]
+pr = 2530
+summary = "Add cross-provider model search"
+
+[[entry]]
+pr = 2532
+summary = "Add configurable composer command and skill triggers"
+
+[[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
