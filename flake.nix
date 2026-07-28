@@ -36,5 +36,7 @@
             ];
           };
       });
+
+      lib.forkFoldAgentGuide = fork-fold.lib.agentGuide;
     };
 }
