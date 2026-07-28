@@ -1,0 +1,28 @@
+# fork-fold manifest: INTENT only -- which refs are tracked, in what order.
+# manifest.lock.json records FACT: the OIDs the last build used and the
+# assembled tree hash. The assembled branch is compiled output; never develop
+# on it or merge it back.
+
+[remotes]
+upstream = "https://github.com/getpaseo/paseo"
+mine = "https://github.com/colonelpanic8/paseo"
+
+[base]
+remote = "upstream"
+ref = "main"
+
+[[entry]]
+pr = 2506
+summary = "fix(nix): restore desktop app icon matching"
+# submodule = "upstream"  # optional: source base objects from this submodule path
+
+# Entries merge in order onto the base. Three kinds:
+#
+# [[entry]]
+# branch = "mine:some-topic"      # a live topic branch on a named remote
+#
+# [[entry]]
+# pr = 1234                       # refs/pull/1234/head; remote = "upstream" by default
+#
+# [[entry]]
+# patch = "patches/example.patch" # tracked patch applied on top (escape hatch)
