@@ -26,15 +26,15 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T19:44:34.258319258+00:00",
+    "generated": "2026-07-28T19:56:44.173772754+00:00",
     "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
-    "commit": "e3741e8ff187ff7c3c500ede00a1c3fc7fcbfb20",
-    "pre_provenance_commit": "e3741e8ff187ff7c3c500ede00a1c3fc7fcbfb20",
-    "tree": "a9606feec1e5f5f6e4a3701440ac536867aa03c8",
-    "built_tree": "a9606feec1e5f5f6e4a3701440ac536867aa03c8",
-    "previous_tree": "a912362e47808ff68ffac56fd22a0521abbd192a",
+    "commit": "6d4b01eae8627521490493ae77f21544dafdace5",
+    "pre_provenance_commit": "6d4b01eae8627521490493ae77f21544dafdace5",
+    "tree": "55d9a57c1f6c828887f781d9642e2ed10ba1608f",
+    "built_tree": "55d9a57c1f6c828887f781d9642e2ed10ba1608f",
+    "previous_tree": "a9606feec1e5f5f6e4a3701440ac536867aa03c8",
     "tree_changed": true,
-    "conflicts": 7,
+    "conflicts": 6,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -79,17 +79,10 @@
         "pin": "721a7d806e545284e2b79ce86377d65fd460bafe"
       },
       {
-        "name": "pr-2526",
-        "kind": "pr",
-        "source": "upstream#2526",
-        "pin": "39de257504eb65658dfb864c17c4fe292e99dfe4"
-      },
-      {
         "name": "pr-2529",
         "kind": "pr",
         "source": "upstream#2529",
-        "pin": "94581468a857618109d2335bb452de95e35ba52d",
-        "fixup": "84c50e7004291ba0f802c2700262c63a46177d62"
+        "pin": "94581468a857618109d2335bb452de95e35ba52d"
       },
       {
         "name": "pr-2530",
@@ -193,18 +186,10 @@
         "conflicted": false
       },
       {
-        "name": "pr-2526",
-        "oid": "39de257504eb65658dfb864c17c4fe292e99dfe4",
-        "status": "merged",
-        "conflicted": false
-      },
-      {
         "name": "pr-2529",
         "oid": "94581468a857618109d2335bb452de95e35ba52d",
         "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere",
-        "fixup": "84c50e7004291ba0f802c2700262c63a46177d62"
+        "conflicted": false
       },
       {
         "name": "pr-2530",
