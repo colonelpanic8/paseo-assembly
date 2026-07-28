@@ -25,14 +25,14 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T18:52:01.162325424+00:00",
+    "generated": "2026-07-28T19:07:05.029817191+00:00",
     "base": "bbf3d0f9ccef3785d96b98ddcde2238a795a726a",
-    "commit": "7ca713a04191d48b9bce0c8afadebecce1013cff",
-    "pre_provenance_commit": "7ca713a04191d48b9bce0c8afadebecce1013cff",
+    "commit": "032a9471dfd1fb33658cfbaf63a392533cce3b99",
+    "pre_provenance_commit": "032a9471dfd1fb33658cfbaf63a392533cce3b99",
     "tree": "c096b0e6cb7b22aa036a0186395bfb7ef3a89df1",
     "built_tree": "c096b0e6cb7b22aa036a0186395bfb7ef3a89df1",
-    "previous_tree": "cf43b623747100ce709b5bdad7477a3e8e301adc",
-    "tree_changed": true,
+    "previous_tree": "c096b0e6cb7b22aa036a0186395bfb7ef3a89df1",
+    "tree_changed": false,
     "conflicts": 6,
     "manifest_entries": [
       {
@@ -87,13 +87,8 @@
         "name": "pr-2529",
         "kind": "pr",
         "source": "upstream#2529",
-        "pin": "0de0ff3161749f9e74372ce6253e70319593a785"
-      },
-      {
-        "name": "status-sidebar-archived-host-label",
-        "kind": "patch",
-        "source": "patches/status-sidebar-archived-host-label.patch",
-        "pin": "84c50e7004291ba0f802c2700262c63a46177d62"
+        "pin": "0de0ff3161749f9e74372ce6253e70319593a785",
+        "fixup": "84c50e7004291ba0f802c2700262c63a46177d62"
       },
       {
         "name": "pr-2530",
@@ -199,13 +194,8 @@
         "oid": "0de0ff3161749f9e74372ce6253e70319593a785",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
-      },
-      {
-        "name": "status-sidebar-archived-host-label",
-        "oid": "84c50e7004291ba0f802c2700262c63a46177d62",
-        "status": "applied",
-        "conflicted": false
+        "resolution": "rerere",
+        "fixup": "84c50e7004291ba0f802c2700262c63a46177d62"
       },
       {
         "name": "pr-2530",
@@ -250,14 +240,14 @@
         "oid": "061485925f62df8bdca5e837867215673c8c689e",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:d1b60b10c809b9fc7576e6cfd7405b46f6f91a10"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2559",
         "oid": "95a06a8b60083393712686aaf1eb9531ca85785d",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:a4818bca6660c3c94bcbd217633491bdec121115"
+        "resolution": "rerere"
       }
     ]
   }

@@ -50,9 +50,7 @@ summary = "Show recently archived workspaces in the status sidebar"
 [[entry]]
 pr = 2529
 summary = "Expand status-grouped sidebar workspace cards"
-
-[[entry]]
-patch = "patches/status-sidebar-archived-host-label.patch"
+fixup = "patches/status-sidebar-archived-host-label.patch"
 
 [[entry]]
 pr = 2530
@@ -94,6 +92,14 @@ summary = "Stop attachment GC from deleting rendered image previews"
 #
 # [[entry]]
 # pr = 1234                       # refs/pull/1234/head; remote = "upstream" by default
+# fixup = "patches/example.patch" # optional coherence fixup: applied inside
+#                                 # THIS entry's step, right after its merge,
+#                                 # repairing what admitting it broke across
+#                                 # the earlier entries. Keeps every entry
+#                                 # boundary a coherent tree. Attach it with
+#                                 # `fork-fold fixup ENTRY FILE --capture`.
 #
 # [[entry]]
-# patch = "patches/example.patch" # tracked patch applied on top (escape hatch)
+# patch = "patches/example.patch" # a STANDALONE patch at its own position,
+#                                 # for content belonging to no entry.
+#                                 # Cross-entry repairs belong in a fixup.

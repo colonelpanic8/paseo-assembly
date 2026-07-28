@@ -17,9 +17,14 @@ topic branches into a single branch, with tracked conflict resolutions.
   leaks in) and auto-resolves recognized conflicts.
   `resolutions/rerere/INDEX.toml` records which entry produced which pairs —
   informational only, never load-bearing.
-- `patches/` holds patch entries: the escape hatch for cross-topic semantic
-  fixes with no home on any single branch, including edits a resolution
-  needs OUTSIDE conflict hunks (rerere pairs cannot capture those).
+- `patches/` holds two things. A **coherence fixup** (`fixup = "..."` on a
+  branch or pr entry) is applied inside THAT entry's own step, right after
+  its merge: it repairs what admitting the entry alongside the earlier ones
+  broke — a cross-topic semantic clash, or an edit a resolution needs OUTSIDE
+  the conflict hunks (rerere pairs cannot capture those). A standalone
+  **patch entry** (`patch = "..."`) applies at its own position and is for
+  content belonging to no entry — here that is `assembled-npm-deps-hash`,
+  which is a function of the whole assembled dependency tree.
 
 ## Invariants — do not violate
 
@@ -34,11 +39,18 @@ topic branches into a single branch, with tracked conflict resolutions.
   or let a machine-local cache feed a build.
 - Rerere pairs capture only conflicted-hunk resolutions. If a correct
   resolution also needs edits outside the conflict hunks, put those edits in
-  a patch entry — a rebuild will otherwise surface them as a tree mismatch.
-  The lock's tree hash is the sole verification invariant.
+  that entry's coherence fixup — a rebuild will otherwise surface them as a
+  tree mismatch. The lock's tree hash is the sole verification invariant.
+- Every entry boundary should be a coherent tree. A cross-entry repair
+  belongs on the entry that made it necessary (its `fixup`), not in a patch
+  entry parked later in the stack.
+- A fixup repairs an interaction BETWEEN entries. When `remove` or `prune`
+  reports one as orphaned, decide explicitly whether to re-home it onto the
+  surviving entry or delete it — a topic landing upstream usually does not
+  dissolve the incoherence.
 - Appending entries is cheap (incremental build of the tail). Reordering or
-  removing entries invalidates every later entry's build — expect
-  re-resolution from that point.
+  removing entries, or editing a fixup, invalidates every later entry's
+  build — expect re-resolution from that point.
 
 ## Operations
 
@@ -46,8 +58,11 @@ topic branches into a single branch, with tracked conflict resolutions.
 fork-fold status                 # lock vs. manifest vs. live refs; flags merged entries
 fork-fold add REMOTE:BRANCH      # append a topic branch entry
 fork-fold add --pr N             # append a PR entry
-fork-fold add --patch FILE       # append a patch entry
+fork-fold add --patch FILE       # append a standalone patch entry
 fork-fold add --prs-from USER    # append USER's open PRs not already carried (idempotent)
+fork-fold fixup ENTRY FILE       # attach a coherence fixup to ENTRY's own step
+fork-fold fixup ENTRY FILE --capture   # ...writing FILE from the build worktree
+fork-fold fixup ENTRY --remove   # detach it (the patch file stays on disk)
 fork-fold build                  # assemble from lock pins; incremental for appends
 fork-fold build --locked         # reproduce exactly; no network, no new pins
 fork-fold update [ENTRY...]      # batch bump: repin base + entries to live heads
