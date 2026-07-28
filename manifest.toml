@@ -11,6 +11,11 @@ mine = "https://github.com/colonelpanic8/paseo"
 remote = "upstream"
 ref = "main"
 
+[publish]
+remote = "mine"
+branch = "assembled"
+tag_prefix = "paseo-assembled"
+
 [[entry]]
 pr = 2506
 summary = "fix(nix): restore desktop app icon matching"
