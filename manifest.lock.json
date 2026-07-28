@@ -16,7 +16,7 @@
       "pr-2526": "39de257504eb65658dfb864c17c4fe292e99dfe4",
       "pr-2529": "94581468a857618109d2335bb452de95e35ba52d",
       "pr-2530": "bee4b234df094367197d47c82fa3307ff5fb5027",
-      "pr-2532": "ba81d40af57ffed4578051454690b09aea44a70e",
+      "pr-2532": "81a1b9eb3a55d3d41f24f74c3ad59abd99f5e354",
       "pr-2536": "0f4d653ef2d8541c023fd09bf878740ac5a16e37",
       "pr-2550": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
@@ -27,13 +27,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T20:57:07.751295739+00:00",
+    "generated": "2026-07-28T22:03:27.963997528+00:00",
     "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
-    "commit": "15905e40beee17d8277533c44591fc6d97d146fa",
-    "pre_provenance_commit": "15905e40beee17d8277533c44591fc6d97d146fa",
-    "tree": "b7ecd57f244d9c10032df87a385db91106ae289d",
-    "built_tree": "b7ecd57f244d9c10032df87a385db91106ae289d",
-    "previous_tree": "fc6f994b5ce981307a0510c96b0562437392726f",
+    "commit": "6cb96e9c19c95031ddc68b19827492db766736aa",
+    "pre_provenance_commit": "6cb96e9c19c95031ddc68b19827492db766736aa",
+    "tree": "ae056eb62719905b5acc142a98229d9d96ec8519",
+    "built_tree": "ae056eb62719905b5acc142a98229d9d96ec8519",
+    "previous_tree": "b7ecd57f244d9c10032df87a385db91106ae289d",
     "tree_changed": true,
     "conflicts": 5,
     "manifest_entries": [
@@ -90,7 +90,7 @@
         "name": "pr-2532",
         "kind": "pr",
         "source": "upstream#2532",
-        "pin": "ba81d40af57ffed4578051454690b09aea44a70e"
+        "pin": "81a1b9eb3a55d3d41f24f74c3ad59abd99f5e354"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -185,10 +185,10 @@
       },
       {
         "name": "pr-2532",
-        "oid": "ba81d40af57ffed4578051454690b09aea44a70e",
+        "oid": "81a1b9eb3a55d3d41f24f74c3ad59abd99f5e354",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:517812f89629df389ced188acdc34f8db6c9b48f,5ba4b078a1aa5f53c817d7422dd32505b23a89ad"
+        "resolution": "rerere"
       },
       {
         "name": "assembled-npm-deps-hash",
