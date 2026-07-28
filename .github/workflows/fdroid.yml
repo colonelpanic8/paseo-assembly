@@ -56,6 +56,8 @@ jobs:
             .worktrees/source
           git -C .worktrees/source remote add upstream https://github.com/getpaseo/paseo
           git -C .worktrees/source remote add mine https://github.com/colonelpanic8/paseo
+          git -C .worktrees/source config user.name github-actions
+          git -C .worktrees/source config user.email github-actions@github.com
 
           jq -r '
             ["upstream", .pins.base],
