@@ -5,6 +5,7 @@
     "entries": {
       "assembled-npm-deps-hash": "1387ad1f26348ac21d6c0b302591128e464451e6",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
+      "nix-shrink-desktop": "7d9c6cb50f3f4ab7b29aa3f6561ee5c1c2722980",
       "pr-2506": "34f57caa6402d3d19fcf734827be85c9a0d932e4",
       "pr-2514": "2e2cf9f1e42f1b571aacf77c6b4ba1f18a8eeefe",
       "pr-2517": "89e6ea4b546cc059b6cd16374955da38c791cb1d",
@@ -20,15 +21,15 @@
     }
   },
   "build": {
-    "generated": "2026-07-28T16:42:43.040426192+00:00",
+    "generated": "2026-07-28T17:13:56.175173210+00:00",
     "base": "f0d7eeb98cb0ed3f940502b42fde6ba2e5eca242",
-    "commit": "8d98934579f62ed438795fa904772c808f339ce9",
-    "pre_provenance_commit": "8d98934579f62ed438795fa904772c808f339ce9",
-    "tree": "1da1b7d7e2f59f1993b35f11bd4f0c303b02d46c",
-    "built_tree": "1da1b7d7e2f59f1993b35f11bd4f0c303b02d46c",
-    "previous_tree": "3b2c46c2d8fd0a68257355e8b9b6a8c17157f68d",
+    "commit": "f446a29067f419cbfba3ad5f84870f0ae73cd212",
+    "pre_provenance_commit": "f446a29067f419cbfba3ad5f84870f0ae73cd212",
+    "tree": "b4e1eb85d0c1ee3f4a60501971fda19e538eda16",
+    "built_tree": "b4e1eb85d0c1ee3f4a60501971fda19e538eda16",
+    "previous_tree": "1da1b7d7e2f59f1993b35f11bd4f0c303b02d46c",
     "tree_changed": true,
-    "conflicts": 3,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -113,6 +114,12 @@
         "kind": "pr",
         "source": "upstream#2536",
         "pin": "0f4d653ef2d8541c023fd09bf878740ac5a16e37"
+      },
+      {
+        "name": "nix-shrink-desktop",
+        "kind": "branch",
+        "source": "mine:nix-shrink-desktop",
+        "pin": "7d9c6cb50f3f4ab7b29aa3f6561ee5c1c2722980"
       }
     ],
     "results": [
@@ -200,6 +207,12 @@
       {
         "name": "pr-2536",
         "oid": "0f4d653ef2d8541c023fd09bf878740ac5a16e37",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "nix-shrink-desktop",
+        "oid": "7d9c6cb50f3f4ab7b29aa3f6561ee5c1c2722980",
         "status": "merged",
         "conflicted": false
       }

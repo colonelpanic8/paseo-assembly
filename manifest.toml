@@ -80,3 +80,6 @@ summary = "Use portable Bash shebangs"
 #
 # [[entry]]
 # patch = "patches/example.patch" # tracked patch applied on top (escape hatch)
+
+[[entry]]
+branch = "mine:nix-shrink-desktop"
