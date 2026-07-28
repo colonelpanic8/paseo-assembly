@@ -48,6 +48,34 @@ jobs:
           set -euo pipefail
 
           expected_tree="$(jq -r '.build.tree' manifest.lock.json)"
+          mkdir -p .worktrees
+          git clone \
+            --filter=blob:none \
+            --no-checkout \
+            https://github.com/getpaseo/paseo \
+            .worktrees/source
+          git -C .worktrees/source remote add upstream https://github.com/getpaseo/paseo
+          git -C .worktrees/source remote add mine https://github.com/colonelpanic8/paseo
+
+          jq -r '
+            ["upstream", .pins.base],
+            (
+              .build.manifest_entries[]
+              | select(.kind == "pr")
+              | ["upstream", .pin]
+            ),
+            (
+              .build.manifest_entries[]
+              | select(.kind == "branch")
+              | [(.source | split(":")[0]), .pin]
+            )
+            | @tsv
+          ' manifest.lock.json |
+            sort -u |
+            while IFS=$'\t' read -r remote oid; do
+              git -C .worktrees/source fetch --no-tags "$remote" "$oid"
+            done
+
           nix develop -c fork-fold build
           nix develop -c fork-fold build --locked
           actual_tree="$(git -C .worktrees/build rev-parse 'HEAD^{tree}')"
