@@ -73,7 +73,8 @@ FDROID_KEYSTORE_PASSWORD="$(<"$password_file")"
 "$apksigner_path" verify --verbose --print-certs "$output_apk"
 actual_cert_sha256="$(
   "$apksigner_path" verify --print-certs "$output_apk" |
-    sed -n 's/^Signer #1 certificate SHA-256 digest: //p' |
+    sed -n 's/^.*certificate SHA-256 digest: //p' |
+    head -n 1 |
     tr -d ':[:space:]' |
     tr '[:upper:]' '[:lower:]'
 )"
