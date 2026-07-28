@@ -23,19 +23,20 @@
       "pr-2556": "b12e3b63b91eb262630294719772558c2838844b",
       "pr-2559": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8",
       "pr-2564": "937336491267cc20f63c7d6bad17f1a3bffc00d9",
+      "pr-2566": "e4153f4a788e115f3403b6d5bbd76ca6623e56ce",
       "status-sidebar-archived-host-label": "84c50e7004291ba0f802c2700262c63a46177d62"
     }
   },
   "build": {
-    "generated": "2026-07-28T22:18:10.086350765+00:00",
+    "generated": "2026-07-28T23:47:55.081807915+00:00",
     "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
-    "commit": "31aea31fa55867562956ff2d4b9762649d410b52",
-    "pre_provenance_commit": "31aea31fa55867562956ff2d4b9762649d410b52",
-    "tree": "e75ccd8b3dee4b4413ba3dd1eee45236db9d881f",
-    "built_tree": "e75ccd8b3dee4b4413ba3dd1eee45236db9d881f",
-    "previous_tree": "ae056eb62719905b5acc142a98229d9d96ec8519",
+    "commit": "22b3cd46dc5ad5730f39450d7dc27ef1256bfa3f",
+    "pre_provenance_commit": "22b3cd46dc5ad5730f39450d7dc27ef1256bfa3f",
+    "tree": "d1d69451c1064186793c2f565c6386c3957a4946",
+    "built_tree": "d1d69451c1064186793c2f565c6386c3957a4946",
+    "previous_tree": "e75ccd8b3dee4b4413ba3dd1eee45236db9d881f",
     "tree_changed": true,
-    "conflicts": 5,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -129,6 +130,12 @@
         "source": "mine:assembly-build-provenance",
         "pin": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
         "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
+      },
+      {
+        "name": "pr-2566",
+        "kind": "pr",
+        "source": "upstream#2566",
+        "pin": "e4153f4a788e115f3403b6d5bbd76ca6623e56ce"
       }
     ],
     "results": [
@@ -229,6 +236,12 @@
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
+      },
+      {
+        "name": "pr-2566",
+        "oid": "e4153f4a788e115f3403b6d5bbd76ca6623e56ce",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

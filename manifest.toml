@@ -84,6 +84,10 @@ fixup = "patches/desktop-package-version-rec.patch"
 branch = "mine:assembly-build-provenance"
 fixup = "patches/desktop-provenance-wrapper-args.patch"
 
+[[entry]]
+pr = 2566
+summary = "Keep relative timestamps from freezing on screen"
+
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
 # and the manifest fails to load if an entry ever carries an excluded target.
