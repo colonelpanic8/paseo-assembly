@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Paseo Assembly F-Droid Repository</title>
+    <style>
+      :root {
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: #17221d;
+        background: #eff6f1;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      main {
+        width: min(44rem, calc(100% - 2rem));
+        box-sizing: border-box;
+        padding: clamp(1.5rem, 5vw, 3rem);
+        border: 1px solid #b7c9bd;
+        border-radius: 1.25rem;
+        background: #ffffff;
+        box-shadow: 0 1rem 3rem rgb(31 73 49 / 12%);
+      }
+      h1 {
+        margin: 0 0 0.75rem;
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+      p {
+        line-height: 1.6;
+      }
+      a.button {
+        display: inline-block;
+        margin: 1rem 0;
+        padding: 0.8rem 1rem;
+        border-radius: 0.75rem;
+        color: #fff;
+        background: #20744a;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      code {
+        overflow-wrap: anywhere;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.5rem 1rem;
+      }
+      dt {
+        font-weight: 700;
+      }
+      dd {
+        margin: 0;
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color: #e7f2ea;
+          background: #0d1711;
+        }
+        main {
+          border-color: #355544;
+          background: #14231a;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Paseo Assembly</h1>
+      <p>
+        Source-built Android snapshots from Ivan Malison’s pinned Paseo
+        assembly. Install F-Droid, then open the repository link below.
+      </p>
+      <a class="button" href="@@ADD_REPO_URL@@">Add repository to F-Droid</a>
+      <dl>
+        <dt>Version</dt>
+        <dd><code>@@VERSION_NAME@@</code></dd>
+        <dt>Source tree</dt>
+        <dd><code>@@SOURCE_TREE@@</code></dd>
+        <dt>Fingerprint</dt>
+        <dd><code>@@FINGERPRINT@@</code></dd>
+      </dl>
+      <p>
+        <a href="https://github.com/colonelpanic8/paseo-assembly"
+          >Assembly source and provenance</a
+        >
+      </p>
+    </main>
+  </body>
+</html>

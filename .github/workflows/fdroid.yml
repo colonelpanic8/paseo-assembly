@@ -1,0 +1,188 @@
+name: Publish F-Droid Assembly
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/fdroid.yml"
+      - "fdroid/**"
+      - "manifest.lock.json"
+      - "manifest.toml"
+      - "patches/**"
+      - "resolutions/**"
+      - "scripts/fdroid-*.sh"
+      - "secrets/fdroid-signing.tar.age"
+  workflow_dispatch:
+
+concurrency:
+  group: fdroid-assembly
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Build and publish arm64 APK
+    runs-on: ubuntu-latest
+    environment: fdroid
+    timeout-minutes: 120
+
+    steps:
+      - name: Check out assembly recipe
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342 # v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Reproduce locked assembly
+        id: assembly
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          expected_tree="$(jq -r '.build.tree' manifest.lock.json)"
+          nix develop -c fork-fold build --locked
+          actual_tree="$(git -C .worktrees/build rev-parse 'HEAD^{tree}')"
+          if [[ "$actual_tree" != "$expected_tree" ]]; then
+            echo "::error::Assembly tree mismatch: expected $expected_tree, got $actual_tree"
+            exit 1
+          fi
+
+          base_version="$(node -p "require('./.worktrees/build/package.json').version.split('-')[0]")"
+          native_version_code="$((100000000 + GITHUB_RUN_NUMBER))"
+          apk_version_code="$((native_version_code * 10 + 2))"
+          version_name="${base_version}-assembly.${GITHUB_RUN_NUMBER}+${expected_tree:0:12}"
+
+          {
+            echo "apk_version_code=$apk_version_code"
+            echo "native_version_code=$native_version_code"
+            echo "source_tree=$expected_tree"
+            echo "version_name=$version_name"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: .worktrees/build/package-lock.json
+
+      - name: Set up Java
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+
+      - name: Decrypt signing and deploy keys
+        env:
+          FDROID_AGE_IDENTITY: ${{ secrets.FDROID_AGE_IDENTITY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+
+          secret_root="$RUNNER_TEMP/fdroid-secrets"
+          mkdir -p "$secret_root"
+          identity_file="$RUNNER_TEMP/fdroid-age-identity"
+          printf '%s\n' "$FDROID_AGE_IDENTITY" > "$identity_file"
+
+          nix shell \
+            github:NixOS/nixpkgs/b6018f87da91d19d0ab4cf979885689b469cdd41#age \
+            --command \
+            age --decrypt \
+              --identity "$identity_file" \
+              --output "$RUNNER_TEMP/fdroid-signing.tar" \
+              secrets/fdroid-signing.tar.age
+          tar -xf "$RUNNER_TEMP/fdroid-signing.tar" -C "$secret_root"
+          chmod 600 "$secret_root/signing.p12" "$secret_root/deploy_ed25519"
+
+      - name: Build and sign source APK
+        env:
+          PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}
+          PASEO_NATIVE_BUILD_VERSION_CODE: ${{ steps.assembly.outputs.native_version_code }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          scripts/fdroid-build-android.sh \
+            .worktrees/build \
+            "$RUNNER_TEMP/sh.paseo.assembly_${{ steps.assembly.outputs.apk_version_code }}.apk" \
+            "$RUNNER_TEMP/fdroid-secrets/signing.p12" \
+            "$RUNNER_TEMP/fdroid-secrets/keystore-password" \
+            fdroid/signing-certificate.sha256
+
+      - name: Upload signed APK artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: paseo-assembly-${{ steps.assembly.outputs.apk_version_code }}
+          path: ${{ runner.temp }}/sh.paseo.assembly_${{ steps.assembly.outputs.apk_version_code }}.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish signed F-Droid repository
+        env:
+          APK_VERSION_CODE: ${{ steps.assembly.outputs.apk_version_code }}
+          SOURCE_TREE: ${{ steps.assembly.outputs.source_tree }}
+          VERSION_NAME: ${{ steps.assembly.outputs.version_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          secret_root="$RUNNER_TEMP/fdroid-secrets"
+          known_hosts="$RUNNER_TEMP/github-known-hosts"
+          cat > "$known_hosts" <<'EOF'
+          github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+          EOF
+          export GIT_SSH_COMMAND="ssh -i $secret_root/deploy_ed25519 -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$known_hosts"
+
+          publish_root="$RUNNER_TEMP/paseo-assembly-fdroid"
+          git clone git@github.com:colonelpanic8/paseo-assembly-fdroid.git "$publish_root"
+
+          fingerprint="$(tr -d ':[:space:]' < fdroid/signing-certificate.sha256 | tr '[:lower:]' '[:upper:]')"
+          nix shell \
+            github:NixOS/nixpkgs/b6018f87da91d19d0ab4cf979885689b469cdd41#fdroidserver \
+            --command \
+            scripts/fdroid-publish.sh \
+              "$publish_root" \
+              "$RUNNER_TEMP/sh.paseo.assembly_${APK_VERSION_CODE}.apk" \
+              "$secret_root/signing.p12" \
+              "$secret_root/keystore-password" \
+              "$VERSION_NAME" \
+              "$SOURCE_TREE" \
+              "$fingerprint"
+
+          jq -n \
+            --arg assemblyRepository "$GITHUB_REPOSITORY" \
+            --arg assemblyCommit "$GITHUB_SHA" \
+            --arg sourceTree "$SOURCE_TREE" \
+            --arg versionName "$VERSION_NAME" \
+            --argjson versionCode "$APK_VERSION_CODE" \
+            '{
+              schemaVersion: 1,
+              assemblyRepository: $assemblyRepository,
+              assemblyCommit: $assemblyCommit,
+              sourceTree: $sourceTree,
+              versionName: $versionName,
+              versionCode: $versionCode
+            }' > "$publish_root/provenance/${APK_VERSION_CODE}.json"
+
+          git -C "$publish_root" config user.name github-actions
+          git -C "$publish_root" config user.email github-actions@github.com
+          git -C "$publish_root" add --all
+          if git -C "$publish_root" diff --cached --quiet; then
+            echo "F-Droid repository is already current."
+            exit 0
+          fi
+
+          git -C "$publish_root" commit -m "Publish Paseo Assembly ${VERSION_NAME}"
+          git -C "$publish_root" push origin HEAD:main

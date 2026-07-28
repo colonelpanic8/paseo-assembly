@@ -1,0 +1,21 @@
+repo_url: https://colonelpanic8.github.io/paseo-assembly-fdroid/fdroid/repo
+repo_name: Paseo Assembly
+repo_description: >-
+  Source-built Android snapshots of Ivan Malison's pinned Paseo fork-fold
+  assembly.
+
+archive_url: https://colonelpanic8.github.io/paseo-assembly-fdroid/fdroid/archive
+archive_name: Paseo Assembly Archive
+archive_description: Older source-built Paseo Assembly snapshots.
+archive_older: 10
+
+repo_keyalias: paseo-assembly
+keystore: {env: FDROID_KEYSTORE}
+keystorepass: {env: FDROID_KEYSTORE_PASSWORD}
+keypass: {env: FDROID_KEYSTORE_PASSWORD}
+keydname: >-
+  CN=Paseo Assembly F-Droid, OU=Personal Distribution, O=Ivan Malison,
+  L=San Francisco, ST=California, C=US
+
+make_current_version_link: false
+update_stats: false
