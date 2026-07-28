@@ -26,11 +26,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785264771,
-        "narHash": "sha256-b87DMS6Mv/weg61zmU0TxeyshWIwX2ZqRcSstNLkJKU=",
+        "lastModified": 1785273647,
+        "narHash": "sha256-OYg3gHCPEGendXSVqMxXWuqIw7CN12SPXIZXfUjOfqY=",
         "owner": "colonelpanic8",
         "repo": "fork-fold",
-        "rev": "e7edf98fe57c3ee0b3c71360906d23f8b0fe675e",
+        "rev": "93033d807589499c16957a32a6263d2205d95dfa",
         "type": "github"
       },
       "original": {

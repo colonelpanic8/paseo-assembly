@@ -36,58 +36,17 @@ summary = "Add managed desktop host enrollment"
 pr = 2521
 summary = "Add shortcut for next workspace needing attention"
 
-# EXCLUDED: 2525 ("Add agent snoozing to workspace tabs") is carried via the
-# combined PR 2564 below (branch mine:status-sidebar-snooze), which merges
-# 2525 + 2529 and adds a sidebar snooze quick action on top. Do not re-add
-# 2525 while 2564 is carried: its head is an ancestor of the combined branch, so
-# carrying both merges the same snooze commits twice and any later divergence
-# of the PR (rebase, review fixups) lands as duplicate/conflicting hunks.
-#
-# CAUTION: unlike the 2526 exclusion below, 2525 is still OPEN upstream,
-# so `fork-fold add --prs-from colonelpanic8` WILL append it again ("not
-# already carried" only checks the manifest). After any --prs-from sweep,
-# delete the re-added 2525 (and 2529) entries before building. If either PR
-# merges upstream, drop the combined branch instead and re-admit the survivor.
-#
-# [[entry]]
-# pr = 2525
-# summary = "Add agent snoozing to workspace tabs"
-
 [[entry]]
 branch = "mine:assembly-fdroid-variant"
 
-# NOT YET BUILT: this removal has not been through `fork-fold build`. The last
-# assembled tree still carries 2526 and the duplicate it causes.
-#
-# 2526 ("Show recently archived workspaces in the status sidebar") was CLOSED and
-# re-authored into 2529. Never re-add it: carrying both merges two
-# <SidebarArchivedGroup> renders into sidebar-status-list.tsx, so the sidebar
-# shows the "Recently archived" group twice. `prune` cannot catch this -- 2526's
-# commits never landed in the base, so it is not "contained in base" and would
-# sit here through every prune. Discovery cannot re-add it either (`add
-# --prs-from` sees open PRs only), so the only re-add path is by hand.
-#
-# patches/status-sidebar-archived-host-label.patch went with it: that fixup only
-# threaded showHostLabels through to 2526's `showHostLabels={showHostLabels}`
-# call site. 2529's own render hardcodes the prop, so with 2526 gone the patch
-# has no consumer. Left on disk, unreferenced.
-
-# EXCLUDED: 2529 ("Redesign the status-grouped sidebar") is carried via the
-# combined PR 2564 directly below. Same rules as the 2525 exclusion
-# above: do not re-add while the combined branch is carried, and expect
-# `add --prs-from` to re-append it because the PR is still open.
-#
-# [[entry]]
-# pr = 2529
-# summary = "Expand status-grouped sidebar workspace cards"
-
-# Combined PR superseding 2525 and 2529: merges both PR heads onto upstream
-# main and adds a hover-revealed snooze quick action next to archive on the
-# status-sidebar workspace cards (needs both parents, so it cannot live in
-# either parent PR). Carried by PR number, not as mine:status-sidebar-snooze,
-# so `add --prs-from colonelpanic8` counts it as already carried instead of
-# appending a duplicate. If it merges upstream, prune it AND keep the excluded
-# parents out (their content will then be in the base).
+# Combined PR superseding 2525 and 2529 (see [[exclude]] at the end): merges
+# both PR heads onto upstream main and adds a hover-revealed snooze quick
+# action next to archive on the status-sidebar workspace cards, which needs
+# both parents and so cannot live in either parent PR. Carried by PR number,
+# not as mine:status-sidebar-snooze, so discovery counts it as already carried
+# instead of appending a second entry for the same work. If it merges
+# upstream, prune it and leave the excluded parents excluded -- their content
+# will be in the base by then.
 [[entry]]
 pr = 2564
 summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
@@ -124,6 +83,42 @@ fixup = "patches/desktop-package-version-rec.patch"
 [[entry]]
 branch = "mine:assembly-build-provenance"
 fixup = "patches/desktop-provenance-wrapper-args.patch"
+
+# Targets deliberately not carried. These are enforced, not advisory: `add`
+# skips them during a `--prs-from` sweep and errors if one is named directly,
+# and the manifest fails to load if an entry ever carries an excluded target.
+# Recorded with `fork-fold exclude --pr N --reason ...`; removing one is a
+# hand edit here.
+
+# 2525 and 2529 are both still OPEN, which is exactly why they need this: a
+# discovery sweep would otherwise re-append them every time. Their heads are
+# ancestors of the combined 2564, so carrying either alongside it merges the
+# same commits twice, and any later divergence (rebase, review fixups) lands
+# as duplicate or conflicting hunks.
+[[exclude]]
+pr = 2525
+reason = "superseded by 2564, the combined PR that merges it with 2529 and adds the sidebar snooze action on top"
+
+[[exclude]]
+pr = 2529
+reason = "superseded by 2564, the combined PR that merges it with 2525 and adds the sidebar snooze action on top"
+
+# 2526 and 2559 are CLOSED, so discovery cannot re-add them and only a hand
+# edit could. They are recorded anyway: an exclusion is what answers "why
+# isn't this carried?" without git archaeology, and neither is a prune
+# candidate -- their commits never landed in the base, so `prune` would never
+# have removed them either.
+
+# patches/status-sidebar-archived-host-label.patch belonged to 2526: it only
+# threaded showHostLabels through to that PR's call site, and 2564's render
+# hardcodes the prop. Left on disk, unreferenced.
+[[exclude]]
+pr = 2526
+reason = "closed and re-authored into 2529, now carried via 2564; carrying both renders the Recently archived sidebar group twice"
+
+[[exclude]]
+pr = 2559
+reason = "obviated by upstream 2490, which fixed issue 2554 in the base; closed upstream"
 
 # submodule = "upstream"  # optional: source base objects from this submodule path
 
