@@ -88,6 +88,10 @@ fixup = "patches/desktop-provenance-wrapper-args.patch"
 pr = 2566
 summary = "Keep relative timestamps from freezing on screen"
 
+[[entry]]
+pr = 2579
+summary = "Render SVG project icons on native and fall back for ICO"
+
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
 # and the manifest fails to load if an entry ever carries an excluded target.
