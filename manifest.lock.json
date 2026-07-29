@@ -22,21 +22,21 @@
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
       "pr-2556": "b12e3b63b91eb262630294719772558c2838844b",
       "pr-2559": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8",
-      "pr-2564": "937336491267cc20f63c7d6bad17f1a3bffc00d9",
+      "pr-2564": "2ecc9c1938f6d95d484d2d751c57feb60cedabae",
       "pr-2566": "e4153f4a788e115f3403b6d5bbd76ca6623e56ce",
       "status-sidebar-archived-host-label": "84c50e7004291ba0f802c2700262c63a46177d62"
     }
   },
   "build": {
-    "generated": "2026-07-28T23:47:55.081807915+00:00",
+    "generated": "2026-07-29T04:31:51.163215581+00:00",
     "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
-    "commit": "22b3cd46dc5ad5730f39450d7dc27ef1256bfa3f",
-    "pre_provenance_commit": "22b3cd46dc5ad5730f39450d7dc27ef1256bfa3f",
-    "tree": "d1d69451c1064186793c2f565c6386c3957a4946",
-    "built_tree": "d1d69451c1064186793c2f565c6386c3957a4946",
-    "previous_tree": "e75ccd8b3dee4b4413ba3dd1eee45236db9d881f",
+    "commit": "8681d7d4d0d81aa957f75ea28f2ef1da2e769744",
+    "pre_provenance_commit": "8681d7d4d0d81aa957f75ea28f2ef1da2e769744",
+    "tree": "cc2515804516f1e35b3eea76360d616573e7d971",
+    "built_tree": "cc2515804516f1e35b3eea76360d616573e7d971",
+    "previous_tree": "d1d69451c1064186793c2f565c6386c3957a4946",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 5,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -78,7 +78,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "937336491267cc20f63c7d6bad17f1a3bffc00d9",
+        "pin": "2ecc9c1938f6d95d484d2d751c57feb60cedabae",
         "fixup": "2b511414d9879fa0b9dd84f69305c7b240e65cd3"
       },
       {
@@ -178,7 +178,7 @@
       },
       {
         "name": "pr-2564",
-        "oid": "937336491267cc20f63c7d6bad17f1a3bffc00d9",
+        "oid": "2ecc9c1938f6d95d484d2d751c57feb60cedabae",
         "status": "merged",
         "conflicted": false,
         "fixup": "2b511414d9879fa0b9dd84f69305c7b240e65cd3"
@@ -206,7 +206,7 @@
       {
         "name": "pr-2536",
         "oid": "0f4d653ef2d8541c023fd09bf878740ac5a16e37",
-        "status": "merged",
+        "status": "empty",
         "conflicted": false
       },
       {
@@ -240,7 +240,7 @@
       {
         "name": "pr-2566",
         "oid": "e4153f4a788e115f3403b6d5bbd76ca6623e56ce",
-        "status": "merged",
+        "status": "empty",
         "conflicted": false
       }
     ]
