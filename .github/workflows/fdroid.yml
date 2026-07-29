@@ -71,6 +71,9 @@ jobs:
           fi
           git -C .worktrees/source worktree add --detach ../build FETCH_HEAD
 
+          source_commit="$(git -C .worktrees/source rev-parse FETCH_HEAD)"
+          source_commit_date="$(git -C .worktrees/source log -1 --format=%cI FETCH_HEAD)"
+
           base_version="$(node -p "require('./.worktrees/build/package.json').version.split('-')[0]")"
           native_version_code="$((100000000 + GITHUB_RUN_NUMBER))"
           apk_version_code="$((native_version_code * 10 + 2))"
@@ -79,6 +82,8 @@ jobs:
           {
             echo "apk_version_code=$apk_version_code"
             echo "native_version_code=$native_version_code"
+            echo "source_commit=$source_commit"
+            echo "source_commit_date=$source_commit_date"
             echo "source_tree=$expected_tree"
             echo "version_name=$version_name"
           } >> "$GITHUB_OUTPUT"
@@ -127,6 +132,11 @@ jobs:
         env:
           PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}
           PASEO_NATIVE_BUILD_VERSION_CODE: ${{ steps.assembly.outputs.native_version_code }}
+          # Same provenance stamp the desktop build bakes in via the flake's
+          # self.rev: the assembled commit the APK's bundle was built from.
+          PASEO_BUILD_COMMIT: ${{ steps.assembly.outputs.source_commit }}
+          PASEO_BUILD_COMMIT_DATE: ${{ steps.assembly.outputs.source_commit_date }}
+          PASEO_BUILD_REPO_URL: https://github.com/colonelpanic8/paseo
         shell: bash
         run: |
           set -euo pipefail

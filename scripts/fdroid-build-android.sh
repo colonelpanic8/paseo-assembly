@@ -22,6 +22,20 @@ fi
 
 export APP_VARIANT=assembly
 export PASEO_FDROID_BUILD=1
+
+# Build provenance: Metro inlines EXPO_PUBLIC_* into the client bundle during
+# the Gradle bundle task, the same way `expo export` does for the desktop
+# renderer (see nix/build-info.nix on the assembled branch). All or none: a
+# date or repo URL without a commit is worse than reporting no provenance.
+if [[ -n "${PASEO_BUILD_COMMIT:-}" ]]; then
+  export EXPO_PUBLIC_PASEO_BUILD_COMMIT="$PASEO_BUILD_COMMIT"
+  if [[ -n "${PASEO_BUILD_COMMIT_DATE:-}" ]]; then
+    export EXPO_PUBLIC_PASEO_BUILD_COMMIT_DATE="$PASEO_BUILD_COMMIT_DATE"
+  fi
+  if [[ -n "${PASEO_BUILD_REPO_URL:-}" ]]; then
+    export EXPO_PUBLIC_PASEO_BUILD_REPO_URL="$PASEO_BUILD_REPO_URL"
+  fi
+fi
 export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
 
 cd "$assembled_root"
