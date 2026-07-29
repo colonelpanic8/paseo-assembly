@@ -99,6 +99,14 @@ summary = "Align inline code chips with the prose line on native"
 pr = 2628
 summary = "feat(composer): prompt stash — cmd+S saves the draft to a per-provider queue"
 
+[[entry]]
+branch = "mine:assembly-agent-env"
+summary = "Add agentEnv: capture project environment (direnv/mise) before agent launch"
+
+[[entry]]
+pr = 2629
+summary = "feat(app): find in conversation (Cmd/Ctrl+F)"
+
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
 # and the manifest fails to load if an entry ever carries an excluded target.

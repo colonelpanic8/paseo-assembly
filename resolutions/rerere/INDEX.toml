@@ -168,3 +168,51 @@ entry = "pr-2628"
 hash = "fe4a486e9b0091726941bb979fd308e90966880e"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-07-29T21:17:39.035667732+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "4557008d88ea5dac1f42951c6fbbd535be58d044"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-07-29T23:01:09.357183143+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "69bf31be782123605e3c8d3fb199912f5a7e6554"
+paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
+recorded = "2026-07-29T23:01:09.357185237+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "8a0aee998810495a835eff4695b3d6493506fff5"
+paths = ["packages/app/src/i18n/resources/ja.ts"]
+recorded = "2026-07-29T23:01:09.357185588+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "8f439911e41184fdac9e565dd821dfdf35ae7df9"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-07-29T23:01:09.357185928+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "923db0d7fcf1d4303e71936ea3a7a8ebe6350d17"
+paths = ["packages/app/src/i18n/resources/pt-BR.ts"]
+recorded = "2026-07-29T23:01:09.357186219+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "96e7d87a8d4c7b95ae70b623bfd2e99001a43480"
+paths = ["packages/app/src/i18n/resources/en.ts"]
+recorded = "2026-07-29T23:01:09.357186509+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "cc168e5451f9178bf4465686aafe8f9a46813c0c"
+paths = ["packages/app/src/i18n/resources/ar.ts"]
+recorded = "2026-07-29T23:01:09.357186820+00:00"
+
+[[resolution]]
+entry = "pr-2629"
+hash = "d22f866907f4687e5e315507c0ae17e6666b3e64"
+paths = ["packages/app/src/i18n/resources/es.ts"]
+recorded = "2026-07-29T23:01:09.357187111+00:00"
