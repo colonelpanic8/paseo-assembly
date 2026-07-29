@@ -92,6 +92,10 @@ summary = "Keep relative timestamps from freezing on screen"
 pr = 2579
 summary = "Render SVG project icons on native and fall back for ICO"
 
+[[entry]]
+pr = 2588
+summary = "Align inline code chips with the prose line on native"
+
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
 # and the manifest fails to load if an entry ever carries an excluded target.
