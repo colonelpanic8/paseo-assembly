@@ -671,13 +671,7 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
           />
         );
       },
-      [
-        context.capabilities,
-        agentId,
-        client,
-        composerSigils,
-        resolvedServerId,
-      ],
+      [context.capabilities, agentId, client, composerSigils, resolvedServerId],
     );
 
     const renderAssistantMessageItem = useCallback(

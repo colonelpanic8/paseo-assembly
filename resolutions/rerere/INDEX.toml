@@ -17,7 +17,7 @@ recorded = "2026-07-28T19:44:15.456571174+00:00"
 entry = "assembly-build-provenance"
 hash = "a74fb0b0e2bb9261cb78a60409380207f545117e"
 paths = ["nix/desktop-package.nix"]
-recorded = "2026-07-29T21:16:27.588188023+00:00"
+recorded = "2026-07-29T05:40:02.651639494+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
@@ -113,13 +113,13 @@ recorded = "2026-07-28T10:56:51.235455651+00:00"
 entry = "pr-2532"
 hash = "7994ed206925bc78a90016cb2df3d5f5a5598c42"
 paths = ["packages/app/src/agent-stream/view.tsx"]
-recorded = "2026-07-29T21:16:04.498214897+00:00"
+recorded = "2026-07-29T22:19:31.466334850+00:00"
 
 [[resolution]]
 entry = "pr-2532"
 hash = "82c702e930cf9e4831bad8ac86913193dae2b28c"
 paths = ["packages/server/src/server/agent/providers/mock-load-test-agent.test.ts"]
-recorded = "2026-07-29T21:16:04.498218047+00:00"
+recorded = "2026-07-29T22:19:31.466337295+00:00"
 
 [[resolution]]
 entry = "pr-2532"
@@ -150,6 +150,18 @@ entry = "pr-2559"
 hash = "a4818bca6660c3c94bcbd217633491bdec121115"
 paths = ["packages/app/src/components/message.tsx"]
 recorded = "2026-07-28T18:52:01.154832830+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "529f8b9eec3fba6617dbe62da8aa1f891a5d18f9"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-07-29T22:17:55.039665300+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "d6ff17a8913adbb8983d4836cb49c2adab270be0"
+paths = ["packages/app/e2e/helpers/seed-client.ts"]
+recorded = "2026-07-29T22:17:55.039667273+00:00"
 
 [[resolution]]
 entry = "pr-2628"
