@@ -82,7 +82,6 @@ fixup = "patches/desktop-package-version-rec.patch"
 
 [[entry]]
 branch = "mine:assembly-build-provenance"
-fixup = "patches/desktop-provenance-wrapper-args.patch"
 
 [[entry]]
 pr = 2566
@@ -95,6 +94,10 @@ summary = "Render SVG project icons on native and fall back for ICO"
 [[entry]]
 pr = 2588
 summary = "Align inline code chips with the prose line on native"
+
+[[entry]]
+pr = 2628
+summary = "feat(composer): prompt stash — cmd+S saves the draft to a per-provider queue"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,

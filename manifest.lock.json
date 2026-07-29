@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
+    "base": "9e5accee3c688e2a766f56c76d24b6b03a07b72d",
     "entries": {
       "assembled-npm-deps-hash": "1387ad1f26348ac21d6c0b302591128e464451e6",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
@@ -9,7 +9,7 @@
       "nix-shrink-desktop": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
       "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
-      "pr-2517": "6dcba1ed7fbb735ff6000cce14966cd2f254f074",
+      "pr-2517": "ba49d90c1f51b607b50126452b15e63feafc751d",
       "pr-2520": "735cd4a99d2aaa951aa4979f1a030502db5d35e1",
       "pr-2521": "cca2a3a7029165ee9936d3352706a3b945045904",
       "pr-2525": "528e5a7241be5ea14c96db15e9f88e945c2dc6f8",
@@ -24,21 +24,22 @@
       "pr-2559": "2ff22adeeedc3abf96829cbff530be2a00c4e7f8",
       "pr-2564": "2ecc9c1938f6d95d484d2d751c57feb60cedabae",
       "pr-2566": "e4153f4a788e115f3403b6d5bbd76ca6623e56ce",
-      "pr-2579": "8b370327caba960e7fd92364dbeeb452f450f9b9",
+      "pr-2579": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
+      "pr-2628": "6689c154a6b0f159391ca368dcf9940393a4d620",
       "status-sidebar-archived-host-label": "84c50e7004291ba0f802c2700262c63a46177d62"
     }
   },
   "build": {
-    "generated": "2026-07-29T08:43:56.031116340+00:00",
-    "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
-    "commit": "359b4ef60b42b3c3c32b30c6c9f7c207e5fab265",
-    "pre_provenance_commit": "359b4ef60b42b3c3c32b30c6c9f7c207e5fab265",
-    "tree": "00752b176b378c2d9c50581a8797cf1ac965ae93",
-    "built_tree": "00752b176b378c2d9c50581a8797cf1ac965ae93",
-    "previous_tree": "43a4315888f6a30bcec3c6276946b086d7a103a6",
+    "generated": "2026-07-29T21:17:39.046041479+00:00",
+    "base": "9e5accee3c688e2a766f56c76d24b6b03a07b72d",
+    "commit": "502f262affbbe72223de9f341acbb61172c56694",
+    "pre_provenance_commit": "502f262affbbe72223de9f341acbb61172c56694",
+    "tree": "d8ec06b0dba1147eb869bfe70d0ed2a143f947b0",
+    "built_tree": "d8ec06b0dba1147eb869bfe70d0ed2a143f947b0",
+    "previous_tree": "d1d69451c1064186793c2f565c6386c3957a4946",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 6,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -56,7 +57,7 @@
         "name": "pr-2517",
         "kind": "pr",
         "source": "upstream#2517",
-        "pin": "6dcba1ed7fbb735ff6000cce14966cd2f254f074"
+        "pin": "ba49d90c1f51b607b50126452b15e63feafc751d"
       },
       {
         "name": "pr-2520",
@@ -130,8 +131,7 @@
         "name": "assembly-build-provenance",
         "kind": "branch",
         "source": "mine:assembly-build-provenance",
-        "pin": "5245596b67d48bb6fc3d97700a864d41c235a843",
-        "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
+        "pin": "5245596b67d48bb6fc3d97700a864d41c235a843"
       },
       {
         "name": "pr-2566",
@@ -143,13 +143,19 @@
         "name": "pr-2579",
         "kind": "pr",
         "source": "upstream#2579",
-        "pin": "8b370327caba960e7fd92364dbeeb452f450f9b9"
+        "pin": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b"
       },
       {
         "name": "pr-2588",
         "kind": "pr",
         "source": "upstream#2588",
         "pin": "22a9d0520ac3c62c2449da8666f6c53815bc10cc"
+      },
+      {
+        "name": "pr-2628",
+        "kind": "pr",
+        "source": "upstream#2628",
+        "pin": "6689c154a6b0f159391ca368dcf9940393a4d620"
       }
     ],
     "results": [
@@ -167,7 +173,7 @@
       },
       {
         "name": "pr-2517",
-        "oid": "6dcba1ed7fbb735ff6000cce14966cd2f254f074",
+        "oid": "ba49d90c1f51b607b50126452b15e63feafc751d",
         "status": "merged",
         "conflicted": false
       },
@@ -248,8 +254,7 @@
         "oid": "5245596b67d48bb6fc3d97700a864d41c235a843",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:a74fb0b0e2bb9261cb78a60409380207f545117e",
-        "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2566",
@@ -259,7 +264,7 @@
       },
       {
         "name": "pr-2579",
-        "oid": "8b370327caba960e7fd92364dbeeb452f450f9b9",
+        "oid": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b",
         "status": "merged",
         "conflicted": false
       },
@@ -268,6 +273,13 @@
         "oid": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
         "status": "merged",
         "conflicted": false
+      },
+      {
+        "name": "pr-2628",
+        "oid": "6689c154a6b0f159391ca368dcf9940393a4d620",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:fe4a486e9b0091726941bb979fd308e90966880e"
       }
     ]
   }

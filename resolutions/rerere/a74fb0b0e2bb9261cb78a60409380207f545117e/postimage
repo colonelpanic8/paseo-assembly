@@ -23,7 +23,6 @@
   buildCommitMessage ? null,
   buildRepoUrl ? null,
 }:
-
 let
   buildInfo = import ./build-info.nix { inherit lib; } {
     inherit
@@ -209,7 +208,8 @@ buildNpmPackage rec {
         --add-flags "--no-sandbox" \
         --add-flags "--class=paseo-desktop" \
         --set EXPO_DEV_URL "paseo://app/" \
-        --set CHROME_DESKTOP "paseo-desktop.desktop"
+        --set CHROME_DESKTOP "paseo-desktop.desktop" \
+        ${lib.escapeShellArgs buildInfo.wrapperArgs}
 
       copyDesktopItems
     ''}
