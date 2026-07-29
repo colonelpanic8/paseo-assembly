@@ -30,6 +30,7 @@
           pkgs.mkShell {
             packages = [
               fork-fold-package
+              pkgs.cachix
               pkgs.git
               pkgs.gh
               pkgs.just

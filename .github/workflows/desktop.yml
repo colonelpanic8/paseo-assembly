@@ -1,0 +1,87 @@
+name: Build Desktop Assembly
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/desktop.yml"
+      - "manifest.lock.json"
+      - "manifest.toml"
+      - "patches/**"
+      - "resolutions/**"
+      - "scripts/await-published-assembly.sh"
+  workflow_dispatch:
+
+concurrency:
+  group: desktop-assembly
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and cache x86_64-linux desktop
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Check out assembly recipe
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342 # v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Cachix
+        uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
+        with:
+          name: paseo-colonelpanic8
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          # Nothing in this workflow's closure is worth pushing except the
+          # desktop build itself, and the push happens implicitly on success.
+          pushFilter: "(-source$|nixpkgs\\.tar\\.gz$)"
+
+      - name: Locate the published assembly
+        id: assembly
+        shell: bash
+        run: |
+          scripts/await-published-assembly.sh \
+            manifest.lock.json \
+            https://github.com/colonelpanic8/paseo \
+            assembled
+
+      - name: Build desktop package
+        env:
+          ASSEMBLY_COMMIT: ${{ steps.assembly.outputs.commit }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Build from the git URL rather than a local checkout so the flake
+          # sees a clean tree with a real `self.rev`; the provenance stamp the
+          # assembly carries resolves its commit link from exactly that.
+          nix build --print-build-logs \
+            "git+https://github.com/colonelpanic8/paseo?ref=assembled&rev=${ASSEMBLY_COMMIT}#desktop" \
+            --out-link result-desktop
+
+          echo "Desktop closure: $(nix path-info --closure-size --human-readable ./result-desktop)"
+
+      - name: Summarize
+        if: always()
+        env:
+          ASSEMBLY_COMMIT: ${{ steps.assembly.outputs.commit }}
+          ASSEMBLY_TREE: ${{ steps.assembly.outputs.tree }}
+        shell: bash
+        run: |
+          {
+            echo "### Desktop assembly build"
+            echo
+            echo "- commit: \`${ASSEMBLY_COMMIT}\`"
+            echo "- tree: \`${ASSEMBLY_TREE}\`"
+            echo "- cache: \`paseo-colonelpanic8\`"
+          } >> "$GITHUB_STEP_SUMMARY"
