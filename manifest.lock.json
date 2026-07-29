@@ -4,7 +4,7 @@
     "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
     "entries": {
       "assembled-npm-deps-hash": "1387ad1f26348ac21d6c0b302591128e464451e6",
-      "assembly-build-provenance": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
+      "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
       "nix-shrink-desktop": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
@@ -28,13 +28,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-29T04:31:51.163215581+00:00",
+    "generated": "2026-07-29T05:40:02.726245133+00:00",
     "base": "504b687f8952a0a7ec5b5fdc772b946ddf903a18",
-    "commit": "8681d7d4d0d81aa957f75ea28f2ef1da2e769744",
-    "pre_provenance_commit": "8681d7d4d0d81aa957f75ea28f2ef1da2e769744",
-    "tree": "cc2515804516f1e35b3eea76360d616573e7d971",
-    "built_tree": "cc2515804516f1e35b3eea76360d616573e7d971",
-    "previous_tree": "d1d69451c1064186793c2f565c6386c3957a4946",
+    "commit": "bf77e6827e403136788379ebea631e298e5e4d47",
+    "pre_provenance_commit": "bf77e6827e403136788379ebea631e298e5e4d47",
+    "tree": "29a184e11bc1c098f8a0972a9f464f5e3154a412",
+    "built_tree": "29a184e11bc1c098f8a0972a9f464f5e3154a412",
+    "previous_tree": "cc2515804516f1e35b3eea76360d616573e7d971",
     "tree_changed": true,
     "conflicts": 5,
     "manifest_entries": [
@@ -128,7 +128,7 @@
         "name": "assembly-build-provenance",
         "kind": "branch",
         "source": "mine:assembly-build-provenance",
-        "pin": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
+        "pin": "5245596b67d48bb6fc3d97700a864d41c235a843",
         "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
       },
       {
@@ -231,10 +231,10 @@
       },
       {
         "name": "assembly-build-provenance",
-        "oid": "daa110257c0f7e1f4582367eaff2b0026a3ce3ac",
+        "oid": "5245596b67d48bb6fc3d97700a864d41c235a843",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolution": "rerere:a74fb0b0e2bb9261cb78a60409380207f545117e",
         "fixup": "dfb43dbc8da9ddb1f1a9431e57e46d5e67d7ed7d"
       },
       {
