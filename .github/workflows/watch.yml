@@ -1,0 +1,120 @@
+name: Build Watch Assembly
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/watch.yml"
+      - "manifest.lock.json"
+      - "manifest.toml"
+      - "patches/**"
+      - "resolutions/**"
+      - "scripts/await-published-assembly.sh"
+      - "scripts/build-watch-apk.sh"
+  workflow_dispatch:
+
+concurrency:
+  group: watch-assembly
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Wear OS APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Check out assembly recipe
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342 # v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Locate the published assembly
+        id: assembly
+        shell: bash
+        run: |
+          scripts/await-published-assembly.sh \
+            manifest.lock.json \
+            https://github.com/colonelpanic8/paseo \
+            assembled
+
+      # Unlike the desktop job, this checks the source out rather than building a
+      # flake output. packages/watch is a standalone Gradle project, not a Nix
+      # derivation: Gradle resolves its dependencies from Maven at build time, so
+      # a fixed-output derivation would need its own dependency hash to keep in
+      # sync — one more hash of exactly the kind that already broke this stack.
+      - name: Check out the locked assembly
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: colonelpanic8/paseo
+          ref: ${{ steps.assembly.outputs.commit }}
+          path: assembled
+          persist-credentials: false
+
+      - name: Verify the checkout carries the locked tree
+        env:
+          ASSEMBLY_TREE: ${{ steps.assembly.outputs.tree }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git -C assembled rev-parse 'HEAD^{tree}')"
+          if [[ "$actual" != "$ASSEMBLY_TREE" ]]; then
+            echo "::error::checked-out tree $actual != locked tree $ASSEMBLY_TREE"
+            exit 1
+          fi
+          echo "tree verified: $actual"
+
+      # The android dev shell is the same pinned toolchain a developer gets from
+      # `nix develop .#android`: SDK 35/36, build-tools 36, JDK 21, and the aapt2
+      # override AGP needs. Gradle itself comes from the project's wrapper, so the
+      # source pins the Gradle version rather than the runner's preinstalled one.
+      #
+      # The build lives in a script so it can be run by hand exactly as CI runs it:
+      #   cd <assembled checkout>
+      #   nix develop .#android --command bash scripts/build-watch-apk.sh .
+      - name: Build, test, and verify the watch APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd assembled
+          nix develop .#android --command bash \
+            "$GITHUB_WORKSPACE/scripts/build-watch-apk.sh" .
+
+      - name: Upload the APK
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: paseo-watch-debug-${{ steps.assembly.outputs.commit }}
+          path: assembled/packages/watch/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: paseo-watch-test-results
+          path: assembled/packages/watch/app/build/reports/tests/
+          if-no-files-found: ignore
+
+      - name: Summarize
+        if: always()
+        env:
+          ASSEMBLY_COMMIT: ${{ steps.assembly.outputs.commit }}
+          ASSEMBLY_TREE: ${{ steps.assembly.outputs.tree }}
+        shell: bash
+        run: |
+          {
+            echo "### Wear OS assembly build"
+            echo
+            echo "- commit: \`${ASSEMBLY_COMMIT}\`"
+            echo "- tree: \`${ASSEMBLY_TREE}\`"
+            echo "- package: \`sh.paseo.watch\` (debug, unsigned-for-release)"
+          } >> "$GITHUB_STEP_SUMMARY"
