@@ -82,6 +82,7 @@ jobs:
 
           {
             echo "apk_version_code=$apk_version_code"
+            echo "watch_version_code=$((native_version_code * 10 + 5))"
             echo "native_version_code=$native_version_code"
             echo "source_commit=$source_commit"
             echo "source_commit_date=$source_commit_date"
@@ -155,6 +156,32 @@ jobs:
         with:
           name: paseo-assembly-${{ steps.assembly.outputs.apk_version_code }}
           path: ${{ runner.temp }}/sh.paseo.assembly_${{ steps.assembly.outputs.apk_version_code }}.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      # The watch APK must carry the same applicationId and signing key as the
+      # phone APK or the Wearable Data Layer routes nothing between them. Its
+      # version code uses ABI slot 5 (the phone uses 1-4), so the two artifacts
+      # can never collide in an index that groups by package.
+      - name: Build and sign watch APK
+        env:
+          PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}
+          PASEO_WATCH_VERSION_CODE: ${{ steps.assembly.outputs.watch_version_code }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          scripts/fdroid-build-watch.sh \
+            .worktrees/build \
+            "$RUNNER_TEMP/sh.paseo.assembly.watch_${{ steps.assembly.outputs.watch_version_code }}.apk" \
+            "$RUNNER_TEMP/fdroid-secrets/signing.p12" \
+            "$RUNNER_TEMP/fdroid-secrets/keystore-password" \
+            fdroid/signing-certificate.sha256
+
+      - name: Upload signed watch APK artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: paseo-watch-assembly-${{ steps.assembly.outputs.watch_version_code }}
+          path: ${{ runner.temp }}/sh.paseo.assembly.watch_${{ steps.assembly.outputs.watch_version_code }}.apk
           if-no-files-found: error
           retention-days: 30
 
