@@ -103,6 +103,10 @@ summary = "feat(app): find in conversation (Cmd/Ctrl+F)"
 branch = "mine:assembly-wear-os"
 summary = "Wear OS watch app (packages/watch) + phone-side Wearable Data Layer bridge"
 
+[[entry]]
+branch = "mine:disable-worktree-setup-callout"
+summary = "Remove the setup-worktree-scripts reminder"
+
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
 # and the manifest fails to load if an entry ever carries an excluded target.
