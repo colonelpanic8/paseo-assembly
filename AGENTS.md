@@ -11,6 +11,9 @@ topic branches into a single branch, with tracked conflict resolutions.
   explicitly requests one.
 - This does not prohibit the temporary build worktrees that `fork-fold` creates
   and manages as part of its normal operation.
+- This repository is main-only: synchronize with `origin/main` before any
+  maintenance, and commit and push recipe changes directly to `main`. Do not
+  create or publish side branches for assembler maintenance.
 
 ## Model
 

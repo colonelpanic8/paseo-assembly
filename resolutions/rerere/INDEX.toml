@@ -231,9 +231,39 @@ recorded = "2026-07-29T23:01:09.357187111+00:00"
 
 [[resolution]]
 entry = "pr-2657"
+hash = "1edbf146c878fe9adef149683605161f9054d486"
+paths = ["packages/app/src/keyboard/actions.ts"]
+recorded = "2026-07-30T23:27:31.966399497+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "1f616974e64c2771a640dd7931092d0e611766ec"
+paths = ["packages/app/src/keyboard/keyboard-action-dispatcher.ts"]
+recorded = "2026-07-30T23:27:31.966402090+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "4bdad283831287d0259463ba25819f0f661131da"
+paths = ["packages/client/src/daemon-client.ts"]
+recorded = "2026-07-30T23:27:31.966402577+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "545e9cfe8922bd6e29c25bd910ba4d1b6dfbc4c1"
+paths = ["packages/app/src/keyboard/route-shortcut.ts"]
+recorded = "2026-07-30T23:27:31.966402993+00:00"
+
+[[resolution]]
+entry = "pr-2657"
 hash = "c4177206d5e2a7c0cdfe472cbe968e1408f315a5"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-07-30T10:00:45.672831344+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "ffbafe7b06c532f132989fc10f5ee687cbf65a07"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-30T23:27:31.966403249+00:00"
 
 [[resolution]]
 entry = "pr-2658"
@@ -246,6 +276,12 @@ entry = "pr-2658"
 hash = "7f5d8f3cdfd44051149ea13b796cd60836f06859"
 paths = ["packages/server/src/server/websocket-server.relay-reconnect.test.ts"]
 recorded = "2026-07-30T10:01:15.828170602+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "86eb1f50b0fbb532cb8dcbe229ddc17e22e9bd95"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-30T23:27:44.200539953+00:00"
 
 [[resolution]]
 entry = "pr-2658"

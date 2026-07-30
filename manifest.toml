@@ -114,10 +114,6 @@ pr = 2655
 summary = "feat: Wear OS companion app for agent triage"
 
 [[entry]]
-pr = 2656
-summary = "Use Ghostty for native mobile terminals"
-
-[[entry]]
 pr = 2657
 summary = "Live Voice: codex realtime voice over WebRTC (phase 1)"
 
@@ -133,9 +129,6 @@ fixup = "patches/agent-purpose-model-display.patch"
 [[entry]]
 pr = 2660
 summary = "Restore a workspace's agents when the workspace is unarchived"
-
-[[entry]]
-patch = "patches/assembled-npm-deps-hash.patch"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
@@ -186,3 +179,7 @@ reason = "contained verbatim in 2564, the combined branch this stack already car
 [[exclude]]
 pr = 2566
 reason = "contained verbatim in 2564, the combined branch this stack already carries: the use-minute-tick and time.ts files are byte-identical between the two heads, so this entry has merged EMPTY since 2564 was admitted"
+
+[[exclude]]
+pr = 2656
+reason = "held out at user's request"
