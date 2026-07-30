@@ -7,7 +7,7 @@
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
-      "assembly-wear-os": "54f7c83d62d11a64833cec684b830abb104f5f67",
+      "assembly-wear-os": "562b4eba8428338798185102536b2a37b00a96f4",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
       "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
       "pr-2517": "b5e187ad50177ef00a8696055569e79dd1c2fbac",
@@ -26,13 +26,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-30T05:03:33.652667229+00:00",
+    "generated": "2026-07-30T05:48:25.566618768+00:00",
     "base": "c6df5ffd4d5072d67502f7ad2873045189ce10ab",
-    "commit": "d517b55368bd54b827b510fd2c87fa241eeb7064",
-    "pre_provenance_commit": "d517b55368bd54b827b510fd2c87fa241eeb7064",
-    "tree": "97bddbc6ef3f4ec814ec3adf216d87fd307bc7f7",
-    "built_tree": "97bddbc6ef3f4ec814ec3adf216d87fd307bc7f7",
-    "previous_tree": "900bc21f2b4782b299554d4c8efcda8d1c5fc408",
+    "commit": "b5d96abd171c4b60792de2fa1fd7cd0b22f71e6e",
+    "pre_provenance_commit": "b5d96abd171c4b60792de2fa1fd7cd0b22f71e6e",
+    "tree": "2df12de63b9399a527e4c619eb7aeffa7042eaa8",
+    "built_tree": "2df12de63b9399a527e4c619eb7aeffa7042eaa8",
+    "previous_tree": "97bddbc6ef3f4ec814ec3adf216d87fd307bc7f7",
     "tree_changed": true,
     "conflicts": 8,
     "manifest_entries": [
@@ -156,7 +156,7 @@
         "name": "assembly-wear-os",
         "kind": "branch",
         "source": "mine:assembly-wear-os",
-        "pin": "54f7c83d62d11a64833cec684b830abb104f5f67"
+        "pin": "562b4eba8428338798185102536b2a37b00a96f4"
       }
     ],
     "results": [
@@ -286,7 +286,7 @@
       },
       {
         "name": "assembly-wear-os",
-        "oid": "54f7c83d62d11a64833cec684b830abb104f5f67",
+        "oid": "562b4eba8428338798185102536b2a37b00a96f4",
         "status": "merged",
         "conflicted": false
       }
