@@ -1,13 +1,13 @@
 {
   "version": 1,
   "pins": {
-    "base": "c6df5ffd4d5072d67502f7ad2873045189ce10ab",
+    "base": "d1ce2b77f7adb13a7f9f3d1b778c9a2efdadf460",
     "entries": {
-      "assembled-npm-deps-hash": "2f05b0d63aedae371df29513fff9d69d6bd6ecc1",
+      "assembled-npm-deps-hash": "c5c18c27ff084dafff0baadef1a733c189023f0f",
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
-      "assembly-wear-os": "9f7058a4e6d768b9e89a60728157facacffdbe7a",
+      "assembly-wear-os": "213cf7ded3874882298ffdd5dfe4c6a665fc1284",
       "disable-worktree-setup-callout": "afb2c1692b2dbecbe5be5b9e5184a5c3eea7e654",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
       "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
@@ -19,7 +19,7 @@
       "pr-2550": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
       "pr-2556": "b12e3b63b91eb262630294719772558c2838844b",
-      "pr-2564": "a15a5d0b78fe2c7d093cea44b8312a815ca473e2",
+      "pr-2564": "ee50ca622839f5bf8947fc2d667fcf2b8b390953",
       "pr-2579": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "3500cfbaf55da8c8d59b13219f3d4b069be5bdad",
@@ -27,13 +27,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-30T08:10:58.388271827+00:00",
-    "base": "c6df5ffd4d5072d67502f7ad2873045189ce10ab",
-    "commit": "d1cca8ba49aba17641b49eb250b786d33d1dfb3e",
-    "pre_provenance_commit": "d1cca8ba49aba17641b49eb250b786d33d1dfb3e",
-    "tree": "397a65c8f0e8291a43fc9987d19ee90d900e8c85",
-    "built_tree": "397a65c8f0e8291a43fc9987d19ee90d900e8c85",
-    "previous_tree": "701c3e99ea9e946feff525e529b77731c557c7a8",
+    "generated": "2026-07-30T08:33:13.903417010+00:00",
+    "base": "d1ce2b77f7adb13a7f9f3d1b778c9a2efdadf460",
+    "commit": "5db16473f929c29a670edfb6f6255e07ebaa21ff",
+    "pre_provenance_commit": "5db16473f929c29a670edfb6f6255e07ebaa21ff",
+    "tree": "cc56026b617e8da7af50231779ec86d5b0a602fd",
+    "built_tree": "cc56026b617e8da7af50231779ec86d5b0a602fd",
+    "previous_tree": "3a628eb898d5dd637c1b22d3e00377bd30afbc99",
     "tree_changed": true,
     "conflicts": 8,
     "manifest_entries": [
@@ -77,7 +77,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "a15a5d0b78fe2c7d093cea44b8312a815ca473e2",
+        "pin": "ee50ca622839f5bf8947fc2d667fcf2b8b390953",
         "fixup": "2b511414d9879fa0b9dd84f69305c7b240e65cd3"
       },
       {
@@ -96,7 +96,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "2f05b0d63aedae371df29513fff9d69d6bd6ecc1"
+        "pin": "c5c18c27ff084dafff0baadef1a733c189023f0f"
       },
       {
         "name": "pr-2550",
@@ -157,7 +157,7 @@
         "name": "assembly-wear-os",
         "kind": "branch",
         "source": "mine:assembly-wear-os",
-        "pin": "9f7058a4e6d768b9e89a60728157facacffdbe7a"
+        "pin": "213cf7ded3874882298ffdd5dfe4c6a665fc1284"
       },
       {
         "name": "disable-worktree-setup-callout",
@@ -206,7 +206,7 @@
       },
       {
         "name": "pr-2564",
-        "oid": "a15a5d0b78fe2c7d093cea44b8312a815ca473e2",
+        "oid": "ee50ca622839f5bf8947fc2d667fcf2b8b390953",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -228,7 +228,7 @@
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "2f05b0d63aedae371df29513fff9d69d6bd6ecc1",
+        "oid": "c5c18c27ff084dafff0baadef1a733c189023f0f",
         "status": "applied",
         "conflicted": false
       },
@@ -293,7 +293,7 @@
       },
       {
         "name": "assembly-wear-os",
-        "oid": "9f7058a4e6d768b9e89a60728157facacffdbe7a",
+        "oid": "213cf7ded3874882298ffdd5dfe4c6a665fc1284",
         "status": "merged",
         "conflicted": false
       },
