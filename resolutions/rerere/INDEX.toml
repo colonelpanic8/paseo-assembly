@@ -153,6 +153,12 @@ recorded = "2026-07-28T18:52:01.154832830+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "464de75f331b85d4ea94aeed142702b9cf4b679f"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-07-30T13:59:31.776483033+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "529f8b9eec3fba6617dbe62da8aa1f891a5d18f9"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-07-29T22:17:55.039665300+00:00"
