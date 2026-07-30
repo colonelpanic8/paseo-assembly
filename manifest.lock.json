@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "588fdc794bfc20014fa090e74d605266b0ad1a92",
+    "base": "240d7f366dd95edf355ae958ceff431ed5cbbb31",
     "entries": {
       "assembled-npm-deps-hash": "e88b667cf5081bb25a47bccc637796f81129b31c",
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
@@ -31,18 +31,18 @@
       "pr-2657": "6fdc5c2676aa4b4358dc42686e1452524ef670b5",
       "pr-2658": "287bc42162959e932129701842397e7659e4da53",
       "pr-2659": "02d16467e40c48dddaf5d10cc4d5277f34b00611",
-      "pr-2660": "5a7b820f11500c73776b1288f555d59ad7c9c5dc"
+      "pr-2660": "e7e81d3f65c3e78837b22bad0e001a72a82d971e"
     }
   },
   "build": {
-    "generated": "2026-07-30T14:03:26.522416856+00:00",
-    "base": "588fdc794bfc20014fa090e74d605266b0ad1a92",
-    "commit": "502ae16b40020266e7c02f487a7bae368b22feaa",
-    "pre_provenance_commit": "502ae16b40020266e7c02f487a7bae368b22feaa",
-    "tree": "0b320c8962174088c5f958a23be0020d5985a688",
-    "built_tree": "0b320c8962174088c5f958a23be0020d5985a688",
+    "generated": "2026-07-30T20:00:15.483137969+00:00",
+    "base": "240d7f366dd95edf355ae958ceff431ed5cbbb31",
+    "commit": "b9f9004f7a2005776d7a389de1bbb7eb52726aaa",
+    "pre_provenance_commit": "b9f9004f7a2005776d7a389de1bbb7eb52726aaa",
+    "tree": "1a9a4ae585b844903c055128c9bf56917a431cef",
+    "built_tree": "1a9a4ae585b844903c055128c9bf56917a431cef",
     "previous_tree": "0b320c8962174088c5f958a23be0020d5985a688",
-    "tree_changed": false,
+    "tree_changed": true,
     "conflicts": 11,
     "manifest_entries": [
       {
@@ -209,7 +209,7 @@
         "name": "pr-2660",
         "kind": "pr",
         "source": "upstream#2660",
-        "pin": "5a7b820f11500c73776b1288f555d59ad7c9c5dc"
+        "pin": "e7e81d3f65c3e78837b22bad0e001a72a82d971e"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -392,7 +392,7 @@
       },
       {
         "name": "pr-2660",
-        "oid": "5a7b820f11500c73776b1288f555d59ad7c9c5dc",
+        "oid": "e7e81d3f65c3e78837b22bad0e001a72a82d971e",
         "status": "merged",
         "conflicted": false
       },
