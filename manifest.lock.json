@@ -3,11 +3,11 @@
   "pins": {
     "base": "c6df5ffd4d5072d67502f7ad2873045189ce10ab",
     "entries": {
-      "assembled-npm-deps-hash": "327a0d45f03bef2a490c6884a06b8695109c9f27",
+      "assembled-npm-deps-hash": "2f05b0d63aedae371df29513fff9d69d6bd6ecc1",
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
-      "assembly-wear-os": "8149bb61d7bf151465f5ff11f1e107cf5d75bdf8",
+      "assembly-wear-os": "2f7194665250fef671a8eb520a38ca110b66d29b",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
       "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
       "pr-2517": "b5e187ad50177ef00a8696055569e79dd1c2fbac",
@@ -26,13 +26,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-30T01:03:26.429692232+00:00",
+    "generated": "2026-07-30T01:34:55.501575473+00:00",
     "base": "c6df5ffd4d5072d67502f7ad2873045189ce10ab",
-    "commit": "e147554e1f533803db7327051bb05ee7b9f37e3f",
-    "pre_provenance_commit": "e147554e1f533803db7327051bb05ee7b9f37e3f",
-    "tree": "0acccaf69d7f0d2c030026c58cad8f1d839d248e",
-    "built_tree": "0acccaf69d7f0d2c030026c58cad8f1d839d248e",
-    "previous_tree": "5e158f738f31f797df05c78f8c5a46bbf2a1c0af",
+    "commit": "3133df3d90ff420fdccb70a0a635a524b2bbbd74",
+    "pre_provenance_commit": "3133df3d90ff420fdccb70a0a635a524b2bbbd74",
+    "tree": "1fbf768bc41278e7060a25d3cea6957e1d670c88",
+    "built_tree": "1fbf768bc41278e7060a25d3cea6957e1d670c88",
+    "previous_tree": "b446c35bfcc70af1d9eb44c5162d9c57b143646d",
     "tree_changed": true,
     "conflicts": 8,
     "manifest_entries": [
@@ -95,7 +95,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "327a0d45f03bef2a490c6884a06b8695109c9f27"
+        "pin": "2f05b0d63aedae371df29513fff9d69d6bd6ecc1"
       },
       {
         "name": "pr-2550",
@@ -156,7 +156,7 @@
         "name": "assembly-wear-os",
         "kind": "branch",
         "source": "mine:assembly-wear-os",
-        "pin": "8149bb61d7bf151465f5ff11f1e107cf5d75bdf8"
+        "pin": "2f7194665250fef671a8eb520a38ca110b66d29b"
       }
     ],
     "results": [
@@ -221,7 +221,7 @@
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "327a0d45f03bef2a490c6884a06b8695109c9f27",
+        "oid": "2f05b0d63aedae371df29513fff9d69d6bd6ecc1",
         "status": "applied",
         "conflicted": false
       },
@@ -286,7 +286,7 @@
       },
       {
         "name": "assembly-wear-os",
-        "oid": "8149bb61d7bf151465f5ff11f1e107cf5d75bdf8",
+        "oid": "2f7194665250fef671a8eb520a38ca110b66d29b",
         "status": "merged",
         "conflicted": false
       }
