@@ -239,27 +239,29 @@ jobs:
           set -euo pipefail
 
           release_dir="${DESKTOP_PACKAGE_PATH}/release"
+
+          # Skipped, via the -name exclusions below:
+          #
+          # *-mac.yml -- the two macOS jobs each write one describing only their
+          # own arch, so uploading both would leave whichever landed last as the
+          # update feed for BOTH architectures. Unsigned macOS builds cannot
+          # auto-update anyway (electron-updater requires a valid signature
+          # there), so no feed is the honest outcome.
+          #
+          # builder-debug.yml -- electron-builder's own debug dump, of no use to
+          # anyone downloading a release.
+          #
+          # The .blockmap files DO ship. They are ~200KB each and let
+          # electron-updater fetch only the changed chunks of an installer
+          # instead of redownloading 150MB; latest*.yml references them.
+          #
+          # Keep these comments OUT of the process substitution below: macOS
+          # runners have bash 3.2, whose parser flattens the newlines inside
+          # `<( ... )` and then fails with `no closing )`.
           files=()
           while IFS= read -r -d '' f; do
             files+=("$f")
-          done < <(
-            # Skip *-mac.yml: the two macOS jobs each write one describing only
-            # their own arch, so uploading both would leave whichever landed
-            # last as the update feed for BOTH architectures. Unsigned macOS
-            # builds cannot auto-update anyway (electron-updater requires a
-            # valid signature there), so no feed is the honest outcome.
-            #
-            # Skip builder-debug.yml: electron-builder's own debug dump, of no
-            # use to anyone downloading a release.
-            #
-            # The .blockmap files DO ship. They are ~200KB each and let
-            # electron-updater fetch only the changed chunks of an installer
-            # instead of redownloading 150MB; latest*.yml references them.
-            find "$release_dir" -maxdepth 1 -type f \
-              ! -name '*-mac.yml' \
-              ! -name 'builder-debug.yml' \
-              -print0 | sort -z
-          )
+          done < <(find "$release_dir" -maxdepth 1 -type f ! -name '*-mac.yml' ! -name 'builder-debug.yml' -print0 | sort -z)
 
           if (( ${#files[@]} == 0 )); then
             echo "::error::No release artifacts found in $release_dir"
