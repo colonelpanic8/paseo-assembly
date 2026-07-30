@@ -36,7 +36,17 @@ that commit by `rev` through a `git+https://` flake reference. Building from
 the URL rather than a local worktree is deliberate: the flake reads `self.rev`
 for its build-provenance stamp, and only a clean git source has one.
 
-To consume the cache locally:
+Install the latest assembled desktop build straight from the cache, in one line
+(no `cachix use`, nothing added to your config):
+
+```sh
+nix profile install github:colonelpanic8/paseo/assembled#desktop --extra-substituters https://paseo-colonelpanic8.cachix.org --extra-trusted-public-keys paseo-colonelpanic8.cachix.org-1:fxfDiskEv5JT+xX3CbXBUAWblc+234mDeodXDi7eY1k=
+```
+
+Use `nix run` in place of `nix profile install` to launch it without installing.
+Nix only honours `--extra-trusted-public-keys` for a trusted user (root, or
+listed in `nix.settings.trusted-users`); an untrusted user silently gets a full
+source build instead. Register the cache once to avoid that:
 
 ```sh
 cachix use paseo-colonelpanic8
@@ -48,9 +58,13 @@ Or add it to `nix.settings` persistently:
 ```nix
 nix.settings = {
   substituters = [ "https://paseo-colonelpanic8.cachix.org" ];
-  trusted-public-keys = [ "paseo-colonelpanic8.cachix.org-1:<key from the cache page>" ];
+  trusted-public-keys = [
+    "paseo-colonelpanic8.cachix.org-1:fxfDiskEv5JT+xX3CbXBUAWblc+234mDeodXDi7eY1k="
+  ];
 };
 ```
+
+The cache holds `x86_64-linux` only, since that is all `desktop.yml` builds.
 
 CI needs one repository secret, `CACHIX_AUTH_TOKEN` -- a write token created
 with `cachix authtoken` or from the cache's settings page. Without it the build
