@@ -152,24 +152,3 @@ reason = "contained verbatim in 2564, the combined branch this stack already car
 [[exclude]]
 pr = 2566
 reason = "contained verbatim in 2564, the combined branch this stack already carries: the use-minute-tick and time.ts files are byte-identical between the two heads, so this entry has merged EMPTY since 2564 was admitted"
-
-# submodule = "upstream"  # optional: source base objects from this submodule path
-
-# Entries merge in order onto the base. Three kinds:
-#
-# [[entry]]
-# branch = "mine:some-topic"      # a live topic branch on a named remote
-#
-# [[entry]]
-# pr = 1234                       # refs/pull/1234/head; remote = "upstream" by default
-# fixup = "patches/example.patch" # optional coherence fixup: applied inside
-#                                 # THIS entry's step, right after its merge,
-#                                 # repairing what admitting it broke across
-#                                 # the earlier entries. Keeps every entry
-#                                 # boundary a coherent tree. Attach it with
-#                                 # `fork-fold fixup ENTRY FILE --capture`.
-#
-# [[entry]]
-# patch = "patches/example.patch" # a STANDALONE patch at its own position,
-#                                 # for content belonging to no entry.
-#                                 # Cross-entry repairs belong in a fixup.
