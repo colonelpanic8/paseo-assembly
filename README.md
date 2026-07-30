@@ -56,6 +56,41 @@ CI needs one repository secret, `CACHIX_AUTH_TOKEN` -- a write token created
 with `cachix authtoken` or from the cache's settings page. Without it the build
 still runs and simply does not push.
 
+## Downloadable desktop installers
+
+`.github/workflows/desktop-release.yml` publishes real installers for the same
+locked assembled tree to this repository's
+[Releases](https://github.com/colonelpanic8/paseo-assembly/releases). The newest
+release is always the current assembly, so the download link is stable:
+
+```
+https://github.com/colonelpanic8/paseo-assembly/releases/latest
+```
+
+It runs upstream's `electron-builder` configuration rather than Nix -- a Nix
+store path is not something you can download and double-click. Artifacts:
+
+- Linux x64: `Paseo-x86_64.AppImage` (`chmod +x` and run), plus `.deb`, `.rpm`,
+  `.tar.gz`.
+- macOS arm64 and x64: `.dmg` and `.zip` -- **unsigned and unnotarized**;
+  Gatekeeper must be overridden by hand.
+- Windows x64 and arm64: NSIS installer and `.zip` -- **unsigned**; SmartScreen
+  warns.
+
+Releases are tagged `desktop-assembly-<run number>` and the version is
+`<upstream base>-assembly.<run number>+<tree prefix>`, which orders below any
+upstream release of the same base version and names the tree it came from. The
+`prune` job keeps the newest five releases and deletes older ones with their
+tags (`KEEP_RELEASES` in the workflow).
+
+The bundled auto-update feed is repointed at this repository. Upstream's
+`electron-builder.yml` publishes to `getpaseo/paseo`; left alone, an installed
+assembly build would update itself to an upstream release and silently drop
+every carried topic. macOS gets no update manifest at all, since unsigned
+builds cannot auto-update.
+
+Only the built-in `GITHUB_TOKEN` is required -- no signing secrets.
+
 The checked-in agent skill is only a stable discovery stub. It loads the full
 operating guide from `lib.forkFoldAgentGuide`, which is re-exported directly
 from the `fork-fold` revision in `flake.lock`. Updating that input therefore

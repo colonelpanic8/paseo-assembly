@@ -1,0 +1,297 @@
+name: Release Desktop Assembly
+
+# Publishes downloadable desktop installers built from the locked `assembled`
+# tree to this repository's GitHub Releases.
+#
+# This is deliberately NOT the Nix path in desktop.yml. That workflow proves the
+# assembly builds and warms the Cachix cache, but a Nix store path is not a
+# thing anyone can download and double-click. Here we run upstream's
+# electron-builder configuration against the same assembled tree to produce real
+# artifacts (AppImage/deb/rpm/tar.gz, dmg/zip, NSIS/zip).
+#
+# The macOS and Windows artifacts are UNSIGNED: this repository holds no Apple
+# certificate or Authenticode key. Gatekeeper and SmartScreen will object, and
+# users must override them explicitly. Only Linux is signature-free by nature.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/desktop-release.yml"
+      - "manifest.lock.json"
+      - "manifest.toml"
+      - "patches/**"
+      - "resolutions/**"
+      - "scripts/await-published-assembly.sh"
+  workflow_dispatch:
+
+concurrency:
+  group: desktop-assembly-release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  ASSEMBLY_SOURCE_REPO: colonelpanic8/paseo
+  DESKTOP_PACKAGE_PATH: packages/desktop
+  # Keep releases to the newest N; older ones and their tags are deleted.
+  KEEP_RELEASES: "5"
+
+jobs:
+  prepare:
+    name: Resolve assembly and create release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      commit: ${{ steps.assembly.outputs.commit }}
+      tree: ${{ steps.assembly.outputs.tree }}
+      version: ${{ steps.meta.outputs.version }}
+      tag: ${{ steps.meta.outputs.tag }}
+
+    steps:
+      - name: Check out assembly recipe
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Locate the published assembly
+        id: assembly
+        shell: bash
+        run: |
+          scripts/await-published-assembly.sh \
+            manifest.lock.json \
+            "https://github.com/${ASSEMBLY_SOURCE_REPO}" \
+            assembled
+
+      - name: Resolve release metadata
+        id: meta
+        env:
+          ASSEMBLY_COMMIT: ${{ steps.assembly.outputs.commit }}
+          ASSEMBLY_TREE: ${{ steps.assembly.outputs.tree }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # The upstream base version, read from the assembled tree itself.
+          base_version="$(
+            curl -fsSL \
+              "https://raw.githubusercontent.com/${ASSEMBLY_SOURCE_REPO}/${ASSEMBLY_COMMIT}/package.json" \
+              | jq -r '.version' \
+              | cut -d- -f1
+          )"
+
+          # Valid semver: prerelease identifier keeps assembly builds ordered
+          # below any upstream release of the same base version, and the build
+          # metadata pins which assembled tree it came from.
+          version="${base_version}-assembly.${GITHUB_RUN_NUMBER}+${ASSEMBLY_TREE:0:12}"
+
+          {
+            echo "version=$version"
+            echo "tag=desktop-assembly-${GITHUB_RUN_NUMBER}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ steps.meta.outputs.tag }}
+          VERSION: ${{ steps.meta.outputs.version }}
+          ASSEMBLY_COMMIT: ${{ steps.assembly.outputs.commit }}
+          ASSEMBLY_TREE: ${{ steps.assembly.outputs.tree }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG already exists; reusing it."
+            exit 0
+          fi
+
+          notes="$(printf '%s\n' \
+            "Desktop build of the assembled Paseo stack." \
+            "" \
+            "- version: \`${VERSION}\`" \
+            "- assembled commit: [\`${ASSEMBLY_COMMIT}\`](https://github.com/${ASSEMBLY_SOURCE_REPO}/commit/${ASSEMBLY_COMMIT})" \
+            "- assembled tree: \`${ASSEMBLY_TREE}\`" \
+            "- recipe commit: \`${GITHUB_SHA}\`" \
+            "" \
+            "Linux: \`Paseo-x86_64.AppImage\` (chmod +x and run), or the \`.deb\`/\`.rpm\`/\`.tar.gz\`." \
+            "macOS and Windows artifacts are **unsigned** -- Gatekeeper and SmartScreen" \
+            "will warn, and you must allow them explicitly.")"
+
+          gh release create "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Paseo Assembly $VERSION" \
+            --notes "$notes"
+
+  build:
+    name: ${{ matrix.name }}
+    needs: [prepare]
+    permissions:
+      contents: write
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux x64
+            runner: ubuntu-22.04
+            platform_args: "--linux --x64"
+          - name: Windows x64 and arm64
+            runner: windows-latest
+            platform_args: "--win --x64 --arm64"
+          - name: macOS arm64
+            runner: macos-14
+            platform_args: "--mac --arm64"
+          - name: macOS x64
+            runner: macos-15-intel
+            platform_args: "--mac --x64"
+
+    steps:
+      - name: Check out the assembled source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: ${{ env.ASSEMBLY_SOURCE_REPO }}
+          ref: ${{ needs.prepare.outputs.commit }}
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install JS dependencies
+        run: node scripts/npm-retry.mjs ci
+
+      - name: Stamp the desktop package version
+        env:
+          DESKTOP_VERSION: ${{ needs.prepare.outputs.version }}
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const version = process.env.DESKTOP_VERSION;
+          if (!version) throw new Error('DESKTOP_VERSION env var is missing');
+
+          const packageJsonPath = path.join(process.env.DESKTOP_PACKAGE_PATH, 'package.json');
+          const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+          packageJson.version = version;
+          fs.writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`);
+          NODE
+
+      - name: Build desktop artifacts
+        env:
+          # Unsigned: there is no certificate in this repository, and letting
+          # electron-builder auto-discover a keychain identity on the runner
+          # would only produce an unverifiable signature.
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          build_args=(-- --publish never ${{ matrix.platform_args }})
+          # Point the bundled auto-update feed at THIS repository's releases.
+          # Upstream's config publishes to getpaseo/paseo; left alone, an
+          # installed assembly build would update itself to an upstream release
+          # and silently lose every carried topic.
+          build_args+=("-c.publish.provider=github")
+          build_args+=("-c.publish.owner=${GITHUB_REPOSITORY%%/*}")
+          build_args+=("-c.publish.repo=${GITHUB_REPOSITORY##*/}")
+          build_args+=("-c.mac.notarize=false")
+
+          npm run build:desktop "${build_args[@]}"
+
+      - name: Upload artifacts to the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ needs.prepare.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          release_dir="${DESKTOP_PACKAGE_PATH}/release"
+          files=()
+          while IFS= read -r -d '' f; do
+            files+=("$f")
+          done < <(
+            # Skip *-mac.yml: the two macOS jobs each write one describing only
+            # their own arch, so uploading both would leave whichever landed
+            # last as the update feed for BOTH architectures. Unsigned macOS
+            # builds cannot auto-update anyway (electron-updater requires a
+            # valid signature there), so no feed is the honest outcome.
+            find "$release_dir" -maxdepth 1 -type f ! -name '*-mac.yml' -print0 | sort -z
+          )
+
+          if (( ${#files[@]} == 0 )); then
+            echo "::error::No release artifacts found in $release_dir"
+            exit 1
+          fi
+
+          gh release upload "$RELEASE_TAG" "${files[@]}" \
+            --clobber --repo "$GITHUB_REPOSITORY"
+
+  prune:
+    name: Prune old releases
+    needs: [prepare, build]
+    if: always() && needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Keep only the newest releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # createdAt ordering, newest first; anything past KEEP_RELEASES goes,
+          # tag included, so stale tags do not accumulate either.
+          stale="$(
+            gh release list \
+              --repo "$GITHUB_REPOSITORY" \
+              --limit 200 \
+              --json tagName,createdAt \
+              --jq '[.[] | select(.tagName | startswith("desktop-assembly-"))]
+                    | sort_by(.createdAt) | reverse
+                    | .['"$KEEP_RELEASES"':]
+                    | .[].tagName'
+          )"
+
+          if [[ -z "$stale" ]]; then
+            echo "Nothing to prune."
+            exit 0
+          fi
+
+          while IFS= read -r tag; do
+            [[ -n "$tag" ]] || continue
+            echo "Deleting release $tag"
+            gh release delete "$tag" --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes
+          done <<< "$stale"
+
+      - name: Summarize
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ needs.prepare.outputs.tag }}
+          VERSION: ${{ needs.prepare.outputs.version }}
+        shell: bash
+        run: |
+          {
+            echo "### Desktop assembly release"
+            echo
+            echo "- tag: \`${RELEASE_TAG}\`"
+            echo "- version: \`${VERSION}\`"
+            echo "- tree: \`${{ needs.prepare.outputs.tree }}\`"
+            echo "- kept: newest ${KEEP_RELEASES} releases"
+            echo
+            echo "https://github.com/${GITHUB_REPOSITORY}/releases/tag/${RELEASE_TAG}"
+          } >> "$GITHUB_STEP_SUMMARY"
