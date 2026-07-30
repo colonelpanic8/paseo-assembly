@@ -7,6 +7,7 @@
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
+      "assembly-wear-os": "35b72621cd87f46764d165390c4c6b0572a3a1d4",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
       "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
       "pr-2517": "b5e187ad50177ef00a8696055569e79dd1c2fbac",
@@ -25,15 +26,15 @@
     }
   },
   "build": {
-    "generated": "2026-07-29T23:14:32.382369973+00:00",
+    "generated": "2026-07-30T00:07:52.439830933+00:00",
     "base": "c6df5ffd4d5072d67502f7ad2873045189ce10ab",
-    "commit": "6febdf99a5a6f165b75c4dca1e6771e2864c44ac",
-    "pre_provenance_commit": "6febdf99a5a6f165b75c4dca1e6771e2864c44ac",
-    "tree": "72625d6119176fb9d1e9edde1eca04b45d307e6c",
-    "built_tree": "72625d6119176fb9d1e9edde1eca04b45d307e6c",
-    "previous_tree": "d680c7517966e37becff70c3a80522f6bfe63acb",
+    "commit": "88e0513549447f6b64b697542f615fe1a9e80c7d",
+    "pre_provenance_commit": "88e0513549447f6b64b697542f615fe1a9e80c7d",
+    "tree": "69096b1014475b329059e279fbfa3388e4f328a7",
+    "built_tree": "69096b1014475b329059e279fbfa3388e4f328a7",
+    "previous_tree": "72625d6119176fb9d1e9edde1eca04b45d307e6c",
     "tree_changed": true,
-    "conflicts": 8,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -150,6 +151,12 @@
         "kind": "pr",
         "source": "upstream#2629",
         "pin": "1aad36ff3b34c0cf412e6816a205614c4e0c6e73"
+      },
+      {
+        "name": "assembly-wear-os",
+        "kind": "branch",
+        "source": "mine:assembly-wear-os",
+        "pin": "35b72621cd87f46764d165390c4c6b0572a3a1d4"
       }
     ],
     "results": [
@@ -276,6 +283,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "assembly-wear-os",
+        "oid": "35b72621cd87f46764d165390c4c6b0572a3a1d4",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }
