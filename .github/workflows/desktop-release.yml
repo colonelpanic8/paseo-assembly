@@ -117,9 +117,21 @@ jobs:
             "- assembled tree: \`${ASSEMBLY_TREE}\`" \
             "- recipe commit: \`${GITHUB_SHA}\`" \
             "" \
-            "Linux: \`Paseo-x86_64.AppImage\` (chmod +x and run), or the \`.deb\`/\`.rpm\`/\`.tar.gz\`." \
+            "| platform | download |" \
+            "| --- | --- |" \
+            "| Linux x64 | \`Paseo-x86_64.AppImage\` -- \`chmod +x\` and run |" \
+            "| macOS | \`Paseo-${VERSION}-arm64.dmg\` or \`-x64.dmg\` |" \
+            "| Windows x64 | \`Paseo-Setup-${VERSION}-x64.exe\` |" \
+            "" \
             "macOS and Windows artifacts are **unsigned** -- Gatekeeper and SmartScreen" \
-            "will warn, and you must allow them explicitly.")"
+            "will warn, and you must allow them explicitly." \
+            "" \
+            "On Nix, build this exact assembly from the binary cache instead:" \
+            "" \
+            "\`\`\`sh" \
+            "cachix use paseo-colonelpanic8" \
+            "nix build 'git+https://github.com/${ASSEMBLY_SOURCE_REPO}?ref=assembled&rev=${ASSEMBLY_COMMIT}#desktop'" \
+            "\`\`\`")"
 
           gh release create "$RELEASE_TAG" \
             --repo "$GITHUB_REPOSITORY" \
@@ -141,9 +153,9 @@ jobs:
           - name: Linux x64
             runner: ubuntu-22.04
             platform_args: "--linux --x64"
-          - name: Windows x64 and arm64
+          - name: Windows x64
             runner: windows-latest
-            platform_args: "--win --x64 --arm64"
+            platform_args: "--win --x64"
           - name: macOS arm64
             runner: macos-14
             platform_args: "--mac --arm64"
@@ -207,6 +219,15 @@ jobs:
           build_args+=("-c.publish.repo=${GITHUB_REPOSITORY##*/}")
           build_args+=("-c.mac.notarize=false")
 
+          # One artifact per platform. Upstream targets every packaging it can
+          # (AppImage/deb/rpm/tar.gz, dmg+zip, nsis+zip) because it serves every
+          # distro; that put 23 files and ~2.3GB on each assembly release, most
+          # of them a second packaging of an identical app. The mac zip exists
+          # only to feed electron-updater, and we publish no mac update feed.
+          build_args+=("-c.linux.target=AppImage")
+          build_args+=("-c.mac.target=dmg")
+          build_args+=("-c.win.target=nsis")
+
           npm run build:desktop "${build_args[@]}"
 
       - name: Upload artifacts to the release
@@ -227,7 +248,17 @@ jobs:
             # last as the update feed for BOTH architectures. Unsigned macOS
             # builds cannot auto-update anyway (electron-updater requires a
             # valid signature there), so no feed is the honest outcome.
-            find "$release_dir" -maxdepth 1 -type f ! -name '*-mac.yml' -print0 | sort -z
+            #
+            # Skip builder-debug.yml: electron-builder's own debug dump, of no
+            # use to anyone downloading a release.
+            #
+            # The .blockmap files DO ship. They are ~200KB each and let
+            # electron-updater fetch only the changed chunks of an installer
+            # instead of redownloading 150MB; latest*.yml references them.
+            find "$release_dir" -maxdepth 1 -type f \
+              ! -name '*-mac.yml' \
+              ! -name 'builder-debug.yml' \
+              -print0 | sort -z
           )
 
           if (( ${#files[@]} == 0 )); then

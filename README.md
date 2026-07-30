@@ -68,14 +68,26 @@ https://github.com/colonelpanic8/paseo-assembly/releases/latest
 ```
 
 It runs upstream's `electron-builder` configuration rather than Nix -- a Nix
-store path is not something you can download and double-click. Artifacts:
+store path is not something you can download and double-click. If you are on
+Nix, prefer the Cachix route above; these artifacts are for machines that are
+not.
 
-- Linux x64: `Paseo-x86_64.AppImage` (`chmod +x` and run), plus `.deb`, `.rpm`,
-  `.tar.gz`.
-- macOS arm64 and x64: `.dmg` and `.zip` -- **unsigned and unnotarized**;
-  Gatekeeper must be overridden by hand.
-- Windows x64 and arm64: NSIS installer and `.zip` -- **unsigned**; SmartScreen
-  warns.
+Exactly one artifact per platform:
+
+- Linux x64: `Paseo-x86_64.AppImage` (`chmod +x` and run).
+- macOS arm64 and x64: `.dmg` -- **unsigned and unnotarized**; Gatekeeper must
+  be overridden by hand.
+- Windows x64: NSIS installer -- **unsigned**; SmartScreen warns.
+
+Upstream targets every packaging it can (AppImage/deb/rpm/tar.gz, dmg+zip,
+nsis+zip, plus a combined multi-arch installer), which put 23 files and ~2.3GB
+on each release -- mostly a second packaging of an identical app. The workflow
+overrides `linux.target`, `mac.target` and `win.target` down to one each.
+
+The small `latest.yml`/`latest-linux.yml` and `.blockmap` files are kept
+deliberately: they are the auto-update feed, and a blockmap lets
+electron-updater fetch only the changed chunks of an installer rather than
+redownloading it whole. `builder-debug.yml` is dropped.
 
 Releases are tagged `desktop-assembly-<run number>` and the version is
 `<upstream base>-assembly.<run number>+<tree prefix>`, which orders below any
