@@ -7,7 +7,7 @@
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
-      "assembly-wear-os": "dbd67a261d8f7a3ac87c8db5ce2765bbb8e32672",
+      "assembly-wear-os": "9f7058a4e6d768b9e89a60728157facacffdbe7a",
       "disable-worktree-setup-callout": "afb2c1692b2dbecbe5be5b9e5184a5c3eea7e654",
       "pr-2506": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
       "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
@@ -27,13 +27,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-30T07:20:24.743072232+00:00",
+    "generated": "2026-07-30T08:10:58.388271827+00:00",
     "base": "c6df5ffd4d5072d67502f7ad2873045189ce10ab",
-    "commit": "e1ae229c4cbae8304a6ee9782522f0ea508f0ba6",
-    "pre_provenance_commit": "e1ae229c4cbae8304a6ee9782522f0ea508f0ba6",
-    "tree": "701c3e99ea9e946feff525e529b77731c557c7a8",
-    "built_tree": "701c3e99ea9e946feff525e529b77731c557c7a8",
-    "previous_tree": "2df12de63b9399a527e4c619eb7aeffa7042eaa8",
+    "commit": "d1cca8ba49aba17641b49eb250b786d33d1dfb3e",
+    "pre_provenance_commit": "d1cca8ba49aba17641b49eb250b786d33d1dfb3e",
+    "tree": "397a65c8f0e8291a43fc9987d19ee90d900e8c85",
+    "built_tree": "397a65c8f0e8291a43fc9987d19ee90d900e8c85",
+    "previous_tree": "701c3e99ea9e946feff525e529b77731c557c7a8",
     "tree_changed": true,
     "conflicts": 8,
     "manifest_entries": [
@@ -157,7 +157,7 @@
         "name": "assembly-wear-os",
         "kind": "branch",
         "source": "mine:assembly-wear-os",
-        "pin": "dbd67a261d8f7a3ac87c8db5ce2765bbb8e32672"
+        "pin": "9f7058a4e6d768b9e89a60728157facacffdbe7a"
       },
       {
         "name": "disable-worktree-setup-callout",
@@ -293,7 +293,7 @@
       },
       {
         "name": "assembly-wear-os",
-        "oid": "dbd67a261d8f7a3ac87c8db5ce2765bbb8e32672",
+        "oid": "9f7058a4e6d768b9e89a60728157facacffdbe7a",
         "status": "merged",
         "conflicted": false
       },
