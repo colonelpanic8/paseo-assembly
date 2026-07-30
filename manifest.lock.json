@@ -3,7 +3,7 @@
   "pins": {
     "base": "d1ce2b77f7adb13a7f9f3d1b778c9a2efdadf460",
     "entries": {
-      "assembled-npm-deps-hash": "c5c18c27ff084dafff0baadef1a733c189023f0f",
+      "assembled-npm-deps-hash": "91927f723be97c030d933d7b238b0190ab356eeb",
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
@@ -19,23 +19,31 @@
       "pr-2550": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
       "pr-2556": "b12e3b63b91eb262630294719772558c2838844b",
-      "pr-2564": "ee50ca622839f5bf8947fc2d667fcf2b8b390953",
+      "pr-2564": "819b3d4b699d9cb4fea3ea284bc73e41bb53082e",
       "pr-2579": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "3500cfbaf55da8c8d59b13219f3d4b069be5bdad",
-      "pr-2629": "1aad36ff3b34c0cf412e6816a205614c4e0c6e73"
+      "pr-2629": "1aad36ff3b34c0cf412e6816a205614c4e0c6e73",
+      "pr-2650": "d6c96def0095f66565b29873bcddf9678fb3675c",
+      "pr-2652": "2d68e1cc44ff190774d8a26308de82a24e7ea7f7",
+      "pr-2655": "75f2a85210a1057fad57593a6b046f8393cdf350",
+      "pr-2656": "006255fea8347e57014a495c778bafb70c29458a",
+      "pr-2657": "a3795528bc875a1a19d40bbeafbf4a510bc674f2",
+      "pr-2658": "287bc42162959e932129701842397e7659e4da53",
+      "pr-2659": "02d16467e40c48dddaf5d10cc4d5277f34b00611",
+      "pr-2660": "5a7b820f11500c73776b1288f555d59ad7c9c5dc"
     }
   },
   "build": {
-    "generated": "2026-07-30T08:33:13.903417010+00:00",
+    "generated": "2026-07-30T10:11:28.529623398+00:00",
     "base": "d1ce2b77f7adb13a7f9f3d1b778c9a2efdadf460",
-    "commit": "5db16473f929c29a670edfb6f6255e07ebaa21ff",
-    "pre_provenance_commit": "5db16473f929c29a670edfb6f6255e07ebaa21ff",
-    "tree": "cc56026b617e8da7af50231779ec86d5b0a602fd",
-    "built_tree": "cc56026b617e8da7af50231779ec86d5b0a602fd",
-    "previous_tree": "3a628eb898d5dd637c1b22d3e00377bd30afbc99",
+    "commit": "a407b257bbb6e2319e4752fd5e698f9b0769f721",
+    "pre_provenance_commit": "a407b257bbb6e2319e4752fd5e698f9b0769f721",
+    "tree": "ec61467dbd12134c96646514d0c7ec3665d1a00d",
+    "built_tree": "ec61467dbd12134c96646514d0c7ec3665d1a00d",
+    "previous_tree": "ef7aaf0c918b3b1a653d758b90d506e4b394b13e",
     "tree_changed": true,
-    "conflicts": 8,
+    "conflicts": 10,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -77,8 +85,8 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "ee50ca622839f5bf8947fc2d667fcf2b8b390953",
-        "fixup": "2b511414d9879fa0b9dd84f69305c7b240e65cd3"
+        "pin": "819b3d4b699d9cb4fea3ea284bc73e41bb53082e",
+        "fixup": "edd379924baa3b219bee7a9f68100eba2a30945e"
       },
       {
         "name": "pr-2530",
@@ -96,7 +104,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "c5c18c27ff084dafff0baadef1a733c189023f0f"
+        "pin": "91927f723be97c030d933d7b238b0190ab356eeb"
       },
       {
         "name": "pr-2550",
@@ -151,19 +159,63 @@
         "name": "pr-2629",
         "kind": "pr",
         "source": "upstream#2629",
-        "pin": "1aad36ff3b34c0cf412e6816a205614c4e0c6e73"
-      },
-      {
-        "name": "assembly-wear-os",
-        "kind": "branch",
-        "source": "mine:assembly-wear-os",
-        "pin": "213cf7ded3874882298ffdd5dfe4c6a665fc1284"
+        "pin": "1aad36ff3b34c0cf412e6816a205614c4e0c6e73",
+        "fixup": "0ca7f5acfe52f8d41069cc612bdc6a196d028cdd"
       },
       {
         "name": "disable-worktree-setup-callout",
         "kind": "branch",
         "source": "mine:disable-worktree-setup-callout",
         "pin": "afb2c1692b2dbecbe5be5b9e5184a5c3eea7e654"
+      },
+      {
+        "name": "pr-2650",
+        "kind": "pr",
+        "source": "upstream#2650",
+        "pin": "d6c96def0095f66565b29873bcddf9678fb3675c"
+      },
+      {
+        "name": "pr-2652",
+        "kind": "pr",
+        "source": "upstream#2652",
+        "pin": "2d68e1cc44ff190774d8a26308de82a24e7ea7f7"
+      },
+      {
+        "name": "pr-2655",
+        "kind": "pr",
+        "source": "upstream#2655",
+        "pin": "75f2a85210a1057fad57593a6b046f8393cdf350"
+      },
+      {
+        "name": "pr-2656",
+        "kind": "pr",
+        "source": "upstream#2656",
+        "pin": "006255fea8347e57014a495c778bafb70c29458a"
+      },
+      {
+        "name": "pr-2657",
+        "kind": "pr",
+        "source": "upstream#2657",
+        "pin": "a3795528bc875a1a19d40bbeafbf4a510bc674f2"
+      },
+      {
+        "name": "pr-2658",
+        "kind": "pr",
+        "source": "upstream#2658",
+        "pin": "287bc42162959e932129701842397e7659e4da53"
+      },
+      {
+        "name": "pr-2659",
+        "kind": "pr",
+        "source": "upstream#2659",
+        "pin": "02d16467e40c48dddaf5d10cc4d5277f34b00611",
+        "fixup": "f0cd5d8023c4328d1c8009731f0aa71133857650"
+      },
+      {
+        "name": "pr-2660",
+        "kind": "pr",
+        "source": "upstream#2660",
+        "pin": "5a7b820f11500c73776b1288f555d59ad7c9c5dc"
       }
     ],
     "results": [
@@ -206,11 +258,10 @@
       },
       {
         "name": "pr-2564",
-        "oid": "ee50ca622839f5bf8947fc2d667fcf2b8b390953",
+        "oid": "819b3d4b699d9cb4fea3ea284bc73e41bb53082e",
         "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere",
-        "fixup": "2b511414d9879fa0b9dd84f69305c7b240e65cd3"
+        "conflicted": false,
+        "fixup": "edd379924baa3b219bee7a9f68100eba2a30945e"
       },
       {
         "name": "pr-2530",
@@ -228,7 +279,7 @@
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "c5c18c27ff084dafff0baadef1a733c189023f0f",
+        "oid": "91927f723be97c030d933d7b238b0190ab356eeb",
         "status": "applied",
         "conflicted": false
       },
@@ -289,17 +340,64 @@
         "oid": "1aad36ff3b34c0cf412e6816a205614c4e0c6e73",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
-      },
-      {
-        "name": "assembly-wear-os",
-        "oid": "213cf7ded3874882298ffdd5dfe4c6a665fc1284",
-        "status": "merged",
-        "conflicted": false
+        "resolution": "rerere",
+        "fixup": "0ca7f5acfe52f8d41069cc612bdc6a196d028cdd"
       },
       {
         "name": "disable-worktree-setup-callout",
         "oid": "afb2c1692b2dbecbe5be5b9e5184a5c3eea7e654",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2650",
+        "oid": "d6c96def0095f66565b29873bcddf9678fb3675c",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2652",
+        "oid": "2d68e1cc44ff190774d8a26308de82a24e7ea7f7",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2655",
+        "oid": "75f2a85210a1057fad57593a6b046f8393cdf350",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2656",
+        "oid": "006255fea8347e57014a495c778bafb70c29458a",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2657",
+        "oid": "a3795528bc875a1a19d40bbeafbf4a510bc674f2",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere"
+      },
+      {
+        "name": "pr-2658",
+        "oid": "287bc42162959e932129701842397e7659e4da53",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere"
+      },
+      {
+        "name": "pr-2659",
+        "oid": "02d16467e40c48dddaf5d10cc4d5277f34b00611",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere",
+        "fixup": "f0cd5d8023c4328d1c8009731f0aa71133857650"
+      },
+      {
+        "name": "pr-2660",
+        "oid": "5a7b820f11500c73776b1288f555d59ad7c9c5dc",
         "status": "merged",
         "conflicted": false
       }

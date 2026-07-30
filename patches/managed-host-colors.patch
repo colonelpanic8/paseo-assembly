@@ -30,10 +30,10 @@ index 0ec93214a..ad5b98e89 100644
  That means direct passwords are persisted in the app's AsyncStorage just like passwords entered in
  the Add Host form. Encrypting the source file protects configuration at rest in the configuration
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
-index 6a4801c05..512ab7dce 100644
+index 24b6a95cd..742d4fdea 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
 +++ b/packages/app/src/runtime/host-runtime.test.ts
-@@ -3316,12 +3316,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3309,12 +3309,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
            endpoint: "ryzen-shine:6767",
            useTls: false,
            password: "ryzen-secret",
@@ -48,7 +48,7 @@ index 6a4801c05..512ab7dce 100644
          },
        ],
      };
-@@ -3346,7 +3348,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3339,7 +3341,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
        storage: createMemoryHostRuntimeStorage(),
      });
  
@@ -65,7 +65,7 @@ index 6a4801c05..512ab7dce 100644
      store.boot();
      await hostsAdded;
  
-@@ -3374,6 +3384,67 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3367,6 +3377,67 @@ describe("HostRuntimeStore managed host bootstrap", () => {
          .map((host) => host.label)
          .sort(),
      ).toEqual(["Mac mini", "Ryzen"]);
@@ -134,10 +134,10 @@ index 6a4801c05..512ab7dce 100644
      store.syncHosts([]);
    });
 diff --git a/packages/app/src/runtime/host-runtime.ts b/packages/app/src/runtime/host-runtime.ts
-index 9dc01040a..c79ec1593 100644
+index e2b0a4772..63e961641 100644
 --- a/packages/app/src/runtime/host-runtime.ts
 +++ b/packages/app/src/runtime/host-runtime.ts
-@@ -8,6 +8,7 @@ import {
+@@ -8,10 +8,12 @@ import {
  } from "@getpaseo/client/internal/daemon-client";
  import {
    connectionFromListen,
@@ -145,7 +145,12 @@ index 9dc01040a..c79ec1593 100644
    normalizeStoredHostProfile,
    upsertHostConnectionInProfiles,
    registryHasConnection,
-@@ -1356,6 +1357,7 @@ interface ManagedHostBootstrapInput {
+   type HostColor,
++  type HostColorKey,
+   type HostConnection,
+   type HostProfile,
+ } from "@/types/host-connection";
+@@ -1358,6 +1360,7 @@ interface ManagedHostBootstrapInput {
    label: string;
    endpoint: string;
    connection: HostConnection;
@@ -153,7 +158,7 @@ index 9dc01040a..c79ec1593 100644
  }
  
  export class HostRuntimeStore {
-@@ -1500,22 +1502,33 @@ export class HostRuntimeStore {
+@@ -1502,22 +1505,33 @@ export class HostRuntimeStore {
          label: host.label,
          endpoint,
          connection,

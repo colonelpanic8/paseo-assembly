@@ -98,14 +98,44 @@ summary = "Add agentEnv: capture project environment (direnv/mise) before agent 
 [[entry]]
 pr = 2629
 summary = "feat(app): find in conversation (Cmd/Ctrl+F)"
-
-[[entry]]
-branch = "mine:assembly-wear-os"
-summary = "Wear OS watch app (packages/watch) + phone-side Wearable Data Layer bridge"
+fixup = "patches/session-search-ready-shortcut-context.patch"
 
 [[entry]]
 branch = "mine:disable-worktree-setup-callout"
 summary = "Remove the setup-worktree-scripts reminder"
+
+[[entry]]
+pr = 2650
+summary = "fix: survive NODE_ENV=production during install"
+
+[[entry]]
+pr = 2652
+summary = "fix(nix): keep docs and CI out of the derivation sources"
+
+[[entry]]
+pr = 2655
+summary = "feat: Wear OS companion app for agent triage"
+
+[[entry]]
+pr = 2656
+summary = "Use Ghostty for native mobile terminals"
+
+[[entry]]
+pr = 2657
+summary = "Live Voice: codex realtime voice over WebRTC (phase 1)"
+
+[[entry]]
+pr = 2658
+summary = "Add rolling agent purpose summaries"
+
+[[entry]]
+pr = 2659
+summary = "Surface the model and thinking level agents actually use"
+fixup = "patches/agent-purpose-model-display.patch"
+
+[[entry]]
+pr = 2660
+summary = "Restore a workspace's agents when the workspace is unarchived"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,

@@ -222,3 +222,75 @@ entry = "pr-2629"
 hash = "d22f866907f4687e5e315507c0ae17e6666b3e64"
 paths = ["packages/app/src/i18n/resources/es.ts"]
 recorded = "2026-07-29T23:01:09.357187111+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "c4177206d5e2a7c0cdfe472cbe968e1408f315a5"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-30T10:00:45.672831344+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "5fa8bfce05bdd757ee531543c323f94427f74fe6"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-30T10:01:15.828168298+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "7f5d8f3cdfd44051149ea13b796cd60836f06859"
+paths = ["packages/server/src/server/websocket-server.relay-reconnect.test.ts"]
+recorded = "2026-07-30T10:01:15.828170602+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "becf7b1fa37f32bc1cedf851bca3c3ed8e40b270"
+paths = ["packages/app/src/components/agent-list.tsx"]
+recorded = "2026-07-30T10:01:15.828170893+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "e10435d994bc1d0b69ac8f0c4961ece645a1da05"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-07-30T10:01:15.828171183+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "26b6def4ef1860e9ff262663d19bc53c860da989"
+paths = ["packages/app/src/subagents/track-presentation.ts"]
+recorded = "2026-07-30T10:02:58.787891244+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "288c26447ed8015f9a8eddc3c4c54e54e681cec8"
+paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
+recorded = "2026-07-30T10:02:58.787893569+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "308f447688296122084eb76fe6f21bec78b44888"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-07-30T10:02:58.787893909+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "807aa6b99de6668f5f8de8d743d1804f136b5008"
+paths = ["packages/app/src/subagents/select.ts"]
+recorded = "2026-07-30T10:02:58.787894220+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "9d506ea8a715b59b995d50d4bc6ab61892f53b9b"
+paths = ["packages/app/src/panels/agent-panel.tsx"]
+recorded = "2026-07-30T10:02:58.787894570+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "9fac1df056ab31b6e64c09a1dd930333129d7ab0"
+paths = ["packages/app/src/subagents/select.test.ts"]
+recorded = "2026-07-30T10:02:58.787894911+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "de51e8bb02cad614eed24ffc0c468b4f45699b08"
+paths = ["packages/app/src/subagents/track-presentation.test.ts"]
+recorded = "2026-07-30T10:02:58.787895262+00:00"

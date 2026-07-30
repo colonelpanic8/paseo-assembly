@@ -1,0 +1,104 @@
+diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
+index 8bf06b17c..fe974b0dc 100644
+--- a/packages/app/src/panels/agent-panel.tsx
++++ b/packages/app/src/panels/agent-panel.tsx
+@@ -236,6 +236,17 @@ function renderChatAgentNonReadyView(args: {
+   return null;
+ }
+ 
++function formatProviderLabel(provider: Agent["provider"]): string {
++  if (!provider) {
++    return "Agent";
++  }
++  return provider
++    .split(/[-_\s]+/)
++    .filter((part) => part.length > 0)
++    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
++    .join(" ");
++}
++
+ function resolveWorkspaceAgentTabLabel(title: string | null | undefined): string | null {
+   if (typeof title !== "string") {
+     return null;
+diff --git a/packages/app/src/subagents/select.ts b/packages/app/src/subagents/select.ts
+index 37c67ed37..eeac132b0 100644
+--- a/packages/app/src/subagents/select.ts
++++ b/packages/app/src/subagents/select.ts
+@@ -40,6 +40,8 @@ export interface ProviderSubagentRow extends SubagentRowRuntime {
+   provider: ProviderSubagentDescriptorPayload["provider"];
+   /** Provider-supplied name. Claude descriptors put the subagent *type* here. */
+   title: string | null;
++  /** Provider-owned subagents do not receive Paseo's rolling purpose summaries. */
++  summary?: null;
+   /** Provider-supplied task summary. Preferred over `title` as the row label. */
+   description: string | null;
+   status: ProviderSubagentDescriptorPayload["status"];
+diff --git a/packages/app/src/subagents/track-presentation.ts b/packages/app/src/subagents/track-presentation.ts
+index 467d88613..9487d8047 100644
+--- a/packages/app/src/subagents/track-presentation.ts
++++ b/packages/app/src/subagents/track-presentation.ts
+@@ -16,6 +16,8 @@ export interface SubagentRowPresentationData {
+   key: string;
+   kind: "agent";
+   label: string;
++  /** Rolling purpose summary shown beneath the label for Paseo-managed subagents. */
++  subtitle: string;
+   /**
+    * Trailing muted detail rendered after the title — "Model · Thinking". Null
+    * when nothing is known, so the row renders no empty slot.
+@@ -36,6 +38,7 @@ export function buildSubagentRowPresentationData(
+     key: `${row.kind}_subagent_${row.id}`,
+     kind: "agent",
+     label: label ?? "",
++    subtitle: row.kind === "paseo" ? (row.summary ?? "") : "",
+     meta: modelDisplay ? formatAgentModelDisplayMeta(modelDisplay) : null,
+     tooltip: resolveSubagentRowTooltip(row, label),
+     titleState: label ? "ready" : "loading",
+diff --git a/packages/app/src/subagents/track.tsx b/packages/app/src/subagents/track.tsx
+index d05209f61..f6625cdf8 100644
+--- a/packages/app/src/subagents/track.tsx
++++ b/packages/app/src/subagents/track.tsx
+@@ -67,7 +67,7 @@ function buildRowView(
+       key: data.key,
+       kind: data.kind,
+       label: data.label,
+-      subtitle: "",
++      subtitle: data.subtitle,
+       tooltip: data.tooltip,
+       titleState: data.titleState,
+       statusBucket: data.statusBucket,
+@@ -237,9 +237,20 @@ function SubagentsTrackRow({
+         {({ pressed }) => (
+           <View style={hovered || pressed ? styles.rowActive : styles.row}>
+             <WorkspaceTabIcon presentation={presentation} />
+-            <Text style={styles.rowLabel} numberOfLines={1}>
+-              {displayLabel}
+-            </Text>
++            <View style={styles.rowText}>
++              <Text style={styles.rowLabel} numberOfLines={1}>
++                {displayLabel}
++              </Text>
++              {presentation.subtitle ? (
++                <Text
++                  style={styles.rowSubtitle}
++                  numberOfLines={1}
++                  testID={`subagents-track-summary-${row.id}`}
++                >
++                  {presentation.subtitle}
++                </Text>
++              ) : null}
++            </View>
+             {meta ? (
+               // Capped width so the meta truncates before it can crowd the title,
+               // including on compact where the action cluster is always visible.
+@@ -441,6 +452,10 @@ const styles = StyleSheet.create((theme) => ({
+     fontSize: theme.fontSize.sm,
+     color: theme.colors.foreground,
+   },
++  rowSubtitle: {
++    fontSize: theme.fontSize.xs,
++    color: theme.colors.foregroundMuted,
++  },
+   rowMeta: {
+     flexShrink: 1,
+     minWidth: 0,
