@@ -6,20 +6,26 @@
 # project's own wrapper, so the Gradle version is pinned by the source rather
 # than by whatever the runner happens to have installed.
 #
-# Usage: build-watch-apk.sh ASSEMBLED_ROOT
+# The applicationId is not cosmetic: the Wearable Data Layer only routes between
+# a phone app and a watch app sharing both applicationId and signing key, so this
+# gate builds the identity that actually ships rather than the local default.
+#
+# Usage: build-watch-apk.sh ASSEMBLED_ROOT [APPLICATION_ID]
 set -euo pipefail
 
-if [[ $# -ne 1 ]]; then
-  echo "usage: $0 ASSEMBLED_ROOT" >&2
+if [[ $# -lt 1 || $# -gt 2 ]]; then
+  echo "usage: $0 ASSEMBLED_ROOT [APPLICATION_ID]" >&2
   exit 2
 fi
 
 assembled_root="$(realpath "$1")"
+application_id="${2:-sh.paseo.assembly}"
 : "${ANDROID_HOME:?ANDROID_HOME must be set (run inside nix develop .#android)}"
 
 cd "$assembled_root/packages/watch"
 
 ./gradlew --no-daemon --console=plain \
+  -PpaseoApplicationId="$application_id" \
   :app:testDebugUnitTest \
   :app:assembleDebug
 
@@ -41,8 +47,8 @@ fi
 badging="$("$aapt2_path" dump badging "$apk")"
 
 actual_package="$(sed -n "s/^package: name='\([^']*\)'.*/\1/p" <<<"$badging")"
-if [[ "$actual_package" != "sh.paseo.watch" ]]; then
-  echo "::error::unexpected Android package ID: $actual_package" >&2
+if [[ "$actual_package" != "$application_id" ]]; then
+  echo "::error::unexpected Android package ID: $actual_package (wanted $application_id)" >&2
   exit 1
 fi
 
