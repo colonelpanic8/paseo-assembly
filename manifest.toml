@@ -61,9 +61,6 @@ pr = 2532
 summary = "Add configurable composer command and skill triggers"
 
 [[entry]]
-patch = "patches/assembled-npm-deps-hash.patch"
-
-[[entry]]
 pr = 2550
 summary = "fix(nix): shrink desktop runtime output"
 
@@ -136,6 +133,9 @@ fixup = "patches/agent-purpose-model-display.patch"
 [[entry]]
 pr = 2660
 summary = "Restore a workspace's agents when the workspace is unarchived"
+
+[[entry]]
+patch = "patches/assembled-npm-deps-hash.patch"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
