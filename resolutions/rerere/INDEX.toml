@@ -255,6 +255,12 @@ recorded = "2026-07-30T23:27:31.966402993+00:00"
 
 [[resolution]]
 entry = "pr-2657"
+hash = "ba46183e3afacee85d1e8274668cdd5378822f96"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-07-31T07:13:00.430368743+00:00"
+
+[[resolution]]
+entry = "pr-2657"
 hash = "c4177206d5e2a7c0cdfe472cbe968e1408f315a5"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-07-30T10:00:45.672831344+00:00"

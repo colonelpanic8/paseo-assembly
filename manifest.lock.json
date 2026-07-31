@@ -28,20 +28,20 @@
       "pr-2652": "2d68e1cc44ff190774d8a26308de82a24e7ea7f7",
       "pr-2655": "75f2a85210a1057fad57593a6b046f8393cdf350",
       "pr-2656": "006255fea8347e57014a495c778bafb70c29458a",
-      "pr-2657": "2131290996721bf39651f3b719298cdd59f95634",
+      "pr-2657": "d4e7eb96f2dcf77010412036ab82c99976232e19",
       "pr-2658": "287bc42162959e932129701842397e7659e4da53",
       "pr-2659": "9170edaa5b802ffec1117afbe534ea6cd8587227",
       "pr-2660": "0533a80c580c6e559e0bfebdfc96fec764968025"
     }
   },
   "build": {
-    "generated": "2026-07-31T03:46:29.129145464+00:00",
+    "generated": "2026-07-31T07:13:00.778851798+00:00",
     "base": "b6f1274f47ba15eb81010e3ae01291ef5532eeec",
-    "commit": "d79f3951ac7d9f53d151a6cacfc3301d4e811359",
-    "pre_provenance_commit": "d79f3951ac7d9f53d151a6cacfc3301d4e811359",
-    "tree": "3c4270df95b7a0b96a34b7d0c739979b44188be6",
-    "built_tree": "3c4270df95b7a0b96a34b7d0c739979b44188be6",
-    "previous_tree": "6854ecaa2e443d5f7738dc81e158b8be8870eb08",
+    "commit": "5b9935e59fc8969d7cd6de9a230811fdbc4394d2",
+    "pre_provenance_commit": "5b9935e59fc8969d7cd6de9a230811fdbc4394d2",
+    "tree": "e83f1a59d716db55cdeca9904ae2cfd24aa22b23",
+    "built_tree": "e83f1a59d716db55cdeca9904ae2cfd24aa22b23",
+    "previous_tree": "3c4270df95b7a0b96a34b7d0c739979b44188be6",
     "tree_changed": true,
     "conflicts": 10,
     "manifest_entries": [
@@ -184,7 +184,7 @@
         "name": "pr-2657",
         "kind": "pr",
         "source": "upstream#2657",
-        "pin": "2131290996721bf39651f3b719298cdd59f95634"
+        "pin": "d4e7eb96f2dcf77010412036ab82c99976232e19"
       },
       {
         "name": "pr-2658",
@@ -357,10 +357,10 @@
       },
       {
         "name": "pr-2657",
-        "oid": "2131290996721bf39651f3b719298cdd59f95634",
+        "oid": "d4e7eb96f2dcf77010412036ab82c99976232e19",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:ba46183e3afacee85d1e8274668cdd5378822f96"
       },
       {
         "name": "pr-2658",
