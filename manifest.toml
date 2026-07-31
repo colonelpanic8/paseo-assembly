@@ -80,7 +80,6 @@ branch = "mine:assembly-build-provenance"
 [[entry]]
 pr = 2579
 summary = "Render SVG project icons on native and fall back for ICO"
-fixup = "patches/project-view-workspace-setup-icon.patch"
 
 [[entry]]
 pr = 2588

@@ -21,41 +21,176 @@ index 8bf06b17c..fe974b0dc 100644
    if (typeof title !== "string") {
      return null;
 diff --git a/packages/app/src/subagents/select.ts b/packages/app/src/subagents/select.ts
-index 37c67ed37..eeac132b0 100644
+index e6cc56563..ee4ffd8bf 100644
 --- a/packages/app/src/subagents/select.ts
 +++ b/packages/app/src/subagents/select.ts
-@@ -40,6 +40,8 @@ export interface ProviderSubagentRow extends SubagentRowRuntime {
-   provider: ProviderSubagentDescriptorPayload["provider"];
-   /** Provider-supplied name. Claude descriptors put the subagent *type* here. */
+@@ -42,6 +42,8 @@ export interface ProviderSubagentRow extends SubagentRowRuntime {
    title: string | null;
-+  /** Provider-owned subagents do not receive Paseo's rolling purpose summaries. */
-+  summary?: null;
    /** Provider-supplied task summary. Preferred over `title` as the row label. */
    description: string | null;
++  /** Compact provider-owned context. The app displays it without interpreting its contents. */
++  subtitle: string | null;
    status: ProviderSubagentDescriptorPayload["status"];
+   requiresAttention: boolean;
+   createdAt: Date;
+@@ -128,6 +130,7 @@ export function selectProviderSubagentsForParent(
+       provider: subagent.provider,
+       title: subagent.title,
+       description: subagent.description,
++      subtitle: subagent.subtitle ?? null,
+       status: subagent.status,
+       requiresAttention: subagent.status === "failed",
+       createdAt: new Date(subagent.createdAt),
+diff --git a/packages/app/src/subagents/track-presentation.test.ts b/packages/app/src/subagents/track-presentation.test.ts
+index 6e8a105db..2b03aacee 100644
+--- a/packages/app/src/subagents/track-presentation.test.ts
++++ b/packages/app/src/subagents/track-presentation.test.ts
+@@ -38,6 +38,7 @@ function providerRow(
+     provider: overrides.provider ?? "claude",
+     title: overrides.title ?? null,
+     description: overrides.description ?? null,
++    subtitle: overrides.subtitle ?? null,
+     status: overrides.status ?? "running",
+     requiresAttention: overrides.requiresAttention ?? false,
+     createdAt: overrides.createdAt ?? new Date("2026-04-20T00:00:00.000Z"),
+@@ -279,3 +280,107 @@ describe("resolveSubagentRowLabel", () => {
+     expect(resolveSubagentRowLabel(providerRow({ id: "a" }))).toBe(null);
+   });
+ });
++
++describe("buildSubagentRowPresentationData for provider rows", () => {
++  function providerPresentationRow(
++    overrides: Partial<ProviderSubagentRow> = {},
++  ): ProviderSubagentRow {
++    return {
++      kind: "provider",
++      id: overrides.id ?? "toolu_1",
++      parentAgentId: "parent",
++      provider: "claude",
++      title: "title" in overrides ? (overrides.title ?? null) : "general-purpose",
++      description: overrides.description ?? null,
++      subtitle: overrides.subtitle ?? null,
++      status: overrides.status ?? "running",
++      requiresAttention: false,
++      createdAt: overrides.createdAt ?? new Date("2026-07-26T00:00:00.000Z"),
++      model: overrides.model ?? null,
++      runtimeModelId: overrides.runtimeModelId ?? null,
++      thinkingOptionId: overrides.thinkingOptionId ?? null,
++      effectiveThinkingOptionId: overrides.effectiveThinkingOptionId,
++    };
++  }
++
++  it("names the row after the task and demotes the subagent type", () => {
++    const presentation = buildSubagentRowPresentationData(
++      providerPresentationRow({ title: "general-purpose", description: "Reply with banana" }),
++    );
++    expect(presentation.label).toBe("Reply with banana");
++    expect(presentation.subtitle).toBe("general-purpose");
++  });
++
++  it("tells two siblings of the same type apart", () => {
++    const left = buildSubagentRowPresentationData(
++      providerPresentationRow({ id: "a", description: "Summarize the docs" }),
++    );
++    const right = buildSubagentRowPresentationData(
++      providerPresentationRow({ id: "b", description: "Reply with banana" }),
++    );
++    expect(left.label).not.toBe(right.label);
++  });
++
++  it("keeps type-as-label and an empty subtitle when a provider reports no task", () => {
++    const presentation = buildSubagentRowPresentationData(
++      providerPresentationRow({ title: "Provider child", description: null }),
++    );
++    expect(presentation.label).toBe("Provider child");
++    expect(presentation.subtitle).toBe("");
++  });
++
++  it("stays in the loading state when neither field is known", () => {
++    const presentation = buildSubagentRowPresentationData(
++      providerPresentationRow({ title: null, description: null }),
++    );
++    expect(presentation.titleState).toBe("loading");
++  });
++
++  it("leaves managed subagent rows with no subtitle", () => {
++    expect(buildSubagentRowPresentationData(row({ id: "a", title: "Managed" })).subtitle).toBe("");
++  });
++});
++
++describe("provider-owned row subtitles", () => {
++  function providerSubtitleRow(overrides: Partial<ProviderSubagentRow> = {}): ProviderSubagentRow {
++    return {
++      kind: "provider",
++      id: "toolu_1",
++      parentAgentId: "parent",
++      provider: "claude",
++      title: "general-purpose",
++      description: "Reply with banana",
++      subtitle: null,
++      status: "running",
++      requiresAttention: false,
++      createdAt: new Date("2026-07-26T00:00:00.000Z"),
++      model: null,
++      runtimeModelId: null,
++      thinkingOptionId: null,
++      effectiveThinkingOptionId: undefined,
++      ...overrides,
++    };
++  }
++
++  it("displays provider context without interpreting it", () => {
++    expect(
++      buildSubagentRowPresentationData(
++        providerSubtitleRow({ subtitle: "general-purpose · Opus 5 · High · 16.5k tokens" }),
++      ).subtitle,
++    ).toBe("general-purpose · Opus 5 · High · 16.5k tokens");
++  });
++
++  it("falls back to the type when an older provider sends no subtitle", () => {
++    expect(buildSubagentRowPresentationData(providerSubtitleRow()).subtitle).toBe(
++      "general-purpose",
++    );
++  });
++
++  it("does not duplicate the type when it is already the primary label", () => {
++    expect(
++      buildSubagentRowPresentationData(
++        providerSubtitleRow({ description: null, subtitle: null, title: "general-purpose" }),
++      ).subtitle,
++    ).toBe("");
++  });
++});
 diff --git a/packages/app/src/subagents/track-presentation.ts b/packages/app/src/subagents/track-presentation.ts
-index 467d88613..9487d8047 100644
+index 5bb8c826b..8a574a146 100644
 --- a/packages/app/src/subagents/track-presentation.ts
 +++ b/packages/app/src/subagents/track-presentation.ts
 @@ -16,6 +16,8 @@ export interface SubagentRowPresentationData {
    key: string;
    kind: "agent";
    label: string;
-+  /** Rolling purpose summary shown beneath the label for Paseo-managed subagents. */
++  /** Secondary task or purpose context rendered beneath the row label. */
 +  subtitle: string;
    /**
     * Trailing muted detail rendered after the title — "Model · Thinking". Null
     * when nothing is known, so the row renders no empty slot.
-@@ -36,6 +38,7 @@ export function buildSubagentRowPresentationData(
+@@ -38,12 +40,13 @@ export function buildSubagentRowPresentationData(
+   const subtitle =
+     row.kind === "paseo"
+       ? row.summary
+-      : resolveRowLabel(row.subtitle) ?? (description ? title : null);
++      : (resolveRowLabel(row.subtitle) ?? (description ? title : null));
+   const status = presentationStatus(row);
+   return {
      key: `${row.kind}_subagent_${row.id}`,
      kind: "agent",
      label: label ?? "",
-+    subtitle: row.kind === "paseo" ? (row.summary ?? "") : "",
++    subtitle: subtitle ?? "",
      meta: modelDisplay ? formatAgentModelDisplayMeta(modelDisplay) : null,
      tooltip: resolveSubagentRowTooltip(row, label),
      titleState: label ? "ready" : "loading",
 diff --git a/packages/app/src/subagents/track.tsx b/packages/app/src/subagents/track.tsx
-index d05209f61..f6625cdf8 100644
+index 93555f6fb..6d3b055f3 100644
 --- a/packages/app/src/subagents/track.tsx
 +++ b/packages/app/src/subagents/track.tsx
 @@ -67,7 +67,7 @@ function buildRowView(
@@ -67,35 +202,15 @@ index d05209f61..f6625cdf8 100644
        tooltip: data.tooltip,
        titleState: data.titleState,
        statusBucket: data.statusBucket,
-@@ -237,9 +237,20 @@ function SubagentsTrackRow({
-         {({ pressed }) => (
-           <View style={hovered || pressed ? styles.rowActive : styles.row}>
-             <WorkspaceTabIcon presentation={presentation} />
--            <Text style={styles.rowLabel} numberOfLines={1}>
--              {displayLabel}
--            </Text>
-+            <View style={styles.rowText}>
-+              <Text style={styles.rowLabel} numberOfLines={1}>
-+                {displayLabel}
-+              </Text>
-+              {presentation.subtitle ? (
-+                <Text
-+                  style={styles.rowSubtitle}
-+                  numberOfLines={1}
-+                  testID={`subagents-track-summary-${row.id}`}
-+                >
-+                  {presentation.subtitle}
-+                </Text>
-+              ) : null}
-+            </View>
-             {meta ? (
-               // Capped width so the meta truncates before it can crowd the title,
-               // including on compact where the action cluster is always visible.
-@@ -441,6 +452,10 @@ const styles = StyleSheet.create((theme) => ({
+@@ -475,6 +475,14 @@ const styles = StyleSheet.create((theme) => ({
      fontSize: theme.fontSize.sm,
      color: theme.colors.foreground,
    },
++  // Keep provider context secondary and bounded so the task remains readable on compact screens.
 +  rowSubtitle: {
++    flexShrink: 1,
++    minWidth: 0,
++    maxWidth: "45%",
 +    fontSize: theme.fontSize.xs,
 +    color: theme.colors.foregroundMuted,
 +  },

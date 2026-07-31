@@ -3,6 +3,18 @@
 # replay uses the pair directories, verification uses the lock tree.
 [[resolution]]
 entry = "agent/live-voice-completion-notifications"
+hash = "b08277702fba82082e48ae959fc2f05bd9e8aed0"
+paths = ["packages/server/src/server/websocket-server.relay-reconnect.test.ts"]
+recorded = "2026-07-31T19:49:50.691193541+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "c7a285e2031363096572cf07615c8b280b11bf37"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-31T19:49:50.691195395+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
 hash = "cc7235a7d0416b7988c3b16772a1f39d4f025742"
 paths = ["packages/server/src/server/agent/agent-projections.ts"]
 recorded = "2026-07-31T15:29:27.839931896+00:00"
@@ -18,6 +30,24 @@ entry = "agent/live-voice-completion-notifications"
 hash = "f3c0b01fde8f31c91a4c66f772411922318987b5"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-07-31T15:29:27.839935213+00:00"
+
+[[resolution]]
+entry = "assembly-agent-env"
+hash = "0c217d7c559e62f81641fd4e4d624374b389ae69"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-07-31T19:41:10.558173670+00:00"
+
+[[resolution]]
+entry = "assembly-agent-env"
+hash = "cda8ebd10fd08a823073386872e4c75929a3d016"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-31T19:41:10.558176295+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
+hash = "053b6ee1e3a269647fa30091fe05c6e933da265b"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-07-31T20:37:45.987945484+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
@@ -42,6 +72,18 @@ entry = "assembly-build-provenance"
 hash = "d9bbe6ccd92dcbee87a1ba414e1e29b53f7f1676"
 paths = ["flake.nix"]
 recorded = "2026-07-28T19:37:27.444681824+00:00"
+
+[[resolution]]
+entry = "assembly-fdroid-variant"
+hash = "9d87af859bd02dba3723967fac1c76191fe52e37"
+paths = ["docs/android.md"]
+recorded = "2026-07-31T19:38:29.346167816+00:00"
+
+[[resolution]]
+entry = "pr-2517"
+hash = "974c6414ef75e38e89dd1f0203de413ddc79138b"
+paths = ["packages/app/src/composer/agent-controls/mode-control.tsx"]
+recorded = "2026-07-31T19:37:58.104303416+00:00"
 
 [[resolution]]
 entry = "pr-2521"
@@ -177,6 +219,12 @@ recorded = "2026-07-28T18:52:01.154832830+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "1a988dda12975d9508e974d2e385c2c75cca366c"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-07-31T19:40:01.811602547+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "44483dcc0e076aefab549f7a0acd5f727174bd0e"
 paths = ["packages/app/src/hooks/sidebar-status-view-model.ts"]
 recorded = "2026-07-31T15:27:49.175462174+00:00"
@@ -207,6 +255,12 @@ recorded = "2026-07-31T15:27:49.175464779+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "6cca63b8105525d333f71d1bdb3142838bc6aabf"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-07-31T19:40:01.811604711+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "d6ff17a8913adbb8983d4836cb49c2adab270be0"
 paths = ["packages/app/e2e/helpers/seed-client.ts"]
 recorded = "2026-07-29T22:17:55.039667273+00:00"
@@ -222,6 +276,12 @@ entry = "pr-2564"
 hash = "f84fdb3ad20459d9fd4270a3ec42645a4419b4d7"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-07-30T08:20:22.737649843+00:00"
+
+[[resolution]]
+entry = "pr-2579"
+hash = "93469855b4503c23af60dfe82b67b38c49963684"
+paths = ["packages/app/src/components/workspace-setup-dialog.tsx"]
+recorded = "2026-07-31T19:40:48.057507101+00:00"
 
 [[resolution]]
 entry = "pr-2628"
@@ -321,9 +381,39 @@ recorded = "2026-07-30T23:27:31.966403249+00:00"
 
 [[resolution]]
 entry = "pr-2658"
+hash = "03a1468cc584f6b3c5a9af3347d0f912646adb4a"
+paths = ["packages/app/src/subagents/track-presentation.test.ts"]
+recorded = "2026-07-31T19:43:02.396114519+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "1936c320bbd0e402f2fb87c5b6bba241e6d2a6ec"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-31T20:38:11.693488928+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "3b994b0ede3f3a843af2e0ab507639850e4c8e95"
+paths = ["packages/app/src/subagents/track-presentation.ts"]
+recorded = "2026-07-31T19:43:02.396116803+00:00"
+
+[[resolution]]
+entry = "pr-2658"
 hash = "5fa8bfce05bdd757ee531543c323f94427f74fe6"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-07-30T10:01:15.828168298+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "7459c92508d3d4adb43c54a41d55a389f6078611"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-07-31T19:43:02.396117034+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "7a272e9fa06a757dd060b6110dd423f45eb18df0"
+paths = ["packages/app/src/subagents/select.ts"]
+recorded = "2026-07-31T19:43:02.396117344+00:00"
 
 [[resolution]]
 entry = "pr-2658"
@@ -333,9 +423,21 @@ recorded = "2026-07-30T10:01:15.828170602+00:00"
 
 [[resolution]]
 entry = "pr-2658"
+hash = "852dbf3b61b95294b119228b538b2040122a7380"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-31T19:43:02.396117625+00:00"
+
+[[resolution]]
+entry = "pr-2658"
 hash = "86eb1f50b0fbb532cb8dcbe229ddc17e22e9bd95"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-07-30T23:27:44.200539953+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "97b7c25dbfe09b0876039197fc56d3276336cda0"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-07-31T19:43:02.396117865+00:00"
 
 [[resolution]]
 entry = "pr-2658"
@@ -347,7 +449,25 @@ recorded = "2026-07-30T10:01:15.828170893+00:00"
 entry = "pr-2658"
 hash = "e10435d994bc1d0b69ac8f0c4961ece645a1da05"
 paths = ["packages/server/src/server/websocket-server.ts"]
-recorded = "2026-07-30T10:01:15.828171183+00:00"
+recorded = "2026-07-31T20:38:11.693491213+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "ea163580d0822e3dc32736ee80ef4e393fe9b7c3"
+paths = ["packages/app/src/subagents/select.test.ts"]
+recorded = "2026-07-31T19:43:02.396118236+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "1110e5a7daae3ae23d7a86c39ab44431257eb6ab"
+paths = ["packages/app/src/subagents/select.test.ts"]
+recorded = "2026-07-31T20:18:44.746645406+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "12fdc4a5138bd1798e9f8567a5cf04ff53e435c0"
+paths = ["packages/app/src/subagents/track-presentation.ts"]
+recorded = "2026-07-31T19:44:31.143948105+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -363,15 +483,81 @@ recorded = "2026-07-30T10:02:58.787893569+00:00"
 
 [[resolution]]
 entry = "pr-2659"
+hash = "2b9ceaf1f7f9f883c2f2e3b368e94e530fa42221"
+paths = ["packages/app/src/subagents/track-presentation.test.ts"]
+recorded = "2026-07-31T20:18:44.746647750+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "2f230a00143fb3467f1ee7d7e54965fe71c06cef"
+paths = ["packages/app/src/subagents/select.ts"]
+recorded = "2026-07-31T19:44:31.143950660+00:00"
+
+[[resolution]]
+entry = "pr-2659"
 hash = "308f447688296122084eb76fe6f21bec78b44888"
 paths = ["packages/app/src/subagents/track.tsx"]
 recorded = "2026-07-30T10:02:58.787893909+00:00"
 
 [[resolution]]
 entry = "pr-2659"
+hash = "30ab74c93865965f9904c75558e734b282ef3ddf"
+paths = ["packages/server/src/server/agent/providers/claude/agent.ts"]
+recorded = "2026-07-31T19:44:31.143951221+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "3caa5d933493e2339c67420d8e3746fff4ae1f5c"
+paths = ["packages/app/src/subagents/select.test.ts"]
+recorded = "2026-07-31T20:39:30.543732940+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "4470a6ffe70b7e9ad4f2c0515535cb69989ae071"
+paths = ["packages/app/src/subagents/select.test.ts"]
+recorded = "2026-07-31T19:44:31.143951662+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "4be8e118cd5ff5e30a518550cb76a6f552b64fa0"
+paths = ["packages/app/src/subagents/track-presentation.test.ts"]
+recorded = "2026-07-31T19:44:31.143953405+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "701bc50a8395c906ea51e4a6e78230cd02d2d67e"
+paths = ["packages/app/src/composer/agent-controls/utils.test.ts"]
+recorded = "2026-07-31T19:44:31.143953726+00:00"
+
+[[resolution]]
+entry = "pr-2659"
 hash = "807aa6b99de6668f5f8de8d743d1804f136b5008"
 paths = ["packages/app/src/subagents/select.ts"]
 recorded = "2026-07-30T10:02:58.787894220+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "835c53edb0cf603d929319a5e7f84f4982295ca2"
+paths = ["packages/app/src/subagents/select.ts"]
+recorded = "2026-07-31T20:39:30.543735154+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "86785a485dd2cc795e6eb1d680b26854911e1d32"
+paths = ["packages/app/src/subagents/track-presentation.ts"]
+recorded = "2026-07-31T20:18:44.746648532+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "8e60dbb7e2ce9092bf6c9517e5b1a8aeca5797e2"
+paths = ["packages/app/src/subagents/track-presentation.test.ts"]
+recorded = "2026-07-31T20:39:30.543735435+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "8e69612275da36d62a4d5b0d8893adc164da1a21"
+paths = ["packages/app/src/subagents/track-presentation.ts"]
+recorded = "2026-07-31T20:39:30.543735765+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -387,6 +573,24 @@ recorded = "2026-07-30T10:02:58.787894911+00:00"
 
 [[resolution]]
 entry = "pr-2659"
+hash = "bbb6c4dd2221426f4a61e7150397a93b00292bd1"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-07-31T20:39:30.543736036+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "c7149845891b7dcfc582f54128f2e635d2ec5fc0"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-07-31T20:18:44.746648943+00:00"
+
+[[resolution]]
+entry = "pr-2659"
 hash = "de51e8bb02cad614eed24ffc0c468b4f45699b08"
 paths = ["packages/app/src/subagents/track-presentation.test.ts"]
 recorded = "2026-07-30T10:02:58.787895262+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "ee75cf9fe987fc656118076dbc518df602e9f6c5"
+paths = ["packages/app/src/subagents/select.ts"]
+recorded = "2026-07-31T20:18:44.746649333+00:00"
