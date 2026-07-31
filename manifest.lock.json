@@ -3,7 +3,7 @@
   "pins": {
     "base": "b6f1274f47ba15eb81010e3ae01291ef5532eeec",
     "entries": {
-      "assembled-npm-deps-hash": "79cb0e03b2db4fc1ea016d61fbad562964ccc7e8",
+      "assembled-npm-deps-hash": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10",
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
@@ -35,13 +35,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-31T07:13:00.778851798+00:00",
+    "generated": "2026-07-31T07:22:39.254471406+00:00",
     "base": "b6f1274f47ba15eb81010e3ae01291ef5532eeec",
-    "commit": "5b9935e59fc8969d7cd6de9a230811fdbc4394d2",
-    "pre_provenance_commit": "5b9935e59fc8969d7cd6de9a230811fdbc4394d2",
-    "tree": "e83f1a59d716db55cdeca9904ae2cfd24aa22b23",
-    "built_tree": "e83f1a59d716db55cdeca9904ae2cfd24aa22b23",
-    "previous_tree": "3c4270df95b7a0b96a34b7d0c739979b44188be6",
+    "commit": "c13c84caf58d4f69addaf05d2ddea5c114924473",
+    "pre_provenance_commit": "c13c84caf58d4f69addaf05d2ddea5c114924473",
+    "tree": "79c6d8e0f0efc6d591cf192aa980f92b60725788",
+    "built_tree": "79c6d8e0f0efc6d591cf192aa980f92b60725788",
+    "previous_tree": "e83f1a59d716db55cdeca9904ae2cfd24aa22b23",
     "tree_changed": true,
     "conflicts": 10,
     "manifest_entries": [
@@ -209,7 +209,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "79cb0e03b2db4fc1ea016d61fbad562964ccc7e8"
+        "pin": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10"
       }
     ],
     "results": [
@@ -360,7 +360,7 @@
         "oid": "d4e7eb96f2dcf77010412036ab82c99976232e19",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:ba46183e3afacee85d1e8274668cdd5378822f96"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2658",
@@ -385,7 +385,7 @@
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "79cb0e03b2db4fc1ea016d61fbad562964ccc7e8",
+        "oid": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10",
         "status": "applied",
         "conflicted": false
       }
