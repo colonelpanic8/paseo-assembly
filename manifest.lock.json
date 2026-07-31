@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "c0dcb4433a7d21202db5c5856170f3b4399ba1e2",
+    "base": "5f575fcdd60a032f0265e3f9bb67b3708092cfbf",
     "entries": {
       "agent/live-voice-completion-notifications": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
       "assembled-npm-deps-hash": "653d66fb9988c40f3749e9a8b93fa4fdf620b881",
@@ -36,10 +36,10 @@
     }
   },
   "build": {
-    "generated": "2026-07-31T22:12:05.503120875+00:00",
-    "base": "c0dcb4433a7d21202db5c5856170f3b4399ba1e2",
-    "commit": "eed799bee19cf77665ea727a4f9f9957a160820f",
-    "pre_provenance_commit": "eed799bee19cf77665ea727a4f9f9957a160820f",
+    "generated": "2026-07-31T22:16:16.442664120+00:00",
+    "base": "5f575fcdd60a032f0265e3f9bb67b3708092cfbf",
+    "commit": "cea98f7996bc263f5dd826b8a15604c5d6bd308f",
+    "pre_provenance_commit": "cea98f7996bc263f5dd826b8a15604c5d6bd308f",
     "tree": "bfff96c2675a0c0dccce9e8e77233d5cdfcd1bcb",
     "built_tree": "bfff96c2675a0c0dccce9e8e77233d5cdfcd1bcb",
     "previous_tree": "bfff96c2675a0c0dccce9e8e77233d5cdfcd1bcb",
