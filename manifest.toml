@@ -132,11 +132,11 @@ pr = 2660
 summary = "Restore a workspace's agents when the workspace is unarchived"
 
 [[entry]]
-patch = "patches/assembled-npm-deps-hash.patch"
-
-[[entry]]
 branch = "mine:agent/live-voice-completion-notifications"
 fixup = "patches/live-voice-completion-notifications-complexity.patch"
+
+[[entry]]
+patch = "patches/assembled-npm-deps-hash.patch"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,

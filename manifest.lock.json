@@ -4,7 +4,7 @@
     "base": "d2de309fc3a2b1669caa700d045772f6c24d66aa",
     "entries": {
       "agent/live-voice-completion-notifications": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
-      "assembled-npm-deps-hash": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10",
+      "assembled-npm-deps-hash": "653d66fb9988c40f3749e9a8b93fa4fdf620b881",
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
       "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
@@ -36,13 +36,13 @@
     }
   },
   "build": {
-    "generated": "2026-07-31T20:48:41.072575637+00:00",
+    "generated": "2026-07-31T21:55:40.950277622+00:00",
     "base": "d2de309fc3a2b1669caa700d045772f6c24d66aa",
-    "commit": "59bbaa2fefc6d9c1e94dacd485ef71bc56f008a0",
-    "pre_provenance_commit": "59bbaa2fefc6d9c1e94dacd485ef71bc56f008a0",
-    "tree": "725c06e8f91d691c9b3dc82b4d424cc5694dceef",
-    "built_tree": "725c06e8f91d691c9b3dc82b4d424cc5694dceef",
-    "previous_tree": "76582f7f37706338218a5dd8c41434b6bbe1ebb8",
+    "commit": "7c143ec04ed1efc5c31623ac248874c4377814ad",
+    "pre_provenance_commit": "7c143ec04ed1efc5c31623ac248874c4377814ad",
+    "tree": "f32f9f6f0635244d44478575614c202e3ad7ce43",
+    "built_tree": "f32f9f6f0635244d44478575614c202e3ad7ce43",
+    "previous_tree": "2a78537125e4fc57553a770346b2638ebc07c17a",
     "tree_changed": true,
     "conflicts": 15,
     "manifest_entries": [
@@ -208,17 +208,17 @@
         "pin": "0533a80c580c6e559e0bfebdfc96fec764968025"
       },
       {
-        "name": "assembled-npm-deps-hash",
-        "kind": "patch",
-        "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10"
-      },
-      {
         "name": "agent/live-voice-completion-notifications",
         "kind": "branch",
         "source": "mine:agent/live-voice-completion-notifications",
         "pin": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
+      },
+      {
+        "name": "assembled-npm-deps-hash",
+        "kind": "patch",
+        "source": "patches/assembled-npm-deps-hash.patch",
+        "pin": "653d66fb9988c40f3749e9a8b93fa4fdf620b881"
       }
     ],
     "results": [
@@ -398,18 +398,18 @@
         "conflicted": false
       },
       {
-        "name": "assembled-npm-deps-hash",
-        "oid": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10",
-        "status": "applied",
-        "conflicted": false
-      },
-      {
         "name": "agent/live-voice-completion-notifications",
         "oid": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
+      },
+      {
+        "name": "assembled-npm-deps-hash",
+        "oid": "653d66fb9988c40f3749e9a8b93fa4fdf620b881",
+        "status": "applied",
+        "conflicted": false
       }
     ]
   }
