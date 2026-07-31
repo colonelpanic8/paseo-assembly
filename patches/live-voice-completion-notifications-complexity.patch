@@ -1,0 +1,24 @@
+diff --git a/packages/app/src/utils/agent-snapshots.test.ts b/packages/app/src/utils/agent-snapshots.test.ts
+index dc2141322..913b7704f 100644
+--- a/packages/app/src/utils/agent-snapshots.test.ts
++++ b/packages/app/src/utils/agent-snapshots.test.ts
+@@ -3,6 +3,7 @@ import type { AgentSnapshotPayload } from "@getpaseo/protocol/messages";
+ import { PARENT_AGENT_ID_LABEL } from "@getpaseo/protocol/agent-labels";
+ import { normalizeAgentSnapshot } from "./agent-snapshots";
+ 
++// oxlint-disable-next-line complexity
+ function createSnapshot(
+   input: Partial<Omit<AgentSnapshotPayload, "labels">> & {
+     labels?: Record<string, unknown>;
+diff --git a/packages/server/src/server/agent/agent-projections.ts b/packages/server/src/server/agent/agent-projections.ts
+index cf5edc08a..e2d26ba96 100644
+--- a/packages/server/src/server/agent/agent-projections.ts
++++ b/packages/server/src/server/agent/agent-projections.ts
+@@ -217,6 +217,7 @@ function buildStoredPersistenceHandle(
+   return toPublicPersistenceHandle(toAgentPersistenceHandle(validProviders, record.persistence));
+ }
+ 
++// oxlint-disable-next-line complexity
+ export function buildStoredAgentPayload(
+   record: StoredAgentRecord,
+   validProviders: Iterable<AgentProvider>,

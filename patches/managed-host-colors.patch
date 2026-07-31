@@ -258,3 +258,16 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
+diff --git a/packages/app/src/components/sidebar/sidebar-status-row-content.tsx b/packages/app/src/components/sidebar/sidebar-status-row-content.tsx
+index fd5cfb79a..608e37642 100644
+--- a/packages/app/src/components/sidebar/sidebar-status-row-content.tsx
++++ b/packages/app/src/components/sidebar/sidebar-status-row-content.tsx
+@@ -342,7 +342,7 @@ function StatusRowLeadingVisual({
+       <ProjectIconView
+         iconDataUri={iconDataUri}
+         initial={workspace.projectName.charAt(0).toUpperCase()}
+-        projectKey={workspace.projectKey}
++        projectViewKey={workspace.projectViewKey}
+         imageStyle={styles.projectIcon}
+         fallbackStyle={styles.projectIconFallback}
+         textStyle={styles.projectIconFallbackText}

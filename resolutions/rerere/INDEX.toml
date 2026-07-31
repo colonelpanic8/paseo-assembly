@@ -2,6 +2,24 @@
 # produced which conflict hash. Auditability only, never load-bearing;
 # replay uses the pair directories, verification uses the lock tree.
 [[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "cc7235a7d0416b7988c3b16772a1f39d4f025742"
+paths = ["packages/server/src/server/agent/agent-projections.ts"]
+recorded = "2026-07-31T15:29:27.839931896+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "f10b3141c418308cc91ba66e379ab7d78197d84e"
+paths = ["packages/app/src/utils/agent-snapshots.test.ts"]
+recorded = "2026-07-31T15:29:27.839934802+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "f3c0b01fde8f31c91a4c66f772411922318987b5"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-07-31T15:29:27.839935213+00:00"
+
+[[resolution]]
 entry = "assembly-build-provenance"
 hash = "30223b09a66bd3964a102b766c052388a4df314b"
 paths = ["nix/desktop-package.nix"]
@@ -81,6 +99,12 @@ recorded = "2026-07-28T18:00:54.368001775+00:00"
 
 [[resolution]]
 entry = "pr-2530"
+hash = "0d062025ff298d41c063ecd98e695859a9e26002"
+paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
+recorded = "2026-07-31T15:28:39.720811076+00:00"
+
+[[resolution]]
+entry = "pr-2530"
 hash = "3e3655e54d47003bdd12802e596b268d01c03f68"
 paths = ["packages/app/src/components/combined-model-selector.tsx"]
 recorded = "2026-07-28T18:21:06.425943198+00:00"
@@ -153,6 +177,12 @@ recorded = "2026-07-28T18:52:01.154832830+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "44483dcc0e076aefab549f7a0acd5f727174bd0e"
+paths = ["packages/app/src/hooks/sidebar-status-view-model.ts"]
+recorded = "2026-07-31T15:27:49.175462174+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "464de75f331b85d4ea94aeed142702b9cf4b679f"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-07-30T13:59:31.776483033+00:00"
@@ -165,9 +195,27 @@ recorded = "2026-07-29T22:17:55.039665300+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "662f18ea2e0d634d461fdebda7d2c58653f35486"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-07-31T15:27:49.175464458+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "676f42fdb62effe064f6c3cb8b402c366c0d0eea"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-07-31T15:27:49.175464779+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "d6ff17a8913adbb8983d4836cb49c2adab270be0"
 paths = ["packages/app/e2e/helpers/seed-client.ts"]
 recorded = "2026-07-29T22:17:55.039667273+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "ea6180efd7e1d4ffe7e0bcf341ba7b1f4f1e7d65"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-07-31T15:27:49.175465120+00:00"
 
 [[resolution]]
 entry = "pr-2564"

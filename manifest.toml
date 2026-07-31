@@ -35,6 +35,7 @@ summary = "Add managed desktop host enrollment"
 [[entry]]
 pr = 2521
 summary = "Add shortcut for next workspace needing attention"
+fixup = "patches/sidebar-project-view-shortcut-targets.patch"
 
 [[entry]]
 branch = "mine:assembly-fdroid-variant"
@@ -79,6 +80,7 @@ branch = "mine:assembly-build-provenance"
 [[entry]]
 pr = 2579
 summary = "Render SVG project icons on native and fall back for ICO"
+fixup = "patches/project-view-workspace-setup-icon.patch"
 
 [[entry]]
 pr = 2588
@@ -132,6 +134,10 @@ summary = "Restore a workspace's agents when the workspace is unarchived"
 
 [[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"
+
+[[entry]]
+branch = "mine:agent/live-voice-completion-notifications"
+fixup = "patches/live-voice-completion-notifications-complexity.patch"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,

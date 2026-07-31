@@ -1,8 +1,9 @@
 {
   "version": 1,
   "pins": {
-    "base": "b6f1274f47ba15eb81010e3ae01291ef5532eeec",
+    "base": "1ddca07d57b67855e793a0a891cba8136a4586fc",
     "entries": {
+      "agent/live-voice-completion-notifications": "81deb5d3a04b3e55cfbee33c446c0be4d41b98bf",
       "assembled-npm-deps-hash": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10",
       "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
       "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
@@ -35,15 +36,15 @@
     }
   },
   "build": {
-    "generated": "2026-07-31T07:22:39.254471406+00:00",
-    "base": "b6f1274f47ba15eb81010e3ae01291ef5532eeec",
-    "commit": "c13c84caf58d4f69addaf05d2ddea5c114924473",
-    "pre_provenance_commit": "c13c84caf58d4f69addaf05d2ddea5c114924473",
-    "tree": "79c6d8e0f0efc6d591cf192aa980f92b60725788",
-    "built_tree": "79c6d8e0f0efc6d591cf192aa980f92b60725788",
-    "previous_tree": "e83f1a59d716db55cdeca9904ae2cfd24aa22b23",
+    "generated": "2026-07-31T15:38:47.518896187+00:00",
+    "base": "1ddca07d57b67855e793a0a891cba8136a4586fc",
+    "commit": "f7d6531fd3bcb15cfb1fa078035c60efe81221d2",
+    "pre_provenance_commit": "f7d6531fd3bcb15cfb1fa078035c60efe81221d2",
+    "tree": "5861a89cf4df3d8bc53c5ffbda1296669743c938",
+    "built_tree": "5861a89cf4df3d8bc53c5ffbda1296669743c938",
+    "previous_tree": "0ae1387654730508c15f961e8b2fa9211e9396a1",
     "tree_changed": true,
-    "conflicts": 10,
+    "conflicts": 12,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -73,7 +74,8 @@
         "name": "pr-2521",
         "kind": "pr",
         "source": "upstream#2521",
-        "pin": "cca2a3a7029165ee9936d3352706a3b945045904"
+        "pin": "cca2a3a7029165ee9936d3352706a3b945045904",
+        "fixup": "587cc52150cc8eecf4eca297523dbe146619b85c"
       },
       {
         "name": "assembly-fdroid-variant",
@@ -86,7 +88,7 @@
         "kind": "pr",
         "source": "upstream#2564",
         "pin": "c15c5964a41c8a1f8564e581e97ec97866c4d74d",
-        "fixup": "edd379924baa3b219bee7a9f68100eba2a30945e"
+        "fixup": "c9a5d1f84a7f709b3e1a0757934e4c872b674524"
       },
       {
         "name": "pr-2530",
@@ -129,7 +131,8 @@
         "name": "pr-2579",
         "kind": "pr",
         "source": "upstream#2579",
-        "pin": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b"
+        "pin": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b",
+        "fixup": "c13d5e81f6ec9f7f14dca82f7906f42af472a7a6"
       },
       {
         "name": "pr-2588",
@@ -210,6 +213,13 @@
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
         "pin": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10"
+      },
+      {
+        "name": "agent/live-voice-completion-notifications",
+        "kind": "branch",
+        "source": "mine:agent/live-voice-completion-notifications",
+        "pin": "81deb5d3a04b3e55cfbee33c446c0be4d41b98bf",
+        "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
       }
     ],
     "results": [
@@ -242,7 +252,8 @@
         "oid": "cca2a3a7029165ee9936d3352706a3b945045904",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere",
+        "fixup": "587cc52150cc8eecf4eca297523dbe146619b85c"
       },
       {
         "name": "assembly-fdroid-variant",
@@ -254,8 +265,9 @@
         "name": "pr-2564",
         "oid": "c15c5964a41c8a1f8564e581e97ec97866c4d74d",
         "status": "merged",
-        "conflicted": false,
-        "fixup": "edd379924baa3b219bee7a9f68100eba2a30945e"
+        "conflicted": true,
+        "resolution": "rerere",
+        "fixup": "c9a5d1f84a7f709b3e1a0757934e4c872b674524"
       },
       {
         "name": "pr-2530",
@@ -302,7 +314,8 @@
         "name": "pr-2579",
         "oid": "f52d2b4c99c78b0c1564ea4377908a01d5ddd20b",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "fixup": "c13d5e81f6ec9f7f14dca82f7906f42af472a7a6"
       },
       {
         "name": "pr-2588",
@@ -388,6 +401,14 @@
         "oid": "da4137674e981ff3eb853ed1c5f1aaf848ce4d10",
         "status": "applied",
         "conflicted": false
+      },
+      {
+        "name": "agent/live-voice-completion-notifications",
+        "oid": "81deb5d3a04b3e55cfbee33c446c0be4d41b98bf",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere",
+        "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
       }
     ]
   }
