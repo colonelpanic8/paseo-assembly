@@ -107,10 +107,6 @@ pr = 2650
 summary = "fix: survive NODE_ENV=production during install"
 
 [[entry]]
-pr = 2652
-summary = "fix(nix): keep docs and CI out of the derivation sources"
-
-[[entry]]
 pr = 2655
 summary = "feat: Wear OS companion app for agent triage"
 

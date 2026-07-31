@@ -57,6 +57,12 @@ recorded = "2026-07-28T19:37:27.444679911+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
+hash = "88b61061e4aa05c072354ed9033f9f2057eefcc0"
+paths = ["nix/package.nix"]
+recorded = "2026-07-31T22:11:43.053130502+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
 hash = "9f6ec111c1d08157be88ff8fcd9ab43025ef0be5"
 paths = ["nix/desktop-package.nix"]
 recorded = "2026-07-28T19:44:15.456571174+00:00"
@@ -222,6 +228,12 @@ entry = "pr-2564"
 hash = "1a988dda12975d9508e974d2e385c2c75cca366c"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-07-31T19:40:01.811602547+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "31e27148c1480032943f2ea0d2fc6c260e7b97a5"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-07-31T22:11:28.949296437+00:00"
 
 [[resolution]]
 entry = "pr-2564"
