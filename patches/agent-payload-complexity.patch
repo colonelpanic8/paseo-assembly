@@ -1,5 +1,5 @@
 diff --git a/packages/app/src/utils/agent-snapshots.test.ts b/packages/app/src/utils/agent-snapshots.test.ts
-index dc2141322..913b7704f 100644
+index a6dbbfd48..d7dc7e6b1 100644
 --- a/packages/app/src/utils/agent-snapshots.test.ts
 +++ b/packages/app/src/utils/agent-snapshots.test.ts
 @@ -3,6 +3,7 @@ import type { AgentSnapshotPayload } from "@getpaseo/protocol/messages";
@@ -11,10 +11,10 @@ index dc2141322..913b7704f 100644
    input: Partial<Omit<AgentSnapshotPayload, "labels">> & {
      labels?: Record<string, unknown>;
 diff --git a/packages/server/src/server/agent/agent-projections.ts b/packages/server/src/server/agent/agent-projections.ts
-index cf5edc08a..e2d26ba96 100644
+index fde244dfb..77f7f531f 100644
 --- a/packages/server/src/server/agent/agent-projections.ts
 +++ b/packages/server/src/server/agent/agent-projections.ts
-@@ -217,6 +217,7 @@ function buildStoredPersistenceHandle(
+@@ -223,6 +223,7 @@ function buildStoredPersistenceHandle(
    return toPublicPersistenceHandle(toAgentPersistenceHandle(validProviders, record.persistence));
  }
  
@@ -22,3 +22,72 @@ index cf5edc08a..e2d26ba96 100644
  export function buildStoredAgentPayload(
    record: StoredAgentRecord,
    validProviders: Iterable<AgentProvider>,
+diff --git a/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt b/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt
+index 67d8640de..a5d932596 100644
+--- a/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt
++++ b/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt
+@@ -54,7 +54,13 @@ object WearBridge {
+ 
+   /** DataClient path for one agent's transcript. */
+   fun transcriptPath(serverId: String, agentId: String): String =
+-    "$TRANSCRIPT_PATH_PREFIX/${Uri.encode(serverId)}/${Uri.encode(agentId)}"
++    transcriptPathWithEncoder(serverId, agentId, Uri::encode)
++
++  internal fun transcriptPathWithEncoder(
++    serverId: String,
++    agentId: String,
++    encode: (String) -> String,
++  ): String = "$TRANSCRIPT_PATH_PREFIX/${encode(serverId)}/${encode(agentId)}"
+ 
+   /**
+    * DataClient path prefix for per-project icons: `/paseo/icon/<Uri.encode(projectKey)>`.
+diff --git a/packages/watch/app/src/test/java/sh/paseo/watch/data/TranscriptCacheTest.kt b/packages/watch/app/src/test/java/sh/paseo/watch/data/TranscriptCacheTest.kt
+index 463e1f57c..0ce88c487 100644
+--- a/packages/watch/app/src/test/java/sh/paseo/watch/data/TranscriptCacheTest.kt
++++ b/packages/watch/app/src/test/java/sh/paseo/watch/data/TranscriptCacheTest.kt
+@@ -79,12 +79,12 @@ class TranscriptCacheTest {
+   fun `pruning keeps only agents the snapshot still lists`() {
+     val cache =
+       mapOf(
+-        "a-1" to transcript("a-1", 100),
+-        "a-2" to transcript("a-2", 100),
+-        "gone" to transcript("gone", 100),
++        "srv-1\u0000a-1" to transcript("a-1", 100),
++        "srv-1\u0000a-2" to transcript("a-2", 100),
++        "srv-1\u0000gone" to transcript("gone", 100),
+       )
+     val kept = cache.retainingAgentsIn(listOf(workspace("ws-1", "a-1"), workspace("ws-2", "a-2")))
+-    assertEquals(setOf("a-1", "a-2"), kept.keys)
++    assertEquals(setOf("srv-1\u0000a-1", "srv-1\u0000a-2"), kept.keys)
+   }
+ 
+   @Test
+@@ -97,7 +97,11 @@ class TranscriptCacheTest {
+ 
+   @Test
+   fun `pruning an unchanged agent set keeps every entry`() {
+-    val cache = mapOf("a-1" to transcript("a-1", 100), "a-2" to transcript("a-2", 100))
++    val cache =
++      mapOf(
++        "srv-1\u0000a-1" to transcript("a-1", 100),
++        "srv-1\u0000a-2" to transcript("a-2", 100),
++      )
+     val kept = cache.retainingAgentsIn(listOf(workspace("ws-1", "a-1", "a-2")))
+     assertEquals(cache, kept)
+   }
+diff --git a/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt b/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt
+index 8fb60cfaf..621de5820 100644
+--- a/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt
++++ b/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt
+@@ -246,8 +246,9 @@ class WearBridgeTest {
+ 
+   @Test
+   fun `transcript path is per agent under the shared prefix`() {
+-    assertEquals("/paseo/transcript/agent-1", WearBridge.transcriptPath("agent-1"))
+-    assertTrue(WearBridge.transcriptPath("agent-1").startsWith(WearBridge.TRANSCRIPT_PATH_PREFIX))
++    val path = WearBridge.transcriptPathWithEncoder("srv-1", "agent-1") { it }
++    assertEquals("/paseo/transcript/srv-1/agent-1", path)
++    assertTrue(path.startsWith(WearBridge.TRANSCRIPT_PATH_PREFIX))
+   }
+ 
+   @Test

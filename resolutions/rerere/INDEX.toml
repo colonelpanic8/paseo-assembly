@@ -1137,6 +1137,12 @@ recorded = "2026-08-01T19:26:48.217138327+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "928c2cbec28ba39a991295d88c7d3a818dda99b7"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-01T22:01:50.676260339+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "a5df2d62760aae4661320797f198b8917d0b7a2d"
 paths = ["packages/watch/app/src/main/AndroidManifest.xml"]
 recorded = "2026-08-01T19:26:48.217138727+00:00"

@@ -1,3 +1,14 @@
+diff --git a/packages/app/src/hooks/use-sidebar-workspaces-list.ts b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+--- a/packages/app/src/hooks/use-sidebar-workspaces-list.ts
++++ b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+@@ -16,7 +16,6 @@ import {
+   deriveSidebarLoadingState,
+   resolveSidebarServerIds,
+   type ProjectStatusSession,
+-  resolveSidebarServerIds,
+   type SidebarProjectEntry,
+   type SidebarWorkspaceEntry,
+   type SidebarWorkspacePlacement,
 diff --git a/docs/managed-hosts.md b/docs/managed-hosts.md
 index 0ec93214a..ad5b98e89 100644
 --- a/docs/managed-hosts.md
