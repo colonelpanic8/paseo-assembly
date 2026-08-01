@@ -3,33 +3,24 @@
   "pins": {
     "base": "048b82f2a7b3ecc9b62bc5b817729f4ca2741863",
     "entries": {
-      "agent/live-voice-completion-notifications": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
       "assembled-npm-deps-hash": "a7b2d892f0e595999e5c7deddf8de97d926cc1d6",
-      "assembly-agent-env": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
-      "assembly-build-provenance": "5245596b67d48bb6fc3d97700a864d41c235a843",
-      "assembly-fdroid-variant": "721a7d806e545284e2b79ce86377d65fd460bafe",
-      "assembly-wear-os": "213cf7ded3874882298ffdd5dfe4c6a665fc1284",
+      "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
+      "assembly-build-provenance": "61bac63ef8d544b9560e1d747f6571778abdfbab",
+      "assembly-fdroid-variant": "12d6079c71fcce1b32718b556cbc6bef700507ab",
       "disable-worktree-setup-callout": "aec4452374fe8f9710a1b1469b74f7e197f63f56",
       "pr-2506": "fef5e14832d90a2e3325eb3ff8e3f07aee42d119",
-      "pr-2514": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
       "pr-2517": "98b2bf77964deed6c86418b4deec3a9a3e891045",
       "pr-2520": "ad5a7c10501a2b946fb2d117ffff43d8399756fe",
       "pr-2521": "ba77d4663527a1e8d34e490e944201611a40d3b4",
       "pr-2530": "cb9e7699fb434ed6e9c21ae633d201bdcbfe89ef",
       "pr-2532": "b4e97b1c3e3b5678c7089bfaddbb0cc9f2a5e758",
-      "pr-2550": "298323182ae496adc73933cf139168a7fbfa3663",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2556": "70ed70d36e2eabd3876a22931954319ec202c902",
       "pr-2564": "8622130d42d9515643b27ad7d8e1ab4486e0b97a",
       "pr-2579": "5d934f2f1cb71c8ac5d064201064779ee8dd5660",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "3500cfbaf55da8c8d59b13219f3d4b069be5bdad",
       "pr-2629": "07399da95b6b734a2580f8fe65b5f95bbdc0d581",
       "pr-2650": "d6c96def0095f66565b29873bcddf9678fb3675c",
-      "pr-2652": "d656162d7b7e5fc313f2c22e9494a6f71b984618",
-      "pr-2655": "75f2a85210a1057fad57593a6b046f8393cdf350",
-      "pr-2656": "006255fea8347e57014a495c778bafb70c29458a",
-      "pr-2657": "5cb105ef14e0ae024fefb5db27a351e494c636c9",
       "pr-2658": "bf178cf4c933f8f4df121a2d188954bc0605d251",
       "pr-2659": "3fbe979e99184da1a33376b9570319fe60f773c3",
       "pr-2660": "9ee870e908292ae2cf6da8c6b5fcac10fa89bce5",
@@ -53,15 +44,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-01T22:20:07.256636721+00:00",
+    "generated": "2026-08-01T22:53:58.738137038+00:00",
     "base": "048b82f2a7b3ecc9b62bc5b817729f4ca2741863",
-    "commit": "bd7dd72edff468e8b89c3d2271bdd177eef70e26",
-    "pre_provenance_commit": "bd7dd72edff468e8b89c3d2271bdd177eef70e26",
+    "commit": "88f32f9173e36e0ee9d68dcb435365d2981d232d",
+    "pre_provenance_commit": "88f32f9173e36e0ee9d68dcb435365d2981d232d",
     "tree": "a7a3b6b57d88a68b3d9193ce8a2f50155e70e150",
     "built_tree": "a7a3b6b57d88a68b3d9193ce8a2f50155e70e150",
-    "previous_tree": "258f46a6efc5940884763b6b8b9ecccd3405f22a",
-    "tree_changed": true,
-    "conflicts": 12,
+    "previous_tree": "a7a3b6b57d88a68b3d9193ce8a2f50155e70e150",
+    "tree_changed": false,
+    "conflicts": 10,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -93,7 +84,7 @@
         "name": "assembly-fdroid-variant",
         "kind": "branch",
         "source": "mine:assembly-fdroid-variant",
-        "pin": "721a7d806e545284e2b79ce86377d65fd460bafe"
+        "pin": "12d6079c71fcce1b32718b556cbc6bef700507ab"
       },
       {
         "name": "pr-2564",
@@ -135,7 +126,7 @@
         "name": "assembly-build-provenance",
         "kind": "branch",
         "source": "mine:assembly-build-provenance",
-        "pin": "5245596b67d48bb6fc3d97700a864d41c235a843"
+        "pin": "61bac63ef8d544b9560e1d747f6571778abdfbab"
       },
       {
         "name": "pr-2579",
@@ -159,7 +150,7 @@
         "name": "assembly-agent-env",
         "kind": "branch",
         "source": "mine:assembly-agent-env",
-        "pin": "d82f6a29b4096ccfc4aa79c491517fa638d65e61"
+        "pin": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873"
       },
       {
         "name": "pr-2629",
@@ -266,10 +257,9 @@
       },
       {
         "name": "assembly-fdroid-variant",
-        "oid": "721a7d806e545284e2b79ce86377d65fd460bafe",
+        "oid": "12d6079c71fcce1b32718b556cbc6bef700507ab",
         "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere"
+        "conflicted": false
       },
       {
         "name": "pr-2564",
@@ -278,8 +268,8 @@
         "conflicted": false,
         "fixup": "73db114179c15dd629d0c97de1111ec6274a6909",
         "derived": {
-          "base_tip": "d27aea2edfafe19c1209afe93683c108fe6d78f6",
-          "tip": "516e9905651fa1eca212b848376183d59775acb0"
+          "base_tip": "dd7b858aeddabbd7ffa802b83f976c4cde826928",
+          "tip": "6ba52564dcfd1870bf79e82e47ef4a104456763a"
         }
       },
       {
@@ -304,10 +294,10 @@
       },
       {
         "name": "assembly-build-provenance",
-        "oid": "5245596b67d48bb6fc3d97700a864d41c235a843",
+        "oid": "61bac63ef8d544b9560e1d747f6571778abdfbab",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:669bfea5b99dfefebad8769cb050864276044361,da6d2b65f2c967c3507f3e423674099fe439fec3"
       },
       {
         "name": "pr-2579",
@@ -330,10 +320,9 @@
       },
       {
         "name": "assembly-agent-env",
-        "oid": "d82f6a29b4096ccfc4aa79c491517fa638d65e61",
+        "oid": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
         "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere"
+        "conflicted": false
       },
       {
         "name": "pr-2629",
@@ -384,8 +373,8 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "b49ae75d7e671b56ad9158a65e2aa54de89a7084",
-          "tip": "ca14f7119345d1a11c2865ede4b2a307ec893f90"
+          "base_tip": "bdbb14c0a5373c71067a4fba6297ceb932da3671",
+          "tip": "913f45cf35ca2a4fc7ec27cc8387366ccf98d4c8"
         }
       },
       {
