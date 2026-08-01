@@ -34,17 +34,17 @@
       "pr-2659": "bb521623c89f6bf6d02b21f5167ac4555b3cc78e",
       "pr-2660": "0533a80c580c6e559e0bfebdfc96fec764968025",
       "pr-2730": "937c07d482bba740a7962da096cd65ce3c4ff03b",
-      "watch-live-voice": "e8a2063c65645e09982b093acc2477fd8f76916d"
+      "watch-live-voice": "7b349c7b29dcad357d10cd185997fbd417350210"
     }
   },
   "build": {
-    "generated": "2026-08-01T08:32:27.279809285+00:00",
+    "generated": "2026-08-01T09:09:02.646923959+00:00",
     "base": "70ed70d36e2eabd3876a22931954319ec202c902",
-    "commit": "309cddf0263a5805a57ecb9bf5d966d46b426a12",
-    "pre_provenance_commit": "309cddf0263a5805a57ecb9bf5d966d46b426a12",
-    "tree": "a0ebdef9693339c909813ba9689df639f34fd68b",
-    "built_tree": "a0ebdef9693339c909813ba9689df639f34fd68b",
-    "previous_tree": "86d6fa4092ca24de51012e92fbeb22f6fbbbe115",
+    "commit": "634a0b5905142c8ba911d30067af75ea9ecf02fe",
+    "pre_provenance_commit": "634a0b5905142c8ba911d30067af75ea9ecf02fe",
+    "tree": "8d924b6f0ae50efd8601b9f11455db8ac10dfe48",
+    "built_tree": "8d924b6f0ae50efd8601b9f11455db8ac10dfe48",
+    "previous_tree": "a0ebdef9693339c909813ba9689df639f34fd68b",
     "tree_changed": true,
     "conflicts": 15,
     "manifest_entries": [
@@ -195,7 +195,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "e8a2063c65645e09982b093acc2477fd8f76916d",
+        "pin": "7b349c7b29dcad357d10cd185997fbd417350210",
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
       },
       {
@@ -372,7 +372,7 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "e8a2063c65645e09982b093acc2477fd8f76916d",
+        "oid": "7b349c7b29dcad357d10cd185997fbd417350210",
         "status": "merged",
         "conflicted": false,
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
