@@ -19,6 +19,7 @@ tag_prefix = "paseo-assembled"
 [[entry]]
 pr = 2506
 summary = "fix(nix): restore desktop app icon matching"
+fixup = "patches/desktop-package-version-rec.patch"
 
 [[entry]]
 pr = 2517
@@ -64,11 +65,6 @@ summary = "fix(nix): shrink desktop runtime output"
 [[entry]]
 pr = 2553
 summary = "build(android): add Nix toolchain and release runner"
-
-[[entry]]
-pr = 2556
-summary = "Build Paseo Desktop from the Nix flake on macOS"
-fixup = "patches/desktop-package-version-rec.patch"
 
 [[entry]]
 branch = "mine:assembly-build-provenance"
@@ -129,6 +125,10 @@ fixup = "patches/live-voice-completion-notifications-complexity.patch"
 
 [[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"
+
+[[entry]]
+pr = 2730
+summary = "fix(app): make host pickers searchable"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,

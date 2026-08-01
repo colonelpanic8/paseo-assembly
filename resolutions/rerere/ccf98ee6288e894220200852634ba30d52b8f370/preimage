@@ -1,0 +1,157 @@
+import { describe, expect, it } from "vitest";
+import type { AgentSnapshotPayload } from "@getpaseo/protocol/messages";
+import { PARENT_AGENT_ID_LABEL } from "@getpaseo/protocol/agent-labels";
+import { normalizeAgentSnapshot } from "./agent-snapshots";
+
+function createSnapshot(
+  input: Partial<Omit<AgentSnapshotPayload, "labels">> & {
+    labels?: Record<string, unknown>;
+  } = {},
+): AgentSnapshotPayload {
+  return {
+    id: input.id ?? "agent-1",
+    provider: input.provider ?? "codex",
+    cwd: input.cwd ?? "/repo",
+    model: input.model ?? null,
+    createdAt: input.createdAt ?? "2026-04-20T00:00:00.000Z",
+    updatedAt: input.updatedAt ?? "2026-04-20T00:01:00.000Z",
+    lastUserMessageAt: input.lastUserMessageAt ?? null,
+    status: input.status ?? "idle",
+    capabilities: input.capabilities ?? {
+      supportsStreaming: true,
+      supportsSessionPersistence: true,
+      supportsDynamicModes: true,
+      supportsMcpServers: true,
+      supportsReasoningStream: true,
+      supportsToolInvocations: true,
+    },
+    currentModeId: input.currentModeId ?? null,
+    availableModes: input.availableModes ?? [],
+    pendingPermissions: input.pendingPermissions ?? [],
+    persistence: input.persistence ?? null,
+    ...(input.lastError ? { lastError: input.lastError } : {}),
+    ...(input.lastFailure ? { lastFailure: input.lastFailure } : {}),
+    title: input.title ?? null,
+    summary: input.summary ?? null,
+    labels: (input.labels ?? {}) as AgentSnapshotPayload["labels"],
+    thinkingOptionId: input.thinkingOptionId ?? null,
+    // Forwarded only when present: absent-vs-explicit-null is load-bearing here.
+    ...("effectiveThinkingOptionId" in input
+      ? { effectiveThinkingOptionId: input.effectiveThinkingOptionId }
+      : {}),
+  };
+}
+
+describe("normalizeAgentSnapshot", () => {
+  it("preserves an optional purpose summary at the app boundary", () => {
+    const summarized = normalizeAgentSnapshot(
+      createSnapshot({ summary: "Reviewing state projections" }),
+      "server-1",
+    );
+    const missing = normalizeAgentSnapshot(createSnapshot(), "server-1");
+
+    expect(summarized.summary).toBe("Reviewing state projections");
+    expect(missing.summary).toBeNull();
+  });
+
+  it("derives parentAgentId from the parent label while preserving labels", () => {
+    const labels = {
+      [PARENT_AGENT_ID_LABEL]: "parent-1",
+      "custom.label": "still-here",
+    };
+
+    const agent = normalizeAgentSnapshot(createSnapshot({ labels }), "server-1");
+
+    expect(agent.parentAgentId).toBe("parent-1");
+    expect(agent.labels).toEqual(labels);
+  });
+
+  it("trims whitespace around the parent label", () => {
+    const agent = normalizeAgentSnapshot(
+      createSnapshot({ labels: { [PARENT_AGENT_ID_LABEL]: "  parent-1 \n" } }),
+      "server-1",
+    );
+
+    expect(agent.parentAgentId).toBe("parent-1");
+  });
+
+  it("maps missing, empty, and non-string parent labels to null", () => {
+    const missing = normalizeAgentSnapshot(createSnapshot(), "server-1");
+    const empty = normalizeAgentSnapshot(
+      createSnapshot({ labels: { [PARENT_AGENT_ID_LABEL]: "   " } }),
+      "server-1",
+    );
+    const nonString = normalizeAgentSnapshot(
+      createSnapshot({ labels: { [PARENT_AGENT_ID_LABEL]: 42 } }),
+      "server-1",
+    );
+
+    expect(missing.parentAgentId).toBeNull();
+    expect(empty.parentAgentId).toBeNull();
+    expect(nonString.parentAgentId).toBeNull();
+  });
+<<<<<<<
+
+  it("carries the daemon-computed effective thinking option into the store", () => {
+    const agent = normalizeAgentSnapshot(
+      createSnapshot({ thinkingOptionId: "high", effectiveThinkingOptionId: "xhigh" }),
+      "server-1",
+    );
+
+    expect(agent.thinkingOptionId).toBe("high");
+    expect(agent.effectiveThinkingOptionId).toBe("xhigh");
+  });
+
+  it("preserves an explicit null effective thinking option", () => {
+    const agent = normalizeAgentSnapshot(
+      createSnapshot({ thinkingOptionId: "high", effectiveThinkingOptionId: null }),
+      "server-1",
+    );
+
+    expect(agent.effectiveThinkingOptionId).toBeNull();
+  });
+
+  it("leaves the effective thinking option undefined when the daemon omitted it", () => {
+    // The undefined/null distinction is load-bearing: undefined means an older
+    // daemon, so display falls back to the configured value.
+    const agent = normalizeAgentSnapshot(createSnapshot({ thinkingOptionId: "high" }), "server-1");
+
+    expect(agent.effectiveThinkingOptionId).toBeUndefined();
+  });
+
+  it("surfaces authentication failures as sign-in required", () => {
+    const agent = normalizeAgentSnapshot(
+      createSnapshot({
+        status: "error",
+        lastError: "Provider failed",
+        lastFailure: {
+          kind: "authentication_required",
+          message: "OAuth token expired",
+        },
+      }),
+      "server-1",
+    );
+
+    expect(agent.lastFailure?.kind).toBe("authentication_required");
+    expect(agent.lastError).toBe("Sign in required. OAuth token expired");
+  });
+=======
+
+  it("surfaces authentication failures as sign-in required", () => {
+    const agent = normalizeAgentSnapshot(
+      createSnapshot({
+        status: "error",
+        lastError: "Provider failed",
+        lastFailure: {
+          kind: "authentication_required",
+          message: "OAuth token expired",
+        },
+      }),
+      "server-1",
+    );
+
+    expect(agent.lastFailure?.kind).toBe("authentication_required");
+    expect(agent.lastError).toBe("Sign in required. OAuth token expired");
+  });
+>>>>>>>
+});
