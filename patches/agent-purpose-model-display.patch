@@ -1,8 +1,8 @@
 diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
-index 8bf06b17c..fe974b0dc 100644
+index 3ce0437c4..3832596f6 100644
 --- a/packages/app/src/panels/agent-panel.tsx
 +++ b/packages/app/src/panels/agent-panel.tsx
-@@ -236,6 +236,17 @@ function renderChatAgentNonReadyView(args: {
+@@ -242,6 +242,17 @@ function renderChatAgentNonReadyView(args: {
    return null;
  }
  
@@ -20,40 +20,11 @@ index 8bf06b17c..fe974b0dc 100644
  function resolveWorkspaceAgentTabLabel(title: string | null | undefined): string | null {
    if (typeof title !== "string") {
      return null;
-diff --git a/packages/app/src/subagents/select.ts b/packages/app/src/subagents/select.ts
-index e6cc56563..ee4ffd8bf 100644
---- a/packages/app/src/subagents/select.ts
-+++ b/packages/app/src/subagents/select.ts
-@@ -42,6 +42,8 @@ export interface ProviderSubagentRow extends SubagentRowRuntime {
-   title: string | null;
-   /** Provider-supplied task summary. Preferred over `title` as the row label. */
-   description: string | null;
-+  /** Compact provider-owned context. The app displays it without interpreting its contents. */
-+  subtitle: string | null;
-   status: ProviderSubagentDescriptorPayload["status"];
-   requiresAttention: boolean;
-   createdAt: Date;
-@@ -128,6 +130,7 @@ export function selectProviderSubagentsForParent(
-       provider: subagent.provider,
-       title: subagent.title,
-       description: subagent.description,
-+      subtitle: subagent.subtitle ?? null,
-       status: subagent.status,
-       requiresAttention: subagent.status === "failed",
-       createdAt: new Date(subagent.createdAt),
 diff --git a/packages/app/src/subagents/track-presentation.test.ts b/packages/app/src/subagents/track-presentation.test.ts
-index 6e8a105db..2b03aacee 100644
+index c33d0dbff..402eaf53b 100644
 --- a/packages/app/src/subagents/track-presentation.test.ts
 +++ b/packages/app/src/subagents/track-presentation.test.ts
-@@ -38,6 +38,7 @@ function providerRow(
-     provider: overrides.provider ?? "claude",
-     title: overrides.title ?? null,
-     description: overrides.description ?? null,
-+    subtitle: overrides.subtitle ?? null,
-     status: overrides.status ?? "running",
-     requiresAttention: overrides.requiresAttention ?? false,
-     createdAt: overrides.createdAt ?? new Date("2026-04-20T00:00:00.000Z"),
-@@ -279,3 +280,107 @@ describe("resolveSubagentRowLabel", () => {
+@@ -303,3 +303,107 @@ describe("resolveSubagentRowLabel", () => {
      expect(resolveSubagentRowLabel(providerRow({ id: "a" }))).toBe(null);
    });
  });
@@ -162,58 +133,18 @@ index 6e8a105db..2b03aacee 100644
 +  });
 +});
 diff --git a/packages/app/src/subagents/track-presentation.ts b/packages/app/src/subagents/track-presentation.ts
-index 5bb8c826b..8a574a146 100644
+index 45d84bbaf..db156c10a 100644
 --- a/packages/app/src/subagents/track-presentation.ts
 +++ b/packages/app/src/subagents/track-presentation.ts
-@@ -16,6 +16,8 @@ export interface SubagentRowPresentationData {
+@@ -16,7 +16,10 @@ export interface SubagentRowPresentationData {
    key: string;
    kind: "agent";
    label: string;
-+  /** Secondary task or purpose context rendered beneath the row label. */
-+  subtitle: string;
+-  /** Secondary provider context rendered after the row label. */
++  /**
++   * Secondary context for the row: the purpose summary for paseo-managed
++   * agents, provider task context otherwise.
++   */
+   subtitle: string;
    /**
     * Trailing muted detail rendered after the title — "Model · Thinking". Null
-    * when nothing is known, so the row renders no empty slot.
-@@ -38,12 +40,13 @@ export function buildSubagentRowPresentationData(
-   const subtitle =
-     row.kind === "paseo"
-       ? row.summary
--      : resolveRowLabel(row.subtitle) ?? (description ? title : null);
-+      : (resolveRowLabel(row.subtitle) ?? (description ? title : null));
-   const status = presentationStatus(row);
-   return {
-     key: `${row.kind}_subagent_${row.id}`,
-     kind: "agent",
-     label: label ?? "",
-+    subtitle: subtitle ?? "",
-     meta: modelDisplay ? formatAgentModelDisplayMeta(modelDisplay) : null,
-     tooltip: resolveSubagentRowTooltip(row, label),
-     titleState: label ? "ready" : "loading",
-diff --git a/packages/app/src/subagents/track.tsx b/packages/app/src/subagents/track.tsx
-index 93555f6fb..6d3b055f3 100644
---- a/packages/app/src/subagents/track.tsx
-+++ b/packages/app/src/subagents/track.tsx
-@@ -67,7 +67,7 @@ function buildRowView(
-       key: data.key,
-       kind: data.kind,
-       label: data.label,
--      subtitle: "",
-+      subtitle: data.subtitle,
-       tooltip: data.tooltip,
-       titleState: data.titleState,
-       statusBucket: data.statusBucket,
-@@ -475,6 +475,14 @@ const styles = StyleSheet.create((theme) => ({
-     fontSize: theme.fontSize.sm,
-     color: theme.colors.foreground,
-   },
-+  // Keep provider context secondary and bounded so the task remains readable on compact screens.
-+  rowSubtitle: {
-+    flexShrink: 1,
-+    minWidth: 0,
-+    maxWidth: "45%",
-+    fontSize: theme.fontSize.xs,
-+    color: theme.colors.foregroundMuted,
-+  },
-   rowMeta: {
-     flexShrink: 1,
-     minWidth: 0,

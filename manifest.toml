@@ -4,8 +4,8 @@
 # on it or merge it back.
 
 [remotes]
-upstream = "https://github.com/getpaseo/paseo"
-mine = "https://github.com/colonelpanic8/paseo"
+upstream = "git@github.com:getpaseo/paseo"
+mine = "git@github.com:colonelpanic8/paseo"
 
 [base]
 remote = "upstream"
@@ -63,10 +63,6 @@ summary = "Add cross-provider model search"
 [[entry]]
 pr = 2532
 summary = "Add configurable composer command and skill triggers"
-
-[[entry]]
-pr = 2550
-summary = "fix(nix): shrink desktop runtime output"
 
 [[entry]]
 pr = 2553
@@ -156,6 +152,10 @@ patch = "patches/assembled-npm-deps-hash.patch"
 [[entry]]
 pr = 2730
 summary = "fix(app): make host pickers searchable"
+
+[[entry]]
+pr = 2772
+summary = "Show agent turn completion times"
 
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
