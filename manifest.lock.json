@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "70ed70d36e2eabd3876a22931954319ec202c902",
+    "base": "048b82f2a7b3ecc9b62bc5b817729f4ca2741863",
     "entries": {
       "agent/live-voice-completion-notifications": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
       "assembled-npm-deps-hash": "653d66fb9988c40f3749e9a8b93fa4fdf620b881",
@@ -29,24 +29,24 @@
       "pr-2652": "d656162d7b7e5fc313f2c22e9494a6f71b984618",
       "pr-2655": "75f2a85210a1057fad57593a6b046f8393cdf350",
       "pr-2656": "006255fea8347e57014a495c778bafb70c29458a",
-      "pr-2657": "a18a72624f69d056011d7c25763b12480c2ccb7c",
+      "pr-2657": "5cb105ef14e0ae024fefb5db27a351e494c636c9",
       "pr-2658": "834f37ddb5587db0363f03f6c2ca34a73d0ae486",
       "pr-2659": "bb521623c89f6bf6d02b21f5167ac4555b3cc78e",
       "pr-2660": "0533a80c580c6e559e0bfebdfc96fec764968025",
       "pr-2730": "937c07d482bba740a7962da096cd65ce3c4ff03b",
-      "watch-live-voice": "7b349c7b29dcad357d10cd185997fbd417350210"
+      "watch-live-voice": "8025343d93f9cfc092de54f4da2d7595109d6a00"
     }
   },
   "build": {
-    "generated": "2026-08-01T09:09:02.646923959+00:00",
-    "base": "70ed70d36e2eabd3876a22931954319ec202c902",
-    "commit": "634a0b5905142c8ba911d30067af75ea9ecf02fe",
-    "pre_provenance_commit": "634a0b5905142c8ba911d30067af75ea9ecf02fe",
-    "tree": "8d924b6f0ae50efd8601b9f11455db8ac10dfe48",
-    "built_tree": "8d924b6f0ae50efd8601b9f11455db8ac10dfe48",
-    "previous_tree": "a0ebdef9693339c909813ba9689df639f34fd68b",
+    "generated": "2026-08-01T19:33:58.644309072+00:00",
+    "base": "048b82f2a7b3ecc9b62bc5b817729f4ca2741863",
+    "commit": "eca46e9469953e3af0f8e32d03c112412ab097d6",
+    "pre_provenance_commit": "eca46e9469953e3af0f8e32d03c112412ab097d6",
+    "tree": "59c7cb98598303a9eef0cb816768ee9f0607422a",
+    "built_tree": "59c7cb98598303a9eef0cb816768ee9f0607422a",
+    "previous_tree": "ab6f5bbb9dfc115f357358355b9c7ec8dec8bae5",
     "tree_changed": true,
-    "conflicts": 15,
+    "conflicts": 16,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -85,7 +85,7 @@
         "kind": "pr",
         "source": "upstream#2564",
         "pin": "a1047d6aa5008060d3e41026b0aea60b8d947adc",
-        "fixup": "c9a5d1f84a7f709b3e1a0757934e4c872b674524"
+        "fixup": "1293b71eb90cbfd9d49f26033ac6a8bd9016d62d"
       },
       {
         "name": "pr-2530",
@@ -170,7 +170,7 @@
         "name": "pr-2657",
         "kind": "pr",
         "source": "upstream#2657",
-        "pin": "a18a72624f69d056011d7c25763b12480c2ccb7c"
+        "pin": "5cb105ef14e0ae024fefb5db27a351e494c636c9"
       },
       {
         "name": "pr-2658",
@@ -195,7 +195,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "7b349c7b29dcad357d10cd185997fbd417350210",
+        "pin": "8025343d93f9cfc092de54f4da2d7595109d6a00",
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
       },
       {
@@ -254,7 +254,7 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "c9a5d1f84a7f709b3e1a0757934e4c872b674524"
+        "fixup": "1293b71eb90cbfd9d49f26033ac6a8bd9016d62d"
       },
       {
         "name": "pr-2530",
@@ -344,7 +344,7 @@
       },
       {
         "name": "pr-2657",
-        "oid": "a18a72624f69d056011d7c25763b12480c2ccb7c",
+        "oid": "5cb105ef14e0ae024fefb5db27a351e494c636c9",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -372,9 +372,10 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "7b349c7b29dcad357d10cd185997fbd417350210",
+        "oid": "8025343d93f9cfc092de54f4da2d7595109d6a00",
         "status": "merged",
-        "conflicted": false,
+        "conflicted": true,
+        "resolution": "rerere",
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
       },
       {

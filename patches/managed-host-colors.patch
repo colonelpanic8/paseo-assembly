@@ -271,3 +271,13 @@ index fd5cfb79a..608e37642 100644
          imageStyle={styles.projectIcon}
          fallbackStyle={styles.projectIconFallback}
          textStyle={styles.projectIconFallbackText}
+diff --git a/packages/app/src/components/draggable-list.native.tsx b/packages/app/src/components/draggable-list.native.tsx
+--- a/packages/app/src/components/draggable-list.native.tsx
++++ b/packages/app/src/components/draggable-list.native.tsx
+@@ -120,4 +120,5 @@ export function DraggableList<T>({
+       extraData={extraData}
+       simultaneousHandlers={simultaneousHandlers}
++      // @ts-expect-error - gestureHostPresented is consumed by the native gesture patch.
+-      dragGestureHostPresented={gestureHostPresented}
++      gestureHostPresented={gestureHostPresented}
+       // Higher activation distance reduces accidental drag capture while nested
