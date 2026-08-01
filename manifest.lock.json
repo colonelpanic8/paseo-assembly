@@ -38,13 +38,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-01T19:33:58.644309072+00:00",
+    "generated": "2026-08-01T19:40:58.339680323+00:00",
     "base": "048b82f2a7b3ecc9b62bc5b817729f4ca2741863",
-    "commit": "eca46e9469953e3af0f8e32d03c112412ab097d6",
-    "pre_provenance_commit": "eca46e9469953e3af0f8e32d03c112412ab097d6",
-    "tree": "59c7cb98598303a9eef0cb816768ee9f0607422a",
-    "built_tree": "59c7cb98598303a9eef0cb816768ee9f0607422a",
-    "previous_tree": "ab6f5bbb9dfc115f357358355b9c7ec8dec8bae5",
+    "commit": "568aa493142e3ae15a1b2443a0792bd6b8ea6446",
+    "pre_provenance_commit": "568aa493142e3ae15a1b2443a0792bd6b8ea6446",
+    "tree": "6eccf7b7479f38a13a46ade2694d3c962a8684e6",
+    "built_tree": "6eccf7b7479f38a13a46ade2694d3c962a8684e6",
+    "previous_tree": "59c7cb98598303a9eef0cb816768ee9f0607422a",
     "tree_changed": true,
     "conflicts": 16,
     "manifest_entries": [
@@ -85,7 +85,7 @@
         "kind": "pr",
         "source": "upstream#2564",
         "pin": "a1047d6aa5008060d3e41026b0aea60b8d947adc",
-        "fixup": "1293b71eb90cbfd9d49f26033ac6a8bd9016d62d"
+        "fixup": "37166cd189aa18610e4630287e0696a9dc9cc881"
       },
       {
         "name": "pr-2530",
@@ -254,7 +254,7 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "1293b71eb90cbfd9d49f26033ac6a8bd9016d62d"
+        "fixup": "37166cd189aa18610e4630287e0696a9dc9cc881"
       },
       {
         "name": "pr-2530",
