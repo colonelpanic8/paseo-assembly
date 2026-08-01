@@ -123,9 +123,32 @@ fixup = "patches/agent-purpose-model-display.patch"
 pr = 2660
 summary = "Restore a workspace's agents when the workspace is unarchived"
 
+# Merges the 2655 and 2657 heads and adds what needs both: the watch can start,
+# end and mute a Live Voice call and read its transcript, on its own launcher
+# entry and tile. Same shape as 2564 above -- the feature spans two PRs, so it
+# cannot live in either one, and this branch is where it goes. Must stay ordered
+# after 2657, whose head it contains; keeping it merged up with both parents is
+# the maintenance cost of carrying it, exactly as for 2564.
+#
+# Also carries the Android side of putting that call on your wrist, which is not
+# watch code at all: react-native-webrtc leaves AudioManager alone, so nothing
+# was selecting a communication device and a Bluetooth headset never got the
+# microphone.
+#
+# This replaced mine:agent/live-voice-completion-notifications, which was
+# removed rather than excluded: 2657 absorbed that branch's six commits
+# re-authored, so the two carried the same work under different hashes and the
+# stack merged it twice. It is a live branch and not a PR, so discovery cannot
+# re-admit it and no [[exclude]] is needed -- but if it is ever carried again
+# alongside 2657, that is the collision to expect.
 [[entry]]
-branch = "mine:agent/live-voice-completion-notifications"
-fixup = "patches/live-voice-completion-notifications-complexity.patch"
+branch = "mine:watch-live-voice"
+summary = "Drive Live Voice from the watch; route call audio to a Bluetooth headset"
+# Inherited from that removed entry and re-homed here, still needed: the agent
+# payload builders only trip oxlint's complexity rule once 2657, 2658 and 2659
+# stack, so it belongs to no single topic branch. Confirmed by linting the
+# assembled tree with and without it.
+fixup = "patches/agent-payload-complexity.patch"
 
 [[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"

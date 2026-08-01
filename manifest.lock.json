@@ -29,22 +29,23 @@
       "pr-2652": "d656162d7b7e5fc313f2c22e9494a6f71b984618",
       "pr-2655": "75f2a85210a1057fad57593a6b046f8393cdf350",
       "pr-2656": "006255fea8347e57014a495c778bafb70c29458a",
-      "pr-2657": "fb102aae1c0e9ad291eded7ac8706bcf9ce1b832",
+      "pr-2657": "a18a72624f69d056011d7c25763b12480c2ccb7c",
       "pr-2658": "834f37ddb5587db0363f03f6c2ca34a73d0ae486",
       "pr-2659": "9915e10f781c534da28186420657111f6c0be0c1",
-      "pr-2660": "0533a80c580c6e559e0bfebdfc96fec764968025"
+      "pr-2660": "0533a80c580c6e559e0bfebdfc96fec764968025",
+      "watch-live-voice": "e8a2063c65645e09982b093acc2477fd8f76916d"
     }
   },
   "build": {
-    "generated": "2026-08-01T00:26:35.667630973+00:00",
+    "generated": "2026-08-01T08:27:09.437302182+00:00",
     "base": "5f575fcdd60a032f0265e3f9bb67b3708092cfbf",
-    "commit": "62596a3ba96b128611eaa5ee1f21034f88877d0e",
-    "pre_provenance_commit": "62596a3ba96b128611eaa5ee1f21034f88877d0e",
-    "tree": "56337dee2998b231b226673c0b21a5bcfd47f167",
-    "built_tree": "56337dee2998b231b226673c0b21a5bcfd47f167",
-    "previous_tree": "bfff96c2675a0c0dccce9e8e77233d5cdfcd1bcb",
-    "tree_changed": true,
-    "conflicts": 15,
+    "commit": "d160930157362bbdb71eb72f6af1fd7912953276",
+    "pre_provenance_commit": "d160930157362bbdb71eb72f6af1fd7912953276",
+    "tree": "1b49f2234f79f959d542e12d1b693972e75b5b1d",
+    "built_tree": "1b49f2234f79f959d542e12d1b693972e75b5b1d",
+    "previous_tree": "1b49f2234f79f959d542e12d1b693972e75b5b1d",
+    "tree_changed": false,
+    "conflicts": 14,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -174,7 +175,7 @@
         "name": "pr-2657",
         "kind": "pr",
         "source": "upstream#2657",
-        "pin": "fb102aae1c0e9ad291eded7ac8706bcf9ce1b832"
+        "pin": "a18a72624f69d056011d7c25763b12480c2ccb7c"
       },
       {
         "name": "pr-2658",
@@ -196,10 +197,10 @@
         "pin": "0533a80c580c6e559e0bfebdfc96fec764968025"
       },
       {
-        "name": "agent/live-voice-completion-notifications",
+        "name": "watch-live-voice",
         "kind": "branch",
-        "source": "mine:agent/live-voice-completion-notifications",
-        "pin": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
+        "source": "mine:watch-live-voice",
+        "pin": "e8a2063c65645e09982b093acc2477fd8f76916d",
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
       },
       {
@@ -347,7 +348,7 @@
       },
       {
         "name": "pr-2657",
-        "oid": "fb102aae1c0e9ad291eded7ac8706bcf9ce1b832",
+        "oid": "a18a72624f69d056011d7c25763b12480c2ccb7c",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -374,11 +375,10 @@
         "conflicted": false
       },
       {
-        "name": "agent/live-voice-completion-notifications",
-        "oid": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
+        "name": "watch-live-voice",
+        "oid": "e8a2063c65645e09982b093acc2477fd8f76916d",
         "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere",
+        "conflicted": false,
         "fixup": "cbf56b595065937882a5856a1d789fed0d16df80"
       },
       {

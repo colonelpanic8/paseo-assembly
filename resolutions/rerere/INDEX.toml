@@ -351,6 +351,12 @@ recorded = "2026-07-29T23:01:09.357187111+00:00"
 
 [[resolution]]
 entry = "pr-2657"
+hash = "0f940712709de105724aae3bd04a77c9d226b12b"
+paths = ["flake.nix"]
+recorded = "2026-08-01T06:40:08.511377446+00:00"
+
+[[resolution]]
+entry = "pr-2657"
 hash = "1edbf146c878fe9adef149683605161f9054d486"
 paths = ["packages/app/src/keyboard/actions.ts"]
 recorded = "2026-07-30T23:27:31.966399497+00:00"
@@ -360,6 +366,12 @@ entry = "pr-2657"
 hash = "1f616974e64c2771a640dd7931092d0e611766ec"
 paths = ["packages/app/src/keyboard/keyboard-action-dispatcher.ts"]
 recorded = "2026-07-30T23:27:31.966402090+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "30fdb9c711a4452aad7d086fbd12807e06b92ddf"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-08-01T06:40:08.511379310+00:00"
 
 [[resolution]]
 entry = "pr-2657"
@@ -375,9 +387,21 @@ recorded = "2026-07-30T23:27:31.966402993+00:00"
 
 [[resolution]]
 entry = "pr-2657"
+hash = "6a0a35a20824e9793e31d425436b0c36bd55fe93"
+paths = ["packages/client/src/daemon-client.ts"]
+recorded = "2026-08-01T06:40:08.511379600+00:00"
+
+[[resolution]]
+entry = "pr-2657"
 hash = "ba46183e3afacee85d1e8274668cdd5378822f96"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-07-31T07:13:00.430368743+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "bde6b71554d443b190d013ef563950c1e416a4ba"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T06:40:08.511379881+00:00"
 
 [[resolution]]
 entry = "pr-2657"
@@ -408,6 +432,12 @@ entry = "pr-2658"
 hash = "3b994b0ede3f3a843af2e0ab507639850e4c8e95"
 paths = ["packages/app/src/subagents/track-presentation.ts"]
 recorded = "2026-07-31T19:43:02.396116803+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "444fa90a15e4a41473f0b12f0ef14f536943cc30"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T06:41:02.054664114+00:00"
 
 [[resolution]]
 entry = "pr-2658"
