@@ -3,6 +3,24 @@
 # replay uses the pair directories, verification uses the lock tree.
 [[resolution]]
 entry = "agent/live-voice-completion-notifications"
+hash = "04ba12e6c55123f8bbf191c9949a4d5e9ba27a19"
+paths = ["packages/app/src/live-voice/background-call-lifetime.native.ts"]
+recorded = "2026-08-01T03:07:08.696029211+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "075a7ee17fb2e912406b34ab7479c095201065a1"
+paths = ["packages/server/src/server/websocket-server.relay-reconnect.test.ts"]
+recorded = "2026-08-01T03:07:08.696032028+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "3759377cb23f949589de8b7c00897c74aed7d8a8"
+paths = ["packages/app/src/contexts/live-voice-context.tsx"]
+recorded = "2026-08-01T03:07:08.696032720+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
 hash = "b08277702fba82082e48ae959fc2f05bd9e8aed0"
 paths = ["packages/server/src/server/websocket-server.relay-reconnect.test.ts"]
 recorded = "2026-07-31T19:49:50.691193541+00:00"
@@ -21,15 +39,45 @@ recorded = "2026-07-31T15:29:27.839931896+00:00"
 
 [[resolution]]
 entry = "agent/live-voice-completion-notifications"
+hash = "ccf98ee6288e894220200852634ba30d52b8f370"
+paths = ["packages/app/src/utils/agent-snapshots.test.ts"]
+recorded = "2026-08-01T03:07:08.696033111+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "ed0e34810aa3bcd262922c0ee98aeb0532024bb4"
+paths = ["packages/server/src/server/agent/agent-projections.ts"]
+recorded = "2026-08-01T03:07:08.696033654+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
 hash = "f10b3141c418308cc91ba66e379ab7d78197d84e"
 paths = ["packages/app/src/utils/agent-snapshots.test.ts"]
 recorded = "2026-07-31T15:29:27.839934802+00:00"
 
 [[resolution]]
 entry = "agent/live-voice-completion-notifications"
+hash = "f2ed8002b6dfedee5383fff5aadc66f99b62ec3a"
+paths = ["packages/app/src/live-voice/background-call-lifetime.ts"]
+recorded = "2026-08-01T03:07:08.696034087+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
 hash = "f3c0b01fde8f31c91a4c66f772411922318987b5"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-07-31T15:29:27.839935213+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "f4c456494c24a439a5b95cfead7e9f717cf28f96"
+paths = ["packages/server/src/server/live-voice/live-voice-context.ts"]
+recorded = "2026-08-01T03:07:08.696034469+00:00"
+
+[[resolution]]
+entry = "agent/live-voice-completion-notifications"
+hash = "f646b059d528d636c90c432cbd5b205e45597b85"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T03:07:08.696034822+00:00"
 
 [[resolution]]
 entry = "assembly-agent-env"
@@ -84,6 +132,12 @@ entry = "assembly-fdroid-variant"
 hash = "9d87af859bd02dba3723967fac1c76191fe52e37"
 paths = ["docs/android.md"]
 recorded = "2026-07-31T19:38:29.346167816+00:00"
+
+[[resolution]]
+entry = "pr-2506"
+hash = "810d54eabe78c8eaf914c03395ee72a03e6efe09"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-08-01T03:04:55.185871156+00:00"
 
 [[resolution]]
 entry = "pr-2517"
@@ -198,6 +252,12 @@ entry = "pr-2532"
 hash = "934ec96612d0cdb17bd18d8991405580cd02c20a"
 paths = ["packages/app/src/hooks/use-settings/storage.ts"]
 recorded = "2026-07-28T10:56:51.235458226+00:00"
+
+[[resolution]]
+entry = "pr-2550"
+hash = "1f83b02d5e6e91cccf74faa4f0f0131b4b478572"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-08-01T03:05:34.338563501+00:00"
 
 [[resolution]]
 entry = "pr-2556"
@@ -375,6 +435,18 @@ recorded = "2026-08-01T06:40:08.511379310+00:00"
 
 [[resolution]]
 entry = "pr-2657"
+hash = "232e69d68a8d4fbb70fbce944963b30a8195dbfa"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-08-01T03:06:11.377707654+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "3e24eff7556621e30f247c38939aa23fe494bf76"
+paths = ["packages/client/src/daemon-client.ts"]
+recorded = "2026-08-01T03:06:11.377708200+00:00"
+
+[[resolution]]
+entry = "pr-2657"
 hash = "4bdad283831287d0259463ba25819f0f661131da"
 paths = ["packages/client/src/daemon-client.ts"]
 recorded = "2026-07-30T23:27:31.966402577+00:00"
@@ -390,6 +462,12 @@ entry = "pr-2657"
 hash = "6a0a35a20824e9793e31d425436b0c36bd55fe93"
 paths = ["packages/client/src/daemon-client.ts"]
 recorded = "2026-08-01T06:40:08.511379600+00:00"
+
+[[resolution]]
+entry = "pr-2657"
+hash = "86acc445fbb558c6a04ffcd280de65bbbcccc880"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T03:06:11.377708585+00:00"
 
 [[resolution]]
 entry = "pr-2657"
@@ -486,6 +564,12 @@ entry = "pr-2658"
 hash = "becf7b1fa37f32bc1cedf851bca3c3ed8e40b270"
 paths = ["packages/app/src/components/agent-list.tsx"]
 recorded = "2026-07-30T10:01:15.828170893+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "cbf461111482f8a18edec55658f590c4362a7e4f"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T03:06:23.877186420+00:00"
 
 [[resolution]]
 entry = "pr-2658"

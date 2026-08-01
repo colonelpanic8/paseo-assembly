@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "5f575fcdd60a032f0265e3f9bb67b3708092cfbf",
+    "base": "70ed70d36e2eabd3876a22931954319ec202c902",
     "entries": {
       "agent/live-voice-completion-notifications": "1c10eeda945dd4e7e026bba12a6a430a5779b08a",
       "assembled-npm-deps-hash": "653d66fb9988c40f3749e9a8b93fa4fdf620b881",
@@ -17,9 +17,9 @@
       "pr-2521": "cca2a3a7029165ee9936d3352706a3b945045904",
       "pr-2530": "bee4b234df094367197d47c82fa3307ff5fb5027",
       "pr-2532": "81a1b9eb3a55d3d41f24f74c3ad59abd99f5e354",
-      "pr-2550": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
+      "pr-2550": "298323182ae496adc73933cf139168a7fbfa3663",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2556": "b12e3b63b91eb262630294719772558c2838844b",
+      "pr-2556": "70ed70d36e2eabd3876a22931954319ec202c902",
       "pr-2564": "c15c5964a41c8a1f8564e581e97ec97866c4d74d",
       "pr-2579": "5d934f2f1cb71c8ac5d064201064779ee8dd5660",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
@@ -33,25 +33,27 @@
       "pr-2658": "834f37ddb5587db0363f03f6c2ca34a73d0ae486",
       "pr-2659": "9915e10f781c534da28186420657111f6c0be0c1",
       "pr-2660": "0533a80c580c6e559e0bfebdfc96fec764968025",
-      "watch-live-voice": "e8a2063c65645e09982b093acc2477fd8f76916d"
+      "watch-live-voice": "e8a2063c65645e09982b093acc2477fd8f76916d",
+      "pr-2730": "937c07d482bba740a7962da096cd65ce3c4ff03b"
     }
   },
   "build": {
-    "generated": "2026-08-01T08:27:09.437302182+00:00",
-    "base": "5f575fcdd60a032f0265e3f9bb67b3708092cfbf",
-    "commit": "d160930157362bbdb71eb72f6af1fd7912953276",
-    "pre_provenance_commit": "d160930157362bbdb71eb72f6af1fd7912953276",
-    "tree": "1b49f2234f79f959d542e12d1b693972e75b5b1d",
-    "built_tree": "1b49f2234f79f959d542e12d1b693972e75b5b1d",
-    "previous_tree": "1b49f2234f79f959d542e12d1b693972e75b5b1d",
-    "tree_changed": false,
-    "conflicts": 14,
+    "generated": "2026-08-01T03:07:08.838441844+00:00",
+    "base": "70ed70d36e2eabd3876a22931954319ec202c902",
+    "commit": "d853148aa2c19cfc31ab330c3df5e40c1a24c01f",
+    "pre_provenance_commit": "d853148aa2c19cfc31ab330c3df5e40c1a24c01f",
+    "tree": "86d6fa4092ca24de51012e92fbeb22f6fbbbe115",
+    "built_tree": "86d6fa4092ca24de51012e92fbeb22f6fbbbe115",
+    "previous_tree": "56337dee2998b231b226673c0b21a5bcfd47f167",
+    "tree_changed": true,
+    "conflicts": 16,
     "manifest_entries": [
       {
         "name": "pr-2506",
         "kind": "pr",
         "source": "upstream#2506",
-        "pin": "792d40df6f73c8ae3c2c81a0727afaa93db01832"
+        "pin": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
+        "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
         "name": "pr-2517",
@@ -101,20 +103,13 @@
         "name": "pr-2550",
         "kind": "pr",
         "source": "upstream#2550",
-        "pin": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1"
+        "pin": "298323182ae496adc73933cf139168a7fbfa3663"
       },
       {
         "name": "pr-2553",
         "kind": "pr",
         "source": "upstream#2553",
         "pin": "4a4d0120189df09c793244405be3958b9713bdec"
-      },
-      {
-        "name": "pr-2556",
-        "kind": "pr",
-        "source": "upstream#2556",
-        "pin": "b12e3b63b91eb262630294719772558c2838844b",
-        "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
         "name": "assembly-build-provenance",
@@ -187,7 +182,7 @@
         "name": "pr-2659",
         "kind": "pr",
         "source": "upstream#2659",
-        "pin": "9915e10f781c534da28186420657111f6c0be0c1",
+        "pin": "bb521623c89f6bf6d02b21f5167ac4555b3cc78e",
         "fixup": "518eef169f068fb26a9eaebb985263ae01bc9f0c"
       },
       {
@@ -208,6 +203,12 @@
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
         "pin": "653d66fb9988c40f3749e9a8b93fa4fdf620b881"
+      },
+      {
+        "name": "pr-2730",
+        "kind": "pr",
+        "source": "upstream#2730",
+        "pin": "937c07d482bba740a7962da096cd65ce3c4ff03b"
       }
     ],
     "results": [
@@ -215,7 +216,9 @@
         "name": "pr-2506",
         "oid": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
         "status": "merged",
-        "conflicted": false
+        "conflicted": true,
+        "resolution": "rerere:810d54eabe78c8eaf914c03395ee72a03e6efe09",
+        "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
         "name": "pr-2517",
@@ -269,23 +272,16 @@
       },
       {
         "name": "pr-2550",
-        "oid": "c88d3eb0832bda45003d3caf0500a3d7c84cf3a1",
+        "oid": "298323182ae496adc73933cf139168a7fbfa3663",
         "status": "merged",
-        "conflicted": false
+        "conflicted": true,
+        "resolution": "rerere:1f83b02d5e6e91cccf74faa4f0f0131b4b478572"
       },
       {
         "name": "pr-2553",
         "oid": "4a4d0120189df09c793244405be3958b9713bdec",
         "status": "merged",
         "conflicted": false
-      },
-      {
-        "name": "pr-2556",
-        "oid": "b12e3b63b91eb262630294719772558c2838844b",
-        "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere",
-        "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
         "name": "assembly-build-provenance",
@@ -351,18 +347,18 @@
         "oid": "a18a72624f69d056011d7c25763b12480c2ccb7c",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:0f940712709de105724aae3bd04a77c9d226b12b,232e69d68a8d4fbb70fbce944963b30a8195dbfa,3e24eff7556621e30f247c38939aa23fe494bf76,86acc445fbb558c6a04ffcd280de65bbbcccc880"
       },
       {
         "name": "pr-2658",
         "oid": "834f37ddb5587db0363f03f6c2ca34a73d0ae486",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:cbf461111482f8a18edec55658f590c4362a7e4f"
       },
       {
         "name": "pr-2659",
-        "oid": "9915e10f781c534da28186420657111f6c0be0c1",
+        "oid": "bb521623c89f6bf6d02b21f5167ac4555b3cc78e",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -385,6 +381,12 @@
         "name": "assembled-npm-deps-hash",
         "oid": "653d66fb9988c40f3749e9a8b93fa4fdf620b881",
         "status": "applied",
+        "conflicted": false
+      },
+      {
+        "name": "pr-2730",
+        "oid": "937c07d482bba740a7962da096cd65ce3c4ff03b",
+        "status": "merged",
         "conflicted": false
       }
     ]
