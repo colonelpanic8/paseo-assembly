@@ -20,7 +20,7 @@
       "pr-2550": "298323182ae496adc73933cf139168a7fbfa3663",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
       "pr-2556": "70ed70d36e2eabd3876a22931954319ec202c902",
-      "pr-2564": "c15c5964a41c8a1f8564e581e97ec97866c4d74d",
+      "pr-2564": "a1047d6aa5008060d3e41026b0aea60b8d947adc",
       "pr-2579": "5d934f2f1cb71c8ac5d064201064779ee8dd5660",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "3500cfbaf55da8c8d59b13219f3d4b069be5bdad",
@@ -31,22 +31,22 @@
       "pr-2656": "006255fea8347e57014a495c778bafb70c29458a",
       "pr-2657": "a18a72624f69d056011d7c25763b12480c2ccb7c",
       "pr-2658": "834f37ddb5587db0363f03f6c2ca34a73d0ae486",
-      "pr-2659": "9915e10f781c534da28186420657111f6c0be0c1",
+      "pr-2659": "bb521623c89f6bf6d02b21f5167ac4555b3cc78e",
       "pr-2660": "0533a80c580c6e559e0bfebdfc96fec764968025",
-      "watch-live-voice": "e8a2063c65645e09982b093acc2477fd8f76916d",
-      "pr-2730": "937c07d482bba740a7962da096cd65ce3c4ff03b"
+      "pr-2730": "937c07d482bba740a7962da096cd65ce3c4ff03b",
+      "watch-live-voice": "e8a2063c65645e09982b093acc2477fd8f76916d"
     }
   },
   "build": {
-    "generated": "2026-08-01T03:07:08.838441844+00:00",
+    "generated": "2026-08-01T08:32:27.279809285+00:00",
     "base": "70ed70d36e2eabd3876a22931954319ec202c902",
-    "commit": "d853148aa2c19cfc31ab330c3df5e40c1a24c01f",
-    "pre_provenance_commit": "d853148aa2c19cfc31ab330c3df5e40c1a24c01f",
-    "tree": "86d6fa4092ca24de51012e92fbeb22f6fbbbe115",
-    "built_tree": "86d6fa4092ca24de51012e92fbeb22f6fbbbe115",
-    "previous_tree": "56337dee2998b231b226673c0b21a5bcfd47f167",
+    "commit": "309cddf0263a5805a57ecb9bf5d966d46b426a12",
+    "pre_provenance_commit": "309cddf0263a5805a57ecb9bf5d966d46b426a12",
+    "tree": "a0ebdef9693339c909813ba9689df639f34fd68b",
+    "built_tree": "a0ebdef9693339c909813ba9689df639f34fd68b",
+    "previous_tree": "86d6fa4092ca24de51012e92fbeb22f6fbbbe115",
     "tree_changed": true,
-    "conflicts": 16,
+    "conflicts": 15,
     "manifest_entries": [
       {
         "name": "pr-2506",
@@ -84,7 +84,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "c15c5964a41c8a1f8564e581e97ec97866c4d74d",
+        "pin": "a1047d6aa5008060d3e41026b0aea60b8d947adc",
         "fixup": "c9a5d1f84a7f709b3e1a0757934e4c872b674524"
       },
       {
@@ -217,7 +217,7 @@
         "oid": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:810d54eabe78c8eaf914c03395ee72a03e6efe09",
+        "resolution": "rerere",
         "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
       {
@@ -250,7 +250,7 @@
       },
       {
         "name": "pr-2564",
-        "oid": "c15c5964a41c8a1f8564e581e97ec97866c4d74d",
+        "oid": "a1047d6aa5008060d3e41026b0aea60b8d947adc",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -275,7 +275,7 @@
         "oid": "298323182ae496adc73933cf139168a7fbfa3663",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:1f83b02d5e6e91cccf74faa4f0f0131b4b478572"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2553",
@@ -347,14 +347,14 @@
         "oid": "a18a72624f69d056011d7c25763b12480c2ccb7c",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:0f940712709de105724aae3bd04a77c9d226b12b,232e69d68a8d4fbb70fbce944963b30a8195dbfa,3e24eff7556621e30f247c38939aa23fe494bf76,86acc445fbb558c6a04ffcd280de65bbbcccc880"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2658",
         "oid": "834f37ddb5587db0363f03f6c2ca34a73d0ae486",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:cbf461111482f8a18edec55658f590c4362a7e4f"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2659",
