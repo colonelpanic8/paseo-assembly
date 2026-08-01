@@ -36,14 +36,14 @@
     }
   },
   "build": {
-    "generated": "2026-07-31T22:16:16.442664120+00:00",
+    "generated": "2026-08-01T00:26:35.667630973+00:00",
     "base": "5f575fcdd60a032f0265e3f9bb67b3708092cfbf",
-    "commit": "cea98f7996bc263f5dd826b8a15604c5d6bd308f",
-    "pre_provenance_commit": "cea98f7996bc263f5dd826b8a15604c5d6bd308f",
-    "tree": "bfff96c2675a0c0dccce9e8e77233d5cdfcd1bcb",
-    "built_tree": "bfff96c2675a0c0dccce9e8e77233d5cdfcd1bcb",
+    "commit": "62596a3ba96b128611eaa5ee1f21034f88877d0e",
+    "pre_provenance_commit": "62596a3ba96b128611eaa5ee1f21034f88877d0e",
+    "tree": "56337dee2998b231b226673c0b21a5bcfd47f167",
+    "built_tree": "56337dee2998b231b226673c0b21a5bcfd47f167",
     "previous_tree": "bfff96c2675a0c0dccce9e8e77233d5cdfcd1bcb",
-    "tree_changed": false,
+    "tree_changed": true,
     "conflicts": 15,
     "manifest_entries": [
       {
@@ -51,12 +51,6 @@
         "kind": "pr",
         "source": "upstream#2506",
         "pin": "792d40df6f73c8ae3c2c81a0727afaa93db01832"
-      },
-      {
-        "name": "pr-2514",
-        "kind": "pr",
-        "source": "upstream#2514",
-        "pin": "5dc9f3b39102635b72db99bc6fb9894940dfe17b"
       },
       {
         "name": "pr-2517",
@@ -219,12 +213,6 @@
       {
         "name": "pr-2506",
         "oid": "792d40df6f73c8ae3c2c81a0727afaa93db01832",
-        "status": "merged",
-        "conflicted": false
-      },
-      {
-        "name": "pr-2514",
-        "oid": "5dc9f3b39102635b72db99bc6fb9894940dfe17b",
         "status": "merged",
         "conflicted": false
       },

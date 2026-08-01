@@ -21,10 +21,6 @@ pr = 2506
 summary = "fix(nix): restore desktop app icon matching"
 
 [[entry]]
-pr = 2514
-summary = "Add multi-account profiles for Claude and Codex"
-
-[[entry]]
 pr = 2517
 summary = "Reveal composer control shortcuts while holding Mod"
 
@@ -187,3 +183,7 @@ reason = "contained verbatim in 2564, the combined branch this stack already car
 [[exclude]]
 pr = 2656
 reason = "held out at user's request"
+
+[[exclude]]
+pr = 2514
+reason = "held out at user's request: exclude the multi-account profiles change from the assembly"
