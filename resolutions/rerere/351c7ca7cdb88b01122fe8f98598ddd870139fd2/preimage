@@ -1,0 +1,1150 @@
+<<<<<<<
+import { memo, useCallback, useMemo, useState, type ReactNode } from "react";
+import { Pressable, Text, View, type GestureResponderEvent } from "react-native";
+import { StyleSheet, withUnistyles } from "react-native-unistyles";
+import { Archive } from "lucide-react-native";
+import { DiffStat } from "@/components/diff-stat";
+import { ProjectIconView } from "@/components/project-icon-view";
+import { getProviderIcon } from "@/components/provider-icons";
+import { SyncedLoader } from "@/components/synced-loader";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import {
+  ChecksBadge,
+  PrBadge,
+  SidebarWorkspaceShortcutBadge,
+  WorkspaceScriptIcon,
+  type SidebarWorkspaceScriptIconKind,
+} from "@/components/sidebar/sidebar-workspace-row-content";
+import { resolveSidebarWorkspacePrimaryLabel } from "@/components/sidebar/sidebar-workspace-title";
+import { useMinuteTick } from "@/hooks/use-minute-tick";
+import { useAppSettings } from "@/hooks/use-settings";
+import type { SidebarWorkspaceEntry } from "@/hooks/use-sidebar-workspaces-list";
+import type { Theme } from "@/styles/theme";
+import type { SidebarStateBucket } from "@/utils/sidebar-agent-state";
+import { shouldRenderSyncedStatusLoader } from "@/utils/status-loader";
+import { deriveRemoteSlug } from "@/utils/remote-slug";
+import { formatTimeAgo } from "@/utils/time";
+import { getHostColorTextStyle } from "@/styles/host-color";
+import type { HostColor } from "@/types/host-connection";
+import { isNative, isWeb } from "@/constants/platform";
+
+const PROJECT_ICON_SIZE = 40;
+const STATUS_DOT_SIZE = 12;
+const MAX_PROVIDER_ICONS = 3;
+const PROVIDER_ICON_SIZE = 14;
+const ARCHIVE_ICON_SIZE = 14;
+
+const foregroundMutedColorMapping = (theme: Theme) => ({ color: theme.colors.foregroundMuted });
+const foregroundColorMapping = (theme: Theme) => ({ color: theme.colors.foreground });
+const providerIconColorMapping = (theme: Theme) => ({ color: theme.colors.foregroundMuted });
+const syncedLoaderColorMapping = (theme: Theme) => ({
+  color:
+    theme.colorScheme === "light"
+      ? theme.colors.palette.amber[700]
+      : theme.colors.palette.amber[500],
+});
+
+const ThemedLoadingSpinner = withUnistyles(LoadingSpinner);
+const ThemedArchive = withUnistyles(Archive);
+const ThemedSyncedLoader = withUnistyles(SyncedLoader);
+
+function DynamicProviderIcon({
+  provider,
+  size,
+  color = "",
+}: {
+  provider: string;
+  size: number;
+  color?: string;
+}) {
+  const Icon = getProviderIcon(provider);
+  return <Icon size={size} color={color} />;
+}
+
+const ThemedDynamicProviderIcon = withUnistyles(DynamicProviderIcon);
+
+/**
+ * Status-mode row body. Project mode keeps `SidebarWorkspaceRowContent`; this is
+ * the taller four-line variant used only when the sidebar is sorted by status.
+ *
+ * The icon spans the two lines beside it; the meta line then runs the full row
+ * width underneath so nothing is stranded in a dead column below the icon:
+ *
+ *   [icon+dot]  owner/repo                     time ago | archive + kebab
+ *   [        ]  workspace title
+ *   branch  +12 -3                            host  provider icons
+ *   PR badge + checks (only when a PR exists)
+ */
+export const SidebarStatusRowContent = memo(function SidebarStatusRowContent({
+  workspace,
+  iconDataUri,
+  hostLabel,
+  hostColor,
+  scriptIconKind = null,
+  isArchiving,
+  shortcutNumber = null,
+  showShortcutBadge = false,
+  showActions,
+  children,
+}: {
+  workspace: SidebarWorkspaceEntry;
+  iconDataUri: string | null;
+  hostLabel: string;
+  hostColor: HostColor | null;
+  scriptIconKind?: SidebarWorkspaceScriptIconKind | null;
+  isArchiving: boolean;
+  shortcutNumber?: number | null;
+  showShortcutBadge?: boolean;
+  /** Hover (web) reveals the quick actions in place of the time-ago text. */
+  showActions: boolean;
+  /** The hover-revealed quick-action cluster. */
+  children?: ReactNode;
+}) {
+  const {
+    settings: { workspaceTitleSource },
+  } = useAppSettings();
+  const primaryLabel = resolveSidebarWorkspacePrimaryLabel({ workspace, workspaceTitleSource });
+  const secondaryLabel = resolveStatusRowSecondaryLabel({ workspace, primaryLabel });
+  const repoSlug = deriveRemoteSlug(workspace.remoteUrl) ?? workspace.projectName;
+  const showShortcut = showShortcutBadge && shortcutNumber !== null;
+  // Rows are memoized, so without this tick the "Xm ago" label would freeze
+  // until some unrelated state change happened to re-render the row.
+  useMinuteTick();
+  const timeAgo = workspace.statusEnteredAt ? formatTimeAgo(workspace.statusEnteredAt) : null;
+  // Web swaps the time-ago for the quick actions on hover, inside a fixed slot so
+  // the row never reflows. Touch platforms have no hover: the kebab is permanent,
+  // so it sits beside the time-ago instead of covering it.
+  const showOverlayActions = showActions && !showShortcut && !isNative;
+  const showInlineActions = showActions && !showShortcut && isNative;
+
+  return (
+    <View style={styles.rowContent}>
+      <View style={styles.headerBlock}>
+        <StatusRowLeadingVisual workspace={workspace} iconDataUri={iconDataUri} />
+        <View style={styles.headerColumn}>
+          <StatusRowMetaLine
+            repoSlug={repoSlug}
+            isArchiving={isArchiving}
+            timeAgo={timeAgo}
+            showTimestamp={!showOverlayActions && !showShortcut}
+            showOverlayActions={showOverlayActions}
+            showInlineActions={showInlineActions}
+          >
+            {children}
+          </StatusRowMetaLine>
+          <StatusRowTitleLine primaryLabel={primaryLabel} scriptIconKind={scriptIconKind} />
+        </View>
+      </View>
+      <StatusRowDetailLine
+        secondaryLabel={secondaryLabel}
+        diffStat={workspace.diffStat}
+        prHint={workspace.prHint}
+        hostLabel={hostLabel}
+        hostColor={hostColor}
+        providers={workspace.providers}
+      />
+      {showShortcut && shortcutNumber !== null ? (
+        <View style={styles.shortcutBadgeOverlay} pointerEvents="none">
+          <SidebarWorkspaceShortcutBadge number={shortcutNumber} />
+        </View>
+      ) : null}
+    </View>
+  );
+});
+
+function StatusRowMetaLine({
+  repoSlug,
+  isArchiving,
+  timeAgo,
+  showTimestamp,
+  showOverlayActions,
+  showInlineActions,
+  children,
+}: {
+  repoSlug: string;
+  isArchiving: boolean;
+  timeAgo: string | null;
+  showTimestamp: boolean;
+  showOverlayActions: boolean;
+  showInlineActions: boolean;
+  children?: ReactNode;
+}) {
+  // The quick actions sit in flow, not in an absolute overlay: they claim real
+  // width so the slug truncates with an ellipsis instead of being painted over.
+  // Row height stays fixed via the meta line's pinned minHeight.
+  return (
+    <View style={styles.metaRow}>
+      <Text style={styles.repoSlug} numberOfLines={1}>
+        {repoSlug}
+      </Text>
+      <View style={styles.metaTrailing}>
+        {showTimestamp ? <StatusRowTimestamp isArchiving={isArchiving} timeAgo={timeAgo} /> : null}
+        {showOverlayActions || showInlineActions ? children : null}
+      </View>
+    </View>
+  );
+}
+
+function StatusRowTitleLine({
+  primaryLabel,
+  scriptIconKind,
+}: {
+  primaryLabel: string;
+  scriptIconKind: SidebarWorkspaceScriptIconKind | null;
+}) {
+  return (
+    <View style={styles.titleRow}>
+      <Text style={styles.title} numberOfLines={1}>
+        {primaryLabel}
+      </Text>
+      {scriptIconKind ? <WorkspaceScriptIcon kind={scriptIconKind} /> : null}
+    </View>
+  );
+}
+
+function StatusRowDetailLine({
+  secondaryLabel,
+  diffStat,
+  prHint,
+  hostLabel,
+  hostColor,
+  providers,
+}: {
+  secondaryLabel: string | null;
+  diffStat: SidebarWorkspaceEntry["diffStat"];
+  prHint: SidebarWorkspaceEntry["prHint"];
+  hostLabel: string;
+  hostColor: HostColor | null;
+  providers: readonly string[];
+}) {
+  return (
+    <View style={styles.detailRow}>
+      <View style={styles.detailLeft}>
+        {secondaryLabel ? (
+          <Text style={styles.branch} numberOfLines={1}>
+            {secondaryLabel}
+          </Text>
+        ) : null}
+        {diffStat ? (
+          <DiffStat additions={diffStat.additions} deletions={diffStat.deletions} />
+        ) : null}
+        {prHint ? <PrBadge hint={prHint} /> : null}
+        {prHint ? <ChecksBadge checks={prHint.checks} forge={prHint.forge} /> : null}
+      </View>
+      <View style={styles.detailRight}>
+        <Text style={[styles.hostLabel, getHostColorTextStyle(hostColor)]} numberOfLines={1}>
+          {hostLabel}
+        </Text>
+        <StatusRowProviderIcons providers={providers} />
+      </View>
+    </View>
+  );
+}
+
+/** One glyph per provider with a live agent, most recently active first. */
+function StatusRowProviderIcons({ providers }: { providers: readonly string[] }) {
+  if (providers.length === 0) {
+    return null;
+  }
+  return (
+    <View style={styles.providerIcons}>
+      {providers.slice(0, MAX_PROVIDER_ICONS).map((provider) => (
+        <StatusRowProviderIcon key={provider} provider={provider} />
+      ))}
+    </View>
+  );
+}
+
+function StatusRowProviderIcon({ provider }: { provider: string }) {
+  return (
+    <ThemedDynamicProviderIcon
+      provider={provider}
+      size={PROVIDER_ICON_SIZE}
+      uniProps={providerIconColorMapping}
+    />
+  );
+}
+
+/**
+ * The branch line would repeat the title when the title source is "branch", so
+ * fall back to the workspace name and drop the line entirely when both match.
+ */
+export function resolveStatusRowSecondaryLabel({
+  workspace,
+  primaryLabel,
+}: {
+  workspace: Pick<SidebarWorkspaceEntry, "name" | "currentBranch">;
+  primaryLabel: string;
+}): string | null {
+  const branch = workspace.currentBranch;
+  if (branch && branch !== primaryLabel) {
+    return branch;
+  }
+  return workspace.name === primaryLabel ? null : workspace.name;
+}
+
+function StatusRowTimestamp({
+  isArchiving,
+  timeAgo,
+}: {
+  isArchiving: boolean;
+  timeAgo: string | null;
+}) {
+  if (isArchiving) {
+    return <ThemedLoadingSpinner size={10} uniProps={foregroundMutedColorMapping} />;
+  }
+  if (!timeAgo) {
+    return null;
+  }
+  return <Text style={styles.timeAgo}>{timeAgo}</Text>;
+}
+
+function StatusRowLeadingVisual({
+  workspace,
+  iconDataUri,
+}: {
+  workspace: SidebarWorkspaceEntry;
+  iconDataUri: string | null;
+}) {
+  const dotColorStyle = getStatusDotColorStyle(workspace.statusBucket);
+  const showRunningIndicator = shouldRenderSyncedStatusLoader({
+    bucket: workspace.statusBucket,
+  });
+
+  return (
+    <View style={styles.leadingVisualSlot}>
+      <ProjectIconView
+        iconDataUri={iconDataUri}
+        initial={workspace.projectName.charAt(0).toUpperCase()}
+        projectKey={workspace.projectKey}
+        imageStyle={styles.projectIcon}
+        fallbackStyle={styles.projectIconFallback}
+        textStyle={styles.projectIconFallbackText}
+      />
+      {showRunningIndicator ? (
+        <View style={styles.statusLoaderOverlay} testID="workspace-status-indicator-running">
+          <ThemedSyncedLoader size={11} uniProps={syncedLoaderColorMapping} />
+        </View>
+      ) : null}
+      {dotColorStyle ? <View style={[styles.statusDotOverlay, dotColorStyle]} /> : null}
+    </View>
+  );
+}
+
+/** Inline archive affordance revealed next to the kebab on hover (web only). */
+export function SidebarStatusRowArchiveAction({
+  label,
+  onArchive,
+}: {
+  label: string;
+  onArchive: () => void;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const handleHoverIn = useCallback(() => setIsHovered(true), []);
+  const handleHoverOut = useCallback(() => setIsHovered(false), []);
+  const handlePressIn = useCallback((event: GestureResponderEvent) => event.stopPropagation(), []);
+  const handlePress = useCallback(
+    (event: GestureResponderEvent) => {
+      event.stopPropagation();
+      onArchive();
+    },
+    [onArchive],
+  );
+  const textStyle = useMemo(
+    () =>
+      isHovered
+        ? [styles.archiveActionText, styles.archiveActionTextHovered]
+        : styles.archiveActionText,
+    [isHovered],
+  );
+
+  return (
+    <Pressable
+      // The row itself is a <button> on web; a nested button is invalid HTML.
+      accessibilityRole={isWeb ? undefined : "button"}
+      accessibilityLabel={label}
+      hitSlop={4}
+      onHoverIn={handleHoverIn}
+      onHoverOut={handleHoverOut}
+      onPressIn={handlePressIn}
+      onPress={handlePress}
+      style={styles.archiveAction}
+      testID="sidebar-status-row-archive-action"
+    >
+      <ThemedArchive
+        size={ARCHIVE_ICON_SIZE}
+        uniProps={isHovered ? foregroundColorMapping : foregroundMutedColorMapping}
+      />
+      <Text style={textStyle}>{label}</Text>
+    </Pressable>
+  );
+}
+
+// Same buckets and colors as the project-mode status dot; "done" carries no dot.
+function getStatusDotColorStyle(bucket: SidebarStateBucket) {
+  switch (bucket) {
+    case "needs_input":
+      return styles.statusDotNeedsInput;
+    case "failed":
+      return styles.statusDotFailed;
+    case "running":
+      return null;
+    case "attention":
+      return styles.statusDotAttention;
+    case "done":
+      return null;
+  }
+}
+
+const styles = StyleSheet.create((theme) => ({
+  rowContent: {
+    position: "relative",
+  },
+  headerBlock: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: theme.spacing[2],
+    width: "100%",
+  },
+  leadingVisualSlot: {
+    position: "relative",
+    width: PROJECT_ICON_SIZE,
+    height: PROJECT_ICON_SIZE,
+    flexShrink: 0,
+  },
+  projectIcon: {
+    width: "100%",
+    height: "100%",
+    borderRadius: theme.borderRadius.md,
+  },
+  projectIconFallback: {
+    width: "100%",
+    height: "100%",
+    borderRadius: theme.borderRadius.md,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  projectIconFallbackText: {
+    fontSize: theme.fontSize.xs,
+  },
+  statusDotOverlay: {
+    position: "absolute",
+    right: -2,
+    bottom: -2,
+    width: STATUS_DOT_SIZE,
+    height: STATUS_DOT_SIZE,
+    borderRadius: theme.borderRadius.full,
+    borderWidth: theme.borderWidth[2],
+    borderColor: theme.colors.surfaceSidebar,
+  },
+  statusLoaderOverlay: {
+    position: "absolute",
+    right: -2,
+    bottom: -2,
+    width: 16,
+    height: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: theme.borderRadius.full,
+    backgroundColor: theme.colors.surfaceSidebar,
+  },
+  statusDotNeedsInput: {
+    backgroundColor: theme.colors.palette.amber[500],
+  },
+  statusDotFailed: {
+    backgroundColor: theme.colors.palette.red[500],
+  },
+  statusDotAttention: {
+    backgroundColor: theme.colors.palette.green[500],
+  },
+  headerColumn: {
+    flex: 1,
+    minWidth: 0,
+  },
+  metaTrailing: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    flexShrink: 0,
+  },
+  metaRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: theme.spacing[2],
+    // Tall enough for the hover actions, so revealing them never changes row height.
+    minHeight: 20,
+  },
+  repoSlug: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  timeAgo: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+  },
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    minWidth: 0,
+  },
+  title: {
+    color: theme.colors.foreground,
+    fontSize: theme.fontSize.base,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 22,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  // Sibling of the header block, so it starts at the row's left padding and
+  // runs the full width instead of being inset under the project icon.
+  detailRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: theme.spacing[2],
+    marginTop: theme.spacing[1],
+    minHeight: 20,
+  },
+  detailLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  branch: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  detailRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    flexShrink: 0,
+    marginLeft: "auto",
+  },
+  hostLabel: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+  },
+  providerIcons: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[1],
+    flexShrink: 0,
+  },
+  archiveAction: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[1],
+    paddingHorizontal: theme.spacing[1],
+    borderRadius: theme.borderRadius.base,
+  },
+  archiveActionText: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+  },
+  archiveActionTextHovered: {
+    color: theme.colors.foreground,
+  },
+  shortcutBadgeOverlay: {
+    position: "absolute",
+    top: 1,
+    right: 0,
+  },
+}));
+=======
+import { memo, useCallback, useMemo, useState, type ReactNode } from "react";
+import { Pressable, Text, View, type GestureResponderEvent } from "react-native";
+import { StyleSheet, withUnistyles } from "react-native-unistyles";
+import { Archive } from "lucide-react-native";
+import { DiffStat } from "@/components/diff-stat";
+import { ProjectIconView } from "@/components/project-icon-view";
+import { getProviderIcon } from "@/components/provider-icons";
+import { SyncedLoader } from "@/components/synced-loader";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import {
+  ChecksBadge,
+  PrBadge,
+  SidebarWorkspaceShortcutBadge,
+  WorkspaceScriptIcon,
+  type SidebarWorkspaceScriptIconKind,
+} from "@/components/sidebar/sidebar-workspace-row-content";
+import { resolveSidebarWorkspacePrimaryLabel } from "@/components/sidebar/sidebar-workspace-title";
+import { useMinuteTick } from "@/hooks/use-minute-tick";
+import { useAppSettings } from "@/hooks/use-settings";
+import type { SidebarWorkspaceEntry } from "@/hooks/use-sidebar-workspaces-list";
+import type { Theme } from "@/styles/theme";
+import type { SidebarStateBucket } from "@/utils/sidebar-agent-state";
+import { shouldRenderSyncedStatusLoader } from "@/utils/status-loader";
+import { deriveRemoteSlug } from "@/utils/remote-slug";
+import { formatTimeAgo } from "@/utils/time";
+import { getHostColorTextStyle } from "@/styles/host-color";
+import type { HostColor } from "@/types/host-connection";
+import { isNative, isWeb } from "@/constants/platform";
+
+const PROJECT_ICON_SIZE = 40;
+const STATUS_DOT_SIZE = 12;
+const MAX_PROVIDER_ICONS = 3;
+const PROVIDER_ICON_SIZE = 14;
+const ARCHIVE_ICON_SIZE = 14;
+
+const foregroundMutedColorMapping = (theme: Theme) => ({ color: theme.colors.foregroundMuted });
+const foregroundColorMapping = (theme: Theme) => ({ color: theme.colors.foreground });
+const providerIconColorMapping = (theme: Theme) => ({ color: theme.colors.foregroundMuted });
+const syncedLoaderColorMapping = (theme: Theme) => ({
+  color:
+    theme.colorScheme === "light"
+      ? theme.colors.palette.amber[700]
+      : theme.colors.palette.amber[500],
+});
+
+const ThemedLoadingSpinner = withUnistyles(LoadingSpinner);
+const ThemedArchive = withUnistyles(Archive);
+const ThemedSyncedLoader = withUnistyles(SyncedLoader);
+
+function DynamicProviderIcon({
+  provider,
+  size,
+  color = "",
+}: {
+  provider: string;
+  size: number;
+  color?: string;
+}) {
+  const Icon = getProviderIcon(provider);
+  return <Icon size={size} color={color} />;
+}
+
+const ThemedDynamicProviderIcon = withUnistyles(DynamicProviderIcon);
+
+/**
+ * Status-mode row body. Project mode keeps `SidebarWorkspaceRowContent`; this is
+ * the taller four-line variant used only when the sidebar is sorted by status.
+ *
+ * The icon spans the two lines beside it; the meta line then runs the full row
+ * width underneath so nothing is stranded in a dead column below the icon:
+ *
+ *   [icon+dot]  owner/repo                     time ago | archive + kebab
+ *   [        ]  workspace title
+ *   branch  +12 -3                            host  provider icons
+ *   PR badge + checks (only when a PR exists)
+ */
+export const SidebarStatusRowContent = memo(function SidebarStatusRowContent({
+  workspace,
+  iconDataUri,
+  hostLabel,
+  hostColor,
+  scriptIconKind = null,
+  isArchiving,
+  shortcutNumber = null,
+  showShortcutBadge = false,
+  showActions,
+  showSnoozedChip = false,
+  children,
+}: {
+  workspace: SidebarWorkspaceEntry;
+  iconDataUri: string | null;
+  hostLabel: string;
+  hostColor: HostColor | null;
+  scriptIconKind?: SidebarWorkspaceScriptIconKind | null;
+  isArchiving: boolean;
+  shortcutNumber?: number | null;
+  showShortcutBadge?: boolean;
+  /** Hover (web) reveals the quick actions in place of the time-ago text. */
+  showActions: boolean;
+  /**
+   * A snoozed workspace states its wake time without waiting for hover, so the
+   * trailing slot renders `children` — carrying the snooze chip alone — beside
+   * the time-ago text instead of staying empty.
+   */
+  showSnoozedChip?: boolean;
+  /** The quick-action cluster, or just the snooze chip when only it is shown. */
+  children?: ReactNode;
+}) {
+  const {
+    settings: { workspaceTitleSource },
+  } = useAppSettings();
+  const primaryLabel = resolveSidebarWorkspacePrimaryLabel({ workspace, workspaceTitleSource });
+  const secondaryLabel = resolveStatusRowSecondaryLabel({ workspace, primaryLabel });
+  const repoSlug = deriveRemoteSlug(workspace.remoteUrl) ?? workspace.projectName;
+  const showShortcut = showShortcutBadge && shortcutNumber !== null;
+  // Rows are memoized, so without this tick the "Xm ago" label would freeze
+  // until some unrelated state change happened to re-render the row.
+  useMinuteTick();
+  const timeAgo = workspace.statusEnteredAt ? formatTimeAgo(workspace.statusEnteredAt) : null;
+  // Web swaps the time-ago for the quick actions on hover, inside a fixed slot so
+  // the row never reflows. Touch platforms have no hover: the kebab is permanent,
+  // so it sits beside the time-ago instead of covering it.
+  const showOverlayActions = showActions && !showShortcut && !isNative;
+  const showInlineActions = showActions && !showShortcut && isNative;
+  // Not hovered but snoozed: the chip sits beside the time-ago text, the same
+  // place the inline actions occupy on touch.
+  const showSnoozeChipOnly = !showActions && showSnoozedChip && !showShortcut;
+
+  return (
+    <View style={styles.rowContent}>
+      <View style={styles.headerBlock}>
+        <StatusRowLeadingVisual workspace={workspace} iconDataUri={iconDataUri} />
+        <View style={styles.headerColumn}>
+          <StatusRowMetaLine
+            repoSlug={repoSlug}
+            isArchiving={isArchiving}
+            timeAgo={timeAgo}
+            showTimestamp={!showOverlayActions && !showShortcut}
+            showTrailingActions={showOverlayActions || showInlineActions || showSnoozeChipOnly}
+          >
+            {children}
+          </StatusRowMetaLine>
+          <StatusRowTitleLine primaryLabel={primaryLabel} scriptIconKind={scriptIconKind} />
+        </View>
+      </View>
+      <StatusRowDetailLine
+        secondaryLabel={secondaryLabel}
+        diffStat={workspace.diffStat}
+        prHint={workspace.prHint}
+        hostLabel={hostLabel}
+        hostColor={hostColor}
+        providers={workspace.providers}
+      />
+      {showShortcut && shortcutNumber !== null ? (
+        <View style={styles.shortcutBadgeOverlay} pointerEvents="none">
+          <SidebarWorkspaceShortcutBadge number={shortcutNumber} />
+        </View>
+      ) : null}
+    </View>
+  );
+});
+
+function StatusRowMetaLine({
+  repoSlug,
+  isArchiving,
+  timeAgo,
+  showTimestamp,
+  showTrailingActions,
+  children,
+}: {
+  repoSlug: string;
+  isArchiving: boolean;
+  timeAgo: string | null;
+  showTimestamp: boolean;
+  showTrailingActions: boolean;
+  children?: ReactNode;
+}) {
+  // The quick actions sit in flow, not in an absolute overlay: they claim real
+  // width so the slug truncates with an ellipsis instead of being painted over.
+  // Row height stays fixed via the meta line's pinned minHeight.
+  return (
+    <View style={styles.metaRow}>
+      <Text style={styles.repoSlug} numberOfLines={1}>
+        {repoSlug}
+      </Text>
+      <View style={styles.metaTrailing}>
+        {showTimestamp ? <StatusRowTimestamp isArchiving={isArchiving} timeAgo={timeAgo} /> : null}
+        {showTrailingActions ? children : null}
+      </View>
+    </View>
+  );
+}
+
+function StatusRowTitleLine({
+  primaryLabel,
+  scriptIconKind,
+}: {
+  primaryLabel: string;
+  scriptIconKind: SidebarWorkspaceScriptIconKind | null;
+}) {
+  return (
+    <View style={styles.titleRow}>
+      <Text style={styles.title} numberOfLines={1}>
+        {primaryLabel}
+      </Text>
+      {scriptIconKind ? <WorkspaceScriptIcon kind={scriptIconKind} /> : null}
+    </View>
+  );
+}
+
+function StatusRowDetailLine({
+  secondaryLabel,
+  diffStat,
+  prHint,
+  hostLabel,
+  hostColor,
+  providers,
+}: {
+  secondaryLabel: string | null;
+  diffStat: SidebarWorkspaceEntry["diffStat"];
+  prHint: SidebarWorkspaceEntry["prHint"];
+  hostLabel: string;
+  hostColor: HostColor | null;
+  providers: readonly string[];
+}) {
+  return (
+    <View style={styles.detailRow}>
+      <View style={styles.detailLeft}>
+        {secondaryLabel ? (
+          <Text style={styles.branch} numberOfLines={1}>
+            {secondaryLabel}
+          </Text>
+        ) : null}
+        {diffStat ? (
+          <DiffStat additions={diffStat.additions} deletions={diffStat.deletions} />
+        ) : null}
+        {prHint ? <PrBadge hint={prHint} /> : null}
+        {prHint ? <ChecksBadge checks={prHint.checks} forge={prHint.forge} /> : null}
+      </View>
+      <View style={styles.detailRight}>
+        <Text style={[styles.hostLabel, getHostColorTextStyle(hostColor)]} numberOfLines={1}>
+          {hostLabel}
+        </Text>
+        <StatusRowProviderIcons providers={providers} />
+      </View>
+    </View>
+  );
+}
+
+/** One glyph per provider with a live agent, most recently active first. */
+function StatusRowProviderIcons({ providers }: { providers: readonly string[] }) {
+  if (providers.length === 0) {
+    return null;
+  }
+  return (
+    <View style={styles.providerIcons}>
+      {providers.slice(0, MAX_PROVIDER_ICONS).map((provider) => (
+        <StatusRowProviderIcon key={provider} provider={provider} />
+      ))}
+    </View>
+  );
+}
+
+function StatusRowProviderIcon({ provider }: { provider: string }) {
+  return (
+    <ThemedDynamicProviderIcon
+      provider={provider}
+      size={PROVIDER_ICON_SIZE}
+      uniProps={providerIconColorMapping}
+    />
+  );
+}
+
+/**
+ * The branch line would repeat the title when the title source is "branch", so
+ * fall back to the workspace name and drop the line entirely when both match.
+ */
+export function resolveStatusRowSecondaryLabel({
+  workspace,
+  primaryLabel,
+}: {
+  workspace: Pick<SidebarWorkspaceEntry, "name" | "currentBranch">;
+  primaryLabel: string;
+}): string | null {
+  const branch = workspace.currentBranch;
+  if (branch && branch !== primaryLabel) {
+    return branch;
+  }
+  return workspace.name === primaryLabel ? null : workspace.name;
+}
+
+function StatusRowTimestamp({
+  isArchiving,
+  timeAgo,
+}: {
+  isArchiving: boolean;
+  timeAgo: string | null;
+}) {
+  if (isArchiving) {
+    return <ThemedLoadingSpinner size={10} uniProps={foregroundMutedColorMapping} />;
+  }
+  if (!timeAgo) {
+    return null;
+  }
+  return <Text style={styles.timeAgo}>{timeAgo}</Text>;
+}
+
+function StatusRowLeadingVisual({
+  workspace,
+  iconDataUri,
+}: {
+  workspace: SidebarWorkspaceEntry;
+  iconDataUri: string | null;
+}) {
+  const dotColorStyle = getStatusDotColorStyle(workspace.statusBucket);
+  const showRunningIndicator = shouldRenderSyncedStatusLoader({
+    bucket: workspace.statusBucket,
+  });
+
+  return (
+    <View style={styles.leadingVisualSlot}>
+      <ProjectIconView
+        iconDataUri={iconDataUri}
+        initial={workspace.projectName.charAt(0).toUpperCase()}
+        projectKey={workspace.projectKey}
+        imageStyle={styles.projectIcon}
+        fallbackStyle={styles.projectIconFallback}
+        textStyle={styles.projectIconFallbackText}
+      />
+      {showRunningIndicator ? (
+        <View style={styles.statusLoaderOverlay} testID="workspace-status-indicator-running">
+          <ThemedSyncedLoader size={11} uniProps={syncedLoaderColorMapping} />
+        </View>
+      ) : null}
+      {dotColorStyle ? <View style={[styles.statusDotOverlay, dotColorStyle]} /> : null}
+    </View>
+  );
+}
+
+/** Inline archive affordance revealed next to the kebab on hover (web only). */
+export function SidebarStatusRowArchiveAction({
+  label,
+  onArchive,
+}: {
+  label: string;
+  onArchive: () => void;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const handleHoverIn = useCallback(() => setIsHovered(true), []);
+  const handleHoverOut = useCallback(() => setIsHovered(false), []);
+  const handlePressIn = useCallback((event: GestureResponderEvent) => event.stopPropagation(), []);
+  const handlePress = useCallback(
+    (event: GestureResponderEvent) => {
+      event.stopPropagation();
+      onArchive();
+    },
+    [onArchive],
+  );
+  const textStyle = useMemo(
+    () =>
+      isHovered
+        ? [styles.archiveActionText, styles.archiveActionTextHovered]
+        : styles.archiveActionText,
+    [isHovered],
+  );
+
+  return (
+    <Pressable
+      // The row itself is a <button> on web; a nested button is invalid HTML.
+      accessibilityRole={isWeb ? undefined : "button"}
+      accessibilityLabel={label}
+      hitSlop={4}
+      onHoverIn={handleHoverIn}
+      onHoverOut={handleHoverOut}
+      onPressIn={handlePressIn}
+      onPress={handlePress}
+      style={styles.archiveAction}
+      testID="sidebar-status-row-archive-action"
+    >
+      <ThemedArchive
+        size={ARCHIVE_ICON_SIZE}
+        uniProps={isHovered ? foregroundColorMapping : foregroundMutedColorMapping}
+      />
+      <Text style={textStyle}>{label}</Text>
+    </Pressable>
+  );
+}
+
+// Same buckets and colors as the project-mode status dot; "done" carries no dot.
+function getStatusDotColorStyle(bucket: SidebarStateBucket) {
+  switch (bucket) {
+    case "needs_input":
+      return styles.statusDotNeedsInput;
+    case "failed":
+      return styles.statusDotFailed;
+    case "running":
+      return null;
+    case "attention":
+      return styles.statusDotAttention;
+    case "done":
+      return null;
+  }
+}
+
+const styles = StyleSheet.create((theme) => ({
+  rowContent: {
+    position: "relative",
+  },
+  headerBlock: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: theme.spacing[2],
+    width: "100%",
+  },
+  leadingVisualSlot: {
+    position: "relative",
+    width: PROJECT_ICON_SIZE,
+    height: PROJECT_ICON_SIZE,
+    flexShrink: 0,
+  },
+  projectIcon: {
+    width: "100%",
+    height: "100%",
+    borderRadius: theme.borderRadius.md,
+  },
+  projectIconFallback: {
+    width: "100%",
+    height: "100%",
+    borderRadius: theme.borderRadius.md,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  projectIconFallbackText: {
+    fontSize: theme.fontSize.xs,
+  },
+  statusDotOverlay: {
+    position: "absolute",
+    right: -2,
+    bottom: -2,
+    width: STATUS_DOT_SIZE,
+    height: STATUS_DOT_SIZE,
+    borderRadius: theme.borderRadius.full,
+    borderWidth: theme.borderWidth[2],
+    borderColor: theme.colors.surfaceSidebar,
+  },
+  statusLoaderOverlay: {
+    position: "absolute",
+    right: -2,
+    bottom: -2,
+    width: 16,
+    height: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: theme.borderRadius.full,
+    backgroundColor: theme.colors.surfaceSidebar,
+  },
+  statusDotNeedsInput: {
+    backgroundColor: theme.colors.palette.amber[500],
+  },
+  statusDotFailed: {
+    backgroundColor: theme.colors.palette.red[500],
+  },
+  statusDotAttention: {
+    backgroundColor: theme.colors.palette.green[500],
+  },
+  headerColumn: {
+    flex: 1,
+    minWidth: 0,
+  },
+  metaTrailing: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    flexShrink: 0,
+  },
+  metaRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: theme.spacing[2],
+    // Tall enough for the hover actions, so revealing them never changes row height.
+    minHeight: 20,
+  },
+  repoSlug: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  timeAgo: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+  },
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    minWidth: 0,
+  },
+  title: {
+    color: theme.colors.foreground,
+    fontSize: theme.fontSize.base,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 22,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  // Sibling of the header block, so it starts at the row's left padding and
+  // runs the full width instead of being inset under the project icon.
+  detailRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: theme.spacing[2],
+    marginTop: theme.spacing[1],
+    minHeight: 20,
+  },
+  detailLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  branch: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  detailRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    flexShrink: 0,
+    marginLeft: "auto",
+  },
+  hostLabel: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+  },
+  providerIcons: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[1],
+    flexShrink: 0,
+  },
+  archiveAction: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[1],
+    paddingHorizontal: theme.spacing[1],
+    borderRadius: theme.borderRadius.base,
+  },
+  archiveActionText: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+    lineHeight: 16,
+  },
+  archiveActionTextHovered: {
+    color: theme.colors.foreground,
+  },
+  shortcutBadgeOverlay: {
+    position: "absolute",
+    top: 1,
+    right: 0,
+  },
+}));
+>>>>>>>

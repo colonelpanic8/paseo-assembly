@@ -37,17 +37,23 @@ fixup = "patches/sidebar-project-view-shortcut-targets.patch"
 [[entry]]
 branch = "mine:assembly-fdroid-variant"
 
-# Combined PR superseding 2525 and 2529 (see [[exclude]] at the end): merges
-# both PR heads onto upstream main and adds a hover-revealed snooze quick
-# action next to archive on the status-sidebar workspace cards, which needs
-# both parents and so cannot live in either parent PR. Carried by PR number,
-# not as mine:status-sidebar-snooze, so discovery counts it as already carried
-# instead of appending a second entry for the same work. If it merges
-# upstream, prune it and leave the excluded parents excluded -- their content
-# will be in the base by then.
+# Combined PR: merges both parent PR heads onto upstream main and adds a
+# hover-revealed snooze quick action next to archive on the status-sidebar
+# workspace cards, which needs both parents and so cannot live in either
+# parent PR. Carried by PR number, not as mine:status-sidebar-snooze, so
+# discovery counts it as already carried instead of appending a second entry
+# for the same work.
+#
+# The parents declaration keeps 2525 and 2529 out of the entry list (discovery
+# skips them as carried-via-this-entry) and lets build reconstruct this entry
+# when either parent moves: re-merge them onto the base, replay this branch's
+# own commits on top. If this merges upstream, prune it and exclude the
+# parents if their PRs are still open -- their content will be in the base by
+# then, but the declaration that kept discovery away leaves with the entry.
 [[entry]]
 pr = 2564
 summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
+parents = [{ pr = 2525 }, { pr = 2529 }]
 fixup = "patches/managed-host-colors.patch"
 
 [[entry]]
@@ -98,14 +104,10 @@ summary = "Remove the setup-worktree-scripts reminder"
 pr = 2650
 summary = "fix: survive NODE_ENV=production during install"
 
-[[entry]]
-pr = 2655
-summary = "feat: Wear OS companion app for agent triage"
-
-[[entry]]
-pr = 2657
-summary = "Live Voice: codex realtime voice over WebRTC (phase 1)"
-
+# 2655 (Wear OS companion) and 2657 (Live Voice) are not carried as entries:
+# they are parents of mine:watch-live-voice below, which merges both and
+# overlays what needs the pair. Build reconstructs that entry from their live
+# heads, so their content enters the stack once, at its position.
 [[entry]]
 pr = 2658
 summary = "Add rolling agent purpose summaries"
@@ -119,12 +121,13 @@ fixup = "patches/agent-purpose-model-display.patch"
 pr = 2660
 summary = "Restore a workspace's agents when the workspace is unarchived"
 
-# Merges the 2655 and 2657 heads and adds what needs both: the watch can start,
-# end and mute a Live Voice call and read its transcript, on its own launcher
-# entry and tile. Same shape as 2564 above -- the feature spans two PRs, so it
-# cannot live in either one, and this branch is where it goes. Must stay ordered
-# after 2657, whose head it contains; keeping it merged up with both parents is
-# the maintenance cost of carrying it, exactly as for 2564.
+# Merges 2655 and 2657 and adds what needs both: the watch can start, end and
+# mute a Live Voice call and read its transcript, on its own launcher entry and
+# tile. Same shape as 2564 above -- the feature spans two PRs, so it cannot
+# live in either one, and this branch is where it goes. The parents declaration
+# below carries both PRs via this entry and lets build reconstruct it against
+# their live heads, replaying the overlay on top; the parents themselves are
+# not entries.
 #
 # Also carries the Android side of putting that call on your wrist, which is not
 # watch code at all: react-native-webrtc leaves AudioManager alone, so nothing
@@ -140,6 +143,7 @@ summary = "Restore a workspace's agents when the workspace is unarchived"
 [[entry]]
 branch = "mine:watch-live-voice"
 summary = "Drive Live Voice from the watch; route call audio to a Bluetooth headset"
+parents = [{ pr = 2655 }, { pr = 2657 }]
 # Inherited from that removed entry and re-homed here, still needed: the agent
 # payload builders only trip oxlint's complexity rule once 2657, 2658 and 2659
 # stack, so it belongs to no single topic branch. Confirmed by linting the
@@ -159,18 +163,11 @@ summary = "fix(app): make host pickers searchable"
 # Recorded with `fork-fold exclude --pr N --reason ...`; removing one is a
 # hand edit here.
 
-# 2525 and 2529 are both still OPEN, which is exactly why they need this: a
-# discovery sweep would otherwise re-append them every time. Their heads are
-# ancestors of the combined 2564, so carrying either alongside it merges the
-# same commits twice, and any later divergence (rebase, review fixups) lands
-# as duplicate or conflicting hunks.
-[[exclude]]
-pr = 2525
-reason = "superseded by 2564, the combined PR that merges it with 2529 and adds the sidebar snooze action on top"
-
-[[exclude]]
-pr = 2529
-reason = "superseded by 2564, the combined PR that merges it with 2525 and adds the sidebar snooze action on top"
+# 2525 and 2529 are NOT excluded here: they are declared as parents of the
+# 2564 entry above, which is the stronger statement -- it keeps discovery away
+# the same way an exclusion would, and additionally tells build to
+# reconstruct 2564 when either of them moves. The manifest rejects carrying a
+# parent declaration and an exclusion for the same target at once.
 
 # 2526 and 2559 are CLOSED, so discovery cannot re-add them and only a hand
 # edit could. They are recorded anyway: an exclusion is what answers "why

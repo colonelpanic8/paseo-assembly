@@ -291,9 +291,45 @@ recorded = "2026-07-28T18:52:01.154832830+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "01e72132ee19c55262fc0973ae5e99bd030c54f3"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-01T20:41:56.550739108+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "05b0ee0bc55a81ceccbab80587bca020869d13af"
+paths = ["packages/app/src/i18n/resources/ja.ts"]
+recorded = "2026-08-01T20:41:56.550742264+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "0ed6e380215b8cf7bf766494a1e8155893a4a03f"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-08-01T20:41:56.550743045+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "145358d5c6df2c4605d7eb54e2a70c20d18b0938"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-08-01T19:19:14.331308622+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "167baf22d542fd520333a90241bcfa4275e15d74"
+paths = ["packages/app/src/workspace-snooze/use-workspace-snooze-menu.ts"]
+recorded = "2026-08-01T20:41:56.550743636+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "1786518d4277efcc27a49edc2cc139d3c240ed27"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-01T20:36:42.497630349+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "1a0409ace1c0f1227c67de8d463708346e5d8c85"
+paths = ["packages/app/src/i18n/resources/ar.ts"]
+recorded = "2026-08-01T20:41:56.550744097+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -309,6 +345,12 @@ recorded = "2026-08-01T19:19:14.331310436+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "1b8c1a2209ee2f75bb620050e753736489bba4d2"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-01T20:41:56.550744518+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "294768fe27e5146a91a11c86d64713082b721b60"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-01T19:19:14.331310706+00:00"
@@ -318,6 +360,18 @@ entry = "pr-2564"
 hash = "31e27148c1480032943f2ea0d2fc6c260e7b97a5"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-07-31T22:11:28.949296437+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "351c7ca7cdb88b01122fe8f98598ddd870139fd2"
+paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
+recorded = "2026-08-01T20:41:56.550747504+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "43701543032549aa34b68b3ee9b13f08ecb4548d"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-01T20:36:42.497632633+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -333,9 +387,51 @@ recorded = "2026-07-30T13:59:31.776483033+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "47361dc522206a92bb9953ea542732df77aee809"
+paths = ["packages/app/src/hooks/use-sidebar-workspaces-list.ts"]
+recorded = "2026-08-01T20:41:56.550748055+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "529f8b9eec3fba6617dbe62da8aa1f891a5d18f9"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-07-29T22:17:55.039665300+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "55c92f616311bd5e3b500a2e2d91d431e2647304"
+paths = ["packages/app/src/components/sidebar/sidebar-projection.test.ts", "packages/app/src/hooks/use-sidebar-shortcut-model.test.tsx"]
+recorded = "2026-08-01T20:36:42.497633044+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "56992418a1aa3ca2881ef2ad1b4bfd138ee7e058"
+paths = ["packages/app/src/hooks/sidebar-status-view-model.ts"]
+recorded = "2026-08-01T20:41:56.550748375+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "56fbc2af358d83c4849b3031f077396d24a6f2de"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.test.ts"]
+recorded = "2026-08-01T20:41:56.550748686+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "5aa805b7cd78ef6c4018edbd89064070c634bc04"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-01T20:33:03.609201499+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "5ece489f1fe72a5bdc80860e36b65f32791a4f0d"
+paths = ["packages/app/src/i18n/resources/en.ts"]
+recorded = "2026-08-01T20:41:56.550748997+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "61e7028bc426e4c6cc5348ab98a04edf23425c56"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-01T20:33:03.609203754+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -357,9 +453,57 @@ recorded = "2026-07-31T19:40:01.811604711+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "755133ba32c0c162b72cc4a45dde9bb2c737b11e"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-01T20:41:56.550749337+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "7acf1952919efb87fa5e8fc466c4a504466129da"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-01T20:33:03.609204215+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "845ac84c96be89bedd7d0bac82fce03110bac578"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-01T20:41:56.550749658+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "8eeba0c0b7a730097c7a926a0bdb4687fab0ceb4"
 paths = ["packages/app/src/hooks/use-sidebar-workspaces-list.ts"]
 recorded = "2026-08-01T19:19:14.331311047+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "a5891a06663eb7ae51cd078064c14cee0fa03438"
+paths = ["packages/app/src/i18n/resources/es.ts"]
+recorded = "2026-08-01T20:41:56.550749898+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "ac3b3ace39ba726c687a6e8895b15450c343f32d"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T20:41:56.550750309+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "cefecb20ab1b379e93571314c70c98f71c1d70f1"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-08-01T20:41:56.550750569+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "d009539b4717bbb57191371fc211034cb25b3931"
+paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
+recorded = "2026-08-01T20:41:56.550750990+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "d372e29a7d18d719ad50eaa9cd7330cea60d3b5c"
+paths = ["packages/app/src/components/sidebar/sidebar-projection.test.ts", "packages/app/src/hooks/use-sidebar-shortcut-model.test.tsx"]
+recorded = "2026-08-01T20:41:56.550751521+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -369,9 +513,33 @@ recorded = "2026-07-29T22:17:55.039667273+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "e73f2fbe994fa68b88ba2deb304c5367561a64ca"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-08-01T20:41:56.550751742+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "e85cd58eac810bbd3be8804a94e0db3e767bb5b4"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-01T20:33:03.609204515+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "ea36ef58e2f31616878639f2f91dea1db5feb17d"
+paths = ["packages/app/src/i18n/resources/pt-BR.ts"]
+recorded = "2026-08-01T20:41:56.550752022+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "ea6180efd7e1d4ffe7e0bcf341ba7b1f4f1e7d65"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-07-31T15:27:49.175465120+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "f51f96782e8909d3df52712ddd9869401d19f0f9"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T20:36:42.497634577+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -594,6 +762,12 @@ entry = "pr-2658"
 hash = "5fa8bfce05bdd757ee531543c323f94427f74fe6"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-07-30T10:01:15.828168298+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "6c535f13d544ece7962c3068f4613172befaa120"
+paths = ["packages/server/src/server/websocket-server.relay-reconnect.test.ts"]
+recorded = "2026-08-01T21:02:52.139429869+00:00"
 
 [[resolution]]
 entry = "pr-2658"
@@ -873,6 +1047,12 @@ recorded = "2026-08-01T19:26:48.217136603+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "60442f88d69482832d69f7dabac1854b884e05c3"
+paths = ["packages/server/src/server/websocket-server.relay-reconnect.test.ts"]
+recorded = "2026-08-01T21:08:42.299449758+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "61ca01d4637a2adda95ec0d5edffd0e14aa56f78"
 paths = ["packages/watch/gradle/libs.versions.toml"]
 recorded = "2026-08-01T19:26:48.217136924+00:00"
@@ -942,3 +1122,9 @@ entry = "watch-live-voice"
 hash = "e7c782c8c1f44416bd2b5477feeaf078cf0dbcc7"
 paths = ["packages/watch/app/src/main/java/sh/paseo/watch/ui/Glyphs.kt"]
 recorded = "2026-08-01T19:26:48.217141392+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "ee890a53a943facd8d9e32810fe9ebf81f06426e"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-01T21:08:42.299453044+00:00"
