@@ -168,10 +168,6 @@ summary = "Fix worktree setup with production npm environments"
 pr = 2785
 summary = "Add UI and CLI for creating provider accounts"
 
-[[entry]]
-pr = 2787
-summary = "Add turn minimap navigation"
-
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
 # and the manifest fails to load if an entry ever carries an excluded target.
@@ -222,3 +218,7 @@ reason = "held out at user's request"
 [[exclude]]
 pr = 2514
 reason = "held out at user's request: exclude the multi-account profiles change from the assembly"
+
+[[exclude]]
+pr = 2787
+reason = "superseded by PR 2792, now merged into upstream main"
