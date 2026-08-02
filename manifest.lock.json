@@ -39,7 +39,7 @@
       },
       "watch-live-voice": {
         "pr-2655": "9aaf0b20d49d0b91bc0e44f2c2e53957bf4196cb",
-        "pr-2657": "d43917b9df0170a638e64c90d35c881b213dac8a"
+        "pr-2657": "ce859797569ecdff4bae17336bc183da42cb764e"
       }
     },
     "anchors": {
@@ -48,13 +48,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-02T02:22:16.257179102+00:00",
+    "generated": "2026-08-02T03:23:41.133380804+00:00",
     "base": "048b82f2a7b3ecc9b62bc5b817729f4ca2741863",
-    "commit": "591de763929d84900fbef87f3ae053185a02cfb6",
-    "pre_provenance_commit": "591de763929d84900fbef87f3ae053185a02cfb6",
-    "tree": "8417a09dbf2bd55464490592b6dcadcdd149e725",
-    "built_tree": "8417a09dbf2bd55464490592b6dcadcdd149e725",
-    "previous_tree": "f71b1d745a48d9d80423f4a1059c63c048d1d802",
+    "commit": "1419516d88320035005e44a71e1f0664c37c3dd4",
+    "pre_provenance_commit": "1419516d88320035005e44a71e1f0664c37c3dd4",
+    "tree": "14cf9e0288af8137cbe9aba3c6f8e1ad6d009c05",
+    "built_tree": "14cf9e0288af8137cbe9aba3c6f8e1ad6d009c05",
+    "previous_tree": "8417a09dbf2bd55464490592b6dcadcdd149e725",
     "tree_changed": true,
     "conflicts": 14,
     "manifest_entries": [
@@ -207,7 +207,7 @@
           },
           {
             "source": "upstream#2657",
-            "pin": "d43917b9df0170a638e64c90d35c881b213dac8a"
+            "pin": "ce859797569ecdff4bae17336bc183da42cb764e"
           }
         ],
         "anchor": "f288aa778184acf07fd0b0654cf54e035887f3c3"
@@ -296,8 +296,8 @@
         "conflicted": false,
         "fixup": "ae4c5b52dd8f7a6e00b2e974d80f8fac45441c6b",
         "derived": {
-          "base_tip": "e53e0a045b097613815d4becdb6e50191c431155",
-          "tip": "6f672b2d755d3fcf84bfe637212187ed116d0237"
+          "base_tip": "31d1c125af49c1372bad04c5b0e1865034d33681",
+          "tip": "59c681987e438029ac2a65e359a61033424de1bf"
         }
       },
       {
@@ -401,8 +401,8 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "4bd5e615202a5d77f05d78fc7b47f29451960b76",
-          "tip": "d7facce05c7d023fda0a3d939111ec5c3d08060c"
+          "base_tip": "e5929ed07410e691b5b402fcf619a8200a69045a",
+          "tip": "830632950d7d707e04f779232e693e01f945628a"
         }
       },
       {
@@ -448,7 +448,7 @@
         "oid": "45cd9bbf4f31380c2a43c1cd9c7e8923c3e0da3f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:4d320e6785470412afc4e8ce5c2b7d9549b5301b"
+        "resolution": "rerere"
       }
     ]
   }
