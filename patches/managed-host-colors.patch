@@ -1,14 +1,3 @@
-diff --git a/packages/app/src/hooks/use-sidebar-workspaces-list.ts b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
---- a/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-+++ b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-@@ -16,7 +16,6 @@ import {
-   deriveSidebarLoadingState,
-   resolveSidebarServerIds,
-   type ProjectStatusSession,
--  resolveSidebarServerIds,
-   type SidebarProjectEntry,
-   type SidebarWorkspaceEntry,
-   type SidebarWorkspacePlacement,
 diff --git a/docs/managed-hosts.md b/docs/managed-hosts.md
 index 0ec93214a..ad5b98e89 100644
 --- a/docs/managed-hosts.md
@@ -40,11 +29,37 @@ index 0ec93214a..ad5b98e89 100644
  Managed entries currently become ordinary saved host connections after the first successful probe.
  That means direct passwords are persisted in the app's AsyncStorage just like passwords entered in
  the Add Host form. Encrypting the source file protects configuration at rest in the configuration
+diff --git a/packages/app/src/components/draggable-list.native.tsx b/packages/app/src/components/draggable-list.native.tsx
+index ee5acb7f5..7ae294890 100644
+--- a/packages/app/src/components/draggable-list.native.tsx
++++ b/packages/app/src/components/draggable-list.native.tsx
+@@ -119,7 +119,8 @@ export function DraggableList<T>({
+       scrollEnabled={scrollEnabled}
+       extraData={extraData}
+       simultaneousHandlers={simultaneousHandlers}
+-      dragGestureHostPresented={gestureHostPresented}
++      // @ts-expect-error - gestureHostPresented is consumed by the native gesture patch.
++      gestureHostPresented={gestureHostPresented}
+       // Higher activation distance reduces accidental drag capture while nested
+       // lists are inside a scroll container.
+       activationDistance={20}
+diff --git a/packages/app/src/hooks/use-sidebar-workspaces-list.ts b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+index 90fe97143..ff1cd475c 100644
+--- a/packages/app/src/hooks/use-sidebar-workspaces-list.ts
++++ b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+@@ -16,7 +16,6 @@ import {
+   deriveSidebarLoadingState,
+   resolveSidebarServerIds,
+   type ProjectStatusSession,
+-  resolveSidebarServerIds,
+   type SidebarProjectEntry,
+   type SidebarWorkspaceEntry,
+   type SidebarWorkspacePlacement,
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
-index 24b6a95cd..742d4fdea 100644
+index 4b142a656..bf0962d9c 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
 +++ b/packages/app/src/runtime/host-runtime.test.ts
-@@ -3309,12 +3309,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3383,12 +3383,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
            endpoint: "ryzen-shine:6767",
            useTls: false,
            password: "ryzen-secret",
@@ -59,7 +74,7 @@ index 24b6a95cd..742d4fdea 100644
          },
        ],
      };
-@@ -3339,7 +3341,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3413,7 +3415,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
        storage: createMemoryHostRuntimeStorage(),
      });
  
@@ -76,7 +91,7 @@ index 24b6a95cd..742d4fdea 100644
      store.boot();
      await hostsAdded;
  
-@@ -3367,6 +3377,67 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3441,6 +3451,67 @@ describe("HostRuntimeStore managed host bootstrap", () => {
          .map((host) => host.label)
          .sort(),
      ).toEqual(["Mac mini", "Ryzen"]);
@@ -145,7 +160,7 @@ index 24b6a95cd..742d4fdea 100644
      store.syncHosts([]);
    });
 diff --git a/packages/app/src/runtime/host-runtime.ts b/packages/app/src/runtime/host-runtime.ts
-index e2b0a4772..63e961641 100644
+index 11c176f11..00f209947 100644
 --- a/packages/app/src/runtime/host-runtime.ts
 +++ b/packages/app/src/runtime/host-runtime.ts
 @@ -8,10 +8,12 @@ import {
@@ -161,7 +176,7 @@ index e2b0a4772..63e961641 100644
    type HostConnection,
    type HostProfile,
  } from "@/types/host-connection";
-@@ -1358,6 +1360,7 @@ interface ManagedHostBootstrapInput {
+@@ -1356,6 +1358,7 @@ interface ManagedHostBootstrapInput {
    label: string;
    endpoint: string;
    connection: HostConnection;
@@ -169,7 +184,7 @@ index e2b0a4772..63e961641 100644
  }
  
  export class HostRuntimeStore {
-@@ -1502,22 +1505,33 @@ export class HostRuntimeStore {
+@@ -1501,22 +1504,33 @@ export class HostRuntimeStore {
          label: host.label,
          endpoint,
          connection,
@@ -269,26 +284,3 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
-diff --git a/packages/app/src/components/sidebar/sidebar-status-row-content.tsx b/packages/app/src/components/sidebar/sidebar-status-row-content.tsx
-index fd5cfb79a..608e37642 100644
---- a/packages/app/src/components/sidebar/sidebar-status-row-content.tsx
-+++ b/packages/app/src/components/sidebar/sidebar-status-row-content.tsx
-@@ -342,7 +342,7 @@ function StatusRowLeadingVisual({
-       <ProjectIconView
-         iconDataUri={iconDataUri}
-         initial={workspace.projectName.charAt(0).toUpperCase()}
--        projectKey={workspace.projectKey}
-+        projectViewKey={workspace.projectViewKey}
-         imageStyle={styles.projectIcon}
-         fallbackStyle={styles.projectIconFallback}
-         textStyle={styles.projectIconFallbackText}
-diff --git a/packages/app/src/components/draggable-list.native.tsx b/packages/app/src/components/draggable-list.native.tsx
---- a/packages/app/src/components/draggable-list.native.tsx
-+++ b/packages/app/src/components/draggable-list.native.tsx
-@@ -120,4 +120,5 @@ export function DraggableList<T>({
-       extraData={extraData}
-       simultaneousHandlers={simultaneousHandlers}
-+      // @ts-expect-error - gestureHostPresented is consumed by the native gesture patch.
--      dragGestureHostPresented={gestureHostPresented}
-+      gestureHostPresented={gestureHostPresented}
-       // Higher activation distance reduces accidental drag capture while nested
