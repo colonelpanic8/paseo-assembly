@@ -1,9 +1,9 @@
 {
   "version": 1,
   "pins": {
-    "base": "2e188787ffed38f3846408dc61e88741b81e54ec",
+    "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
     "entries": {
-      "assembled-npm-deps-hash": "8dddb002721f5d0e6f8a26cb3b3e8689bf43413b",
+      "assembled-npm-deps-hash": "cd97e2d2f360078b17a5500086ddb6ad6ccecc4e",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "61bac63ef8d544b9560e1d747f6571778abdfbab",
       "assembly-fdroid-variant": "12d6079c71fcce1b32718b556cbc6bef700507ab",
@@ -23,7 +23,7 @@
       "pr-2650": "d6c96def0095f66565b29873bcddf9678fb3675c",
       "pr-2658": "794f1f3f07d4c9fb78202ab6dee5292fb420014d",
       "pr-2659": "3fbe979e99184da1a33376b9570319fe60f773c3",
-      "pr-2660": "9ee870e908292ae2cf6da8c6b5fcac10fa89bce5",
+      "pr-2660": "4ecf6ac4d087b1470c8988ec8991570a084effb2",
       "pr-2730": "863babc0eca14f5901c2a0a9d123f5bfdd23547c",
       "pr-2772": "0287b8c2269f578c6ad6028315183ddd2f79e9a9",
       "pr-2783": "a2a889595f053935e3fb61c5d9355e0f5c7d3845",
@@ -34,7 +34,7 @@
     "parents": {
       "pr-2564": {
         "pr-2525": "601f3e164368c6386f932bb323c11ccf0fab8243",
-        "pr-2529": "d7c17cdd23e4733be478c7c473127677019ce508"
+        "pr-2529": "64ea70746520d52c4696a58a9c696369156bb086"
       },
       "watch-live-voice": {
         "pr-2655": "7323053ab13ef06f376dcfe14f0458e570ebcd78",
@@ -47,14 +47,14 @@
     }
   },
   "build": {
-    "generated": "2026-08-02T18:54:45.320609781+00:00",
-    "base": "2e188787ffed38f3846408dc61e88741b81e54ec",
-    "commit": "417474519e3d873d9676138a219b6bc8b6572e5f",
-    "pre_provenance_commit": "417474519e3d873d9676138a219b6bc8b6572e5f",
-    "tree": "2f45c5e1749c77b32ec4784ed78c1971b842beb9",
-    "built_tree": "2f45c5e1749c77b32ec4784ed78c1971b842beb9",
-    "previous_tree": "2f45c5e1749c77b32ec4784ed78c1971b842beb9",
-    "tree_changed": false,
+    "generated": "2026-08-02T21:39:59.208151155+00:00",
+    "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
+    "commit": "febbb64b4636032f4477aac0228accf2f61ccb9b",
+    "pre_provenance_commit": "febbb64b4636032f4477aac0228accf2f61ccb9b",
+    "tree": "70780d522082b08a89c3f2705406c09f287cef5e",
+    "built_tree": "70780d522082b08a89c3f2705406c09f287cef5e",
+    "previous_tree": "ed4e00c2afa62fd023d4c0fc58d24b28476ecf66",
+    "tree_changed": true,
     "conflicts": 20,
     "manifest_entries": [
       {
@@ -102,7 +102,7 @@
           },
           {
             "source": "upstream#2529",
-            "pin": "d7c17cdd23e4733be478c7c473127677019ce508"
+            "pin": "64ea70746520d52c4696a58a9c696369156bb086"
           }
         ],
         "anchor": "e868de23af8e4f9088d96c6e18945ed9ffc7386d"
@@ -191,7 +191,7 @@
         "name": "pr-2660",
         "kind": "pr",
         "source": "upstream#2660",
-        "pin": "9ee870e908292ae2cf6da8c6b5fcac10fa89bce5"
+        "pin": "4ecf6ac4d087b1470c8988ec8991570a084effb2"
       },
       {
         "name": "watch-live-voice",
@@ -215,7 +215,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "8dddb002721f5d0e6f8a26cb3b3e8689bf43413b"
+        "pin": "cd97e2d2f360078b17a5500086ddb6ad6ccecc4e"
       },
       {
         "name": "pr-2730",
@@ -252,7 +252,7 @@
       {
         "name": "pr-2506",
         "oid": "fef5e14832d90a2e3325eb3ff8e3f07aee42d119",
-        "status": "merged",
+        "status": "empty",
         "conflicted": false,
         "fixup": "e9fad48bf396714ec862ec19b845370b265a7458"
       },
@@ -290,8 +290,8 @@
         "conflicted": false,
         "fixup": "703b033bd324f56415028709ad95bf2d2000149c",
         "derived": {
-          "base_tip": "69ab321ee8ab074d7aa6571788d18b72120f4a34",
-          "tip": "536513018019a1229314502bfc47e123da2acd1d"
+          "base_tip": "b1abc26d020a0e25e57973114f61edc87fc8326c",
+          "tip": "1ec98b13d4acb3c3c2523e5b9064f68f4a5b66f7"
         }
       },
       {
@@ -384,7 +384,7 @@
       },
       {
         "name": "pr-2660",
-        "oid": "9ee870e908292ae2cf6da8c6b5fcac10fa89bce5",
+        "oid": "4ecf6ac4d087b1470c8988ec8991570a084effb2",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -397,13 +397,13 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "35327140b1197bc97eabc71753778c8c94065bc2",
-          "tip": "2c28526d9c8086b37ca108570a12c94d521e2704"
+          "base_tip": "1b16933ee501b97fbf6d5c60342392fa724851de",
+          "tip": "063afd4b051284fcfef3c8c5935e464bea980c91"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "8dddb002721f5d0e6f8a26cb3b3e8689bf43413b",
+        "oid": "cd97e2d2f360078b17a5500086ddb6ad6ccecc4e",
         "status": "applied",
         "conflicted": false
       },

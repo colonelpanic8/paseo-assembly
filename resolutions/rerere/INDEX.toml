@@ -33,6 +33,12 @@ recorded = "2026-07-31T20:37:45.987945484+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
+hash = "50d6d53436ab930a38b83127d96149df90d25826"
+paths = ["flake.nix"]
+recorded = "2026-08-02T21:22:52.222622190+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
 hash = "669bfea5b99dfefebad8769cb050864276044361"
 paths = ["nix/desktop-package.nix"]
 recorded = "2026-08-01T22:53:56.143182114+00:00"
@@ -153,6 +159,12 @@ recorded = "2026-08-02T15:49:18.347483861+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "12631caade52dbd8c18b1dd2d8465087266cd2b7"
+paths = ["packages/app/src/utils/time.test.ts"]
+recorded = "2026-08-02T21:22:28.322765256+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "2351ec441f5927d1438e12e30d93ccf8b3fbc030"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-02T15:44:27.642646312+00:00"
@@ -213,6 +225,12 @@ recorded = "2026-08-02T18:47:06.853278773+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "69f4b11dbd1f587501da97b8d53970dc487a29e9"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.test.ts"]
+recorded = "2026-08-02T21:22:13.916551659+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "765b12d00b65680e4cde6001d9a1b8d788980724"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
 recorded = "2026-08-02T15:44:27.642649444+00:00"
@@ -243,6 +261,12 @@ recorded = "2026-08-02T15:49:18.347486171+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "9a1576754799486732bb0e9c0396edf476edcd5c"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-02T21:22:13.916554736+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "ac9e12870f05d82728dad3b4431ace31390b45f1"
 paths = ["packages/app/src/types/host-connection.test.ts"]
 recorded = "2026-08-02T18:47:47.423874601+00:00"
@@ -255,6 +279,12 @@ recorded = "2026-08-02T18:47:06.853281681+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "c2629b8591bb04fdc098e3c9404f65655fd512a7"
+paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
+recorded = "2026-08-02T21:22:28.322768314+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "d5b46a704644992f327cee439c9e861993e78fe9"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-02T15:44:27.642649823+00:00"
@@ -264,6 +294,12 @@ entry = "pr-2564"
 hash = "db1f16939f44565e62b648a8b551151662671a9e"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
 recorded = "2026-08-02T15:50:18.054651437+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "ecd6a08d4ef848ea7f78da6248ba59f8303d1b76"
+paths = ["packages/app/src/hooks/sidebar-status-view-model.test.ts"]
+recorded = "2026-08-02T21:22:13.916555180+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -540,6 +576,12 @@ entry = "pr-2783"
 hash = "1621a8b00e7fd52d1dba66b22071e6fd884cce32"
 paths = ["flake.nix"]
 recorded = "2026-08-02T01:45:00.457711262+00:00"
+
+[[resolution]]
+entry = "pr-2783"
+hash = "43479b4d3d7bd90b5328cae69fe14f839366c82b"
+paths = ["flake.nix"]
+recorded = "2026-08-02T21:23:01.210675401+00:00"
 
 [[resolution]]
 entry = "pr-2784"
