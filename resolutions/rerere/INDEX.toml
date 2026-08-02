@@ -68,6 +68,12 @@ paths = ["docs/android.md"]
 recorded = "2026-07-31T19:38:29.346167816+00:00"
 
 [[resolution]]
+entry = "pr-2520"
+hash = "608de77d51e8253adc9e6c1f686feb431326c57d"
+paths = ["packages/app/src/types/host-connection.test.ts"]
+recorded = "2026-08-02T15:41:42.421424178+00:00"
+
+[[resolution]]
 entry = "pr-2521"
 hash = "abd9b31a128872414d62a263a41960e38a5bac24"
 paths = ["packages/app/src/stores/keyboard-shortcuts-store.test.ts"]
@@ -117,15 +123,111 @@ recorded = "2026-08-02T13:17:22.947783052+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "003e4ec5a5c0860877dbd49feadd562e964dfb43"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-08-02T15:49:47.063566314+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "06596d657badbf383fb0b3280b59d20c6b0718aa"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-02T15:49:18.347481614+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "07dd3a4dc5b89be05cdc5b12b6579b52e9b7f394"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-01T21:41:21.858009667+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "0c1e0bf90203f616704bbb2c6872a665b1ed4392"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-title.ts"]
+recorded = "2026-08-02T15:49:18.347483861+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "2351ec441f5927d1438e12e30d93ccf8b3fbc030"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-02T15:44:27.642646312+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "2dbf4596061d70b9a17c01a64a8beeb06cf07723"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-02T15:49:47.063569247+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "406546e1742277c22bd67b738177bd3bd7e9ec1f"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-02T15:49:18.347484309+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "4544ec551c3186239fcf5d45fee676e8dcc7572a"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-02T15:49:18.347484670+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "55c92f616311bd5e3b500a2e2d91d431e2647304"
 paths = ["packages/app/src/components/sidebar/sidebar-projection.test.ts", "packages/app/src/hooks/use-sidebar-shortcut-model.test.tsx"]
 recorded = "2026-08-01T20:36:42.497633044+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "5b579499bf7bcb808ce939b110109882f3c9b7a7"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-02T15:44:27.642648945+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "5c5f3618125a592bfc4f4ad8fa5d5542f731d8b1"
+paths = ["packages/app/src/types/host-connection.ts"]
+recorded = "2026-08-02T15:49:18.347485103+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "5d29580645dd652f3bf24d92575874ffd262427f"
+paths = ["packages/app/src/runtime/host-runtime.ts"]
+recorded = "2026-08-02T15:49:18.347485484+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "765b12d00b65680e4cde6001d9a1b8d788980724"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-08-02T15:44:27.642649444+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "7d0a30de3f831047da472e5713b09b4b7637b2e9"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-02T15:49:47.063569723+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "870c16590df47b8acde6bca56621473b94eedb74"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row.tsx"]
+recorded = "2026-08-02T15:49:18.347485777+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "9569317750afbdc7530aed05709611fa116966b2"
+paths = ["packages/app/src/screens/settings/host-page.tsx"]
+recorded = "2026-08-02T15:49:18.347486171+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "d5b46a704644992f327cee439c9e861993e78fe9"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-02T15:44:27.642649823+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "db1f16939f44565e62b648a8b551151662671a9e"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-02T15:50:18.054651437+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -138,6 +240,12 @@ entry = "pr-2564"
 hash = "f51f96782e8909d3df52712ddd9869401d19f0f9"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-01T20:36:42.497634577+00:00"
+
+[[resolution]]
+entry = "pr-2579"
+hash = "54bd6b40ed9f7043db44ff5cb00e15aed92a69c4"
+paths = ["packages/app/src/components/project-icon-view.tsx"]
+recorded = "2026-08-02T15:51:21.340921592+00:00"
 
 [[resolution]]
 entry = "pr-2628"
@@ -356,6 +464,18 @@ paths = ["packages/app/src/subagents/track-presentation.test.ts"]
 recorded = "2026-07-31T20:39:30.543735435+00:00"
 
 [[resolution]]
+entry = "pr-2659"
+hash = "ce299ae5dd71beb6f54f8e94235fb00b995ccd7b"
+paths = ["packages/app/src/agent-stream/turn-footer.tsx"]
+recorded = "2026-08-02T15:51:38.605691437+00:00"
+
+[[resolution]]
+entry = "pr-2660"
+hash = "f2fa878ca047093712335946e4c50cd75de6ebb7"
+paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
+recorded = "2026-08-02T15:51:48.478038431+00:00"
+
+[[resolution]]
 entry = "pr-2783"
 hash = "1621a8b00e7fd52d1dba66b22071e6fd884cce32"
 paths = ["flake.nix"]
@@ -402,6 +522,12 @@ entry = "watch-live-voice"
 hash = "928c2cbec28ba39a991295d88c7d3a818dda99b7"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-01T22:01:50.676260339+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "a863281a142a7b39b7bf0b3f3336698da6e99651"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-08-02T15:51:58.605742196+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"

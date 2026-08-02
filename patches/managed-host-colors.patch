@@ -56,10 +56,10 @@ index 90fe97143..ff1cd475c 100644
    type SidebarWorkspaceEntry,
    type SidebarWorkspacePlacement,
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
-index 4b142a656..bf0962d9c 100644
+index eecf7c724..f2b1c12d9 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
 +++ b/packages/app/src/runtime/host-runtime.test.ts
-@@ -3383,12 +3383,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3545,12 +3545,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
            endpoint: "ryzen-shine:6767",
            useTls: false,
            password: "ryzen-secret",
@@ -74,7 +74,7 @@ index 4b142a656..bf0962d9c 100644
          },
        ],
      };
-@@ -3413,7 +3415,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3575,7 +3577,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
        storage: createMemoryHostRuntimeStorage(),
      });
  
@@ -83,20 +83,20 @@ index 4b142a656..bf0962d9c 100644
 +      const hosts = store.getHosts();
 +      return (
 +        hosts.length === 2 &&
-+        typeof hosts[0]?.color === "string" &&
-+        typeof hosts[1]?.color === "string"
++        hosts[0]?.appearance.color !== "none" &&
++        hosts[1]?.appearance.color !== "none"
 +      );
 +    };
 +    const hostsAdded = onceHostListMatches(store, managedHostsAreColored);
      store.boot();
      await hostsAdded;
  
-@@ -3441,6 +3451,67 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3603,6 +3613,69 @@ describe("HostRuntimeStore managed host bootstrap", () => {
          .map((host) => host.label)
          .sort(),
      ).toEqual(["Mac mini", "Ryzen"]);
-+    expect(Object.fromEntries(store.getHosts().map((host) => [host.label, host.color]))).toEqual({
-+      "Mac mini": "purple",
++    expect(Object.fromEntries(store.getHosts().map((host) => [host.label, host.appearance.color]))).toEqual({
++      "Mac mini": "violet",
 +      Ryzen: "blue",
 +    });
 +
@@ -117,7 +117,7 @@ index 4b142a656..bf0962d9c 100644
 +        connections: [connection],
 +        preferredConnectionId: connection.id,
 +      }),
-+      color: "red" as const,
++      appearance: { color: "red" as const, badgeDisplay: null },
 +    };
 +    const store = new HostRuntimeStore({
 +      deps: {
@@ -149,21 +149,23 @@ index 4b142a656..bf0962d9c 100644
 +
 +    const colorReconciled = onceHostListMatches(
 +      store,
-+      () => store.getHosts()[0]?.color === "green",
++      () => store.getHosts()[0]?.appearance.color === "emerald",
 +    );
 +    store.boot();
 +    await colorReconciled;
 +
 +    expect(probeAndUpsert).not.toHaveBeenCalled();
-+    expect(store.getHosts().find((host) => host.serverId === "srv_ryzen")?.color).toBe("green");
++    expect(store.getHosts().find((host) => host.serverId === "srv_ryzen")?.appearance.color).toBe(
++      "emerald",
++    );
  
      store.syncHosts([]);
    });
 diff --git a/packages/app/src/runtime/host-runtime.ts b/packages/app/src/runtime/host-runtime.ts
-index 11c176f11..00f209947 100644
+index 65318b585..89ed607d9 100644
 --- a/packages/app/src/runtime/host-runtime.ts
 +++ b/packages/app/src/runtime/host-runtime.ts
-@@ -8,10 +8,12 @@ import {
+@@ -8,6 +8,7 @@ import {
  } from "@getpaseo/client/internal/daemon-client";
  import {
    connectionFromListen,
@@ -171,24 +173,32 @@ index 11c176f11..00f209947 100644
    normalizeStoredHostProfile,
    upsertHostConnectionInProfiles,
    registryHasConnection,
-   type HostColor,
-+  type HostColorKey,
-   type HostConnection,
-   type HostProfile,
- } from "@/types/host-connection";
-@@ -1356,6 +1358,7 @@ interface ManagedHostBootstrapInput {
+@@ -1356,6 +1357,20 @@ interface ManagedHostBootstrapInput {
    label: string;
    endpoint: string;
    connection: HostConnection;
-+  color?: HostColorKey;
++  color?: HostColor;
++}
++
++function normalizeManagedHostColor(
++  color: ManagedHostRegistry["hosts"][number]["color"],
++): HostColor | undefined {
++  switch (color) {
++    case "green":
++      return "emerald";
++    case "purple":
++      return "violet";
++    default:
++      return color;
++  }
  }
  
  export class HostRuntimeStore {
-@@ -1501,22 +1504,33 @@ export class HostRuntimeStore {
+@@ -1502,22 +1517,33 @@ export class HostRuntimeStore {
          label: host.label,
          endpoint,
          connection,
-+        color: host.color,
++        color: normalizeManagedHostColor(host.color),
        });
      }
      return hasValidHost;
@@ -218,7 +228,7 @@ index 11c176f11..00f209947 100644
 +            })
 +          ).serverId;
 +        const currentHost = this.hosts.find((host) => host.serverId === serverId);
-+        if (color !== undefined && currentHost?.color !== color) {
++        if (color !== undefined && currentHost?.appearance.color !== color) {
 +          await this.setHostColor(serverId, color);
 +        }
 +        return;
