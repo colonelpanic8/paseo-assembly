@@ -260,6 +260,12 @@ paths = ["packages/app/src/subagents/track-presentation.test.ts"]
 recorded = "2026-07-31T20:39:30.543735435+00:00"
 
 [[resolution]]
+entry = "pr-2783"
+hash = "1621a8b00e7fd52d1dba66b22071e6fd884cce32"
+paths = ["flake.nix"]
+recorded = "2026-08-02T01:45:00.457711262+00:00"
+
+[[resolution]]
 entry = "pr-2784"
 hash = "53ef28766263312c4ad21c77cbd644ff47959217"
 paths = ["public-docs/worktrees.md"]
