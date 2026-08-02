@@ -29,7 +29,7 @@
       "pr-2783": "cc6151ffb10c111af3db63c4893ff8290d448c7e",
       "pr-2784": "f8d571c972eaca92e8aa91921d2e414d31cab69c",
       "pr-2785": "5ee636277c4ed37def2a05795da06db3219580fb",
-      "watch-live-voice": "7a89a02f78a0652c09a2c781ea2f71408aa066f7"
+      "watch-live-voice": "f5bf6ffe30e2466ba784618feb8e940019230e1e"
     },
     "parents": {
       "pr-2564": {
@@ -47,13 +47,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-02T00:46:10.153093044+00:00",
+    "generated": "2026-08-02T01:16:23.137611952+00:00",
     "base": "048b82f2a7b3ecc9b62bc5b817729f4ca2741863",
-    "commit": "88dce28328c8ae0a6f34f5b3db67c5f28d5bdb17",
-    "pre_provenance_commit": "88dce28328c8ae0a6f34f5b3db67c5f28d5bdb17",
-    "tree": "7eced4e5f564c2a611f3151728b03545764e1d8b",
-    "built_tree": "7eced4e5f564c2a611f3151728b03545764e1d8b",
-    "previous_tree": "47d507cd58059dd936a19465cb2e1f95229ab252",
+    "commit": "7ba26f966b82aa9cde2eab18adf0c3e32abf6308",
+    "pre_provenance_commit": "7ba26f966b82aa9cde2eab18adf0c3e32abf6308",
+    "tree": "ac71dce87120f1a8f77367b59705b6f94c11409e",
+    "built_tree": "ac71dce87120f1a8f77367b59705b6f94c11409e",
+    "previous_tree": "7eced4e5f564c2a611f3151728b03545764e1d8b",
     "tree_changed": true,
     "conflicts": 11,
     "manifest_entries": [
@@ -197,7 +197,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "7a89a02f78a0652c09a2c781ea2f71408aa066f7",
+        "pin": "f5bf6ffe30e2466ba784618feb8e940019230e1e",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "parents": [
           {
@@ -289,8 +289,8 @@
         "conflicted": false,
         "fixup": "ae4c5b52dd8f7a6e00b2e974d80f8fac45441c6b",
         "derived": {
-          "base_tip": "52035764eb5aed7f88271bf3f607e175e4226bec",
-          "tip": "496b9722163c21a2d1f5d4b4c2e9ed5ea15c62fc"
+          "base_tip": "5f44ffc243b8ec8a5a3c227c471649fc3fdad85e",
+          "tip": "ebf80974c2083224aa142100a7790d144cf798c6"
         }
       },
       {
@@ -388,14 +388,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "7a89a02f78a0652c09a2c781ea2f71408aa066f7",
+        "oid": "f5bf6ffe30e2466ba784618feb8e940019230e1e",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "a2093f381ab311b44a8999d4688470bb30fb4522",
-          "tip": "01855612352786c771f18ec37cf1e21a6b020808"
+          "base_tip": "daf9e7b98d6bb99367544162453540a65ecc86cd",
+          "tip": "18262abbec712e54fd5da8c7e287b75043fd3a04"
         }
       },
       {
@@ -427,7 +427,7 @@
         "oid": "f8d571c972eaca92e8aa91921d2e414d31cab69c",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:53ef28766263312c4ad21c77cbd644ff47959217,9665df7e4f9fcd759e939ca703f989c32280b391,e3221f7de33d7345a4245dd01193997407374756"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2785",
