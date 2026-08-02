@@ -129,6 +129,12 @@ recorded = "2026-08-02T15:49:47.063566314+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "0195a16bc3a4debee93f16915be8ec3c399f9b8d"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-02T18:48:03.036924126+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "06596d657badbf383fb0b3280b59d20c6b0718aa"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-02T15:49:18.347481614+00:00"
@@ -150,6 +156,12 @@ entry = "pr-2564"
 hash = "2351ec441f5927d1438e12e30d93ccf8b3fbc030"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-02T15:44:27.642646312+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "24d89847c385f835b804c20939958b84fa45a697"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-02T18:47:47.423871439+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -195,6 +207,12 @@ recorded = "2026-08-02T15:49:18.347485484+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "5f71c258ae08d25e3a9b7531fd90ba506a0928bf"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-02T18:47:06.853278773+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "765b12d00b65680e4cde6001d9a1b8d788980724"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
 recorded = "2026-08-02T15:44:27.642649444+00:00"
@@ -213,9 +231,27 @@ recorded = "2026-08-02T15:49:18.347485777+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "91b88f3bf8e67aa083961098c8e8d9e801da1bec"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-02T18:46:49.986449810+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "9569317750afbdc7530aed05709611fa116966b2"
 paths = ["packages/app/src/screens/settings/host-page.tsx"]
 recorded = "2026-08-02T15:49:18.347486171+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "ac9e12870f05d82728dad3b4431ace31390b45f1"
+paths = ["packages/app/src/types/host-connection.test.ts"]
+recorded = "2026-08-02T18:47:47.423874601+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "af5a9ce396bd2d775969382dcfceb2d512fa1028"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-02T18:47:06.853281681+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -242,10 +278,22 @@ paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-01T20:36:42.497634577+00:00"
 
 [[resolution]]
+entry = "pr-2564"
+hash = "fc5523b6a3816bcff00ba0c0ca7b5df55526e03c"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-02T18:47:06.853282194+00:00"
+
+[[resolution]]
 entry = "pr-2579"
 hash = "54bd6b40ed9f7043db44ff5cb00e15aed92a69c4"
 paths = ["packages/app/src/components/project-icon-view.tsx"]
 recorded = "2026-08-02T15:51:21.340921592+00:00"
+
+[[resolution]]
+entry = "pr-2628"
+hash = "ebe86a8b95b6d6c975ca87ba0a6fcf77a1894058"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-08-02T18:48:21.069267357+00:00"
 
 [[resolution]]
 entry = "pr-2628"
@@ -411,6 +459,18 @@ recorded = "2026-07-31T20:38:11.693488928+00:00"
 
 [[resolution]]
 entry = "pr-2658"
+hash = "7a34963b4677e65eff72a55b4a82fe998cf00433"
+paths = ["docs/data-model.md"]
+recorded = "2026-08-02T18:48:38.010432848+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "90eb67bd4312949227c595dc87629086ad7a98a8"
+paths = ["packages/server/src/server/config.ts"]
+recorded = "2026-08-02T18:48:38.010436488+00:00"
+
+[[resolution]]
+entry = "pr-2658"
 hash = "becf7b1fa37f32bc1cedf851bca3c3ed8e40b270"
 paths = ["packages/app/src/components/agent-list.tsx"]
 recorded = "2026-07-30T10:01:15.828170893+00:00"
@@ -513,9 +573,21 @@ recorded = "2026-08-02T02:20:21.123928054+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "169ccef185da6fe3bd4c8923bf56afc2430933a2"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-02T18:48:53.819259159+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "297aecf303822bc577cb1f6a87b8455e32c850bb"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-02T13:25:13.058340119+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "2a12ed3ada85a0e9783df779053b663d92e65d25"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-08-02T18:49:18.820065223+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"

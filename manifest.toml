@@ -146,6 +146,12 @@ parents = [{ pr = 2655 }, { pr = 2657 }]
 # assembled tree with and without it.
 fixup = "patches/agent-payload-complexity.patch"
 
+# Dependency-hash maintenance: the standalone patch below is a function of the
+# complete assembled package-lock.json. Recompute it whenever upstream main or
+# any dependency-affecting carried work moves. Today those carried sources are
+# #2520; #2564's parents #2525 and #2529; and watch-live-voice's parents
+# #2655 and #2657. Use a fake hash with nix build .#desktop, then replace
+# this patch with Nix's reported fixed-output hash before publishing.
 [[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"
 
