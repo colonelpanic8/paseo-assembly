@@ -1,13 +1,13 @@
 diff --git a/nix/desktop-package.nix b/nix/desktop-package.nix
-index ccc667005..449385d63 100644
+index 81b93f4a1..797ac94af 100644
 --- a/nix/desktop-package.nix
 +++ b/nix/desktop-package.nix
-@@ -16,7 +16,7 @@
-   # the upstream hash via `paseo.override { npmDepsHash = "..."; }`.
-   paseo,
+@@ -25,4 +25,3 @@
+   buildRepoUrl ? null,
  }:
+-
+ let
+@@ -39,2 +38,2 @@
 -buildNpmPackage {
 +buildNpmPackage rec {
    pname = "paseo-desktop";
-   version = (builtins.fromJSON (builtins.readFile ../package.json)).version;
- 

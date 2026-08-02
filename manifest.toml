@@ -17,11 +17,6 @@ branch = "assembled"
 tag_prefix = "paseo-assembled"
 
 [[entry]]
-pr = 2506
-summary = "fix(nix): restore desktop app icon matching"
-fixup = "patches/desktop-package-version-rec.patch"
-
-[[entry]]
 pr = 2517
 summary = "Reveal composer control shortcuts while holding Mod"
 
@@ -54,6 +49,7 @@ branch = "mine:assembly-fdroid-variant"
 pr = 2564
 summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
 parents = [{ pr = 2525 }, { pr = 2529 }]
+reconstruction_publish = "mine:status-sidebar-snooze"
 fixup = "patches/managed-host-colors.patch"
 
 [[entry]]
@@ -70,6 +66,7 @@ summary = "build(android): add Nix toolchain and release runner"
 
 [[entry]]
 branch = "mine:assembly-build-provenance"
+fixup = "patches/desktop-package-version-rec.patch"
 
 [[entry]]
 pr = 2579
@@ -140,6 +137,7 @@ summary = "Restore a workspace's agents when the workspace is unarchived"
 branch = "mine:watch-live-voice"
 summary = "Drive Live Voice from the watch; route call audio to a Bluetooth headset"
 parents = [{ pr = 2655 }, { pr = 2657 }]
+reconstruction_publish = "mine:watch-live-voice"
 # Inherited from that removed entry and re-homed here, still needed: the agent
 # payload builders only trip oxlint's complexity rule once 2657, 2658 and 2659
 # stack, so it belongs to no single topic branch. Confirmed by linting the
@@ -162,9 +160,6 @@ summary = "fix(app): make host pickers searchable"
 [[entry]]
 pr = 2772
 summary = "Show agent turn completion times"
-
-[[entry]]
-pr = 2783
 
 [[entry]]
 pr = 2784
@@ -228,3 +223,11 @@ reason = "held out at user's request: exclude the multi-account profiles change 
 [[exclude]]
 pr = 2787
 reason = "superseded by PR 2792, now merged into upstream main"
+
+[[exclude]]
+pr = 2506
+reason = "merged into upstream main as 5d15e40a2 (2026-08-02)"
+
+[[exclude]]
+pr = 2783
+reason = "merged into upstream main as fdb39d211 (2026-08-02)"

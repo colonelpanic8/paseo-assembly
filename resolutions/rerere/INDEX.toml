@@ -51,6 +51,12 @@ recorded = "2026-07-31T22:11:43.053130502+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
+hash = "8c563655981dc134f5a3916082e5946c368a6322"
+paths = ["nix/desktop-package.nix"]
+recorded = "2026-08-02T21:57:08.368550300+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
 hash = "a74fb0b0e2bb9261cb78a60409380207f545117e"
 paths = ["nix/desktop-package.nix"]
 recorded = "2026-07-29T05:40:02.651639494+00:00"
