@@ -284,6 +284,18 @@ paths = ["docs/development.md"]
 recorded = "2026-08-02T00:46:10.047100031+00:00"
 
 [[resolution]]
+entry = "pr-2787"
+hash = "4d320e6785470412afc4e8ce5c2b7d9549b5301b"
+paths = ["packages/app/src/agent-stream/strategy-web.tsx"]
+recorded = "2026-08-02T02:22:16.243963058+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "13bf5a20832801a1d99195e28a42b00f820882c8"
+paths = ["packages/app/src/contexts/live-voice-context.tsx"]
+recorded = "2026-08-02T02:20:21.123928054+00:00"
+
+[[resolution]]
 entry = "watch-live-voice"
 hash = "928c2cbec28ba39a991295d88c7d3a818dda99b7"
 paths = ["nix/npm-deps.hash"]
