@@ -54,10 +54,26 @@ echo "  (re-fetching the dependency tree; a cached store path proves nothing her
 
 log="$(mktemp)"
 trap 'rm -f "$log"' EXIT
+
+# --rebuild is what defeats the cached-path illusion above, but it only works on
+# a path that IS cached: nix refuses to "check" a derivation it has never built
+# ("some outputs ... are not valid"). That is exactly the state right after a
+# --write regeneration, where the new hash's path has never been realised. In
+# that case a plain build is not the weak check the header warns about -- with
+# nothing to substitute, it must actually fetch and compare.
 if nix build --rebuild --no-link --print-build-logs \
      "path:$worktree#desktop.npmDeps" >"$log" 2>&1; then
   echo "ok: $declared reproduces the assembled package-lock.json"
   exit 0
+fi
+
+if grep -q 'are not valid, so checking is not possible' "$log"; then
+  echo "  (the declared hash has no store path yet; a plain build must fetch it)"
+  if nix build --no-link --print-build-logs \
+       "path:$worktree#desktop.npmDeps" >"$log" 2>&1; then
+    echo "ok: $declared reproduces the assembled package-lock.json"
+    exit 0
+  fi
 fi
 
 # A hash mismatch is the expected failure. Anything else is a real build error
