@@ -152,6 +152,12 @@ summary = "Show each workspace's agent hierarchy in the sidebar"
 parents = [{ branch = "mine:status-sidebar-snooze" }]
 reconstruction_publish = "mine:agent-hierarchy-tree"
 
+[[entry]]
+pr = 2843
+
+[[entry]]
+pr = 2845
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an
@@ -174,3 +180,7 @@ reason = "held out at user's request"
 [[exclude]]
 pr = 2514
 reason = "held out at user's request: exclude the multi-account profiles change from the assembly"
+
+[[exclude]]
+pr = 2844
+reason = "superseded by 2845, an independent and fuller take on the same direct model/thinking shortcuts; 2844's F13-F24 browser-pane policy test is the only content not in 2845"

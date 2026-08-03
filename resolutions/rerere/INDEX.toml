@@ -69,6 +69,12 @@ recorded = "2026-08-03T16:39:00.334187833+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "63b00428a588c8a1b507c9654962d9977f72d552"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-03T23:29:15.159436296+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "6aca54c0b3c00471cffa488215536e38e9f1317f"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
 recorded = "2026-08-03T20:23:05.555567126+00:00"
@@ -843,9 +849,27 @@ recorded = "2026-08-02T00:46:10.047100031+00:00"
 
 [[resolution]]
 entry = "pr-2785"
+hash = "05ef165958048494d3a0914bc3c136f2bc457cdb"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-08-03T23:14:27.602706956+00:00"
+
+[[resolution]]
+entry = "pr-2785"
 hash = "6480fda3bbf8cbd41136494b83138de54bf99d1c"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-03T07:53:03.442161706+00:00"
+
+[[resolution]]
+entry = "pr-2785"
+hash = "936168ae7039982d2e267e2d6644f1380ce8fc77"
+paths = ["packages/server/src/server/agent/agent-storage.ts"]
+recorded = "2026-08-03T23:14:27.602708969+00:00"
+
+[[resolution]]
+entry = "pr-2785"
+hash = "dcdcd1da4e1c39d29a6e32379d68955ac1c08729"
+paths = ["packages/app/src/components/model-browser.tsx"]
+recorded = "2026-08-03T23:14:27.602709440+00:00"
 
 [[resolution]]
 entry = "pr-2820"
@@ -858,6 +882,24 @@ entry = "pr-2820"
 hash = "b5edf7e5782e327f7e4cabaff4b57376bf9e15cc"
 paths = ["packages/app/src/hooks/use-agent-commands-query.ts"]
 recorded = "2026-08-03T20:19:52.564339804+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "3f8e1a846e93196b95f7adae2f4cc4d69f698045"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-03T23:29:22.967663582+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "ec340c8d54b562f8ee6df08af9b78472fea2930b"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-03T23:14:56.559540363+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "f758645e61a85563c9e85a83b9e29279c7dcda34"
+paths = ["packages/app/src/hooks/use-settings/storage.test.ts"]
+recorded = "2026-08-03T23:14:56.559542266+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"

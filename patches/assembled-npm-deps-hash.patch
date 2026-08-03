@@ -1,7 +1,6 @@
 diff --git a/nix/npm-deps.hash b/nix/npm-deps.hash
-index f7cc088ab..d00c1e869 100644
 --- a/nix/npm-deps.hash
 +++ b/nix/npm-deps.hash
 @@ -1 +1 @@
 -sha256-ex5WV1vGce6mpkDGRgMSWzEtAiCMgDlAse/SuvjX4n4=
-+sha256-rXBqOTLDn8AlqN9qg6uD8nuPqH3GMLfmf86fVjFSdPg=
++sha256-to4pSljJogXeli3UcGOFHIwQQ+EVY76bnq9YZ/Y8Y7U=

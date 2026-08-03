@@ -73,8 +73,11 @@ echo "STALE: $hash_file pins $declared but the assembled tree hashes to $got" >&
 
 # The patch's "from" side is whatever the tree carries at the patch entry's
 # position -- read it from the commit the patch produced, not from the manifest.
-patch_commit="$(git -C "$worktree" log --format='%H %s' \
-  | awk '/fork-assembler: assembled-npm-deps-hash/ {print $1; exit}')"
+# `git log | awk '...{exit}'` looked equivalent and was not: awk closing the
+# pipe early kills git log with SIGPIPE, and `pipefail` turns that into a 141
+# that aborts the regeneration right before it writes. Let git do the search.
+patch_commit="$(git -C "$worktree" log -1 --format='%H' \
+  --fixed-strings --grep='fork-assembler: assembled-npm-deps-hash')"
 if [[ -z "$patch_commit" ]]; then
   echo "error: no \`fork-assembler: assembled-npm-deps-hash\` commit in $worktree" >&2
   exit 1
