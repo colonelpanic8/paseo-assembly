@@ -1,0 +1,324 @@
+<<<<<<<
+import { useCallback, useEffect, useRef } from "react";
+import { Pressable, StyleSheet as RNStyleSheet, Text } from "react-native";
+import ReanimatedSwipeable, {
+  type SwipeableMethods,
+} from "react-native-gesture-handler/ReanimatedSwipeable";
+import { StyleSheet, withUnistyles } from "react-native-unistyles";
+import { Archive } from "lucide-react-native";
+import { BORDER_RADIUS, type Theme } from "@/styles/theme";
+import type { StatusRowSwipeContainerProps } from "./status-row-swipe-container.types";
+
+export type { StatusRowSwipeContainerProps };
+
+const ARCHIVE_ACTION_WIDTH = 92;
+const ARCHIVE_ICON_SIZE = 18;
+// Past this much drag the row snaps open instead of springing back.
+const ARCHIVE_OPEN_THRESHOLD = ARCHIVE_ACTION_WIDTH / 2;
+
+const destructiveForegroundMapping = (theme: Theme) => ({
+  color: theme.colors.destructiveForeground,
+});
+
+const ThemedArchive = withUnistyles(Archive);
+
+/**
+ * Native rows swipe left to reveal Archive. The action calls the row's existing
+ * archive handler, so the dirty-worktree confirm still runs after the swipe.
+ *
+ * Gesture composition: the swipeable's pan declares `blocksExternalGesture` on
+ * the compact sidebar's drawer-close pan, so a horizontal drag that starts on a
+ * row is owned by the row and never half-drags the drawer. The drawer still
+ * closes from every other part of the sidebar. Vertical drags never reach the
+ * swipeable — its pan only activates past a horizontal offset, so the enclosing
+ * scroll view claims them first, which is the standard swipeable-in-a-list
+ * arbitration and needs no extra relation.
+ */
+export function StatusRowSwipeContainer({
+  archiveLabel,
+  onArchive,
+  isArchiving,
+  parentGestureRef,
+  children,
+}: StatusRowSwipeContainerProps) {
+  const swipeableRef = useRef<SwipeableMethods | null>(null);
+
+  // Covers both archive paths: immediate, and after the dirty-worktree confirm
+  // resolves. Either way the revealed action is put away once work starts.
+  useEffect(() => {
+    if (isArchiving) {
+      swipeableRef.current?.close();
+    }
+  }, [isArchiving]);
+
+  const handleArchivePress = useCallback(() => {
+    swipeableRef.current?.close();
+    onArchive?.();
+  }, [onArchive]);
+
+  const renderRightActions = useCallback(
+    () => <StatusRowArchiveAction label={archiveLabel} onPress={handleArchivePress} />,
+    [archiveLabel, handleArchivePress],
+  );
+
+  if (!onArchive) {
+    return children;
+  }
+
+  return (
+    <ReanimatedSwipeable
+      ref={swipeableRef}
+      enabled={!isArchiving}
+      friction={2}
+      rightThreshold={ARCHIVE_OPEN_THRESHOLD}
+      overshootRight={false}
+      containerStyle={reanimatedNodeStyles.container}
+      renderRightActions={renderRightActions}
+      blocksExternalGesture={parentGestureRef}
+      testID="sidebar-status-row-swipe"
+    >
+      {children}
+    </ReanimatedSwipeable>
+  );
+}
+
+function StatusRowArchiveAction({ label, onPress }: { label: string; onPress: () => void }) {
+  return (
+    <Pressable
+      style={styles.action}
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      testID="sidebar-status-row-swipe-archive"
+    >
+      <ThemedArchive size={ARCHIVE_ICON_SIZE} uniProps={destructiveForegroundMapping} />
+      <Text style={styles.actionLabel} numberOfLines={1}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
+// The swipeable container is a Reanimated node, so it gets a plain React Native
+// style with a static token instead of a Unistyles style: Unistyles and
+// Reanimated patching the same Fabric node has crashed natively before
+// (docs/mobile-panels.md). The swipeable already clips to this container, so the
+// radius is what keeps the red underlay inside the row's rounded box.
+const reanimatedNodeStyles = RNStyleSheet.create({
+  container: {
+    borderRadius: BORDER_RADIUS.lg,
+  },
+});
+
+const styles = StyleSheet.create((theme) => ({
+  action: {
+    width: ARCHIVE_ACTION_WIDTH,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: theme.spacing[1],
+    backgroundColor: theme.colors.destructive,
+  },
+  actionLabel: {
+    color: theme.colors.destructiveForeground,
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+  },
+}));
+=======
+import { useCallback, useEffect, useRef, type ReactNode } from "react";
+import {
+  Pressable,
+  StyleSheet as RNStyleSheet,
+  Text,
+  type StyleProp,
+  type TextStyle,
+  type ViewStyle,
+} from "react-native";
+import ReanimatedSwipeable, {
+  type SwipeableMethods,
+} from "react-native-gesture-handler/ReanimatedSwipeable";
+import { StyleSheet, withUnistyles } from "react-native-unistyles";
+import { Archive, ListTree } from "lucide-react-native";
+import { BORDER_RADIUS, type Theme } from "@/styles/theme";
+import type { StatusRowSwipeContainerProps } from "./status-row-swipe-container.types";
+
+export type { StatusRowSwipeContainerProps };
+
+const ACTION_WIDTH = 92;
+const ACTION_ICON_SIZE = 18;
+// Past this much drag the row snaps open instead of springing back. Deliberately
+// half of ONE action rather than half the underlay: a row that also offers
+// Agents reveals 184pt, and scaling the threshold with the underlay would make
+// the everyday archive swipe twice as long a drag for no reason.
+const SWIPE_OPEN_THRESHOLD = ACTION_WIDTH / 2;
+
+const destructiveForegroundMapping = (theme: Theme) => ({
+  color: theme.colors.destructiveForeground,
+});
+const secondaryForegroundMapping = (theme: Theme) => ({
+  color: theme.colors.secondaryForeground,
+});
+
+const ThemedArchive = withUnistyles(Archive);
+const ThemedListTree = withUnistyles(ListTree);
+
+/**
+ * Native rows swipe left to reveal Archive, preceded by Agents when the
+ * workspace has a tree to open. Archive stays at the trailing edge — the
+ * destructive action keeps the position muscle memory already knows, and the
+ * neutral one is what the widened underlay adds on the near side.
+ *
+ * Both actions call the row's existing handlers, so the dirty-worktree confirm
+ * still runs after an archive swipe.
+ *
+ * Gesture composition: the swipeable's pan declares `blocksExternalGesture` on
+ * the compact sidebar's drawer-close pan, so a horizontal drag that starts on a
+ * row is owned by the row and never half-drags the drawer. The drawer still
+ * closes from every other part of the sidebar. Vertical drags never reach the
+ * swipeable — its pan only activates past a horizontal offset, so the enclosing
+ * scroll view claims them first, which is the standard swipeable-in-a-list
+ * arbitration and needs no extra relation.
+ */
+export function StatusRowSwipeContainer({
+  archiveLabel,
+  onArchive,
+  isArchiving,
+  agentsLabel,
+  onToggleAgents,
+  parentGestureRef,
+  children,
+}: StatusRowSwipeContainerProps) {
+  const swipeableRef = useRef<SwipeableMethods | null>(null);
+
+  // Covers both archive paths: immediate, and after the dirty-worktree confirm
+  // resolves. Either way the revealed action is put away once work starts.
+  useEffect(() => {
+    if (isArchiving) {
+      swipeableRef.current?.close();
+    }
+  }, [isArchiving]);
+
+  const handleArchivePress = useCallback(() => {
+    swipeableRef.current?.close();
+    onArchive?.();
+  }, [onArchive]);
+
+  const handleAgentsPress = useCallback(() => {
+    swipeableRef.current?.close();
+    onToggleAgents?.();
+  }, [onToggleAgents]);
+
+  const renderRightActions = useCallback(
+    () => (
+      <>
+        {onToggleAgents ? (
+          <StatusRowSwipeAction
+            label={agentsLabel}
+            onPress={handleAgentsPress}
+            style={styles.agentsAction}
+            labelStyle={styles.agentsActionLabel}
+            testID="sidebar-status-row-swipe-agents"
+          >
+            <ThemedListTree size={ACTION_ICON_SIZE} uniProps={secondaryForegroundMapping} />
+          </StatusRowSwipeAction>
+        ) : null}
+        <StatusRowSwipeAction
+          label={archiveLabel}
+          onPress={handleArchivePress}
+          style={styles.archiveAction}
+          labelStyle={styles.archiveActionLabel}
+          testID="sidebar-status-row-swipe-archive"
+        >
+          <ThemedArchive size={ACTION_ICON_SIZE} uniProps={destructiveForegroundMapping} />
+        </StatusRowSwipeAction>
+      </>
+    ),
+    [agentsLabel, archiveLabel, handleAgentsPress, handleArchivePress, onToggleAgents],
+  );
+
+  if (!onArchive) {
+    return children;
+  }
+
+  return (
+    <ReanimatedSwipeable
+      ref={swipeableRef}
+      enabled={!isArchiving}
+      friction={2}
+      rightThreshold={SWIPE_OPEN_THRESHOLD}
+      overshootRight={false}
+      containerStyle={reanimatedNodeStyles.container}
+      renderRightActions={renderRightActions}
+      blocksExternalGesture={parentGestureRef}
+      testID="sidebar-status-row-swipe"
+    >
+      {children}
+    </ReanimatedSwipeable>
+  );
+}
+
+function StatusRowSwipeAction({
+  label,
+  onPress,
+  style,
+  labelStyle,
+  testID,
+  children,
+}: {
+  label: string;
+  onPress: () => void;
+  style: StyleProp<ViewStyle>;
+  labelStyle: StyleProp<TextStyle>;
+  testID: string;
+  /** The action's icon. */
+  children: ReactNode;
+}) {
+  return (
+    <Pressable
+      style={style}
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      testID={testID}
+    >
+      {children}
+      <Text style={labelStyle} numberOfLines={1}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
+// The swipeable container is a Reanimated node, so it gets a plain React Native
+// style with a static token instead of a Unistyles style: Unistyles and
+// Reanimated patching the same Fabric node has crashed natively before
+// (docs/mobile-panels.md). The swipeable already clips to this container, so the
+// radius is what keeps the red underlay inside the row's rounded box.
+const reanimatedNodeStyles = RNStyleSheet.create({
+  container: {
+    borderRadius: BORDER_RADIUS.lg,
+  },
+});
+
+const styles = StyleSheet.create((theme) => {
+  const action = {
+    width: ACTION_WIDTH,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: theme.spacing[1],
+  } as const;
+  const actionLabel = {
+    fontSize: theme.fontSize.xs,
+    fontWeight: theme.fontWeight.normal,
+  } as const;
+
+  return {
+    archiveAction: { ...action, backgroundColor: theme.colors.destructive },
+    archiveActionLabel: { ...actionLabel, color: theme.colors.destructiveForeground },
+    // Neutral, not destructive: opening a tree is reversible and shares the row
+    // with an action that genuinely is destructive, so red is reserved for that.
+    agentsAction: { ...action, backgroundColor: theme.colors.secondary },
+    agentsActionLabel: { ...actionLabel, color: theme.colors.secondaryForeground },
+  };
+});
+>>>>>>>
