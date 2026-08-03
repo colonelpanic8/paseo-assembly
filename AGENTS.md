@@ -78,6 +78,7 @@ fork-fold build                  # assemble from lock pins; incremental for appe
 fork-fold build --locked         # reproduce exactly; no network, no new pins
 fork-fold update [ENTRY...]      # batch bump: repin base + entries to live heads
 fork-fold prune [--dry-run]      # drop entries whose changes landed in the base
+just publish                     # push the locked tree to [publish] (not a fork-fold verb)
 ```
 
 `build` never moves existing pins; `update` is the only verb that does. The
@@ -97,6 +98,33 @@ When a build stops on a conflict:
    tracked pairs reproduce the lock's tree.
 5. Commit the manifest, lock, and tracked pairs together.
 
+## Publishing — a build is not done until it is pushed
+
+Committing the recipe changes nothing on its own. Nothing here builds this
+checkout: CI and every consumer read the branch `manifest.toml`'s `[publish]`
+section names (`mine:assembled`), waiting for it to carry the tree that
+`manifest.lock.json` pins and then building that commit by `rev`. A rebuild
+that lands in `main` but not on that branch fails every workflow with
+`Published assembly tree mismatch`, which reads like a build failure and is
+not one.
+
+So whenever a build reports `tree CHANGED`, finish the cycle:
+
+```sh
+fork-fold build --locked         # prove the tracked inputs reproduce the tree
+just publish                     # push that tree to [publish] (scripts/publish-assembly.sh)
+```
+
+`just publish` refuses to push a dirty or stale build worktree, so it is safe
+to run when unsure; if the tree is already published it says so and exits.
+Push the commit that carries the locked *tree* — the commit id is not the
+invariant, and a `--locked` rerun legitimately re-commits the same tree under
+a new id. The push force-updates, because the assembled branch is compiled
+output that is re-committed rather than fast-forwarded.
+
+fork-fold itself has no publish verb. It parses `[publish]` for the build's
+provenance stamp only; the push is site policy and lives in this repository.
+
 ## Skills
 
 Reusable operation guides live under `.agents/skills/` in the open
@@ -114,6 +142,7 @@ repository.
 ## Committing
 
 Commit `manifest.toml`, `manifest.lock.json`, `resolutions/`, and `patches/`
-changes together with explicit paths. Publish/install steps (pushing the
-assembled branch, tagging, downstream pinning) are site-specific — see this
-repository's justfile or README.
+changes together with explicit paths. Then publish the assembled tree — see
+above; the commit alone does not ship it. Remaining install steps (tagging,
+downstream pinning) are site-specific — see this repository's justfile or
+README.

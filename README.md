@@ -16,10 +16,18 @@ Common operations:
 fork-fold add mine:some-branch   # append a topic
 fork-fold build                  # assemble (incremental for appends)
 fork-fold status                 # lock vs. manifest vs. live refs
+just publish                     # push the assembled tree to [publish]
 ```
 
 The assembled branch is compiled output. Never develop on it, never merge it
 back into a topic.
+
+`just publish` is the step that ships a rebuild. Nothing below builds this
+checkout — CI and the install commands all read the published `assembled`
+branch, so a build that is committed here but never pushed there leaves every
+workflow failing on a tree mismatch. fork-fold has no publish verb; the push
+is site policy, in `scripts/publish-assembly.sh`, and it takes its target from
+the `[publish]` section of `manifest.toml`.
 
 ## Desktop builds and the binary cache
 

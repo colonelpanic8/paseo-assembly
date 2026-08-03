@@ -33,6 +33,7 @@
               pkgs.cachix
               pkgs.git
               pkgs.gh
+              pkgs.jq
               pkgs.just
             ];
           };

@@ -7,6 +7,12 @@ status:
 continue:
     fork-fold continue
 
+# Push the assembled tree to the [publish] branch. Required after any build
+# that changed the tree -- CI builds the published branch, not this checkout,
+# and fails with a tree mismatch until this runs.
+publish:
+    scripts/publish-assembly.sh
+
 # Build the desktop package from the published assembly, exactly as CI does.
 desktop:
     #!/usr/bin/env bash
