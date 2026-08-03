@@ -3,7 +3,7 @@
   "pins": {
     "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
     "entries": {
-      "agent-hierarchy-tree": "75bb2e76bdb84659040d515ed30f9de2c28e7fd3",
+      "agent-hierarchy-tree": "8b805342cb503b6ff36a0def8c601729a4ab629f",
       "assembled-npm-deps-hash": "a5728fad0d4cbb12ffbe4dbfce0ab3a3a315d5fe",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "402104092ba8431cb1751d48256b97d0476a63b8",
@@ -47,10 +47,10 @@
     }
   },
   "build": {
-    "generated": "2026-08-03T16:41:15.203618092+00:00",
+    "generated": "2026-08-03T16:47:31.533704111+00:00",
     "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
-    "commit": "6cf377dda6d8f24f904d7d6218f005bea7dd6cfb",
-    "pre_provenance_commit": "6cf377dda6d8f24f904d7d6218f005bea7dd6cfb",
+    "commit": "8c5b4fb9c65c7dccf45009e60ec6af7421b4fbd8",
+    "pre_provenance_commit": "8c5b4fb9c65c7dccf45009e60ec6af7421b4fbd8",
     "tree": "204807aecdcada93bd68bc5021b076950e19a768",
     "built_tree": "204807aecdcada93bd68bc5021b076950e19a768",
     "previous_tree": "204807aecdcada93bd68bc5021b076950e19a768",
@@ -247,7 +247,7 @@
         "name": "agent-hierarchy-tree",
         "kind": "branch",
         "source": "mine:agent-hierarchy-tree",
-        "pin": "75bb2e76bdb84659040d515ed30f9de2c28e7fd3"
+        "pin": "8b805342cb503b6ff36a0def8c601729a4ab629f"
       }
     ],
     "results": [
@@ -284,8 +284,8 @@
         "conflicted": false,
         "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "derived": {
-          "base_tip": "61ef627f5b82599c097d9d3a634e0277661ad2ec",
-          "tip": "c5271a205b75b86f725ac3c9cb175ea99c1b3450"
+          "base_tip": "5b865906087056e4a611f0e0795076c56aad5552",
+          "tip": "b3288dd433491bec25a97c5ffd162ebbc33a9719"
         }
       },
       {
@@ -391,8 +391,8 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "47c48b38aade93f26bdc3b765f8ff809620216dc",
-          "tip": "fca319a07ccad8af3d5c03c6a7572d76ba62442c"
+          "base_tip": "8b882e85bc53584c0d8f7690480466c1308e6e03",
+          "tip": "08fe61ab7bad840c853efa951b55b3ecc7b8fe92"
         }
       },
       {
@@ -436,7 +436,7 @@
       },
       {
         "name": "agent-hierarchy-tree",
-        "oid": "75bb2e76bdb84659040d515ed30f9de2c28e7fd3",
+        "oid": "8b805342cb503b6ff36a0def8c601729a4ab629f",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
