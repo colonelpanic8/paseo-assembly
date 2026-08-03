@@ -46,13 +46,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-03T08:06:12.446255215+00:00",
+    "generated": "2026-08-03T08:33:11.391788165+00:00",
     "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
-    "commit": "f4fee0c6c3aaa93f0681e7c3c72ac6be0d225ae2",
-    "pre_provenance_commit": "f4fee0c6c3aaa93f0681e7c3c72ac6be0d225ae2",
-    "tree": "1f612db92c44bb97ea3811201be982bd67b20ed0",
-    "built_tree": "1f612db92c44bb97ea3811201be982bd67b20ed0",
-    "previous_tree": "d05410749fa4b3e9b0dc080d99636ba7984395a9",
+    "commit": "565c7046d44c5ee30d7724737013582d58e60ea6",
+    "pre_provenance_commit": "565c7046d44c5ee30d7724737013582d58e60ea6",
+    "tree": "de6a963dab8eac446798250243ec4c2c80e884ab",
+    "built_tree": "de6a963dab8eac446798250243ec4c2c80e884ab",
+    "previous_tree": "1f612db92c44bb97ea3811201be982bd67b20ed0",
     "tree_changed": true,
     "conflicts": 15,
     "manifest_entries": [
@@ -86,7 +86,7 @@
         "kind": "pr",
         "source": "upstream#2564",
         "pin": "1f22b0f6c085570c44db6ba5fcf10731ff2d528a",
-        "fixup": "703b033bd324f56415028709ad95bf2d2000149c",
+        "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "reconstruction_publish": "mine:status-sidebar-snooze",
         "parents": [
           {
@@ -275,10 +275,10 @@
         "oid": "1f22b0f6c085570c44db6ba5fcf10731ff2d528a",
         "status": "merged",
         "conflicted": false,
-        "fixup": "703b033bd324f56415028709ad95bf2d2000149c",
+        "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "derived": {
-          "base_tip": "2ff24ae42885aedb6e088acf225cbbce83263b38",
-          "tip": "c25670473b0d394933664c86686fc86a4650ea9d"
+          "base_tip": "9e06243075e808481dfd0271663c5f6f5d393ec3",
+          "tip": "29f4d677a99d164b2ea4e94337092baa6f1194c5"
         }
       },
       {
@@ -384,8 +384,8 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "603782eba0dd215f8b9b5e0bc62f6ac492983fdd",
-          "tip": "08df8cf33fb75d4c1f4b1a3dba5e8f0825e4bb5d"
+          "base_tip": "4b85ebcbc664af5172246332dd152224a9be9da2",
+          "tip": "bd548fdde4090191ff745992959eb0f665b8e8b5"
         }
       },
       {

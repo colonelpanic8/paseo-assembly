@@ -294,3 +294,15 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
+diff --git a/packages/app/src/components/sidebar-workspace-list.tsx b/packages/app/src/components/sidebar-workspace-list.tsx
+index ed38626d5..19238ce43 100644
+--- a/packages/app/src/components/sidebar-workspace-list.tsx
++++ b/packages/app/src/components/sidebar-workspace-list.tsx
+@@ -102,7 +102,6 @@ import {
+   SidebarWorkspaceContextMenu,
+   SidebarWorkspaceMenu,
+ } from "@/components/sidebar/sidebar-workspace-menu";
+-import { useWorkspaceSnoozeMenu } from "@/workspace-snooze/use-workspace-snooze-menu";
+ import { useLongPressDragInteraction } from "@/components/sidebar/use-long-press-drag-interaction";
+ import { PinnedSectionHeader } from "@/components/sidebar/pinned-section-header";
+ import { SidebarGroupToggleRow } from "@/components/sidebar/sidebar-group-toggle-row";
