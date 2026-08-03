@@ -18,7 +18,7 @@
         "type": "github"
       }
     },
-    "fork-fold": {
+    "fork-assembler": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
@@ -26,16 +26,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1785707614,
-        "narHash": "sha256-HkDp3WN1Beewn0e19C1HsInGcmYkElmI/zT7Q1pWikk=",
+        "lastModified": 1785742310,
+        "narHash": "sha256-e+Eu/ddLbhwpQ+/E2VCXOP9RwH6GsANmr/VfM/d2TfA=",
         "owner": "colonelpanic8",
-        "repo": "fork-fold",
-        "rev": "16015e6b69ba25ea42bb51ffe84f3c2ec761ca1a",
+        "repo": "fork-assembler",
+        "rev": "9519c9cd532fe342b9edfcb1ce1cd423edec987a",
         "type": "github"
       },
       "original": {
         "owner": "colonelpanic8",
-        "repo": "fork-fold",
+        "repo": "fork-assembler",
         "type": "github"
       }
     },
@@ -57,7 +57,7 @@
     },
     "root": {
       "inputs": {
-        "fork-fold": "fork-fold",
+        "fork-assembler": "fork-assembler",
         "nixpkgs": "nixpkgs"
       }
     },

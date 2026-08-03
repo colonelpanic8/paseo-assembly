@@ -12,7 +12,7 @@ Name: Paseo Assembly
 AutoName: Paseo Assembly
 Summary: Ivan's source-built Paseo development snapshots
 Description: |-
-  Paseo Assembly follows a pinned, reproducible fork-fold stack based on
+  Paseo Assembly follows a pinned, reproducible fork-assembler stack based on
   upstream Paseo plus selected topic branches.
 
   This channel is intended for development snapshots. It uses a distinct

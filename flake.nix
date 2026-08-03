@@ -1,13 +1,13 @@
 {
-  description = "fork-fold maintenance repository";
+  description = "fork-assembler maintenance repository";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    fork-fold.url = "github:colonelpanic8/fork-fold";
-    fork-fold.inputs.nixpkgs.follows = "nixpkgs";
+    fork-assembler.url = "github:colonelpanic8/fork-assembler";
+    fork-assembler.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, fork-fold, ... }:
+  outputs = { nixpkgs, fork-assembler, ... }:
     let
       systems = [
         "x86_64-linux"
@@ -22,14 +22,14 @@
         default =
           let
             pkgs = nixpkgs.legacyPackages.${system};
-            fork-fold-package =
-              fork-fold.packages.${system}.default.overrideAttrs (old: {
+            fork-assembler-package =
+              fork-assembler.packages.${system}.default.overrideAttrs (old: {
                 nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.git ];
               });
           in
           pkgs.mkShell {
             packages = [
-              fork-fold-package
+              fork-assembler-package
               pkgs.cachix
               pkgs.git
               pkgs.gh
@@ -39,6 +39,6 @@
           };
       });
 
-      lib.forkFoldAgentGuide = fork-fold.lib.agentGuide;
+      lib.forkAssemblerAgentGuide = fork-assembler.lib.agentGuide;
     };
 }

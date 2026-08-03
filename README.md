@@ -1,6 +1,6 @@
 # paseo assembly
 
-This repository is a [fork-fold](https://github.com/colonelpanic8/fork-fold)
+This repository is a [fork-assembler](https://github.com/colonelpanic8/fork-assembler)
 stack: an upstream base plus an ordered set of live topic branches, assembled
 into a single branch with tracked conflict resolutions.
 
@@ -13,9 +13,9 @@ into a single branch with tracked conflict resolutions.
 Common operations:
 
 ```sh
-fork-fold add mine:some-branch   # append a topic
-fork-fold build                  # assemble (incremental for appends)
-fork-fold status                 # lock vs. manifest vs. live refs
+fork-assembler add mine:some-branch   # append a topic
+fork-assembler build                  # assemble (incremental for appends)
+fork-assembler status                 # lock vs. manifest vs. live refs
 just publish                     # push the assembled tree to [publish]
 ```
 
@@ -25,7 +25,7 @@ back into a topic.
 `just publish` is the step that ships a rebuild. Nothing below builds this
 checkout — CI and the install commands all read the published `assembled`
 branch, so a build that is committed here but never pushed there leaves every
-workflow failing on a tree mismatch. fork-fold has no publish verb; the push
+workflow failing on a tree mismatch. fork-assembler has no publish verb; the push
 is site policy, in `scripts/publish-assembly.sh`, and it takes its target from
 the `[publish]` section of `manifest.toml`.
 
@@ -126,6 +126,6 @@ builds cannot auto-update.
 Only the built-in `GITHUB_TOKEN` is required -- no signing secrets.
 
 The checked-in agent skill is only a stable discovery stub. It loads the full
-operating guide from `lib.forkFoldAgentGuide`, which is re-exported directly
-from the `fork-fold` revision in `flake.lock`. Updating that input therefore
+operating guide from `lib.forkAssemblerAgentGuide`, which is re-exported directly
+from the `fork-assembler` revision in `flake.lock`. Updating that input therefore
 updates the guide without copying or synchronizing it into this repository.

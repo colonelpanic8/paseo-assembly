@@ -1,11 +1,11 @@
 build:
-    fork-fold build
+    fork-assembler build
 
 status:
-    fork-fold status
+    fork-assembler status
 
 continue:
-    fork-fold continue
+    fork-assembler continue
 
 # Push the assembled tree to the [publish] branch. Required after any build
 # that changed the tree -- CI builds the published branch, not this checkout,

@@ -1,4 +1,4 @@
-# fork-fold manifest: INTENT only -- which refs are tracked, in what order.
+# fork-assembler manifest: INTENT only -- which refs are tracked, in what order.
 # manifest.lock.json records FACT: the OIDs the last build used and the
 # assembled tree hash. The assembled branch is compiled output; never develop
 # on it or merge it back.
@@ -172,7 +172,7 @@ summary = "Add UI and CLI for creating provider accounts"
 # Targets deliberately not carried. These are enforced, not advisory: `add`
 # skips them during a `--prs-from` sweep and errors if one is named directly,
 # and the manifest fails to load if an entry ever carries an excluded target.
-# Recorded with `fork-fold exclude --pr N --reason ...`; removing one is a
+# Recorded with `fork-assembler exclude --pr N --reason ...`; removing one is a
 # hand edit here.
 
 # 2525 and 2529 are NOT excluded here: they are declared as parents of the

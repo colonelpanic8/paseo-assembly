@@ -1,6 +1,6 @@
-# fork-fold maintenance repository
+# fork-assembler maintenance repository
 
-This repository is a [fork-fold](https://github.com/colonelpanic8/fork-fold)
+This repository is a [fork-assembler](https://github.com/colonelpanic8/fork-assembler)
 stack: a build recipe assembling an upstream base plus an ordered set of live
 topic branches into a single branch, with tracked conflict resolutions.
 
@@ -9,7 +9,7 @@ topic branches into a single branch, with tracked conflict resolutions.
 - Work directly in this assembler repository's primary checkout. Do not create
   or use a separate Git worktree for repository maintenance unless the user
   explicitly requests one.
-- This does not prohibit the temporary build worktrees that `fork-fold` creates
+- This does not prohibit the temporary build worktrees that `fork-assembler` creates
   and manages as part of its normal operation.
 - This repository is main-only: synchronize with `origin/main` before any
   maintenance, and commit and push recipe changes directly to `main`. Do not
@@ -66,19 +66,19 @@ topic branches into a single branch, with tracked conflict resolutions.
 ## Operations
 
 ```sh
-fork-fold status                 # lock vs. manifest vs. live refs; flags merged entries
-fork-fold add REMOTE:BRANCH      # append a topic branch entry
-fork-fold add --pr N             # append a PR entry
-fork-fold add --patch FILE       # append a standalone patch entry
-fork-fold add --prs-from USER    # append USER's open PRs not already carried (idempotent)
-fork-fold fixup ENTRY FILE       # attach a coherence fixup to ENTRY's own step
-fork-fold fixup ENTRY FILE --capture   # ...writing FILE from the build worktree
-fork-fold fixup ENTRY --remove   # detach it (the patch file stays on disk)
-fork-fold build                  # assemble from lock pins; incremental for appends
-fork-fold build --locked         # reproduce exactly; no network, no new pins
-fork-fold update [ENTRY...]      # batch bump: repin base + entries to live heads
-fork-fold prune [--dry-run]      # drop entries whose changes landed in the base
-just publish                     # push the locked tree to [publish] (not a fork-fold verb)
+fork-assembler status                 # lock vs. manifest vs. live refs; flags merged entries
+fork-assembler add REMOTE:BRANCH      # append a topic branch entry
+fork-assembler add --pr N             # append a PR entry
+fork-assembler add --patch FILE       # append a standalone patch entry
+fork-assembler add --prs-from USER    # append USER's open PRs not already carried (idempotent)
+fork-assembler fixup ENTRY FILE       # attach a coherence fixup to ENTRY's own step
+fork-assembler fixup ENTRY FILE --capture   # ...writing FILE from the build worktree
+fork-assembler fixup ENTRY --remove   # detach it (the patch file stays on disk)
+fork-assembler build                  # assemble from lock pins; incremental for appends
+fork-assembler build --locked         # reproduce exactly; no network, no new pins
+fork-assembler update [ENTRY...]      # batch bump: repin base + entries to live heads
+fork-assembler prune [--dry-run]      # drop entries whose changes landed in the base
+just publish                     # push the locked tree to [publish] (not a fork-assembler verb)
 ```
 
 `build` never moves existing pins; `update` is the only verb that does. The
@@ -92,9 +92,9 @@ When a build stops on a conflict:
 1. Resolve the conflicted files in the build worktree it reports (under
    `.worktrees/`).
 2. Stage the resolutions with `git add`.
-3. Run `fork-fold continue` — it harvests the conflict's preimage/postimage
+3. Run `fork-assembler continue` — it harvests the conflict's preimage/postimage
    pair into `resolutions/rerere/` and updates the informational index.
-4. Run `fork-fold build --locked` after the repair completes to prove the
+4. Run `fork-assembler build --locked` after the repair completes to prove the
    tracked pairs reproduce the lock's tree.
 5. Commit the manifest, lock, and tracked pairs together.
 
@@ -111,7 +111,7 @@ not one.
 So whenever a build reports `tree CHANGED`, finish the cycle:
 
 ```sh
-fork-fold build --locked         # prove the tracked inputs reproduce the tree
+fork-assembler build --locked         # prove the tracked inputs reproduce the tree
 just publish                     # push that tree to [publish] (scripts/publish-assembly.sh)
 ```
 
@@ -122,7 +122,7 @@ invariant, and a `--locked` rerun legitimately re-commits the same tree under
 a new id. The push force-updates, because the assembled branch is compiled
 output that is re-committed rather than fast-forwarded.
 
-fork-fold itself has no publish verb. It parses `[publish]` for the build's
+fork-assembler itself has no publish verb. It parses `[publish]` for the build's
 provenance stamp only; the push is site policy and lives in this repository.
 
 ## Skills
@@ -134,8 +134,8 @@ Claude Code and Codex discover the same skills; agents without a skills
 mechanism should read `.agents/skills/*/SKILL.md` directly.
 
 The checked-in skill is deliberately only a stable discovery stub. It tells
-the agent to load `lib.forkFoldAgentGuide`, which this repository's flake
-re-exports directly from its pinned `fork-fold` input. The full instructions
+the agent to load `lib.forkAssemblerAgentGuide`, which this repository's flake
+re-exports directly from its pinned `fork-assembler` input. The full instructions
 therefore change with `flake.lock`; do not copy their output into this
 repository.
 

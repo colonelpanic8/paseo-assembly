@@ -7,7 +7,7 @@
 # that commit. A recipe change that is committed but not published therefore
 # fails every workflow with a tree mismatch, not a build error.
 #
-# fork-fold has no publish verb: `[publish]` is provenance metadata to it, and
+# fork-assembler has no publish verb: `[publish]` is provenance metadata to it, and
 # the push is site policy. This script is that policy.
 #
 # The lock's tree hash is the invariant; the commit id is not. So this verifies
@@ -28,7 +28,7 @@ lock_file="manifest.lock.json"
 manifest="manifest.toml"
 
 if [[ ! -d "$worktree" ]]; then
-  echo "error: no build worktree at $worktree; run \`fork-fold build\` first" >&2
+  echo "error: no build worktree at $worktree; run \`fork-assembler build\` first" >&2
   exit 1
 fi
 
@@ -68,7 +68,7 @@ commit="$(git -C "$worktree" rev-parse HEAD)"
 actual_tree="$(git -C "$worktree" rev-parse 'HEAD^{tree}')"
 if [[ "$actual_tree" != "$expected_tree" ]]; then
   echo "error: $worktree carries tree $actual_tree, but $lock_file pins $expected_tree" >&2
-  echo "       run \`fork-fold build --locked\` to reproduce the locked tree first" >&2
+  echo "       run \`fork-assembler build --locked\` to reproduce the locked tree first" >&2
   exit 1
 fi
 
