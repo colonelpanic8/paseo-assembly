@@ -501,9 +501,21 @@ recorded = "2026-07-31T20:38:11.693488928+00:00"
 
 [[resolution]]
 entry = "pr-2658"
+hash = "665571dcff2c01d82de0802724c4903b314cd549"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-08-03T00:25:04.617443816+00:00"
+
+[[resolution]]
+entry = "pr-2658"
 hash = "7a34963b4677e65eff72a55b4a82fe998cf00433"
 paths = ["docs/data-model.md"]
 recorded = "2026-08-02T18:48:38.010432848+00:00"
+
+[[resolution]]
+entry = "pr-2658"
+hash = "7a37ab9d047a4dfd5e9846509b2aa8dbe28844cf"
+paths = ["packages/app/src/components/agent-list.tsx"]
+recorded = "2026-08-03T00:25:04.617446361+00:00"
 
 [[resolution]]
 entry = "pr-2658"
