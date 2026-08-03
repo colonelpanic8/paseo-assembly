@@ -3,7 +3,8 @@
   "pins": {
     "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
     "entries": {
-      "assembled-npm-deps-hash": "cd97e2d2f360078b17a5500086ddb6ad6ccecc4e",
+      "agent-hierarchy-tree": "75bb2e76bdb84659040d515ed30f9de2c28e7fd3",
+      "assembled-npm-deps-hash": "a5728fad0d4cbb12ffbe4dbfce0ab3a3a315d5fe",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "402104092ba8431cb1751d48256b97d0476a63b8",
       "assembly-fdroid-variant": "12d6079c71fcce1b32718b556cbc6bef700507ab",
@@ -14,7 +15,7 @@
       "pr-2530": "226ccb4cd9a20f12e403f54f8247dec247f42eb3",
       "pr-2532": "3b0ea66e6230fc5651a7ba1544a4c813235444df",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2564": "27975a5dacc35817be5401c492394aefe2f45f77",
+      "pr-2564": "a1c875e1fc9b198fca0508d0a77cd2b40644bbd8",
       "pr-2579": "952c1fd96282ea93c39abae7c98dee8f9484d77d",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "876a6a126a1f71a650f845a3ebab5bbf46ef52c5",
@@ -41,20 +42,20 @@
       }
     },
     "anchors": {
-      "pr-2564": "9e06243075e808481dfd0271663c5f6f5d393ec3",
+      "pr-2564": "8f03f209d6cb41efb3997aa9aa37de88b2674852",
       "watch-live-voice": "4b85ebcbc664af5172246332dd152224a9be9da2"
     }
   },
   "build": {
-    "generated": "2026-08-03T09:29:11.783462510+00:00",
+    "generated": "2026-08-03T16:41:15.203618092+00:00",
     "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
-    "commit": "5d9c67665a4f959950eb1eed3d3efe32850f2c81",
-    "pre_provenance_commit": "5d9c67665a4f959950eb1eed3d3efe32850f2c81",
-    "tree": "0c68c2013952689e229984f6986000967c012293",
-    "built_tree": "0c68c2013952689e229984f6986000967c012293",
-    "previous_tree": "de6a963dab8eac446798250243ec4c2c80e884ab",
-    "tree_changed": true,
-    "conflicts": 15,
+    "commit": "6cf377dda6d8f24f904d7d6218f005bea7dd6cfb",
+    "pre_provenance_commit": "6cf377dda6d8f24f904d7d6218f005bea7dd6cfb",
+    "tree": "204807aecdcada93bd68bc5021b076950e19a768",
+    "built_tree": "204807aecdcada93bd68bc5021b076950e19a768",
+    "previous_tree": "204807aecdcada93bd68bc5021b076950e19a768",
+    "tree_changed": false,
+    "conflicts": 16,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -85,7 +86,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "27975a5dacc35817be5401c492394aefe2f45f77",
+        "pin": "a1c875e1fc9b198fca0508d0a77cd2b40644bbd8",
         "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "reconstruction_publish": "mine:status-sidebar-snooze",
         "parents": [
@@ -98,7 +99,7 @@
             "pin": "267d533223751b15165663eb6a93c6e7de4d831c"
           }
         ],
-        "anchor": "9e06243075e808481dfd0271663c5f6f5d393ec3"
+        "anchor": "8f03f209d6cb41efb3997aa9aa37de88b2674852"
       },
       {
         "name": "pr-2530",
@@ -210,7 +211,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "cd97e2d2f360078b17a5500086ddb6ad6ccecc4e"
+        "pin": "a5728fad0d4cbb12ffbe4dbfce0ab3a3a315d5fe"
       },
       {
         "name": "pr-2730",
@@ -241,6 +242,12 @@
         "kind": "pr",
         "source": "upstream#2820",
         "pin": "747ae3cc6d6755e6c242a08d0a2da1f20470e6d9"
+      },
+      {
+        "name": "agent-hierarchy-tree",
+        "kind": "branch",
+        "source": "mine:agent-hierarchy-tree",
+        "pin": "75bb2e76bdb84659040d515ed30f9de2c28e7fd3"
       }
     ],
     "results": [
@@ -272,13 +279,13 @@
       },
       {
         "name": "pr-2564",
-        "oid": "27975a5dacc35817be5401c492394aefe2f45f77",
+        "oid": "a1c875e1fc9b198fca0508d0a77cd2b40644bbd8",
         "status": "merged",
         "conflicted": false,
         "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "derived": {
-          "base_tip": "8f03f209d6cb41efb3997aa9aa37de88b2674852",
-          "tip": "d5ca5ae3d857cb9855c2e6200f9e292fd5187ccb"
+          "base_tip": "61ef627f5b82599c097d9d3a634e0277661ad2ec",
+          "tip": "c5271a205b75b86f725ac3c9cb175ea99c1b3450"
         }
       },
       {
@@ -384,13 +391,13 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "409f0469fd47b67f80590248c4a5670866d6ede5",
-          "tip": "f1f61bee9273bc186859c9b8265277a7ff5b8b6f"
+          "base_tip": "47c48b38aade93f26bdc3b765f8ff809620216dc",
+          "tip": "fca319a07ccad8af3d5c03c6a7572d76ba62442c"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "cd97e2d2f360078b17a5500086ddb6ad6ccecc4e",
+        "oid": "a5728fad0d4cbb12ffbe4dbfce0ab3a3a315d5fe",
         "status": "applied",
         "conflicted": false
       },
@@ -426,6 +433,13 @@
         "oid": "747ae3cc6d6755e6c242a08d0a2da1f20470e6d9",
         "status": "merged",
         "conflicted": false
+      },
+      {
+        "name": "agent-hierarchy-tree",
+        "oid": "75bb2e76bdb84659040d515ed30f9de2c28e7fd3",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere"
       }
     ]
   }

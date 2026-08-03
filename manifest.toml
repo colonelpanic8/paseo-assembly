@@ -143,6 +143,9 @@ summary = "Add UI and CLI for creating provider accounts"
 pr = 2820
 summary = "Serialize draft provider introspection sessions"
 
+[[entry]]
+branch = "mine:agent-hierarchy-tree"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an
