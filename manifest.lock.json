@@ -14,7 +14,7 @@
       "pr-2530": "226ccb4cd9a20f12e403f54f8247dec247f42eb3",
       "pr-2532": "3b0ea66e6230fc5651a7ba1544a4c813235444df",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2564": "1f22b0f6c085570c44db6ba5fcf10731ff2d528a",
+      "pr-2564": "27975a5dacc35817be5401c492394aefe2f45f77",
       "pr-2579": "952c1fd96282ea93c39abae7c98dee8f9484d77d",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "876a6a126a1f71a650f845a3ebab5bbf46ef52c5",
@@ -28,7 +28,7 @@
       "pr-2784": "f8d571c972eaca92e8aa91921d2e414d31cab69c",
       "pr-2785": "b3631405314d9fefe5769ba6a1632acb55ae314f",
       "pr-2820": "747ae3cc6d6755e6c242a08d0a2da1f20470e6d9",
-      "watch-live-voice": "015a18767d903e8d35511cd6acd7619f8d03bb8e"
+      "watch-live-voice": "bd548fdde4090191ff745992959eb0f665b8e8b5"
     },
     "parents": {
       "pr-2564": {
@@ -41,18 +41,18 @@
       }
     },
     "anchors": {
-      "pr-2564": "26ff68d1b789153a271a4d765653af44dca54b10",
-      "watch-live-voice": "d6e392436e38cdd89848d5f2f113062257a82311"
+      "pr-2564": "9e06243075e808481dfd0271663c5f6f5d393ec3",
+      "watch-live-voice": "4b85ebcbc664af5172246332dd152224a9be9da2"
     }
   },
   "build": {
-    "generated": "2026-08-03T08:33:11.391788165+00:00",
+    "generated": "2026-08-03T09:29:11.783462510+00:00",
     "base": "5d15e40a2b057ec7775f9884861fb462e637a59d",
-    "commit": "565c7046d44c5ee30d7724737013582d58e60ea6",
-    "pre_provenance_commit": "565c7046d44c5ee30d7724737013582d58e60ea6",
-    "tree": "de6a963dab8eac446798250243ec4c2c80e884ab",
-    "built_tree": "de6a963dab8eac446798250243ec4c2c80e884ab",
-    "previous_tree": "1f612db92c44bb97ea3811201be982bd67b20ed0",
+    "commit": "5d9c67665a4f959950eb1eed3d3efe32850f2c81",
+    "pre_provenance_commit": "5d9c67665a4f959950eb1eed3d3efe32850f2c81",
+    "tree": "0c68c2013952689e229984f6986000967c012293",
+    "built_tree": "0c68c2013952689e229984f6986000967c012293",
+    "previous_tree": "de6a963dab8eac446798250243ec4c2c80e884ab",
     "tree_changed": true,
     "conflicts": 15,
     "manifest_entries": [
@@ -85,7 +85,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "1f22b0f6c085570c44db6ba5fcf10731ff2d528a",
+        "pin": "27975a5dacc35817be5401c492394aefe2f45f77",
         "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "reconstruction_publish": "mine:status-sidebar-snooze",
         "parents": [
@@ -98,7 +98,7 @@
             "pin": "267d533223751b15165663eb6a93c6e7de4d831c"
           }
         ],
-        "anchor": "26ff68d1b789153a271a4d765653af44dca54b10"
+        "anchor": "9e06243075e808481dfd0271663c5f6f5d393ec3"
       },
       {
         "name": "pr-2530",
@@ -191,7 +191,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "015a18767d903e8d35511cd6acd7619f8d03bb8e",
+        "pin": "bd548fdde4090191ff745992959eb0f665b8e8b5",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -204,7 +204,7 @@
             "pin": "f0d23f8f66dd2a3d9c558aa0a8b9f47b9e955b72"
           }
         ],
-        "anchor": "d6e392436e38cdd89848d5f2f113062257a82311"
+        "anchor": "4b85ebcbc664af5172246332dd152224a9be9da2"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -272,13 +272,13 @@
       },
       {
         "name": "pr-2564",
-        "oid": "1f22b0f6c085570c44db6ba5fcf10731ff2d528a",
+        "oid": "27975a5dacc35817be5401c492394aefe2f45f77",
         "status": "merged",
         "conflicted": false,
         "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "derived": {
-          "base_tip": "9e06243075e808481dfd0271663c5f6f5d393ec3",
-          "tip": "29f4d677a99d164b2ea4e94337092baa6f1194c5"
+          "base_tip": "8f03f209d6cb41efb3997aa9aa37de88b2674852",
+          "tip": "d5ca5ae3d857cb9855c2e6200f9e292fd5187ccb"
         }
       },
       {
@@ -378,14 +378,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "015a18767d903e8d35511cd6acd7619f8d03bb8e",
+        "oid": "bd548fdde4090191ff745992959eb0f665b8e8b5",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "4b85ebcbc664af5172246332dd152224a9be9da2",
-          "tip": "bd548fdde4090191ff745992959eb0f665b8e8b5"
+          "base_tip": "409f0469fd47b67f80590248c4a5670866d6ede5",
+          "tip": "f1f61bee9273bc186859c9b8265277a7ff5b8b6f"
         }
       },
       {
