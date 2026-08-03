@@ -143,27 +143,21 @@ summary = "Add UI and CLI for creating provider accounts"
 pr = 2820
 summary = "Serialize draft provider introspection sessions"
 
-# Targets deliberately not carried. 2525 and 2529 are absent from this list on
-# purpose: they are parents of the 2564 entry above, and a parent declaration
-# and an exclusion for the same target cannot coexist.
-[[exclude]]
-pr = 2526
-reason = "closed and re-authored into 2529, now carried via 2564; carrying both renders the Recently archived sidebar group twice"
+# Open targets deliberately not carried. Closed and merged PRs do not need an
+# entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
+# purpose: they are parents of 2564 above, and a parent declaration and an
+# exclusion for the same target cannot coexist.
 
-[[exclude]]
-pr = 2559
-reason = "obviated by upstream 2490, which fixed issue 2554 in the base; closed upstream"
-
-# 2536 and 2566 are still open, and their content is in 2564 under different
-# commits -- if 2564 ever leaves the stack, it leaves with it.
-[[exclude]]
-pr = 2536
-reason = "contained verbatim in 2564: merges EMPTY (the portable Bash shebangs commit is in 2564 itself)"
-
+# 2566's content is in 2564 under different commits, so `prune` cannot see the
+# redundancy -- only the EMPTY merge revealed it. If 2564 ever leaves the
+# stack, this content leaves with it.
 [[exclude]]
 pr = 2566
 reason = "contained verbatim in 2564: merges EMPTY (use-minute-tick and time.ts are byte-identical between the heads)"
 
+# Closed, so not strictly load-bearing, but kept: reopening either would let
+# discovery re-admit a change held out on purpose, and that intent is
+# recoverable from nowhere else.
 [[exclude]]
 pr = 2656
 reason = "held out at user's request"
@@ -171,15 +165,3 @@ reason = "held out at user's request"
 [[exclude]]
 pr = 2514
 reason = "held out at user's request: exclude the multi-account profiles change from the assembly"
-
-[[exclude]]
-pr = 2787
-reason = "superseded by PR 2792, now merged into upstream main"
-
-[[exclude]]
-pr = 2506
-reason = "merged into upstream main as 5d15e40a2 (2026-08-02)"
-
-[[exclude]]
-pr = 2783
-reason = "merged into upstream main as fdb39d211 (2026-08-02)"
