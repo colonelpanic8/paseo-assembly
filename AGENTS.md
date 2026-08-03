@@ -116,7 +116,13 @@ just publish                     # push that tree to [publish] (scripts/publish-
 ```
 
 `just publish` refuses to push a dirty or stale build worktree, so it is safe
-to run when unsure; if the tree is already published it says so and exits.
+to run when unsure; if the tree is already published it says so and exits. It
+also runs `scripts/check-npm-deps-hash.sh`, because reproducing the locked tree
+proves the build is the one the lock pins, not that it is correct: the assembled
+npm deps hash goes stale silently and only breaks for consumers. Never verify
+that hash with a plain `nix build` — an FOD's store path is derived from its
+declared hash, so a stale one passes instantly on the path the last good build
+left behind. The script forces the re-fetch; `--write` regenerates the patch.
 Push the commit that carries the locked *tree* — the commit id is not the
 invariant, and a `--locked` rerun legitimately re-commits the same tree under
 a new id. The push force-updates, because the assembled branch is compiled

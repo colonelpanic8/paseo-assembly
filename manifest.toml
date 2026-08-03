@@ -1,7 +1,4 @@
-# fork-assembler manifest: INTENT only -- which refs are tracked, in what order.
-# manifest.lock.json records FACT: the OIDs the last build used and the
-# assembled tree hash. The assembled branch is compiled output; never develop
-# on it or merge it back.
+# fork-assembler manifest: which refs are tracked, in what order.
 
 [remotes]
 upstream = "git@github.com:getpaseo/paseo"
@@ -32,19 +29,10 @@ fixup = "patches/sidebar-project-view-shortcut-targets.patch"
 [[entry]]
 branch = "mine:assembly-fdroid-variant"
 
-# Combined PR: merges both parent PR heads onto upstream main and adds a
-# hover-revealed snooze quick action next to archive on the status-sidebar
-# workspace cards, which needs both parents and so cannot live in either
-# parent PR. Carried by PR number, not as mine:status-sidebar-snooze, so
-# discovery counts it as already carried instead of appending a second entry
-# for the same work.
-#
-# The parents declaration keeps 2525 and 2529 out of the entry list (discovery
-# skips them as carried-via-this-entry) and lets build reconstruct this entry
-# when either parent moves: re-merge them onto the base, replay this branch's
-# own commits on top. If this merges upstream, prune it and exclude the
-# parents if their PRs are still open -- their content will be in the base by
-# then, but the declaration that kept discovery away leaves with the entry.
+# Merges 2525 and 2529 and adds a hover-revealed snooze quick action on the
+# status-sidebar workspace cards, which needs both and so fits in neither.
+# If this ever leaves the stack, exclude 2525 and 2529 if still open -- the
+# parents declaration that keeps discovery away goes with the entry.
 [[entry]]
 pr = 2564
 summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
@@ -97,10 +85,6 @@ summary = "Remove the setup-worktree-scripts reminder"
 pr = 2650
 summary = "fix: survive NODE_ENV=production during install"
 
-# 2655 (Wear OS companion) and 2657 (Live Voice) are not carried as entries:
-# they are parents of mine:watch-live-voice below, which merges both and
-# overlays what needs the pair. Build reconstructs that entry from their live
-# heads, so their content enters the stack once, at its position.
 [[entry]]
 pr = 2658
 summary = "Add rolling agent purpose summaries"
@@ -114,42 +98,28 @@ fixup = "patches/agent-purpose-model-display.patch"
 pr = 2660
 summary = "Restore a workspace's agents when the workspace is unarchived"
 
-# Merges 2655 and 2657 and adds what needs both: the watch can start, end and
-# mute a Live Voice call and read its transcript, on its own launcher entry and
-# tile. Same shape as 2564 above -- the feature spans two PRs, so it cannot
-# live in either one, and this branch is where it goes. The parents declaration
-# below carries both PRs via this entry and lets build reconstruct it against
-# their live heads, replaying the overlay on top; the parents themselves are
-# not entries.
+# Merges 2655 (Wear OS companion) and 2657 (Live Voice) and adds what needs
+# both: watch-side start/end/mute and transcript, plus the Android AudioManager
+# fix that routes call audio to a Bluetooth headset.
 #
-# Also carries the Android side of putting that call on your wrist, which is not
-# watch code at all: react-native-webrtc leaves AudioManager alone, so nothing
-# was selecting a communication device and a Bluetooth headset never got the
-# microphone.
-#
-# This replaced mine:agent/live-voice-completion-notifications, which was
-# removed rather than excluded: 2657 absorbed that branch's six commits
-# re-authored, so the two carried the same work under different hashes and the
-# stack merged it twice. It is a live branch and not a PR, so discovery cannot
-# re-admit it and no [[exclude]] is needed -- but if it is ever carried again
-# alongside 2657, that is the collision to expect.
+# Do not re-carry mine:agent/live-voice-completion-notifications alongside
+# 2657: that branch's commits are in 2657 re-authored, so the stack merged the
+# same work twice. It is a branch, not a PR, so discovery cannot re-admit it.
 [[entry]]
 branch = "mine:watch-live-voice"
 summary = "Drive Live Voice from the watch; route call audio to a Bluetooth headset"
 parents = [{ pr = 2655 }, { pr = 2657 }]
 reconstruction_publish = "mine:watch-live-voice"
-# Inherited from that removed entry and re-homed here, still needed: the agent
-# payload builders only trip oxlint's complexity rule once 2657, 2658 and 2659
-# stack, so it belongs to no single topic branch. Confirmed by linting the
-# assembled tree with and without it.
+# The agent payload builders only trip oxlint's complexity rule once 2657,
+# 2658 and 2659 stack, so this belongs to no single topic branch.
 fixup = "patches/agent-payload-complexity.patch"
 
-# Dependency-hash maintenance: the standalone patch below is a function of the
-# complete assembled package-lock.json. Recompute it whenever upstream main or
-# any dependency-affecting carried work moves. Today those carried sources are
-# #2520; #2564's parents #2525 and #2529; and watch-live-voice's parents
-# #2655 and #2657. Use a fake hash with nix build .#desktop, then replace
-# this patch with Nix's reported fixed-output hash before publishing.
+# A hash of the whole assembled package-lock.json, so it goes stale whenever a
+# dependency-affecting entry moves -- silently, since it applies cleanly either
+# way. Never check it with a plain `nix build`: that passes instantly on a stale
+# hash, because an FOD's store path comes from the declared hash. Use
+# scripts/check-npm-deps-hash.sh (`--write` regenerates it); `just publish`
+# refuses to push without it.
 [[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"
 
@@ -169,27 +139,13 @@ summary = "Fix worktree setup with production npm environments"
 pr = 2785
 summary = "Add UI and CLI for creating provider accounts"
 
-# Targets deliberately not carried. These are enforced, not advisory: `add`
-# skips them during a `--prs-from` sweep and errors if one is named directly,
-# and the manifest fails to load if an entry ever carries an excluded target.
-# Recorded with `fork-assembler exclude --pr N --reason ...`; removing one is a
-# hand edit here.
+[[entry]]
+pr = 2820
+summary = "Serialize draft provider introspection sessions"
 
-# 2525 and 2529 are NOT excluded here: they are declared as parents of the
-# 2564 entry above, which is the stronger statement -- it keeps discovery away
-# the same way an exclusion would, and additionally tells build to
-# reconstruct 2564 when either of them moves. The manifest rejects carrying a
-# parent declaration and an exclusion for the same target at once.
-
-# 2526 and 2559 are CLOSED, so discovery cannot re-add them and only a hand
-# edit could. They are recorded anyway: an exclusion is what answers "why
-# isn't this carried?" without git archaeology, and neither is a prune
-# candidate -- their commits never landed in the base, so `prune` would never
-# have removed them either.
-
-# patches/status-sidebar-archived-host-label.patch belonged to 2526: it only
-# threaded showHostLabels through to that PR's call site, and 2564's render
-# hardcodes the prop. Left on disk, unreferenced.
+# Targets deliberately not carried. 2525 and 2529 are absent from this list on
+# purpose: they are parents of the 2564 entry above, and a parent declaration
+# and an exclusion for the same target cannot coexist.
 [[exclude]]
 pr = 2526
 reason = "closed and re-authored into 2529, now carried via 2564; carrying both renders the Recently archived sidebar group twice"
@@ -198,19 +154,15 @@ reason = "closed and re-authored into 2529, now carried via 2564; carrying both 
 pr = 2559
 reason = "obviated by upstream 2490, which fixed issue 2554 in the base; closed upstream"
 
-# 2536 and 2566 are also OPEN, so they need the same protection 2525 and 2529
-# do. Unlike those two, their heads are NOT ancestors of 2564 -- 2564 carries
-# the same work as differently-numbered commits, so `prune` cannot see the
-# redundancy and only the EMPTY merge result revealed it. Each was carried for
-# a while as a no-op entry. If 2564 ever leaves the stack, revisit both: the
-# content leaves with it.
+# 2536 and 2566 are still open, and their content is in 2564 under different
+# commits -- if 2564 ever leaves the stack, it leaves with it.
 [[exclude]]
 pr = 2536
-reason = "contained verbatim in 2564, the combined branch this stack already carries: 2564 includes the Use portable Bash shebangs commit itself, so this entry has merged EMPTY since 2564 was admitted"
+reason = "contained verbatim in 2564: merges EMPTY (the portable Bash shebangs commit is in 2564 itself)"
 
 [[exclude]]
 pr = 2566
-reason = "contained verbatim in 2564, the combined branch this stack already carries: the use-minute-tick and time.ts files are byte-identical between the two heads, so this entry has merged EMPTY since 2564 was admitted"
+reason = "contained verbatim in 2564: merges EMPTY (use-minute-tick and time.ts are byte-identical between the heads)"
 
 [[exclude]]
 pr = 2656

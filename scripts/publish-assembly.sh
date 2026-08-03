@@ -72,6 +72,13 @@ if [[ "$actual_tree" != "$expected_tree" ]]; then
   exit 1
 fi
 
+# The tree check above proves the build is the one the lock pins. It does NOT
+# prove the tree is correct: patches/assembled-npm-deps-hash.patch pins a hash
+# of the assembled dependency tree that goes stale silently, and publishing a
+# stale one breaks the build for every consumer. This is the last point where
+# that is still cheap to catch.
+"$repo_root/scripts/check-npm-deps-hash.sh" "$worktree" >&2
+
 git -C "$worktree" fetch --force --no-tags "$remote" "$branch" >&2 || true
 lease="$(git -C "$worktree" rev-parse --verify --quiet FETCH_HEAD || true)"
 

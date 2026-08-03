@@ -171,6 +171,18 @@ recorded = "2026-08-02T21:22:28.322765256+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "15feedbce93d47247e3710e70d2f549aee6f8679"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-08-03T07:44:06.805262476+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "1d119c3d658d907b330b6405129b82f35fab1774"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-03T07:42:51.445391013+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "2351ec441f5927d1438e12e30d93ccf8b3fbc030"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-02T15:44:27.642646312+00:00"
@@ -186,6 +198,12 @@ entry = "pr-2564"
 hash = "2dbf4596061d70b9a17c01a64a8beeb06cf07723"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-02T15:49:47.063569247+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "2de4d8c65ff20df1dfd14be72e433553ef4b84c5"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-03T07:42:51.445392896+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -228,6 +246,12 @@ entry = "pr-2564"
 hash = "5f71c258ae08d25e3a9b7531fd90ba506a0928bf"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-02T18:47:06.853278773+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "647631fa879d4f0bc42c7ebb64c0502785a546d5"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-03T07:42:21.885526950+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -590,6 +614,12 @@ paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
 recorded = "2026-08-02T15:51:48.478038431+00:00"
 
 [[resolution]]
+entry = "pr-2730"
+hash = "bd720d5d0829cf74199ffe54fff55a4cfa1ea885"
+paths = ["packages/app/e2e/support/helpers/isolated-host-daemon.ts"]
+recorded = "2026-08-03T07:52:35.653339124+00:00"
+
+[[resolution]]
 entry = "pr-2783"
 hash = "1621a8b00e7fd52d1dba66b22071e6fd884cce32"
 paths = ["flake.nix"]
@@ -618,6 +648,12 @@ entry = "pr-2784"
 hash = "e3221f7de33d7345a4245dd01193997407374756"
 paths = ["docs/development.md"]
 recorded = "2026-08-02T00:46:10.047100031+00:00"
+
+[[resolution]]
+entry = "pr-2785"
+hash = "6480fda3bbf8cbd41136494b83138de54bf99d1c"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-08-03T07:53:03.442161706+00:00"
 
 [[resolution]]
 entry = "pr-2787"
@@ -672,3 +708,9 @@ entry = "watch-live-voice"
 hash = "ee890a53a943facd8d9e32810fe9ebf81f06426e"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-01T21:08:42.299453044+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "f56ccbe32c2931c5cca406ca32f1992700374d11"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-08-03T07:52:21.803093076+00:00"
