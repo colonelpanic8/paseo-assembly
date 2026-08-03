@@ -112,7 +112,8 @@ So whenever a build reports `tree CHANGED`, finish the cycle:
 
 ```sh
 fork-assembler build --locked         # prove the tracked inputs reproduce the tree
-just publish                     # push that tree to [publish] (scripts/publish-assembly.sh)
+git commit && git push origin main     # publish the recipe before the slow hash check
+just publish                           # verify the hash, then push the tree to [publish]
 ```
 
 `just publish` refuses to push a dirty or stale build worktree, so it is safe
@@ -123,6 +124,9 @@ npm deps hash goes stale silently and only breaks for consumers. Never verify
 that hash with a plain `nix build` — an FOD's store path is derived from its
 declared hash, so a stale one passes instantly on the path the last good build
 left behind. The script forces the re-fetch; `--write` regenerates the patch.
+Do not run this slow check before pushing the verified recipe to `main`; let
+`just publish` run it afterward. If it finds a stale hash, regenerate it and
+push the correction as a follow-up recipe commit before publishing `assembled`.
 Push the commit that carries the locked *tree* — the commit id is not the
 invariant, and a `--locked` rerun legitimately re-commits the same tree under
 a new id. The push force-updates, because the assembled branch is compiled

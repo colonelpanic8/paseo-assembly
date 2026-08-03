@@ -93,6 +93,12 @@ recorded = "2026-08-03T20:23:05.555568017+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "c49ff37ffbf06b059214a5be201150e31c35cb47"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-03T21:56:36.846596616+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "c953d40929a43d85217a5f6e22391f6495ccdd23"
 paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
 recorded = "2026-08-03T20:23:05.555568538+00:00"
