@@ -3,6 +3,18 @@
 # replay uses the pair directories, verification uses the lock tree.
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "036334198494a7080737fa940779085647fd6621"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-03T22:40:24.547140945+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "168ef1a9e23464e15b1cffe732d5acfe9ea26123"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-03T22:37:38.138428605+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "1947f57d3f724f877ff4971e902361958e04dab0"
 paths = ["packages/app/src/components/agent-list.tsx"]
 recorded = "2026-08-03T20:23:05.555560724+00:00"
@@ -69,6 +81,12 @@ recorded = "2026-08-03T21:32:23.016834648+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "8e2fda9b8aa31eff976833559323b959e7f4956d"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-03T22:37:38.138431480+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "90baa386e7683cf761954bc3c394e08edc120c1c"
 paths = ["packages/app/src/stores/sidebar-collapsed-sections-store/state.test.ts"]
 recorded = "2026-08-03T20:23:05.555567597+00:00"
@@ -84,6 +102,12 @@ entry = "agent-hierarchy-tree"
 hash = "92054844e33f7f805c2034cafcb378284731d14f"
 paths = ["packages/app/src/hooks/sidebar-status-view-model.test.ts"]
 recorded = "2026-08-03T21:30:06.619351620+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "b24ccf1723da28b4ba9221bf7e04219a5c076e2f"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-08-03T22:37:38.138432072+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -108,6 +132,12 @@ entry = "agent-hierarchy-tree"
 hash = "e69f4af7204964b83b9e820b337892518ec5107a"
 paths = ["packages/app/src/components/sidebar/status-row-swipe-container.native.tsx"]
 recorded = "2026-08-03T20:23:05.555568779+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "ea0c968619a01f5d0d59d32fa366ca4694674fdd"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-03T22:37:38.138432492+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -345,6 +375,12 @@ recorded = "2026-08-02T15:49:18.347484309+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "4206b04138552dd188c63a4679c194c2d3cdd823"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-03T22:12:59.611511191+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "4544ec551c3186239fcf5d45fee676e8dcc7572a"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-02T15:49:18.347484670+00:00"
@@ -372,6 +408,12 @@ entry = "pr-2564"
 hash = "5d29580645dd652f3bf24d92575874ffd262427f"
 paths = ["packages/app/src/runtime/host-runtime.ts"]
 recorded = "2026-08-02T15:49:18.347485484+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "5d6be0914fdc676b47d9de4cc460c925359674f4"
+paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
+recorded = "2026-08-03T22:14:14.514250204+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -408,6 +450,12 @@ entry = "pr-2564"
 hash = "7d0a30de3f831047da472e5713b09b4b7637b2e9"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-02T15:49:47.063569723+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "80a9b8542ccd9881430e1fedf1c7abf776c5a99a"
+paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
+recorded = "2026-08-03T22:15:10.840175395+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -453,6 +501,12 @@ recorded = "2026-08-02T18:47:06.853281681+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "b71f783794670b53c8e2c300498d73214453c82d"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-03T22:14:36.827720441+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "c2629b8591bb04fdc098e3c9404f65655fd512a7"
 paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
 recorded = "2026-08-02T21:22:28.322768314+00:00"
@@ -480,6 +534,12 @@ entry = "pr-2564"
 hash = "ecf3c031b42c0f7c7cbfcbd8f0acdc38e86d5bb9"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-02T13:16:44.568503113+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "ee64165da2203f2e86da76fc20a22166374623f5"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-03T22:14:14.514252178+00:00"
 
 [[resolution]]
 entry = "pr-2564"
