@@ -306,3 +306,53 @@ index ed38626d5..19238ce43 100644
  import { useLongPressDragInteraction } from "@/components/sidebar/use-long-press-drag-interaction";
  import { PinnedSectionHeader } from "@/components/sidebar/pinned-section-header";
  import { SidebarGroupToggleRow } from "@/components/sidebar/sidebar-group-toggle-row";
+diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
+index 241fc4c37..1138d87e4 100644
+--- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
++++ b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
+@@ -180,6 +180,17 @@ function normalizeCurrentBranch(currentBranch: string | null | undefined): strin
+   return trimmed.length === 0 || trimmed === "HEAD" ? null : trimmed;
+ }
+-
++
++function workspaceActivityFields(
++  workspaceAgentActivity: ReadonlyMap<string, WorkspaceAgentActivity> | undefined,
++  workspaceId: string,
++): Pick<SidebarWorkspaceEntry, "providers" | "lastUserMessageAt"> {
++  const activity = workspaceAgentActivity?.get(workspaceId);
++  return {
++    providers: activity?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
++    lastUserMessageAt: activity?.lastUserMessageAt ?? null,
++  };
++}
++
+ export function createSidebarWorkspaceEntry(input: {
+   serverId: string;
+   workspace: WorkspaceDescriptor;
+@@ -189,6 +200,10 @@ export function createSidebarWorkspaceEntry(input: {
+   nowMs?: number;
+ }): SidebarWorkspaceEntry {
+   const projectViewKey = input.projectViewKey ?? input.workspace.projectId;
++  const workspaceActivity = workspaceActivityFields(
++    input.workspaceAgentActivity,
++    input.workspace.id,
++  );
+   const effectiveStatus = deriveEffectiveWorkspaceStatus({
+     ...input,
+     nowMs: input.nowMs ?? Date.now(),
+@@ -211,13 +226,11 @@ export function createSidebarWorkspaceEntry(input: {
+     currentBranch: normalizeCurrentBranch(input.workspace.gitRuntime?.currentBranch),
+     remoteUrl:
+       input.workspace.gitRuntime?.remoteUrl ?? input.workspace.project?.checkout.remoteUrl ?? null,
+-    providers:
+-      input.workspaceAgentActivity?.get(input.workspace.id)?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
++    providers: workspaceActivity.providers,
+     statusBucket: effectiveStatus.status,
+     statusEnteredAt: effectiveStatus.enteredAt,
+     snoozeWakeAt: effectiveStatus.snoozeWakeAt,
+-    lastUserMessageAt:
+-      input.workspaceAgentActivity?.get(input.workspace.id)?.lastUserMessageAt ?? null,
++    lastUserMessageAt: workspaceActivity.lastUserMessageAt,
+     activityAt: input.workspace.activityAt,
+     archivingAt: input.workspace.archivingAt,
+     diffStat: input.workspace.diffStat,

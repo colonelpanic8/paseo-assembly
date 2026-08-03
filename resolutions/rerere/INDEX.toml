@@ -63,6 +63,12 @@ recorded = "2026-08-03T20:23:05.555567126+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "742f3733cc3ae68753e398f7c2015cb90c4012ef"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-03T21:32:23.016834648+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "90baa386e7683cf761954bc3c394e08edc120c1c"
 paths = ["packages/app/src/stores/sidebar-collapsed-sections-store/state.test.ts"]
 recorded = "2026-08-03T20:23:05.555567597+00:00"
@@ -72,6 +78,12 @@ entry = "agent-hierarchy-tree"
 hash = "90cb33b7e3dedcf0636f725f8190b27091e5a818"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-03T16:39:00.334188043+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "92054844e33f7f805c2034cafcb378284731d14f"
+paths = ["packages/app/src/hooks/sidebar-status-view-model.test.ts"]
+recorded = "2026-08-03T21:30:06.619351620+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -90,6 +102,12 @@ entry = "agent-hierarchy-tree"
 hash = "e69f4af7204964b83b9e820b337892518ec5107a"
 paths = ["packages/app/src/components/sidebar/status-row-swipe-container.native.tsx"]
 recorded = "2026-08-03T20:23:05.555568779+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "ed8695ec79da3ae960a594a327132aecc59b2765"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-03T21:30:06.619353734+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -297,6 +315,12 @@ recorded = "2026-08-02T18:47:47.423871439+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "29f4f7e4917afd117f43ba58942866dad8abe227"
+paths = ["packages/app/src/hooks/sidebar-status-view-model.ts"]
+recorded = "2026-08-03T21:29:39.990067154+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "2dbf4596061d70b9a17c01a64a8beeb06cf07723"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-02T15:49:47.063569247+00:00"
@@ -357,6 +381,12 @@ recorded = "2026-08-03T07:42:21.885526950+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "657c47b66fd5fa719910072efbc7a19599f6d7c3"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-03T21:29:39.990068937+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "69f4b11dbd1f587501da97b8d53970dc487a29e9"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.test.ts"]
 recorded = "2026-08-02T21:22:13.916551659+00:00"
@@ -396,6 +426,12 @@ entry = "pr-2564"
 hash = "9a1576754799486732bb0e9c0396edf476edcd5c"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-08-02T21:22:13.916554736+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "9e5a4ed21ca80436951b0f5a0ae91ef56d4d607f"
+paths = ["packages/app/src/hooks/sidebar-status-view-model.test.ts"]
+recorded = "2026-08-03T21:29:39.990069408+00:00"
 
 [[resolution]]
 entry = "pr-2564"
