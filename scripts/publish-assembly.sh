@@ -16,12 +16,24 @@
 # a rebuild re-commits rather than fast-forwards -- but leased against the head
 # we observed, so a concurrent publish loses the race instead of being lost.
 #
-# Usage: publish-assembly.sh [BUILD_WORKTREE]
+# The npm deps hash check runs AFTER the push, not before. It is slow (it forces
+# a re-fetch of the whole assembled dependency tree) and the push is what
+# unblocks CI and every consumer, so the fast, certain step goes first and the
+# slow verification follows. A stale hash is then a follow-up recipe commit and
+# a republish, which is the same repair either way.
+#
+# Usage: publish-assembly.sh [--skip-hash-check] [BUILD_WORKTREE]
 
 set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
 cd "$repo_root"
+
+skip_hash_check=""
+if [[ "${1:-}" == "--skip-hash-check" ]]; then
+  skip_hash_check=1
+  shift
+fi
 
 worktree="${1:-.worktrees/build}"
 lock_file="manifest.lock.json"
@@ -72,26 +84,41 @@ if [[ "$actual_tree" != "$expected_tree" ]]; then
   exit 1
 fi
 
-# The tree check above proves the build is the one the lock pins. It does NOT
-# prove the tree is correct: patches/assembled-npm-deps-hash.patch pins a hash
-# of the assembled dependency tree that goes stale silently, and publishing a
-# stale one breaks the build for every consumer. This is the last point where
-# that is still cheap to catch.
-"$repo_root/scripts/check-npm-deps-hash.sh" "$worktree" >&2
-
 git -C "$worktree" fetch --force --no-tags "$remote" "$branch" >&2 || true
 lease="$(git -C "$worktree" rev-parse --verify --quiet FETCH_HEAD || true)"
 
 if [[ "$lease" == "$commit" ]]; then
   echo "already published: $remote/$branch is $commit (tree $expected_tree)"
+else
+  echo "publishing $commit (tree $expected_tree) to $remote/$branch"
+  if [[ -n "$lease" ]]; then
+    git -C "$worktree" push \
+      "--force-with-lease=refs/heads/$branch:$lease" \
+      "$remote" "$commit:refs/heads/$branch"
+  else
+    git -C "$worktree" push "$remote" "$commit:refs/heads/$branch"
+  fi
+fi
+
+# The tree check above proves the build is the one the lock pins. It does NOT
+# prove the tree is correct: patches/assembled-npm-deps-hash.patch pins a hash
+# of the assembled dependency tree that goes stale silently, and a stale one
+# breaks the build for every consumer. It is slow, so it runs here, after the
+# push: publishing is what unblocks CI, and a stale hash is repaired the same
+# way whether it is caught before or after -- regenerate the patch, rebuild,
+# commit, and publish again.
+if [[ -n "$skip_hash_check" ]]; then
+  echo "npm deps hash check SKIPPED (--skip-hash-check) -- run \`just check-npm-deps-hash\`" >&2
   exit 0
 fi
 
-echo "publishing $commit (tree $expected_tree) to $remote/$branch"
-if [[ -n "$lease" ]]; then
-  git -C "$worktree" push \
-    "--force-with-lease=refs/heads/$branch:$lease" \
-    "$remote" "$commit:refs/heads/$branch"
-else
-  git -C "$worktree" push "$remote" "$commit:refs/heads/$branch"
+if ! "$repo_root/scripts/check-npm-deps-hash.sh" "$worktree" >&2; then
+  echo >&2
+  echo "error: the published tree carries a STALE assembled npm deps hash." >&2
+  echo "       regenerate it and publish the correction:" >&2
+  echo "         just check-npm-deps-hash --write" >&2
+  echo "         fork-assembler build && fork-assembler build --locked" >&2
+  echo "         git commit -- patches manifest.lock.json resolutions && git push origin main" >&2
+  echo "         just publish" >&2
+  exit 1
 fi

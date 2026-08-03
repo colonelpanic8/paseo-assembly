@@ -112,21 +112,27 @@ So whenever a build reports `tree CHANGED`, finish the cycle:
 
 ```sh
 fork-assembler build --locked         # prove the tracked inputs reproduce the tree
-git commit && git push origin main     # publish the recipe before the slow hash check
-just publish                           # verify the hash, then push the tree to [publish]
+git commit && git push origin main     # publish the recipe
+just publish                           # push the tree to [publish], then check the hash
 ```
+
+**Always push first; every slow verification is deferred behind the push.**
+Nothing is shipped until both pushes land, and a check that runs before them
+only delays the moment CI and consumers can move. `just publish` therefore
+pushes the assembled tree and *then* runs the npm deps hash check. Use `just
+publish-fast` to defer that check entirely — it still owes a `just
+check-npm-deps-hash` run.
 
 `just publish` refuses to push a dirty or stale build worktree, so it is safe
 to run when unsure; if the tree is already published it says so and exits. It
-also runs `scripts/check-npm-deps-hash.sh`, because reproducing the locked tree
-proves the build is the one the lock pins, not that it is correct: the assembled
-npm deps hash goes stale silently and only breaks for consumers. Never verify
-that hash with a plain `nix build` — an FOD's store path is derived from its
-declared hash, so a stale one passes instantly on the path the last good build
-left behind. The script forces the re-fetch; `--write` regenerates the patch.
-Do not run this slow check before pushing the verified recipe to `main`; let
-`just publish` run it afterward. If it finds a stale hash, regenerate it and
-push the correction as a follow-up recipe commit before publishing `assembled`.
+runs `scripts/check-npm-deps-hash.sh` afterward, because reproducing the locked
+tree proves the build is the one the lock pins, not that it is correct: the
+assembled npm deps hash goes stale silently and only breaks for consumers.
+Never verify that hash with a plain `nix build` — an FOD's store path is
+derived from its declared hash, so a stale one passes instantly on the path the
+last good build left behind. The script forces the re-fetch; `--write`
+regenerates the patch. If it finds a stale hash, regenerate it, rebuild, and
+push the correction as a follow-up recipe commit and a second publish.
 Push the commit that carries the locked *tree* — the commit id is not the
 invariant, and a `--locked` rerun legitimately re-commits the same tree under
 a new id. The push force-updates, because the assembled branch is compiled
