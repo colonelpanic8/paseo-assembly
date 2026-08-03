@@ -145,6 +145,12 @@ summary = "Serialize draft provider introspection sessions"
 
 [[entry]]
 branch = "mine:agent-hierarchy-tree"
+# This is a leaf over the reconstructed 2525 + 2529 + 2564 sidebar branch,
+# not a main-based topic. Reconstruct it whenever that parent moves, replaying
+# only the hierarchy commit above the recorded merge anchor.
+summary = "Show each workspace's agent hierarchy in the sidebar"
+parents = [{ branch = "mine:status-sidebar-snooze" }]
+reconstruction_publish = "mine:agent-hierarchy-tree"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on

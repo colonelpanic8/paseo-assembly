@@ -1,9 +1,9 @@
 {
   "version": 1,
   "pins": {
-    "base": "777fe968f5bab50f63f25a61188482f6a15789fc",
+    "base": "f25e68b8cc1c9a72e2c37deb37b51c18ee569527",
     "entries": {
-      "agent-hierarchy-tree": "f8ee7fa1e887df625e9e30d7ba54429968e9ab6b",
+      "agent-hierarchy-tree": "d5b03b20131771bdfa9184c9566496d3734af57d",
       "assembled-npm-deps-hash": "0c6c93697ecaee0af26f2b04eb221fe804f816f9",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "402104092ba8431cb1751d48256b97d0476a63b8",
@@ -15,7 +15,7 @@
       "pr-2530": "49d7df5f233d9c269a8bb4c21cb787b262c0b125",
       "pr-2532": "f07f9a9ba64e477493fa4346f2bb6551c2169220",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2564": "b3288dd433491bec25a97c5ffd162ebbc33a9719",
+      "pr-2564": "afa47d7821d649f806e9964e0b8aa8c4fdc3812d",
       "pr-2579": "952c1fd96282ea93c39abae7c98dee8f9484d77d",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "876a6a126a1f71a650f845a3ebab5bbf46ef52c5",
@@ -29,9 +29,12 @@
       "pr-2784": "f8d571c972eaca92e8aa91921d2e414d31cab69c",
       "pr-2785": "b3631405314d9fefe5769ba6a1632acb55ae314f",
       "pr-2820": "d1ce822560f333e6072450ff9ac7be77d9144f23",
-      "watch-live-voice": "08fe61ab7bad840c853efa951b55b3ecc7b8fe92"
+      "watch-live-voice": "667e98f4efcf056fc5ffa3d7d49d9c6717dee916"
     },
     "parents": {
+      "agent-hierarchy-tree": {
+        "status-sidebar-snooze": "afa47d7821d649f806e9964e0b8aa8c4fdc3812d"
+      },
       "pr-2564": {
         "pr-2525": "3df7e20a1d821189777fa9aa9627ac1642a57df5",
         "pr-2529": "267d533223751b15165663eb6a93c6e7de4d831c"
@@ -42,19 +45,20 @@
       }
     },
     "anchors": {
-      "pr-2564": "5b865906087056e4a611f0e0795076c56aad5552",
-      "watch-live-voice": "8b882e85bc53584c0d8f7690480466c1308e6e03"
+      "agent-hierarchy-tree": "3740a7ecbc0cb38cb367b6cab8262a48a34ed864",
+      "pr-2564": "eee6ed089edabfe9abdb4cf13a39661aa2c1e43a",
+      "watch-live-voice": "b840527ec1d05af72b0c3e6760ef020da245ff66"
     }
   },
   "build": {
-    "generated": "2026-08-03T20:52:37.856299073+00:00",
-    "base": "777fe968f5bab50f63f25a61188482f6a15789fc",
-    "commit": "3482aeadd7d67b621d4cce15d53079e9c0f9149b",
-    "pre_provenance_commit": "3482aeadd7d67b621d4cce15d53079e9c0f9149b",
-    "tree": "f8092a7c79bd986fc2acf37543116de1868ab887",
-    "built_tree": "f8092a7c79bd986fc2acf37543116de1868ab887",
-    "previous_tree": "080d221eea0eb7ef675edcec01022a3369121267",
-    "tree_changed": true,
+    "generated": "2026-08-03T21:23:21.032137764+00:00",
+    "base": "f25e68b8cc1c9a72e2c37deb37b51c18ee569527",
+    "commit": "e31e80b9dedc48469b2a03891da1022371f8f0e3",
+    "pre_provenance_commit": "e31e80b9dedc48469b2a03891da1022371f8f0e3",
+    "tree": "85bec46740f023c3a30b3fce6c5bb8c51b838ae0",
+    "built_tree": "85bec46740f023c3a30b3fce6c5bb8c51b838ae0",
+    "previous_tree": "85bec46740f023c3a30b3fce6c5bb8c51b838ae0",
+    "tree_changed": false,
     "conflicts": 17,
     "manifest_entries": [
       {
@@ -86,7 +90,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "b3288dd433491bec25a97c5ffd162ebbc33a9719",
+        "pin": "afa47d7821d649f806e9964e0b8aa8c4fdc3812d",
         "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "reconstruction_publish": "mine:status-sidebar-snooze",
         "parents": [
@@ -99,7 +103,7 @@
             "pin": "267d533223751b15165663eb6a93c6e7de4d831c"
           }
         ],
-        "anchor": "5b865906087056e4a611f0e0795076c56aad5552"
+        "anchor": "eee6ed089edabfe9abdb4cf13a39661aa2c1e43a"
       },
       {
         "name": "pr-2530",
@@ -192,7 +196,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "08fe61ab7bad840c853efa951b55b3ecc7b8fe92",
+        "pin": "667e98f4efcf056fc5ffa3d7d49d9c6717dee916",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -205,7 +209,7 @@
             "pin": "b015f94a8f065305ab726d48e5b10021ae63bec2"
           }
         ],
-        "anchor": "8b882e85bc53584c0d8f7690480466c1308e6e03"
+        "anchor": "b840527ec1d05af72b0c3e6760ef020da245ff66"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -247,7 +251,15 @@
         "name": "agent-hierarchy-tree",
         "kind": "branch",
         "source": "mine:agent-hierarchy-tree",
-        "pin": "f8ee7fa1e887df625e9e30d7ba54429968e9ab6b"
+        "pin": "d5b03b20131771bdfa9184c9566496d3734af57d",
+        "reconstruction_publish": "mine:agent-hierarchy-tree",
+        "parents": [
+          {
+            "source": "mine:status-sidebar-snooze",
+            "pin": "afa47d7821d649f806e9964e0b8aa8c4fdc3812d"
+          }
+        ],
+        "anchor": "3740a7ecbc0cb38cb367b6cab8262a48a34ed864"
       }
     ],
     "results": [
@@ -279,13 +291,13 @@
       },
       {
         "name": "pr-2564",
-        "oid": "b3288dd433491bec25a97c5ffd162ebbc33a9719",
+        "oid": "afa47d7821d649f806e9964e0b8aa8c4fdc3812d",
         "status": "merged",
         "conflicted": false,
         "fixup": "fb335bea8d38605735551bb93d2b6718f8c286ee",
         "derived": {
-          "base_tip": "72fdfc3e0b892d149452723a1f449db2bcbd102c",
-          "tip": "6c7c762d9b18bc0744b828b2c771d5852ef3eac5"
+          "base_tip": "33569a49016b3c89d0ce5477a437f92a62c83f9f",
+          "tip": "495627d9e3f5ed7e9142b78ac15fe522b0ad3dc1"
         }
       },
       {
@@ -385,14 +397,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "08fe61ab7bad840c853efa951b55b3ecc7b8fe92",
+        "oid": "667e98f4efcf056fc5ffa3d7d49d9c6717dee916",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "511bc16189782503baf2af1ff6a700bebbf78a09",
-          "tip": "42056595d5750504657336ffabc24c66560d4a6d"
+          "base_tip": "3a47f8651596c69a524794b7cf19e10aef06b7c3",
+          "tip": "06a823f0eb601dd4795b74e9b12354224db44316"
         }
       },
       {
@@ -437,10 +449,14 @@
       },
       {
         "name": "agent-hierarchy-tree",
-        "oid": "f8ee7fa1e887df625e9e30d7ba54429968e9ab6b",
+        "oid": "d5b03b20131771bdfa9184c9566496d3734af57d",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:1ff69637e070ae6267654ab22d947524e6adc51e"
+        "resolution": "rerere",
+        "derived": {
+          "base_tip": "d8ea4cd336decf554545a975007e7b9f8194008c",
+          "tip": "467d3d19777281cdfc780ee2523513ce023402bc"
+        }
       }
     ]
   }
