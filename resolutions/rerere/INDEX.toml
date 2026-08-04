@@ -9,6 +9,12 @@ recorded = "2026-08-03T22:40:24.547140945+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "0b1453ac75c20b61d9b7bb6729a64d0923faf1bd"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-04T20:33:56.991345904+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "168ef1a9e23464e15b1cffe732d5acfe9ea26123"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
 recorded = "2026-08-03T22:37:38.138428605+00:00"
@@ -65,7 +71,7 @@ recorded = "2026-08-03T20:23:05.555565132+00:00"
 entry = "agent-hierarchy-tree"
 hash = "55c97d878de6650fb1f8572920c742d4ebaa71bd"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
-recorded = "2026-08-03T16:39:00.334187833+00:00"
+recorded = "2026-08-04T20:39:33.177437504+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -75,15 +81,33 @@ recorded = "2026-08-03T23:29:15.159436296+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "6790abd6a0babff4ce07f387efcee46590d71ed1"
+paths = ["packages/app/src/workspace-snooze/use-workspace-snooze-menu.ts"]
+recorded = "2026-08-04T20:33:24.267019605+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "6aca54c0b3c00471cffa488215536e38e9f1317f"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
 recorded = "2026-08-03T20:23:05.555567126+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "72b720ea94ae06a379d1f0549b335161e459c996"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-04T20:35:17.025166462+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "742f3733cc3ae68753e398f7c2015cb90c4012ef"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-08-03T21:32:23.016834648+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "86ad8cf2abc15a0de5f7e5fdf1564e2d25dd6315"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-04T20:35:17.025168686+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -108,6 +132,12 @@ entry = "agent-hierarchy-tree"
 hash = "92054844e33f7f805c2034cafcb378284731d14f"
 paths = ["packages/app/src/hooks/sidebar-status-view-model.test.ts"]
 recorded = "2026-08-03T21:30:06.619351620+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "aee2b29e3e0417c28f80609a82d60629ffbae88d"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-04T20:39:33.177439457+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -150,6 +180,12 @@ entry = "agent-hierarchy-tree"
 hash = "ea0c968619a01f5d0d59d32fa366ca4694674fdd"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-03T22:37:38.138432492+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "ea3d2846f944147c202523fb3196bc3f652b130c"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-04T20:33:24.267025727+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -312,6 +348,12 @@ entry = "pr-2564"
 hash = "0195a16bc3a4debee93f16915be8ec3c399f9b8d"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
 recorded = "2026-08-02T18:48:03.036924126+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "04171610c42b0570f1ae917f1fe1697332d88f55"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-04T20:30:42.520931669+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -513,6 +555,12 @@ recorded = "2026-08-02T18:47:47.423874601+00:00"
 
 [[resolution]]
 entry = "pr-2564"
+hash = "ae931b1d7477d19d22f0b361ab5d8f90f577c2dc"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-04T20:31:02.577122633+00:00"
+
+[[resolution]]
+entry = "pr-2564"
 hash = "af5a9ce396bd2d775969382dcfceb2d512fa1028"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
 recorded = "2026-08-02T18:47:06.853281681+00:00"
@@ -528,6 +576,12 @@ entry = "pr-2564"
 hash = "c2629b8591bb04fdc098e3c9404f65655fd512a7"
 paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
 recorded = "2026-08-02T21:22:28.322768314+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "d06e946c946f7718a736b665cb65dc0e6439b12d"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-04T20:30:21.209980796+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -914,6 +968,12 @@ paths = ["packages/app/src/hooks/use-settings/storage.test.ts"]
 recorded = "2026-08-03T23:14:56.559542266+00:00"
 
 [[resolution]]
+entry = "pr-2845"
+hash = "62d6d7961f0ca99db13276b40254f3174310a32f"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-04T20:35:44.517862408+00:00"
+
+[[resolution]]
 entry = "pr-2849"
 hash = "d5ca7b390c300f2be0b684cf5b61f217f53783de"
 paths = ["packages/server/src/server/daemon-config-store.ts"]
@@ -939,6 +999,12 @@ recorded = "2026-08-02T18:48:53.819259159+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "179d6b80187468f1274d4e1f3d9f57ca50c1b6f5"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-04T20:32:48.987813126+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "297aecf303822bc577cb1f6a87b8455e32c850bb"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-02T13:25:13.058340119+00:00"
@@ -948,6 +1014,12 @@ entry = "watch-live-voice"
 hash = "2a12ed3ada85a0e9783df779053b663d92e65d25"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-02T18:49:18.820065223+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "46ba9621c88f517782e8191b72486781ab18f9af"
+paths = ["packages/app/src/keyboard/actions.ts"]
+recorded = "2026-08-04T20:32:48.987819738+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -975,9 +1047,27 @@ recorded = "2026-08-02T13:24:42.420727745+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "bdfdb5dbfa4c03deabd8a171aa1cd18358d490ce"
+paths = ["packages/app/src/keyboard/keyboard-action-dispatcher.ts"]
+recorded = "2026-08-04T20:32:48.987820540+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "c15daa4694850ab389480991a103da3daf1b4a96"
+paths = ["packages/app/src/keyboard/route-shortcut.ts"]
+recorded = "2026-08-04T20:32:48.987822113+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "ee890a53a943facd8d9e32810fe9ebf81f06426e"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-01T21:08:42.299453044+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "f071a0fdd1f7acacd9248263c3319f2765fc85c0"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-04T20:32:48.987822383+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
