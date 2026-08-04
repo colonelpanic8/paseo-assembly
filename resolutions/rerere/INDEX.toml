@@ -992,6 +992,24 @@ paths = ["packages/server/src/server/daemon-config-store.test.ts"]
 recorded = "2026-08-04T01:03:30.416548664+00:00"
 
 [[resolution]]
+entry = "pr-2873"
+hash = "64aa3df433b9aa3b519f427366231233a2019f8a"
+paths = ["packages/server/src/server/exports.ts"]
+recorded = "2026-08-04T23:53:22.941934068+00:00"
+
+[[resolution]]
+entry = "pr-2875"
+hash = "67174c343d85c4ae25eeb7442e2880e05b04c440"
+paths = ["packages/app/src/stores/session-store.ts"]
+recorded = "2026-08-04T23:54:23.779072271+00:00"
+
+[[resolution]]
+entry = "pr-2875"
+hash = "bee5208e9849e628f5eaf8a590b8a57678a46a5e"
+paths = ["packages/app/src/contexts/session-context.tsx"]
+recorded = "2026-08-04T23:54:23.779075237+00:00"
+
+[[resolution]]
 entry = "watch-live-voice"
 hash = "13bf5a20832801a1d99195e28a42b00f820882c8"
 paths = ["packages/app/src/contexts/live-voice-context.tsx"]

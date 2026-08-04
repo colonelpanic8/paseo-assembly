@@ -171,6 +171,27 @@ summary = "Expose workspace snooze over MCP (snooze_workspace/wake_workspace, sn
 parents = [{ branch = "mine:status-sidebar-snooze" }]
 reconstruction_publish = "mine:workspace-snooze-mcp"
 
+[[entry]]
+pr = 2872
+summary = "fix(cli): resolve PASEO_HOME lazily through the canonical resolver"
+
+[[entry]]
+pr = 2873
+summary = "Honor log.file.path everywhere and create daemon logs owner-only"
+
+[[entry]]
+pr = 2875
+summary = "Detect Paseo worktrees from daemon data, not the .paseo/worktrees path convention"
+
+# Stacked directly on 2849: its commits sit on that PR's head, so this must stay
+# ordered after it and cannot become a main-based topic while 2849 is unmerged.
+# Not a derived entry -- it extends 2849 linearly rather than merging parents,
+# so there is no anchor to reconstruct from. When 2849 lands upstream, rebase
+# this branch onto main and it becomes an ordinary topic.
+[[entry]]
+branch = "mine:colonelpanic8/client-settings-file-store"
+summary = "Persist desktop client settings to a writable settings.json instead of localStorage/LevelDB"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an
