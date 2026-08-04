@@ -162,3 +162,38 @@ changes together with explicit paths. Then publish the assembled tree — see
 above; the commit alone does not ship it. Remaining install steps (tagging,
 downstream pinning) are site-specific — see this repository's justfile or
 README.
+
+## Reporting what you did
+
+Every operation here changes a recipe that something downstream builds, and
+the tool's own output scrolls past. The report is the only durable account of
+what shipped, so write it as an audit record rather than a narration.
+
+Report these, in roughly this order, and omit any that is genuinely empty:
+
+- **What moved.** Name every entry whose pin changed, old and new, and say
+  explicitly when the base did not move. A table is the right shape once more
+  than two or three entries changed; a sentence is fine for one. For a derived
+  entry, quote the anchor line — which of the three rules fired is the only
+  audit of what got replayed as the entry's own work.
+- **What the build had to do.** Conflict count, how many replayed from tracked
+  pairs, and — the part that actually matters — whether anything needed manual
+  resolution or a fixup edit. "Every conflict replayed from the tracked pairs"
+  is a real result and worth stating; so is naming the one that did not.
+- **What shipped, with hashes.** The new tree and the one it replaced, the
+  commit pushed to `main`, the commit force-published to `[publish]`, and the
+  outcome of the npm deps hash check. Then the `--locked` verification. A
+  refresh that reports no tree hash has not reported anything falsifiable.
+- **Surprises and judgment calls, separately at the end.** Anything you
+  worked around, abandoned, or decided rather than executed — a stalled build
+  worktree you discarded, an entry you chose not to add, a check you deferred.
+  Say what you did *and* why that was the safe call. These are what a reader
+  cannot reconstruct from the diff, and they belong in prose, not a table.
+- **What you swept and found nothing in.** A discovery pass that turned up no
+  new PRs is a result, not a non-event; without it the reader cannot tell
+  whether you looked. Say what set you checked against and how each candidate
+  was already accounted for.
+
+Prefer specific identifiers over adjectives throughout — short OIDs, entry
+names, patch paths, hashes. State plainly when something is verified; do not
+hedge a `--locked` run that passed, and do not soften one that did not.
