@@ -151,7 +151,6 @@ branch = "mine:agent-hierarchy-tree"
 summary = "Show each workspace's agent hierarchy in the sidebar"
 parents = [{ branch = "mine:status-sidebar-snooze" }]
 reconstruction_publish = "mine:agent-hierarchy-tree"
-fixup = "patches/agent-tree-provider-description.patch"
 
 [[entry]]
 pr = 2843
