@@ -3,7 +3,7 @@
   "pins": {
     "base": "dfd18a44a7034df4cb521e52633f2f561604649f",
     "entries": {
-      "agent-hierarchy-tree": "531e25473d0e48a373fa8ee427a3567fbd7dc128",
+      "agent-hierarchy-tree": "e8ecb4fca0d9997804775b83ba05a0f10dfe75dd",
       "assembled-npm-deps-hash": "0657875e9c3eef9ae4c592e8968a5177bcf051e7",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "402104092ba8431cb1751d48256b97d0476a63b8",
@@ -15,7 +15,7 @@
       "pr-2530": "50cdb5c9adadf6d0b54afca40ad334914626a7ca",
       "pr-2532": "78dd2dc5b5d9ca3282915f16414cceda1b95ab90",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2564": "b6d29ced63c2339d4808bb4c22c07fb752190489",
+      "pr-2564": "1b73138cded934203161e255bb31f5bc6f1aebaa",
       "pr-2579": "157e14be89b08a5160e935fb6b2db3d33a859da4",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "876a6a126a1f71a650f845a3ebab5bbf46ef52c5",
@@ -32,12 +32,12 @@
       "pr-2843": "c527a6cd70c08120d2d25fe365be0163349bf43b",
       "pr-2845": "99c4e4488854f242f0b51dced8a915e3ee446152",
       "pr-2849": "abc59289ce996b549c7280e21109ba1644edf74f",
-      "watch-live-voice": "6569aee09dd3ef651c9b59db5b9fc9fd7877439a",
-      "workspace-snooze-mcp": "1baa99e637f68b5b1d7d379a55d09e9de027f202"
+      "watch-live-voice": "f80ec9ce9993cf155f321d1ac065ddd594606432",
+      "workspace-snooze-mcp": "46913ec54b4e4f3ddb71cb96d3d93f1a53b6572c"
     },
     "parents": {
       "agent-hierarchy-tree": {
-        "status-sidebar-snooze": "b6d29ced63c2339d4808bb4c22c07fb752190489"
+        "status-sidebar-snooze": "1b73138cded934203161e255bb31f5bc6f1aebaa"
       },
       "pr-2564": {
         "pr-2525": "50979c3b3f303934a3b304e57d130d099524eabb",
@@ -48,24 +48,24 @@
         "pr-2657": "2bc14adea6e7bf0d54cc6afcaf85e74566b2eb78"
       },
       "workspace-snooze-mcp": {
-        "status-sidebar-snooze": "b6d29ced63c2339d4808bb4c22c07fb752190489"
+        "status-sidebar-snooze": "1b73138cded934203161e255bb31f5bc6f1aebaa"
       }
     },
     "anchors": {
-      "agent-hierarchy-tree": "9d4950fc51a80ac5b8b6476c7ed9909316aa6b1a",
-      "pr-2564": "3165eee0f3f9f1bdfb7a8e50e8fb01c3a5108de0",
-      "watch-live-voice": "c0ddf7cb758da45fe3b5b78604e84feabe016b17",
-      "workspace-snooze-mcp": "32c822f73a6896decc045107981ad64f4c9c7dca"
+      "agent-hierarchy-tree": "0fa5fae590b3522a2a7e1f95ba0e1d0d872edd87",
+      "pr-2564": "b5ad92fda9836d169e1b619ae9af6be6494d60fb",
+      "watch-live-voice": "24d24073824e2c23b0a3581fa0bcbda2bd7f5d42",
+      "workspace-snooze-mcp": "9ab0785d3fdce846a590b646638a3801720e7b48"
     }
   },
   "build": {
-    "generated": "2026-08-04T20:49:09.052951237+00:00",
+    "generated": "2026-08-04T21:22:28.078373128+00:00",
     "base": "dfd18a44a7034df4cb521e52633f2f561604649f",
-    "commit": "6c57cb37e4644b791d99298b1b3174f4161ef3c2",
-    "pre_provenance_commit": "6c57cb37e4644b791d99298b1b3174f4161ef3c2",
-    "tree": "7ca83826cb786fa6d9d00c82570b845d0ead5077",
-    "built_tree": "7ca83826cb786fa6d9d00c82570b845d0ead5077",
-    "previous_tree": "ecbc60372c09bb83a1a7eaef04b53efe24b6c064",
+    "commit": "a450ab833078a0d854beb91498fa8feb34f78c58",
+    "pre_provenance_commit": "a450ab833078a0d854beb91498fa8feb34f78c58",
+    "tree": "9088a194d78c2335c87e3bf384ecd9f5c595c2d8",
+    "built_tree": "9088a194d78c2335c87e3bf384ecd9f5c595c2d8",
+    "previous_tree": "7ca83826cb786fa6d9d00c82570b845d0ead5077",
     "tree_changed": true,
     "conflicts": 19,
     "manifest_entries": [
@@ -98,7 +98,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "b6d29ced63c2339d4808bb4c22c07fb752190489",
+        "pin": "1b73138cded934203161e255bb31f5bc6f1aebaa",
         "fixup": "20f7624fa26f230812f7c4fb2bcb13971826a171",
         "reconstruction_publish": "mine:status-sidebar-snooze",
         "parents": [
@@ -111,7 +111,7 @@
             "pin": "3da4a6273abf63e29c03eb5b3108bd86d82472cf"
           }
         ],
-        "anchor": "3165eee0f3f9f1bdfb7a8e50e8fb01c3a5108de0"
+        "anchor": "b5ad92fda9836d169e1b619ae9af6be6494d60fb"
       },
       {
         "name": "pr-2530",
@@ -204,7 +204,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "6569aee09dd3ef651c9b59db5b9fc9fd7877439a",
+        "pin": "f80ec9ce9993cf155f321d1ac065ddd594606432",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -217,7 +217,7 @@
             "pin": "2bc14adea6e7bf0d54cc6afcaf85e74566b2eb78"
           }
         ],
-        "anchor": "c0ddf7cb758da45fe3b5b78604e84feabe016b17"
+        "anchor": "24d24073824e2c23b0a3581fa0bcbda2bd7f5d42"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -259,15 +259,15 @@
         "name": "agent-hierarchy-tree",
         "kind": "branch",
         "source": "mine:agent-hierarchy-tree",
-        "pin": "531e25473d0e48a373fa8ee427a3567fbd7dc128",
+        "pin": "e8ecb4fca0d9997804775b83ba05a0f10dfe75dd",
         "reconstruction_publish": "mine:agent-hierarchy-tree",
         "parents": [
           {
             "source": "mine:status-sidebar-snooze",
-            "pin": "b6d29ced63c2339d4808bb4c22c07fb752190489"
+            "pin": "1b73138cded934203161e255bb31f5bc6f1aebaa"
           }
         ],
-        "anchor": "9d4950fc51a80ac5b8b6476c7ed9909316aa6b1a"
+        "anchor": "0fa5fae590b3522a2a7e1f95ba0e1d0d872edd87"
       },
       {
         "name": "pr-2843",
@@ -291,15 +291,15 @@
         "name": "workspace-snooze-mcp",
         "kind": "branch",
         "source": "mine:workspace-snooze-mcp",
-        "pin": "1baa99e637f68b5b1d7d379a55d09e9de027f202",
+        "pin": "46913ec54b4e4f3ddb71cb96d3d93f1a53b6572c",
         "reconstruction_publish": "mine:workspace-snooze-mcp",
         "parents": [
           {
             "source": "mine:status-sidebar-snooze",
-            "pin": "b6d29ced63c2339d4808bb4c22c07fb752190489"
+            "pin": "1b73138cded934203161e255bb31f5bc6f1aebaa"
           }
         ],
-        "anchor": "32c822f73a6896decc045107981ad64f4c9c7dca"
+        "anchor": "9ab0785d3fdce846a590b646638a3801720e7b48"
       }
     ],
     "results": [
@@ -331,13 +331,13 @@
       },
       {
         "name": "pr-2564",
-        "oid": "b6d29ced63c2339d4808bb4c22c07fb752190489",
+        "oid": "1b73138cded934203161e255bb31f5bc6f1aebaa",
         "status": "merged",
         "conflicted": false,
         "fixup": "20f7624fa26f230812f7c4fb2bcb13971826a171",
         "derived": {
-          "base_tip": "0cafad6d35b7944553697fa985aa5c2da4d0a65b",
-          "tip": "db86b748d6cee1c556f63379969fb7fa0dad6b91"
+          "base_tip": "9df9d63b794e4140956dc74302ceaf104294ff10",
+          "tip": "821aa47eaaedf7e7e2da33712b11a9792adb4cb5"
         }
       },
       {
@@ -437,14 +437,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "6569aee09dd3ef651c9b59db5b9fc9fd7877439a",
+        "oid": "f80ec9ce9993cf155f321d1ac065ddd594606432",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "4067bbe8311d8c52eec822b7bd9af2f52bce1612",
-          "tip": "2d996a0571bf333b1115d93abb7408d8b22d1d47"
+          "base_tip": "05cd8eb62eedeb21e0775809715b55fb6303127a",
+          "tip": "9b6e39974e227d285453186b83489a2a7ab973d3"
         }
       },
       {
@@ -489,13 +489,13 @@
       },
       {
         "name": "agent-hierarchy-tree",
-        "oid": "531e25473d0e48a373fa8ee427a3567fbd7dc128",
+        "oid": "e8ecb4fca0d9997804775b83ba05a0f10dfe75dd",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolution": "rerere:d6bf4bb6facb41f4aa449d90302f7d7155c7360f",
         "derived": {
-          "base_tip": "953523a2bac62204364cbf6bc4c9c55aa8e6d314",
-          "tip": "77019dababe5dd9e126976cd126cca013e24d79c"
+          "base_tip": "4e64bd5619e7ebb54aa1d1db7647ba71c4b9e74e",
+          "tip": "dffd29df338272ba3c124d017adea0d003e333ee"
         }
       },
       {
@@ -521,12 +521,12 @@
       },
       {
         "name": "workspace-snooze-mcp",
-        "oid": "1baa99e637f68b5b1d7d379a55d09e9de027f202",
+        "oid": "46913ec54b4e4f3ddb71cb96d3d93f1a53b6572c",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "1f2edf4f5ca111605532ffba0cdadea1c6ea5254",
-          "tip": "16836962c68acdeb8e34859a3b91959a06267c23"
+          "base_tip": "d765b37d99084f5d6453f2f4576b1d91961d529c",
+          "tip": "864a9cc965dbd006200dcb47be4c10ee1c0aac14"
         }
       }
     ]

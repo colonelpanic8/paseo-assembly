@@ -81,6 +81,10 @@ const blueColorMapping = (theme: Theme) => ({ color: theme.colors.palette.blue[5
 const amberColorMapping = (theme: Theme) => ({ color: theme.colors.palette.amber[500] });
 const redColorMapping = (theme: Theme) => ({ color: theme.colors.palette.red[500] });
 const greenColorMapping = (theme: Theme) => ({ color: theme.colors.palette.green[500] });
+<<<<<<<
+=======
+const blueColorMapping = (theme: Theme) => ({ color: theme.colors.palette.blue[500] });
+>>>>>>>
 const STATUS_ROW_ENTERING = sidebarRowEnter;
 const STATUS_ROW_LAYOUT = sidebarListSettle;
 
@@ -783,6 +787,11 @@ function StatusWorkspaceRowInner({
           const showActions = Boolean(
             onArchive && (isHovered || isTouchPlatform || kebab.showKebab),
           );
+<<<<<<<
+          // The full cluster already contains the snooze chip, so the standalone
+          // one only fills the gap when the cluster is hidden.
+          const showSnoozeChipOnly = !showActions && isSnoozed;
+=======
           // The full cluster already contains the snooze chip, so the standalone
           // one only fills the gap when the cluster is hidden.
           const showSnoozeChipOnly = !showActions && isSnoozed;
@@ -791,6 +800,7 @@ function StatusWorkspaceRowInner({
           const showAgentTreeToggle = Boolean(
             disclosure && platformIsWeb && (isHovered || disclosure.expanded),
           );
+>>>>>>>
           const workspaceRowStyle = getStatusWorkspaceRowStyle({ selected, isHovered });
           return (
             <View style={styles.workspaceRowContainer} {...hoverHandlers}>
@@ -841,9 +851,14 @@ function StatusWorkspaceRowInner({
                     shortcutNumber={shortcutNumber}
                     showShortcutBadge={showShortcutBadge}
                     showActions={showActions}
+<<<<<<<
+                    showSnoozedChip={showSnoozeChipOnly}
+                    onSubmitRename={onSubmitRename}
+=======
                     showSnoozedChip={showSnoozeChipOnly}
                     showAgentTreeToggle={showAgentTreeToggle}
                     onSubmitRename={onSubmitRename}
+>>>>>>>
                   >
                     {showSnoozeChipOnly ? (
                       <StatusWorkspaceSnoozeChip workspace={workspace} />
