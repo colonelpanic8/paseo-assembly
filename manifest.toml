@@ -161,6 +161,16 @@ pr = 2845
 [[entry]]
 pr = 2849
 
+# A leaf over the reconstructed 2525 + 2529 + 2564 sidebar branch, like
+# agent-hierarchy-tree: snooze only exists there, so this cannot be a
+# main-based topic. Reconstruct it whenever that parent moves, replaying only
+# the MCP commit above the recorded merge anchor.
+[[entry]]
+branch = "mine:workspace-snooze-mcp"
+summary = "Expose workspace snooze over MCP (snooze_workspace/wake_workspace, snoozed state in list_workspaces)"
+parents = [{ branch = "mine:status-sidebar-snooze" }]
+reconstruction_publish = "mine:workspace-snooze-mcp"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an

@@ -32,7 +32,8 @@
       "pr-2843": "2723864284e2e86937962a9908c2d61bac83dc11",
       "pr-2845": "99c4e4488854f242f0b51dced8a915e3ee446152",
       "pr-2849": "abc59289ce996b549c7280e21109ba1644edf74f",
-      "watch-live-voice": "68b8d82ae875feb3b7f8fe6441219bc54a785f08"
+      "watch-live-voice": "68b8d82ae875feb3b7f8fe6441219bc54a785f08",
+      "workspace-snooze-mcp": "fab3383d6f8dc115dd37eb3c421efffeafdee5d7"
     },
     "parents": {
       "agent-hierarchy-tree": {
@@ -45,24 +46,28 @@
       "watch-live-voice": {
         "pr-2655": "d781ad54af624488322ae6530290b972dc1cfc1e",
         "pr-2657": "b015f94a8f065305ab726d48e5b10021ae63bec2"
+      },
+      "workspace-snooze-mcp": {
+        "status-sidebar-snooze": "e3e21b5034908778e5711b4fdbbe78b0d959d134"
       }
     },
     "anchors": {
       "agent-hierarchy-tree": "ba81836565d397e73f7f7bead66a5e141ddfe9d2",
       "pr-2564": "a103afdc70016a4b172d5ab2f4d8d60c181cd249",
-      "watch-live-voice": "dc53e6bac318a11601893fd641f5dbe02feea54a"
+      "watch-live-voice": "dc53e6bac318a11601893fd641f5dbe02feea54a",
+      "workspace-snooze-mcp": "e3e21b5034908778e5711b4fdbbe78b0d959d134"
     }
   },
   "build": {
-    "generated": "2026-08-04T02:33:08.180091324+00:00",
+    "generated": "2026-08-04T03:32:49.107258731+00:00",
     "base": "74dea384566dee6e5458c107191c13bdc16b9960",
-    "commit": "ea8096ff4c1250acb71c1ff6ba272de0cb89ad3f",
-    "pre_provenance_commit": "ea8096ff4c1250acb71c1ff6ba272de0cb89ad3f",
-    "tree": "4d12e2f8b6eeff047bfa0b3903c4ed28eb2b4df6",
-    "built_tree": "4d12e2f8b6eeff047bfa0b3903c4ed28eb2b4df6",
-    "previous_tree": "b59d8863c30c2a4b6331bc78fdaf1fa530c395b4",
+    "commit": "6a6f4a0caf5ab1ec38079f09a4a2404ad080f96e",
+    "pre_provenance_commit": "6a6f4a0caf5ab1ec38079f09a4a2404ad080f96e",
+    "tree": "c4c456e73ada359e83fcb30dd9b9d2a6251a7248",
+    "built_tree": "c4c456e73ada359e83fcb30dd9b9d2a6251a7248",
+    "previous_tree": "4d12e2f8b6eeff047bfa0b3903c4ed28eb2b4df6",
     "tree_changed": true,
-    "conflicts": 19,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -281,6 +286,20 @@
         "kind": "pr",
         "source": "upstream#2849",
         "pin": "abc59289ce996b549c7280e21109ba1644edf74f"
+      },
+      {
+        "name": "workspace-snooze-mcp",
+        "kind": "branch",
+        "source": "mine:workspace-snooze-mcp",
+        "pin": "fab3383d6f8dc115dd37eb3c421efffeafdee5d7",
+        "reconstruction_publish": "mine:workspace-snooze-mcp",
+        "parents": [
+          {
+            "source": "mine:status-sidebar-snooze",
+            "pin": "e3e21b5034908778e5711b4fdbbe78b0d959d134"
+          }
+        ],
+        "anchor": "e3e21b5034908778e5711b4fdbbe78b0d959d134"
       }
     ],
     "results": [
@@ -498,6 +517,16 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "workspace-snooze-mcp",
+        "oid": "fab3383d6f8dc115dd37eb3c421efffeafdee5d7",
+        "status": "merged",
+        "conflicted": false,
+        "derived": {
+          "base_tip": "6dde3e03f0f0ebd288689b49bf9303becb26379e",
+          "tip": "21ed560875622939da7ac851779d1305fee76ff6"
+        }
       }
     ]
   }
