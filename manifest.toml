@@ -151,12 +151,16 @@ branch = "mine:agent-hierarchy-tree"
 summary = "Show each workspace's agent hierarchy in the sidebar"
 parents = [{ branch = "mine:status-sidebar-snooze" }]
 reconstruction_publish = "mine:agent-hierarchy-tree"
+fixup = "patches/agent-tree-provider-description.patch"
 
 [[entry]]
 pr = 2843
 
 [[entry]]
 pr = 2845
+
+[[entry]]
+pr = 2849
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on

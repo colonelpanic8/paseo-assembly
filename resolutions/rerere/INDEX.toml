@@ -123,6 +123,12 @@ recorded = "2026-08-03T20:23:05.555568017+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "bb03e6880e7e9dba9915e60326d352f3f5b451fa"
+paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
+recorded = "2026-08-04T01:01:16.520188441+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "c49ff37ffbf06b059214a5be201150e31c35cb47"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-08-03T21:56:36.846596616+00:00"
@@ -324,6 +330,12 @@ entry = "pr-2564"
 hash = "0c1e0bf90203f616704bbb2c6872a665b1ed4392"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-title.ts"]
 recorded = "2026-08-02T15:49:18.347483861+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "1127fc24ea8e9ecc3e3184e0db5739311d56d0bf"
+paths = ["packages/app/src/components/sidebar/sidebar-status-row-content.tsx"]
+recorded = "2026-08-04T00:59:55.985963743+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -900,6 +912,18 @@ entry = "pr-2843"
 hash = "f758645e61a85563c9e85a83b9e29279c7dcda34"
 paths = ["packages/app/src/hooks/use-settings/storage.test.ts"]
 recorded = "2026-08-03T23:14:56.559542266+00:00"
+
+[[resolution]]
+entry = "pr-2849"
+hash = "d5ca7b390c300f2be0b684cf5b61f217f53783de"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-08-04T01:03:30.416546780+00:00"
+
+[[resolution]]
+entry = "pr-2849"
+hash = "d9c04a3ff10bcb6badbc41baa7316efc995f51cc"
+paths = ["packages/server/src/server/daemon-config-store.test.ts"]
+recorded = "2026-08-04T01:03:30.416548664+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"

@@ -1,0 +1,16 @@
+diff --git a/packages/app/src/components/sidebar/sidebar-workspace-agent-tree.tsx b/packages/app/src/components/sidebar/sidebar-workspace-agent-tree.tsx
+index 3b45fb50e..cac872f5a 100644
+--- a/packages/app/src/components/sidebar/sidebar-workspace-agent-tree.tsx
++++ b/packages/app/src/components/sidebar/sidebar-workspace-agent-tree.tsx
+@@ -138,9 +138,10 @@ function toRootAgentTreeRow(agent: Agent): PaseoAgentTreeRow {
+  * subagent type, then the provider's own compact context.
+  */
+ function resolveChildAgentTreeLabel(row: SubagentRow): string {
++  const providerDescription = row.kind === "provider" ? resolveRowLabel(row.description) : null;
+   const providerSubtitle = row.kind === "provider" ? resolveRowLabel(row.subtitle) : null;
+   return (
+-    resolveRowLabel(row.description) ??
++    providerDescription ??
+     resolveRowLabel(row.title) ??
+     providerSubtitle ??
+     formatProviderLabel(row.provider)
