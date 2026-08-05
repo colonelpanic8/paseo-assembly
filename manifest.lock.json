@@ -4,7 +4,7 @@
     "base": "0b624b5585123f1401d2178508340766b2b31d7d",
     "entries": {
       "agent-hierarchy-tree": "edb6a7ad32a3446c5eb8998285c46c8b8b36f3e5",
-      "assembled-npm-deps-hash": "0657875e9c3eef9ae4c592e8968a5177bcf051e7",
+      "assembled-npm-deps-hash": "bcd8395564ffc9e4654667570307ae51dc855287",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "402104092ba8431cb1751d48256b97d0476a63b8",
       "assembly-fdroid-variant": "a5c5e09fce07499bd23de3d39eeddf36dc5045c3",
@@ -66,15 +66,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-05T07:26:41.689067999+00:00",
+    "generated": "2026-08-05T07:35:54.857704151+00:00",
     "base": "0b624b5585123f1401d2178508340766b2b31d7d",
-    "commit": "8b9c2b8f23e3f5c59929f4a769214b33c5d5900d",
-    "pre_provenance_commit": "8b9c2b8f23e3f5c59929f4a769214b33c5d5900d",
-    "tree": "2381750cfbff6c6027a02ab67836cbecbf518d49",
-    "built_tree": "2381750cfbff6c6027a02ab67836cbecbf518d49",
-    "previous_tree": "8edd384ad145369a7e2c32c26695cc5ea2641b95",
+    "commit": "a1b7f96efefef94653b7b860d083ffb91dc6c5c1",
+    "pre_provenance_commit": "a1b7f96efefef94653b7b860d083ffb91dc6c5c1",
+    "tree": "21328ac4ef13f774cadb637d68072899174c94b1",
+    "built_tree": "21328ac4ef13f774cadb637d68072899174c94b1",
+    "previous_tree": "2381750cfbff6c6027a02ab67836cbecbf518d49",
     "tree_changed": true,
-    "conflicts": 2,
+    "conflicts": 25,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -230,7 +230,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "0657875e9c3eef9ae4c592e8968a5177bcf051e7"
+        "pin": "bcd8395564ffc9e4654667570307ae51dc855287"
       },
       {
         "name": "pr-2730",
@@ -386,8 +386,8 @@
         "conflicted": false,
         "fixup": "20f7624fa26f230812f7c4fb2bcb13971826a171",
         "derived": {
-          "base_tip": "52c7a2f1dc25e3e4dda55e652cf13e39d6158a74",
-          "tip": "940e78a88b049c8b26190989ebfa9ae89d4c1779"
+          "base_tip": "1c89a41f535debca15bc7cd3c2e18b12b90ef4c5",
+          "tip": "ee01798a3ed0210e7a6dc95514109a09de683696"
         }
       },
       {
@@ -493,13 +493,13 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "4e554e307873a36232236be312b8be9e085b9864",
-          "tip": "51a3462e935bb17aa696ea81d2e3e27de5ff237a"
+          "base_tip": "bc0791edcd097c464311215887aa1734d3a63b06",
+          "tip": "b7f59404f2410117e25e1ec898e0c899f5bfb1ce"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "0657875e9c3eef9ae4c592e8968a5177bcf051e7",
+        "oid": "bcd8395564ffc9e4654667570307ae51dc855287",
         "status": "applied",
         "conflicted": false
       },
@@ -542,10 +542,10 @@
         "oid": "edb6a7ad32a3446c5eb8998285c46c8b8b36f3e5",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:1c1adf652156ff506da49083d61a0244d6429823",
+        "resolution": "rerere",
         "derived": {
-          "base_tip": "7a2b456e40df03df8c010058b4b68fa35573b36d",
-          "tip": "3fa4f3426ee2e4bb271b11257c9587f09175eaf6"
+          "base_tip": "0fd985bbe180a471bf6fa23512293d6b0173d953",
+          "tip": "2e6bea7354888fdb22a5cd23f135b9598047c8d6"
         }
       },
       {
@@ -576,8 +576,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "d9344599c2c1dcd4f452a9134231f5afbce02c3e",
-          "tip": "801d7c57e6fefdc1d74cc4f8b170fbc288e2d411"
+          "base_tip": "0789ef62df1c46790fb17d26f477816660a636dd",
+          "tip": "514160449f3570d854e645793de64985d8c6c3ac"
         }
       },
       {
@@ -613,14 +613,14 @@
         "oid": "263932071159d5315da1150fa6c14acf831f4a4e",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:38aa369c44948164a13027b99d8a80710338b8f1,e54fcfc30b5d2c1c340f7637ec078874230994c4,f7ffcad7da176ecd93611d18c4ea94f365069475"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2884",
         "oid": "286c3f320e22013f2b7bf9fb2371c66e9a8cbe95",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:cd78244e13fa9c3b94fcc1177ee7c6b5803ec261,db70cbff566707c5b116893a23debef864380f67"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2885",
