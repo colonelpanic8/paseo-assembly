@@ -35,7 +35,7 @@
       "pr-2849": "abc59289ce996b549c7280e21109ba1644edf74f",
       "pr-2872": "570cb489601cd404ba0546c3e432bb904e4f1d71",
       "pr-2873": "305377adb7199434ada6c6eceaa8b8f6420c1a5b",
-      "pr-2875": "78384203a7e75b5152c7f191620ecf5124f41cfe",
+      "pr-2875": "c5afd37f9d80d386785cb3f73bb83482e8941040",
       "watch-live-voice": "f80ec9ce9993cf155f321d1ac065ddd594606432",
       "workspace-snooze-mcp": "46913ec54b4e4f3ddb71cb96d3d93f1a53b6572c"
     },
@@ -63,15 +63,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-04T23:54:35.239293298+00:00",
+    "generated": "2026-08-05T01:03:48.230924772+00:00",
     "base": "dfd18a44a7034df4cb521e52633f2f561604649f",
-    "commit": "03d5480697a872b401953a0c1aa16c8f8c9bc913",
-    "pre_provenance_commit": "03d5480697a872b401953a0c1aa16c8f8c9bc913",
-    "tree": "8f529c8041341d4033e4012b6f797e27c59d06c5",
-    "built_tree": "8f529c8041341d4033e4012b6f797e27c59d06c5",
-    "previous_tree": "9088a194d78c2335c87e3bf384ecd9f5c595c2d8",
+    "commit": "f58804b77e4aa2968de76d68cdf2b13d49159af8",
+    "pre_provenance_commit": "f58804b77e4aa2968de76d68cdf2b13d49159af8",
+    "tree": "1b0bbe3dedd1993e71906836b3dcdecf7fc76cdf",
+    "built_tree": "1b0bbe3dedd1993e71906836b3dcdecf7fc76cdf",
+    "previous_tree": "8f529c8041341d4033e4012b6f797e27c59d06c5",
     "tree_changed": true,
-    "conflicts": 2,
+    "conflicts": 21,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -315,13 +315,14 @@
         "name": "pr-2873",
         "kind": "pr",
         "source": "upstream#2873",
-        "pin": "305377adb7199434ada6c6eceaa8b8f6420c1a5b"
+        "pin": "305377adb7199434ada6c6eceaa8b8f6420c1a5b",
+        "fixup": "38bf844e0a8ff9ee64b37d9809cb87279e78e28d"
       },
       {
         "name": "pr-2875",
         "kind": "pr",
         "source": "upstream#2875",
-        "pin": "78384203a7e75b5152c7f191620ecf5124f41cfe"
+        "pin": "c5afd37f9d80d386785cb3f73bb83482e8941040"
       },
       {
         "name": "colonelpanic8/client-settings-file-store",
@@ -364,8 +365,8 @@
         "conflicted": false,
         "fixup": "20f7624fa26f230812f7c4fb2bcb13971826a171",
         "derived": {
-          "base_tip": "9df9d63b794e4140956dc74302ceaf104294ff10",
-          "tip": "821aa47eaaedf7e7e2da33712b11a9792adb4cb5"
+          "base_tip": "5ec95f7625e85296e1ede2d312051e09c5719643",
+          "tip": "c4e034f94d54d4ef214e2919c8b8baf61f886e7c"
         }
       },
       {
@@ -471,8 +472,8 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "05cd8eb62eedeb21e0775809715b55fb6303127a",
-          "tip": "9b6e39974e227d285453186b83489a2a7ab973d3"
+          "base_tip": "0f6d2c211f7a10981a33fc85d84d03b67e5f0b0e",
+          "tip": "b442d7af90e335b8499dcef92d6467b37698a682"
         }
       },
       {
@@ -520,10 +521,10 @@
         "oid": "e8ecb4fca0d9997804775b83ba05a0f10dfe75dd",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:d6bf4bb6facb41f4aa449d90302f7d7155c7360f",
+        "resolution": "rerere",
         "derived": {
-          "base_tip": "4e64bd5619e7ebb54aa1d1db7647ba71c4b9e74e",
-          "tip": "dffd29df338272ba3c124d017adea0d003e333ee"
+          "base_tip": "51368d5d0ba74cdf2445aef0f7a6bac6e7157e11",
+          "tip": "11d6b1259c0ea0e5a3b985285dbc3971851596fa"
         }
       },
       {
@@ -553,8 +554,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "d765b37d99084f5d6453f2f4576b1d91961d529c",
-          "tip": "864a9cc965dbd006200dcb47be4c10ee1c0aac14"
+          "base_tip": "fd604012baaee5398bfa6c382166032fa257466a",
+          "tip": "5f19ae91ca7c341dc3abd2a60d34ec07ebe9f5c5"
         }
       },
       {
@@ -568,14 +569,15 @@
         "oid": "305377adb7199434ada6c6eceaa8b8f6420c1a5b",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:64aa3df433b9aa3b519f427366231233a2019f8a"
+        "resolution": "rerere",
+        "fixup": "38bf844e0a8ff9ee64b37d9809cb87279e78e28d"
       },
       {
         "name": "pr-2875",
-        "oid": "78384203a7e75b5152c7f191620ecf5124f41cfe",
+        "oid": "c5afd37f9d80d386785cb3f73bb83482e8941040",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:67174c343d85c4ae25eeb7442e2880e05b04c440,bee5208e9849e628f5eaf8a590b8a57678a46a5e"
+        "resolution": "rerere"
       },
       {
         "name": "colonelpanic8/client-settings-file-store",

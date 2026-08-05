@@ -175,9 +175,14 @@ reconstruction_publish = "mine:workspace-snooze-mcp"
 pr = 2872
 summary = "fix(cli): resolve PASEO_HOME lazily through the canonical resolver"
 
+# onboard.ts imports node:path for two call sites: 2849 removes the config.json
+# one and 2873 removes the daemon.log one. Either alone is fine; together the
+# import goes unused and noUnusedLocals fails the CLI build -- textually clean,
+# so only the nix build catches it. Belongs to neither topic on its own.
 [[entry]]
 pr = 2873
 summary = "Honor log.file.path everywhere and create daemon logs owner-only"
+fixup = "patches/onboard-drop-unused-path-import.patch"
 
 [[entry]]
 pr = 2875
