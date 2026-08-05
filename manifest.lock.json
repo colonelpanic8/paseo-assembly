@@ -39,6 +39,7 @@
       "pr-2883": "263932071159d5315da1150fa6c14acf831f4a4e",
       "pr-2884": "286c3f320e22013f2b7bf9fb2371c66e9a8cbe95",
       "pr-2885": "34d930a18603bc41fb8a08da7d569eb75b0333a2",
+      "pr-2892": "76608ece4747f6bfa9cb01b8ab20f01d13c8a7bb",
       "watch-live-voice": "86e6ab5919f32cd69ac475d402e7d004f7f8d601",
       "workspace-snooze-mcp": "8cfd25fa73fb7d736c415c286986f6863a7ab397"
     },
@@ -66,15 +67,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-05T07:35:54.857704151+00:00",
+    "generated": "2026-08-05T09:40:22.372468429+00:00",
     "base": "0b624b5585123f1401d2178508340766b2b31d7d",
-    "commit": "a1b7f96efefef94653b7b860d083ffb91dc6c5c1",
-    "pre_provenance_commit": "a1b7f96efefef94653b7b860d083ffb91dc6c5c1",
-    "tree": "21328ac4ef13f774cadb637d68072899174c94b1",
-    "built_tree": "21328ac4ef13f774cadb637d68072899174c94b1",
-    "previous_tree": "2381750cfbff6c6027a02ab67836cbecbf518d49",
+    "commit": "baa9da8bcabeb4f28e31d858146dd15cf67d2e33",
+    "pre_provenance_commit": "baa9da8bcabeb4f28e31d858146dd15cf67d2e33",
+    "tree": "8796f221d98693361b0e8439f5e1c92e8c56debb",
+    "built_tree": "8796f221d98693361b0e8439f5e1c92e8c56debb",
+    "previous_tree": "21328ac4ef13f774cadb637d68072899174c94b1",
     "tree_changed": true,
-    "conflicts": 25,
+    "conflicts": 1,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -350,6 +351,12 @@
         "kind": "pr",
         "source": "upstream#2885",
         "pin": "34d930a18603bc41fb8a08da7d569eb75b0333a2"
+      },
+      {
+        "name": "pr-2892",
+        "kind": "pr",
+        "source": "upstream#2892",
+        "pin": "76608ece4747f6bfa9cb01b8ab20f01d13c8a7bb"
       }
     ],
     "results": [
@@ -627,6 +634,13 @@
         "oid": "34d930a18603bc41fb8a08da7d569eb75b0333a2",
         "status": "merged",
         "conflicted": false
+      },
+      {
+        "name": "pr-2892",
+        "oid": "76608ece4747f6bfa9cb01b8ab20f01d13c8a7bb",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:5d0c94ed77db8cdf9010346a41e2ad782cd072e9,69dc64e5d50999bd65e2f7d3c9ca6e47d16add5a,a9f7979ceec000b8c36f885748898165587db2a7,d6a7123bee7911d94108ca904e2de5cf460f8706,e4fd80ac212d09f04569acc234453f83fc375611,f9c0a0e6eb0573e98ea65bfe8319f59932622a49"
       }
     ]
   }

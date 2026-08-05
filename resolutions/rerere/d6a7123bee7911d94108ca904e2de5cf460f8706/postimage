@@ -1,0 +1,189 @@
+import { useCallback } from "react";
+import type { AppLanguage } from "@/i18n/locales";
+import { layeredSettingsStorage } from "@/storage/settings-seed";
+import {
+  loadAppSettingsFromStorage,
+  persistAppSettings,
+  saveAppSettings,
+  useAppSettings,
+  type UseAppSettingsReturn,
+} from "./app-settings";
+import {
+  DEFAULT_DESKTOP_SETTINGS,
+  loadDesktopSettings,
+  migrateLegacyDesktopSettings,
+  useDesktopSettings,
+} from "@/desktop/settings/desktop-settings";
+import { isElectronRuntime } from "@/desktop/host";
+import {
+  APP_SETTINGS_KEY,
+  DEFAULT_APP_SETTINGS,
+  DEFAULT_CLIENT_SETTINGS,
+  DEFAULT_CODE_FONT_SIZE,
+  DEFAULT_TERMINAL_SCROLLBACK_LINES,
+  DEFAULT_UI_FONT_SIZE,
+  MAX_CODE_FONT_SIZE,
+  MAX_TERMINAL_SCROLLBACK_LINES,
+  MAX_UI_FONT_SIZE,
+  MIN_CODE_FONT_SIZE,
+  MIN_TERMINAL_SCROLLBACK_LINES,
+  MIN_UI_FONT_SIZE,
+  loadSettingsFromStorage as loadSettingsFromStoragePure,
+  parseClampedFontSize,
+  parseTerminalScrollbackLines,
+  sanitizeFontFamily,
+  type AppSettings,
+  type AppSettingsDeps,
+  type DesktopSettingsBridge,
+  type KeyValueStorage,
+  type ReadyToReviewBehavior,
+  type ReleaseChannel,
+  type SendBehavior,
+  type ServiceUrlBehavior,
+  type Settings,
+  type SidebarWorkspaceTrailing,
+  type SettingsDeps,
+  type WorkspaceTitleSource,
+} from "./storage";
+
+export {
+  APP_SETTINGS_KEY,
+  DEFAULT_APP_SETTINGS,
+  DEFAULT_CLIENT_SETTINGS,
+  DEFAULT_CODE_FONT_SIZE,
+  DEFAULT_TERMINAL_SCROLLBACK_LINES,
+  DEFAULT_UI_FONT_SIZE,
+  MAX_CODE_FONT_SIZE,
+  MAX_TERMINAL_SCROLLBACK_LINES,
+  MAX_UI_FONT_SIZE,
+  MIN_CODE_FONT_SIZE,
+  MIN_TERMINAL_SCROLLBACK_LINES,
+  MIN_UI_FONT_SIZE,
+  parseClampedFontSize,
+  parseTerminalScrollbackLines,
+  sanitizeFontFamily,
+  loadAppSettingsFromStorage,
+  persistAppSettings,
+  saveAppSettings,
+  useAppSettings,
+};
+export type {
+  AppSettings,
+  AppSettingsDeps,
+  AppLanguage,
+  UseAppSettingsReturn,
+  DesktopSettingsBridge,
+  KeyValueStorage,
+  ReadyToReviewBehavior,
+  ReleaseChannel,
+  SendBehavior,
+  ServiceUrlBehavior,
+  Settings,
+  SettingsDeps,
+  SidebarWorkspaceTrailing,
+  WorkspaceTitleSource,
+};
+
+/**
+ * Split a `Settings` patch into the part the app owns. The two halves persist to different
+ * places (AsyncStorage vs the Electron settings bridge), and the app's half is exactly the
+ * key set of `DEFAULT_CLIENT_SETTINGS` — reading the keys off it means a new app setting
+ * flows through here without anyone remembering to widen a hand-written list.
+ */
+function pickDefinedAppSettings(updates: Partial<Settings>): Partial<AppSettings> {
+  const appUpdates: Partial<AppSettings> = {};
+  for (const key of Object.keys(DEFAULT_CLIENT_SETTINGS) as (keyof AppSettings)[]) {
+    const value = updates[key];
+    if (value !== undefined) {
+      Object.assign(appUpdates, { [key]: value });
+    }
+  }
+  return appUpdates;
+}
+
+const productionDeps: SettingsDeps = {
+  storage: layeredSettingsStorage,
+  desktop: {
+    isElectron: isElectronRuntime,
+    loadDesktopSettings,
+    migrateLegacyDesktopSettings,
+  },
+};
+
+export interface UseSettingsReturn {
+  settings: Settings;
+  isLoading: boolean;
+  error: unknown;
+  updateSettings: (updates: Partial<Settings>) => Promise<void>;
+  resetSettings: () => Promise<void>;
+}
+
+type SettingsSelector<TSelected> = (settings: Settings) => TSelected;
+
+export function useSettings(): UseSettingsReturn;
+export function useSettings<TSelected>(selector: SettingsSelector<TSelected>): TSelected;
+export function useSettings<TSelected>(
+  selector?: SettingsSelector<TSelected>,
+): UseSettingsReturn | TSelected {
+  const appSettings = useAppSettings();
+  const desktopSettings = useDesktopSettings();
+
+  const updateSettings = useCallback(
+    async (updates: Partial<Settings>) => {
+      const appUpdates = pickDefinedAppSettings(updates);
+      const promises: Promise<void>[] = [];
+      if (Object.keys(appUpdates).length > 0) {
+        promises.push(appSettings.updateSettings(appUpdates));
+      }
+
+      if (isElectronRuntime()) {
+        const desktopUpdates: Parameters<typeof desktopSettings.updateSettings>[0] = {};
+        if (updates.manageBuiltInDaemon !== undefined) {
+          desktopUpdates.daemon = {
+            manageBuiltInDaemon: updates.manageBuiltInDaemon,
+          };
+        }
+        if (updates.releaseChannel !== undefined) {
+          desktopUpdates.releaseChannel = updates.releaseChannel;
+        }
+        if (Object.keys(desktopUpdates).length > 0) {
+          promises.push(desktopSettings.updateSettings(desktopUpdates));
+        }
+      }
+
+      await Promise.all(promises);
+    },
+    [appSettings, desktopSettings],
+  );
+
+  const resetSettings = useCallback(async () => {
+    const resets: Promise<void>[] = [appSettings.resetSettings()];
+    if (isElectronRuntime()) {
+      resets.push(desktopSettings.updateSettings(DEFAULT_DESKTOP_SETTINGS));
+    }
+    await Promise.all(resets);
+  }, [appSettings, desktopSettings]);
+
+  const settings = {
+    ...DEFAULT_APP_SETTINGS,
+    ...appSettings.settings,
+    manageBuiltInDaemon: desktopSettings.settings.daemon.manageBuiltInDaemon,
+    releaseChannel: desktopSettings.settings.releaseChannel,
+  };
+
+  if (selector) {
+    return selector(settings);
+  }
+
+  return {
+    settings,
+    isLoading: appSettings.isLoading || desktopSettings.isLoading,
+    error: appSettings.error ?? desktopSettings.error,
+    updateSettings,
+    resetSettings,
+  };
+}
+
+export async function loadSettingsFromStorage(deps?: SettingsDeps): Promise<Settings> {
+  return loadSettingsFromStoragePure(deps ?? productionDeps);
+}

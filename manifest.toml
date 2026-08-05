@@ -214,6 +214,10 @@ summary = "Require a real directory to create a local workspace"
 pr = 2885
 summary = "Stop shipping a hardened runtime on unsigned mac builds"
 
+[[entry]]
+pr = 2892
+summary = "Make Ready to review dismissal configurable"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an
