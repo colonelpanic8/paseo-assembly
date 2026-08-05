@@ -1058,6 +1058,18 @@ paths = ["packages/server/src/server/exports.ts"]
 recorded = "2026-08-04T23:53:22.941934068+00:00"
 
 [[resolution]]
+entry = "pr-2873"
+hash = "69c1e8511a90b6f780ca276dc87db720b20709fd"
+paths = ["packages/server/src/server/logger.test.ts"]
+recorded = "2026-08-05T03:28:44.300720149+00:00"
+
+[[resolution]]
+entry = "pr-2873"
+hash = "ec8a3ccf807067bdf283ad290bef6dc0b7c06f95"
+paths = ["packages/server/src/server/logger.ts"]
+recorded = "2026-08-05T03:28:44.300723565+00:00"
+
+[[resolution]]
 entry = "pr-2875"
 hash = "67174c343d85c4ae25eeb7442e2880e05b04c440"
 paths = ["packages/app/src/stores/session-store.ts"]

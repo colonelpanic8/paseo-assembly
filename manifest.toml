@@ -175,14 +175,19 @@ reconstruction_publish = "mine:workspace-snooze-mcp"
 pr = 2872
 summary = "fix(cli): resolve PASEO_HOME lazily through the canonical resolver"
 
-# onboard.ts imports node:path for two call sites: 2849 removes the config.json
-# one and 2873 removes the daemon.log one. Either alone is fine; together the
-# import goes unused and noUnusedLocals fails the CLI build -- textually clean,
-# so only the nix build catches it. Belongs to neither topic on its own.
+# Two interactions, neither belonging to a single topic. (1) onboard.ts imports
+# node:path for two call sites: 2849 removes the config.json one and 2873
+# removes the daemon.log one; either alone is fine, together the import goes
+# unused and noUnusedLocals fails the CLI build -- textually clean, so only the
+# nix build catches it. (2) 2873 moves log-path resolution into
+# daemon-log-path.ts, authored upstream before 2657's "expand ~ in every
+# configured filesystem path" commit rewired logger.ts onto
+# resolveConfiguredPath; the moved resolver has to expand ~ too or the stack's
+# tilde test and feature break.
 [[entry]]
 pr = 2873
 summary = "Honor log.file.path everywhere and create daemon logs owner-only"
-fixup = "patches/onboard-drop-unused-path-import.patch"
+fixup = "patches/pr-2873-stack-coherence.patch"
 
 [[entry]]
 pr = 2875
