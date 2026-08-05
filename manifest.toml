@@ -202,6 +202,18 @@ summary = "Detect Paseo worktrees from daemon data, not the .paseo/worktrees pat
 branch = "mine:colonelpanic8/client-settings-file-store"
 summary = "Persist desktop client settings to a writable settings.json instead of localStorage/LevelDB"
 
+[[entry]]
+pr = 2883
+summary = "Expand ~ in every configured filesystem path"
+
+[[entry]]
+pr = 2884
+summary = "Require a real directory to create a local workspace"
+
+[[entry]]
+pr = 2885
+summary = "Stop shipping a hardened runtime on unsigned mac builds"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an

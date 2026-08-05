@@ -36,6 +36,9 @@
       "pr-2872": "570cb489601cd404ba0546c3e432bb904e4f1d71",
       "pr-2873": "305377adb7199434ada6c6eceaa8b8f6420c1a5b",
       "pr-2875": "a1d579fa15cf752f7b450aa413997f6299775286",
+      "pr-2883": "263932071159d5315da1150fa6c14acf831f4a4e",
+      "pr-2884": "286c3f320e22013f2b7bf9fb2371c66e9a8cbe95",
+      "pr-2885": "34d930a18603bc41fb8a08da7d569eb75b0333a2",
       "watch-live-voice": "86e6ab5919f32cd69ac475d402e7d004f7f8d601",
       "workspace-snooze-mcp": "8cfd25fa73fb7d736c415c286986f6863a7ab397"
     },
@@ -63,15 +66,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-05T06:31:10.219089813+00:00",
+    "generated": "2026-08-05T07:26:41.689067999+00:00",
     "base": "0b624b5585123f1401d2178508340766b2b31d7d",
-    "commit": "0aba872063916e952334d75f3d44c0cedbd66eb7",
-    "pre_provenance_commit": "0aba872063916e952334d75f3d44c0cedbd66eb7",
-    "tree": "8edd384ad145369a7e2c32c26695cc5ea2641b95",
-    "built_tree": "8edd384ad145369a7e2c32c26695cc5ea2641b95",
-    "previous_tree": "ccd0063f18e32d6905d34276c28a7bd56fa106a0",
+    "commit": "8b9c2b8f23e3f5c59929f4a769214b33c5d5900d",
+    "pre_provenance_commit": "8b9c2b8f23e3f5c59929f4a769214b33c5d5900d",
+    "tree": "2381750cfbff6c6027a02ab67836cbecbf518d49",
+    "built_tree": "2381750cfbff6c6027a02ab67836cbecbf518d49",
+    "previous_tree": "8edd384ad145369a7e2c32c26695cc5ea2641b95",
     "tree_changed": true,
-    "conflicts": 23,
+    "conflicts": 2,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -329,6 +332,24 @@
         "kind": "branch",
         "source": "mine:colonelpanic8/client-settings-file-store",
         "pin": "e16aee2e760e8c67dab328a3b42381ca6ebe0226"
+      },
+      {
+        "name": "pr-2883",
+        "kind": "pr",
+        "source": "upstream#2883",
+        "pin": "263932071159d5315da1150fa6c14acf831f4a4e"
+      },
+      {
+        "name": "pr-2884",
+        "kind": "pr",
+        "source": "upstream#2884",
+        "pin": "286c3f320e22013f2b7bf9fb2371c66e9a8cbe95"
+      },
+      {
+        "name": "pr-2885",
+        "kind": "pr",
+        "source": "upstream#2885",
+        "pin": "34d930a18603bc41fb8a08da7d569eb75b0333a2"
       }
     ],
     "results": [
@@ -586,6 +607,26 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "pr-2883",
+        "oid": "263932071159d5315da1150fa6c14acf831f4a4e",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:38aa369c44948164a13027b99d8a80710338b8f1,e54fcfc30b5d2c1c340f7637ec078874230994c4,f7ffcad7da176ecd93611d18c4ea94f365069475"
+      },
+      {
+        "name": "pr-2884",
+        "oid": "286c3f320e22013f2b7bf9fb2371c66e9a8cbe95",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:cd78244e13fa9c3b94fcc1177ee7c6b5803ec261,db70cbff566707c5b116893a23debef864380f67"
+      },
+      {
+        "name": "pr-2885",
+        "oid": "34d930a18603bc41fb8a08da7d569eb75b0333a2",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

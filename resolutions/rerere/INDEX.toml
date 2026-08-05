@@ -1100,6 +1100,36 @@ paths = ["packages/app/src/contexts/session-context.tsx"]
 recorded = "2026-08-04T23:54:23.779075237+00:00"
 
 [[resolution]]
+entry = "pr-2883"
+hash = "38aa369c44948164a13027b99d8a80710338b8f1"
+paths = ["packages/server/src/server/logger.test.ts"]
+recorded = "2026-08-05T07:26:09.297724831+00:00"
+
+[[resolution]]
+entry = "pr-2883"
+hash = "e54fcfc30b5d2c1c340f7637ec078874230994c4"
+paths = ["packages/server/src/server/speech/providers/local/config.test.ts"]
+recorded = "2026-08-05T07:26:09.297727435+00:00"
+
+[[resolution]]
+entry = "pr-2883"
+hash = "f7ffcad7da176ecd93611d18c4ea94f365069475"
+paths = ["packages/server/src/utils/path.ts"]
+recorded = "2026-08-05T07:26:09.297727836+00:00"
+
+[[resolution]]
+entry = "pr-2884"
+hash = "cd78244e13fa9c3b94fcc1177ee7c6b5803ec261"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-08-05T07:26:29.934777839+00:00"
+
+[[resolution]]
+entry = "pr-2884"
+hash = "db70cbff566707c5b116893a23debef864380f67"
+paths = ["packages/server/src/server/agent/mcp-server.test.ts"]
+recorded = "2026-08-05T07:26:29.934779953+00:00"
+
+[[resolution]]
 entry = "watch-live-voice"
 hash = "13bf5a20832801a1d99195e28a42b00f820882c8"
 paths = ["packages/app/src/contexts/live-voice-context.tsx"]
