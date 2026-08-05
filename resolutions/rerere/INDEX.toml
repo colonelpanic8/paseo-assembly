@@ -27,6 +27,12 @@ recorded = "2026-08-03T20:23:05.555560724+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "1b3c9170fbcbccc3340d1b69da779039ee48f6f5"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-05T06:24:01.651267272+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "1f994c60ff1370928012f4449e2b0fce08f9f55e"
 paths = ["packages/app/src/components/sidebar/status-row-swipe-container.types.ts"]
 recorded = "2026-08-03T20:23:05.555563649+00:00"
