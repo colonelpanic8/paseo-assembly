@@ -14,16 +14,13 @@ continue:
 check-npm-deps-hash *ARGS:
     scripts/check-npm-deps-hash.sh {{ARGS}}
 
-# Push the assembled tree to the [publish] branch, then verify the npm deps
-# hash. Required after any build that changed the tree -- CI builds the
-# published branch, not this checkout, and fails with a tree mismatch until
-# this runs. The push comes first because it is what unblocks CI; the slow
-# hash check follows and, if stale, is repaired as a follow-up publish.
+# Push the assembled tree to the [publish] branch and verify the npm deps hash
+# in parallel. This is the final publish-stage check; ordinary update/build
+# operations do not run it.
 publish:
     scripts/publish-assembly.sh
 
-# Publish without the slow npm deps hash check. Use when the check is being
-# deferred deliberately -- `just check-npm-deps-hash` still owes a run.
+# Publish without the final npm deps hash check.
 publish-fast:
     scripts/publish-assembly.sh --skip-hash-check
 

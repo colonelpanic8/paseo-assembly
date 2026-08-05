@@ -27,9 +27,9 @@ checkout — CI and the install commands all read the published `assembled`
 branch, so a build that is committed here but never pushed there leaves every
 workflow failing on a tree mismatch. fork-assembler has no publish verb; the push
 is site policy, in `scripts/publish-assembly.sh`, and it takes its target from
-the `[publish]` section of `manifest.toml`. Push the verified recipe to `main`
-before running `just publish`; its slow npm dependency-hash check gates the
-subsequent `assembled` push, not the initial recipe push.
+the `[publish]` section of `manifest.toml`. Push the recipe to `main` before
+running `just publish`; its slow npm dependency-hash check runs only at this
+final stage, in parallel with the `assembled` push.
 
 ## Desktop builds and the binary cache
 

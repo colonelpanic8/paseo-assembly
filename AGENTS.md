@@ -113,21 +113,21 @@ So whenever a build reports `tree CHANGED`, finish the cycle:
 ```sh
 fork-assembler build --locked         # prove the tracked inputs reproduce the tree
 git commit && git push origin main     # publish the recipe
-just publish                           # push the tree to [publish], then check the hash
+just publish                           # push and check the final tree in parallel
 ```
 
 **Always push first; every slow verification is deferred behind the push.**
-Nothing is shipped until both pushes land, and a check that runs before them
-only delays the moment CI and consumers can move. `just publish` therefore
-pushes the assembled tree and *then* runs the npm deps hash check. Use `just
-publish-fast` to defer that check entirely — it still owes a `just
-check-npm-deps-hash` run.
+Nothing is shipped until both pushes land, and the slow hash check is never part
+of an ordinary update or build. `just publish` starts the assembled push and the
+npm deps hash check together; the push is optimistic, and a failed check becomes
+a follow-up recipe correction. Use `just publish-fast` only when explicitly
+deferring the final check.
 
 `just publish` refuses to push a dirty or stale build worktree, so it is safe
-to run when unsure; if the tree is already published it says so and exits. It
-runs `scripts/check-npm-deps-hash.sh` afterward, because reproducing the locked
-tree proves the build is the one the lock pins, not that it is correct: the
-assembled npm deps hash goes stale silently and only breaks for consumers.
+to run when unsure; if the tree is already published it says so and exits. Its
+parallel `scripts/check-npm-deps-hash.sh` run exists because reproducing the
+locked tree proves the build is the one the lock pins, not that it is correct:
+the assembled npm deps hash goes stale silently and only breaks for consumers.
 Never verify that hash with a plain `nix build` — an FOD's store path is
 derived from its declared hash, so a stale one passes instantly on the path the
 last good build left behind. The script forces the re-fetch; `--write`
