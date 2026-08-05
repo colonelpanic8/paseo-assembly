@@ -217,6 +217,7 @@ summary = "Stop shipping a hardened runtime on unsigned mac builds"
 [[entry]]
 pr = 2892
 summary = "Make Ready to review dismissal configurable"
+fixup = "patches/pr-2892-layered-settings.patch"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
