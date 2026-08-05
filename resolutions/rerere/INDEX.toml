@@ -33,6 +33,12 @@ recorded = "2026-08-05T06:24:01.651267272+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "1c1adf652156ff506da49083d61a0244d6429823"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-05T06:30:53.624191382+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "1f994c60ff1370928012f4449e2b0fce08f9f55e"
 paths = ["packages/app/src/components/sidebar/status-row-swipe-container.types.ts"]
 recorded = "2026-08-03T20:23:05.555563649+00:00"
@@ -636,6 +642,12 @@ entry = "pr-2564"
 hash = "af5a9ce396bd2d775969382dcfceb2d512fa1028"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
 recorded = "2026-08-02T18:47:06.853281681+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "b64992d04295662a2b0a119a58eafe155fa5cc16"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-05T06:29:41.257938390+00:00"
 
 [[resolution]]
 entry = "pr-2564"
