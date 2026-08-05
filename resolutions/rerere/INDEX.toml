@@ -284,6 +284,66 @@ paths = ["docs/android.md"]
 recorded = "2026-07-31T19:38:29.346167816+00:00"
 
 [[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "234642546ba32579213293f38de22692e70fae57"
+paths = ["packages/app/src/storage/settings-seed/index.ts"]
+recorded = "2026-08-05T01:40:57.534333781+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "2a6d7937facbd747cd675dacfe4b14b1eabb1e01"
+paths = ["packages/desktop/src/settings/desktop-settings-electron.ts"]
+recorded = "2026-08-05T01:40:57.534336035+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "53b7c01cb7b0797d30cee371fdf2ab4674eb116c"
+paths = ["packages/server/src/server/daemon-config-store.test.ts"]
+recorded = "2026-08-05T01:40:57.534336636+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "5bcefa705255b236872f28356a2710d5f3057239"
+paths = ["packages/desktop/src/daemon/daemon-manager.ts"]
+recorded = "2026-08-05T01:40:57.534338359+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "91038f31ab4e1d31fa8da282262e3d5a0d9cb3ab"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-08-05T01:40:57.534338690+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "95d6e5dad9a48d259bbeed973966f1b4f52976df"
+paths = ["packages/server/src/server/exports.ts"]
+recorded = "2026-08-05T01:40:57.534339001+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "abfe84829f13b41ef61003eb557527ccd126a0a5"
+paths = ["docs/data-model.md"]
+recorded = "2026-08-05T01:40:57.534339331+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "db4c4525feca119e50bde7b5e597ddd00c2574d1"
+paths = ["packages/desktop/src/settings/desktop-settings-commands.test.ts"]
+recorded = "2026-08-05T01:40:57.534339742+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "e9a6a98ee3ad5c5dc905d5aa1690819090b9e1b0"
+paths = ["packages/desktop/src/settings/desktop-settings-commands.ts"]
+recorded = "2026-08-05T01:40:57.534339952+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "f63dc9c78741a1654853d9fbf4ca5c1eecd3076c"
+paths = ["packages/cli/src/commands/onboard.ts"]
+recorded = "2026-08-05T01:40:57.534340173+00:00"
+
+[[resolution]]
 entry = "pr-2520"
 hash = "608de77d51e8253adc9e6c1f686feb431326c57d"
 paths = ["packages/app/src/types/host-connection.test.ts"]
@@ -1029,6 +1089,12 @@ recorded = "2026-08-04T20:32:48.987813126+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "1940e353858f35eded4ad8e6233ba93ff9dadc00"
+paths = ["packages/client/src/daemon-client.ts"]
+recorded = "2026-08-05T01:39:34.657555484+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "297aecf303822bc577cb1f6a87b8455e32c850bb"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-02T13:25:13.058340119+00:00"
@@ -1047,9 +1113,21 @@ recorded = "2026-08-04T20:32:48.987819738+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "5deedb03f82166d397e3f7280a22019721c14446"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-05T01:39:34.657557477+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "6676cca3a782c1a8c3768594f1f55f0224401f45"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-03T16:03:52.692257184+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "7e6d6d0e7c38ee6fae02078dc8e3852fc0c3f986"
+paths = ["packages/client/src/daemon-client.test.ts"]
+recorded = "2026-08-05T01:39:34.657557858+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -1083,6 +1161,12 @@ recorded = "2026-08-04T20:32:48.987822113+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "d1fe57e096f6a999ff07cd0dce391604d4c6753c"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-05T01:38:34.245645246+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "ee890a53a943facd8d9e32810fe9ebf81f06426e"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-01T21:08:42.299453044+00:00"
@@ -1098,3 +1182,9 @@ entry = "watch-live-voice"
 hash = "f56ccbe32c2931c5cca406ca32f1992700374d11"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-03T07:52:21.803093076+00:00"
+
+[[resolution]]
+entry = "workspace-snooze-mcp"
+hash = "88f4ede347ff95d25818d59a47e8766abc46c817"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-08-05T01:40:02.544281551+00:00"
