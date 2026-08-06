@@ -836,6 +836,30 @@ paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-02T18:47:06.853282194+00:00"
 
 [[resolution]]
+entry = "pr-2566"
+hash = "0a020c703ecdc5c1b56501c29dd09b4873a74401"
+paths = ["packages/app/src/hooks/use-minute-tick.ts"]
+recorded = "2026-08-06T21:04:07.673282673+00:00"
+
+[[resolution]]
+entry = "pr-2566"
+hash = "2747113cba276de865b09d5ad65deea89b8b93b4"
+paths = ["packages/app/src/components/agent-list.tsx"]
+recorded = "2026-08-06T21:04:07.673284486+00:00"
+
+[[resolution]]
+entry = "pr-2566"
+hash = "6083853dd722665c1cb4effd644515be08b9f346"
+paths = ["packages/app/src/components/import-session-sheet.tsx"]
+recorded = "2026-08-06T21:04:07.673284917+00:00"
+
+[[resolution]]
+entry = "pr-2566"
+hash = "ce4fbe743f714ae06f679c9c5703f06633d5f857"
+paths = ["packages/app/src/components/schedules/schedule-row.tsx"]
+recorded = "2026-08-06T21:04:07.673285128+00:00"
+
+[[resolution]]
 entry = "pr-2579"
 hash = "54bd6b40ed9f7043db44ff5cb00e15aed92a69c4"
 paths = ["packages/app/src/components/project-icon-view.tsx"]
@@ -1173,6 +1197,12 @@ recorded = "2026-08-03T20:19:52.564339804+00:00"
 
 [[resolution]]
 entry = "pr-2843"
+hash = "35860e79ee80a54c0aaf2aefa00cae954be1ff68"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-06T21:06:50.121252843+00:00"
+
+[[resolution]]
+entry = "pr-2843"
 hash = "3f8e1a846e93196b95f7adae2f4cc4d69f698045"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-03T23:29:22.967663582+00:00"
@@ -1278,6 +1308,12 @@ entry = "pr-2885"
 hash = "459c01a5fed9fa9ec17e5dcc2827595a5a14b93d"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-05T15:23:21.753729926+00:00"
+
+[[resolution]]
+entry = "pr-2885"
+hash = "e92ab0fa36968e50a6093b8063098a2325ad30c0"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-06T21:06:56.450594929+00:00"
 
 [[resolution]]
 entry = "pr-2885"
@@ -1455,6 +1491,12 @@ recorded = "2026-08-02T18:49:18.820065223+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "336f06ba9ca56625225b1ed3d27cd670fe01e858"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-06T21:05:57.509413157+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "46ba9621c88f517782e8191b72486781ab18f9af"
 paths = ["packages/app/src/keyboard/actions.ts"]
 recorded = "2026-08-04T20:32:48.987819738+00:00"
@@ -1548,6 +1590,12 @@ entry = "watch-live-voice"
 hash = "f56ccbe32c2931c5cca406ca32f1992700374d11"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-03T07:52:21.803093076+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "f950004aaa9e4e265c6411be77c772d5a8800ddd"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-06T21:06:07.997943260+00:00"
 
 [[resolution]]
 entry = "workspace-snooze-mcp"

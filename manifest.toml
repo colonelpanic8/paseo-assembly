@@ -41,6 +41,10 @@ reconstruction_publish = "mine:status-sidebar-snooze"
 fixup = "patches/pr-2564-stack-coherence.patch"
 
 [[entry]]
+pr = 2566
+summary = "Keep relative timestamps from freezing on screen"
+
+[[entry]]
 pr = 2530
 summary = "Add cross-provider model search"
 
@@ -240,13 +244,6 @@ summary = "Make the sidebar resize handle usable by touch"
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an
 # exclusion for the same target cannot coexist.
-
-# 2566's content is in 2564 under different commits, so `prune` cannot see the
-# redundancy -- only the EMPTY merge revealed it. If 2564 ever leaves the
-# stack, this content leaves with it.
-[[exclude]]
-pr = 2566
-reason = "contained verbatim in 2564: merges EMPTY (use-minute-tick and time.ts are byte-identical between the heads)"
 
 # Closed, so not strictly load-bearing, but kept: reopening either would let
 # discovery re-admit a change held out on purpose, and that intent is
