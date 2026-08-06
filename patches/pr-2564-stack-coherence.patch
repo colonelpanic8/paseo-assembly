@@ -43,23 +43,81 @@ index ee5acb7f5..7ae294890 100644
        // Higher activation distance reduces accidental drag capture while nested
        // lists are inside a scroll container.
        activationDistance={20}
-diff --git a/packages/app/src/hooks/use-sidebar-workspaces-list.ts b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-index 90fe97143..ff1cd475c 100644
---- a/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-+++ b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-@@ -16,7 +16,6 @@ import {
-   deriveSidebarLoadingState,
-   resolveSidebarServerIds,
-   type ProjectStatusSession,
--  resolveSidebarServerIds,
-   type SidebarProjectEntry,
-   type SidebarWorkspaceEntry,
-   type SidebarWorkspacePlacement,
+diff --git a/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx b/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx
+index afe3c1b77..76cfc3323 100644
+--- a/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx
++++ b/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx
+@@ -28,6 +28,7 @@ function workspaceDescriptor(input: {
+   projectId?: string;
+   projectDisplayName?: string;
+   status?: WorkspaceDescriptor["status"];
++  statusEnteredAt?: Date | null;
+   activityAt?: Date | null;
+ }): WorkspaceDescriptor {
+   return {
+@@ -41,7 +42,7 @@ function workspaceDescriptor(input: {
+     name: input.name ?? input.id,
+     status: input.status ?? "done",
+     archivingAt: null,
+-    statusEnteredAt: null,
++    statusEnteredAt: input.statusEnteredAt ?? null,
+     activityAt: input.activityAt ?? null,
+     diffStat: null,
+     scripts: [],
+diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
+index 241fc4c37..1138d87e4 100644
+--- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
++++ b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
+@@ -180,6 +180,17 @@ function normalizeCurrentBranch(currentBranch: string | null | undefined): strin
+   return trimmed.length === 0 || trimmed === "HEAD" ? null : trimmed;
+ }
+ 
++function workspaceActivityFields(
++  workspaceAgentActivity: ReadonlyMap<string, WorkspaceAgentActivity> | undefined,
++  workspaceId: string,
++): Pick<SidebarWorkspaceEntry, "providers" | "lastUserMessageAt"> {
++  const activity = workspaceAgentActivity?.get(workspaceId);
++  return {
++    providers: activity?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
++    lastUserMessageAt: activity?.lastUserMessageAt ?? null,
++  };
++}
++
+ export function createSidebarWorkspaceEntry(input: {
+   serverId: string;
+   workspace: WorkspaceDescriptor;
+@@ -189,6 +200,10 @@ export function createSidebarWorkspaceEntry(input: {
+   nowMs?: number;
+ }): SidebarWorkspaceEntry {
+   const projectViewKey = input.projectViewKey ?? input.workspace.projectId;
++  const workspaceActivity = workspaceActivityFields(
++    input.workspaceAgentActivity,
++    input.workspace.id,
++  );
+   const effectiveStatus = deriveEffectiveWorkspaceStatus({
+     ...input,
+     nowMs: input.nowMs ?? Date.now(),
+@@ -211,13 +226,11 @@ export function createSidebarWorkspaceEntry(input: {
+     currentBranch: normalizeCurrentBranch(input.workspace.gitRuntime?.currentBranch),
+     remoteUrl:
+       input.workspace.gitRuntime?.remoteUrl ?? input.workspace.project?.checkout.remoteUrl ?? null,
+-    providers:
+-      input.workspaceAgentActivity?.get(input.workspace.id)?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
++    providers: workspaceActivity.providers,
+     statusBucket: effectiveStatus.status,
+     statusEnteredAt: effectiveStatus.enteredAt,
+     snoozeWakeAt: effectiveStatus.snoozeWakeAt,
+-    lastUserMessageAt:
+-      input.workspaceAgentActivity?.get(input.workspace.id)?.lastUserMessageAt ?? null,
++    lastUserMessageAt: workspaceActivity.lastUserMessageAt,
+     activityAt: input.workspace.activityAt,
+     archivingAt: input.workspace.archivingAt,
+     diffStat: input.workspace.diffStat,
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
-index eecf7c724..f2b1c12d9 100644
+index 8c458eabf..5d6c0751e 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
 +++ b/packages/app/src/runtime/host-runtime.test.ts
-@@ -3545,12 +3545,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3609,12 +3609,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
            endpoint: "ryzen-shine:6767",
            useTls: false,
            password: "ryzen-secret",
@@ -74,7 +132,7 @@ index eecf7c724..f2b1c12d9 100644
          },
        ],
      };
-@@ -3575,7 +3577,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3639,7 +3641,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
        storage: createMemoryHostRuntimeStorage(),
      });
  
@@ -91,7 +149,7 @@ index eecf7c724..f2b1c12d9 100644
      store.boot();
      await hostsAdded;
  
-@@ -3603,6 +3613,69 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3667,6 +3677,69 @@ describe("HostRuntimeStore managed host bootstrap", () => {
          .map((host) => host.label)
          .sort(),
      ).toEqual(["Mac mini", "Ryzen"]);
@@ -162,7 +220,7 @@ index eecf7c724..f2b1c12d9 100644
      store.syncHosts([]);
    });
 diff --git a/packages/app/src/runtime/host-runtime.ts b/packages/app/src/runtime/host-runtime.ts
-index 65318b585..89ed607d9 100644
+index 1007e8fdf..fa0bba017 100644
 --- a/packages/app/src/runtime/host-runtime.ts
 +++ b/packages/app/src/runtime/host-runtime.ts
 @@ -8,6 +8,7 @@ import {
@@ -173,7 +231,7 @@ index 65318b585..89ed607d9 100644
    normalizeStoredHostProfile,
    upsertHostConnectionInProfiles,
    registryHasConnection,
-@@ -1356,6 +1357,20 @@ interface ManagedHostBootstrapInput {
+@@ -1359,6 +1360,20 @@ interface ManagedHostBootstrapInput {
    label: string;
    endpoint: string;
    connection: HostConnection;
@@ -294,65 +352,3 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
-diff --git a/packages/app/src/components/sidebar-workspace-list.tsx b/packages/app/src/components/sidebar-workspace-list.tsx
-index ed38626d5..19238ce43 100644
---- a/packages/app/src/components/sidebar-workspace-list.tsx
-+++ b/packages/app/src/components/sidebar-workspace-list.tsx
-@@ -102,7 +102,6 @@ import {
-   SidebarWorkspaceContextMenu,
-   SidebarWorkspaceMenu,
- } from "@/components/sidebar/sidebar-workspace-menu";
--import { useWorkspaceSnoozeMenu } from "@/workspace-snooze/use-workspace-snooze-menu";
- import { useLongPressDragInteraction } from "@/components/sidebar/use-long-press-drag-interaction";
- import { PinnedSectionHeader } from "@/components/sidebar/pinned-section-header";
- import { SidebarGroupToggleRow } from "@/components/sidebar/sidebar-group-toggle-row";
-diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-index 241fc4c37..1138d87e4 100644
---- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-+++ b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-@@ -180,6 +180,17 @@ function normalizeCurrentBranch(currentBranch: string | null | undefined): strin
-   return trimmed.length === 0 || trimmed === "HEAD" ? null : trimmed;
- }
--
-+
-+function workspaceActivityFields(
-+  workspaceAgentActivity: ReadonlyMap<string, WorkspaceAgentActivity> | undefined,
-+  workspaceId: string,
-+): Pick<SidebarWorkspaceEntry, "providers" | "lastUserMessageAt"> {
-+  const activity = workspaceAgentActivity?.get(workspaceId);
-+  return {
-+    providers: activity?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
-+    lastUserMessageAt: activity?.lastUserMessageAt ?? null,
-+  };
-+}
-+
- export function createSidebarWorkspaceEntry(input: {
-   serverId: string;
-   workspace: WorkspaceDescriptor;
-@@ -189,6 +200,10 @@ export function createSidebarWorkspaceEntry(input: {
-   nowMs?: number;
- }): SidebarWorkspaceEntry {
-   const projectViewKey = input.projectViewKey ?? input.workspace.projectId;
-+  const workspaceActivity = workspaceActivityFields(
-+    input.workspaceAgentActivity,
-+    input.workspace.id,
-+  );
-   const effectiveStatus = deriveEffectiveWorkspaceStatus({
-     ...input,
-     nowMs: input.nowMs ?? Date.now(),
-@@ -211,13 +226,11 @@ export function createSidebarWorkspaceEntry(input: {
-     currentBranch: normalizeCurrentBranch(input.workspace.gitRuntime?.currentBranch),
-     remoteUrl:
-       input.workspace.gitRuntime?.remoteUrl ?? input.workspace.project?.checkout.remoteUrl ?? null,
--    providers:
--      input.workspaceAgentActivity?.get(input.workspace.id)?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
-+    providers: workspaceActivity.providers,
-     statusBucket: effectiveStatus.status,
-     statusEnteredAt: effectiveStatus.enteredAt,
-     snoozeWakeAt: effectiveStatus.snoozeWakeAt,
--    lastUserMessageAt:
--      input.workspaceAgentActivity?.get(input.workspace.id)?.lastUserMessageAt ?? null,
-+    lastUserMessageAt: workspaceActivity.lastUserMessageAt,
-     activityAt: input.workspace.activityAt,
-     archivingAt: input.workspace.archivingAt,
-     diffStat: input.workspace.diffStat,

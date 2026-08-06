@@ -38,7 +38,7 @@ pr = 2564
 summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
 parents = [{ pr = 2525 }, { pr = 2529 }]
 reconstruction_publish = "mine:status-sidebar-snooze"
-fixup = "patches/managed-host-colors.patch"
+fixup = "patches/pr-2564-stack-coherence.patch"
 
 [[entry]]
 pr = 2530

@@ -354,6 +354,7 @@ export function deriveProjectStatusBucket(input: {
   workspaces: readonly SidebarWorkspacePlacement[];
   sessions: Record<string, ProjectStatusSession | undefined>;
   pendingCreateAttempts?: Record<string, PendingCreateAttempt>;
+  showReadyToReview?: boolean;
 }): SidebarStateBucket {
   const workspaceIdsByServer = new Map<string, string[]>();
   for (const placement of input.workspaces) {

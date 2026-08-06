@@ -861,6 +861,12 @@ recorded = "2026-08-02T13:19:26.395130053+00:00"
 
 [[resolution]]
 entry = "pr-2629"
+hash = "218c4a67be458138b33f611d88d39b85b1155fb5"
+paths = ["packages/app/src/i18n/resources/ko.ts"]
+recorded = "2026-08-06T00:57:13.022090718+00:00"
+
+[[resolution]]
+entry = "pr-2629"
 hash = "24c6b6e1c5b84b467d9e8cce9ff809cc3c130090"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-08-02T13:19:26.395130490+00:00"
