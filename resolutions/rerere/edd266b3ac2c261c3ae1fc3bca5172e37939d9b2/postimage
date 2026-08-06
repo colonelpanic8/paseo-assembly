@@ -661,7 +661,6 @@ export const AssistantTurnFooter = memo(function AssistantTurnFooter({
           numberOfLines={1}
           testID="assistant-turn-meta"
         >
-        >
           {durationLabel ? `· ${meta}` : meta}
         </Text>
       ) : null}
