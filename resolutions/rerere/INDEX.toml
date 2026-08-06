@@ -99,6 +99,12 @@ recorded = "2026-08-03T20:23:05.555565132+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "4c1fca611ff254ebd900db26b5321b9a443f651c"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-05T23:56:39.684104899+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "52333c690931f050a67a36221c3e3a4733ed1156"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-05T15:09:09.456709409+00:00"
@@ -107,7 +113,7 @@ recorded = "2026-08-05T15:09:09.456709409+00:00"
 entry = "agent-hierarchy-tree"
 hash = "55c97d878de6650fb1f8572920c742d4ebaa71bd"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
-recorded = "2026-08-04T20:39:33.177437504+00:00"
+recorded = "2026-08-05T23:56:53.008915057+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -201,6 +207,12 @@ recorded = "2026-08-03T21:30:06.619351620+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "9d8e0f8cfcefdfefad7efb04283236e1d33cd1f0"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-05T23:56:39.684106692+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "9e647324dc9c2258a874a1dfc6abe38390476684"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.test.ts"]
 recorded = "2026-08-05T15:09:09.456711272+00:00"
@@ -222,6 +234,12 @@ entry = "agent-hierarchy-tree"
 hash = "b2ce2091d20780e941c1915f98aa83bb0ce3986b"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-03T20:23:05.555568017+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "b387aa14cee223401257810f61582e228966a161"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-05T23:56:39.684107123+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -252,6 +270,12 @@ entry = "agent-hierarchy-tree"
 hash = "d6bf4bb6facb41f4aa449d90302f7d7155c7360f"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-04T21:22:09.163449416+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "d7c7a1758dd15be4c28857e7a573547bca3d3db2"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-08-05T23:56:39.684107443+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -684,6 +708,12 @@ entry = "pr-2564"
 hash = "870c16590df47b8acde6bca56621473b94eedb74"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row.tsx"]
 recorded = "2026-08-02T15:49:18.347485777+00:00"
+
+[[resolution]]
+entry = "pr-2564"
+hash = "88e6e575f935e74bc061bb459d996f083342f631"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-05T23:54:03.274956880+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -1245,6 +1275,12 @@ recorded = "2026-08-05T15:16:45.015492048+00:00"
 
 [[resolution]]
 entry = "pr-2892"
+hash = "0d592a7acf57ae217060332eff231b54bd426554"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-08-06T00:02:29.382849012+00:00"
+
+[[resolution]]
+entry = "pr-2892"
 hash = "5d0c94ed77db8cdf9010346a41e2ad782cd072e9"
 paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
 recorded = "2026-08-05T09:40:10.810885440+00:00"
@@ -1311,9 +1347,39 @@ recorded = "2026-08-05T15:18:22.945639101+00:00"
 
 [[resolution]]
 entry = "pr-2900"
+hash = "309884cfe37f57d99683059b264f6fbf2c39d510"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-08-06T00:05:17.363680717+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "520c07d40da0407bd7980ab835bba17b8bf80573"
+paths = ["packages/cli/src/commands/daemon/set-password.ts"]
+recorded = "2026-08-06T00:05:17.363682590+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "526e8085dc04cad97901c1d8a4f0e066b7dac543"
+paths = ["packages/cli/src/commands/onboard.ts"]
+recorded = "2026-08-06T00:05:17.363682901+00:00"
+
+[[resolution]]
+entry = "pr-2900"
 hash = "938bf06406204264f2ff3c42cdfbdbc052c47f74"
 paths = ["packages/server/src/server/persisted-config.test.ts"]
 recorded = "2026-08-05T15:18:22.945641426+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "9b685dbb6adc84dc651a8420fe1d5030c28d521f"
+paths = ["packages/cli/tests/32-daemon-set-password.test.ts"]
+recorded = "2026-08-06T00:05:17.363683302+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "b61f8fb2036878dbe10488b88c5b58f5bc0941db"
+paths = ["packages/cli/src/commands/daemon/local-daemon.ts"]
+recorded = "2026-08-06T00:05:17.363683562+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
