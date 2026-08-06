@@ -3,7 +3,7 @@
   "pins": {
     "base": "5465d66edd64dba0593aebb6cc1b42956c198120",
     "entries": {
-      "agent-hierarchy-tree": "929fb6293319449636c515d3b8a4f0fae7c2c9d6",
+      "agent-hierarchy-tree": "64defccd49177abec514ba58ebfc032ecbb15259",
       "assembled-npm-deps-hash": "38ff781402aff5a607170636e72fbd3505ac1dcb",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "732f4f48aec63eb28b32166a098dc322aa182385",
@@ -16,7 +16,7 @@
       "pr-2530": "fe922970ceea7158ef4561200bfe00797bf31d5f",
       "pr-2532": "fb5629b1e7adb171b5dfa9f67dc3ba23beab8135",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2564": "93955a224bbc6499d64967fecdb6e9be14208b4b",
+      "pr-2564": "734e1519d84f8176e00732b6e2f9856c2c866e9f",
       "pr-2579": "81f3d40d2278fdae84228d856d048e2762e9e21c",
       "pr-2588": "22a9d0520ac3c62c2449da8666f6c53815bc10cc",
       "pr-2628": "a83ec00593aee3581b77e9df6c0b4b9632e5c17f",
@@ -42,12 +42,12 @@
       "pr-2892": "8995cf85e4e25d61f4fcd7da02ed8f345ce226e0",
       "pr-2898": "cf4ebedd40145d4c83c8e102b48c11036a756ad2",
       "pr-2900": "0c345502a90f4b48c974e1185b48dcd17a528300",
-      "watch-live-voice": "eafbf2c50964ebef7578fb0c76f99568d9af7655",
-      "workspace-snooze-mcp": "9d8cf8d85ae01206f79291fd96443b13cd2dbe4e"
+      "watch-live-voice": "491f6fbd4d6609b04196988bf91d8a5e38bfa83b",
+      "workspace-snooze-mcp": "aa839a6b1b12af0bc11122b74496b5bd0b45d6d0"
     },
     "parents": {
       "agent-hierarchy-tree": {
-        "status-sidebar-snooze": "82b58f16a88f5d0352f50f00178dab10d2dc365a"
+        "status-sidebar-snooze": "734e1519d84f8176e00732b6e2f9856c2c866e9f"
       },
       "pr-2564": {
         "pr-2525": "6378e1592c16dce40931cd73451f37e0e4bab8f0",
@@ -58,25 +58,25 @@
         "pr-2657": "e732beb9646605b9de9c31bd000fb6220f19b611"
       },
       "workspace-snooze-mcp": {
-        "status-sidebar-snooze": "82b58f16a88f5d0352f50f00178dab10d2dc365a"
+        "status-sidebar-snooze": "734e1519d84f8176e00732b6e2f9856c2c866e9f"
       }
     },
     "anchors": {
-      "agent-hierarchy-tree": "b210c2c827bbb3460b35f9e77a45f3205f75b6e4",
-      "pr-2564": "0130871b86fde46d5d6df4924f418d4f9e789e1a",
-      "watch-live-voice": "e064589be6eb1dd14dce925700aee3cefdd89f43",
-      "workspace-snooze-mcp": "027d66e4c1ce0f7f0b5b3c5373cf47628e1e05fa"
+      "agent-hierarchy-tree": "c6b55d1adce7096c59f84737303450564a3d9f97",
+      "pr-2564": "d4e1ae06ab730ebc8535e614a04dac384c365342",
+      "watch-live-voice": "4c36df59878ce2848cffeb5864382ded03ea9996",
+      "workspace-snooze-mcp": "2066bdcd6a3e103fade9d43c9f97aedd031d9618"
     }
   },
   "build": {
-    "generated": "2026-08-06T02:19:15.541517945+00:00",
+    "generated": "2026-08-06T04:55:18.319684208+00:00",
     "base": "5465d66edd64dba0593aebb6cc1b42956c198120",
-    "commit": "c23f366a8dfed1b70cc0df42c475428e8b441f83",
-    "pre_provenance_commit": "c23f366a8dfed1b70cc0df42c475428e8b441f83",
+    "commit": "18083dae7ead94c6acde91744ee3c1d6f2cd22a1",
+    "pre_provenance_commit": "18083dae7ead94c6acde91744ee3c1d6f2cd22a1",
     "tree": "ed37db54226dc5a21dede34fcb5395cf51b239f9",
     "built_tree": "ed37db54226dc5a21dede34fcb5395cf51b239f9",
-    "previous_tree": "fd880e056ed723d20e836b4b2d6a281783758ea9",
-    "tree_changed": true,
+    "previous_tree": "ed37db54226dc5a21dede34fcb5395cf51b239f9",
+    "tree_changed": false,
     "conflicts": 29,
     "manifest_entries": [
       {
@@ -108,7 +108,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "93955a224bbc6499d64967fecdb6e9be14208b4b",
+        "pin": "734e1519d84f8176e00732b6e2f9856c2c866e9f",
         "fixup": "588e08ea7c5e5e26e8ae6c8d6590e32325177e04",
         "reconstruction_publish": "mine:status-sidebar-snooze",
         "parents": [
@@ -121,7 +121,7 @@
             "pin": "83663e41084a5eabe71795728179b4d6ca5244b8"
           }
         ],
-        "anchor": "0130871b86fde46d5d6df4924f418d4f9e789e1a"
+        "anchor": "d4e1ae06ab730ebc8535e614a04dac384c365342"
       },
       {
         "name": "pr-2530",
@@ -214,7 +214,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "eafbf2c50964ebef7578fb0c76f99568d9af7655",
+        "pin": "491f6fbd4d6609b04196988bf91d8a5e38bfa83b",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -227,7 +227,7 @@
             "pin": "e732beb9646605b9de9c31bd000fb6220f19b611"
           }
         ],
-        "anchor": "e064589be6eb1dd14dce925700aee3cefdd89f43"
+        "anchor": "4c36df59878ce2848cffeb5864382ded03ea9996"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -270,15 +270,15 @@
         "name": "agent-hierarchy-tree",
         "kind": "branch",
         "source": "mine:agent-hierarchy-tree",
-        "pin": "929fb6293319449636c515d3b8a4f0fae7c2c9d6",
+        "pin": "64defccd49177abec514ba58ebfc032ecbb15259",
         "reconstruction_publish": "mine:agent-hierarchy-tree",
         "parents": [
           {
             "source": "mine:status-sidebar-snooze",
-            "pin": "82b58f16a88f5d0352f50f00178dab10d2dc365a"
+            "pin": "734e1519d84f8176e00732b6e2f9856c2c866e9f"
           }
         ],
-        "anchor": "b210c2c827bbb3460b35f9e77a45f3205f75b6e4"
+        "anchor": "c6b55d1adce7096c59f84737303450564a3d9f97"
       },
       {
         "name": "pr-2843",
@@ -302,15 +302,15 @@
         "name": "workspace-snooze-mcp",
         "kind": "branch",
         "source": "mine:workspace-snooze-mcp",
-        "pin": "9d8cf8d85ae01206f79291fd96443b13cd2dbe4e",
+        "pin": "aa839a6b1b12af0bc11122b74496b5bd0b45d6d0",
         "reconstruction_publish": "mine:workspace-snooze-mcp",
         "parents": [
           {
             "source": "mine:status-sidebar-snooze",
-            "pin": "82b58f16a88f5d0352f50f00178dab10d2dc365a"
+            "pin": "734e1519d84f8176e00732b6e2f9856c2c866e9f"
           }
         ],
-        "anchor": "027d66e4c1ce0f7f0b5b3c5373cf47628e1e05fa"
+        "anchor": "2066bdcd6a3e103fade9d43c9f97aedd031d9618"
       },
       {
         "name": "pr-2872",
@@ -404,13 +404,13 @@
       },
       {
         "name": "pr-2564",
-        "oid": "93955a224bbc6499d64967fecdb6e9be14208b4b",
+        "oid": "734e1519d84f8176e00732b6e2f9856c2c866e9f",
         "status": "merged",
         "conflicted": false,
         "fixup": "588e08ea7c5e5e26e8ae6c8d6590e32325177e04",
         "derived": {
-          "base_tip": "d4e1ae06ab730ebc8535e614a04dac384c365342",
-          "tip": "734e1519d84f8176e00732b6e2f9856c2c866e9f"
+          "base_tip": "f28818f1d6faac2fa56fb5509edbe9638cf8f91a",
+          "tip": "94e1c424ec4a85aee9ae83000b4d0726cdf9511e"
         }
       },
       {
@@ -510,14 +510,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "eafbf2c50964ebef7578fb0c76f99568d9af7655",
+        "oid": "491f6fbd4d6609b04196988bf91d8a5e38bfa83b",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "4c36df59878ce2848cffeb5864382ded03ea9996",
-          "tip": "491f6fbd4d6609b04196988bf91d8a5e38bfa83b"
+          "base_tip": "04620deb964d680491820196da5d508c0e922eb9",
+          "tip": "465881885a2c1c10ad0b7ff2ba0b4eac7d868a19"
         }
       },
       {
@@ -563,13 +563,13 @@
       },
       {
         "name": "agent-hierarchy-tree",
-        "oid": "929fb6293319449636c515d3b8a4f0fae7c2c9d6",
+        "oid": "64defccd49177abec514ba58ebfc032ecbb15259",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolution": "rerere:6cfc57e7fbe6aeb179e2fc747c756ac1fd67cad4",
         "derived": {
-          "base_tip": "c6b55d1adce7096c59f84737303450564a3d9f97",
-          "tip": "64defccd49177abec514ba58ebfc032ecbb15259"
+          "base_tip": "3ba393f81f1b306ec51284543fdb392f17f557c2",
+          "tip": "44fa9887284ddeeef85dafed9aa8e806dc089ebf"
         }
       },
       {
@@ -595,13 +595,13 @@
       },
       {
         "name": "workspace-snooze-mcp",
-        "oid": "9d8cf8d85ae01206f79291fd96443b13cd2dbe4e",
+        "oid": "aa839a6b1b12af0bc11122b74496b5bd0b45d6d0",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "2066bdcd6a3e103fade9d43c9f97aedd031d9618",
-          "tip": "aa839a6b1b12af0bc11122b74496b5bd0b45d6d0"
+          "base_tip": "2f2f4ab3c57b207cc97b6a7c80def5d58faa47ad",
+          "tip": "1069c776c6d6ef9b659f8fd0035e449752f474d8"
         }
       },
       {

@@ -147,6 +147,12 @@ recorded = "2026-08-05T15:09:09.456710511+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "6cfc57e7fbe6aeb179e2fc747c756ac1fd67cad4"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-06T04:55:01.086375186+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "72b720ea94ae06a379d1f0549b335161e459c996"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-04T20:35:17.025166462+00:00"
