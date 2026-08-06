@@ -138,6 +138,7 @@ summary = "Fix worktree setup with production npm environments"
 [[entry]]
 pr = 2785
 summary = "Add UI and CLI for creating provider accounts"
+fixup = "patches/pr-2785-usage-service-clobber.patch"
 
 [[entry]]
 pr = 2820

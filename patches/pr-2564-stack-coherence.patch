@@ -65,7 +65,7 @@ index afe3c1b77..76cfc3323 100644
      diffStat: null,
      scripts: [],
 diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-index 241fc4c37..1138d87e4 100644
+index 7657b4617..d8fb9852b 100644
 --- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
 +++ b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
 @@ -180,6 +180,17 @@ function normalizeCurrentBranch(currentBranch: string | null | undefined): strin
@@ -86,10 +86,11 @@ index 241fc4c37..1138d87e4 100644
  export function createSidebarWorkspaceEntry(input: {
    serverId: string;
    workspace: WorkspaceDescriptor;
-@@ -189,6 +200,10 @@ export function createSidebarWorkspaceEntry(input: {
+@@ -189,7 +200,10 @@ export function createSidebarWorkspaceEntry(input: {
    nowMs?: number;
  }): SidebarWorkspaceEntry {
    const projectViewKey = input.projectViewKey ?? input.workspace.projectId;
+-  const agentActivity = input.workspaceAgentActivity?.get(input.workspace.id);
 +  const workspaceActivity = workspaceActivityFields(
 +    input.workspaceAgentActivity,
 +    input.workspace.id,
@@ -97,18 +98,16 @@ index 241fc4c37..1138d87e4 100644
    const effectiveStatus = deriveEffectiveWorkspaceStatus({
      ...input,
      nowMs: input.nowMs ?? Date.now(),
-@@ -211,13 +226,11 @@ export function createSidebarWorkspaceEntry(input: {
+@@ -212,11 +226,11 @@ export function createSidebarWorkspaceEntry(input: {
      currentBranch: normalizeCurrentBranch(input.workspace.gitRuntime?.currentBranch),
      remoteUrl:
        input.workspace.gitRuntime?.remoteUrl ?? input.workspace.project?.checkout.remoteUrl ?? null,
--    providers:
--      input.workspaceAgentActivity?.get(input.workspace.id)?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
+-    providers: agentActivity?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
 +    providers: workspaceActivity.providers,
      statusBucket: effectiveStatus.status,
      statusEnteredAt: effectiveStatus.enteredAt,
      snoozeWakeAt: effectiveStatus.snoozeWakeAt,
--    lastUserMessageAt:
--      input.workspaceAgentActivity?.get(input.workspace.id)?.lastUserMessageAt ?? null,
+-    lastUserMessageAt: agentActivity?.lastUserMessageAt ?? null,
 +    lastUserMessageAt: workspaceActivity.lastUserMessageAt,
      activityAt: input.workspace.activityAt,
      archivingAt: input.workspace.archivingAt,

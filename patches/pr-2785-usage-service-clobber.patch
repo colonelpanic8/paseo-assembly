@@ -1,0 +1,14 @@
+diff --git a/packages/server/src/server/websocket-server.ts b/packages/server/src/server/websocket-server.ts
+--- a/packages/server/src/server/websocket-server.ts
++++ b/packages/server/src/server/websocket-server.ts
+@@ -733,10 +733,6 @@
+       });
+     });
+ 
+-    this.providerUsageService = new ProviderUsageService({
+-      logger: this.logger,
+-    });
+-
+     // Daemon-global: a call belongs to the daemon, not to an agent, and each one
+     // runs on a hidden host session the coordinator spawns for it.
+     this.liveVoiceCoordinator = new LiveVoiceCoordinator({
