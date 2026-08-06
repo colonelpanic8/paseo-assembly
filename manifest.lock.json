@@ -4,6 +4,7 @@
     "base": "ef6d7b3b9add47107b2a57ec17f080a640675861",
     "entries": {
       "agent-hierarchy-tree": "ab6202f2536d0b2b7bf70ab81bd5687ea5a0d92d",
+      "assembled-ci-lint-fixes": "eb6a68058e61c65134e88ce9bd341686ea688607",
       "assembled-npm-deps-hash": "0413f4d367afceff9d4a3e206b16e07cabf867c7",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "732f4f48aec63eb28b32166a098dc322aa182385",
@@ -73,13 +74,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-06T22:39:47.232604178+00:00",
+    "generated": "2026-08-06T23:23:26.389981450+00:00",
     "base": "ef6d7b3b9add47107b2a57ec17f080a640675861",
-    "commit": "5b0514869406bc68957511279c6ca8a980f7acd8",
-    "pre_provenance_commit": "5b0514869406bc68957511279c6ca8a980f7acd8",
-    "tree": "e5e3e90534393c15ed9bf0050085148025f73c63",
-    "built_tree": "e5e3e90534393c15ed9bf0050085148025f73c63",
-    "previous_tree": "88e62088aebd381a3f805d1aff57e43465be8c33",
+    "commit": "947825b142c37dfe0a5df754413070c0159f3d93",
+    "pre_provenance_commit": "947825b142c37dfe0a5df754413070c0159f3d93",
+    "tree": "ccb262164ef9860b81377df32328105d981e08eb",
+    "built_tree": "ccb262164ef9860b81377df32328105d981e08eb",
+    "previous_tree": "a992735e22acaf8ca309821c37c7e87ce9107611",
     "tree_changed": true,
     "conflicts": 33,
     "manifest_entries": [
@@ -376,7 +377,8 @@
         "name": "pr-2898",
         "kind": "pr",
         "source": "upstream#2898",
-        "pin": "dc3d4c56d8435b7744ddc4d09f729863fd2e5a8f"
+        "pin": "dc3d4c56d8435b7744ddc4d09f729863fd2e5a8f",
+        "fixup": "983881393b05655d53f56f2b583c027491b147be"
       },
       {
         "name": "pr-2900",
@@ -401,6 +403,12 @@
         "kind": "pr",
         "source": "upstream#2954",
         "pin": "9405b3e2d384f55650da8af92c9d1ff9530aa5d6"
+      },
+      {
+        "name": "assembled-ci-lint-fixes",
+        "kind": "patch",
+        "source": "patches/assembled-ci-lint-fixes.patch",
+        "pin": "eb6a68058e61c65134e88ce9bd341686ea688607"
       }
     ],
     "results": [
@@ -437,8 +445,8 @@
         "conflicted": false,
         "fixup": "588e08ea7c5e5e26e8ae6c8d6590e32325177e04",
         "derived": {
-          "base_tip": "e755b1842fab5b28c038f511538bf2e1c0fa26a0",
-          "tip": "50ffe09b5397010d4b51d256f840d25233c13d67"
+          "base_tip": "0ac8f953d6db88fa17897f9948bf04f60d1634f3",
+          "tip": "2e6e528c8ccfa971e967b5f44d994996ba386ebc"
         }
       },
       {
@@ -551,8 +559,8 @@
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "1647b3d4992162f0d8c01847b39049a26bdf8d19",
-          "tip": "8403ec73015ef4890f0d23a0e3191b480d529b69"
+          "base_tip": "ead7b0253d42dbb7a049efdb366a4c79eff9fcd5",
+          "tip": "cc00ca84756d954604ae0ac767206bd7885cf74d"
         }
       },
       {
@@ -603,8 +611,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "77aaee7c7077d519f65eafd9c6e2bda8f4721a89",
-          "tip": "132a45cbd34ec8f078a0fd1611280230c6fba722"
+          "base_tip": "9c21b26f1509ba14c1ca145dfded49f580f3c7aa",
+          "tip": "a06ca89a1c0aee05a7c6fe84ab75ec8d227cb725"
         }
       },
       {
@@ -612,7 +620,7 @@
         "oid": "c793a55e0cd69e1fcc87e913ca14bab1e9ae3211",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:89fed82cbcb88e3a489b2e6d19d541d644b4f08e"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2845",
@@ -635,8 +643,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "49f5963d8b6f56e1be37581c9845d7035b058d0a",
-          "tip": "952c7bc00d5512d42dfa25e257da9ff8599db1b7"
+          "base_tip": "96c910be5463786a3f14d10b159fece9844f66ce",
+          "tip": "0db3ba2d708d442afdef56b0857b64b4651fb6d5"
         }
       },
       {
@@ -701,7 +709,8 @@
         "oid": "dc3d4c56d8435b7744ddc4d09f729863fd2e5a8f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere",
+        "fixup": "983881393b05655d53f56f2b583c027491b147be"
       },
       {
         "name": "pr-2900",
@@ -729,6 +738,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "assembled-ci-lint-fixes",
+        "oid": "eb6a68058e61c65134e88ce9bd341686ea688607",
+        "status": "applied",
+        "conflicted": false
       }
     ]
   }

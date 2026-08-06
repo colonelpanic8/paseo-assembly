@@ -1,0 +1,355 @@
+diff --git a/packages/app/src/components/message.tsx b/packages/app/src/components/message.tsx
+index fdd30e99f..a051271ea 100644
+--- a/packages/app/src/components/message.tsx
++++ b/packages/app/src/components/message.tsx
+@@ -645,9 +645,7 @@ export const AssistantTurnFooter = memo(function AssistantTurnFooter({
+         getContent={getContent}
+         containerStyle={assistantTurnFooterStylesheet.copyButton}
+       />
+-      {canFork ? (
+-        <AssistantForkMenu canForkNatively={canForkNatively} onFork={handleFork} />
+-      ) : null}
++      {canFork ? <AssistantForkMenu canForkNatively={canForkNatively} onFork={handleFork} /> : null}
+       {durationLabel || completionLabel ? (
+         <Text style={assistantTurnFooterStylesheet.label} testID="assistant-turn-completion">
+           {[durationLabel, completionLabel].filter(Boolean).join(" · ")}
+diff --git a/packages/app/src/components/sidebar/sidebar-status-list.tsx b/packages/app/src/components/sidebar/sidebar-status-list.tsx
+index 8b814ade9..39959e2f6 100644
+--- a/packages/app/src/components/sidebar/sidebar-status-list.tsx
++++ b/packages/app/src/components/sidebar/sidebar-status-list.tsx
+@@ -56,7 +56,6 @@ import {
+   SidebarWorkspaceContextMenu,
+   SidebarWorkspaceMenu,
+ } from "@/components/sidebar/sidebar-workspace-menu";
+-import { isStatusGroupCollapsed } from "@/stores/sidebar-collapsed-sections-store/state";
+ import { SidebarStatusRowSnoozeAction } from "@/components/sidebar/sidebar-status-row-snooze-action";
+ import { useWorkspaceSnoozeMenu } from "@/workspace-snooze/use-workspace-snooze-menu";
+ import { PinnedSectionHeader } from "@/components/sidebar/pinned-section-header";
+diff --git a/packages/app/src/composer/agent-controls/index.tsx b/packages/app/src/composer/agent-controls/index.tsx
+index 5c9eb962f..a726bc06e 100644
+--- a/packages/app/src/composer/agent-controls/index.tsx
++++ b/packages/app/src/composer/agent-controls/index.tsx
+@@ -450,6 +450,58 @@ function buildOpenChangeHandler(
+   };
+ }
+ 
++function handleComposerKeyboardAction(
++  action: KeyboardActionDefinition,
++  options: {
++    disabled: boolean;
++    isActiveComposer: boolean;
++    canSelectModel: boolean;
++    canSelectThinking: boolean;
++    isCompact: boolean;
++    features?: AgentFeature[];
++    onSetFeature?: (featureId: string, value: unknown) => void;
++    onDropdownClose?: () => void;
++    setOpenSelector: (selector: AgentControlSelector) => void;
++    handleOpenSheet: (sheet: Exclude<ActiveSheet, null>) => void;
++  },
++): boolean {
++  const {
++    disabled,
++    isActiveComposer,
++    canSelectModel,
++    canSelectThinking,
++    isCompact,
++    features,
++    onSetFeature,
++    onDropdownClose,
++    setOpenSelector,
++    handleOpenSheet,
++  } = options;
++  if (disabled || !isActiveComposer) return false;
++  if (action.id === "message-input.model.pick") {
++    if (!canSelectModel) return false;
++    setOpenSelector("model");
++    return true;
++  }
++  if (action.id === "message-input.thinking.pick") {
++    if (!canSelectThinking) return false;
++    if (isCompact) {
++      handleOpenSheet("thinking");
++    } else {
++      setOpenSelector("thinking");
++    }
++    return true;
++  }
++  const toggleFeatureId = getToggleFeatureIdForAction(action.id);
++  if (!toggleFeatureId) return false;
++  const toggleFeature = features?.find((feature) => feature.id === toggleFeatureId);
++  if (toggleFeature?.type !== "toggle" || !onSetFeature) return false;
++  onSetFeature(toggleFeature.id, !toggleFeature.value);
++  onDropdownClose?.();
++  return true;
++}
++
++// oxlint-disable-next-line complexity
+ function ControlledAgentControls({
+   provider,
+   providerOptions,
+@@ -706,30 +758,19 @@ function ControlledAgentControls({
+   );
+ 
+   const handleKeyboardAction = useCallback(
+-    (action: KeyboardActionDefinition): boolean => {
+-      if (disabled || !isActiveComposer) return false;
+-      if (action.id === "message-input.model.pick") {
+-        if (!canSelectModel) return false;
+-        setOpenSelector("model");
+-        return true;
+-      }
+-      if (action.id === "message-input.thinking.pick") {
+-        if (!canSelectThinking) return false;
+-        if (isCompact) {
+-          handleOpenSheet("thinking");
+-        } else {
+-          setOpenSelector("thinking");
+-        }
+-        return true;
+-      }
+-      const toggleFeatureId = getToggleFeatureIdForAction(action.id);
+-      if (!toggleFeatureId) return false;
+-      const toggleFeature = features?.find((feature) => feature.id === toggleFeatureId);
+-      if (toggleFeature?.type !== "toggle" || !onSetFeature) return false;
+-      onSetFeature(toggleFeature.id, !toggleFeature.value);
+-      onDropdownClose?.();
+-      return true;
+-    },
++    (action: KeyboardActionDefinition) =>
++      handleComposerKeyboardAction(action, {
++        disabled,
++        isActiveComposer,
++        canSelectModel,
++        canSelectThinking,
++        isCompact,
++        features,
++        onSetFeature,
++        onDropdownClose,
++        setOpenSelector,
++        handleOpenSheet,
++      }),
+     [
+       canSelectModel,
+       canSelectThinking,
+diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
+index f9c2f48fe..f3708c4a5 100644
+--- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
++++ b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
+@@ -390,11 +390,11 @@ export function deriveProjectStatusBucket(input: {
+       buckets.push(
+         applyReadyToReviewPreference(
+           deriveEffectiveWorkspaceStatus({
+-          serverId,
+-          workspace,
+-          pendingCreateAttempts: input.pendingCreateAttempts,
+-          workspaceAgentActivity: session.workspaceAgentActivity,
+-          nowMs: Date.now(),
++            serverId,
++            workspace,
++            pendingCreateAttempts: input.pendingCreateAttempts,
++            workspaceAgentActivity: session.workspaceAgentActivity,
++            nowMs: Date.now(),
+           }).status,
+           input.showReadyToReview ?? true,
+         ),
+diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
+index 82de036f6..2df0390d5 100644
+--- a/packages/app/src/panels/agent-panel.tsx
++++ b/packages/app/src/panels/agent-panel.tsx
+@@ -374,15 +374,6 @@ function storeFetchedAgentDetail(input: {
+   return hydrated;
+ }
+ 
+-function findPanelAgent(
+-  state: ReturnType<typeof useSessionStore.getState>,
+-  serverId: string,
+-  agentId: string,
+-) {
+-  const session = state.sessions[serverId];
+-  return session?.agents?.get(agentId) ?? session?.agentDetails?.get(agentId) ?? null;
+-}
+-
+ function useAgentPanelDescriptor(
+   target: { kind: "agent"; agentId: string },
+   context: { serverId: string },
+diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
+index 86a212523..dd5e33d5d 100644
+--- a/packages/app/src/runtime/host-runtime.test.ts
++++ b/packages/app/src/runtime/host-runtime.test.ts
+@@ -3886,7 +3886,9 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+         .map((host) => host.label)
+         .sort(),
+     ).toEqual(["Mac mini", "Ryzen"]);
+-    expect(Object.fromEntries(store.getHosts().map((host) => [host.label, host.appearance.color]))).toEqual({
++    expect(
++      Object.fromEntries(store.getHosts().map((host) => [host.label, host.appearance.color])),
++    ).toEqual({
+       "Mac mini": "violet",
+       Ryzen: "blue",
+     });
+diff --git a/packages/app/src/screens/settings-screen.tsx b/packages/app/src/screens/settings-screen.tsx
+index 6b624dd3a..8d64b1555 100644
+--- a/packages/app/src/screens/settings-screen.tsx
++++ b/packages/app/src/screens/settings-screen.tsx
+@@ -292,7 +292,9 @@ function getServiceUrlBehaviorLabel(t: TFunction, value: ServiceUrlBehavior): st
+ }
+ 
+ function getReadyToReviewLabel(t: TFunction, value: ReadyToReviewBehavior): string {
+-  return t(`settings.general.readyToReview.options.${value === "clear-on-view" ? "clearOnView" : value}`);
++  return t(
++    `settings.general.readyToReview.options.${value === "clear-on-view" ? "clearOnView" : value}`,
++  );
+ }
+ 
+ function getReadyToReviewDescriptionKey(value: ReadyToReviewBehavior): string {
+@@ -393,6 +395,13 @@ function GeneralSection({
+   const { t, i18n } = useTranslation();
+   const activeLocale = getActiveLocale(i18n.language);
+   const sendBehaviorOptions = useMemo(() => getSendBehaviorOptions(t), [t]);
++  const readyToReviewHandlers = useMemo(
++    () =>
++      new Map(
++        READY_TO_REVIEW_VALUES.map((value) => [value, () => handleReadyToReviewChange(value)]),
++      ),
++    [handleReadyToReviewChange],
++  );
+   // Displayed rather than stored: a stale or colliding stored pair still shows the
+   // pair the composer is actually using.
+   const activeSigils = resolveComposerSigils({
+@@ -471,7 +480,7 @@ function GeneralSection({
+                 <DropdownMenuItem
+                   key={value}
+                   selected={settings.readyToReviewBehavior === value}
+-                  onSelect={() => handleReadyToReviewChange(value)}
++                  onSelect={readyToReviewHandlers.get(value)}
+                 >
+                   {getReadyToReviewLabel(t, value)}
+                 </DropdownMenuItem>
+diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
+index dc95a2ac8..f2651d5cb 100644
+--- a/packages/app/src/stores/session-store.ts
++++ b/packages/app/src/stores/session-store.ts
+@@ -742,25 +742,8 @@ function createInitialSessionState(
+   };
+ }
+ 
+-function areServerCapabilitiesEqual(
+-  current: ServerCapabilities | undefined,
+-  next: ServerCapabilities | undefined,
+-): boolean {
+-  return JSON.stringify(current ?? null) === JSON.stringify(next ?? null);
+-}
+-
+-function areServerInfoFeaturesEqual(
+-  current: ServerInfoStatusPayload["features"] | undefined,
+-  next: ServerInfoStatusPayload["features"] | undefined,
+-): boolean {
+-  return JSON.stringify(current ?? null) === JSON.stringify(next ?? null);
+-}
+-
+-function areServerInfoBuildsEqual(
+-  current: BuildInfo | undefined,
+-  next: BuildInfo | undefined,
+-): boolean {
+-  return JSON.stringify(current ?? null) === JSON.stringify(next ?? null);
++function normalizeServerInfoString(value: string | null | undefined): string | null {
++  return value?.trim() || null;
+ }
+ 
+ function isSessionServerInfoUnchanged(input: {
+@@ -784,18 +767,27 @@ function isSessionServerInfoUnchanged(input: {
+     nextCapabilities,
+     nextFeatures,
+   } = input;
+-  const prevHostname = currentServerInfo?.hostname?.trim() || null;
+-  const prevVersion = currentServerInfo?.version?.trim() || null;
+-  const prevWorktreesRoot = currentServerInfo?.worktreesRoot?.trim() || null;
+   return (
+-    currentServerInfo?.serverId === input.nextServerId &&
+-    prevHostname === nextHostname &&
+-    prevVersion === nextVersion &&
+-    areServerInfoBuildsEqual(currentServerInfo?.build, nextBuild) &&
+-    currentServerInfo?.desktopManaged === nextDesktopManaged &&
+-    prevWorktreesRoot === nextWorktreesRoot &&
+-    areServerCapabilitiesEqual(currentServerInfo?.capabilities, nextCapabilities) &&
+-    areServerInfoFeaturesEqual(currentServerInfo?.features, nextFeatures)
++    JSON.stringify({
++      serverId: currentServerInfo?.serverId,
++      hostname: normalizeServerInfoString(currentServerInfo?.hostname),
++      version: normalizeServerInfoString(currentServerInfo?.version),
++      build: currentServerInfo?.build ?? null,
++      desktopManaged: currentServerInfo?.desktopManaged,
++      worktreesRoot: normalizeServerInfoString(currentServerInfo?.worktreesRoot),
++      capabilities: currentServerInfo?.capabilities ?? null,
++      features: currentServerInfo?.features ?? null,
++    }) ===
++    JSON.stringify({
++      serverId: input.nextServerId,
++      hostname: nextHostname,
++      version: nextVersion,
++      build: nextBuild ?? null,
++      desktopManaged: nextDesktopManaged,
++      worktreesRoot: nextWorktreesRoot,
++      capabilities: nextCapabilities ?? null,
++      features: nextFeatures ?? null,
++    })
+   );
+ }
+ 
+diff --git a/packages/server/src/server/bootstrap-auth.test.ts b/packages/server/src/server/bootstrap-auth.test.ts
+index 8c5b4eb83..20884bdca 100644
+--- a/packages/server/src/server/bootstrap-auth.test.ts
++++ b/packages/server/src/server/bootstrap-auth.test.ts
+@@ -3,7 +3,6 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
+ 
+ import { hashDaemonPassword } from "./auth.js";
+ import { createTestPaseoDaemon } from "./test-utils/paseo-daemon.js";
+-import { hashDaemonPassword } from "./auth.js";
+ 
+ const originalEnv = { ...process.env };
+ const CORRECT_PASSWORD_HASH = "$2b$12$OLxyuuP9uLK30Uzc4wQX0O6liuU/Q1t5P2b0Ebf36mULvpVK3DRZW";
+diff --git a/packages/server/src/server/bootstrap-provider-availability.test.ts b/packages/server/src/server/bootstrap-provider-availability.test.ts
+index be431e0dc..850fe2ece 100644
+--- a/packages/server/src/server/bootstrap-provider-availability.test.ts
++++ b/packages/server/src/server/bootstrap-provider-availability.test.ts
+@@ -1,5 +1,5 @@
+ import { execFileSync } from "node:child_process";
+-import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
++import { mkdir, mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
+ import os from "node:os";
+ import path from "node:path";
+ import pino from "pino";
+@@ -34,7 +34,9 @@ describe("bootstrap provider availability", () => {
+     })
+       .split(/\r?\n/)[0]
+       .trim();
+-    process.env.PATH = path.dirname(gitPath);
++    const isolatedBin = await mkdtemp(path.join(root, "bin-"));
++    await symlink(gitPath, path.join(isolatedBin, path.basename(gitPath)));
++    process.env.PATH = isolatedBin;
+     expect(execFileSync("git", ["--version"], { encoding: "utf8" })).toMatch(/git version/i);
+     const paseoHome = path.join(root, ".paseo");
+     const staticDir = path.join(root, "static");
+diff --git a/packages/server/src/server/websocket-server.provider-rename.test.ts b/packages/server/src/server/websocket-server.provider-rename.test.ts
+index 8dbaa2d63..814c50d35 100644
+--- a/packages/server/src/server/websocket-server.provider-rename.test.ts
++++ b/packages/server/src/server/websocket-server.provider-rename.test.ts
+@@ -64,6 +64,8 @@ function createWebSocketServer(params: {
+ }): VoiceAssistantWebSocketServer {
+   const agentManager = {
+     setAgentAttentionCallback() {},
++    onAgentClosing: () => () => {},
++    hasPaseoMcpInjection: () => false,
+     subscribe: () => () => {},
+     updateProviderRegistry() {},
+     renameProviderOnLiveAgents: params.renameProviderOnLiveAgents,
+@@ -126,6 +128,8 @@ function createWebSocketServer(params: {
+     undefined,
+     undefined,
+     undefined,
++    undefined,
++    undefined,
+     params.providerUsageService,
+   );
+ }

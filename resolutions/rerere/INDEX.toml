@@ -1227,6 +1227,12 @@ recorded = "2026-08-06T22:39:29.095085888+00:00"
 
 [[resolution]]
 entry = "pr-2843"
+hash = "bede9bff1de9c9a61b88ccf8ed2634d21768d00f"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-06T22:51:17.699557151+00:00"
+
+[[resolution]]
+entry = "pr-2843"
 hash = "ec340c8d54b562f8ee6df08af9b78472fea2930b"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-03T23:14:56.559540363+00:00"
@@ -1320,6 +1326,12 @@ entry = "pr-2885"
 hash = "459c01a5fed9fa9ec17e5dcc2827595a5a14b93d"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-05T15:23:21.753729926+00:00"
+
+[[resolution]]
+entry = "pr-2885"
+hash = "6e8d53b2a79f6d8133ce8040e350d560a5d53934"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-06T22:51:30.769685849+00:00"
 
 [[resolution]]
 entry = "pr-2885"
