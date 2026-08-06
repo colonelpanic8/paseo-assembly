@@ -1394,6 +1394,18 @@ paths = ["packages/cli/src/commands/daemon/local-daemon.ts"]
 recorded = "2026-08-06T00:05:17.363683562+00:00"
 
 [[resolution]]
+entry = "pr-2927"
+hash = "a68dccfec09686625886e00bd5873b1e4b913dfe"
+paths = ["packages/app/src/components/ui/shortcut.tsx"]
+recorded = "2026-08-06T07:53:47.461621272+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "fbb07b4340755ef98fefbe6e42018434c6be250b"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-06T07:53:47.461623296+00:00"
+
+[[resolution]]
 entry = "watch-live-voice"
 hash = "13bf5a20832801a1d99195e28a42b00f820882c8"
 paths = ["packages/app/src/contexts/live-voice-context.tsx"]
