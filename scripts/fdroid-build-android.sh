@@ -66,8 +66,10 @@ if [[ ${#unsigned_apks[@]} -ne 1 ]]; then
   exit 1
 fi
 
+# -L is required: in a Nix-composed SDK each build-tools/<version> is a symlink
+# into its own store path, and an unfollowed find silently reports nothing.
 apksigner_path="$(
-  find "${ANDROID_HOME:?ANDROID_HOME must be set}/build-tools" -type f -name apksigner |
+  find -L "${ANDROID_HOME:?ANDROID_HOME must be set}/build-tools" -type f -name apksigner |
     sort -V |
     tail -n 1
 )"
@@ -102,8 +104,11 @@ if [[ "$actual_cert_sha256" != "$expected_cert_sha256" ]]; then
   exit 1
 fi
 
+# -L for the same reason as apksigner above. This lookup feeds an `if -n`
+# guard, so an unfollowed find does not fail here -- it silently skips the
+# package-id and version-code assertions, which is worse.
 apkanalyzer_path="$(
-  find "${ANDROID_HOME}/cmdline-tools" -type f -name apkanalyzer |
+  find -L "${ANDROID_HOME}/cmdline-tools" -type f -name apkanalyzer |
     sort -V |
     tail -n 1
 )"
