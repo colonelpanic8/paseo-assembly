@@ -232,6 +232,10 @@ summary = "Separate config from the rest of PASEO_HOME"
 pr = 2927
 summary = "Hardware keyboard shortcuts on native, mod-key setting, Shift+Enter send"
 
+[[entry]]
+pr = 2953
+summary = "Make the sidebar resize handle usable by touch"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an
