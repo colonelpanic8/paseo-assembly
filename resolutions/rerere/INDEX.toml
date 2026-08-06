@@ -1496,6 +1496,12 @@ paths = ["packages/server/src/server/agent/agent-manager.ts"]
 recorded = "2026-08-06T22:29:58.003268319+00:00"
 
 [[resolution]]
+entry = "pr-2957"
+hash = "1bcdbeac1317a4fad1cd3fec012730341f5a95da"
+paths = ["packages/app/src/screens/workspace/workspace-screen.tsx"]
+recorded = "2026-08-06T23:37:56.008942725+00:00"
+
+[[resolution]]
 entry = "watch-live-voice"
 hash = "13bf5a20832801a1d99195e28a42b00f820882c8"
 paths = ["packages/app/src/contexts/live-voice-context.tsx"]
