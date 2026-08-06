@@ -3,7 +3,7 @@
   "pins": {
     "base": "292a9c4c8c4a970951d5010c3f122c8977a05cc3",
     "entries": {
-      "agent-hierarchy-tree": "a06ca89a1c0aee05a7c6fe84ab75ec8d227cb725",
+      "agent-hierarchy-tree": "c875332b968ddd5413c76e785e9f5efd64728315",
       "assembled-ci-lint-fixes": "eb6a68058e61c65134e88ce9bd341686ea688607",
       "assembled-npm-deps-hash": "0413f4d367afceff9d4a3e206b16e07cabf867c7",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
@@ -17,7 +17,7 @@
       "pr-2530": "fe922970ceea7158ef4561200bfe00797bf31d5f",
       "pr-2532": "fb5629b1e7adb171b5dfa9f67dc3ba23beab8135",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2564": "2e6e528c8ccfa971e967b5f44d994996ba386ebc",
+      "pr-2564": "82683e2a5271f40dc25b41d2f47d86db65a943fb",
       "pr-2566": "2aa2300ce7fdcd89c869b464ed2ac1eed3c2d4ac",
       "pr-2579": "d90285da3383b044cdc9888c71745ae20151ec49",
       "pr-2588": "269e1350738ee6767d85f53705ce234bb13e6d24",
@@ -49,12 +49,12 @@
       "pr-2954": "9405b3e2d384f55650da8af92c9d1ff9530aa5d6",
       "pr-2956": "6bff9be0385ca236b57b77833e67bae5f3e6f0f8",
       "pr-2957": "8a30b75959b31fa94fc1bc8d76a2093d5f79913d",
-      "watch-live-voice": "cc00ca84756d954604ae0ac767206bd7885cf74d",
-      "workspace-snooze-mcp": "0db3ba2d708d442afdef56b0857b64b4651fb6d5"
+      "watch-live-voice": "234d25a6142b410d9f4444c16b0496c295ba8490",
+      "workspace-snooze-mcp": "867cfd8985b35cf82f944be4dd590eb4fa6c2f3a"
     },
     "parents": {
       "agent-hierarchy-tree": {
-        "status-sidebar-snooze": "2e6e528c8ccfa971e967b5f44d994996ba386ebc"
+        "status-sidebar-snooze": "82683e2a5271f40dc25b41d2f47d86db65a943fb"
       },
       "pr-2564": {
         "pr-2525": "6378e1592c16dce40931cd73451f37e0e4bab8f0",
@@ -65,25 +65,25 @@
         "pr-2657": "115e06908825be4a9935040dac0296ae9e00dcf6"
       },
       "workspace-snooze-mcp": {
-        "status-sidebar-snooze": "2e6e528c8ccfa971e967b5f44d994996ba386ebc"
+        "status-sidebar-snooze": "82683e2a5271f40dc25b41d2f47d86db65a943fb"
       }
     },
     "anchors": {
-      "agent-hierarchy-tree": "9c21b26f1509ba14c1ca145dfded49f580f3c7aa",
-      "pr-2564": "0ac8f953d6db88fa17897f9948bf04f60d1634f3",
-      "watch-live-voice": "ead7b0253d42dbb7a049efdb366a4c79eff9fcd5",
-      "workspace-snooze-mcp": "96c910be5463786a3f14d10b159fece9844f66ce"
+      "agent-hierarchy-tree": "dbb1987ff44527ede51a47f4d5f5d56f65aca6d5",
+      "pr-2564": "ead9004b627aa36cb40d506f21c2b0123515c34b",
+      "watch-live-voice": "4dd8ed8a3bd25848f809a7b77ec4e0d916497096",
+      "workspace-snooze-mcp": "ef84fc68ae570122f44cebe49d4ccd6d7a222b75"
     }
   },
   "build": {
-    "generated": "2026-08-06T23:40:56.521298669+00:00",
+    "generated": "2026-08-06T23:50:00.506573261+00:00",
     "base": "292a9c4c8c4a970951d5010c3f122c8977a05cc3",
-    "commit": "52a8730911447c791874c2edb6241ac66aaacb61",
-    "pre_provenance_commit": "52a8730911447c791874c2edb6241ac66aaacb61",
+    "commit": "59b814c58059a3a4bfacd71c202f7c54ccd449e5",
+    "pre_provenance_commit": "59b814c58059a3a4bfacd71c202f7c54ccd449e5",
     "tree": "cd2321499f8c89bda749efa5fef07866b4473733",
     "built_tree": "cd2321499f8c89bda749efa5fef07866b4473733",
-    "previous_tree": "7813487972c914850f8a465b5fd14fad9ea6a556",
-    "tree_changed": true,
+    "previous_tree": "cd2321499f8c89bda749efa5fef07866b4473733",
+    "tree_changed": false,
     "conflicts": 34,
     "manifest_entries": [
       {
@@ -115,7 +115,7 @@
         "name": "pr-2564",
         "kind": "pr",
         "source": "upstream#2564",
-        "pin": "2e6e528c8ccfa971e967b5f44d994996ba386ebc",
+        "pin": "82683e2a5271f40dc25b41d2f47d86db65a943fb",
         "fixup": "588e08ea7c5e5e26e8ae6c8d6590e32325177e04",
         "reconstruction_publish": "mine:status-sidebar-snooze",
         "parents": [
@@ -128,7 +128,7 @@
             "pin": "83663e41084a5eabe71795728179b4d6ca5244b8"
           }
         ],
-        "anchor": "0ac8f953d6db88fa17897f9948bf04f60d1634f3"
+        "anchor": "ead9004b627aa36cb40d506f21c2b0123515c34b"
       },
       {
         "name": "pr-2566",
@@ -227,7 +227,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "cc00ca84756d954604ae0ac767206bd7885cf74d",
+        "pin": "234d25a6142b410d9f4444c16b0496c295ba8490",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -240,7 +240,7 @@
             "pin": "115e06908825be4a9935040dac0296ae9e00dcf6"
           }
         ],
-        "anchor": "ead7b0253d42dbb7a049efdb366a4c79eff9fcd5"
+        "anchor": "4dd8ed8a3bd25848f809a7b77ec4e0d916497096"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -283,15 +283,15 @@
         "name": "agent-hierarchy-tree",
         "kind": "branch",
         "source": "mine:agent-hierarchy-tree",
-        "pin": "a06ca89a1c0aee05a7c6fe84ab75ec8d227cb725",
+        "pin": "c875332b968ddd5413c76e785e9f5efd64728315",
         "reconstruction_publish": "mine:agent-hierarchy-tree",
         "parents": [
           {
             "source": "mine:status-sidebar-snooze",
-            "pin": "2e6e528c8ccfa971e967b5f44d994996ba386ebc"
+            "pin": "82683e2a5271f40dc25b41d2f47d86db65a943fb"
           }
         ],
-        "anchor": "9c21b26f1509ba14c1ca145dfded49f580f3c7aa"
+        "anchor": "dbb1987ff44527ede51a47f4d5f5d56f65aca6d5"
       },
       {
         "name": "pr-2843",
@@ -315,15 +315,15 @@
         "name": "workspace-snooze-mcp",
         "kind": "branch",
         "source": "mine:workspace-snooze-mcp",
-        "pin": "0db3ba2d708d442afdef56b0857b64b4651fb6d5",
+        "pin": "867cfd8985b35cf82f944be4dd590eb4fa6c2f3a",
         "reconstruction_publish": "mine:workspace-snooze-mcp",
         "parents": [
           {
             "source": "mine:status-sidebar-snooze",
-            "pin": "2e6e528c8ccfa971e967b5f44d994996ba386ebc"
+            "pin": "82683e2a5271f40dc25b41d2f47d86db65a943fb"
           }
         ],
-        "anchor": "96c910be5463786a3f14d10b159fece9844f66ce"
+        "anchor": "ef84fc68ae570122f44cebe49d4ccd6d7a222b75"
       },
       {
         "name": "pr-2872",
@@ -454,13 +454,13 @@
       },
       {
         "name": "pr-2564",
-        "oid": "2e6e528c8ccfa971e967b5f44d994996ba386ebc",
+        "oid": "82683e2a5271f40dc25b41d2f47d86db65a943fb",
         "status": "merged",
         "conflicted": false,
         "fixup": "588e08ea7c5e5e26e8ae6c8d6590e32325177e04",
         "derived": {
-          "base_tip": "ead9004b627aa36cb40d506f21c2b0123515c34b",
-          "tip": "82683e2a5271f40dc25b41d2f47d86db65a943fb"
+          "base_tip": "9a802e6b5dcbb774c70118fc9ee0f1724806a54e",
+          "tip": "415ea7b3ec3e231398fa6500741c655cc96174a9"
         }
       },
       {
@@ -567,14 +567,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "cc00ca84756d954604ae0ac767206bd7885cf74d",
+        "oid": "234d25a6142b410d9f4444c16b0496c295ba8490",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a0662933492fb6b46116e273a38b172de3d34e2d",
         "derived": {
-          "base_tip": "4dd8ed8a3bd25848f809a7b77ec4e0d916497096",
-          "tip": "234d25a6142b410d9f4444c16b0496c295ba8490"
+          "base_tip": "b0e2ad93321a3717fc478a226b2e8c89ef3ee0d8",
+          "tip": "0333e6f9160800090e7c74a9b63885dbd70026c2"
         }
       },
       {
@@ -620,13 +620,13 @@
       },
       {
         "name": "agent-hierarchy-tree",
-        "oid": "a06ca89a1c0aee05a7c6fe84ab75ec8d227cb725",
+        "oid": "c875332b968ddd5413c76e785e9f5efd64728315",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "dbb1987ff44527ede51a47f4d5f5d56f65aca6d5",
-          "tip": "c875332b968ddd5413c76e785e9f5efd64728315"
+          "base_tip": "4bde304e05c09230acfb019d864922a8e73d6f93",
+          "tip": "ae7b491ea508d80ce0da8474fd00ca7fa25d54de"
         }
       },
       {
@@ -652,13 +652,13 @@
       },
       {
         "name": "workspace-snooze-mcp",
-        "oid": "0db3ba2d708d442afdef56b0857b64b4651fb6d5",
+        "oid": "867cfd8985b35cf82f944be4dd590eb4fa6c2f3a",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "ef84fc68ae570122f44cebe49d4ccd6d7a222b75",
-          "tip": "867cfd8985b35cf82f944be4dd590eb4fa6c2f3a"
+          "base_tip": "1b3fa47366d8b1365a11db0956ac276c669e7e26",
+          "tip": "0ac6753fa644a8d287354968d41b5fff1baa74cf"
         }
       },
       {
