@@ -240,6 +240,9 @@ summary = "Hardware keyboard shortcuts on native, mod-key setting, Shift+Enter s
 pr = 2953
 summary = "Make the sidebar resize handle usable by touch"
 
+[[entry]]
+pr = 2954
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
 # purpose: they are parents of 2564 above, and a parent declaration and an

@@ -1124,6 +1124,12 @@ paths = ["packages/app/src/agent-stream/turn-footer.tsx"]
 recorded = "2026-08-02T15:51:38.605691437+00:00"
 
 [[resolution]]
+entry = "pr-2659"
+hash = "cee6b59e71714f0fc32d3bd8f32cfff96726e83f"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-08-06T22:29:10.679225678+00:00"
+
+[[resolution]]
 entry = "pr-2660"
 hash = "f2fa878ca047093712335946e4c50cd75de6ebb7"
 paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
@@ -1212,6 +1218,12 @@ entry = "pr-2843"
 hash = "87d089c70550220a4431ce6cf251ac161e488fd8"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-05T15:11:04.517025053+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "89fed82cbcb88e3a489b2e6d19d541d644b4f08e"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-06T22:39:29.095085888+00:00"
 
 [[resolution]]
 entry = "pr-2843"
@@ -1452,6 +1464,24 @@ entry = "pr-2927"
 hash = "fbb07b4340755ef98fefbe6e42018434c6be250b"
 paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
 recorded = "2026-08-06T07:53:47.461623296+00:00"
+
+[[resolution]]
+entry = "pr-2954"
+hash = "57df94a051ec515f1d1d27fcf18f2751ee7dcdc8"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-08-06T22:29:58.003260814+00:00"
+
+[[resolution]]
+entry = "pr-2954"
+hash = "5d51a6daa06996704125685e09cb888202994aea"
+paths = ["docs/data-model.md"]
+recorded = "2026-08-06T22:29:58.003267778+00:00"
+
+[[resolution]]
+entry = "pr-2954"
+hash = "89de22aa58ba66e64eb6f9e22dcb3350047c8ee1"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-08-06T22:29:58.003268319+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
