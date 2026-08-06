@@ -15,6 +15,19 @@ topic branches into a single branch, with tracked conflict resolutions.
   maintenance, and commit and push recipe changes directly to `main`. Do not
   create or publish side branches for assembler maintenance.
 
+## Paseo
+Paseo is an agentic development environment and its currently my daily driver
+for running agents.
+
+- Unless the user or task explicitly says otherwise, start every agent session
+  or worker created by Paseo in the provider's full-permissions mode (Codex:
+  `full-access`
+- VERY IMPORTANT: ALWAYS use paseo subagents over native subagents when they are
+  available.
+- Give every Paseo-managed subagent a self-contained initial prompt. It does not
+  inherit the parent's full conversation automatically.
+
+
 ## Model
 
 - `manifest.toml` is INTENT: named remotes, the base, and the ordered entries
