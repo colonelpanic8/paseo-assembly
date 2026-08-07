@@ -49,6 +49,7 @@
       "pr-2954": "3afd55a0b7610315db3d9ad364f76b86d3b83b1d",
       "pr-2956": "ce453d7ccbc2a9b7e951f4209f926f00c8979358",
       "pr-2957": "4277c4637b0d10e8c3651d7e25c11c6a1f0d1f49",
+      "thinking-control-reachability": "30d01e501e60fe59b43f4adf35b8a694481c6382",
       "watch-live-voice": "5c928848c43b87be983f17ccdb4522fdec4e9ee8",
       "workspace-snooze-mcp": "d0a2684ac55f58c22b1573310361d96c2769c09b"
     },
@@ -76,15 +77,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-07T10:59:52.950100408+00:00",
+    "generated": "2026-08-07T19:55:02.609209900+00:00",
     "base": "a06e4d60e981202d81ab8e54520d7cb61a62a143",
-    "commit": "e89902340e362846d3ae86c38b8517455b16850c",
-    "pre_provenance_commit": "e89902340e362846d3ae86c38b8517455b16850c",
-    "tree": "a61484c600650e1c0bce7a018660910198f4308f",
-    "built_tree": "a61484c600650e1c0bce7a018660910198f4308f",
-    "previous_tree": "1ef4cb50489045d9bd9d9c77278f3dd60011e176",
+    "commit": "74dc3318e9cc77ac07b22a556d338d63438a1481",
+    "pre_provenance_commit": "74dc3318e9cc77ac07b22a556d338d63438a1481",
+    "tree": "0ede6d32d1d9754f341643ad62c37f5b1c21259b",
+    "built_tree": "0ede6d32d1d9754f341643ad62c37f5b1c21259b",
+    "previous_tree": "a61484c600650e1c0bce7a018660910198f4308f",
     "tree_changed": true,
-    "conflicts": 34,
+    "conflicts": 1,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -423,6 +424,12 @@
         "kind": "pr",
         "source": "upstream#2957",
         "pin": "4277c4637b0d10e8c3651d7e25c11c6a1f0d1f49"
+      },
+      {
+        "name": "thinking-control-reachability",
+        "kind": "branch",
+        "source": "mine:thinking-control-reachability",
+        "pin": "30d01e501e60fe59b43f4adf35b8a694481c6382"
       }
     ],
     "results": [
@@ -771,6 +778,13 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "thinking-control-reachability",
+        "oid": "30d01e501e60fe59b43f4adf35b8a694481c6382",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:430d4acd7331ccc082b99d008f86a0b12ef34cef"
       }
     ]
   }

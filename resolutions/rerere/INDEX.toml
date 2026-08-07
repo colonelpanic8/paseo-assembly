@@ -1520,6 +1520,12 @@ paths = ["packages/app/src/screens/workspace/workspace-screen.tsx"]
 recorded = "2026-08-06T23:37:56.008942725+00:00"
 
 [[resolution]]
+entry = "thinking-control-reachability"
+hash = "430d4acd7331ccc082b99d008f86a0b12ef34cef"
+paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
+recorded = "2026-08-07T19:54:49.765632999+00:00"
+
+[[resolution]]
 entry = "watch-live-voice"
 hash = "13bf5a20832801a1d99195e28a42b00f820882c8"
 paths = ["packages/app/src/contexts/live-voice-context.tsx"]
