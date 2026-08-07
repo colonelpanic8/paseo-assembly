@@ -344,7 +344,9 @@ index 8dbaa2d63..814c50d35 100644
      subscribe: () => () => {},
      updateProviderRegistry() {},
      renameProviderOnLiveAgents: params.renameProviderOnLiveAgents,
-@@ -126,6 +128,8 @@ function createWebSocketServer(params: {
+@@ -126,8 +128,10 @@ function createWebSocketServer(params: {
+     undefined,
+     undefined,
      undefined,
      undefined,
      undefined,
