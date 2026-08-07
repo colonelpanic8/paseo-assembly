@@ -5,7 +5,7 @@
     "entries": {
       "agent-hierarchy-tree": "65099841881e43e86a1cb44d43b96b3e20f036a6",
       "assembled-ci-lint-fixes": "ddf93b351532cd265bb7c050bb4d7d611b2f859d",
-      "assembled-npm-deps-hash": "0e6f9050a7f69d2b01a48d76e136bc1765531818",
+      "assembled-npm-deps-hash": "e5c9c7fb8f518e19afb91436d7a561686b1eb581",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
       "assembly-build-provenance": "732f4f48aec63eb28b32166a098dc322aa182385",
       "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
@@ -77,14 +77,14 @@
     }
   },
   "build": {
-    "generated": "2026-08-07T20:43:49.474959477+00:00",
+    "generated": "2026-08-07T20:53:05.683790412+00:00",
     "base": "98d3281cad05f2836f6d5f9365faef0409c105b0",
-    "commit": "656aa4c8382f93199a8ea3a18fc8e252b36d44a8",
-    "pre_provenance_commit": "656aa4c8382f93199a8ea3a18fc8e252b36d44a8",
-    "tree": "e9241c66ffdb623cd07f0ecb722889daa2deb8ad",
-    "built_tree": "e9241c66ffdb623cd07f0ecb722889daa2deb8ad",
+    "commit": "1e7daefa4023824ca637660fe1031ee5b75331b8",
+    "pre_provenance_commit": "1e7daefa4023824ca637660fe1031ee5b75331b8",
+    "tree": "1877be589de6ebe58fb0bde213aea49e06898483",
+    "built_tree": "1877be589de6ebe58fb0bde213aea49e06898483",
     "previous_tree": "e9241c66ffdb623cd07f0ecb722889daa2deb8ad",
-    "tree_changed": false,
+    "tree_changed": true,
     "conflicts": 34,
     "manifest_entries": [
       {
@@ -247,7 +247,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "0e6f9050a7f69d2b01a48d76e136bc1765531818"
+        "pin": "e5c9c7fb8f518e19afb91436d7a561686b1eb581"
       },
       {
         "name": "pr-2730",
@@ -411,7 +411,7 @@
         "name": "assembled-ci-lint-fixes",
         "kind": "patch",
         "source": "patches/assembled-ci-lint-fixes.patch",
-        "pin": "a1a71584f84326ed346489dbea98f96c94793355"
+        "pin": "ddf93b351532cd265bb7c050bb4d7d611b2f859d"
       },
       {
         "name": "pr-2956",
@@ -466,8 +466,8 @@
         "conflicted": false,
         "fixup": "588e08ea7c5e5e26e8ae6c8d6590e32325177e04",
         "derived": {
-          "base_tip": "b0d7faaa644c216a01a45a57c3520d349f1ad05a",
-          "tip": "1d0aeb469789a026afa0653429ae33c44dd1bc31"
+          "base_tip": "13996322725a0cb8fd4548c4224ec82b750a25a4",
+          "tip": "558db5e4277104f2d7615af4b3b8b02ef75a4c30"
         }
       },
       {
@@ -580,13 +580,13 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "398b4f1f55e4ac8dfc5c149b2c2d7aa2c1076475",
-          "tip": "0d58e6b0ae6326f6ee218fa2205a601ee2c26b22"
+          "base_tip": "d29893216a4d70896dcfcc3bc4cca9309697b947",
+          "tip": "0cc09b87a804ba216cfcf4d1c05c94570fb36eb2"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "0e6f9050a7f69d2b01a48d76e136bc1765531818",
+        "oid": "e5c9c7fb8f518e19afb91436d7a561686b1eb581",
         "status": "applied",
         "conflicted": false
       },
@@ -632,8 +632,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "cf513f1a56edbf32128e04eeddf41bcd1d6ab522",
-          "tip": "dc499a3a2a7cf400e09e223f7545fbce910bdd77"
+          "base_tip": "3dcb5a3746b0db21a47946734cfb589ae4c890a6",
+          "tip": "d70473b7a45adedd1bcda842e6336d393b6b31c8"
         }
       },
       {
@@ -664,8 +664,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "5ad8b4d27e5deacdfe7df2a79cfcfc21b65ea5a6",
-          "tip": "4dc317ef4222cc6f96f0dd6cc159078615318efe"
+          "base_tip": "e9f50dfd7bb9a50061b1ebbb1c385cd199834e50",
+          "tip": "9780db09d0ca2765dd2c4fd963695ff26b7caf3c"
         }
       },
       {
@@ -761,7 +761,7 @@
       },
       {
         "name": "assembled-ci-lint-fixes",
-        "oid": "a1a71584f84326ed346489dbea98f96c94793355",
+        "oid": "ddf93b351532cd265bb7c050bb4d7d611b2f859d",
         "status": "applied",
         "conflicted": false
       },
