@@ -1185,6 +1185,12 @@ recorded = "2026-08-03T23:14:27.602708969+00:00"
 
 [[resolution]]
 entry = "pr-2785"
+hash = "d252132fc2184c77e17cf0251d91c673f0133785"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-08-07T00:33:39.466714902+00:00"
+
+[[resolution]]
+entry = "pr-2785"
 hash = "dcdcd1da4e1c39d29a6e32379d68955ac1c08729"
 paths = ["packages/app/src/components/model-browser.tsx"]
 recorded = "2026-08-03T23:14:27.602709440+00:00"
@@ -1296,6 +1302,12 @@ entry = "pr-2883"
 hash = "38aa369c44948164a13027b99d8a80710338b8f1"
 paths = ["packages/server/src/server/logger.test.ts"]
 recorded = "2026-08-05T07:26:09.297724831+00:00"
+
+[[resolution]]
+entry = "pr-2883"
+hash = "5b9b76391bd0cb17bdadb6364d09a985f750b891"
+paths = ["packages/server/src/server/speech/providers/local/sherpa/model-downloader.ts"]
+recorded = "2026-08-07T00:34:04.492608954+00:00"
 
 [[resolution]]
 entry = "pr-2883"
