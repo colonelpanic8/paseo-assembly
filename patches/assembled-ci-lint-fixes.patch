@@ -355,3 +355,29 @@ index 8dbaa2d63..814c50d35 100644
      params.providerUsageService,
    );
  }
+diff --git a/nix/package.nix b/nix/package.nix
+--- a/nix/package.nix
++++ b/nix/package.nix
+@@ -1,5 +1,6 @@
+ {
+   lib,
+   stdenv,
+   buildNpmPackage,
++  fetchNpmDeps,
+   nodejs_22,
+@@ -80,4 +80,15 @@ buildNpmPackage rec {
+ 
+   nodejs = nodejs_22;
+ 
++  # Keep the fixed-output npm cache reproducible: the pinned fetcher writes
++  # duplicate package entries in parallel when this lockfile is expanded.
++  npmDeps = fetchNpmDeps {
++    inherit src;
++    name = "${pname}-${version}-npm-deps-serial";
++    hash = npmDepsHash;
++    preBuild = ''
++      export NIX_BUILD_CORES=1
++    '';
++  };
++
+   # Default hash lives in nix/npm-deps.hash (see arg default above).
