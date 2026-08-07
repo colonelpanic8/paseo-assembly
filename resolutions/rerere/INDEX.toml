@@ -1089,6 +1089,12 @@ recorded = "2026-08-01T21:49:30.655456692+00:00"
 
 [[resolution]]
 entry = "pr-2659"
+hash = "1483cd7a51db7e3d928714382d916f364a38d39e"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-08-07T09:57:51.641794584+00:00"
+
+[[resolution]]
+entry = "pr-2659"
 hash = "288c26447ed8015f9a8eddc3c4c54e54e681cec8"
 paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
 recorded = "2026-07-30T10:02:58.787893569+00:00"
@@ -1632,6 +1638,12 @@ entry = "watch-live-voice"
 hash = "d1fe57e096f6a999ff07cd0dce391604d4c6753c"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-08-05T01:38:34.245645246+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "dcf3c38c6da43a055597319033fddab54555a259"
+paths = ["packages/watch/app/src/main/java/sh/paseo/watch/data/WatchRepository.kt"]
+recorded = "2026-08-07T09:58:30.392791260+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
