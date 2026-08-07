@@ -77,13 +77,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-07T21:29:10.276041911+00:00",
+    "generated": "2026-08-07T23:32:32.355766934+00:00",
     "base": "98d3281cad05f2836f6d5f9365faef0409c105b0",
-    "commit": "0982b5e1293ae8440f4cec4f478aded4e73a44e2",
-    "pre_provenance_commit": "0982b5e1293ae8440f4cec4f478aded4e73a44e2",
-    "tree": "cc3476217a03ac2b2e6662261ca5ae1906bca6a4",
-    "built_tree": "cc3476217a03ac2b2e6662261ca5ae1906bca6a4",
-    "previous_tree": "739b6341473413ef44e82f3e2cffa4d2177a9386",
+    "commit": "f0de6e88c90d9e2437900f090e215ac364cb7fd4",
+    "pre_provenance_commit": "f0de6e88c90d9e2437900f090e215ac364cb7fd4",
+    "tree": "1e14d8d9ece60f078914740a49376cbc867e11db",
+    "built_tree": "1e14d8d9ece60f078914740a49376cbc867e11db",
+    "previous_tree": "cc3476217a03ac2b2e6662261ca5ae1906bca6a4",
     "tree_changed": true,
     "conflicts": 34,
     "manifest_entries": [
@@ -229,7 +229,7 @@
         "kind": "branch",
         "source": "mine:watch-live-voice",
         "pin": "40b3c30f6002349fd21e3d9d3f6d953fe7376f3f",
-        "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
+        "fixup": "7d353b552af8bfdde7c840290021917c66632e6a",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
           {
@@ -466,8 +466,8 @@
         "conflicted": false,
         "fixup": "588e08ea7c5e5e26e8ae6c8d6590e32325177e04",
         "derived": {
-          "base_tip": "e3a74d91493d72b84b7187cb0ff6a17382a250cd",
-          "tip": "5a8bd1f146a7ccfb97bd9bc1fb7e5879303d55ec"
+          "base_tip": "24533332ed55ca944437652e69b0da240bb766a9",
+          "tip": "b9169bc9d72985927a5e4d065de4a131de292a74"
         }
       },
       {
@@ -578,10 +578,10 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
+        "fixup": "7d353b552af8bfdde7c840290021917c66632e6a",
         "derived": {
-          "base_tip": "385dd376c8fcafd73a57965dfded3c96034e01be",
-          "tip": "27b41fb3524258f2a6c288d9c946fa76d3e8d7d1"
+          "base_tip": "71ba3a3b64020d4ab2aa86a4f7c9209f35ecfd2f",
+          "tip": "1ae1e50eaf949d63ba892e673f3161411c90fd1f"
         }
       },
       {
@@ -632,8 +632,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "889e46b4b3f8b45210af4ec89d4fd68e5929254e",
-          "tip": "65e7589e11c0e73d760513b4fff7b7b7830ddfb8"
+          "base_tip": "d56e128a375237fbdd612282423c3982dbbf6607",
+          "tip": "6025be048ab7d57f0b8297b8d824927008da8ab5"
         }
       },
       {
@@ -664,8 +664,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "d99d857a5fa121c6d8c1c352ea120a1bf7654043",
-          "tip": "994e7211f12e865834edbc9ba8e70aea7c05522f"
+          "base_tip": "a3e8fbc18392e1f9c151de910c00cfbfc7b846f5",
+          "tip": "b480eef279040a6ac25a430a90ce0021a34f50d0"
         }
       },
       {
