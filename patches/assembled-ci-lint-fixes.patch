@@ -197,71 +197,6 @@ index 86a212523..dd5e33d5d 100644
        "Mac mini": "violet",
        Ryzen: "blue",
      });
-diff --git a/packages/app/src/screens/settings-screen.tsx b/packages/app/src/screens/settings-screen.tsx
-index ba67c898e..610f1504f 100644
---- a/packages/app/src/screens/settings-screen.tsx
-+++ b/packages/app/src/screens/settings-screen.tsx
-@@ -290,6 +290,15 @@ function getServiceUrlBehaviorLabel(t: TFunction, value: ServiceUrlBehavior): st
-   return labels[value];
- }
- 
-+function getReadyToReviewLabel(t: TFunction, value: ReadyToReviewBehavior): string {
-+  return t(
-+    `settings.general.readyToReview.options.${value === "clear-on-view" ? "clearOnView" : value}`,
-+  );
-+}
-+
-+function getReadyToReviewDescriptionKey(value: ReadyToReviewBehavior): string {
-+  return `settings.general.readyToReview.descriptions.${value === "clear-on-view" ? "clearOnView" : value}`;
-+}
- function getActiveLocale(language: string | undefined): SupportedLocale {
-   const parsed = parseAppLanguage(language);
-   return parsed && parsed !== "system" ? parsed : "en";
-@@ -381,6 +390,13 @@ function GeneralSection({
-   const { t, i18n } = useTranslation();
-   const activeLocale = getActiveLocale(i18n.language);
-   const sendBehaviorOptions = useMemo(() => getSendBehaviorOptions(t), [t]);
-+  const readyToReviewHandlers = useMemo(
-+    () =>
-+      new Map(
-+        READY_TO_REVIEW_VALUES.map((value) => [value, () => handleReadyToReviewChange(value)]),
-+      ),
-+    [handleReadyToReviewChange],
-+  );
-   // Displayed rather than stored: a stale or colliding stored pair still shows the
-   // pair the composer is actually using.
-   const activeSigils = resolveComposerSigils({
-@@ -441,6 +457,32 @@ function GeneralSection({
-             options={sendBehaviorOptions}
-           />
-         </View>
-+        <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
-+          <View style={settingsStyles.rowContent}>
-+            <Text style={settingsStyles.rowTitle}>{t("settings.general.readyToReview.label")}</Text>
-+            <Text style={settingsStyles.rowHint}>
-+              {t(getReadyToReviewDescriptionKey(settings.readyToReviewBehavior))}
-+            </Text>
-+          </View>
-+          <DropdownMenu>
-+            <DropdownTrigger style={themeTriggerStyle}>
-+              <Text style={styles.themeTriggerText}>
-+                {getReadyToReviewLabel(t, settings.readyToReviewBehavior)}
-+              </Text>
-+            </DropdownTrigger>
-+            <DropdownMenuContent side="bottom" align="end" width={220}>
-+              {READY_TO_REVIEW_VALUES.map((value) => (
-+                <DropdownMenuItem
-+                  key={value}
-+                  selected={settings.readyToReviewBehavior === value}
-+                  onSelect={readyToReviewHandlers.get(value)}
-+                >
-+                  {getReadyToReviewLabel(t, value)}
-+                </DropdownMenuItem>
-+              ))}
-+            </DropdownMenuContent>
-+          </DropdownMenu>
-+        </View>
-         <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
            <View style={settingsStyles.rowContent}>
              <Text style={settingsStyles.rowTitle}>
 diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
@@ -391,4 +326,66 @@ index 18f2d53bd..9d3366375 100644
      params.providerUsageService,
    );
  }
-
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index bd36b53c9..45dafa48c 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -43,6 +43,7 @@
+ - Recreated workspace folders no longer remain incorrectly archived ([#2987](https://github.com/getpaseo/paseo/pull/2987))
+ 
+ - Agents now launch with their project's direnv environment already applied, with no setup. Manage what runs before an agent starts under Settings ▸ Host ▸ Agents ▸ Agent environment: pick a preset or add your own command
++
+ ## 0.3.0-beta.2 - 2026-08-05
+ 
+ ### Fixed
+diff --git a/packages/app/src/components/sidebar/display-preferences/model.ts b/packages/app/src/components/sidebar/display-preferences/model.ts
+index 14b97340f..21f9c9965 100644
+--- a/packages/app/src/components/sidebar/display-preferences/model.ts
++++ b/packages/app/src/components/sidebar/display-preferences/model.ts
+@@ -6,11 +6,7 @@ import {
+ } from "@/hooks/use-settings";
+ import { useSidebarViewStore, type SidebarGroupMode } from "@/stores/sidebar-view-store";
+ import { DEFAULT_SIDEBAR_CHECKS_DISPLAY, type SidebarChecksDisplay } from "./checks-display";
+-import {
+-  DEFAULT_SIDEBAR_ROW_ITEMS,
+-  type SidebarRowItem,
+-  type SidebarRowItems,
+-} from "./row-items";
++import { DEFAULT_SIDEBAR_ROW_ITEMS, type SidebarRowItem, type SidebarRowItems } from "./row-items";
+ 
+ /** The trailing slot holds one thing, so these are a choice rather than toggles. */
+ export type SidebarTrailingChoice = Exclude<SidebarWorkspaceTrailing, "none">;
+diff --git a/packages/app/src/i18n/resources/ko.ts b/packages/app/src/i18n/resources/ko.ts
+index 941b00631..dc85ee255 100644
+--- a/packages/app/src/i18n/resources/ko.ts
++++ b/packages/app/src/i18n/resources/ko.ts
+@@ -2092,6 +2092,13 @@ export const ko: TranslationResources = {
+           auto: "시스템",
+         },
+       },
++      sidebar: {
++        title: "사이드바",
++        alwaysShowHostLabels: {
++          title: "호스트 레이블 항상 표시",
++          description: "표시된 모든 워크스페이스가 이 기기에 있어도 호스트 레이블 표시",
++        },
++      },
+       detailLevel: {
+         title: "세부 수준",
+       },
+@@ -2277,6 +2284,15 @@ export const ko: TranslationResources = {
+         color: {
+           label: "색상",
+           accessibilityLabel: "색상, {{value}}",
++          custom: {
++            action: "사용자 지정…",
++            title: "사용자 지정 색상",
++            submit: "적용",
++            invalid: "#368080 같은 16진수 색상을 입력하세요.",
++            panelAccessibility: "채도 및 밝기",
++            hueAccessibility: "색조",
++            hexAccessibility: "16진수 색상",
++          },
+           options: {
+             none: "기본",
+             violet: "보라색",

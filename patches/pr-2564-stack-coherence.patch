@@ -351,3 +351,27 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
+diff --git a/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx b/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx
+index 5c719ebcf..82223a043 100644
+--- a/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx
++++ b/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx
+@@ -16,14 +16,14 @@ export function WorkspaceShortcutTargetsSubscriber({ enabled }: { enabled: boole
+       Array.from(workspaceEntriesByKey.values()),
+       projectNamesByViewKey,
+     );
+-    return statusGroups
+-      .filter((group) => group.bucket === "needs_input" || group.bucket === "attention")
+-      .flatMap((group) =>
+-        group.rows.map((workspace) => ({
++    return statusGroups.flatMap((group) =>
++      group.rows
++        .filter((workspace) => group.bucket === "needs_input" || workspace.readyToReview)
++        .map((workspace) => ({
+           serverId: workspace.serverId,
+           workspaceId: workspace.workspaceId,
+         })),
+-      );
++    );
+   }, [projectNamesByViewKey, workspaceEntriesByKey]);
+ 
+   useEffect(() => {

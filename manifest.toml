@@ -29,15 +29,9 @@ fixup = "patches/sidebar-project-view-shortcut-targets.patch"
 [[entry]]
 branch = "mine:assembly-fdroid-variant"
 
-# Merges 2525 and 2529 and adds a hover-revealed snooze quick action on the
-# status-sidebar workspace cards, which needs both and so fits in neither.
-# If this ever leaves the stack, exclude 2525 and 2529 if still open -- the
-# parents declaration that keeps discovery away goes with the entry.
 [[entry]]
-pr = 2564
-summary = "Combine sidebar redesign (2529) + agent snoozing (2525) + sidebar snooze action"
-parents = [{ pr = 2525 }, { pr = 2529 }]
-reconstruction_publish = "mine:status-sidebar-snooze"
+branch = "mine:personal/sidebar-workflow"
+summary = "Personal sidebar workflow: status cards, snoozing, inline rename, and ready-to-review badges"
 fixup = "patches/pr-2564-stack-coherence.patch"
 
 [[entry]]
@@ -149,32 +143,14 @@ pr = 2820
 summary = "Serialize draft provider introspection sessions"
 
 [[entry]]
-branch = "mine:agent-hierarchy-tree"
-# This is a leaf over the reconstructed 2525 + 2529 + 2564 sidebar branch,
-# not a main-based topic. Reconstruct it whenever that parent moves, replaying
-# only the hierarchy commit above the recorded merge anchor.
-summary = "Show each workspace's agent hierarchy in the sidebar"
-parents = [{ branch = "mine:status-sidebar-snooze" }]
-reconstruction_publish = "mine:agent-hierarchy-tree"
-
-[[entry]]
 pr = 2843
+fixup = "patches/pr-2843-custom-host-color-coherence.patch"
 
 [[entry]]
 pr = 2845
 
 [[entry]]
 pr = 2849
-
-# A leaf over the reconstructed 2525 + 2529 + 2564 sidebar branch, like
-# agent-hierarchy-tree: snooze only exists there, so this cannot be a
-# main-based topic. Reconstruct it whenever that parent moves, replaying only
-# the MCP commit above the recorded merge anchor.
-[[entry]]
-branch = "mine:workspace-snooze-mcp"
-summary = "Expose workspace snooze over MCP (snooze_workspace/wake_workspace, snoozed state in list_workspaces)"
-parents = [{ branch = "mine:status-sidebar-snooze" }]
-reconstruction_publish = "mine:workspace-snooze-mcp"
 
 [[entry]]
 pr = 2872
@@ -220,10 +196,6 @@ pr = 2885
 summary = "Stop shipping a hardened runtime on unsigned mac builds"
 
 [[entry]]
-pr = 2892
-summary = "Make Ready to review dismissal configurable"
-
-[[entry]]
 pr = 2898
 summary = "Fork the provider session instead of pasting a summary"
 fixup = "patches/pr-2898-native-fork-capability-fixtures.patch"
@@ -258,9 +230,8 @@ summary = "Add conversation copy tab action"
 branch = "mine:thinking-control-reachability"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
-# entry here -- discovery only sweeps open ones. 2525 and 2529 are absent on
-# purpose: they are parents of 2564 above, and a parent declaration and an
-# exclusion for the same target cannot coexist.
+# entry here -- discovery only sweeps open ones. The personal sidebar workflow
+# supersedes 2525, 2529, 2564, and 2892.
 
 # Closed, so not strictly load-bearing, but kept: reopening either would let
 # discovery re-admit a change held out on purpose, and that intent is
