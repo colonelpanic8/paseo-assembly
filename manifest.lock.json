@@ -10,7 +10,7 @@
       "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
       "colonelpanic8/client-settings-file-store": "e16aee2e760e8c67dab328a3b42381ca6ebe0226",
       "disable-worktree-setup-callout": "7331f601e2a01315eeeb484656d077440871bde2",
-      "personal/sidebar-workflow": "55d23d67e58a49d5a17dc293247883df86a3daa9",
+      "personal/sidebar-workflow": "2d59c7387c4f581b5c0fc57310820936435e625a",
       "pr-2517": "29ceaac829ebfb18891b40d53a7119356dc608dc",
       "pr-2520": "3fcb26eb6b8c11cdc1e812c2a104e9d64578a080",
       "pr-2521": "c276d30d06e76da717d6865988719b49b961793c",
@@ -61,13 +61,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-08T07:49:32.771573053+00:00",
+    "generated": "2026-08-08T08:55:49.082278632+00:00",
     "base": "cc5ce1038d9785e06d9dd1c01095b37ddd4d6f5d",
-    "commit": "69dc1181d57e72e2428d685f1fe9fec1bcd56a9e",
-    "pre_provenance_commit": "69dc1181d57e72e2428d685f1fe9fec1bcd56a9e",
-    "tree": "c0eaece31aac651621294c14464e9620eed421d8",
-    "built_tree": "c0eaece31aac651621294c14464e9620eed421d8",
-    "previous_tree": "4ef72088f18998509a9cddaefb2cd8c1d7c0369d",
+    "commit": "69bab38f4938989904d403f168df1157f122e697",
+    "pre_provenance_commit": "69bab38f4938989904d403f168df1157f122e697",
+    "tree": "ae24818722070dfddb6e84e7fb87c35c815ebbd4",
+    "built_tree": "ae24818722070dfddb6e84e7fb87c35c815ebbd4",
+    "previous_tree": "c0eaece31aac651621294c14464e9620eed421d8",
     "tree_changed": true,
     "conflicts": 30,
     "manifest_entries": [
@@ -100,7 +100,7 @@
         "name": "personal/sidebar-workflow",
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
-        "pin": "55d23d67e58a49d5a17dc293247883df86a3daa9",
+        "pin": "2d59c7387c4f581b5c0fc57310820936435e625a",
         "fixup": "0366532c26b2833efcf9ebb2ad20fd75f08386d1"
       },
       {
@@ -399,7 +399,7 @@
       },
       {
         "name": "personal/sidebar-workflow",
-        "oid": "55d23d67e58a49d5a17dc293247883df86a3daa9",
+        "oid": "2d59c7387c4f581b5c0fc57310820936435e625a",
         "status": "merged",
         "conflicted": false,
         "fixup": "0366532c26b2833efcf9ebb2ad20fd75f08386d1"
@@ -514,8 +514,8 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "1459caed1df87a3645480682d5183c6c7ca4f6c1",
-          "tip": "de6418f56f882ac4f6db0aa877aec2934288eaa3"
+          "base_tip": "bae61f0a29df3888e1ac34550358508144e09790",
+          "tip": "4892cdb27028fdad8678c62dae548957d2e5f035"
         }
       },
       {
