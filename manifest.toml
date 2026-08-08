@@ -209,7 +209,7 @@ pr = 2927
 summary = "Hardware keyboard shortcuts on native, mod-key setting, Shift+Enter send"
 
 [[entry]]
-pr = 2953
+branch = "mine:touch-sidebar-resize"
 summary = "Make the sidebar resize handle usable by touch"
 
 [[entry]]
@@ -228,10 +228,6 @@ summary = "Add conversation copy tab action"
 
 [[entry]]
 branch = "mine:thinking-control-reachability"
-
-[[entry]]
-branch = "mine:assembly-backport/mobile-sidebar-unfold-read"
-summary = "Backport sidebar resize reactivation after unfold and mark compact threads read when opened"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

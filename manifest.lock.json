@@ -6,12 +6,11 @@
       "assembled-ci-lint-fixes": "bfa57e6a17111b9c542750d6c745ddbfc47ae920",
       "assembled-npm-deps-hash": "b1929d5285fe891ca63c0dd11bd2e33b6dcea83f",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
-      "assembly-backport/mobile-sidebar-unfold-read": "4f3fa5f6c379a0ca38009703ecf359f8541a206d",
       "assembly-build-provenance": "732f4f48aec63eb28b32166a098dc322aa182385",
       "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
       "colonelpanic8/client-settings-file-store": "e16aee2e760e8c67dab328a3b42381ca6ebe0226",
       "disable-worktree-setup-callout": "7331f601e2a01315eeeb484656d077440871bde2",
-      "personal/sidebar-workflow": "2d59c7387c4f581b5c0fc57310820936435e625a",
+      "personal/sidebar-workflow": "f7cc007b5401d2f814fb021673efc84b25b9bcc0",
       "pr-2517": "29ceaac829ebfb18891b40d53a7119356dc608dc",
       "pr-2520": "3fcb26eb6b8c11cdc1e812c2a104e9d64578a080",
       "pr-2521": "c276d30d06e76da717d6865988719b49b961793c",
@@ -44,11 +43,11 @@
       "pr-2898": "dc3d4c56d8435b7744ddc4d09f729863fd2e5a8f",
       "pr-2900": "262b135e0430509dacb92914fde052bf3dc7e0b5",
       "pr-2927": "857c058afaad8ee501e40caeee723e9b9a11bd30",
-      "pr-2953": "27508a47363f0f64412f3beb62c4f8babed415e5",
       "pr-2954": "17511b1af4ec46cf822923be05a9b5b93b9b721d",
       "pr-2956": "ce453d7ccbc2a9b7e951f4209f926f00c8979358",
       "pr-2957": "4277c4637b0d10e8c3651d7e25c11c6a1f0d1f49",
       "thinking-control-reachability": "30d01e501e60fe59b43f4adf35b8a694481c6382",
+      "touch-sidebar-resize": "90a24ffdb119d8279d8ecd0023e68b7d8ffa5e19",
       "watch-live-voice": "c593058abdbf5b4266d8b90151ff29567d72f8a9"
     },
     "parents": {
@@ -62,15 +61,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-08T22:15:58.127993200+00:00",
+    "generated": "2026-08-08T22:36:55.134718680+00:00",
     "base": "cc5ce1038d9785e06d9dd1c01095b37ddd4d6f5d",
-    "commit": "b2dda0608859f25aaee96d42a52a13edca128da0",
-    "pre_provenance_commit": "b2dda0608859f25aaee96d42a52a13edca128da0",
-    "tree": "98b6a4419dcbab2e0eb64532e61090dc1f920014",
-    "built_tree": "98b6a4419dcbab2e0eb64532e61090dc1f920014",
-    "previous_tree": "ae24818722070dfddb6e84e7fb87c35c815ebbd4",
+    "commit": "9d6ba96606c7008844b114d8f1639ca8bbd4ff8d",
+    "pre_provenance_commit": "9d6ba96606c7008844b114d8f1639ca8bbd4ff8d",
+    "tree": "6250c58e7aceeebd047d4c92b6519220afabcfca",
+    "built_tree": "6250c58e7aceeebd047d4c92b6519220afabcfca",
+    "previous_tree": "98b6a4419dcbab2e0eb64532e61090dc1f920014",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 30,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -101,7 +100,7 @@
         "name": "personal/sidebar-workflow",
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
-        "pin": "2d59c7387c4f581b5c0fc57310820936435e625a",
+        "pin": "f7cc007b5401d2f814fb021673efc84b25b9bcc0",
         "fixup": "0366532c26b2833efcf9ebb2ad20fd75f08386d1"
       },
       {
@@ -335,10 +334,10 @@
         "pin": "857c058afaad8ee501e40caeee723e9b9a11bd30"
       },
       {
-        "name": "pr-2953",
-        "kind": "pr",
-        "source": "upstream#2953",
-        "pin": "27508a47363f0f64412f3beb62c4f8babed415e5"
+        "name": "touch-sidebar-resize",
+        "kind": "branch",
+        "source": "mine:touch-sidebar-resize",
+        "pin": "90a24ffdb119d8279d8ecd0023e68b7d8ffa5e19"
       },
       {
         "name": "pr-2954",
@@ -369,12 +368,6 @@
         "kind": "branch",
         "source": "mine:thinking-control-reachability",
         "pin": "30d01e501e60fe59b43f4adf35b8a694481c6382"
-      },
-      {
-        "name": "assembly-backport/mobile-sidebar-unfold-read",
-        "kind": "branch",
-        "source": "mine:assembly-backport/mobile-sidebar-unfold-read",
-        "pin": "4f3fa5f6c379a0ca38009703ecf359f8541a206d"
       }
     ],
     "results": [
@@ -406,7 +399,7 @@
       },
       {
         "name": "personal/sidebar-workflow",
-        "oid": "2d59c7387c4f581b5c0fc57310820936435e625a",
+        "oid": "f7cc007b5401d2f814fb021673efc84b25b9bcc0",
         "status": "merged",
         "conflicted": false,
         "fixup": "0366532c26b2833efcf9ebb2ad20fd75f08386d1"
@@ -521,8 +514,8 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "bae61f0a29df3888e1ac34550358508144e09790",
-          "tip": "4892cdb27028fdad8678c62dae548957d2e5f035"
+          "base_tip": "6f30b5a54b2a379a88c00bb7cd3b6b93cba0811a",
+          "tip": "caad10e5ebb5cca5a9df7f3e01fe44a48f009d6d"
         }
       },
       {
@@ -659,8 +652,8 @@
         "resolution": "rerere"
       },
       {
-        "name": "pr-2953",
-        "oid": "27508a47363f0f64412f3beb62c4f8babed415e5",
+        "name": "touch-sidebar-resize",
+        "oid": "90a24ffdb119d8279d8ecd0023e68b7d8ffa5e19",
         "status": "merged",
         "conflicted": false
       },
@@ -696,12 +689,6 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
-      },
-      {
-        "name": "assembly-backport/mobile-sidebar-unfold-read",
-        "oid": "4f3fa5f6c379a0ca38009703ecf359f8541a206d",
-        "status": "merged",
-        "conflicted": false
       }
     ]
   }
