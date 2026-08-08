@@ -189,6 +189,12 @@ recorded = "2026-08-03T21:32:23.016834648+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
+hash = "7551ba091742a14ddbbed00b1f76dcc000c3dc9b"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-08T04:42:31.514686130+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
 hash = "7a651d987b379aa4013251d98c1da67a0d80874f"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row.tsx"]
 recorded = "2026-08-07T20:30:39.566160848+00:00"
@@ -318,6 +324,12 @@ entry = "agent-hierarchy-tree"
 hash = "cd4fd8c41a842ab612d7aab78cd18de4512b3a5f"
 paths = ["packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx"]
 recorded = "2026-08-07T20:30:39.566161770+00:00"
+
+[[resolution]]
+entry = "agent-hierarchy-tree"
+hash = "ceb548c47faa5badf09504f0d92004ca86ddecd2"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-08T04:42:31.514691650+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
@@ -1413,9 +1425,33 @@ recorded = "2026-08-05T15:16:45.015492048+00:00"
 
 [[resolution]]
 entry = "pr-2892"
+hash = "0001c363054b5c2a063329356ef0dad09c7d6f37"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-title.ts"]
+recorded = "2026-08-08T04:45:46.864899714+00:00"
+
+[[resolution]]
+entry = "pr-2892"
+hash = "0b95cb175c74a834da1e868a51a1bb49e024aae2"
+paths = ["packages/app/src/utils/sidebar-shortcuts.test.ts"]
+recorded = "2026-08-08T04:45:46.864901528+00:00"
+
+[[resolution]]
+entry = "pr-2892"
 hash = "0d592a7acf57ae217060332eff231b54bd426554"
 paths = ["packages/app/src/hooks/use-settings/storage.ts"]
 recorded = "2026-08-06T00:02:29.382849012+00:00"
+
+[[resolution]]
+entry = "pr-2892"
+hash = "2ddbff453e5d43216f59fcf42eee9c9fd2f96e37"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-08T04:45:46.864901848+00:00"
+
+[[resolution]]
+entry = "pr-2892"
+hash = "4f58cda994ce60e836689a8331876fe7cdb467cb"
+paths = ["packages/app/src/components/sidebar/sidebar-projection.test.ts", "packages/app/src/hooks/use-sidebar-shortcut-model.test.tsx"]
+recorded = "2026-08-08T04:45:46.864902249+00:00"
 
 [[resolution]]
 entry = "pr-2892"
@@ -1425,15 +1461,51 @@ recorded = "2026-08-05T09:40:10.810885440+00:00"
 
 [[resolution]]
 entry = "pr-2892"
+hash = "5d95b335ad2151beb7f2bbcdf08bdf4bfa100aeb"
+paths = ["packages/app/src/utils/workspace-agent-activity.test.ts"]
+recorded = "2026-08-08T04:45:46.864902610+00:00"
+
+[[resolution]]
+entry = "pr-2892"
+hash = "62d1eb6be192a023900c38982a67f69dca6d5296"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-08-08T04:45:46.864902941+00:00"
+
+[[resolution]]
+entry = "pr-2892"
 hash = "69dc64e5d50999bd65e2f7d3c9ca6e47d16add5a"
 paths = ["packages/app/src/hooks/use-settings/storage.ts"]
 recorded = "2026-08-07T20:37:15.914069859+00:00"
 
 [[resolution]]
 entry = "pr-2892"
+hash = "9b4cb0381e0d20dc8fe3fc4acf2f464b6e6165d0"
+paths = ["packages/app/src/utils/workspace-agent-activity.ts"]
+recorded = "2026-08-08T04:45:46.864903381+00:00"
+
+[[resolution]]
+entry = "pr-2892"
 hash = "a9f7979ceec000b8c36f885748898165587db2a7"
 paths = ["packages/app/src/hooks/use-sidebar-workspace-entries.ts"]
 recorded = "2026-08-05T09:40:10.810889027+00:00"
+
+[[resolution]]
+entry = "pr-2892"
+hash = "bb1c1c496ef2bf4bfca47b42cfd7ee881296f099"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-08T04:45:46.864903752+00:00"
+
+[[resolution]]
+entry = "pr-2892"
+hash = "c1b851240f296d26aa197816fd67f9049a286d13"
+paths = ["packages/app/src/hooks/sidebar-status-view-model.test.ts"]
+recorded = "2026-08-08T04:45:46.864904083+00:00"
+
+[[resolution]]
+entry = "pr-2892"
+hash = "c4a117242b1cf8e0bd4e50a916d1867317a96897"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-title.test.ts"]
+recorded = "2026-08-08T04:45:46.864906427+00:00"
 
 [[resolution]]
 entry = "pr-2892"
@@ -1692,6 +1764,12 @@ entry = "watch-live-voice"
 hash = "c15daa4694850ab389480991a103da3daf1b4a96"
 paths = ["packages/app/src/keyboard/route-shortcut.ts"]
 recorded = "2026-08-04T20:32:48.987822113+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "c66261b07af611251905fc879cb975624a3e20cc"
+paths = ["packages/app/modules/paseo-background-call/android/src/main/java/sh/paseo/backgroundcall/BackgroundCallService.kt"]
+recorded = "2026-08-08T04:37:40.046735740+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
