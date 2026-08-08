@@ -91,14 +91,3 @@ index b15a0e6fa..8c437af70 100644
    }
  
    @Test
-
-diff --git a/packages/server/src/server/session.ts b/packages/server/src/server/session.ts
---- a/packages/server/src/server/session.ts
-+++ b/packages/server/src/server/session.ts
-@@ -183,5 +183,4 @@
- import {
-   archivePersistedWorkspaceRecord,
-   archiveWorkspaceContents,
--  requireActiveWorkspaceForArchive,
-   unarchiveWorkspaceContents,
- } from "./workspace-archive-service.js";
