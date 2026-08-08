@@ -6,6 +6,7 @@
       "assembled-ci-lint-fixes": "bfa57e6a17111b9c542750d6c745ddbfc47ae920",
       "assembled-npm-deps-hash": "b1929d5285fe891ca63c0dd11bd2e33b6dcea83f",
       "assembly-agent-env": "5caddc1f7a5fee9a1a9a9659a47e2bbb80f9c873",
+      "assembly-backport/mobile-sidebar-unfold-read": "4f3fa5f6c379a0ca38009703ecf359f8541a206d",
       "assembly-build-provenance": "732f4f48aec63eb28b32166a098dc322aa182385",
       "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
       "colonelpanic8/client-settings-file-store": "e16aee2e760e8c67dab328a3b42381ca6ebe0226",
@@ -61,15 +62,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-08T08:55:49.082278632+00:00",
+    "generated": "2026-08-08T22:15:58.127993200+00:00",
     "base": "cc5ce1038d9785e06d9dd1c01095b37ddd4d6f5d",
-    "commit": "69bab38f4938989904d403f168df1157f122e697",
-    "pre_provenance_commit": "69bab38f4938989904d403f168df1157f122e697",
-    "tree": "ae24818722070dfddb6e84e7fb87c35c815ebbd4",
-    "built_tree": "ae24818722070dfddb6e84e7fb87c35c815ebbd4",
-    "previous_tree": "c0eaece31aac651621294c14464e9620eed421d8",
+    "commit": "b2dda0608859f25aaee96d42a52a13edca128da0",
+    "pre_provenance_commit": "b2dda0608859f25aaee96d42a52a13edca128da0",
+    "tree": "98b6a4419dcbab2e0eb64532e61090dc1f920014",
+    "built_tree": "98b6a4419dcbab2e0eb64532e61090dc1f920014",
+    "previous_tree": "ae24818722070dfddb6e84e7fb87c35c815ebbd4",
     "tree_changed": true,
-    "conflicts": 30,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -368,6 +369,12 @@
         "kind": "branch",
         "source": "mine:thinking-control-reachability",
         "pin": "30d01e501e60fe59b43f4adf35b8a694481c6382"
+      },
+      {
+        "name": "assembly-backport/mobile-sidebar-unfold-read",
+        "kind": "branch",
+        "source": "mine:assembly-backport/mobile-sidebar-unfold-read",
+        "pin": "4f3fa5f6c379a0ca38009703ecf359f8541a206d"
       }
     ],
     "results": [
@@ -689,6 +696,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "assembly-backport/mobile-sidebar-unfold-read",
+        "oid": "4f3fa5f6c379a0ca38009703ecf359f8541a206d",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

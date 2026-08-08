@@ -229,6 +229,10 @@ summary = "Add conversation copy tab action"
 [[entry]]
 branch = "mine:thinking-control-reachability"
 
+[[entry]]
+branch = "mine:assembly-backport/mobile-sidebar-unfold-read"
+summary = "Backport sidebar resize reactivation after unfold and mark compact threads read when opened"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
