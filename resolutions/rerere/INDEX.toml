@@ -1743,6 +1743,12 @@ recorded = "2026-08-09T13:25:10.825889438+00:00"
 
 [[resolution]]
 entry = "pr-3087"
+hash = "4d1c883b40a2e700eb0dec072a391be29067619a"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-09T13:38:21.982862568+00:00"
+
+[[resolution]]
+entry = "pr-3087"
 hash = "607f9d49ab4ac6b4db3e876d65ec5a500d8709d3"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-09T13:25:10.825891452+00:00"
