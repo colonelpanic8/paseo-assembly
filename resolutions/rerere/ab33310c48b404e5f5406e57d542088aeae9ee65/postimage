@@ -1,0 +1,253 @@
+/**
+ * How long ago something was, before it's worded. The two formatters below share this so
+ * their thresholds can't drift apart; they differ only in how much room they have to say it.
+ *
+ * `elapsed` takes an "ago" in prose, `now` and `date` read as absolutes and never do.
+ *
+ * Finest granularity is deliberately one minute: callers refresh at most once a minute
+ * (see useMinuteNow), and a seconds readout would visibly freeze between renders.
+ */
+type Elapsed =
+  | { kind: "now" }
+  | { kind: "elapsed"; value: string }
+  | { kind: "date"; value: string };
+
+function describeElapsed(date: Date, now: Date): Elapsed {
+  const diffMs = now.getTime() - date.getTime();
+  const diffSec = Math.floor(diffMs / 1000);
+  const diffMin = Math.floor(diffSec / 60);
+  const diffHour = Math.floor(diffMin / 60);
+  const diffDay = Math.floor(diffHour / 24);
+
+  if (diffMin < 1) return { kind: "now" };
+  if (diffHour < 1) return { kind: "elapsed", value: `${diffMin}m` };
+  if (diffDay < 1) return { kind: "elapsed", value: `${diffHour}h` };
+  if (diffDay < 7) return { kind: "elapsed", value: `${diffDay}d` };
+
+  // For older dates, show abbreviated month and day
+  const month = date.toLocaleDateString("en-US", { month: "short" });
+  return { kind: "date", value: `${month} ${date.getDate()}` };
+}
+
+/**
+ * Format a date as a human-friendly relative time string
+ * Examples: "just now", "5m ago", "2h ago", "3d ago", "Jan 15"
+ */
+export function formatTimeAgo(date: Date, now: Date = new Date()): string {
+  const elapsed = describeElapsed(date, now);
+  if (elapsed.kind === "now") return "just now";
+  if (elapsed.kind === "elapsed") return `${elapsed.value} ago`;
+  return elapsed.value;
+}
+
+/**
+ * How often a compact label can change, which is all a caller needs to know to keep it honest.
+ * `static` means it never will again.
+ */
+export type RelativeTimeResolution = "minute" | "hour" | "day" | "static";
+
+export interface CompactTimeAgo {
+  label: string;
+  resolution: RelativeTimeResolution;
+}
+
+const MINUTE_MS = 60_000;
+const HOUR_MS = 60 * MINUTE_MS;
+const DAY_MS = 24 * HOUR_MS;
+/** Past a week the elapsed count stops meaning anything; the date itself is more use. */
+const ABSOLUTE_AFTER_MS = 7 * DAY_MS;
+
+/**
+ * The same instant with the prose removed, for somewhere with no room for it — a dense list
+ * where the column is understood to be a timestamp and "ago" is the only word on the line.
+ * Examples: "now", "5m", "2h", "3d", "Jan 15".
+ *
+ * Deliberately never sub-minute. A seconds label is only correct for the second it was rendered,
+ * so it either lies or forces a once-a-second re-render of a list that has nothing new to say.
+ * Everything under a minute is "now", which is both true and stable.
+ *
+ * The resolution comes back with the label so a caller can wake at the rate the label actually
+ * changes instead of guessing — see `useCompactTimeAgo`.
+ */
+export function describeCompactTimeAgo(date: Date, now: Date = new Date()): CompactTimeAgo {
+  const elapsedMs = now.getTime() - date.getTime();
+
+  if (elapsedMs < MINUTE_MS) {
+    return { label: "now", resolution: "minute" };
+  }
+  if (elapsedMs < HOUR_MS) {
+    return { label: `${Math.floor(elapsedMs / MINUTE_MS)}m`, resolution: "minute" };
+  }
+  if (elapsedMs < DAY_MS) {
+    return { label: `${Math.floor(elapsedMs / HOUR_MS)}h`, resolution: "hour" };
+  }
+  if (elapsedMs < ABSOLUTE_AFTER_MS) {
+    return { label: `${Math.floor(elapsedMs / DAY_MS)}d`, resolution: "day" };
+  }
+
+  const month = date.toLocaleDateString("en-US", { month: "short" });
+  return { label: `${month} ${date.getDate()}`, resolution: "static" };
+}
+
+export function formatCompactTimeAgo(date: Date, now: Date = new Date()): string {
+  return describeCompactTimeAgo(date, now).label;
+}
+
+function isSameLocalDay(a: Date, b: Date): boolean {
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
+}
+
+// Cached Intl formatter. Explicitly carrying `hourCycle` from the resolved
+// options is what makes the runtime respect the user's OS-level 12h/24h
+// preference rather than the locale's default cycle.
+let cachedTimeFormatter: Intl.DateTimeFormat | null = null;
+function getTimeFormatter(): Intl.DateTimeFormat {
+  if (cachedTimeFormatter) return cachedTimeFormatter;
+  const resolved = new Intl.DateTimeFormat(undefined, {
+    hour: "numeric",
+    minute: "2-digit",
+  }).resolvedOptions();
+  cachedTimeFormatter = new Intl.DateTimeFormat(undefined, {
+    hour: "numeric",
+    minute: "2-digit",
+    hourCycle: resolved.hourCycle,
+  });
+  return cachedTimeFormatter;
+}
+
+export function formatClockTime(date: Date): string {
+  return getTimeFormatter().format(date);
+}
+
+/**
+ * Format a chat-message timestamp for hover-revealed UI.
+ * - Same day: "10:11 PM" or "22:11" depending on user preference
+ * - Within ~6 days: "Wednesday 10:11 PM"
+ * - Older: "14 May 2026, 10:11 PM"
+ */
+export function formatMessageTimestamp(date: Date, now: Date = new Date()): string {
+  const time = formatClockTime(date);
+
+  if (isSameLocalDay(date, now)) {
+    return time;
+  }
+
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  if (diffDays >= 0 && diffDays < 7) {
+    const weekday = date.toLocaleDateString(undefined, { weekday: "long" });
+    return `${weekday} ${time}`;
+  }
+
+  const dateLabel = date.toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+  return `${dateLabel}, ${time}`;
+}
+
+/**
+ * Format a deadline that lies ahead, such as the time a snooze ends.
+ * - Same day: "6:00 PM" or "18:00" depending on user preference
+ * - Within the next ~6 days: "Wednesday 9:00 AM"
+ * - Further out: "14 May 2026, 9:00 AM"
+ *
+ * The weekday form is only useful while it is unambiguous, so it stops at a
+ * week out — by then the same weekday name would have come around again.
+ */
+export function formatFutureTimestamp(date: Date, now: Date = new Date()): string {
+  const time = getTimeFormatter().format(date);
+
+  if (isSameLocalDay(date, now)) {
+    return time;
+  }
+
+  // Counted in calendar days rather than elapsed hours: "Wednesday" has to mean
+  // the only Wednesday ahead, and a 6-day-20-hour gap already reaches the next
+  // one.
+  const daysAhead = countCalendarDaysBetween(now, date);
+  if (daysAhead >= 0 && daysAhead < 7) {
+    const weekday = date.toLocaleDateString(undefined, { weekday: "long" });
+    return `${weekday} ${time}`;
+  }
+
+  const dateLabel = date.toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+  return `${dateLabel}, ${time}`;
+}
+
+/** Whole local calendar days from `from` to `to`, ignoring the time of day. */
+function countCalendarDaysBetween(from: Date, to: Date): number {
+  const fromMidnight = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+  const toMidnight = new Date(to.getFullYear(), to.getMonth(), to.getDate());
+  return Math.round((toMidnight.getTime() - fromMidnight.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+const MS_PER_MINUTE = 60_000;
+const MINUTES_PER_HOUR = 60;
+const HOURS_PER_DAY = 24;
+
+/**
+ * Format a countdown at minute granularity, two units at most: "45m",
+ * "2h 15m", "3h", "3d 4h", "3d".
+ *
+ * Distinct from formatDuration, which measures elapsed work and so counts
+ * seconds and never reaches a day unit. A snooze deadline can sit a week out
+ * ("168h 0m" is not an answer), and it only ever refreshes once a minute, so
+ * seconds would be stale the moment they were drawn.
+ *
+ * Anything still ahead floors at "1m" rather than "0m", and a deadline already
+ * behind us gets the same floor: the row's wake clock may be a beat late in
+ * popping it out of the snoozed bucket, and "-1m" would be a bug on screen.
+ */
+export function formatDurationCoarse(durationMs: number): string {
+  const totalMinutes = Number.isFinite(durationMs)
+    ? Math.max(1, Math.ceil(durationMs / MS_PER_MINUTE))
+    : 1;
+
+  if (totalMinutes < MINUTES_PER_HOUR) {
+    return `${totalMinutes}m`;
+  }
+
+  const totalHours = Math.floor(totalMinutes / MINUTES_PER_HOUR);
+  if (totalHours < HOURS_PER_DAY) {
+    const minutes = totalMinutes % MINUTES_PER_HOUR;
+    return minutes === 0 ? `${totalHours}h` : `${totalHours}h ${minutes}m`;
+  }
+
+  const days = Math.floor(totalHours / HOURS_PER_DAY);
+  const hours = totalHours % HOURS_PER_DAY;
+  return hours === 0 ? `${days}d` : `${days}d ${hours}h`;
+}
+
+/**
+ * Format a duration as a compact human-readable string.
+ * - 0-60s: whole seconds ("47s")
+ * - Minutes/hours: integers only ("2m 12s", "1h 5m")
+ */
+export function formatDuration(durationMs: number): string {
+  if (!Number.isFinite(durationMs) || durationMs < 0) {
+    return "0s";
+  }
+  const totalSeconds = durationMs / 1000;
+
+  if (totalSeconds < 60) {
+    return `${Math.floor(totalSeconds)}s`;
+  }
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  if (totalMinutes < 60) {
+    const seconds = Math.floor(totalSeconds) % 60;
+    return seconds === 0 ? `${totalMinutes}m` : `${totalMinutes}m ${seconds}s`;
+  }
+  const hours = Math.floor(totalMinutes / 60);
+  const remMinutes = totalMinutes % 60;
+  return remMinutes === 0 ? `${hours}h` : `${hours}h ${remMinutes}m`;
+}

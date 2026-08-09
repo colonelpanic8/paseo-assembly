@@ -489,6 +489,18 @@ recorded = "2026-08-05T01:40:57.534338359+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
+hash = "760a2b62959c7085335616675eef75dee28f98e7"
+paths = ["packages/desktop/src/settings/desktop-settings.ts"]
+recorded = "2026-08-09T13:16:25.707399547+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "78859c208072bc1105a0727e50dee71ead8762b9"
+paths = ["packages/app/src/hooks/use-keyboard-shortcut-overrides.ts"]
+recorded = "2026-08-09T13:16:25.707406099+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
 hash = "91038f31ab4e1d31fa8da282262e3d5a0d9cb3ab"
 paths = ["packages/server/src/server/daemon-config-store.ts"]
 recorded = "2026-08-05T01:40:57.534338690+00:00"
@@ -510,6 +522,12 @@ entry = "colonelpanic8/client-settings-file-store"
 hash = "db4c4525feca119e50bde7b5e597ddd00c2574d1"
 paths = ["packages/desktop/src/settings/desktop-settings-commands.test.ts"]
 recorded = "2026-08-05T01:40:57.534339742+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "e16918d327b47236776173b744b4538c35309aee"
+paths = ["packages/app/src/hooks/use-keyboard-shortcut-overrides.ts"]
+recorded = "2026-08-09T13:25:52.325837884+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
@@ -905,7 +923,7 @@ recorded = "2026-08-06T21:04:07.673282673+00:00"
 entry = "pr-2566"
 hash = "2747113cba276de865b09d5ad65deea89b8b93b4"
 paths = ["packages/app/src/components/agent-list.tsx"]
-recorded = "2026-08-06T21:04:07.673284486+00:00"
+recorded = "2026-08-09T01:15:34.800482154+00:00"
 
 [[resolution]]
 entry = "pr-2566"
@@ -915,9 +933,27 @@ recorded = "2026-08-06T21:04:07.673284917+00:00"
 
 [[resolution]]
 entry = "pr-2566"
+hash = "a126b2d3f7d26c1a5414f2addbc28fbe9c483479"
+paths = ["packages/app/src/hooks/use-minute-tick.test.tsx"]
+recorded = "2026-08-09T01:15:34.800488556+00:00"
+
+[[resolution]]
+entry = "pr-2566"
+hash = "ab33310c48b404e5f5406e57d542088aeae9ee65"
+paths = ["packages/app/src/utils/time.ts"]
+recorded = "2026-08-09T01:15:34.800489027+00:00"
+
+[[resolution]]
+entry = "pr-2566"
 hash = "ce4fbe743f714ae06f679c9c5703f06633d5f857"
 paths = ["packages/app/src/components/schedules/schedule-row.tsx"]
 recorded = "2026-08-06T21:04:07.673285128+00:00"
+
+[[resolution]]
+entry = "pr-2566"
+hash = "f963ab2a33f0398ad0c6cb1d9b738fcf010154d2"
+paths = ["packages/app/src/hooks/use-minute-tick.ts"]
+recorded = "2026-08-09T01:15:34.800489298+00:00"
 
 [[resolution]]
 entry = "pr-2579"
@@ -1115,7 +1151,7 @@ recorded = "2026-08-02T18:48:38.010432848+00:00"
 entry = "pr-2658"
 hash = "7a37ab9d047a4dfd5e9846509b2aa8dbe28844cf"
 paths = ["packages/app/src/components/agent-list.tsx"]
-recorded = "2026-08-03T00:25:04.617446361+00:00"
+recorded = "2026-08-09T01:22:19.124057400+00:00"
 
 [[resolution]]
 entry = "pr-2658"
@@ -1563,6 +1599,12 @@ recorded = "2026-08-06T00:05:17.363680717+00:00"
 
 [[resolution]]
 entry = "pr-2900"
+hash = "3991280e3159eb05d6d7f4372a72427d8291e749"
+paths = ["packages/desktop/src/settings/settings-seed.test.ts"]
+recorded = "2026-08-09T13:18:37.825121021+00:00"
+
+[[resolution]]
+entry = "pr-2900"
 hash = "520c07d40da0407bd7980ab835bba17b8bf80573"
 paths = ["packages/cli/src/commands/daemon/set-password.ts"]
 recorded = "2026-08-06T00:05:17.363682590+00:00"
@@ -1587,9 +1629,33 @@ recorded = "2026-08-06T00:05:17.363683302+00:00"
 
 [[resolution]]
 entry = "pr-2900"
+hash = "9ce2acc67c0e8f8889618d81118cd2495dd0849e"
+paths = ["packages/desktop/src/settings/settings-seed.ts"]
+recorded = "2026-08-09T13:18:37.825122885+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "a5721f96a55704c103be2de0a56ed095d189011f"
+paths = ["packages/desktop/e2e/settings-file.e2e.mjs"]
+recorded = "2026-08-09T13:18:37.825123386+00:00"
+
+[[resolution]]
+entry = "pr-2900"
 hash = "b61f8fb2036878dbe10488b88c5b58f5bc0941db"
 paths = ["packages/cli/src/commands/daemon/local-daemon.ts"]
 recorded = "2026-08-06T00:05:17.363683562+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "e161b5c416c0df30c5e8ee94d3aa97385a0409ce"
+paths = ["docs/data-model.md"]
+recorded = "2026-08-09T13:18:37.825123606+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "0058d9a3abae97bb2b73e4857fd11b146cc31d33"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-09T13:22:44.016636435+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1601,7 +1667,7 @@ recorded = "2026-08-07T20:38:58.788675359+00:00"
 entry = "pr-2927"
 hash = "a68dccfec09686625886e00bd5873b1e4b913dfe"
 paths = ["packages/app/src/components/ui/shortcut.tsx"]
-recorded = "2026-08-06T07:53:47.461621272+00:00"
+recorded = "2026-08-09T13:22:44.016638599+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1614,6 +1680,12 @@ entry = "pr-2927"
 hash = "d158032314467fa945d1dd9704019d166abf924d"
 paths = ["packages/app/src/screens/settings/keyboard-shortcuts-section.tsx"]
 recorded = "2026-08-06T16:18:57.686784218+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "f1744a03c4c2cfee0723bc5c45f306a287693402"
+paths = ["packages/app/src/screens/settings/keyboard-shortcuts-section.tsx"]
+recorded = "2026-08-09T13:22:44.016640653+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1650,6 +1722,60 @@ entry = "pr-2957"
 hash = "1bcdbeac1317a4fad1cd3fec012730341f5a95da"
 paths = ["packages/app/src/screens/workspace/workspace-screen.tsx"]
 recorded = "2026-08-06T23:37:56.008942725+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "09b2cfadb1fbfa36b2e1ef27f85a3b54bf6cea45"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row.tsx"]
+recorded = "2026-08-09T13:25:10.825882996+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "193ac5afc8935a4e0a02c30594653a1a7259335e"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-09T13:25:10.825889108+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "2391bf5f075db9f873915a82bef4485a7666ff7f"
+paths = ["packages/app/src/styles/markdown-styles.ts"]
+recorded = "2026-08-09T13:25:10.825889438+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "607f9d49ab4ac6b4db3e876d65ec5a500d8709d3"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-08-09T13:25:10.825891452+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "80294dc584418101a4a4d519193f7344be0e5970"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-08-09T13:25:10.825891853+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "814b7e34965a525589ec0b2a0842d51d958a1e16"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row-content.tsx"]
+recorded = "2026-08-09T13:25:10.825892183+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "a2ef61c1810cd65a403e7b4ee64a963cae232931"
+paths = ["packages/app/src/components/sidebar/project-leading-visual.tsx"]
+recorded = "2026-08-09T13:25:10.825892664+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "d2e1224ddb95cfac14789adbd23bcfd72625d21f"
+paths = ["packages/client/src/daemon-client.test.ts"]
+recorded = "2026-08-09T13:25:10.825893035+00:00"
+
+[[resolution]]
+entry = "pr-3087"
+hash = "fa35f63653ff567def0ad44ddb536b73b85cc046"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-09T13:25:10.825893356+00:00"
 
 [[resolution]]
 entry = "thinking-control-reachability"

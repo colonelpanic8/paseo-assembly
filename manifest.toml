@@ -229,6 +229,13 @@ summary = "Add conversation copy tab action"
 [[entry]]
 branch = "mine:thinking-control-reachability"
 
+[[entry]]
+pr = 3006
+summary = "Fix Android draft composer handoff race"
+
+[[entry]]
+pr = 3087
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.

@@ -326,18 +326,6 @@ index 18f2d53bd..9d3366375 100644
      params.providerUsageService,
    );
  }
-diff --git a/CHANGELOG.md b/CHANGELOG.md
-index bd36b53c9..45dafa48c 100644
---- a/CHANGELOG.md
-+++ b/CHANGELOG.md
-@@ -43,6 +43,7 @@
- - Recreated workspace folders no longer remain incorrectly archived ([#2987](https://github.com/getpaseo/paseo/pull/2987))
- 
- - Agents now launch with their project's direnv environment already applied, with no setup. Manage what runs before an agent starts under Settings ▸ Host ▸ Agents ▸ Agent environment: pick a preset or add your own command
-+
- ## 0.3.0-beta.2 - 2026-08-05
- 
- ### Fixed
 diff --git a/packages/app/src/components/sidebar/display-preferences/model.ts b/packages/app/src/components/sidebar/display-preferences/model.ts
 index 14b97340f..21f9c9965 100644
 --- a/packages/app/src/components/sidebar/display-preferences/model.ts
