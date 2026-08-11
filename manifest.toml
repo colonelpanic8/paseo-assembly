@@ -35,12 +35,8 @@ summary = "Personal sidebar workflow: status cards, snoozing, inline rename, and
 fixup = "patches/pr-2564-stack-coherence.patch"
 
 [[entry]]
-pr = 2566
-summary = "Keep relative timestamps from freezing on screen"
-
-[[entry]]
-pr = 2530
-summary = "Add cross-provider model search"
+branch = "mine:model-picker-search"
+summary = "Keep grouped all-model browsing and keyboard navigation beyond upstream model profiles"
 
 [[entry]]
 pr = 2532
@@ -55,11 +51,7 @@ branch = "mine:assembly-build-provenance"
 fixup = "patches/desktop-package-version-rec.patch"
 
 [[entry]]
-pr = 2579
-summary = "Render SVG project icons on native and fall back for ICO"
-
-[[entry]]
-pr = 2588
+branch = "mine:monospaced-mobile-styling"
 summary = "Align inline code chips with the prose line on native"
 
 [[entry]]
@@ -254,3 +246,11 @@ reason = "held out at user's request: exclude the multi-account profiles change 
 [[exclude]]
 pr = 2844
 reason = "superseded by 2845, an independent and fuller take on the same direct model/thinking shortcuts; 2844's F13-F24 browser-pane policy test is the only content not in 2845"
+
+[[exclude]]
+pr = 2566
+reason = "its live relative-timestamp ticker is now carried by mine:personal/sidebar-workflow"
+
+[[exclude]]
+pr = 2579
+reason = "merged upstream as getpaseo/paseo#2579 (merge commit b7f137c2a000); its changes are already in the refreshed base"

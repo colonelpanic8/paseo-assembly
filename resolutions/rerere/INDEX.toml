@@ -542,10 +542,22 @@ paths = ["packages/cli/src/commands/onboard.ts"]
 recorded = "2026-08-05T01:40:57.534340173+00:00"
 
 [[resolution]]
+entry = "model-picker-search"
+hash = "81e134b88ad46968b9a47197478088e0923036c5"
+paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
+recorded = "2026-08-11T17:50:33.162761813+00:00"
+
+[[resolution]]
 entry = "pr-2520"
 hash = "608de77d51e8253adc9e6c1f686feb431326c57d"
 paths = ["packages/app/src/types/host-connection.test.ts"]
 recorded = "2026-08-02T15:41:42.421424178+00:00"
+
+[[resolution]]
+entry = "pr-2521"
+hash = "6e6ffd4867d39e127b7339ec192bf2a63ae72950"
+paths = ["packages/app/src/stores/keyboard-shortcuts-store.test.ts"]
+recorded = "2026-08-11T17:43:29.436714536+00:00"
 
 [[resolution]]
 entry = "pr-2521"
@@ -594,6 +606,12 @@ entry = "pr-2532"
 hash = "934ec96612d0cdb17bd18d8991405580cd02c20a"
 paths = ["packages/app/src/hooks/use-settings/storage.ts"]
 recorded = "2026-07-28T10:56:51.235458226+00:00"
+
+[[resolution]]
+entry = "pr-2532"
+hash = "9f2ac0714248533b3dde06ab353729ab3f570ac4"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-11T17:50:47.557298574+00:00"
 
 [[resolution]]
 entry = "pr-2532"
@@ -914,54 +932,6 @@ paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-02T18:47:06.853282194+00:00"
 
 [[resolution]]
-entry = "pr-2566"
-hash = "0a020c703ecdc5c1b56501c29dd09b4873a74401"
-paths = ["packages/app/src/hooks/use-minute-tick.ts"]
-recorded = "2026-08-06T21:04:07.673282673+00:00"
-
-[[resolution]]
-entry = "pr-2566"
-hash = "2747113cba276de865b09d5ad65deea89b8b93b4"
-paths = ["packages/app/src/components/agent-list.tsx"]
-recorded = "2026-08-09T01:15:34.800482154+00:00"
-
-[[resolution]]
-entry = "pr-2566"
-hash = "6083853dd722665c1cb4effd644515be08b9f346"
-paths = ["packages/app/src/components/import-session-sheet.tsx"]
-recorded = "2026-08-06T21:04:07.673284917+00:00"
-
-[[resolution]]
-entry = "pr-2566"
-hash = "a126b2d3f7d26c1a5414f2addbc28fbe9c483479"
-paths = ["packages/app/src/hooks/use-minute-tick.test.tsx"]
-recorded = "2026-08-09T01:15:34.800488556+00:00"
-
-[[resolution]]
-entry = "pr-2566"
-hash = "ab33310c48b404e5f5406e57d542088aeae9ee65"
-paths = ["packages/app/src/utils/time.ts"]
-recorded = "2026-08-09T01:15:34.800489027+00:00"
-
-[[resolution]]
-entry = "pr-2566"
-hash = "ce4fbe743f714ae06f679c9c5703f06633d5f857"
-paths = ["packages/app/src/components/schedules/schedule-row.tsx"]
-recorded = "2026-08-06T21:04:07.673285128+00:00"
-
-[[resolution]]
-entry = "pr-2566"
-hash = "f963ab2a33f0398ad0c6cb1d9b738fcf010154d2"
-paths = ["packages/app/src/hooks/use-minute-tick.ts"]
-recorded = "2026-08-09T01:15:34.800489298+00:00"
-
-[[resolution]]
-entry = "pr-2579"
-hash = "54bd6b40ed9f7043db44ff5cb00e15aed92a69c4"
-paths = ["packages/app/src/components/project-icon-view.tsx"]
-recorded = "2026-08-02T15:51:21.340921592+00:00"
-
-[[resolution]]
 entry = "pr-2628"
 hash = "ebe86a8b95b6d6c975ca87ba0a6fcf77a1894058"
 paths = ["packages/app/src/composer/index.tsx"]
@@ -1133,7 +1103,7 @@ recorded = "2026-07-31T07:13:00.430368743+00:00"
 entry = "pr-2658"
 hash = "1936c320bbd0e402f2fb87c5b6bba241e6d2a6ec"
 paths = ["packages/protocol/src/messages.ts"]
-recorded = "2026-07-31T20:38:11.693488928+00:00"
+recorded = "2026-08-11T18:05:33.466944836+00:00"
 
 [[resolution]]
 entry = "pr-2658"
@@ -1169,7 +1139,7 @@ recorded = "2026-07-30T10:01:15.828170893+00:00"
 entry = "pr-2658"
 hash = "e10435d994bc1d0b69ac8f0c4961ece645a1da05"
 paths = ["packages/server/src/server/websocket-server.ts"]
-recorded = "2026-07-31T20:38:11.693491213+00:00"
+recorded = "2026-08-11T18:05:33.466946629+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -1187,7 +1157,7 @@ recorded = "2026-08-01T21:49:30.655456692+00:00"
 entry = "pr-2659"
 hash = "1483cd7a51db7e3d928714382d916f364a38d39e"
 paths = ["packages/app/src/subagents/track.tsx"]
-recorded = "2026-08-07T09:57:51.641794584+00:00"
+recorded = "2026-08-11T18:10:28.085328979+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -1323,6 +1293,12 @@ recorded = "2026-08-03T23:29:22.967663582+00:00"
 
 [[resolution]]
 entry = "pr-2843"
+hash = "628b18123fb440494bd1d9ebc2e3105fc034f9a0"
+paths = ["packages/app/src/hooks/use-settings/storage.test.ts"]
+recorded = "2026-08-11T18:53:53.129112376+00:00"
+
+[[resolution]]
+entry = "pr-2843"
 hash = "87d089c70550220a4431ce6cf251ac161e488fd8"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-05T15:11:04.517025053+00:00"
@@ -1332,6 +1308,12 @@ entry = "pr-2843"
 hash = "89fed82cbcb88e3a489b2e6d19d541d644b4f08e"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-06T22:39:29.095085888+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "b4ff22ce4f8a67949961c89f6f68969faa303662"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-08-11T18:53:53.129122305+00:00"
 
 [[resolution]]
 entry = "pr-2843"
@@ -1649,7 +1631,7 @@ recorded = "2026-08-06T00:05:17.363683562+00:00"
 entry = "pr-2900"
 hash = "e161b5c416c0df30c5e8ee94d3aa97385a0409ce"
 paths = ["docs/data-model.md"]
-recorded = "2026-08-09T13:18:37.825123606+00:00"
+recorded = "2026-08-11T19:04:03.759258131+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1662,6 +1644,12 @@ entry = "pr-2927"
 hash = "93455b17db09528fa27611778f8bf3bed3a5c17c"
 paths = ["packages/app/src/composer/input/input.tsx"]
 recorded = "2026-08-07T20:38:58.788675359+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "9f9424e2f279b930fc0e7d01ed1353ccbb0be718"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-11T19:10:36.611854891+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1680,6 +1668,12 @@ entry = "pr-2927"
 hash = "d158032314467fa945d1dd9704019d166abf924d"
 paths = ["packages/app/src/screens/settings/keyboard-shortcuts-section.tsx"]
 recorded = "2026-08-06T16:18:57.686784218+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "e12a0aa6e16dcf889a9b0df93f894fe7630501e3"
+paths = ["packages/app/src/components/model-browser.tsx"]
+recorded = "2026-08-11T19:10:36.611861794+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1841,7 +1835,7 @@ recorded = "2026-08-04T20:32:48.987819738+00:00"
 entry = "watch-live-voice"
 hash = "5deedb03f82166d397e3f7280a22019721c14446"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
-recorded = "2026-08-05T01:39:34.657557477+00:00"
+recorded = "2026-08-11T18:37:45.268559767+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -1907,7 +1901,7 @@ recorded = "2026-08-08T04:37:40.046735740+00:00"
 entry = "watch-live-voice"
 hash = "cc5a5c5ece86cb88867b0e564eb691c398434060"
 paths = ["packages/protocol/src/messages.ts"]
-recorded = "2026-08-05T15:00:38.929884564+00:00"
+recorded = "2026-08-11T18:37:45.268561941+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
