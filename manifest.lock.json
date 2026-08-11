@@ -49,7 +49,7 @@
       "pr-3006": "f81cb1f12f735170b714dd26985594e54bf3d2b7",
       "pr-3087": "a017885b001f1cd083b2b09f4a12ecfca9b45e16",
       "thinking-control-reachability": "30d01e501e60fe59b43f4adf35b8a694481c6382",
-      "touch-sidebar-resize": "e490099569b6465328af08739a845e1155057765",
+      "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "watch-live-voice": "caad10e5ebb5cca5a9df7f3e01fe44a48f009d6d"
     },
     "parents": {
@@ -63,13 +63,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-09T13:38:25.812724163+00:00",
+    "generated": "2026-08-11T04:48:25.267300690+00:00",
     "base": "01a1d3b2b6a13f47e2774a3b64e4adee1d994632",
-    "commit": "a4fa4c86acbd3159ff850c437bc1118b4d38470a",
-    "pre_provenance_commit": "a4fa4c86acbd3159ff850c437bc1118b4d38470a",
-    "tree": "b331eb41df55a5eeb30b78c3afb2a3affa51d0e3",
-    "built_tree": "b331eb41df55a5eeb30b78c3afb2a3affa51d0e3",
-    "previous_tree": "8552c3ab602149ceba927764d5da3a21f1b08739",
+    "commit": "6ef0c886344f11caaeab58605d130f35f291ea3b",
+    "pre_provenance_commit": "6ef0c886344f11caaeab58605d130f35f291ea3b",
+    "tree": "fb10f3e10b787d22b3e216145883d3ff12a06a76",
+    "built_tree": "fb10f3e10b787d22b3e216145883d3ff12a06a76",
+    "previous_tree": "b331eb41df55a5eeb30b78c3afb2a3affa51d0e3",
     "tree_changed": true,
     "conflicts": 30,
     "manifest_entries": [
@@ -339,7 +339,7 @@
         "name": "touch-sidebar-resize",
         "kind": "branch",
         "source": "mine:touch-sidebar-resize",
-        "pin": "e490099569b6465328af08739a845e1155057765"
+        "pin": "92ca57c478a88d1fb4906877c050caa43e10d6b1"
       },
       {
         "name": "pr-2954",
@@ -528,8 +528,8 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "539af59c44a2215ca6a5d227957682a895591cc3",
-          "tip": "102f1b38e2ae8fdd74cd0c5bf2909682196e5444"
+          "base_tip": "b541d0189f651121e07e1a55ec114bc7020299c7",
+          "tip": "3cba0da2f5477eee0e5d12cbc2372fe7a2581e83"
         }
       },
       {
@@ -667,7 +667,7 @@
       },
       {
         "name": "touch-sidebar-resize",
-        "oid": "e490099569b6465328af08739a845e1155057765",
+        "oid": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
         "status": "merged",
         "conflicted": false
       },
@@ -715,7 +715,7 @@
         "oid": "a017885b001f1cd083b2b09f4a12ecfca9b45e16",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:4d1c883b40a2e700eb0dec072a391be29067619a"
+        "resolution": "rerere"
       }
     ]
   }
