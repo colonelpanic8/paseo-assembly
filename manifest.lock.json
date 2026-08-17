@@ -4,7 +4,7 @@
     "base": "ac4331456c997a5e3c161b91e87cce3af1fbb89e",
     "entries": {
       "assembled-ci-lint-fixes": "33607a951f6a8fc70c6b01ca3d435fb3fae387d6",
-      "assembled-npm-deps-hash": "ffdcbcd121c16adc9d7a872ff0c023cbe4c42aca",
+      "assembled-npm-deps-hash": "bec8654fc14ddd62b82dfdc9b5b7dec1149c30c1",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "205113c03a7bdf02d6165e716bac2d669aa70ca0",
       "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
@@ -62,13 +62,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-17T08:05:46.701029183+00:00",
+    "generated": "2026-08-17T08:16:10.889481962+00:00",
     "base": "ac4331456c997a5e3c161b91e87cce3af1fbb89e",
-    "commit": "31e5fe71b07a66953c9e96f8b3868d210ba7f668",
-    "pre_provenance_commit": "31e5fe71b07a66953c9e96f8b3868d210ba7f668",
-    "tree": "e3555e7d61ec87968f800ca506bbc260078d3103",
-    "built_tree": "e3555e7d61ec87968f800ca506bbc260078d3103",
-    "previous_tree": "429cb10065471637541f0cda26fc1ad1d27c830d",
+    "commit": "51039812c543d05138d613668fcf83ed20a6e0a7",
+    "pre_provenance_commit": "51039812c543d05138d613668fcf83ed20a6e0a7",
+    "tree": "66894a7c43e2dc29213a0233182aafdd80acbc54",
+    "built_tree": "66894a7c43e2dc29213a0233182aafdd80acbc54",
+    "previous_tree": "e3555e7d61ec87968f800ca506bbc260078d3103",
     "tree_changed": true,
     "conflicts": 27,
     "manifest_entries": [
@@ -208,7 +208,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "ffdcbcd121c16adc9d7a872ff0c023cbe4c42aca"
+        "pin": "bec8654fc14ddd62b82dfdc9b5b7dec1149c30c1"
       },
       {
         "name": "pr-2730",
@@ -508,13 +508,13 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "8e351edca72a07cb43384ec9e8526860478680c4",
-          "tip": "45079c5f58d079d651bcfdc97c9f1f86287253c2"
+          "base_tip": "49fb395aea151d91988f61b9609fff694a7025d9",
+          "tip": "422f0e7659ff637456f74cf97efb239ac8f1a554"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "ffdcbcd121c16adc9d7a872ff0c023cbe4c42aca",
+        "oid": "bec8654fc14ddd62b82dfdc9b5b7dec1149c30c1",
         "status": "applied",
         "conflicted": false
       },
