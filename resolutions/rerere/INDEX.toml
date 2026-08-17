@@ -1833,6 +1833,12 @@ recorded = "2026-08-11T19:10:36.611854891+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "a003e08dfc6c6330cf55a115fe30970e7f9fadc7"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-17T22:24:47.982769683+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "a68dccfec09686625886e00bd5873b1e4b913dfe"
 paths = ["packages/app/src/components/ui/shortcut.tsx"]
 recorded = "2026-08-09T13:22:44.016638599+00:00"

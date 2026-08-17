@@ -4,7 +4,7 @@
     "base": "ac4331456c997a5e3c161b91e87cce3af1fbb89e",
     "entries": {
       "assembled-ci-lint-fixes": "33607a951f6a8fc70c6b01ca3d435fb3fae387d6",
-      "assembled-npm-deps-hash": "bec8654fc14ddd62b82dfdc9b5b7dec1149c30c1",
+      "assembled-npm-deps-hash": "dd1aa1c229a4c47b1713c0e24751c8e15260162b",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "205113c03a7bdf02d6165e716bac2d669aa70ca0",
       "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
@@ -66,13 +66,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-17T22:03:25.939337828+00:00",
+    "generated": "2026-08-17T22:25:04.360241146+00:00",
     "base": "ac4331456c997a5e3c161b91e87cce3af1fbb89e",
-    "commit": "3bcfa4294a4a8e7e3dd7d58d84708cb3dc47ec18",
-    "pre_provenance_commit": "3bcfa4294a4a8e7e3dd7d58d84708cb3dc47ec18",
-    "tree": "e95159ab6fc870d4ad6e4e6d86f0f08fb3e53278",
-    "built_tree": "e95159ab6fc870d4ad6e4e6d86f0f08fb3e53278",
-    "previous_tree": "66894a7c43e2dc29213a0233182aafdd80acbc54",
+    "commit": "d856638207c109c54170112c17d92681266dde17",
+    "pre_provenance_commit": "d856638207c109c54170112c17d92681266dde17",
+    "tree": "01e76a588881cf91fbede7769dd371f0e21cd0f2",
+    "built_tree": "01e76a588881cf91fbede7769dd371f0e21cd0f2",
+    "previous_tree": "e95159ab6fc870d4ad6e4e6d86f0f08fb3e53278",
     "tree_changed": true,
     "conflicts": 27,
     "manifest_entries": [
@@ -212,7 +212,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "bec8654fc14ddd62b82dfdc9b5b7dec1149c30c1"
+        "pin": "dd1aa1c229a4c47b1713c0e24751c8e15260162b"
       },
       {
         "name": "pr-2730",
@@ -520,13 +520,13 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "a9eea98f86d09919a92e45e6261114f2b4d20645",
-          "tip": "1686b9ea7f01ceb7c02ff3238227803175262a85"
+          "base_tip": "36abad853dbf9537df5bde7ffb2868bfa87f93ca",
+          "tip": "0d438f0bc4f45232c1643f9821eb275a20b7b6b7"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "bec8654fc14ddd62b82dfdc9b5b7dec1149c30c1",
+        "oid": "dd1aa1c229a4c47b1713c0e24751c8e15260162b",
         "status": "applied",
         "conflicted": false
       },
@@ -654,10 +654,10 @@
         "oid": "c62e1b113c73929487944d9ea19a6879c7d76d04",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:0180583844d20e7c1d86d1d368bb105bb2314559,06311321f40e18bda9f6b315975597fca278f913,131412b30b256fe2a4962b87b28726618289c962,14af869bd9915f430ed0025def0870c94db9323e,31d1e6c967ad7dfb61a779eefb6c2a40a3add210,346e520ad5cca81011683dc3b742d7d772a8124a,3ed08dac7912cbedd06b825e19fcd30aaa075ac8,41f557ce15a6c5081fce8e2d96240e208f1a908e,46f2a8ed1cf809432440d17a6c715ffe2a8e91b6,478d56d1cea3f80148a4a8adc722dcef57e7a7e7,482d6d7f28f5b881b17094c34b289a8034ab3d5b,499c7d7332ffcb9f79c7ce67c74cc7895ebe9367,4b64ca7ce9cb7788a785d4c39f61cd16fd42d92c,4b9654f8c0193f52509e85912c8fa765e4b56c8b,55cd6da90a9353f8b0d568bc8970a901444bbb36,5a9181e6e22a78b9ff4956d94a72377abaf6928d,6930818ce475f840d46db946be11af926fcc4411,6d9b9618ea0b60f79227c8535ff2c6a5c430144a,7a0aee3c39fe6849bbd323dd132b857f395b42b1,8105453894d3e946de1c02138a52143bd9989973,905785243228fc9e1ff5551abefabea3d22a480e,a8de63f743b25529dba1efb53d2aa2e50d25aa93,b74a15f07e3111f26e3abea09e1425cf89d754eb,c6d3fe118eabd84ccbdfbe53cae0bbff8c4f5e88,cfb268ccce99c0cd1cc3ab19242aa8690b1c8565,d8282ea12d4d49866863e442b97005f2e96ea3bf,ea1928cfc7290fc54b4f8e53624fa9a611925051,f2e7e9ef2ad4c347f10fd14a05ed2196ab62a629,f44bd31f2800622894abc0394e492917776576c1,f5cfb8e1862681459ad1dda6e3d482b27f97653d",
+        "resolution": "rerere:a003e08dfc6c6330cf55a115fe30970e7f9fadc7",
         "derived": {
-          "base_tip": "7ee3ccb70c572372c38121edad497715e5084926",
-          "tip": "d6ab4d7adc0b55285c8d0bb89e41422117917c1a"
+          "base_tip": "659ccdfddd9c4b0be5884fce4e9009be04ce842e",
+          "tip": "46e2973506d64bee588060a4cd3f82c5c2e9e051"
         }
       },
       {
