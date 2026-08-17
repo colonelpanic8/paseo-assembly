@@ -29,10 +29,10 @@ index 6ea3847a1..811842a1d 100644
    # CI auto-updates that file when package-lock.json changes (see .github/workflows/).
    inherit npmDepsHash;
 diff --git a/packages/app/src/components/message.tsx b/packages/app/src/components/message.tsx
-index fdd30e99f..a051271ea 100644
+index 8299268bd..71a5c3a13 100644
 --- a/packages/app/src/components/message.tsx
 +++ b/packages/app/src/components/message.tsx
-@@ -645,9 +645,7 @@ export const AssistantTurnFooter = memo(function AssistantTurnFooter({
+@@ -647,9 +647,7 @@ export const AssistantTurnFooter = memo(function AssistantTurnFooter({
          getContent={getContent}
          containerStyle={assistantTurnFooterStylesheet.copyButton}
        />
@@ -43,23 +43,11 @@ index fdd30e99f..a051271ea 100644
        {durationLabel || completionLabel ? (
          <Text style={assistantTurnFooterStylesheet.label} testID="assistant-turn-completion">
            {[durationLabel, completionLabel].filter(Boolean).join(" · ")}
-diff --git a/packages/app/src/components/sidebar/sidebar-status-list.tsx b/packages/app/src/components/sidebar/sidebar-status-list.tsx
-index 6550ec4f7..f53ed050b 100644
---- a/packages/app/src/components/sidebar/sidebar-status-list.tsx
-+++ b/packages/app/src/components/sidebar/sidebar-status-list.tsx
-@@ -56,7 +56,6 @@ import {
-   SidebarWorkspaceContextMenu,
-   SidebarWorkspaceMenu,
- } from "@/components/sidebar/sidebar-workspace-menu";
--import { isStatusGroupCollapsed } from "@/stores/sidebar-collapsed-sections-store/state";
- import { SidebarStatusRowSnoozeAction } from "@/components/sidebar/sidebar-status-row-snooze-action";
- import { useWorkspaceSnoozeMenu } from "@/workspace-snooze/use-workspace-snooze-menu";
- import { PinnedSectionHeader } from "@/components/sidebar/pinned-section-header";
 diff --git a/packages/app/src/composer/agent-controls/index.tsx b/packages/app/src/composer/agent-controls/index.tsx
-index 5c9eb962f..a726bc06e 100644
+index 95212daca..c66aa72dc 100644
 --- a/packages/app/src/composer/agent-controls/index.tsx
 +++ b/packages/app/src/composer/agent-controls/index.tsx
-@@ -450,6 +450,58 @@ function buildOpenChangeHandler(
+@@ -499,6 +499,58 @@ function buildOpenChangeHandler(
    };
  }
  
@@ -118,7 +106,7 @@ index 5c9eb962f..a726bc06e 100644
  function ControlledAgentControls({
    provider,
    providerOptions,
-@@ -706,30 +758,19 @@ function ControlledAgentControls({
+@@ -756,30 +808,19 @@ function ControlledAgentControls({
    );
  
    const handleKeyboardAction = useCallback(
@@ -162,11 +150,45 @@ index 5c9eb962f..a726bc06e 100644
      [
        canSelectModel,
        canSelectThinking,
+diff --git a/packages/app/src/i18n/resources/ko.ts b/packages/app/src/i18n/resources/ko.ts
+index c853a541c..6ca758cf0 100644
+--- a/packages/app/src/i18n/resources/ko.ts
++++ b/packages/app/src/i18n/resources/ko.ts
+@@ -2197,6 +2197,13 @@ export const ko: TranslationResources = {
+           auto: "시스템",
+         },
+       },
++      sidebar: {
++        title: "사이드바",
++        alwaysShowHostLabels: {
++          title: "호스트 레이블 항상 표시",
++          description: "표시된 모든 워크스페이스가 이 기기에 있어도 호스트 레이블 표시",
++        },
++      },
+       detailLevel: {
+         title: "세부 수준",
+       },
+@@ -2385,6 +2392,15 @@ export const ko: TranslationResources = {
+         color: {
+           label: "색상",
+           accessibilityLabel: "색상, {{value}}",
++          custom: {
++            action: "사용자 지정…",
++            title: "사용자 지정 색상",
++            submit: "적용",
++            invalid: "#368080 같은 16진수 색상을 입력하세요.",
++            panelAccessibility: "채도 및 밝기",
++            hueAccessibility: "색조",
++            hexAccessibility: "16진수 색상",
++          },
+           options: {
+             none: "기본",
+             violet: "보라색",
 diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
-index b1b1381f6..52a2cdfcb 100644
+index fe0c69510..20f12b6dd 100644
 --- a/packages/app/src/panels/agent-panel.tsx
 +++ b/packages/app/src/panels/agent-panel.tsx
-@@ -370,15 +370,6 @@ function storeFetchedAgentDetail(input: {
+@@ -372,15 +372,6 @@ function storeFetchedAgentDetail(input: {
    return hydrated;
  }
  
@@ -183,10 +205,10 @@ index b1b1381f6..52a2cdfcb 100644
    target: { kind: "agent"; agentId: string },
    context: { serverId: string },
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
-index 86a212523..dd5e33d5d 100644
+index 060167039..d0f6ebf8f 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
 +++ b/packages/app/src/runtime/host-runtime.test.ts
-@@ -3886,7 +3886,9 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -3935,7 +3935,9 @@ describe("HostRuntimeStore managed host bootstrap", () => {
          .map((host) => host.label)
          .sort(),
      ).toEqual(["Mac mini", "Ryzen"]);
@@ -197,13 +219,11 @@ index 86a212523..dd5e33d5d 100644
        "Mac mini": "violet",
        Ryzen: "blue",
      });
-           <View style={settingsStyles.rowContent}>
-             <Text style={settingsStyles.rowTitle}>
 diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
-index dc95a2ac8..f2651d5cb 100644
+index b4260a23c..6f367224e 100644
 --- a/packages/app/src/stores/session-store.ts
 +++ b/packages/app/src/stores/session-store.ts
-@@ -742,25 +742,8 @@ function createInitialSessionState(
+@@ -715,25 +715,8 @@ function createInitialSessionState(
    };
  }
  
@@ -231,7 +251,7 @@ index dc95a2ac8..f2651d5cb 100644
  }
  
  function isSessionServerInfoUnchanged(input: {
-@@ -784,18 +767,27 @@ function isSessionServerInfoUnchanged(input: {
+@@ -757,18 +740,27 @@ function isSessionServerInfoUnchanged(input: {
      nextCapabilities,
      nextFeatures,
    } = input;
@@ -305,10 +325,10 @@ index be431e0dc..850fe2ece 100644
      const paseoHome = path.join(root, ".paseo");
      const staticDir = path.join(root, "static");
 diff --git a/packages/server/src/server/websocket-server.provider-rename.test.ts b/packages/server/src/server/websocket-server.provider-rename.test.ts
-index 18f2d53bd..9d3366375 100644
+index 1a8d9fedc..f4d0c1fa5 100644
 --- a/packages/server/src/server/websocket-server.provider-rename.test.ts
 +++ b/packages/server/src/server/websocket-server.provider-rename.test.ts
-@@ -64,6 +64,8 @@ function createWebSocketServer(params: {
+@@ -62,6 +62,8 @@ function createWebSocketServer(params: {
  }): VoiceAssistantWebSocketServer {
    const agentManager = {
      setAgentAttentionCallback() {},
@@ -317,7 +337,7 @@ index 18f2d53bd..9d3366375 100644
      subscribe: () => () => {},
      updateProviderRegistry() {},
      renameProviderOnLiveAgents: params.renameProviderOnLiveAgents,
-@@ -127,6 +129,8 @@ function createWebSocketServer(params: {
+@@ -123,6 +125,8 @@ function createWebSocketServer(params: {
      undefined,
      undefined,
      undefined,
@@ -326,54 +346,159 @@ index 18f2d53bd..9d3366375 100644
      params.providerUsageService,
    );
  }
-diff --git a/packages/app/src/components/sidebar/display-preferences/model.ts b/packages/app/src/components/sidebar/display-preferences/model.ts
-index 14b97340f..21f9c9965 100644
---- a/packages/app/src/components/sidebar/display-preferences/model.ts
-+++ b/packages/app/src/components/sidebar/display-preferences/model.ts
-@@ -6,11 +6,7 @@ import {
- } from "@/hooks/use-settings";
- import { useSidebarViewStore, type SidebarGroupMode } from "@/stores/sidebar-view-store";
- import { DEFAULT_SIDEBAR_CHECKS_DISPLAY, type SidebarChecksDisplay } from "./checks-display";
--import {
--  DEFAULT_SIDEBAR_ROW_ITEMS,
--  type SidebarRowItem,
--  type SidebarRowItems,
--} from "./row-items";
-+import { DEFAULT_SIDEBAR_ROW_ITEMS, type SidebarRowItem, type SidebarRowItems } from "./row-items";
+diff --git a/packages/app/src/composer/agent-controls/index.tsx b/packages/app/src/composer/agent-controls/index.tsx
+index c66aa72dc..ceaf6af47 100644
+--- a/packages/app/src/composer/agent-controls/index.tsx
++++ b/packages/app/src/composer/agent-controls/index.tsx
+@@ -89,7 +89,6 @@ import {
+ } from "@/agent-profiles";
+ import { buildSettingsHostSectionRoute } from "@/utils/host-routes";
+ import { ShortcutHint } from "@/components/ui/shortcut-hint";
+-import { useComposerKeyboardScope } from "@/composer/keyboard-scope";
+ import { useKeyboardActionHandler } from "@/hooks/use-keyboard-action-handler";
+ import { useShowControlShortcutBadges } from "@/hooks/use-show-shortcut-badges";
+ import type { KeyboardActionDefinition } from "@/keyboard/keyboard-action-dispatcher";
+diff --git a/packages/app/src/create-agent-preferences/storage.ts b/packages/app/src/create-agent-preferences/storage.ts
+index 40857bc26..ea74d5476 100644
+--- a/packages/app/src/create-agent-preferences/storage.ts
++++ b/packages/app/src/create-agent-preferences/storage.ts
+@@ -1,6 +1,5 @@
+ import { layeredSettingsStorage } from "@/storage/settings-seed";
+ import { readValidatedJson } from "@/storage/validated-storage";
+-import { layeredSettingsStorage } from "@/storage/settings-seed";
+ import {
+   FormPreferencesSchema,
+   StoredFormPreferencesSchema,
+diff --git a/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts b/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts
+index 4d3a51138..c5ecf39dd 100644
+--- a/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts
++++ b/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts
+@@ -6,7 +6,6 @@ import {
+   createShortcutOverrideStore,
+   type ShortcutOverrideStore,
+ } from "@/keyboard/shortcut-override-store";
+-import { layeredSettingsStorage } from "@/storage/settings-seed";
+ import { readValidatedJson } from "@/storage/validated-storage";
  
- /** The trailing slot holds one thing, so these are a choice rather than toggles. */
- export type SidebarTrailingChoice = Exclude<SidebarWorkspaceTrailing, "none">;
-diff --git a/packages/app/src/i18n/resources/ko.ts b/packages/app/src/i18n/resources/ko.ts
-index 941b00631..dc85ee255 100644
---- a/packages/app/src/i18n/resources/ko.ts
-+++ b/packages/app/src/i18n/resources/ko.ts
-@@ -2092,6 +2092,13 @@ export const ko: TranslationResources = {
-           auto: "시스템",
-         },
-       },
-+      sidebar: {
-+        title: "사이드바",
-+        alwaysShowHostLabels: {
-+          title: "호스트 레이블 항상 표시",
-+          description: "표시된 모든 워크스페이스가 이 기기에 있어도 호스트 레이블 표시",
-+        },
-+      },
-       detailLevel: {
-         title: "세부 수준",
-       },
-@@ -2277,6 +2284,15 @@ export const ko: TranslationResources = {
-         color: {
-           label: "색상",
-           accessibilityLabel: "색상, {{value}}",
-+          custom: {
-+            action: "사용자 지정…",
-+            title: "사용자 지정 색상",
-+            submit: "적용",
-+            invalid: "#368080 같은 16진수 색상을 입력하세요.",
-+            panelAccessibility: "채도 및 밝기",
-+            hueAccessibility: "색조",
-+            hexAccessibility: "16진수 색상",
-+          },
-           options: {
-             none: "기본",
-             violet: "보라색",
+ const STORAGE_KEY = "@paseo:keyboard-shortcut-overrides";
+diff --git a/packages/app/src/keyboard/keyboard-shortcuts.ts b/packages/app/src/keyboard/keyboard-shortcuts.ts
+index 7cfaa79b1..6c6470069 100644
+--- a/packages/app/src/keyboard/keyboard-shortcuts.ts
++++ b/packages/app/src/keyboard/keyboard-shortcuts.ts
+@@ -371,6 +371,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "toggle-workspace-isolation",
+       section: "workspaces",
+       label: "Toggle workspace isolation",
++      keys: ["alt", "I"],
+     },
+   },
+   {
+@@ -382,6 +383,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "select-starting-ref",
+       section: "workspaces",
+       label: "Select starting ref",
++      keys: ["alt", "B"],
+     },
+   },
+   {
+@@ -393,6 +395,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "select-host",
+       section: "workspaces",
+       label: "Select host",
++      keys: ["alt", "H"],
+     },
+   },
+ 
+@@ -406,6 +409,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "select-model",
+       section: "agent-input",
+       label: "Select model",
++      keys: ["alt", "M"],
+     },
+   },
+   {
+@@ -417,6 +421,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "select-thinking",
+       section: "agent-input",
+       label: "Select thinking effort",
++      keys: ["alt", "E"],
+     },
+   },
+   {
+@@ -428,6 +433,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "select-agent-mode",
+       section: "agent-input",
+       label: "Select agent mode",
++      keys: ["alt", "A"],
+     },
+   },
+   {
+@@ -440,6 +446,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "toggle-fast-mode",
+       section: "agent-input",
+       label: "Toggle fast mode",
++      keys: ["alt", "F"],
+     },
+   },
+   {
+@@ -452,6 +459,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "toggle-plan-mode",
+       section: "agent-input",
+       label: "Toggle plan mode",
++      keys: ["alt", "P"],
+     },
+   },
+ 
+@@ -752,7 +760,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+     when: { commandCenter: false, editable: false, terminal: false },
+     help: {
+       id: "workspace-next-ready-waiting",
+-      section: "navigation",
++      section: "workspaces",
+       label: "Next ready/waiting workspace",
+       keys: ["alt", "R"],
+     },
+@@ -1347,6 +1355,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "live-voice-mute-toggle",
+       section: "agent-input",
+       label: "Mute/unmute live voice",
++      keys: ["mod", "shift", "M"],
+     },
+   },
+   {
+@@ -1359,6 +1368,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       id: "live-voice-mute-toggle",
+       section: "agent-input",
+       label: "Mute/unmute live voice",
++      keys: ["mod", "shift", "M"],
+     },
+   },
+ 
+@@ -1377,6 +1387,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       section: "agent-input",
+       label: "Hold to invert live voice mute",
+       note: "Push-to-talk while muted, push-to-mute while live.",
++      keys: ["mod", "shift", "Space"],
+     },
+   },
+   {
+@@ -1390,6 +1401,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+       section: "agent-input",
+       label: "Hold to invert live voice mute",
+       note: "Push-to-talk while muted, push-to-mute while live.",
++      keys: ["mod", "shift", "Space"],
+     },
+   },
+ ];
+diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
+index c267ffd98..25f8b93b9 100644
+--- a/packages/server/src/server/daemon-config-store.ts
++++ b/packages/server/src/server/daemon-config-store.ts
+@@ -1,7 +1,6 @@
+ import {
+   deepMerge,
+   loadConfigStack,
+-  loadPersistedConfig,
+   restoreConfigWriteTarget,
+   saveConfigStack,
+   type ConfigStack,

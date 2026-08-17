@@ -543,6 +543,12 @@ recorded = "2026-08-05T01:40:57.534340173+00:00"
 
 [[resolution]]
 entry = "model-picker-search"
+hash = "3265fcb70122d9e3bb8f44ffa011fcf4b3c60f12"
+paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
+recorded = "2026-08-17T07:23:10.645352375+00:00"
+
+[[resolution]]
+entry = "model-picker-search"
 hash = "81e134b88ad46968b9a47197478088e0923036c5"
 paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
 recorded = "2026-08-11T17:50:33.162761813+00:00"
@@ -941,7 +947,7 @@ recorded = "2026-08-02T18:48:21.069267357+00:00"
 entry = "pr-2628"
 hash = "fe4a486e9b0091726941bb979fd308e90966880e"
 paths = ["packages/app/src/composer/index.tsx"]
-recorded = "2026-07-29T21:17:39.035667732+00:00"
+recorded = "2026-08-17T07:23:26.425597678+00:00"
 
 [[resolution]]
 entry = "pr-2629"
@@ -1107,6 +1113,12 @@ recorded = "2026-08-11T18:05:33.466944836+00:00"
 
 [[resolution]]
 entry = "pr-2658"
+hash = "2ac490bae33050564cd316f1539ace9d88f11214"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-08-17T07:23:38.855504834+00:00"
+
+[[resolution]]
+entry = "pr-2658"
 hash = "665571dcff2c01d82de0802724c4903b314cd549"
 paths = ["packages/server/src/server/agent/agent-manager.ts"]
 recorded = "2026-08-03T00:25:04.617443816+00:00"
@@ -1163,7 +1175,7 @@ recorded = "2026-08-11T18:10:28.085328979+00:00"
 entry = "pr-2659"
 hash = "288c26447ed8015f9a8eddc3c4c54e54e681cec8"
 paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
-recorded = "2026-07-30T10:02:58.787893569+00:00"
+recorded = "2026-08-17T07:23:52.880470369+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -1281,6 +1293,12 @@ recorded = "2026-08-03T20:19:52.564339804+00:00"
 
 [[resolution]]
 entry = "pr-2843"
+hash = "1925ebd67f500bae986b0c7568323ba0cd7bb422"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-08-17T08:04:22.808116386+00:00"
+
+[[resolution]]
+entry = "pr-2843"
 hash = "35860e79ee80a54c0aaf2aefa00cae954be1ff68"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-06T21:06:50.121252843+00:00"
@@ -1350,6 +1368,18 @@ entry = "pr-2849"
 hash = "d9c04a3ff10bcb6badbc41baa7316efc995f51cc"
 paths = ["packages/server/src/server/daemon-config-store.test.ts"]
 recorded = "2026-08-04T01:03:30.416548664+00:00"
+
+[[resolution]]
+entry = "pr-2849"
+hash = "dcb0552d241288265db73d9b8ac062aeed1b92b6"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-08-17T07:25:36.532740723+00:00"
+
+[[resolution]]
+entry = "pr-2849"
+hash = "efb9045f414afc7c5b26892a79b6e9a760b481b5"
+paths = ["packages/server/src/server/daemon-config-store.test.ts"]
+recorded = "2026-08-17T07:25:36.532747286+00:00"
 
 [[resolution]]
 entry = "pr-2873"
@@ -1575,6 +1605,12 @@ recorded = "2026-08-05T15:18:22.945639101+00:00"
 
 [[resolution]]
 entry = "pr-2900"
+hash = "2d88499d671d5df9cf0fdce5096637f2ae7df39d"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-08-17T07:26:49.024234865+00:00"
+
+[[resolution]]
+entry = "pr-2900"
 hash = "309884cfe37f57d99683059b264f6fbf2c39d510"
 paths = ["packages/server/src/server/persisted-config.ts"]
 recorded = "2026-08-06T00:05:17.363680717+00:00"
@@ -1596,6 +1632,18 @@ entry = "pr-2900"
 hash = "526e8085dc04cad97901c1d8a4f0e066b7dac543"
 paths = ["packages/cli/src/commands/onboard.ts"]
 recorded = "2026-08-06T00:05:17.363682901+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "65453a47a0386e22a29991ee868e215aad374d20"
+paths = ["packages/app/src/create-agent-preferences/storage.ts"]
+recorded = "2026-08-17T07:26:49.024240817+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "7647be1ed0ffdf0a6d939200fc54402cc928f6d0"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-08-17T07:26:49.024241137+00:00"
 
 [[resolution]]
 entry = "pr-2900"
@@ -1626,6 +1674,12 @@ entry = "pr-2900"
 hash = "b61f8fb2036878dbe10488b88c5b58f5bc0941db"
 paths = ["packages/cli/src/commands/daemon/local-daemon.ts"]
 recorded = "2026-08-06T00:05:17.363683562+00:00"
+
+[[resolution]]
+entry = "pr-2900"
+hash = "dc394ee8ea891b6c396bf829ff3939319fd9b1f6"
+paths = ["packages/server/src/server/daemon-config-store.test.ts"]
+recorded = "2026-08-17T07:26:49.024241295+00:00"
 
 [[resolution]]
 entry = "pr-2900"
@@ -1707,6 +1761,12 @@ recorded = "2026-08-06T22:29:58.003267778+00:00"
 
 [[resolution]]
 entry = "pr-2954"
+hash = "5d5681afb03266603adf6c997ede9bad5da3723e"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-08-17T07:27:03.009424942+00:00"
+
+[[resolution]]
+entry = "pr-2954"
 hash = "89de22aa58ba66e64eb6f9e22dcb3350047c8ee1"
 paths = ["packages/server/src/server/agent/agent-manager.ts"]
 recorded = "2026-08-06T22:29:58.003268319+00:00"
@@ -1715,7 +1775,7 @@ recorded = "2026-08-06T22:29:58.003268319+00:00"
 entry = "pr-2957"
 hash = "1bcdbeac1317a4fad1cd3fec012730341f5a95da"
 paths = ["packages/app/src/screens/workspace/workspace-screen.tsx"]
-recorded = "2026-08-06T23:37:56.008942725+00:00"
+recorded = "2026-08-17T07:28:01.978129985+00:00"
 
 [[resolution]]
 entry = "pr-3087"
@@ -1847,7 +1907,7 @@ recorded = "2026-08-03T16:03:52.692257184+00:00"
 entry = "watch-live-voice"
 hash = "7398709430615f49dc5f1963af71bced425ffee0"
 paths = ["packages/server/src/server/websocket-server.ts"]
-recorded = "2026-08-05T15:00:38.929882179+00:00"
+recorded = "2026-08-17T07:25:06.955692794+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"

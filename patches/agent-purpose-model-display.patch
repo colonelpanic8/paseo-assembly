@@ -1,8 +1,8 @@
 diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
-index 3ce0437c4..3832596f6 100644
+index 0ad1d449d..f43a57314 100644
 --- a/packages/app/src/panels/agent-panel.tsx
 +++ b/packages/app/src/panels/agent-panel.tsx
-@@ -242,6 +242,17 @@ function renderChatAgentNonReadyView(args: {
+@@ -253,6 +253,17 @@ function renderChatAgentNonReadyView(args: {
    return null;
  }
  
@@ -21,10 +21,10 @@ index 3ce0437c4..3832596f6 100644
    if (typeof title !== "string") {
      return null;
 diff --git a/packages/app/src/subagents/track-presentation.test.ts b/packages/app/src/subagents/track-presentation.test.ts
-index c33d0dbff..402eaf53b 100644
+index c0b485355..1e4f28927 100644
 --- a/packages/app/src/subagents/track-presentation.test.ts
 +++ b/packages/app/src/subagents/track-presentation.test.ts
-@@ -303,3 +303,107 @@ describe("resolveSubagentRowLabel", () => {
+@@ -321,3 +321,107 @@ describe("resolveSubagentRowLabel", () => {
      expect(resolveSubagentRowLabel(providerRow({ id: "a" }))).toBe(null);
    });
  });
@@ -133,12 +133,12 @@ index c33d0dbff..402eaf53b 100644
 +  });
 +});
 diff --git a/packages/app/src/subagents/track-presentation.ts b/packages/app/src/subagents/track-presentation.ts
-index 45d84bbaf..db156c10a 100644
+index 7e884966e..f9b0561ee 100644
 --- a/packages/app/src/subagents/track-presentation.ts
 +++ b/packages/app/src/subagents/track-presentation.ts
-@@ -16,7 +16,10 @@ export interface SubagentRowPresentationData {
-   key: string;
+@@ -25,7 +25,10 @@ export interface SubagentRowPresentationData {
    kind: "agent";
+   ownership: SubagentOwnership;
    label: string;
 -  /** Secondary provider context rendered after the row label. */
 +  /**
