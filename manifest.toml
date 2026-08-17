@@ -199,6 +199,8 @@ summary = "Separate config from the rest of PASEO_HOME"
 [[entry]]
 pr = 2927
 summary = "Hardware keyboard shortcuts on native, mod-key setting, Shift+Enter send"
+parents = [{ pr = 3499 }]
+reconstruction_publish = "mine:keyboard-shortcuts-mobile"
 
 [[entry]]
 branch = "mine:touch-sidebar-resize"

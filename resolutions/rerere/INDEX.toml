@@ -1695,6 +1695,132 @@ recorded = "2026-08-09T13:22:44.016636435+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "0180583844d20e7c1d86d1d368bb105bb2314559"
+paths = ["packages/app/src/composer/input/input.tsx"]
+recorded = "2026-08-17T22:03:17.541527084+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "06311321f40e18bda9f6b315975597fca278f913"
+paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
+recorded = "2026-08-17T22:03:17.541529201+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "131412b30b256fe2a4962b87b28726618289c962"
+paths = ["packages/app/src/components/ui/combobox.tsx"]
+recorded = "2026-08-17T22:03:17.541529648+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "14af869bd9915f430ed0025def0870c94db9323e"
+paths = ["packages/app/src/keyboard/list-search-keys.ts"]
+recorded = "2026-08-17T22:03:17.541529862+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "31d1e6c967ad7dfb61a779eefb6c2a40a3add210"
+paths = ["packages/app/src/keyboard/route-shortcut.ts"]
+recorded = "2026-08-17T22:03:17.541530151+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "346e520ad5cca81011683dc3b742d7d772a8124a"
+paths = ["packages/app/src/hooks/use-autocomplete.ts"]
+recorded = "2026-08-17T22:03:17.541530351+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "3ed08dac7912cbedd06b825e19fcd30aaa075ac8"
+paths = ["packages/app/e2e/browser/model-search-across-providers.spec.ts"]
+recorded = "2026-08-17T22:03:17.541530618+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "41f557ce15a6c5081fce8e2d96240e208f1a908e"
+paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
+recorded = "2026-08-17T22:03:17.541530888+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "46f2a8ed1cf809432440d17a6c715ffe2a8e91b6"
+paths = ["packages/app/src/subagents/track-presentation.ts"]
+recorded = "2026-08-17T22:03:17.541533408+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "478d56d1cea3f80148a4a8adc722dcef57e7a7e7"
+paths = ["packages/app/src/components/ui/menu/menu-item.tsx"]
+recorded = "2026-08-17T22:03:17.541533673+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "482d6d7f28f5b881b17094c34b289a8034ab3d5b"
+paths = ["packages/app/src/keyboard/list-search-keys.test.ts"]
+recorded = "2026-08-17T22:03:17.541533883+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "499c7d7332ffcb9f79c7ce67c74cc7895ebe9367"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-17T22:03:17.541534150+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "4b64ca7ce9cb7788a785d4c39f61cd16fd42d92c"
+paths = ["packages/app/src/keyboard/keyboard-action-dispatcher.ts"]
+recorded = "2026-08-17T22:03:17.541534360+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "4b9654f8c0193f52509e85912c8fa765e4b56c8b"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-08-17T22:03:17.541534615+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "55cd6da90a9353f8b0d568bc8970a901444bbb36"
+paths = ["packages/app/src/keyboard/route-shortcut.test.ts"]
+recorded = "2026-08-17T22:03:17.541534931+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "5a9181e6e22a78b9ff4956d94a72377abaf6928d"
+paths = ["packages/app/src/components/ui/menu/menu-overlay.tsx"]
+recorded = "2026-08-17T22:03:17.541536220+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "6930818ce475f840d46db946be11af926fcc4411"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-08-17T22:03:17.541536522+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "6d9b9618ea0b60f79227c8535ff2c6a5c430144a"
+paths = ["packages/app/src/keyboard/focus-scope.ts"]
+recorded = "2026-08-17T22:03:17.541536745+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "7a0aee3c39fe6849bbd323dd132b857f395b42b1"
+paths = ["packages/app/src/agent-stream/strategy.ts"]
+recorded = "2026-08-17T22:03:17.541536930+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "8105453894d3e946de1c02138a52143bd9989973"
+paths = ["packages/app/src/keyboard/focus-scope.test.ts"]
+recorded = "2026-08-17T22:03:17.541537194+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "905785243228fc9e1ff5551abefabea3d22a480e"
+paths = ["packages/app/src/panels/agent-panel.tsx"]
+recorded = "2026-08-17T22:03:17.541537411+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "93455b17db09528fa27611778f8bf3bed3a5c17c"
 paths = ["packages/app/src/composer/input/input.tsx"]
 recorded = "2026-08-07T20:38:58.788675359+00:00"
@@ -1713,9 +1839,33 @@ recorded = "2026-08-09T13:22:44.016638599+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "a8de63f743b25529dba1efb53d2aa2e50d25aa93"
+paths = ["packages/app/src/components/combined-model-selector.tsx"]
+recorded = "2026-08-17T22:03:17.541537655+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "b74a15f07e3111f26e3abea09e1425cf89d754eb"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-08-17T22:03:17.541537958+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "bb50894f8875e283a477605714e7bdd83b08db7f"
 paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
 recorded = "2026-08-06T16:18:57.686780441+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "c6d3fe118eabd84ccbdfbe53cae0bbff8c4f5e88"
+paths = ["packages/app/src/components/model-browser-keyboard.test.ts"]
+recorded = "2026-08-17T22:03:17.541538278+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "cfb268ccce99c0cd1cc3ab19242aa8690b1c8565"
+paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
+recorded = "2026-08-17T22:03:17.541538538+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1725,15 +1875,45 @@ recorded = "2026-08-06T16:18:57.686784218+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "d8282ea12d4d49866863e442b97005f2e96ea3bf"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-17T22:03:17.541538810+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "e12a0aa6e16dcf889a9b0df93f894fe7630501e3"
 paths = ["packages/app/src/components/model-browser.tsx"]
 recorded = "2026-08-11T19:10:36.611861794+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "ea1928cfc7290fc54b4f8e53624fa9a611925051"
+paths = ["packages/app/src/components/model-browser.tsx"]
+recorded = "2026-08-17T22:03:17.541539021+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "f1744a03c4c2cfee0723bc5c45f306a287693402"
 paths = ["packages/app/src/screens/settings/keyboard-shortcuts-section.tsx"]
 recorded = "2026-08-09T13:22:44.016640653+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "f2e7e9ef2ad4c347f10fd14a05ed2196ab62a629"
+paths = ["packages/app/src/agent-stream/turn-footer.tsx"]
+recorded = "2026-08-17T22:03:17.541539266+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "f44bd31f2800622894abc0394e492917776576c1"
+paths = ["packages/app/src/components/model-browser-keyboard.ts"]
+recorded = "2026-08-17T22:03:17.541539552+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "f5cfb8e1862681459ad1dda6e3d482b27f97653d"
+paths = ["packages/app/src/keyboard/keyboard-shortcuts.test.ts"]
+recorded = "2026-08-17T22:03:17.541539767+00:00"
 
 [[resolution]]
 entry = "pr-2927"

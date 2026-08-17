@@ -1,0 +1,190 @@
+export type KeyboardActionScope = "global" | "message-input" | "sidebar" | "workspace";
+
+export type KeyboardActionId =
+  | "agent.interrupt"
+  | "agent.find"
+  | "message-input.focus"
+  | "message-input.send"
+  | "message-input.dictation-toggle"
+  | "message-input.dictation-cancel"
+  | "message-input.dictation-confirm"
+  | "message-input.voice-toggle"
+  | "message-input.voice-mute-toggle"
+  | "message-input.mode-cycle"
+  | "message-input.stash"
+  | "workspace.tab.new"
+  | "workspace.agent.new"
+  | "workspace.tab.menu.open"
+  | "workspace.tab.target.agent"
+  | "workspace.tab.target.browser"
+  | "workspace.tab.target.changes"
+  | "workspace.tab.target.files"
+  | "workspace.tab.close-current"
+  | "workspace.tab.navigate-index"
+  | "workspace.tab.navigate-relative"
+  | "workspace.pane.split.right"
+  | "workspace.pane.split.down"
+  | "workspace.pane.focus.left"
+  | "workspace.pane.focus.right"
+  | "workspace.pane.focus.up"
+  | "workspace.pane.focus.down"
+  | "workspace.pane.move-tab.left"
+  | "workspace.pane.move-tab.right"
+  | "workspace.pane.move-tab.up"
+  | "workspace.pane.move-tab.down"
+  | "workspace.pane.close"
+  | "workspace.explorer.maximize.toggle"
+  | "workspace.focus.toggle"
+  | "workspace.terminal.new"
+  | "workspace.browser.new"
+  | "sidebar.toggle.right"
+  | "workspace.new"
+  | "workspace.project.pick"
+  | "workspace.isolation.toggle"
+  | "workspace.ref.pick"
+  | "workspace.host.pick"
+  | "worktree.new"
+  | "workspace.archive"
+  | "workspace.pin"
+  | "message-input.model.pick"
+  | "message-input.thinking.pick"
+  | "message-input.mode.pick"
+  | "message-input.fast-mode.toggle"
+  | "message-input.plan-mode.toggle"
+  | "live-voice.mute-toggle"
+  | "live-voice.mute-hold-invert";
+
+/**
+ * A press-and-hold action is dispatched twice: once when the chord goes down and
+ * once when it comes back up. Handlers own the state that spans the two phases.
+ */
+export type KeyboardActionPhase = "press" | "release";
+
+export type KeyboardActionDefinition =
+  | { id: "agent.interrupt"; scope: KeyboardActionScope }
+  | { id: "agent.find"; scope: KeyboardActionScope }
+  | { id: "message-input.focus"; scope: KeyboardActionScope }
+  | { id: "message-input.send"; scope: KeyboardActionScope }
+  | { id: "message-input.dictation-toggle"; scope: KeyboardActionScope }
+  | { id: "message-input.dictation-cancel"; scope: KeyboardActionScope }
+  | { id: "message-input.dictation-confirm"; scope: KeyboardActionScope }
+  | { id: "message-input.voice-toggle"; scope: KeyboardActionScope }
+  | { id: "message-input.voice-mute-toggle"; scope: KeyboardActionScope }
+  | { id: "message-input.mode-cycle"; scope: KeyboardActionScope }
+  | { id: "message-input.stash"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.new"; scope: KeyboardActionScope }
+  | { id: "workspace.agent.new"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.menu.open"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.target.agent"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.target.browser"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.target.changes"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.target.files"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.close-current"; scope: KeyboardActionScope }
+  | { id: "workspace.tab.navigate-index"; scope: KeyboardActionScope; index: number }
+  | { id: "workspace.tab.navigate-relative"; scope: KeyboardActionScope; delta: 1 | -1 }
+  | { id: "workspace.pane.split.right"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.split.down"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.focus.left"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.focus.right"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.focus.up"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.focus.down"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.move-tab.left"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.move-tab.right"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.move-tab.up"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.move-tab.down"; scope: KeyboardActionScope }
+  | { id: "workspace.pane.close"; scope: KeyboardActionScope }
+  | { id: "workspace.explorer.maximize.toggle"; scope: KeyboardActionScope }
+  | { id: "workspace.focus.toggle"; scope: KeyboardActionScope }
+  | { id: "workspace.terminal.new"; scope: KeyboardActionScope }
+  | { id: "workspace.browser.new"; scope: KeyboardActionScope }
+  | { id: "sidebar.toggle.right"; scope: KeyboardActionScope }
+  | { id: "workspace.new"; scope: KeyboardActionScope }
+  | { id: "workspace.project.pick"; scope: KeyboardActionScope }
+  | { id: "workspace.isolation.toggle"; scope: KeyboardActionScope }
+  | { id: "workspace.ref.pick"; scope: KeyboardActionScope }
+  | { id: "workspace.host.pick"; scope: KeyboardActionScope }
+  | { id: "worktree.new"; scope: KeyboardActionScope }
+  | { id: "workspace.archive"; scope: KeyboardActionScope }
+  | { id: "workspace.pin"; scope: KeyboardActionScope }
+  | { id: "message-input.model.pick"; scope: KeyboardActionScope }
+  | { id: "message-input.thinking.pick"; scope: KeyboardActionScope }
+  | { id: "message-input.mode.pick"; scope: KeyboardActionScope }
+  | { id: "message-input.fast-mode.toggle"; scope: KeyboardActionScope }
+  | { id: "message-input.plan-mode.toggle"; scope: KeyboardActionScope }
+  | { id: "live-voice.mute-toggle"; scope: KeyboardActionScope }
+  | {
+      id: "live-voice.mute-hold-invert";
+      scope: KeyboardActionScope;
+      phase: KeyboardActionPhase;
+    };
+
+/**
+ * The release counterpart of a press-and-hold action, or null for an action that
+ * has no hold phases. Keeps the release derivable from the press so callers do
+ * not maintain a second table of action ids.
+ */
+export function holdReleaseAction(
+  action: KeyboardActionDefinition,
+): KeyboardActionDefinition | null {
+  if (!("phase" in action)) {
+    return null;
+  }
+  return { ...action, phase: "release" };
+}
+
+export interface KeyboardActionHandler {
+  handlerId: string;
+  actions: readonly KeyboardActionId[];
+  enabled: boolean;
+  priority: number;
+  isActive?: () => boolean;
+  handle: (action: KeyboardActionDefinition) => boolean;
+}
+
+type KeyboardActionRegistryEntry = KeyboardActionHandler & {
+  registeredAt: number;
+};
+
+export function createKeyboardActionDispatcher() {
+  let nextRegistrationOrder = 1;
+  const handlers = new Map<string, KeyboardActionRegistryEntry>();
+
+  return {
+    registerHandler(handler: KeyboardActionHandler) {
+      const entry: KeyboardActionRegistryEntry = {
+        ...handler,
+        registeredAt: nextRegistrationOrder++,
+      };
+      handlers.set(handler.handlerId, entry);
+
+      return () => {
+        const current = handlers.get(handler.handlerId);
+        if (current !== entry) {
+          return;
+        }
+        handlers.delete(handler.handlerId);
+      };
+    },
+
+    dispatch(action: KeyboardActionDefinition): boolean {
+      const candidates = Array.from(handlers.values())
+        .filter((handler) => handler.actions.includes(action.id))
+        .filter((handler) => handler.enabled)
+        .filter((handler) => (handler.isActive ? handler.isActive() : true))
+        .sort((left, right) => {
+          if (left.priority !== right.priority) {
+            return right.priority - left.priority;
+          }
+          return right.registeredAt - left.registeredAt;
+        });
+
+      for (const handler of candidates) {
+        if (handler.handle(action)) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+  };
+}

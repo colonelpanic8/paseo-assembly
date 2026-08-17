@@ -40,7 +40,7 @@
       "pr-2885": "40a5e62258452e5cf50f712841060def08e0c01d",
       "pr-2898": "7190576c84fb15bff1136f716873edfa22bcd7c5",
       "pr-2900": "2e01653ad90b4433c06483722ea116d6f9502dd0",
-      "pr-2927": "5b9efab523a265c6b8c35a4eacbded3bdb9a5366",
+      "pr-2927": "c62e1b113c73929487944d9ea19a6879c7d76d04",
       "pr-2954": "fcb095615cf0a17a5d9d9ae05a926b899de001a0",
       "pr-2956": "ce453d7ccbc2a9b7e951f4209f926f00c8979358",
       "pr-2957": "2bae83912d194cdb0833e7255c48a834536b510c",
@@ -52,23 +52,27 @@
       "watch-live-voice": "e9879e4aac72e520566f4af5e4f6238a4e4003e6"
     },
     "parents": {
+      "pr-2927": {
+        "pr-3499": "d9c146c78f4769ed309c8f93dfabd8172fa32833"
+      },
       "watch-live-voice": {
         "pr-2655": "97759726bce318a081e6ed20e128aaed9aec528f",
         "pr-2657": "2fce257ab663864bcc557cb72e07e722776cb3ba"
       }
     },
     "anchors": {
+      "pr-2927": "279798b40e71283f567389e38b7c514c01f485f5",
       "watch-live-voice": "fcf352e574ec6d7710f3e9c6f1b91278906722ed"
     }
   },
   "build": {
-    "generated": "2026-08-17T08:16:10.889481962+00:00",
+    "generated": "2026-08-17T22:03:25.939337828+00:00",
     "base": "ac4331456c997a5e3c161b91e87cce3af1fbb89e",
-    "commit": "51039812c543d05138d613668fcf83ed20a6e0a7",
-    "pre_provenance_commit": "51039812c543d05138d613668fcf83ed20a6e0a7",
-    "tree": "66894a7c43e2dc29213a0233182aafdd80acbc54",
-    "built_tree": "66894a7c43e2dc29213a0233182aafdd80acbc54",
-    "previous_tree": "e3555e7d61ec87968f800ca506bbc260078d3103",
+    "commit": "3bcfa4294a4a8e7e3dd7d58d84708cb3dc47ec18",
+    "pre_provenance_commit": "3bcfa4294a4a8e7e3dd7d58d84708cb3dc47ec18",
+    "tree": "e95159ab6fc870d4ad6e4e6d86f0f08fb3e53278",
+    "built_tree": "e95159ab6fc870d4ad6e4e6d86f0f08fb3e53278",
+    "previous_tree": "66894a7c43e2dc29213a0233182aafdd80acbc54",
     "tree_changed": true,
     "conflicts": 27,
     "manifest_entries": [
@@ -320,7 +324,15 @@
         "name": "pr-2927",
         "kind": "pr",
         "source": "upstream#2927",
-        "pin": "5b9efab523a265c6b8c35a4eacbded3bdb9a5366"
+        "pin": "c62e1b113c73929487944d9ea19a6879c7d76d04",
+        "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
+        "parents": [
+          {
+            "source": "upstream#3499",
+            "pin": "d9c146c78f4769ed309c8f93dfabd8172fa32833"
+          }
+        ],
+        "anchor": "279798b40e71283f567389e38b7c514c01f485f5"
       },
       {
         "name": "touch-sidebar-resize",
@@ -508,8 +520,8 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "49fb395aea151d91988f61b9609fff694a7025d9",
-          "tip": "422f0e7659ff637456f74cf97efb239ac8f1a554"
+          "base_tip": "a9eea98f86d09919a92e45e6261114f2b4d20645",
+          "tip": "1686b9ea7f01ceb7c02ff3238227803175262a85"
         }
       },
       {
@@ -639,10 +651,14 @@
       },
       {
         "name": "pr-2927",
-        "oid": "5b9efab523a265c6b8c35a4eacbded3bdb9a5366",
+        "oid": "c62e1b113c73929487944d9ea19a6879c7d76d04",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:0180583844d20e7c1d86d1d368bb105bb2314559,06311321f40e18bda9f6b315975597fca278f913,131412b30b256fe2a4962b87b28726618289c962,14af869bd9915f430ed0025def0870c94db9323e,31d1e6c967ad7dfb61a779eefb6c2a40a3add210,346e520ad5cca81011683dc3b742d7d772a8124a,3ed08dac7912cbedd06b825e19fcd30aaa075ac8,41f557ce15a6c5081fce8e2d96240e208f1a908e,46f2a8ed1cf809432440d17a6c715ffe2a8e91b6,478d56d1cea3f80148a4a8adc722dcef57e7a7e7,482d6d7f28f5b881b17094c34b289a8034ab3d5b,499c7d7332ffcb9f79c7ce67c74cc7895ebe9367,4b64ca7ce9cb7788a785d4c39f61cd16fd42d92c,4b9654f8c0193f52509e85912c8fa765e4b56c8b,55cd6da90a9353f8b0d568bc8970a901444bbb36,5a9181e6e22a78b9ff4956d94a72377abaf6928d,6930818ce475f840d46db946be11af926fcc4411,6d9b9618ea0b60f79227c8535ff2c6a5c430144a,7a0aee3c39fe6849bbd323dd132b857f395b42b1,8105453894d3e946de1c02138a52143bd9989973,905785243228fc9e1ff5551abefabea3d22a480e,a8de63f743b25529dba1efb53d2aa2e50d25aa93,b74a15f07e3111f26e3abea09e1425cf89d754eb,c6d3fe118eabd84ccbdfbe53cae0bbff8c4f5e88,cfb268ccce99c0cd1cc3ab19242aa8690b1c8565,d8282ea12d4d49866863e442b97005f2e96ea3bf,ea1928cfc7290fc54b4f8e53624fa9a611925051,f2e7e9ef2ad4c347f10fd14a05ed2196ab62a629,f44bd31f2800622894abc0394e492917776576c1,f5cfb8e1862681459ad1dda6e3d482b27f97653d",
+        "derived": {
+          "base_tip": "7ee3ccb70c572372c38121edad497715e5084926",
+          "tip": "d6ab4d7adc0b55285c8d0bb89e41422117917c1a"
+        }
       },
       {
         "name": "touch-sidebar-resize",
