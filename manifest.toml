@@ -249,6 +249,10 @@ parents = [{ pr = 2657 }]
 branch = "mine:live-voice-context-files"
 parents = [{ pr = 2657 }]
 
+[[entry]]
+branch = "mine:colorblind-status-dots"
+summary = "Encode host status in dot shape, not only color, and brighten the dark success dot"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.

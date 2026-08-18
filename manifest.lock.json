@@ -9,6 +9,7 @@
       "assembly-build-provenance": "205113c03a7bdf02d6165e716bac2d669aa70ca0",
       "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
       "colonelpanic8/client-settings-file-store": "53dbcb76b01cd46b52d0848e2210590ec5a5199b",
+      "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "c1a7fa4ba377ebf04a8bde0c5c7031e5d9b96586",
       "live-voice-context-files": "af0dbf3e8ac6f1cd85d2efb75f97d970456623a2",
       "live-voice-quick-launch": "445b72c9860998dfcacb6e51f63dad2eba40170a",
@@ -77,15 +78,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-18T20:24:07.677355646+00:00",
+    "generated": "2026-08-18T21:25:33.242153299+00:00",
     "base": "f9633dd359ce2fdcd108fb5b169aa7417363c60b",
-    "commit": "af8b33b3e350fe6557b7a3f4d912ffc8bdf26fd1",
-    "pre_provenance_commit": "af8b33b3e350fe6557b7a3f4d912ffc8bdf26fd1",
-    "tree": "7263430b7f6061c9aa5166b511a6c0e898000170",
-    "built_tree": "7263430b7f6061c9aa5166b511a6c0e898000170",
+    "commit": "c92f74ed2a06d167d15f6c2e5856d0e06f6b51d2",
+    "pre_provenance_commit": "c92f74ed2a06d167d15f6c2e5856d0e06f6b51d2",
+    "tree": "34fac902ef0a39dedc6b5775039c7b48e2ade1f9",
+    "built_tree": "34fac902ef0a39dedc6b5775039c7b48e2ade1f9",
     "previous_tree": "7263430b7f6061c9aa5166b511a6c0e898000170",
-    "tree_changed": false,
-    "conflicts": 29,
+    "tree_changed": true,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -431,6 +432,12 @@
           }
         ],
         "anchor": "67972ebe2c41ba660609c1087ff637b1c9e74e15"
+      },
+      {
+        "name": "colorblind-status-dots",
+        "kind": "branch",
+        "source": "mine:colorblind-status-dots",
+        "pin": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515"
       }
     ],
     "results": [
@@ -788,6 +795,12 @@
           "base_tip": "f6f108c16d8c50fbc9413ca11ac14b63938080c0",
           "tip": "2ce129e6facd9045f3e46c43680439a29925e9d5"
         }
+      },
+      {
+        "name": "colorblind-status-dots",
+        "oid": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }
