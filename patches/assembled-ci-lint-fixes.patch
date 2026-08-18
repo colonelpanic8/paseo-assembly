@@ -502,3 +502,156 @@ index c267ffd98..25f8b93b9 100644
    restoreConfigWriteTarget,
    saveConfigStack,
    type ConfigStack,
+diff --git a/packages/app/src/components/sidebar-workspace-list.tsx b/packages/app/src/components/sidebar-workspace-list.tsx
+--- a/packages/app/src/components/sidebar-workspace-list.tsx
++++ b/packages/app/src/components/sidebar-workspace-list.tsx
+@@ -1117,7 +1117,6 @@ function WorkspaceRowInner({
+   onCopyBranchName,
+   onCopyPath,
+   onRename,
+-  onSubmitRename,
+   archiveShortcutKeys,
+   isPinned,
+   onTogglePin,
+@@ -1182,7 +1181,9 @@ function WorkspaceRowInner({
+       <SidebarWorkspaceRowFrame workspace={workspace} isDragging={isDragging}>
+         {({ isHovered, contextMenuOpen, onContextMenuOpenChange, hoverHandlers }) => {
+           const isDesktop = !isTouchPlatform;
+-          const serviceSummary = isDesktop ? selectWorkspaceServiceSummary(workspace.scripts) : null;
++          const serviceSummary = isDesktop
++            ? selectWorkspaceServiceSummary(workspace.scripts)
++            : null;
+           const workspaceRowStyle = getProjectWorkspaceRowStyle({
+             isDragging,
+             isPressed,
+@@ -1447,7 +1448,6 @@ function WorkspaceRowWithMenu({
+         onCopyBranchName={canCopyBranchName ? handleCopyBranchName : undefined}
+         onCopyPath={handleCopyPath}
+         onRename={handleOpenRename}
+-        onSubmitRename={handleSubmitRename}
+         onMarkAsRead={hasClearableAttention ? handleMarkAsRead : undefined}
+         archiveShortcutKeys={selected ? archiveShortcutKeys : null}
+         isPinned={isPinned}
+@@ -2112,10 +2112,10 @@ function SidebarStatusModeWrapper({
+   hostBadgeByServerId,
+   supportsPinningByServerId,
+   onToggleWorkspacePin,
+-  onPinnedWorkspaceReorder,
++  onPinnedWorkspaceReorder: _onPinnedWorkspaceReorder,
+   parentGestureRef,
+   listHeaderComponent,
+-  dragGestureHostPresented,
++  dragGestureHostPresented: _dragGestureHostPresented,
+ }: {
+   statusGroups: StatusGroup[];
+   allServerIds: string[];
+diff --git a/packages/app/src/runtime/replica-cache/index.ts b/packages/app/src/runtime/replica-cache/index.ts
+--- a/packages/app/src/runtime/replica-cache/index.ts
++++ b/packages/app/src/runtime/replica-cache/index.ts
+@@ -488,6 +488,7 @@ function serializeEffectiveThinkingOption(
+   return { effectiveThinkingOptionId: agent.effectiveThinkingOptionId };
+ }
+ 
++// oxlint-disable-next-line complexity
+ function serializeAgent(agent: Agent): StoredAgent {
+   const snapshot = {
+     id: agent.id,
+diff --git a/packages/server/src/server/bootstrap.ts b/packages/server/src/server/bootstrap.ts
+--- a/packages/server/src/server/bootstrap.ts
++++ b/packages/server/src/server/bootstrap.ts
+@@ -543,6 +543,7 @@ function resolveExpressTrustProxySetting(config: PaseoDaemonConfig): true | stri
+   return config.trustedProxies ?? ["loopback"];
+ }
+ 
++// oxlint-disable-next-line complexity
+ export function createInitialMutableDaemonConfig(config: PaseoDaemonConfig): MutableDaemonConfig {
+   const providers = config.providerOverrides ?? {};
+ 
+diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
+--- a/packages/server/src/server/daemon-config-store.ts
++++ b/packages/server/src/server/daemon-config-store.ts
+@@ -237,6 +237,7 @@ function compactOwnedPaths(paths: readonly string[], owners: readonly string[]):
+   return Array.from(compacted).sort();
+ }
+ 
++// oxlint-disable-next-line complexity
+ function pickSupportedPatchFields(patch: MutableDaemonConfigPatch): SupportedMutableConfigPatch {
+   return {
+     ...(patch.relay?.enabled !== undefined ? { relay: { enabled: patch.relay.enabled } } : {}),
+diff --git a/packages/server/src/server/websocket-server.ts b/packages/server/src/server/websocket-server.ts
+--- a/packages/server/src/server/websocket-server.ts
++++ b/packages/server/src/server/websocket-server.ts
+@@ -623,6 +623,7 @@ export class VoiceAssistantWebSocketServer {
+   private readonly directorySync = new DirectorySyncService();
+   private readonly pluginRuntime: SessionOptions["pluginRuntime"];
+ 
++  // oxlint-disable-next-line complexity
+   constructor(
+     server: HTTPServer,
+     logger: pino.Logger,
+diff --git a/packages/app/src/components/sidebar/sidebar-workspace-row.tsx b/packages/app/src/components/sidebar/sidebar-workspace-row.tsx
+--- a/packages/app/src/components/sidebar/sidebar-workspace-row.tsx
++++ b/packages/app/src/components/sidebar/sidebar-workspace-row.tsx
+@@ -311,7 +311,9 @@ function WorkspaceRowBody({
+       <SidebarWorkspaceRowFrame workspace={workspace} isDragging={isDragging}>
+         {({ isHovered, contextMenuOpen, onContextMenuOpenChange, hoverHandlers }) => {
+           const isDesktop = !isTouchPlatform;
+-          const serviceSummary = isDesktop ? selectWorkspaceServiceSummary(workspace.scripts) : null;
++          const serviceSummary = isDesktop
++            ? selectWorkspaceServiceSummary(workspace.scripts)
++            : null;
+           const workspaceRowStyle = getWorkspaceRowStyle({
+             isDragging,
+             isPressed,
+@@ -324,7 +326,9 @@ function WorkspaceRowBody({
+               {...(draggable ? dragAttributes : {})}
+               {...(draggable ? dragHandleProps?.listeners : {})}
+               ref={
+-                draggable ? (dragHandleProps?.setActivatorNodeRef as unknown as Ref<View>) : undefined
++                draggable
++                  ? (dragHandleProps?.setActivatorNodeRef as unknown as Ref<View>)
++                  : undefined
+               }
+               style={styles.workspaceRowContainer}
+               {...hoverHandlers}
+diff --git a/packages/app/src/hooks/use-keyboard-shortcuts.ts b/packages/app/src/hooks/use-keyboard-shortcuts.ts
+--- a/packages/app/src/hooks/use-keyboard-shortcuts.ts
++++ b/packages/app/src/hooks/use-keyboard-shortcuts.ts
+@@ -6,7 +6,10 @@ import { useKeyboardShortcutsStore } from "@/stores/keyboard-shortcuts-store";
+ import { setCommandCenterFocusRestoreElement } from "@/utils/command-center-focus-restore";
+ import { getResidentBrowserWebview } from "@/desktop/browser/resident-webviews";
+ import { navigateToWorkspace } from "@/stores/navigation-active-workspace-store";
+-import { holdReleaseAction, type KeyboardActionDefinition } from "@/keyboard/keyboard-action-dispatcher";
++import {
++  holdReleaseAction,
++  type KeyboardActionDefinition,
++} from "@/keyboard/keyboard-action-dispatcher";
+ import { useKeyboardActionDispatcher } from "@/keyboard/keyboard-action-dispatcher-context";
+ import {
+   type ChordState,
+diff --git a/packages/app/src/runtime/host-runtime.ts b/packages/app/src/runtime/host-runtime.ts
+--- a/packages/app/src/runtime/host-runtime.ts
++++ b/packages/app/src/runtime/host-runtime.ts
+@@ -2304,8 +2304,7 @@ export class HostRuntimeStore {
+         new DirectorySync(
+           host.serverId,
+           {
+-            onAgentStoppedRunning: (agentId) =>
+-              this.onAgentStoppedRunning(host.serverId, agentId),
++            onAgentStoppedRunning: (agentId) => this.onAgentStoppedRunning(host.serverId, agentId),
+             markAgentLoading: () => controller.markAgentDirectorySyncLoading(),
+             markAgentReady: () => controller.markAgentDirectorySyncReady(),
+             markAgentError: (error) => controller.markAgentDirectorySyncError(error),
+diff --git a/packages/app/src/stores/sidebar-collapsed-sections-store/state.ts b/packages/app/src/stores/sidebar-collapsed-sections-store/state.ts
+--- a/packages/app/src/stores/sidebar-collapsed-sections-store/state.ts
++++ b/packages/app/src/stores/sidebar-collapsed-sections-store/state.ts
+@@ -126,8 +126,7 @@ export function mergePersistedCollapsedProjects<S extends CollapsedProjectsState
+     persisted.collapsedStatusGroupKeys ?? Array.from(current.collapsedStatusGroupKeys),
+   );
+   const restoredAgentTrees = deserializeCollapsedKeys(
+-    persisted.expandedAgentTreeWorkspaceKeys ??
+-      Array.from(current.expandedAgentTreeWorkspaceKeys),
++    persisted.expandedAgentTreeWorkspaceKeys ?? Array.from(current.expandedAgentTreeWorkspaceKeys),
+   );
+   const restoredPinned = persisted.collapsedPinned ?? current.collapsedPinned;
+   if (

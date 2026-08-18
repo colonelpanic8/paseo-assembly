@@ -939,6 +939,12 @@ recorded = "2026-08-02T18:47:06.853282194+00:00"
 
 [[resolution]]
 entry = "pr-2628"
+hash = "5900110910fe828d9e9ae69fe21d3e381ff332de"
+paths = ["packages/app/src/keyboard/keyboard-shortcuts.ts"]
+recorded = "2026-08-18T03:45:09.463162536+00:00"
+
+[[resolution]]
+entry = "pr-2628"
 hash = "ebe86a8b95b6d6c975ca87ba0a6fcf77a1894058"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-08-02T18:48:21.069267357+00:00"
@@ -1212,6 +1218,18 @@ entry = "pr-2659"
 hash = "cee6b59e71714f0fc32d3bd8f32cfff96726e83f"
 paths = ["packages/app/src/subagents/track.tsx"]
 recorded = "2026-08-06T22:29:10.679225678+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "d63fed8df12844936373d48c93cc056a38bc4c87"
+paths = ["packages/app/src/subagents/track.tsx"]
+recorded = "2026-08-18T04:02:57.064887838+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "e8b1d65e47d05e9e39e22e2e0d701161a037a725"
+paths = ["packages/app/src/subagents/archive-finished.test.ts"]
+recorded = "2026-08-18T04:02:57.064889773+00:00"
 
 [[resolution]]
 entry = "pr-2660"
@@ -1863,6 +1881,12 @@ recorded = "2026-08-06T16:18:57.686780441+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "bd72dfc8d38d9eb35e4fb41725d014c2657f91c0"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-18T04:15:56.456925799+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "c6d3fe118eabd84ccbdfbe53cae0bbff8c4f5e88"
 paths = ["packages/app/src/components/model-browser-keyboard.test.ts"]
 recorded = "2026-08-17T22:03:17.541538278+00:00"
@@ -1878,6 +1902,12 @@ entry = "pr-2927"
 hash = "d158032314467fa945d1dd9704019d166abf924d"
 paths = ["packages/app/src/screens/settings/keyboard-shortcuts-section.tsx"]
 recorded = "2026-08-06T16:18:57.686784218+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "d33e717785d2d7b47e0a1170cac51daa184c8d8a"
+paths = ["packages/app/src/components/ui/menu/menu-overlay.tsx"]
+recorded = "2026-08-18T04:15:56.456927728+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2070,6 +2100,12 @@ entry = "watch-live-voice"
 hash = "336f06ba9ca56625225b1ed3d27cd670fe01e858"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-06T21:05:57.509413157+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "3dae7e555a889898dcfe3882dde3a8891874bf87"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-18T04:12:00.762421486+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
