@@ -3,7 +3,7 @@
   "pins": {
     "base": "f9633dd359ce2fdcd108fb5b169aa7417363c60b",
     "entries": {
-      "assembled-ci-lint-fixes": "4c77c4496c3cc058737f6f37e0e2c8d793d228da",
+      "assembled-ci-lint-fixes": "63183060d38a9858d3daeee4c9718d38393ecde4",
       "assembled-npm-deps-hash": "56beea69120e8cb55847c54210cf98518721bd8c",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "205113c03a7bdf02d6165e716bac2d669aa70ca0",
@@ -40,7 +40,7 @@
       "pr-2885": "40a5e62258452e5cf50f712841060def08e0c01d",
       "pr-2898": "7190576c84fb15bff1136f716873edfa22bcd7c5",
       "pr-2900": "2e01653ad90b4433c06483722ea116d6f9502dd0",
-      "pr-2927": "ab35df91bc825a231588795fb4838867267ab296",
+      "pr-2927": "92e312c31d1adb4d64dd37e2818d404db049dca5",
       "pr-2954": "fcb095615cf0a17a5d9d9ae05a926b899de001a0",
       "pr-2956": "ce453d7ccbc2a9b7e951f4209f926f00c8979358",
       "pr-2957": "2bae83912d194cdb0833e7255c48a834536b510c",
@@ -50,7 +50,7 @@
       "pr-3506": "d32cad5c159f00e66b363528c38583e1eb2de270",
       "thinking-control-reachability": "30d01e501e60fe59b43f4adf35b8a694481c6382",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "6b4b153d990906ea8862af6a72ad9bb69aa9a64e"
+      "watch-live-voice": "c9509032765fe9f280702b39cd3f0ac42b6c0702"
     },
     "parents": {
       "pr-2927": {
@@ -58,23 +58,23 @@
       },
       "watch-live-voice": {
         "pr-2655": "97759726bce318a081e6ed20e128aaed9aec528f",
-        "pr-2657": "67972ebe2c41ba660609c1087ff637b1c9e74e15"
+        "pr-2657": "bffa212ae7a1187139c46479dda951af3a906a52"
       }
     },
     "anchors": {
-      "pr-2927": "a8a1101bacf1016a5c3d653b0ca2a6d1b5db0a16",
-      "watch-live-voice": "270321b11ad0ae6014f9872bcdabcbbe1cc48134"
+      "pr-2927": "df3246894fa02a49defaac832dae72685933328b",
+      "watch-live-voice": "bbb9a8710ee21322f88508923bfee3363835eedc"
     }
   },
   "build": {
-    "generated": "2026-08-18T04:52:32.141930821+00:00",
+    "generated": "2026-08-18T07:10:04.513230562+00:00",
     "base": "f9633dd359ce2fdcd108fb5b169aa7417363c60b",
-    "commit": "d14093efe92c3c544b4fe0105fd4e804b13f5982",
-    "pre_provenance_commit": "d14093efe92c3c544b4fe0105fd4e804b13f5982",
-    "tree": "9337dfd25f63b1ca76416b158708cc188d7dd23d",
-    "built_tree": "9337dfd25f63b1ca76416b158708cc188d7dd23d",
+    "commit": "dfbd379c3e7271c6a7b74ad1020c84046e824cdd",
+    "pre_provenance_commit": "dfbd379c3e7271c6a7b74ad1020c84046e824cdd",
+    "tree": "bb576089ede3fc10c989f40288fd60f83ba7d44b",
+    "built_tree": "bb576089ede3fc10c989f40288fd60f83ba7d44b",
     "previous_tree": "9337dfd25f63b1ca76416b158708cc188d7dd23d",
-    "tree_changed": false,
+    "tree_changed": true,
     "conflicts": 27,
     "manifest_entries": [
       {
@@ -194,7 +194,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "6b4b153d990906ea8862af6a72ad9bb69aa9a64e",
+        "pin": "c9509032765fe9f280702b39cd3f0ac42b6c0702",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -204,10 +204,10 @@
           },
           {
             "source": "upstream#2657",
-            "pin": "67972ebe2c41ba660609c1087ff637b1c9e74e15"
+            "pin": "bffa212ae7a1187139c46479dda951af3a906a52"
           }
         ],
-        "anchor": "270321b11ad0ae6014f9872bcdabcbbe1cc48134"
+        "anchor": "bbb9a8710ee21322f88508923bfee3363835eedc"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -325,7 +325,7 @@
         "name": "pr-2927",
         "kind": "pr",
         "source": "upstream#2927",
-        "pin": "ab35df91bc825a231588795fb4838867267ab296",
+        "pin": "92e312c31d1adb4d64dd37e2818d404db049dca5",
         "fixup": "c4710ca7d568fd28b5d477e7093c5aae9d7cc2a5",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -334,7 +334,7 @@
             "pin": "d9c146c78f4769ed309c8f93dfabd8172fa32833"
           }
         ],
-        "anchor": "a8a1101bacf1016a5c3d653b0ca2a6d1b5db0a16"
+        "anchor": "df3246894fa02a49defaac832dae72685933328b"
       },
       {
         "name": "touch-sidebar-resize",
@@ -522,14 +522,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "6b4b153d990906ea8862af6a72ad9bb69aa9a64e",
+        "oid": "c9509032765fe9f280702b39cd3f0ac42b6c0702",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "bbb9a8710ee21322f88508923bfee3363835eedc",
-          "tip": "c9509032765fe9f280702b39cd3f0ac42b6c0702"
+          "base_tip": "a9d18db5e0039e7d531e56f6b1dbd8efe9a82b5d",
+          "tip": "a0e6a3fb54fc8566f407987df83408201e001f29"
         }
       },
       {
@@ -659,14 +659,14 @@
       },
       {
         "name": "pr-2927",
-        "oid": "ab35df91bc825a231588795fb4838867267ab296",
+        "oid": "92e312c31d1adb4d64dd37e2818d404db049dca5",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "c4710ca7d568fd28b5d477e7093c5aae9d7cc2a5",
         "derived": {
-          "base_tip": "df3246894fa02a49defaac832dae72685933328b",
-          "tip": "92e312c31d1adb4d64dd37e2818d404db049dca5"
+          "base_tip": "2b51fe8401f2d71ff71f81fb8bc1c368dc8f5881",
+          "tip": "85c157e3a31edc63dd389333f47cb4046f1e9722"
         }
       },
       {

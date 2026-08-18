@@ -346,18 +346,6 @@ index 1a8d9fedc..f4d0c1fa5 100644
      params.providerUsageService,
    );
  }
-diff --git a/packages/app/src/composer/agent-controls/index.tsx b/packages/app/src/composer/agent-controls/index.tsx
-index c66aa72dc..ceaf6af47 100644
---- a/packages/app/src/composer/agent-controls/index.tsx
-+++ b/packages/app/src/composer/agent-controls/index.tsx
-@@ -89,7 +89,6 @@ import {
- } from "@/agent-profiles";
- import { buildSettingsHostSectionRoute } from "@/utils/host-routes";
- import { ShortcutHint } from "@/components/ui/shortcut-hint";
--import { useComposerKeyboardScope } from "@/composer/keyboard-scope";
- import { useKeyboardActionHandler } from "@/hooks/use-keyboard-action-handler";
- import { useShowControlShortcutBadges } from "@/hooks/use-show-shortcut-badges";
- import type { KeyboardActionDefinition } from "@/keyboard/keyboard-action-dispatcher";
 diff --git a/packages/app/src/create-agent-preferences/storage.ts b/packages/app/src/create-agent-preferences/storage.ts
 index 40857bc26..ea74d5476 100644
 --- a/packages/app/src/create-agent-preferences/storage.ts
