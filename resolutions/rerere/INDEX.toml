@@ -543,6 +543,30 @@ recorded = "2026-08-05T01:40:57.534340173+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "404980bc8756e8c600bdf6bbc83fe9d2927e64a9"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-08-18T21:49:55.654730925+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "6ec404aaef5ce3a9f3ff34ecbab572bc64493f58"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-08-18T21:49:55.654732851+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "c0922ab6be289b03901fbfdb9b69656bbb5a164a"
+paths = ["packages/app/src/contexts/live-voice-context.tsx"]
+recorded = "2026-08-18T21:49:55.654733219+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "ea39f48a1cc8ccf83bd848196eb4196361af5c73"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-08-18T21:49:55.654733506+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "fd1d74b792730f6dd3f185e6559ce6a07ee7a868"
 paths = ["packages/server/src/server/persisted-config.ts"]
 recorded = "2026-08-18T08:09:20.619476676+00:00"

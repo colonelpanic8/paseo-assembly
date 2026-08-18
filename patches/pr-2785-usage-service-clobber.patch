@@ -1,7 +1,8 @@
 diff --git a/packages/server/src/server/websocket-server.ts b/packages/server/src/server/websocket-server.ts
+index f81431331..1112253d9 100644
 --- a/packages/server/src/server/websocket-server.ts
 +++ b/packages/server/src/server/websocket-server.ts
-@@ -733,10 +733,6 @@
+@@ -778,10 +778,6 @@ export class VoiceAssistantWebSocketServer {
        });
      });
  

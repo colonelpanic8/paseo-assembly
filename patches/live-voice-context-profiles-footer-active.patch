@@ -1,0 +1,14 @@
+diff --git a/packages/app/src/live-voice/live-voice-footer-button.test.tsx b/packages/app/src/live-voice/live-voice-footer-button.test.tsx
+index 24d12e324..04ef7ac4e 100644
+--- a/packages/app/src/live-voice/live-voice-footer-button.test.tsx
++++ b/packages/app/src/live-voice/live-voice-footer-button.test.tsx
+@@ -163,7 +163,8 @@ describe("LiveVoiceFooterButton", () => {
+   });
+ 
+   function render(): void {
+-    act(() => root.render(<LiveVoiceFooterButton />));
++    // `active` arrives from the sidebar footer once that topic is stacked.
++    act(() => root.render(<LiveVoiceFooterButton active />));
+   }
+ 
+   function query(testID: string): HTMLElement {

@@ -248,6 +248,7 @@ parents = [{ pr = 2657 }]
 [[entry]]
 branch = "mine:live-voice-context-files"
 parents = [{ pr = 2657 }]
+fixup = "patches/live-voice-context-profiles-footer-active.patch"
 
 [[entry]]
 branch = "mine:colorblind-status-dots"

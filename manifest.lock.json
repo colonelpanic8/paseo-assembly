@@ -11,7 +11,7 @@
       "colonelpanic8/client-settings-file-store": "53dbcb76b01cd46b52d0848e2210590ec5a5199b",
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "c1a7fa4ba377ebf04a8bde0c5c7031e5d9b96586",
-      "live-voice-context-files": "af0dbf3e8ac6f1cd85d2efb75f97d970456623a2",
+      "live-voice-context-files": "810ce230d204c6353d6780be02955c6d14fbe1e0",
       "live-voice-quick-launch": "445b72c9860998dfcacb6e51f63dad2eba40170a",
       "model-picker-search": "5df5cd455fbf99c48b36d70a96f6753aa8b0ab99",
       "monospaced-mobile-styling": "ef21cb0182fb58df0b8904eff1a1e6b1e18593c6",
@@ -53,7 +53,7 @@
       "pr-3506": "d32cad5c159f00e66b363528c38583e1eb2de270",
       "thinking-control-reachability": "30d01e501e60fe59b43f4adf35b8a694481c6382",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "7d32a0e738d6413bcb83fec73301501687865144"
+      "watch-live-voice": "07b7a018bbf24d20b9090b30585dcc82c86d315e"
     },
     "parents": {
       "live-voice-context-files": {
@@ -74,19 +74,19 @@
       "live-voice-context-files": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
       "live-voice-quick-launch": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
       "pr-2927": "df3246894fa02a49defaac832dae72685933328b",
-      "watch-live-voice": "3f26ee0507964bd242b025ce3d9680f2f2cc930d"
+      "watch-live-voice": "3ada347d59c8b64a7c4fa06693b494cf4bd6df1f"
     }
   },
   "build": {
-    "generated": "2026-08-18T21:25:33.242153299+00:00",
+    "generated": "2026-08-18T22:15:40.035210294+00:00",
     "base": "f9633dd359ce2fdcd108fb5b169aa7417363c60b",
-    "commit": "c92f74ed2a06d167d15f6c2e5856d0e06f6b51d2",
-    "pre_provenance_commit": "c92f74ed2a06d167d15f6c2e5856d0e06f6b51d2",
-    "tree": "34fac902ef0a39dedc6b5775039c7b48e2ade1f9",
-    "built_tree": "34fac902ef0a39dedc6b5775039c7b48e2ade1f9",
-    "previous_tree": "7263430b7f6061c9aa5166b511a6c0e898000170",
+    "commit": "2817fa230e2ea34c56eb314d5b7149dfe0050099",
+    "pre_provenance_commit": "2817fa230e2ea34c56eb314d5b7149dfe0050099",
+    "tree": "b7cf252c09e7f1e6c88a15b3877eeadda67540f5",
+    "built_tree": "b7cf252c09e7f1e6c88a15b3877eeadda67540f5",
+    "previous_tree": "907008bad03f264ce111e052b9fe4a6b50495d4d",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 29,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -205,7 +205,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "7d32a0e738d6413bcb83fec73301501687865144",
+        "pin": "07b7a018bbf24d20b9090b30585dcc82c86d315e",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -218,7 +218,7 @@
             "pin": "c68689a99c0decec8c66eec503a40d143e9bb4c0"
           }
         ],
-        "anchor": "3f26ee0507964bd242b025ce3d9680f2f2cc930d"
+        "anchor": "3ada347d59c8b64a7c4fa06693b494cf4bd6df1f"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -249,7 +249,7 @@
         "kind": "pr",
         "source": "upstream#2785",
         "pin": "466a1445a89a2c9e305e53ae90b7e7fbab2b18d5",
-        "fixup": "2e55dbd772ff3bc1f6430df24490e9b154c7aea5"
+        "fixup": "0623bcc09f185a11aba2c70f7d3616c2bc348311"
       },
       {
         "name": "pr-2820",
@@ -424,7 +424,8 @@
         "name": "live-voice-context-files",
         "kind": "branch",
         "source": "mine:live-voice-context-files",
-        "pin": "af0dbf3e8ac6f1cd85d2efb75f97d970456623a2",
+        "pin": "810ce230d204c6353d6780be02955c6d14fbe1e0",
+        "fixup": "0173fe2f2954657ea0f0fa3dca3cec17f8070f42",
         "parents": [
           {
             "source": "upstream#2657",
@@ -565,14 +566,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "7d32a0e738d6413bcb83fec73301501687865144",
+        "oid": "07b7a018bbf24d20b9090b30585dcc82c86d315e",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "d8ca23ab25ce654be637524d5f50ce9e1ecc078c",
-          "tip": "0bc8957079686bd7fe0464a6aef4eeb165929c94"
+          "base_tip": "3881e250347f36598a7d38e0841f647395a181d6",
+          "tip": "4ebc1685721c151dfc068b82bbc55bbe58d5c3df"
         }
       },
       {
@@ -607,7 +608,7 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "2e55dbd772ff3bc1f6430df24490e9b154c7aea5"
+        "fixup": "0623bcc09f185a11aba2c70f7d3616c2bc348311"
       },
       {
         "name": "pr-2820",
@@ -708,8 +709,8 @@
         "resolution": "rerere",
         "fixup": "c4710ca7d568fd28b5d477e7093c5aae9d7cc2a5",
         "derived": {
-          "base_tip": "27155f6c365e19696d78de9773ef30bb85feec5f",
-          "tip": "4557def5483b788f5c045d964b4baa058cdf04aa"
+          "base_tip": "c3a06b69b851edd609d17142345bf8ac68563051",
+          "tip": "17b80664112fa520b20646f12adcd7fefefb783b"
         }
       },
       {
@@ -781,19 +782,20 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "fb1c0721f6df77b138497e1923e1eb4f80ab6b1e",
-          "tip": "5a56bc3cd9f7417399db649e5701fbff37485c72"
+          "base_tip": "f7c49aa9d0bcd648c8816a294e5e306c45735bd8",
+          "tip": "227946f481ef29146d7da3db0b5d5d80cdb07fec"
         }
       },
       {
         "name": "live-voice-context-files",
-        "oid": "af0dbf3e8ac6f1cd85d2efb75f97d970456623a2",
+        "oid": "810ce230d204c6353d6780be02955c6d14fbe1e0",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
+        "fixup": "0173fe2f2954657ea0f0fa3dca3cec17f8070f42",
         "derived": {
-          "base_tip": "f6f108c16d8c50fbc9413ca11ac14b63938080c0",
-          "tip": "2ce129e6facd9045f3e46c43680439a29925e9d5"
+          "base_tip": "234e56232c3c03e89e3fbede83f1695ae8e14cda",
+          "tip": "78fc98b8a6c23776988fc1bf873fb3981d3b5fd0"
         }
       },
       {
