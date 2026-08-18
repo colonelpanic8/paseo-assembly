@@ -67,14 +67,14 @@
     }
   },
   "build": {
-    "generated": "2026-08-18T07:10:04.513230562+00:00",
+    "generated": "2026-08-18T07:15:40.199311879+00:00",
     "base": "f9633dd359ce2fdcd108fb5b169aa7417363c60b",
-    "commit": "dfbd379c3e7271c6a7b74ad1020c84046e824cdd",
-    "pre_provenance_commit": "dfbd379c3e7271c6a7b74ad1020c84046e824cdd",
+    "commit": "37232437635a0074a853329fd98adc75b19eff2c",
+    "pre_provenance_commit": "37232437635a0074a853329fd98adc75b19eff2c",
     "tree": "bb576089ede3fc10c989f40288fd60f83ba7d44b",
     "built_tree": "bb576089ede3fc10c989f40288fd60f83ba7d44b",
-    "previous_tree": "9337dfd25f63b1ca76416b158708cc188d7dd23d",
-    "tree_changed": true,
+    "previous_tree": "bb576089ede3fc10c989f40288fd60f83ba7d44b",
+    "tree_changed": false,
     "conflicts": 27,
     "manifest_entries": [
       {
@@ -352,7 +352,7 @@
         "name": "assembled-ci-lint-fixes",
         "kind": "patch",
         "source": "patches/assembled-ci-lint-fixes.patch",
-        "pin": "4c77c4496c3cc058737f6f37e0e2c8d793d228da"
+        "pin": "63183060d38a9858d3daeee4c9718d38393ecde4"
       },
       {
         "name": "pr-2956",
@@ -528,8 +528,8 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "a9d18db5e0039e7d531e56f6b1dbd8efe9a82b5d",
-          "tip": "a0e6a3fb54fc8566f407987df83408201e001f29"
+          "base_tip": "fc53e2e13a6e437062654ed42a853031a11f36e3",
+          "tip": "2afd543e7146a96ee3c1476f59dda7bbb321811a"
         }
       },
       {
@@ -665,8 +665,8 @@
         "resolution": "rerere",
         "fixup": "c4710ca7d568fd28b5d477e7093c5aae9d7cc2a5",
         "derived": {
-          "base_tip": "2b51fe8401f2d71ff71f81fb8bc1c368dc8f5881",
-          "tip": "85c157e3a31edc63dd389333f47cb4046f1e9722"
+          "base_tip": "d2e6373a330d5997ced7463d826793ae9af0bc04",
+          "tip": "4e32c1f35a37806e2ee40c7ae1a7f2efbc9f4dd7"
         }
       },
       {
@@ -684,7 +684,7 @@
       },
       {
         "name": "assembled-ci-lint-fixes",
-        "oid": "4c77c4496c3cc058737f6f37e0e2c8d793d228da",
+        "oid": "63183060d38a9858d3daeee4c9718d38393ecde4",
         "status": "applied",
         "conflicted": false
       },
