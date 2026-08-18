@@ -89,8 +89,11 @@ pr = 2660
 summary = "Restore a workspace's agents when the workspace is unarchived"
 
 # Merges 2655 (Wear OS companion) and 2657 (Live Voice) and adds what needs
-# both: watch-side start/end/mute and transcript, plus the Android AudioManager
-# fix that routes call audio to a Bluetooth headset.
+# both: watch-side start/end/mute and transcript, the Android AudioManager
+# fix that routes call audio to a Bluetooth headset, pocket starts (nonce-staged
+# trampoline that begins a call with the phone locked), earbuds-over-watch audio
+# route arbitration with watch-side route display/selection, and one-shot
+# Dispatch (watch STT -> prompt to a configured chief-of-staff agent).
 #
 # Do not re-carry mine:agent/live-voice-completion-notifications alongside
 # 2657: that branch's commits are in 2657 re-authored, so the stack merged the
@@ -237,6 +240,14 @@ summary = "fix(app): stop stale snapshot fetches from clobbering fresher pushes"
 
 [[entry]]
 pr = 3506
+
+[[entry]]
+branch = "mine:live-voice-quick-launch"
+parents = [{ pr = 2657 }]
+
+[[entry]]
+branch = "mine:live-voice-context-files"
+parents = [{ pr = 2657 }]
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

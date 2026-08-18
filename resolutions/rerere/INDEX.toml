@@ -542,6 +542,18 @@ paths = ["packages/cli/src/commands/onboard.ts"]
 recorded = "2026-08-05T01:40:57.534340173+00:00"
 
 [[resolution]]
+entry = "live-voice-context-files"
+hash = "fd1d74b792730f6dd3f185e6559ce6a07ee7a868"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-08-18T08:09:20.619476676+00:00"
+
+[[resolution]]
+entry = "live-voice-quick-launch"
+hash = "cd1cb78a53b794ad8acbe2668c4061f43ec86018"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-08-18T08:08:43.134944261+00:00"
+
+[[resolution]]
 entry = "model-picker-search"
 hash = "3265fcb70122d9e3bb8f44ffa011fcf4b3c60f12"
 paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
