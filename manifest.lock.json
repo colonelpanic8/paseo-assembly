@@ -52,7 +52,7 @@
       "pr-3506": "d32cad5c159f00e66b363528c38583e1eb2de270",
       "thinking-control-reachability": "30d01e501e60fe59b43f4adf35b8a694481c6382",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "e0e3f7eaca364b0707d2d241cdfae9197045beea"
+      "watch-live-voice": "d2a47ece84c4e1af4e1d94fb4cf2c29aad8daed6"
     },
     "parents": {
       "live-voice-context-files": {
@@ -66,24 +66,24 @@
       },
       "watch-live-voice": {
         "pr-2655": "97759726bce318a081e6ed20e128aaed9aec528f",
-        "pr-2657": "bffa212ae7a1187139c46479dda951af3a906a52"
+        "pr-2657": "c68689a99c0decec8c66eec503a40d143e9bb4c0"
       }
     },
     "anchors": {
       "live-voice-context-files": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
       "live-voice-quick-launch": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
       "pr-2927": "df3246894fa02a49defaac832dae72685933328b",
-      "watch-live-voice": "fc53e2e13a6e437062654ed42a853031a11f36e3"
+      "watch-live-voice": "66323ff9745a50c3b6d471b72ef52b3f16423939"
     }
   },
   "build": {
-    "generated": "2026-08-18T08:09:31.626880979+00:00",
+    "generated": "2026-08-18T19:46:30.731185630+00:00",
     "base": "f9633dd359ce2fdcd108fb5b169aa7417363c60b",
-    "commit": "5c68a4f65bf622ebd14159d10bb50c0a8dbe2691",
-    "pre_provenance_commit": "5c68a4f65bf622ebd14159d10bb50c0a8dbe2691",
-    "tree": "c5ff7f03408b20672b26c5c2fbd20bd2aff03a81",
-    "built_tree": "c5ff7f03408b20672b26c5c2fbd20bd2aff03a81",
-    "previous_tree": "bb576089ede3fc10c989f40288fd60f83ba7d44b",
+    "commit": "e9ec0fd05c72bd782a90964441d14281af7518de",
+    "pre_provenance_commit": "e9ec0fd05c72bd782a90964441d14281af7518de",
+    "tree": "7263430b7f6061c9aa5166b511a6c0e898000170",
+    "built_tree": "7263430b7f6061c9aa5166b511a6c0e898000170",
+    "previous_tree": "c5ff7f03408b20672b26c5c2fbd20bd2aff03a81",
     "tree_changed": true,
     "conflicts": 29,
     "manifest_entries": [
@@ -204,7 +204,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "e0e3f7eaca364b0707d2d241cdfae9197045beea",
+        "pin": "d2a47ece84c4e1af4e1d94fb4cf2c29aad8daed6",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -214,10 +214,10 @@
           },
           {
             "source": "upstream#2657",
-            "pin": "bffa212ae7a1187139c46479dda951af3a906a52"
+            "pin": "c68689a99c0decec8c66eec503a40d143e9bb4c0"
           }
         ],
-        "anchor": "fc53e2e13a6e437062654ed42a853031a11f36e3"
+        "anchor": "66323ff9745a50c3b6d471b72ef52b3f16423939"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -558,14 +558,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "e0e3f7eaca364b0707d2d241cdfae9197045beea",
+        "oid": "d2a47ece84c4e1af4e1d94fb4cf2c29aad8daed6",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "66323ff9745a50c3b6d471b72ef52b3f16423939",
-          "tip": "d2a47ece84c4e1af4e1d94fb4cf2c29aad8daed6"
+          "base_tip": "3f26ee0507964bd242b025ce3d9680f2f2cc930d",
+          "tip": "7d32a0e738d6413bcb83fec73301501687865144"
         }
       },
       {
@@ -701,8 +701,8 @@
         "resolution": "rerere",
         "fixup": "c4710ca7d568fd28b5d477e7093c5aae9d7cc2a5",
         "derived": {
-          "base_tip": "929a0d7d17584f540cd038569675ee5b05f8cc0c",
-          "tip": "a3ab4083098ce054d082970d666413a0c3c99893"
+          "base_tip": "c0930a64be2057f572981f69f9a2b53b795eee13",
+          "tip": "0989f08ad41d25a44d3917bb0c22745844540532"
         }
       },
       {
@@ -774,8 +774,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "932ce279bfc129d5e22fa7c0812d69f52568fa14",
-          "tip": "bac1433b491c4562f22d73ac03aba36e02c23dc0"
+          "base_tip": "4ae26a8a81eb61cf8340f6d22aed2d1ceb2b36d7",
+          "tip": "593b35194a5dfcc61fca339b1ce1682c952a52ff"
         }
       },
       {
@@ -783,10 +783,10 @@
         "oid": "af0dbf3e8ac6f1cd85d2efb75f97d970456623a2",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:fd1d74b792730f6dd3f185e6559ce6a07ee7a868",
+        "resolution": "rerere",
         "derived": {
-          "base_tip": "1c6fcfd60a06870dc8c79142c0e6679dfae2ad3b",
-          "tip": "f14d9684063bb3675542053eda6d699375b6f74a"
+          "base_tip": "c32477ed905c73cfc525ddeeb98b3d7777565226",
+          "tip": "3a39ee673b74a8f62068bb9f98185744b04a0493"
         }
       }
     ]
