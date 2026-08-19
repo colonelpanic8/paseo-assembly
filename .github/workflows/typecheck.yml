@@ -1,0 +1,104 @@
+name: Typecheck Assembly
+
+# Typechecks the published `assembled` tree.
+#
+# The assembler merges; it never compiles. Every entry typechecks against its
+# own base, so a topic can be internally sound and still break the stack: a
+# field one entry makes required, a prop another entry adds, a helper two
+# entries move in different directions. Nothing in `build`, `build --locked`,
+# or the npm deps hash notices, because all of them are statements about the
+# tree's provenance rather than its correctness.
+#
+# Cheap, and it fails on the assembly rather than on the machine that installs
+# it. Cross-entry breakage belongs in a coherence fixup on the entry that made
+# it necessary -- see AGENTS.md.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/typecheck.yml"
+      - "manifest.lock.json"
+      - "manifest.toml"
+      - "patches/**"
+      - "resolutions/**"
+      - "scripts/await-published-assembly.sh"
+  workflow_dispatch:
+
+concurrency:
+  group: assembly-typecheck
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ASSEMBLY_SOURCE_REPO: colonelpanic8/paseo
+
+jobs:
+  typecheck:
+    name: Typecheck the assembled tree
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out assembly recipe
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Locate the published assembly
+        id: assembly
+        shell: bash
+        run: |
+          scripts/await-published-assembly.sh \
+            manifest.lock.json \
+            "https://github.com/${ASSEMBLY_SOURCE_REPO}" \
+            assembled
+
+      - name: Check out the assembled source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: ${{ env.ASSEMBLY_SOURCE_REPO }}
+          ref: ${{ steps.assembly.outputs.commit }}
+          path: assembled
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: assembled/package-lock.json
+
+      - name: Install JS dependencies
+        working-directory: assembled
+        run: node scripts/npm-retry.mjs ci
+
+      # Cross-package types come from generated declarations, so a bare
+      # typecheck on a fresh tree reports stale-dist noise instead of the
+      # breakage being looked for.
+      - name: Build workspace declarations
+        working-directory: assembled
+        run: |
+          npm run build:server
+          npm run build:client
+
+      - name: Typecheck
+        working-directory: assembled
+        run: npm run typecheck
+
+      - name: Report
+        if: always()
+        env:
+          ASSEMBLY_COMMIT: ${{ steps.assembly.outputs.commit }}
+          ASSEMBLY_TREE: ${{ steps.assembly.outputs.tree }}
+        shell: bash
+        run: |
+          {
+            echo "### Assembly typecheck"
+            echo
+            echo "- assembled commit: \`${ASSEMBLY_COMMIT}\`"
+            echo "- assembled tree: \`${ASSEMBLY_TREE}\`"
+            echo "- recipe commit: \`${GITHUB_SHA}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
