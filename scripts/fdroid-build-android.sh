@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# -ne 5 ]]; then
-  echo "usage: $0 ASSEMBLED_ROOT OUTPUT_APK KEYSTORE PASSWORD_FILE EXPECTED_CERT_SHA256" >&2
+if [[ $# -lt 5 || $# -gt 6 ]]; then
+  echo "usage: $0 ASSEMBLED_ROOT OUTPUT_APK KEYSTORE PASSWORD_FILE EXPECTED_CERT_SHA256 [all|prepare|package]" >&2
   exit 2
 fi
 
@@ -11,6 +11,15 @@ output_apk="$(realpath -m "$2")"
 keystore="$(realpath "$3")"
 password_file="$(realpath "$4")"
 expected_cert_sha256="$(tr -d ':[:space:]' < "$5" | tr '[:upper:]' '[:lower:]')"
+mode="${6:-all}"
+
+case "$mode" in
+  all | prepare | package) ;;
+  *)
+    echo "invalid build mode: $mode" >&2
+    exit 2
+    ;;
+esac
 
 : "${PASEO_APP_VERSION:?PASEO_APP_VERSION must be set}"
 : "${PASEO_NATIVE_BUILD_VERSION_CODE:?PASEO_NATIVE_BUILD_VERSION_CODE must be set}"
@@ -41,15 +50,21 @@ if [[ -n "${PASEO_BUILD_COMMIT:-}" ]]; then
 fi
 export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
 
-cd "$assembled_root"
-npm ci --include=dev
-npm run build:app-deps
-npm --prefix packages/app run build:terminal-webview
+if [[ "$mode" != "package" ]]; then
+  cd "$assembled_root"
+  npm ci --include=dev
+  npm run build:app-deps
+  npm --prefix packages/app run build:terminal-webview
 
-cd packages/app
-npx expo prebuild --platform android --clean --non-interactive
+  cd packages/app
+  npx expo prebuild --platform android --clean --non-interactive
+fi
 
-cd android
+if [[ "$mode" == "prepare" ]]; then
+  exit 0
+fi
+
+cd "$assembled_root/packages/app/android"
 ./gradlew \
   :app:assembleRelease \
   -PreactNativeArchitectures=arm64-v8a \

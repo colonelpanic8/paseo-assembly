@@ -131,6 +131,25 @@ jobs:
           tar -xf "$RUNNER_TEMP/fdroid-signing.tar" -C "$secret_root"
           chmod 600 "$secret_root/signing.p12" "$secret_root/deploy_ed25519"
 
+      - name: Prepare source APK build
+        env:
+          PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}
+          PASEO_NATIVE_BUILD_VERSION_CODE: ${{ steps.assembly.outputs.native_version_code }}
+          PASEO_BUILD_COMMIT: ${{ steps.assembly.outputs.source_commit }}
+          PASEO_BUILD_COMMIT_DATE: ${{ steps.assembly.outputs.source_commit_date }}
+          PASEO_BUILD_COMMIT_MESSAGE: ${{ steps.assembly.outputs.source_commit_message }}
+          PASEO_BUILD_REPO_URL: https://github.com/colonelpanic8/paseo
+        shell: bash
+        run: |
+          set -euo pipefail
+          scripts/fdroid-build-android.sh \
+            .worktrees/build \
+            "$RUNNER_TEMP/sh.paseo.assembly_${{ steps.assembly.outputs.apk_version_code }}.apk" \
+            "$RUNNER_TEMP/fdroid-secrets/signing.p12" \
+            "$RUNNER_TEMP/fdroid-secrets/keystore-password" \
+            fdroid/signing-certificate.sha256 \
+            prepare
+
       - name: Build and sign source APK
         env:
           PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}
@@ -149,7 +168,8 @@ jobs:
             "$RUNNER_TEMP/sh.paseo.assembly_${{ steps.assembly.outputs.apk_version_code }}.apk" \
             "$RUNNER_TEMP/fdroid-secrets/signing.p12" \
             "$RUNNER_TEMP/fdroid-secrets/keystore-password" \
-            fdroid/signing-certificate.sha256
+            fdroid/signing-certificate.sha256 \
+            package
 
       - name: Upload signed APK artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
