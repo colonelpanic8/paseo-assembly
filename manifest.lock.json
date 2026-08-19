@@ -7,7 +7,7 @@
       "assembled-npm-deps-hash": "56beea69120e8cb55847c54210cf98518721bd8c",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "205113c03a7bdf02d6165e716bac2d669aa70ca0",
-      "assembly-fdroid-variant": "b1f41d91fe0049746540a1203e0188252dd07ef3",
+      "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
       "colonelpanic8/client-settings-file-store": "53dbcb76b01cd46b52d0848e2210590ec5a5199b",
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "c1a7fa4ba377ebf04a8bde0c5c7031e5d9b96586",
@@ -78,13 +78,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-18T22:15:40.035210294+00:00",
+    "generated": "2026-08-19T01:32:38.261488474+00:00",
     "base": "f9633dd359ce2fdcd108fb5b169aa7417363c60b",
-    "commit": "2817fa230e2ea34c56eb314d5b7149dfe0050099",
-    "pre_provenance_commit": "2817fa230e2ea34c56eb314d5b7149dfe0050099",
-    "tree": "b7cf252c09e7f1e6c88a15b3877eeadda67540f5",
-    "built_tree": "b7cf252c09e7f1e6c88a15b3877eeadda67540f5",
-    "previous_tree": "907008bad03f264ce111e052b9fe4a6b50495d4d",
+    "commit": "25b5d533329902730f7ca988ac7e5ac6db04adf9",
+    "pre_provenance_commit": "25b5d533329902730f7ca988ac7e5ac6db04adf9",
+    "tree": "e1e9d6a6879258a27ef0c727ba2333f9ce23547f",
+    "built_tree": "e1e9d6a6879258a27ef0c727ba2333f9ce23547f",
+    "previous_tree": "b7cf252c09e7f1e6c88a15b3877eeadda67540f5",
     "tree_changed": true,
     "conflicts": 29,
     "manifest_entries": [
@@ -111,7 +111,7 @@
         "name": "assembly-fdroid-variant",
         "kind": "branch",
         "source": "mine:assembly-fdroid-variant",
-        "pin": "b1f41d91fe0049746540a1203e0188252dd07ef3"
+        "pin": "0c6aa69204fa63bd20876b2255b139671a575096"
       },
       {
         "name": "personal/sidebar-workflow",
@@ -464,7 +464,7 @@
       },
       {
         "name": "assembly-fdroid-variant",
-        "oid": "b1f41d91fe0049746540a1203e0188252dd07ef3",
+        "oid": "0c6aa69204fa63bd20876b2255b139671a575096",
         "status": "merged",
         "conflicted": false
       },
@@ -572,8 +572,8 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "3881e250347f36598a7d38e0841f647395a181d6",
-          "tip": "4ebc1685721c151dfc068b82bbc55bbe58d5c3df"
+          "base_tip": "ef4e022a66beaf23b71c230cf6b32f17191d4aef",
+          "tip": "a3a33ba9ddde5f2ad0668f6045e9d21d495f0d7a"
         }
       },
       {
@@ -709,8 +709,8 @@
         "resolution": "rerere",
         "fixup": "c4710ca7d568fd28b5d477e7093c5aae9d7cc2a5",
         "derived": {
-          "base_tip": "c3a06b69b851edd609d17142345bf8ac68563051",
-          "tip": "17b80664112fa520b20646f12adcd7fefefb783b"
+          "base_tip": "402d6297359ba30177310cf1a84ea4457a8fd846",
+          "tip": "659eb3cebc4127c188ed55b091cac62625b8bd91"
         }
       },
       {
@@ -782,8 +782,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "f7c49aa9d0bcd648c8816a294e5e306c45735bd8",
-          "tip": "227946f481ef29146d7da3db0b5d5d80cdb07fec"
+          "base_tip": "a7d965852c2d0db6b091ec8e94cb08fce2c1b271",
+          "tip": "0a4a084464798ba43897750816bc75ac09f349ce"
         }
       },
       {
@@ -794,8 +794,8 @@
         "resolution": "rerere",
         "fixup": "0173fe2f2954657ea0f0fa3dca3cec17f8070f42",
         "derived": {
-          "base_tip": "234e56232c3c03e89e3fbede83f1695ae8e14cda",
-          "tip": "78fc98b8a6c23776988fc1bf873fb3981d3b5fd0"
+          "base_tip": "d58c48d596ebfe8b4b918129bad66821f33496a6",
+          "tip": "2bba998ba229535dc2d0ccc3ff250fe4e5d0a1ad"
         }
       },
       {
