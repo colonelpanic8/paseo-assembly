@@ -228,6 +228,36 @@ jobs:
           build_args+=("-c.mac.target=dmg")
           build_args+=("-c.win.target=nsis")
 
+          build_log="${RUNNER_TEMP}/desktop-build-attempt.log"
+          if npm run build:desktop "${build_args[@]}" 2>&1 | tee "$build_log"; then
+            exit 0
+          fi
+
+          # dmgbuild occasionally finishes the image and then loses a race to
+          # a runner process that briefly opens the mounted volume. Retry only
+          # that exact macOS failure; a second full build is cheap compared with
+          # publishing a release missing one architecture, and every other
+          # electron-builder error remains fatal on the first attempt.
+          if [[ "$RUNNER_OS" != "macOS" ]] ||
+             ! grep -Fq "Unable to detach device cleanly" "$build_log"; then
+            exit 1
+          fi
+
+          device="$(
+            sed -nE 's/.*couldn.t eject "(disk[0-9]+(s[0-9]+)?)".*/\/dev\/\1/p' \
+              "$build_log" | tail -n 1
+          )"
+          if [[ "$device" =~ ^/dev/disk[0-9]+(s[0-9]+)?$ ]]; then
+            echo "::warning::DMG detach raced on $device; detaching it before one retry."
+            for detach_attempt in 1 2 3; do
+              hdiutil detach -force "$device" && break
+              sleep $((detach_attempt * 2))
+            done
+          else
+            echo "::warning::DMG detach raced; no safe device identifier was found. Retrying once."
+          fi
+
+          sleep 5
           npm run build:desktop "${build_args[@]}"
 
       - name: Upload artifacts to the release
