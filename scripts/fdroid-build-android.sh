@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [[ $# -lt 5 || $# -gt 6 ]]; then
-  echo "usage: $0 ASSEMBLED_ROOT OUTPUT_APK KEYSTORE PASSWORD_FILE EXPECTED_CERT_SHA256 [all|prepare|package]" >&2
+  echo "usage: $0 ASSEMBLED_ROOT OUTPUT_APK KEYSTORE PASSWORD_FILE EXPECTED_CERT_SHA256 [all|prepare|bundle|package]" >&2
   exit 2
 fi
 
@@ -14,7 +14,7 @@ expected_cert_sha256="$(tr -d ':[:space:]' < "$5" | tr '[:upper:]' '[:lower:]')"
 mode="${6:-all}"
 
 case "$mode" in
-  all | prepare | package) ;;
+  all | prepare | bundle | package) ;;
   *)
     echo "invalid build mode: $mode" >&2
     exit 2
@@ -48,9 +48,9 @@ if [[ -n "${PASEO_BUILD_COMMIT:-}" ]]; then
     export EXPO_PUBLIC_PASEO_BUILD_REPO_URL="$PASEO_BUILD_REPO_URL"
   fi
 fi
-export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
+export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
 
-if [[ "$mode" != "package" ]]; then
+if [[ "$mode" == "all" || "$mode" == "prepare" ]]; then
   cd "$assembled_root"
   npm ci --include=dev
   npm run build:app-deps
@@ -65,12 +65,23 @@ if [[ "$mode" == "prepare" ]]; then
 fi
 
 cd "$assembled_root/packages/app/android"
-./gradlew \
-  :app:assembleRelease \
-  -PreactNativeArchitectures=arm64-v8a \
-  --no-daemon \
-  --max-workers=1 \
+gradle_args=(
+  -PreactNativeArchitectures=arm64-v8a
+  --no-daemon
+  --max-workers=1
   -Dorg.gradle.parallel=false
+  --build-cache
+)
+
+if [[ "$mode" == "all" || "$mode" == "bundle" ]]; then
+  ./gradlew :app:createBundleReleaseJsAndAssets "${gradle_args[@]}"
+fi
+
+if [[ "$mode" == "bundle" ]]; then
+  exit 0
+fi
+
+./gradlew :app:assembleRelease "${gradle_args[@]}"
 
 mapfile -t unsigned_apks < <(
   find app/build/outputs/apk/release -maxdepth 1 -type f -name '*.apk' -print
