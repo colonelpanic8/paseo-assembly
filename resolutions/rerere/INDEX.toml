@@ -501,9 +501,20 @@ recorded = "2026-08-09T13:16:25.707406099+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
+hash = "7bfad4c7b8c354e4c7179493e4dadefbed41bef5"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-08-20T06:58:56.641130372+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
 hash = "91038f31ab4e1d31fa8da282262e3d5a0d9cb3ab"
 paths = ["packages/server/src/server/daemon-config-store.ts"]
 recorded = "2026-08-05T01:40:57.534338690+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "942a57081e2fa53a4ebb7dc432b7d687a122eb6b"
+recorded = "2026-08-20T06:58:56.641132226+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
@@ -519,6 +530,18 @@ recorded = "2026-08-05T01:40:57.534339331+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
+hash = "cf7d5c9b0214a21101819615e9f4efb5fd9fed2c"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-08-20T06:58:56.641132577+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "d708f4fbd8ca115352a31ab7db44291ecde1790f"
+paths = ["docs/data-model.md"]
+recorded = "2026-08-20T06:58:56.641133037+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
 hash = "db4c4525feca119e50bde7b5e597ddd00c2574d1"
 paths = ["packages/desktop/src/settings/desktop-settings-commands.test.ts"]
 recorded = "2026-08-05T01:40:57.534339742+00:00"
@@ -531,15 +554,38 @@ recorded = "2026-08-09T13:25:52.325837884+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
+hash = "e863eb63567a94387914645c340088f9aef9b094"
+paths = ["packages/desktop/src/daemon/daemon-manager.test.ts"]
+recorded = "2026-08-20T06:58:56.641133318+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
 hash = "e9a6a98ee3ad5c5dc905d5aa1690819090b9e1b0"
 paths = ["packages/desktop/src/settings/desktop-settings-commands.ts"]
 recorded = "2026-08-05T01:40:57.534339952+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
+hash = "f43776c4b728e903f8c9a0b50306cfb3ac20274f"
+paths = ["packages/server/src/server/daemon-config-store.test.ts"]
+recorded = "2026-08-20T06:58:56.641133508+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
 hash = "f63dc9c78741a1654853d9fbf4ca5c1eecd3076c"
 paths = ["packages/cli/src/commands/onboard.ts"]
 recorded = "2026-08-05T01:40:57.534340173+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "f9830d618b8b2e92988faea8a0ca684006b05d3b"
+recorded = "2026-08-20T06:58:56.641133739+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "0ea6ef1d68e0b3b4f8140381447f84b5436106be"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-08-20T07:13:34.840664267+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
@@ -1773,6 +1819,12 @@ recorded = "2026-08-17T22:03:17.541529862+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "24e1fac038bcbb76c740c14d8aa514c1dff0dd15"
+paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
+recorded = "2026-08-20T07:08:20.114124607+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "31d1e6c967ad7dfb61a779eefb6c2a40a3add210"
 paths = ["packages/app/src/keyboard/route-shortcut.ts"]
 recorded = "2026-08-17T22:03:17.541530151+00:00"
@@ -1833,6 +1885,18 @@ recorded = "2026-08-17T22:03:17.541534615+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "53823afb6f5935c85e6256fa84e52a2aded4b053"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-20T07:07:07.883483749+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "54f4d54396766cef8577b62ec87e91e94a3770a5"
+paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
+recorded = "2026-08-20T07:09:09.909277941+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "55cd6da90a9353f8b0d568bc8970a901444bbb36"
 paths = ["packages/app/src/keyboard/route-shortcut.test.ts"]
 recorded = "2026-08-17T22:03:17.541534931+00:00"
@@ -1851,6 +1915,12 @@ recorded = "2026-08-17T22:03:17.541536522+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "6c05b189c2d1826cb12096321f4407a3778cc8b6"
+paths = ["packages/app/src/components/ui/menu/menu-overlay.tsx"]
+recorded = "2026-08-20T07:09:09.909284684+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "6d9b9618ea0b60f79227c8535ff2c6a5c430144a"
 paths = ["packages/app/src/keyboard/focus-scope.ts"]
 recorded = "2026-08-17T22:03:17.541536745+00:00"
@@ -1866,6 +1936,12 @@ entry = "pr-2927"
 hash = "8105453894d3e946de1c02138a52143bd9989973"
 paths = ["packages/app/src/keyboard/focus-scope.test.ts"]
 recorded = "2026-08-17T22:03:17.541537194+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "8dc65af17c83fa300dac98f70ded7ddbd329404b"
+paths = ["packages/app/src/components/add-project-flow.tsx"]
+recorded = "2026-08-20T07:08:20.114133013+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -1890,6 +1966,12 @@ entry = "pr-2927"
 hash = "a003e08dfc6c6330cf55a115fe30970e7f9fadc7"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-17T22:24:47.982769683+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "a0dfc4e871216f80716ef8cabdde6d32aed2c992"
+paths = ["packages/app/src/composer/input/input.tsx"]
+recorded = "2026-08-20T07:09:09.909284984+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2015,7 +2097,7 @@ recorded = "2026-08-06T22:29:58.003267778+00:00"
 entry = "pr-2954"
 hash = "5d5681afb03266603adf6c997ede9bad5da3723e"
 paths = ["packages/server/src/server/daemon-config-store.ts"]
-recorded = "2026-08-17T07:27:03.009424942+00:00"
+recorded = "2026-08-20T07:09:23.864392977+00:00"
 
 [[resolution]]
 entry = "pr-2954"
@@ -2093,7 +2175,7 @@ recorded = "2026-08-09T13:25:10.825893356+00:00"
 entry = "thinking-control-reachability"
 hash = "430d4acd7331ccc082b99d008f86a0b12ef34cef"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
-recorded = "2026-08-07T19:54:49.765632999+00:00"
+recorded = "2026-08-20T07:13:14.728153657+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
