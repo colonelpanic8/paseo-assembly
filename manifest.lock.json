@@ -4,7 +4,7 @@
     "base": "bed5d2b1beb97b3d568dc59d21ad794b6103d477",
     "entries": {
       "assembled-ci-lint-fixes": "79935769ae30b28b01311627cf9fa6c843782dc0",
-      "assembled-npm-deps-hash": "588ed50b84fa67016fffa08df6fbd461817a710e",
+      "assembled-npm-deps-hash": "71ba179fe57d20d918f9136f13f575068895ebe7",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "205113c03a7bdf02d6165e716bac2d669aa70ca0",
       "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
@@ -78,13 +78,13 @@
     }
   },
   "build": {
-    "generated": "2026-08-20T07:29:03.808960793+00:00",
+    "generated": "2026-08-20T07:37:04.846474916+00:00",
     "base": "bed5d2b1beb97b3d568dc59d21ad794b6103d477",
-    "commit": "083a025621eb1bbe97e797d39d0b25a57c1d7c43",
-    "pre_provenance_commit": "083a025621eb1bbe97e797d39d0b25a57c1d7c43",
-    "tree": "b2bc59322ba24841270114f66ff7b5e0984dc93c",
-    "built_tree": "b2bc59322ba24841270114f66ff7b5e0984dc93c",
-    "previous_tree": "0795c2fa4bdd75b46daa91539be3b7c54836a28e",
+    "commit": "1acf42aba4fd7c2a7f31f79128c54d6c218de687",
+    "pre_provenance_commit": "1acf42aba4fd7c2a7f31f79128c54d6c218de687",
+    "tree": "7c70412511c2e5bacaa274976f5815968e6feea7",
+    "built_tree": "7c70412511c2e5bacaa274976f5815968e6feea7",
+    "previous_tree": "b2bc59322ba24841270114f66ff7b5e0984dc93c",
     "tree_changed": true,
     "conflicts": 33,
     "manifest_entries": [
@@ -224,7 +224,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "588ed50b84fa67016fffa08df6fbd461817a710e"
+        "pin": "71ba179fe57d20d918f9136f13f575068895ebe7"
       },
       {
         "name": "pr-2730",
@@ -572,13 +572,13 @@
         "resolution": "rerere",
         "fixup": "07c9b5968a503cafe404cbd672beb75bc2fe9d72",
         "derived": {
-          "base_tip": "18a8a07d3e9ca113ac053dc3a1f0ec94e263e0d7",
-          "tip": "37eef6eb0ce6d4d5e85900ddf62c543fbcf263c1"
+          "base_tip": "c74895d71c6798ef3618896da204cc4d59f01340",
+          "tip": "0201fbccfc1547459918d7cc03acb12acf49a65c"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "588ed50b84fa67016fffa08df6fbd461817a710e",
+        "oid": "71ba179fe57d20d918f9136f13f575068895ebe7",
         "status": "applied",
         "conflicted": false
       },
@@ -710,8 +710,8 @@
         "resolution": "rerere",
         "fixup": "03d902dcbe51bc4a86f0f4e60b28095fdb0adaab",
         "derived": {
-          "base_tip": "d4fec1907713d671116db0fb5c1f3323a3fef5c2",
-          "tip": "aeaeaee564df3151cf0a4edd4f7e7d150aa848da"
+          "base_tip": "f0c2f37fb9b86442d20249b6e2ea5fbf3051142e",
+          "tip": "c9bce3e522e855bb2dd8597c6baf8117e2986ca1"
         }
       },
       {
@@ -782,8 +782,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "cff6cb28f6f1eccfc076cca3c2edadb4c90bf2d8",
-          "tip": "7589ac7f1533b81c4df03c4da4eb631feb2d3b7e"
+          "base_tip": "dab2924d0da4040b40e048a7fd25773ee0bc8d8c",
+          "tip": "3428d4a6a5d871618c0be8a44b32286c8b2b729c"
         }
       },
       {
@@ -794,8 +794,8 @@
         "resolution": "rerere",
         "fixup": "0173fe2f2954657ea0f0fa3dca3cec17f8070f42",
         "derived": {
-          "base_tip": "541e2e21cc00b8c01adf7f56985b6841fd9792c8",
-          "tip": "ad37fb424619c5241bc8546bec923a40857effd8"
+          "base_tip": "9423cced1771691eb28037a59ab26abff06f702e",
+          "tip": "bf05cdf2c12789368b7905bc0cc227baf2ff5564"
         }
       },
       {
