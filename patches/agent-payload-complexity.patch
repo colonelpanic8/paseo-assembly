@@ -91,3 +91,20 @@ index b15a0e6fa..8c437af70 100644
    }
  
    @Test
+diff --git a/packages/app/src/screens/settings-screen.tsx b/packages/app/src/screens/settings-screen.tsx
+--- a/packages/app/src/screens/settings-screen.tsx
++++ b/packages/app/src/screens/settings-screen.tsx
+@@ -2508,11 +2508,11 @@ const styles = StyleSheet.create((theme) => ({
+     color: theme.colors.foregroundMuted,
+     flexShrink: 1,
+     fontFamily: theme.fontFamily.mono,
+-    fontSize: theme.fontSize.xs,
++    fontSize: theme.fontSize.sm,
+   },
+   aboutBuildDetail: {
+     color: theme.colors.foregroundMuted,
+-    fontSize: theme.fontSize.xs,
++    fontSize: theme.fontSize.sm,
+   },
+   diagnosticsGroupTitle: {
+     color: theme.colors.foregroundMuted,
