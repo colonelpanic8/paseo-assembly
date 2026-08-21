@@ -1,0 +1,26 @@
+diff --git a/packages/app/src/components/sidebar/sidebar-project-filter.test.ts b/packages/app/src/components/sidebar/sidebar-project-filter.test.ts
+index ad8b35ae7..65d56367c 100644
+--- a/packages/app/src/components/sidebar/sidebar-project-filter.test.ts
++++ b/packages/app/src/components/sidebar/sidebar-project-filter.test.ts
+@@ -19,8 +19,13 @@ function workspace(workspaceId: string, projectViewKey: string): SidebarWorkspac
+     pinnedAt: null,
+     labels: [],
+     currentBranch: "main",
++    remoteUrl: null,
++    providers: [],
+     statusBucket: "done",
+     statusEnteredAt: null,
++    lastUserMessageAt: null,
++    activityAt: null,
++    readyToReview: false,
+     archivingAt: null,
+     diffStat: null,
+     prHint: null,
+@@ -28,6 +33,7 @@ function workspace(workspaceId: string, projectViewKey: string): SidebarWorkspac
+     archiveUnpushedCommitCount: null,
+     scripts: [],
+     hasRunningScripts: false,
++    snoozeWakeAt: null,
+   };
+ }
+ 

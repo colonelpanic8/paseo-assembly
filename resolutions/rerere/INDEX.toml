@@ -2172,6 +2172,102 @@ paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-09T13:25:10.825893356+00:00"
 
 [[resolution]]
+entry = "pr-3662"
+hash = "217d480d0242b1858396a1ae6e647deceefd56ce"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-21T20:38:48.226852512+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "255457cad03b1842f08b8d9771f392699133ae4d"
+paths = ["packages/app/src/screens/workspace/workspace-screen.tsx"]
+recorded = "2026-08-21T20:41:29.886442462+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "39de3a5896101d013f8ea31a4805e019fcb91e62"
+paths = ["packages/app/src/agent-stream/view.tsx"]
+recorded = "2026-08-21T20:41:29.886446359+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "4313b37542da01adedd45550ec057d0933adb0a6"
+paths = ["docs/agent-lifecycle.md"]
+recorded = "2026-08-21T20:38:48.226854937+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "453e3ac6d80b7181b596773d779a8ef5d724e4b1"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-08-21T20:38:48.226855438+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "55784af2c6452ee04cebce6265247f5630ae2bc6"
+paths = ["packages/app/src/keyboard/keyboard-shortcuts.ts"]
+recorded = "2026-08-21T20:38:48.226855848+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "6c1ed5600ed4074154edacfff7379ee830db8f35"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-08-21T20:38:48.226856830+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "77ae912d003fd55a6bbb7a950688f439d1e63974"
+paths = ["packages/app/src/hooks/use-settings/storage.test.ts"]
+recorded = "2026-08-21T20:38:48.226857411+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "7b54e66bd4eaa38db6c63efc17dc63cc41100a48"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-08-21T20:41:29.886453232+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "b734339b03cda4457c5fdd119410b109defafef6"
+paths = ["packages/app/src/styles/markdown-styles.ts"]
+recorded = "2026-08-21T20:41:29.886454174+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "bc219ad479f87a8cc83d8de8f4c84c10c04be07f"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-08-21T20:45:05.244151300+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "cc4f4a385037cacbfd0f86db51d3317bfd2dafd0"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-08-21T20:45:05.244154766+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "cf7e1539ee1d2e2219869fba0712195cf4fc4390"
+paths = ["packages/server/src/server/bootstrap.ts"]
+recorded = "2026-08-21T20:38:48.226863032+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "e26041e3d7eb70c6760e8a15db7d66267f6a0c06"
+paths = ["packages/app/src/components/ui/shortcut.tsx"]
+recorded = "2026-08-21T20:38:48.226863513+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "e72d14fde1d9d9a59daf0022758258eef45762af"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-08-21T20:38:48.226864034+00:00"
+
+[[resolution]]
+entry = "pr-3662"
+hash = "f9eafbcf1792cc519ced5d0c4f74c5f04326cecd"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-08-21T20:38:48.226864455+00:00"
+
+[[resolution]]
 entry = "thinking-control-reachability"
 hash = "430d4acd7331ccc082b99d008f86a0b12ef34cef"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
