@@ -1,17 +1,17 @@
 diff --git a/packages/app/src/utils/agent-snapshots.test.ts b/packages/app/src/utils/agent-snapshots.test.ts
-index a6dbbfd48..d7dc7e6b1 100644
+index 3d09c4ef5..bc9f9ba73 100644
 --- a/packages/app/src/utils/agent-snapshots.test.ts
 +++ b/packages/app/src/utils/agent-snapshots.test.ts
 @@ -3,6 +3,7 @@ import type { AgentSnapshotPayload } from "@getpaseo/protocol/messages";
  import { PARENT_AGENT_ID_LABEL } from "@getpaseo/protocol/agent-labels";
- import { normalizeAgentSnapshot } from "./agent-snapshots";
+ import { normalizeAgentSnapshot, projectAgentSnapshot } from "./agent-snapshots";
  
 +// oxlint-disable-next-line complexity
  function createSnapshot(
    input: Partial<Omit<AgentSnapshotPayload, "labels">> & {
      labels?: Record<string, unknown>;
 diff --git a/packages/server/src/server/agent/agent-projections.ts b/packages/server/src/server/agent/agent-projections.ts
-index 7242051d4..0c194e3bc 100644
+index c2ea0ca73..4bf6bf117 100644
 --- a/packages/server/src/server/agent/agent-projections.ts
 +++ b/packages/server/src/server/agent/agent-projections.ts
 @@ -236,6 +236,7 @@ function buildStoredPersistenceHandle(
@@ -23,10 +23,10 @@ index 7242051d4..0c194e3bc 100644
    record: StoredAgentRecord,
    validProviders: Iterable<AgentProvider>,
 diff --git a/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt b/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt
-index 1b1bb9f29..cc197d5c9 100644
+index 9850210ff..c45857a71 100644
 --- a/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt
 +++ b/packages/watch/app/src/main/java/sh/paseo/watch/data/WearBridge.kt
-@@ -55,7 +55,13 @@ object WearBridge {
+@@ -60,7 +60,13 @@ object WearBridge {
  
    /** DataClient path for one agent's transcript. */
    fun transcriptPath(serverId: String, agentId: String): String =
@@ -76,7 +76,7 @@ index 463e1f57c..0ce88c487 100644
      assertEquals(cache, kept)
    }
 diff --git a/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt b/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt
-index b15a0e6fa..8c437af70 100644
+index bee65efbc..c65cd9020 100644
 --- a/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt
 +++ b/packages/watch/app/src/test/java/sh/paseo/watch/data/WearBridgeTest.kt
 @@ -246,8 +246,9 @@ class WearBridgeTest {
@@ -91,20 +91,3 @@ index b15a0e6fa..8c437af70 100644
    }
  
    @Test
-diff --git a/packages/app/src/screens/settings-screen.tsx b/packages/app/src/screens/settings-screen.tsx
---- a/packages/app/src/screens/settings-screen.tsx
-+++ b/packages/app/src/screens/settings-screen.tsx
-@@ -2508,11 +2508,11 @@ const styles = StyleSheet.create((theme) => ({
-     color: theme.colors.foregroundMuted,
-     flexShrink: 1,
-     fontFamily: theme.fontFamily.mono,
--    fontSize: theme.fontSize.xs,
-+    fontSize: theme.fontSize.sm,
-   },
-   aboutBuildDetail: {
-     color: theme.colors.foregroundMuted,
--    fontSize: theme.fontSize.xs,
-+    fontSize: theme.fontSize.sm,
-   },
-   diagnosticsGroupTitle: {
-     color: theme.colors.foregroundMuted,

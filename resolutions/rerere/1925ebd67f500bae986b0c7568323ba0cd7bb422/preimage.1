@@ -1,0 +1,620 @@
+import { isSyntaxThemeId, type SyntaxThemeId } from "@getpaseo/highlight";
+import type { ActiveTurnBehavior } from "@getpaseo/protocol/messages";
+import type { QueryClient } from "@tanstack/react-query";
+import {
+  DEFAULT_COMMAND_SIGIL,
+  DEFAULT_SKILL_SIGIL,
+  resolveComposerSigils,
+  type ComposerSigil,
+} from "@/composer/tokens/sigils";
+import type { DesktopSettings } from "@/desktop/settings/desktop-settings";
+import { parseAppLanguage, type AppLanguage } from "@/i18n/locales";
+import {
+  DEFAULT_SIDEBAR_CHECKS_DISPLAY,
+  parseSidebarChecksDisplay,
+  type SidebarChecksDisplay,
+} from "@/components/sidebar/display-preferences/checks-display";
+import {
+  DEFAULT_SIDEBAR_ROW_ITEMS,
+  isChecksHiddenByLegacyRowItem,
+  parseSidebarRowItems,
+  type SidebarRowItems,
+} from "@/components/sidebar/display-preferences/row-items";
+import { isNative } from "@/constants/platform";
+import {
+  FONT_SIZE,
+  PLUGIN_THEME_PREFERENCE,
+  THEME_OPTIONS,
+  type ThemePreference,
+} from "@/styles/theme";
+import { z } from "zod";
+import { readValidatedJson } from "@/storage/validated-storage";
+import { APP_SETTINGS_KEY, LEGACY_SETTINGS_KEY } from "./keys";
+import { migrateAppSettings } from "./migrations";
+
+export { APP_SETTINGS_KEY } from "./keys";
+export const APP_SETTINGS_QUERY_KEY = ["app-settings"];
+
+export type SendBehavior = ActiveTurnBehavior | "queue";
+export type ReleaseChannel = "stable" | "beta";
+export type ServiceUrlBehavior = "ask" | "in-app" | "external";
+export type WorkspaceTitleSource = "title" | "branch" | "worktree";
+/** What a sidebar workspace row shows in the space to the right of its title. */
+export type SidebarWorkspaceTrailing = "diff" | "timestamp" | "none";
+export type ToolCallDetailLevel = "overview" | "detailed";
+
+const ThemePreferenceSchema = z.enum([
+  ...THEME_OPTIONS.map((option) => option.name),
+  PLUGIN_THEME_PREFERENCE,
+]);
+const VALID_THEMES = new Set<string>(ThemePreferenceSchema.options);
+/** Where the theme picker lands when the persisted preference cannot be honoured. */
+export const DEFAULT_THEME_PREFERENCE = "auto" satisfies ThemePreference;
+const VALID_SERVICE_URL_BEHAVIORS = new Set<ServiceUrlBehavior>(["ask", "in-app", "external"]);
+const VALID_WORKSPACE_TITLE_SOURCES = new Set<WorkspaceTitleSource>([
+  "title",
+  "branch",
+  "worktree",
+]);
+const VALID_SIDEBAR_WORKSPACE_TRAILINGS = new Set<SidebarWorkspaceTrailing>([
+  "diff",
+  "timestamp",
+  "none",
+]);
+const VALID_TOOL_CALL_DETAIL_LEVELS = new Set<ToolCallDetailLevel>(["overview", "detailed"]);
+export const DEFAULT_TERMINAL_SCROLLBACK_LINES = 10_000;
+export const MIN_TERMINAL_SCROLLBACK_LINES = 0;
+export const MAX_TERMINAL_SCROLLBACK_LINES = 1_000_000;
+export function defaultUiBaseFontSize(native: boolean): number {
+  return native ? 15 : FONT_SIZE.base;
+}
+
+export const DEFAULT_UI_BASE_FONT_SIZE = defaultUiBaseFontSize(isNative);
+export const MIN_UI_BASE_FONT_SIZE = 10;
+export const MAX_UI_BASE_FONT_SIZE = 21;
+export function defaultContentFontSize(native: boolean): number {
+  return native ? 15 : FONT_SIZE.content;
+}
+
+export const DEFAULT_CONTENT_FONT_SIZE = defaultContentFontSize(isNative);
+export const MIN_CONTENT_FONT_SIZE = 10;
+export const MAX_CONTENT_FONT_SIZE = 21;
+export const DEFAULT_CODE_FONT_SIZE = 12; // == FONT_SIZE.code
+export const MIN_CODE_FONT_SIZE = 9;
+export const MAX_CODE_FONT_SIZE = 22; // line-height 1.5×22=33 stays safe
+export const MAX_FONT_FAMILY_LENGTH = 200;
+
+export interface AppSettings {
+  theme: ThemePreference;
+  /** Which contributed theme `theme: "plugin"` selects. */
+  pluginThemeId: string | null;
+  language: AppLanguage;
+  sendBehavior: SendBehavior;
+  serviceUrlBehavior: ServiceUrlBehavior;
+  terminalScrollbackLines: number;
+  useLegacyTerminalRenderer: boolean;
+  uiFontFamily: string; // "" = platform default UI stack
+  monoFontFamily: string; // "" = platform default mono stack
+  uiBaseFontSize: number; // clamped px, platform default 14 or 15
+  contentFontSize: number; // clamped px, default 15
+  codeFontSize: number; // clamped px, default 12
+  syntaxTheme: SyntaxThemeId; // default "one"
+  workspaceTitleSource: WorkspaceTitleSource;
+  sidebarWorkspaceTrailing: SidebarWorkspaceTrailing;
+  sidebarRowItems: SidebarRowItems;
+  sidebarChecksDisplay: SidebarChecksDisplay;
+  alwaysShowHostLabels: boolean;
+  autoExpandReasoning: boolean;
+  toolCallDetailLevel: ToolCallDetailLevel;
+  chatOutlineEnabled: boolean;
+  vimKeybindings: boolean;
+  /** Route implicitly opened supporting tabs into the Side panel. Desktop only. */
+  openSupportingTabsInSidePanel: boolean;
+  modelPickerStartsWithAllModels: boolean;
+  /** Character that opens the full command menu at the start of a prompt. */
+  commandTriggerSigil: ComposerSigil;
+  /** Character that opens the skills-only menu anywhere in a message. */
+  skillTriggerSigil: ComposerSigil;
+}
+
+export interface Settings extends AppSettings {
+  manageBuiltInDaemon: boolean;
+  releaseChannel: ReleaseChannel;
+}
+
+// Strict, so every item in SIDEBAR_ROW_ITEMS needs a key here the day it is added: the whole
+// settings write is one validation, and one unknown key silently loses every other toggle in it.
+// `checks` and `scripts` are gone from the item list and stay here for the COMPAT reads in
+// row-items.ts.
+const SidebarRowItemsSchema = z.strictObject({
+  branch: z.boolean().optional(),
+  project: z.boolean().optional(),
+  host: z.boolean().optional(),
+  changeRequest: z.boolean().optional(),
+  services: z.boolean().optional(),
+  labels: z.boolean().optional(),
+  checks: z.boolean().optional(),
+  scripts: z.boolean().optional(),
+});
+
+const StoredAppSettingsSchema = z.strictObject({
+  theme: ThemePreferenceSchema.optional(),
+  pluginThemeId: z.string().nullish(),
+  language: z
+    .enum(["system", "ar", "en", "es", "fr", "ja", "ko", "pt-BR", "ru", "zh-CN"])
+    .optional(),
+  sendBehavior: z.enum(["interrupt", "steer", "queue"]).optional(),
+  serviceUrlBehavior: z.enum(["ask", "in-app", "external"]).optional(),
+  terminalScrollbackLines: z.union([z.number(), z.string()]).optional(),
+  useLegacyTerminalRenderer: z.boolean().optional(),
+  uiFontFamily: z.string().optional(),
+  monoFontFamily: z.string().optional(),
+  uiBaseFontSize: z.union([z.number(), z.string()]).optional(),
+  contentFontSize: z.union([z.number(), z.string()]).optional(),
+  // COMPAT(uiFontSizeScale): replaced by the literal base size in v0.4, remove after 2027-08-17.
+  uiFontSize: z.union([z.number(), z.string()]).optional(),
+  codeFontSize: z.union([z.number(), z.string()]).optional(),
+  syntaxTheme: z.string().refine(isSyntaxThemeId).optional(),
+  workspaceTitleSource: z.enum(["title", "branch"]).optional(),
+  sidebarWorkspaceTrailing: z.enum(["diff", "timestamp", "none"]).optional(),
+  sidebarRowItems: SidebarRowItemsSchema.optional(),
+  sidebarChecksDisplay: z.enum(["iconAndText", "icon", "none"]).optional(),
+  autoExpandReasoning: z.boolean().optional(),
+  toolCallDetailLevel: z.enum(["overview", "detailed"]).optional(),
+  compactToolCalls: z.boolean().optional(),
+  chatOutlineEnabled: z.boolean().optional(),
+<<<<<<<
+  alwaysShowHostLabels: z.boolean().optional(),
+=======
+  modelPickerStartsWithAllModels: z.boolean().optional(),
+>>>>>>>
+  vimKeybindings: z.boolean().optional(),
+  openSupportingTabsInSidePanel: z.boolean().optional(),
+  commandTriggerSigil: z.string().optional(),
+  skillTriggerSigil: z.string().optional(),
+  // COMPAT(rendererDesktopSettings): these fields used to share this renderer-owned key.
+  manageBuiltInDaemon: z.boolean().optional(),
+  releaseChannel: z.enum(["stable", "beta"]).optional(),
+});
+
+const LegacyRendererSettingsSchema = StoredAppSettingsSchema;
+
+type StoredAppSettings = z.infer<typeof StoredAppSettingsSchema>;
+
+export const DEFAULT_CLIENT_SETTINGS: AppSettings = {
+  theme: DEFAULT_THEME_PREFERENCE,
+  pluginThemeId: null,
+  language: "system",
+  sendBehavior: "steer",
+  serviceUrlBehavior: "ask",
+  terminalScrollbackLines: DEFAULT_TERMINAL_SCROLLBACK_LINES,
+  useLegacyTerminalRenderer: false,
+  uiFontFamily: "",
+  monoFontFamily: "",
+  uiBaseFontSize: DEFAULT_UI_BASE_FONT_SIZE,
+  contentFontSize: DEFAULT_CONTENT_FONT_SIZE,
+  codeFontSize: DEFAULT_CODE_FONT_SIZE,
+  syntaxTheme: "one",
+  workspaceTitleSource: "title",
+  sidebarWorkspaceTrailing: "diff",
+  sidebarRowItems: DEFAULT_SIDEBAR_ROW_ITEMS,
+  sidebarChecksDisplay: DEFAULT_SIDEBAR_CHECKS_DISPLAY,
+  alwaysShowHostLabels: false,
+  autoExpandReasoning: false,
+  toolCallDetailLevel: "detailed",
+  chatOutlineEnabled: true,
+  vimKeybindings: false,
+  openSupportingTabsInSidePanel: true,
+  modelPickerStartsWithAllModels: false,
+  commandTriggerSigil: DEFAULT_COMMAND_SIGIL,
+  skillTriggerSigil: DEFAULT_SKILL_SIGIL,
+};
+
+export const DEFAULT_APP_SETTINGS: Settings = {
+  ...DEFAULT_CLIENT_SETTINGS,
+  manageBuiltInDaemon: true,
+  releaseChannel: "stable",
+};
+
+export interface KeyValueStorage {
+  getItem(key: string): Promise<string | null>;
+  setItem(key: string, value: string): Promise<void>;
+  removeItem(key: string): Promise<void>;
+}
+
+export interface DesktopSettingsBridge {
+  isElectron(): boolean;
+  loadDesktopSettings(): Promise<DesktopSettings>;
+  migrateLegacyDesktopSettings(input: {
+    manageBuiltInDaemon?: boolean;
+    releaseChannel?: ReleaseChannel;
+  }): Promise<void>;
+}
+
+export interface SettingsDeps {
+  storage: KeyValueStorage;
+  desktop: DesktopSettingsBridge;
+}
+
+export async function saveAppSettings(input: {
+  queryClient: QueryClient;
+  updates: Partial<AppSettings>;
+  deps: SettingsDeps;
+}): Promise<void> {
+  const storedCurrent =
+    input.queryClient.getQueryData<AppSettings>(APP_SETTINGS_QUERY_KEY) ??
+    (await loadAppSettingsFromStorage(input.deps));
+  const current = normalizeAppSettings(storedCurrent);
+  const next = normalizeAppSettings({ ...current, ...input.updates });
+  input.queryClient.setQueryData<AppSettings>(APP_SETTINGS_QUERY_KEY, next);
+  await input.deps.storage.setItem(APP_SETTINGS_KEY, JSON.stringify(next));
+}
+
+export async function loadAppSettingsFromStorage(deps: SettingsDeps): Promise<AppSettings> {
+  try {
+    const read = await readAppSettings(deps);
+    if (read.needsWrite) {
+      await deps.storage.setItem(APP_SETTINGS_KEY, JSON.stringify(read.settings));
+    }
+    return await migrateAppSettings(read.settings, deps.storage);
+  } catch (error) {
+    console.error("[AppSettings] Failed to load settings:", error);
+    throw error;
+  }
+}
+
+/**
+ * Reads whichever of the settings blobs exists, without migrating. `needsWrite` covers the reads
+ * that produce settings the stored blob does not already spell out.
+ */
+async function readAppSettings(
+  deps: SettingsDeps,
+): Promise<{ settings: AppSettings; needsWrite: boolean }> {
+  const stored = await readValidatedJson(deps.storage, APP_SETTINGS_KEY, StoredAppSettingsSchema);
+  if (stored) {
+    return {
+      settings: normalizeAppSettings(stored),
+      // COMPAT(uiFontSizeScale): persist the converted base size, remove after 2027-08-17.
+      needsWrite:
+        (stored.uiBaseFontSize === undefined && stored.uiFontSize !== undefined) ||
+        stored.contentFontSize === undefined,
+    };
+  }
+
+  const legacyStored = await readValidatedJson(
+    deps.storage,
+    LEGACY_SETTINGS_KEY,
+    LegacyRendererSettingsSchema,
+  );
+  if (legacyStored) {
+    return {
+      settings: {
+        ...DEFAULT_CLIENT_SETTINGS,
+        ...pickAppSettingsFromLegacy(legacyStored),
+      } satisfies AppSettings,
+      needsWrite: true,
+    };
+  }
+
+  return { settings: DEFAULT_CLIENT_SETTINGS, needsWrite: true };
+}
+
+export async function loadSettingsFromStorage(deps: SettingsDeps): Promise<Settings> {
+  const legacyDesktopSettings = deps.desktop.isElectron()
+    ? await loadLegacyDesktopSettingsFromStorage(deps.storage)
+    : null;
+  const appSettings = await loadAppSettingsFromStorage(deps);
+
+  if (!deps.desktop.isElectron()) {
+    return {
+      ...DEFAULT_APP_SETTINGS,
+      ...appSettings,
+    };
+  }
+
+  if (legacyDesktopSettings) {
+    await deps.desktop.migrateLegacyDesktopSettings(legacyDesktopSettings);
+  }
+
+  const desktopSettings = await deps.desktop.loadDesktopSettings();
+  return {
+    ...DEFAULT_APP_SETTINGS,
+    ...appSettings,
+    manageBuiltInDaemon: desktopSettings.daemon.manageBuiltInDaemon,
+    releaseChannel: desktopSettings.releaseChannel,
+  };
+}
+
+export function normalizeAppSettings(value: unknown): AppSettings {
+  const result = StoredAppSettingsSchema.safeParse(value);
+  return {
+    ...DEFAULT_CLIENT_SETTINGS,
+    ...pickAppSettings(result.success ? result.data : {}),
+  };
+}
+
+function parseToolCallDetailLevel(stored: StoredAppSettings): ToolCallDetailLevel | null {
+  if (stored.toolCallDetailLevel !== undefined) {
+    if (
+      typeof stored.toolCallDetailLevel === "string" &&
+      VALID_TOOL_CALL_DETAIL_LEVELS.has(stored.toolCallDetailLevel)
+    ) {
+      return stored.toolCallDetailLevel;
+    }
+    // COMPAT(toolCallDetailLevelConcise): removed in v0.1.107; legacy "concise" values
+    // deliberately follow the unknown-value fallback. Remove after 2027-01-14.
+    return "overview";
+  }
+  if (typeof stored.compactToolCalls === "boolean") {
+    // COMPAT(compactToolCalls): migrated in v0.1.105, remove after 2027-01-12.
+    return stored.compactToolCalls ? "overview" : "detailed";
+  }
+  return null;
+}
+
+function parseStoredSidebarChecksDisplay(stored: StoredAppSettings): SidebarChecksDisplay | null {
+  const display = parseSidebarChecksDisplay(stored.sidebarChecksDisplay);
+  if (display !== null) {
+    return display;
+  }
+  // COMPAT(sidebarRowItemsChecks): migrated in v0.3.0, remove after 2027-08-05.
+  return isChecksHiddenByLegacyRowItem(stored.sidebarRowItems) ? "none" : null;
+}
+
+function pickBooleanAppSettings(stored: StoredAppSettings): Partial<AppSettings> {
+  const result: Partial<AppSettings> = {};
+  if (typeof stored.useLegacyTerminalRenderer === "boolean") {
+    result.useLegacyTerminalRenderer = stored.useLegacyTerminalRenderer;
+  }
+  if (typeof stored.vimKeybindings === "boolean") {
+    result.vimKeybindings = stored.vimKeybindings;
+  }
+  if (typeof stored.chatOutlineEnabled === "boolean") {
+    result.chatOutlineEnabled = stored.chatOutlineEnabled;
+  }
+  if (typeof stored.openSupportingTabsInSidePanel === "boolean") {
+    result.openSupportingTabsInSidePanel = stored.openSupportingTabsInSidePanel;
+  }
+<<<<<<<
+  if (typeof stored.alwaysShowHostLabels === "boolean") {
+    result.alwaysShowHostLabels = stored.alwaysShowHostLabels;
+  }
+=======
+  if (typeof stored.modelPickerStartsWithAllModels === "boolean") {
+    result.modelPickerStartsWithAllModels = stored.modelPickerStartsWithAllModels;
+  }
+>>>>>>>
+  return result;
+}
+
+/**
+ * The settings whose stored value only has to be a member of a fixed set. Grouped like the
+ * boolean settings are: the numeric and font settings need real parsing and clamping, these
+ * need a membership check and nothing else.
+ */
+function pickEnumAppSettings(stored: StoredAppSettings): Partial<AppSettings> {
+  const result: Partial<AppSettings> = {};
+  if (typeof stored.theme === "string" && VALID_THEMES.has(stored.theme)) {
+    result.theme = stored.theme;
+  }
+  if (
+    stored.sendBehavior === "interrupt" ||
+    stored.sendBehavior === "steer" ||
+    stored.sendBehavior === "queue"
+  ) {
+    result.sendBehavior = stored.sendBehavior;
+  }
+  if (
+    typeof stored.serviceUrlBehavior === "string" &&
+    VALID_SERVICE_URL_BEHAVIORS.has(stored.serviceUrlBehavior)
+  ) {
+    result.serviceUrlBehavior = stored.serviceUrlBehavior;
+  }
+  if (typeof stored.syntaxTheme === "string" && isSyntaxThemeId(stored.syntaxTheme)) {
+    result.syntaxTheme = stored.syntaxTheme;
+  }
+  if (
+    typeof stored.workspaceTitleSource === "string" &&
+    VALID_WORKSPACE_TITLE_SOURCES.has(stored.workspaceTitleSource)
+  ) {
+    result.workspaceTitleSource = stored.workspaceTitleSource;
+  }
+  if (
+    typeof stored.sidebarWorkspaceTrailing === "string" &&
+    VALID_SIDEBAR_WORKSPACE_TRAILINGS.has(stored.sidebarWorkspaceTrailing)
+  ) {
+    result.sidebarWorkspaceTrailing = stored.sidebarWorkspaceTrailing;
+  }
+  return result;
+}
+
+function pickAppSettings(stored: StoredAppSettings): Partial<AppSettings> {
+  const result: Partial<AppSettings> = {};
+  Object.assign(result, pickEnumAppSettings(stored));
+  if (typeof stored.pluginThemeId === "string") {
+    result.pluginThemeId = stored.pluginThemeId;
+  }
+  if (stored.sidebarRowItems !== undefined) {
+    result.sidebarRowItems = parseSidebarRowItems(stored.sidebarRowItems);
+  }
+  const sidebarChecksDisplay = parseStoredSidebarChecksDisplay(stored);
+  if (sidebarChecksDisplay !== null) {
+    result.sidebarChecksDisplay = sidebarChecksDisplay;
+  }
+  const language = parseAppLanguage(stored.language);
+  if (language !== null) {
+    result.language = language;
+  }
+  const terminalScrollbackLines = parseTerminalScrollbackLines(stored.terminalScrollbackLines);
+  if (terminalScrollbackLines !== null) {
+    result.terminalScrollbackLines = terminalScrollbackLines;
+  }
+  const uiFontFamily = sanitizeFontFamily(stored.uiFontFamily);
+  if (uiFontFamily !== null) {
+    result.uiFontFamily = uiFontFamily;
+  }
+  const monoFontFamily = sanitizeFontFamily(stored.monoFontFamily);
+  if (monoFontFamily !== null) {
+    result.monoFontFamily = monoFontFamily;
+  }
+  const uiBaseFontSize = parseClampedFontSize(stored.uiBaseFontSize, {
+    min: MIN_UI_BASE_FONT_SIZE,
+    max: MAX_UI_BASE_FONT_SIZE,
+  });
+  if (uiBaseFontSize !== null) {
+    result.uiBaseFontSize = uiBaseFontSize;
+  } else {
+    const legacyUiFontSize = parseClampedFontSize(stored.uiFontSize, {
+      min: 11,
+      max: 24,
+    });
+    if (legacyUiFontSize !== null) {
+      result.uiBaseFontSize = Math.round((FONT_SIZE.base * legacyUiFontSize) / 16);
+    }
+  }
+  const contentFontSize = parseClampedFontSize(stored.contentFontSize, {
+    min: MIN_CONTENT_FONT_SIZE,
+    max: MAX_CONTENT_FONT_SIZE,
+  });
+  if (contentFontSize !== null) {
+    result.contentFontSize = contentFontSize;
+  } else if (stored.contentFontSize === undefined) {
+    // Existing content followed the interface ramp. Preserve that rendered size
+    // once, then persist the independent setting during the read migration.
+    result.contentFontSize = result.uiBaseFontSize ?? DEFAULT_UI_BASE_FONT_SIZE;
+  }
+  const codeFontSize = parseClampedFontSize(stored.codeFontSize, {
+    min: MIN_CODE_FONT_SIZE,
+    max: MAX_CODE_FONT_SIZE,
+  });
+  if (codeFontSize !== null) {
+    result.codeFontSize = codeFontSize;
+  }
+  Object.assign(result, pickBooleanAppSettings(stored));
+  if (typeof stored.autoExpandReasoning === "boolean") {
+    result.autoExpandReasoning = stored.autoExpandReasoning;
+  }
+  const toolCallDetailLevel = parseToolCallDetailLevel(stored);
+  if (toolCallDetailLevel !== null) {
+    result.toolCallDetailLevel = toolCallDetailLevel;
+  }
+  Object.assign(result, pickComposerSigils(stored));
+  return result;
+}
+
+function pickComposerSigils(
+  stored: StoredAppSettings,
+): Pick<AppSettings, "commandTriggerSigil" | "skillTriggerSigil"> {
+  const sigils = resolveComposerSigils({
+    command: stored.commandTriggerSigil,
+    skill: stored.skillTriggerSigil,
+  });
+  return {
+    commandTriggerSigil: sigils.command,
+    skillTriggerSigil: sigils.skill,
+  };
+}
+
+function pickAppSettingsFromLegacy(
+  legacy: z.infer<typeof LegacyRendererSettingsSchema>,
+): Partial<AppSettings> {
+  const result: Partial<AppSettings> = {};
+  if (legacy.theme === "dark" || legacy.theme === "light" || legacy.theme === "auto") {
+    result.theme = legacy.theme;
+  }
+  const legacyInterfaceSize = pickAppSettings(legacy).uiBaseFontSize;
+  if (legacyInterfaceSize !== undefined) {
+    result.uiBaseFontSize = legacyInterfaceSize;
+  }
+  // The legacy key rendered content on the interface ramp. Freeze that
+  // rendered value into the new independent preference during migration.
+  result.contentFontSize = legacyInterfaceSize ?? DEFAULT_UI_BASE_FONT_SIZE;
+  return result;
+}
+
+export function parseTerminalScrollbackLines(value: unknown): number | null {
+  let numericValue = NaN;
+  if (typeof value === "number") {
+    numericValue = value;
+  } else if (typeof value === "string" && value.trim().length > 0) {
+    numericValue = Number(value);
+  }
+  if (!Number.isFinite(numericValue)) {
+    return null;
+  }
+  return Math.min(
+    MAX_TERMINAL_SCROLLBACK_LINES,
+    Math.max(MIN_TERMINAL_SCROLLBACK_LINES, Math.floor(numericValue)),
+  );
+}
+
+export function parseClampedFontSize(
+  value: unknown,
+  bounds: { min: number; max: number },
+): number | null {
+  let numericValue = NaN;
+  if (typeof value === "number") {
+    numericValue = value;
+  } else if (typeof value === "string" && value.trim().length > 0) {
+    numericValue = Number(value);
+  }
+  if (!Number.isFinite(numericValue)) {
+    return null;
+  }
+  return Math.min(bounds.max, Math.max(bounds.min, Math.floor(numericValue)));
+}
+
+export function sanitizeFontFamily(value: unknown): string | null {
+  if (typeof value !== "string") {
+    return null;
+  }
+  const trimmed = value.trim();
+  if (trimmed.length === 0) {
+    return ""; // explicit empty = default
+  }
+  if (trimmed.length > MAX_FONT_FAMILY_LENGTH) {
+    return null;
+  }
+  if (/[;{}<>]/.test(trimmed)) {
+    return null; // would break the web CSS font-family declaration
+  }
+  if ([...trimmed].some((char) => char.charCodeAt(0) <= 0x1f)) {
+    return null; // control chars would corrupt the font-family string
+  }
+  return trimmed; // quotes/commas are legit in stacks
+}
+
+async function loadLegacyDesktopSettingsFromStorage(storage: KeyValueStorage): Promise<{
+  manageBuiltInDaemon?: boolean;
+  releaseChannel?: ReleaseChannel;
+} | null> {
+  const stored = await loadRendererSettingsPayload(storage);
+  if (!stored) {
+    return null;
+  }
+
+  const result: {
+    manageBuiltInDaemon?: boolean;
+    releaseChannel?: ReleaseChannel;
+  } = {};
+
+  if (typeof stored.manageBuiltInDaemon === "boolean") {
+    result.manageBuiltInDaemon = stored.manageBuiltInDaemon;
+  }
+  if (stored.releaseChannel === "stable" || stored.releaseChannel === "beta") {
+    result.releaseChannel = stored.releaseChannel;
+  }
+
+  return Object.keys(result).length > 0 ? result : null;
+}
+
+async function loadRendererSettingsPayload(
+  storage: KeyValueStorage,
+): Promise<z.infer<typeof LegacyRendererSettingsSchema> | null> {
+  const current = await readValidatedJson(storage, APP_SETTINGS_KEY, LegacyRendererSettingsSchema);
+  if (current) {
+    return current;
+  }
+
+  return readValidatedJson(storage, LEGACY_SETTINGS_KEY, LegacyRendererSettingsSchema);
+}
