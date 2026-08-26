@@ -52,6 +52,7 @@
       "pr-3475": "cc10084d2a9b3cd28139bd4589c078f421677bc2",
       "pr-3506": "d32cad5c159f00e66b363528c38583e1eb2de270",
       "pr-3662": "f99431cfde483a685c9831f32a08da097080091d",
+      "pr-3882": "e1608be1c16b31151df2b86a374d4a3b397071c0",
       "thinking-control-reachability": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "watch-live-voice": "d81639968a33c03a219f39233e76a7b36c62b87d"
@@ -79,15 +80,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-24T04:34:28.578992119+00:00",
+    "generated": "2026-08-26T07:21:50.814538657+00:00",
     "base": "4f796181bf9d7e6b5ea2067ece4eace7213938cb",
-    "commit": "7676ca4fe81c38486c2734bc83d540888fc6f487",
-    "pre_provenance_commit": "7676ca4fe81c38486c2734bc83d540888fc6f487",
-    "tree": "a1b21e8f2896f333655130f5f3dbaff8829b5630",
-    "built_tree": "a1b21e8f2896f333655130f5f3dbaff8829b5630",
-    "previous_tree": "0993433986d71c5c10cd0344ae0ec855d602d986",
+    "commit": "54e01a07551c84a3050c33da62a5f2f80ff89c87",
+    "pre_provenance_commit": "54e01a07551c84a3050c33da62a5f2f80ff89c87",
+    "tree": "eb14efd39e6760622fa824b8ebe7fc9148a28af0",
+    "built_tree": "eb14efd39e6760622fa824b8ebe7fc9148a28af0",
+    "previous_tree": "a1b21e8f2896f333655130f5f3dbaff8829b5630",
     "tree_changed": true,
-    "conflicts": 36,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -447,6 +448,12 @@
         "source": "upstream#3662",
         "pin": "f99431cfde483a685c9831f32a08da097080091d",
         "fixup": "667a0a288032572d129fa9d8f9a6c8fc1497b2e2"
+      },
+      {
+        "name": "pr-3882",
+        "kind": "pr",
+        "source": "upstream#3882",
+        "pin": "e1608be1c16b31151df2b86a374d4a3b397071c0"
       }
     ],
     "results": [
@@ -819,6 +826,12 @@
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "667a0a288032572d129fa9d8f9a6c8fc1497b2e2"
+      },
+      {
+        "name": "pr-3882",
+        "oid": "e1608be1c16b31151df2b86a374d4a3b397071c0",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }
