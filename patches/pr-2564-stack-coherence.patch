@@ -375,3 +375,15 @@ index 5b91ccde3..73a0ce76f 100644
  });
 
  export const ManagedHostRegistrySchema = z.object({
+diff --git a/packages/app/src/composer/diff-stat-pill.test.tsx b/packages/app/src/composer/diff-stat-pill.test.tsx
+index 96e1e1139..124025e06 100644
+--- a/packages/app/src/composer/diff-stat-pill.test.tsx
++++ b/packages/app/src/composer/diff-stat-pill.test.tsx
+@@ -21,6 +21,7 @@ const workspace: WorkspaceDescriptor = {
+   name: "main",
+   status: "done",
+   statusEnteredAt: null,
++  activityAt: null,
+   archivingAt: null,
+   diffStat: null,
+   scripts: [],

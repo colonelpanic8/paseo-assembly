@@ -1,9 +1,9 @@
 diff --git a/packages/app/src/hosts/appearance.ts b/packages/app/src/hosts/appearance.ts
-index e841be232..719c84291 100644
+index 550dfee5d..1af141c48 100644
 --- a/packages/app/src/hosts/appearance.ts
 +++ b/packages/app/src/hosts/appearance.ts
-@@ -6,9 +6,10 @@ import {
- import type { HostProfile } from "@/types/host-connection";
+@@ -7,9 +7,10 @@ import type { HostProfile } from "@/types/host-connection";
+ import { z } from "zod";
  
  export type CustomHostColor = `#${string}`;
 -export type HostColor = "none" | IdentityColorName | CustomHostColor;
@@ -15,7 +15,7 @@ index e841be232..719c84291 100644
  
  export type HostBadgeDisplay = "name" | "icon" | "hidden";
  
-@@ -28,7 +29,7 @@ export function defaultHostAppearance(): HostAppearance {
+@@ -29,7 +30,7 @@ export function defaultHostAppearance(): HostAppearance {
    return { color: "none", badgeDisplay: null };
  }
  
@@ -25,7 +25,7 @@ index e841be232..719c84291 100644
  }
  
 diff --git a/packages/app/src/hosts/host-badge.tsx b/packages/app/src/hosts/host-badge.tsx
-index 7258d9ab6..8663f34ee 100644
+index b316e4a7b..d20475ff9 100644
 --- a/packages/app/src/hosts/host-badge.tsx
 +++ b/packages/app/src/hosts/host-badge.tsx
 @@ -1,7 +1,13 @@
