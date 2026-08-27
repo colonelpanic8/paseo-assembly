@@ -507,6 +507,12 @@ recorded = "2026-08-20T06:58:56.641130372+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
+hash = "883894ecdb50301c71160ca6f6e9f95bcc03e570"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-08-27T22:42:14.049601966+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
 hash = "91038f31ab4e1d31fa8da282262e3d5a0d9cb3ab"
 paths = ["packages/server/src/server/daemon-config-store.ts"]
 recorded = "2026-08-05T01:40:57.534338690+00:00"
@@ -598,6 +604,12 @@ entry = "live-voice-context-files"
 hash = "404980bc8756e8c600bdf6bbc83fe9d2927e64a9"
 paths = ["packages/server/src/server/persisted-config.ts"]
 recorded = "2026-08-18T21:49:55.654730925+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "4f95dfa2bdf1d1733c76b27008cc74da19877f0b"
+paths = ["packages/app/src/runtime/host-runtime.ts"]
+recorded = "2026-08-27T22:45:56.508107393+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
@@ -742,6 +754,12 @@ entry = "pr-2532"
 hash = "b149b7fe6dfdec0a46e6374fc5e484ecfd45ed3c"
 paths = ["packages/app/src/agent-stream/view.tsx"]
 recorded = "2026-08-02T13:17:22.947783052+00:00"
+
+[[resolution]]
+entry = "pr-2532"
+hash = "e86df9377225127005d3d4f172a0a22cd5fe7e73"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-27T22:35:34.958734272+00:00"
 
 [[resolution]]
 entry = "pr-2564"
@@ -1324,6 +1342,12 @@ entry = "pr-2659"
 hash = "8e60dbb7e2ce9092bf6c9517e5b1a8aeca5797e2"
 paths = ["packages/app/src/subagents/track-presentation.test.ts"]
 recorded = "2026-07-31T20:39:30.543735435+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "9ef0af2f3c8bd78f770a0b431ec0dfc41c21551d"
+paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
+recorded = "2026-08-27T22:35:49.958281979+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -2011,6 +2035,12 @@ recorded = "2026-08-17T22:03:17.541537194+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "87247b8e15368430e19ccb475bf45df666cc5627"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-08-27T22:44:43.130234161+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "8d43f1486ec03eec759ea5bf0dc2183984e11b43"
 paths = ["packages/app/src/command-center/workspace-registration.tsx"]
 recorded = "2026-08-24T04:26:56.787895984+00:00"
@@ -2049,7 +2079,7 @@ recorded = "2026-08-17T22:24:47.982769683+00:00"
 entry = "pr-2927"
 hash = "a0dfc4e871216f80716ef8cabdde6d32aed2c992"
 paths = ["packages/app/src/composer/input/input.tsx"]
-recorded = "2026-08-20T07:09:09.909284984+00:00"
+recorded = "2026-08-27T22:45:35.328118924+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2068,6 +2098,12 @@ entry = "pr-2927"
 hash = "ace4ecba000e7bfe47b2a836118e08de96d1bbc7"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-08-24T04:27:26.574756723+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "b4ef625febe93f680f10d709b9e2e350ead72bca"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-08-27T22:42:29.520032493+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2116,6 +2152,12 @@ entry = "pr-2927"
 hash = "d8282ea12d4d49866863e442b97005f2e96ea3bf"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-17T22:03:17.541538810+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "dc65481d12ba751e5bef0153df0f8e0972041be2"
+paths = ["packages/app/src/composer/input/input.tsx"]
+recorded = "2026-08-27T22:44:55.399721700+00:00"
 
 [[resolution]]
 entry = "pr-2927"
