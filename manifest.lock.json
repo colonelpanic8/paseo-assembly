@@ -11,6 +11,7 @@
       "colonelpanic8/client-settings-file-store": "d98a8ae46ad65b75afc6aef64285bc26471a4519",
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b",
+      "fix/combobox-modal-gesture-root": "8ca6bd458f5f7b777ba598dc8f1f32df4e20f962",
       "live-voice-context-files": "810ce230d204c6353d6780be02955c6d14fbe1e0",
       "live-voice-quick-launch": "445b72c9860998dfcacb6e51f63dad2eba40170a",
       "model-picker-search": "504f27800e997631114d236c67a06cc6441f65c3",
@@ -81,15 +82,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-28T17:54:29.645341691+00:00",
+    "generated": "2026-08-28T22:18:40.422370977+00:00",
     "base": "a501e1e05170c9984fbc0ff2dd14d863b487e28a",
-    "commit": "e10d2cccf22d9032f6559f8ecd17b109b72e38ae",
-    "pre_provenance_commit": "e10d2cccf22d9032f6559f8ecd17b109b72e38ae",
-    "tree": "d9fbafa87a98f8b978d4bb7d66013c2217e2de07",
-    "built_tree": "d9fbafa87a98f8b978d4bb7d66013c2217e2de07",
-    "previous_tree": "351e76053e65bae0e3c6828f6802b17b38e9e0c4",
+    "commit": "b1b90058cf8744d377cf160d055fa97155d118a9",
+    "pre_provenance_commit": "b1b90058cf8744d377cf160d055fa97155d118a9",
+    "tree": "207f73d0d17a41fd85df319fbe66ba53fc4264e2",
+    "built_tree": "207f73d0d17a41fd85df319fbe66ba53fc4264e2",
+    "previous_tree": "d9fbafa87a98f8b978d4bb7d66013c2217e2de07",
     "tree_changed": true,
-    "conflicts": 35,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -461,6 +462,12 @@
         "kind": "pr",
         "source": "upstream#3972",
         "pin": "042fd0cf62dad467d3ddebfbb50de25fbec1ce7e"
+      },
+      {
+        "name": "fix/combobox-modal-gesture-root",
+        "kind": "branch",
+        "source": "mine:fix/combobox-modal-gesture-root",
+        "pin": "8ca6bd458f5f7b777ba598dc8f1f32df4e20f962"
       }
     ],
     "results": [
@@ -846,6 +853,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "fix/combobox-modal-gesture-root",
+        "oid": "8ca6bd458f5f7b777ba598dc8f1f32df4e20f962",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }
