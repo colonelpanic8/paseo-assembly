@@ -1347,7 +1347,7 @@ recorded = "2026-07-31T20:39:30.543735435+00:00"
 entry = "pr-2659"
 hash = "9ef0af2f3c8bd78f770a0b431ec0dfc41c21551d"
 paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
-recorded = "2026-08-27T22:35:49.958281979+00:00"
+recorded = "2026-08-28T23:34:33.304452376+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -1983,7 +1983,7 @@ recorded = "2026-08-20T07:07:07.883483749+00:00"
 entry = "pr-2927"
 hash = "54f4d54396766cef8577b62ec87e91e94a3770a5"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
-recorded = "2026-08-20T07:09:09.909277941+00:00"
+recorded = "2026-08-28T23:38:13.980018516+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2020,6 +2020,12 @@ entry = "pr-2927"
 hash = "6d9b9618ea0b60f79227c8535ff2c6a5c430144a"
 paths = ["packages/app/src/keyboard/focus-scope.ts"]
 recorded = "2026-08-17T22:03:17.541536745+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "77af9233f78cd1bad0b26734f1b4e685aea0e819"
+paths = ["packages/app/src/command-center/root-registration.tsx"]
+recorded = "2026-08-28T23:37:39.153920521+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2176,6 +2182,12 @@ entry = "pr-2927"
 hash = "ea1928cfc7290fc54b4f8e53624fa9a611925051"
 paths = ["packages/app/src/components/model-browser.tsx"]
 recorded = "2026-08-17T22:03:17.541539021+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "ed195507c0ad83909f01369bf8cbe44e746c8e93"
+paths = ["packages/app/src/command-center/workspace-registration.tsx"]
+recorded = "2026-08-28T23:37:39.153922645+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2524,6 +2536,12 @@ entry = "watch-live-voice"
 hash = "9b999e4daded282ac10083d0a046d6a742f5f048"
 paths = ["packages/server/src/server/agent/agent-manager.ts"]
 recorded = "2026-08-21T20:55:14.674683495+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "a7029d9f7b7bdf9c5c6b63755c30b4ef34ae5835"
+paths = ["packages/app/src/keyboard/keyboard-action-dispatcher.ts"]
+recorded = "2026-08-28T23:36:15.757718387+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
