@@ -1,5 +1,5 @@
 diff --git a/packages/app/src/components/adaptive-modal-sheet.tsx b/packages/app/src/components/adaptive-modal-sheet.tsx
-index 5ddd9288a..ce4ebb7a9 100644
+index 7fa96fe60..6f530fc3d 100644
 --- a/packages/app/src/components/adaptive-modal-sheet.tsx
 +++ b/packages/app/src/components/adaptive-modal-sheet.tsx
 @@ -6,7 +6,6 @@ import { Modal, Platform, Pressable, ScrollView, Text, View } from "react-native
@@ -10,25 +10,43 @@ index 5ddd9288a..ce4ebb7a9 100644
    TextInputKeyPressEventData,
    ViewStyle,
  } from "react-native";
-@@ -41,6 +40,7 @@ import { useKeyboardVisibility } from "@/hooks/use-keyboard-visibility";
+@@ -42,6 +41,7 @@ import { useKeyboardVisibility } from "@/hooks/use-keyboard-visibility";
  import { useInputFocus } from "@/hooks/use-input-focus";
  import { useSafeAreaInsets } from "react-native-safe-area-context";
  import { AdaptiveTextInput } from "@/components/adaptive-text-input";
 +import type { EditingTextInputHandle } from "@/components/ui/text-input";
  export { AdaptiveTextInput, type AdaptiveTextInputProps } from "@/components/adaptive-text-input";
-
+ 
  // Horizontal indent token shared by the sheet header (title, back arrow,
-@@ -307,7 +307,7 @@ function BottomSheetVisibleContent({ children }: { children: ReactNode }) {
+@@ -308,7 +308,7 @@ function BottomSheetVisibleContent({ children }: { children: ReactNode }) {
  }
-
+ 
  function useHeaderSearchInputFocus(enabled: boolean) {
 -  const inputRef = useRef<TextInput>(null);
 +  const inputRef = useRef<EditingTextInputHandle>(null);
    useInputFocus(inputRef, enabled);
    return inputRef;
  }
+@@ -404,8 +404,6 @@ export function SheetHeaderView({
+             onSubmitEditing={search.onSubmit}
+             onFocus={search.onFocus}
+             onBlur={search.onBlur}
+-            onKeyPress={search.onKeyPress}
+-            onSubmitEditing={search.onSubmit}
+             autoCapitalize="none"
+             autoCorrect={false}
+             autoFocus={search.autoFocus && active}
+@@ -472,8 +470,6 @@ export function InlineHeaderView({ header }: { header: SheetHeader }) {
+             onSubmitEditing={header.search.onSubmit}
+             onFocus={header.search.onFocus}
+             onBlur={header.search.onBlur}
+-            onKeyPress={header.search.onKeyPress}
+-            onSubmitEditing={header.search.onSubmit}
+             autoCapitalize="none"
+             autoCorrect={false}
+             autoFocus={header.search.autoFocus}
 diff --git a/packages/app/src/components/model-browser.tsx b/packages/app/src/components/model-browser.tsx
-index 3b5310e3c..9c25a73fe 100644
+index f4a73e478..7192d4bb4 100644
 --- a/packages/app/src/components/model-browser.tsx
 +++ b/packages/app/src/components/model-browser.tsx
 @@ -1,4 +1,13 @@
@@ -47,9 +65,9 @@ index 3b5310e3c..9c25a73fe 100644
  import {
    FlatList,
 @@ -669,6 +678,18 @@ function ModelBrowserPressable({
-
+ 
  type ModelBrowserRowTone = "default" | "elevated" | "drillDown";
-
+ 
 +function useScrollHighlightIntoView(highlighted: boolean | undefined) {
 +  const ref = useRef<View>(null);
 +  useEffect(() => {
@@ -65,7 +83,7 @@ index 3b5310e3c..9c25a73fe 100644
  function ModelBrowserRow({
    label,
    description,
-@@ -1942,7 +1963,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -1954,7 +1975,7 @@ const styles = StyleSheet.create((theme) => ({
    },
    sectionHeadingText: {
      flex: 1,
@@ -74,7 +92,7 @@ index 3b5310e3c..9c25a73fe 100644
      fontWeight: theme.fontWeight.normal,
      color: theme.colors.foregroundMuted,
    },
-@@ -2006,7 +2027,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2018,7 +2039,7 @@ const styles = StyleSheet.create((theme) => ({
      flexShrink: 0,
    },
    browserRowDescription: {
@@ -83,7 +101,7 @@ index 3b5310e3c..9c25a73fe 100644
      color: theme.colors.foregroundMuted,
      flexShrink: 1,
    },
-@@ -2027,7 +2048,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2039,7 +2060,7 @@ const styles = StyleSheet.create((theme) => ({
      gap: theme.spacing[1],
    },
    drillDownCount: {
@@ -92,7 +110,7 @@ index 3b5310e3c..9c25a73fe 100644
      color: theme.colors.foregroundMuted,
    },
    rowStateInline: {
-@@ -2066,7 +2087,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2078,7 +2099,7 @@ const styles = StyleSheet.create((theme) => ({
      color: theme.colors.foregroundMuted,
    },
    tooltipText: {
@@ -117,22 +135,22 @@ index ca152c5d4..132657662 100644
 @@ -42,7 +42,7 @@ interface UseAgentAutocompleteInput {
    sigils: ComposerSigils;
  }
-
+ 
 -interface AgentAutocompleteKeyPressEvent extends AutocompleteKeyPressEvent {
 +interface AgentAutocompleteKeyPressEvent extends AutocompleteKeyEvent {
    input: AgentAutocompleteInputSnapshot;
  }
-
+ 
 @@ -574,12 +574,15 @@ export function useAgentAutocomplete(input: UseAgentAutocompleteInput): AgentAut
    );
-
+ 
    const selectOptionFromKeyPress = useCallback(
 -    (option: AutocompleteOption, event?: AgentAutocompleteKeyPressEvent) =>
 +    (option: AgentAutocompleteOption, event?: AgentAutocompleteKeyPressEvent) =>
        onSelectOption(option, event?.input),
      [onSelectOption],
    );
-
+ 
 -  const { selectedIndex, onKeyPress: onAutocompleteKeyPress } = useAutocomplete({
 +  const { selectedIndex, onKeyPress: onAutocompleteKeyPress } = useAutocomplete<
 +    AgentAutocompleteOption,
