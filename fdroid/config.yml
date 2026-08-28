@@ -7,7 +7,7 @@ repo_description: >-
 archive_url: https://colonelpanic8.github.io/paseo-assembly-fdroid/fdroid/archive
 archive_name: Paseo Assembly Archive
 archive_description: Older source-built Paseo Assembly snapshots.
-archive_older: 10
+archive_older: 3
 
 repo_keyalias: paseo-assembly
 keystore: {env: FDROID_KEYSTORE}

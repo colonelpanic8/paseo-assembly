@@ -38,6 +38,14 @@ FDROID_KEYSTORE_PASSWORD="$(<"$password_file")"
 (
   cd "$target_root/fdroid"
   fdroid update --pretty
+  # Clients only ever read repo/, but archive/ is under the Pages root and every
+  # build landed there permanently, which pushed the site past the 1 GB Pages
+  # limit and froze the published index. Drop the demoted APKs and reindex so the
+  # archive index matches what is left on disk.
+  if compgen -G "archive/*.apk" > /dev/null; then
+    rm -f archive/*.apk
+    fdroid update --pretty
+  fi
 )
 
 cp "$script_root/fdroid/site/index.html" "$target_root/index.html"
