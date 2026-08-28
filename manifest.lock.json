@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "1fc52505448df01d6a53cc7a034f550540795c0a",
+    "base": "a501e1e05170c9984fbc0ff2dd14d863b487e28a",
     "entries": {
       "assembled-ci-lint-fixes": "79935769ae30b28b01311627cf9fa6c843782dc0",
       "assembled-npm-deps-hash": "f1d9654eb6336e6eafdb51cab591d5ea859a15ff",
@@ -43,7 +43,7 @@
       "pr-2885": "c523a90a879433d4f908b1d12e02fc7c5f68bf79",
       "pr-2898": "dde876d339279e1a2aaf161f49fbd6431e040d58",
       "pr-2900": "c68982eb2d477f9b0e895253fffc3399347c3224",
-      "pr-2927": "09707284582669ddd8092c7d2423b99011333e15",
+      "pr-2927": "2bc807da25316c0c6fded1ab848d1931a91cfe81",
       "pr-2954": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
       "pr-2956": "ce453d7ccbc2a9b7e951f4209f926f00c8979358",
       "pr-2957": "d2a097837f44eef12f73079c77fb37901f3be3a2",
@@ -53,9 +53,10 @@
       "pr-3506": "d32cad5c159f00e66b363528c38583e1eb2de270",
       "pr-3662": "1f3d73a9514220a6af5b2097b1b3f8cf06031d93",
       "pr-3882": "911fe48cb02db48582f89316e089e26ae4259aa2",
+      "pr-3972": "042fd0cf62dad467d3ddebfbb50de25fbec1ce7e",
       "thinking-control-reachability": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "ab1c89fa5c726b2001facb372d8f8337d43a3e3d"
+      "watch-live-voice": "668ce28cdbd4c20163e3ce2e38fe0e8cb958a702"
     },
     "parents": {
       "live-voice-context-files": {
@@ -75,20 +76,20 @@
     "anchors": {
       "live-voice-context-files": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
       "live-voice-quick-launch": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
-      "pr-2927": "d6caf62fc2b52a83a7e883e1ad621332912ba056",
-      "watch-live-voice": "78f2a8c66dc064adeba6bdd5d5b08162f4dc3a14"
+      "pr-2927": "f1423ac94bd2acec89878da61b74a2fd5f66366f",
+      "watch-live-voice": "e6f014974a63d5caf5184b8565c6ca17273c6c10"
     }
   },
   "build": {
-    "generated": "2026-08-27T23:27:34.468673654+00:00",
-    "base": "1fc52505448df01d6a53cc7a034f550540795c0a",
-    "commit": "201420f92a91a2858aa57d2d4fd97c11f3eb2363",
-    "pre_provenance_commit": "201420f92a91a2858aa57d2d4fd97c11f3eb2363",
-    "tree": "24ae428e20a627cf83007fabceef772e467b909a",
-    "built_tree": "24ae428e20a627cf83007fabceef772e467b909a",
-    "previous_tree": "326f0cce6647dd91698e48d68414af7521d8ffdc",
+    "generated": "2026-08-28T07:22:30.621762026+00:00",
+    "base": "a501e1e05170c9984fbc0ff2dd14d863b487e28a",
+    "commit": "0f7e23731604e3d300be491f831a99876605fcaf",
+    "pre_provenance_commit": "0f7e23731604e3d300be491f831a99876605fcaf",
+    "tree": "351e76053e65bae0e3c6828f6802b17b38e9e0c4",
+    "built_tree": "351e76053e65bae0e3c6828f6802b17b38e9e0c4",
+    "previous_tree": "24ae428e20a627cf83007fabceef772e467b909a",
     "tree_changed": true,
-    "conflicts": 37,
+    "conflicts": 35,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -207,7 +208,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "ab1c89fa5c726b2001facb372d8f8337d43a3e3d",
+        "pin": "668ce28cdbd4c20163e3ce2e38fe0e8cb958a702",
         "fixup": "f748f49fadd3ab5eef45650c276ddb608451eb38",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -220,7 +221,7 @@
             "pin": "ae24db715629cc70cf258d546166f8e6622a34c1"
           }
         ],
-        "anchor": "78f2a8c66dc064adeba6bdd5d5b08162f4dc3a14"
+        "anchor": "e6f014974a63d5caf5184b8565c6ca17273c6c10"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -338,7 +339,7 @@
         "name": "pr-2927",
         "kind": "pr",
         "source": "upstream#2927",
-        "pin": "09707284582669ddd8092c7d2423b99011333e15",
+        "pin": "2bc807da25316c0c6fded1ab848d1931a91cfe81",
         "fixup": "03d902dcbe51bc4a86f0f4e60b28095fdb0adaab",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -347,7 +348,7 @@
             "pin": "add1ae5c79c0d3deaf911370ce416c780c0dbefc"
           }
         ],
-        "anchor": "d6caf62fc2b52a83a7e883e1ad621332912ba056"
+        "anchor": "f1423ac94bd2acec89878da61b74a2fd5f66366f"
       },
       {
         "name": "touch-sidebar-resize",
@@ -454,6 +455,12 @@
         "kind": "pr",
         "source": "upstream#3882",
         "pin": "911fe48cb02db48582f89316e089e26ae4259aa2"
+      },
+      {
+        "name": "pr-3972",
+        "kind": "pr",
+        "source": "upstream#3972",
+        "pin": "042fd0cf62dad467d3ddebfbb50de25fbec1ce7e"
       }
     ],
     "results": [
@@ -581,14 +588,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "ab1c89fa5c726b2001facb372d8f8337d43a3e3d",
+        "oid": "668ce28cdbd4c20163e3ce2e38fe0e8cb958a702",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "f748f49fadd3ab5eef45650c276ddb608451eb38",
         "derived": {
-          "base_tip": "e6f014974a63d5caf5184b8565c6ca17273c6c10",
-          "tip": "668ce28cdbd4c20163e3ce2e38fe0e8cb958a702"
+          "base_tip": "b2f30ca1ed28a84ea38c9138924bf8c5e23ba294",
+          "tip": "6534937a91c6d2856527d8e255acff4568f179bc"
         }
       },
       {
@@ -719,14 +726,14 @@
       },
       {
         "name": "pr-2927",
-        "oid": "09707284582669ddd8092c7d2423b99011333e15",
+        "oid": "2bc807da25316c0c6fded1ab848d1931a91cfe81",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "03d902dcbe51bc4a86f0f4e60b28095fdb0adaab",
         "derived": {
-          "base_tip": "f1423ac94bd2acec89878da61b74a2fd5f66366f",
-          "tip": "2bc807da25316c0c6fded1ab848d1931a91cfe81"
+          "base_tip": "33730366336d2aeb19a74c280db4c53488dd66df",
+          "tip": "0f9b0ec8aab491de9ae04058099b13871225c5f5"
         }
       },
       {
@@ -797,8 +804,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "9d397f5aaa13314a08ef042879277d6723d850cc",
-          "tip": "83a40bf013f889618120d9f29010fba963fca6f4"
+          "base_tip": "253eaeb2e2da635c217a37858b19f711ac60722e",
+          "tip": "1b347f235c1e7fc7ccb3df677a7edc704cf5b2ca"
         }
       },
       {
@@ -809,8 +816,8 @@
         "resolution": "rerere",
         "fixup": "0173fe2f2954657ea0f0fa3dca3cec17f8070f42",
         "derived": {
-          "base_tip": "f4be3be8d990b81bc5f8a026825f6b254d70b021",
-          "tip": "0970572aea96b174a8efe76a07e55a9e8d643416"
+          "base_tip": "8330c8239e593f3666c7d05637163a4ba73b14a6",
+          "tip": "ded0274f26c996becae083e4349e24a6fdb23f95"
         }
       },
       {
@@ -832,6 +839,13 @@
         "oid": "911fe48cb02db48582f89316e089e26ae4259aa2",
         "status": "merged",
         "conflicted": false
+      },
+      {
+        "name": "pr-3972",
+        "oid": "042fd0cf62dad467d3ddebfbb50de25fbec1ce7e",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:71b0a07a16a371ab91f4d1dd774f279655448b65"
       }
     ]
   }
