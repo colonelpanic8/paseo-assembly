@@ -4,7 +4,7 @@
     "base": "f2f93087ed782327a2eda11764471ae7032db2a2",
     "entries": {
       "assembled-ci-lint-fixes": "79935769ae30b28b01311627cf9fa6c843782dc0",
-      "assembled-npm-deps-hash": "f1d9654eb6336e6eafdb51cab591d5ea859a15ff",
+      "assembled-npm-deps-hash": "30c70f687e9a7cdc2cf7d177cbd93e73659da2a9",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
       "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
