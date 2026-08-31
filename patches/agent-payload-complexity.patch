@@ -91,3 +91,36 @@ index bee65efbc..c65cd9020 100644
    }
  
    @Test
+diff --git a/packages/server/src/server/authorization/operation-permissions.ts b/packages/server/src/server/authorization/operation-permissions.ts
+--- a/packages/server/src/server/authorization/operation-permissions.ts
++++ b/packages/server/src/server/authorization/operation-permissions.ts
+@@ -179,6 +179,13 @@
+   unsubscribe_terminals_request: "workspace.read",
+   update_agent_request: "workspace.write",
+   validate_branch_request: "workspace.read",
++  "voice.live.agent.notify.request": "workspace.write",
++  "voice.live.agent.watch.request": "workspace.read",
++  "voice.live.route.response": "workspace.write",
++  "voice.live.start.request": "workspace.write",
++  "voice.live.stop.request": "workspace.write",
++  "voice.live.tool.execute.request": "workspace.write",
++  "voice.live.voices.request": "workspace.read",
+   voice_audio_chunk: "workspace.write",
+   wait_for_finish_request: "workspace.read",
+   "workspace.archived.list.request": "workspace.read",
+@@ -389,6 +396,15 @@
+   transcription_result: "workspace.write",
+   update_agent_response: "workspace.write",
+   validate_branch_response: "workspace.read",
++  "voice.live.agent.notify.response": "workspace.write",
++  "voice.live.agent.update": "workspace.read",
++  "voice.live.agent.watch.response": "workspace.read",
++  "voice.live.route.request": "workspace.write",
++  "voice.live.start.response": "workspace.write",
++  "voice.live.stop.response": "workspace.write",
++  "voice.live.tool.execute.response": "workspace.write",
++  "voice.live.update": "workspace.write",
++  "voice.live.voices.response": "workspace.read",
+   voice_input_state: "workspace.write",
+   wait_for_finish_response: "workspace.read",
+   "workspace.archived.list.response": "workspace.read",

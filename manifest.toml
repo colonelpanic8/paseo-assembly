@@ -212,6 +212,7 @@ summary = "Make the sidebar resize handle usable by touch"
 
 [[entry]]
 pr = 2954
+fixup = "patches/pr-2954-stack-coherence.patch"
 
 [[entry]]
 patch = "patches/assembled-ci-lint-fixes.patch"

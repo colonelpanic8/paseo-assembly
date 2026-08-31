@@ -3,7 +3,7 @@
   "pins": {
     "base": "f2f93087ed782327a2eda11764471ae7032db2a2",
     "entries": {
-      "assembled-ci-lint-fixes": "79935769ae30b28b01311627cf9fa6c843782dc0",
+      "assembled-ci-lint-fixes": "91bb5584623e33b33b308c3686c54dfc73024326",
       "assembled-npm-deps-hash": "30c70f687e9a7cdc2cf7d177cbd93e73659da2a9",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
@@ -43,7 +43,7 @@
       "pr-2885": "c523a90a879433d4f908b1d12e02fc7c5f68bf79",
       "pr-2898": "dde876d339279e1a2aaf161f49fbd6431e040d58",
       "pr-2900": "c68982eb2d477f9b0e895253fffc3399347c3224",
-      "pr-2927": "311f43ebffe21c6ded7da3b49f028f48eebf2ded",
+      "pr-2927": "2d908cb4a17a2c2453cdb80e9cf646fc04dffc29",
       "pr-2954": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
       "pr-2956": "ce453d7ccbc2a9b7e951f4209f926f00c8979358",
       "pr-2957": "d2a097837f44eef12f73079c77fb37901f3be3a2",
@@ -53,41 +53,41 @@
       "pr-3506": "d32cad5c159f00e66b363528c38583e1eb2de270",
       "pr-3662": "1f3d73a9514220a6af5b2097b1b3f8cf06031d93",
       "pr-3882": "b157af46b9491448287120a0781e369cd56ef1bb",
-      "pr-3972": "c4217dc709426b660c6531d9f92525b0021ed601",
+      "pr-3972": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573",
       "thinking-control-reachability": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "b4ab50141042c58b758fdd0c990c4373399f902f"
+      "watch-live-voice": "6d9efe3a28e682a584fb3908b7ca62b0c69fb1c8"
     },
     "parents": {
       "live-voice-context-files": {
-        "pr-2657": "d5fc0225ddcb900ea375b9e0c05990eaf91eb731"
+        "pr-2657": "0624717fb99aa8d8df6b76a82e01509b3d711443"
       },
       "live-voice-quick-launch": {
-        "pr-2657": "d5fc0225ddcb900ea375b9e0c05990eaf91eb731"
+        "pr-2657": "0624717fb99aa8d8df6b76a82e01509b3d711443"
       },
       "pr-2927": {
         "pr-3499": "d66dba4442a4ea5c6aabe6c6676d2c5b4ec2988f"
       },
       "watch-live-voice": {
         "pr-2655": "97759726bce318a081e6ed20e128aaed9aec528f",
-        "pr-2657": "d5fc0225ddcb900ea375b9e0c05990eaf91eb731"
+        "pr-2657": "0624717fb99aa8d8df6b76a82e01509b3d711443"
       }
     },
     "anchors": {
       "live-voice-context-files": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
       "live-voice-quick-launch": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
-      "pr-2927": "60eccf5653f1f13a2450c9d03bbcd607bbe3bd19",
-      "watch-live-voice": "fc309c9e687f0d522e827273c625bf44f625deec"
+      "pr-2927": "b167136771852c16e4292a7893e06e9c4f311dbc",
+      "watch-live-voice": "fbf9a4955217a936cc681fa6498cbd1b8da96ad2"
     }
   },
   "build": {
-    "generated": "2026-08-31T02:59:24.031983735+00:00",
+    "generated": "2026-08-31T03:28:09.893171441+00:00",
     "base": "f2f93087ed782327a2eda11764471ae7032db2a2",
-    "commit": "3085453255d37a68cfb3ee16ed1e847662a3e028",
-    "pre_provenance_commit": "3085453255d37a68cfb3ee16ed1e847662a3e028",
-    "tree": "5996b03c762362dcdbd550a3213d5a220958c45d",
-    "built_tree": "5996b03c762362dcdbd550a3213d5a220958c45d",
-    "previous_tree": "fa4b2cbfc651bf955afeb7a06f0aa50d7452a320",
+    "commit": "2901ab80862391ad918ce11972f987b9e2d33bf0",
+    "pre_provenance_commit": "2901ab80862391ad918ce11972f987b9e2d33bf0",
+    "tree": "f792fe9b27545cc427740a2e1417f9931c60c1d1",
+    "built_tree": "f792fe9b27545cc427740a2e1417f9931c60c1d1",
+    "previous_tree": "3df7166efd94ca6bd92df3b9ba4793d86fe719a0",
     "tree_changed": true,
     "conflicts": 35,
     "manifest_entries": [
@@ -121,7 +121,7 @@
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
         "pin": "24067e5e7bb4ffb788a51ac4eb23f9b8677d98b9",
-        "fixup": "a5add5681d8266104da33baa16b9926acd4c2542"
+        "fixup": "0a9dcda2fb2537acbf84d2c21425f2a771e81a4d"
       },
       {
         "name": "model-picker-search",
@@ -208,8 +208,8 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "b4ab50141042c58b758fdd0c990c4373399f902f",
-        "fixup": "f748f49fadd3ab5eef45650c276ddb608451eb38",
+        "pin": "6d9efe3a28e682a584fb3908b7ca62b0c69fb1c8",
+        "fixup": "ae7d26cf5d3a8a216edd0a7c5b2f38c8ea78f89c",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
           {
@@ -218,16 +218,16 @@
           },
           {
             "source": "upstream#2657",
-            "pin": "d5fc0225ddcb900ea375b9e0c05990eaf91eb731"
+            "pin": "0624717fb99aa8d8df6b76a82e01509b3d711443"
           }
         ],
-        "anchor": "fc309c9e687f0d522e827273c625bf44f625deec"
+        "anchor": "fbf9a4955217a936cc681fa6498cbd1b8da96ad2"
       },
       {
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "f1d9654eb6336e6eafdb51cab591d5ea859a15ff"
+        "pin": "30c70f687e9a7cdc2cf7d177cbd93e73659da2a9"
       },
       {
         "name": "pr-2730",
@@ -327,7 +327,7 @@
         "kind": "pr",
         "source": "upstream#2898",
         "pin": "dde876d339279e1a2aaf161f49fbd6431e040d58",
-        "fixup": "983881393b05655d53f56f2b583c027491b147be"
+        "fixup": "74cb8e02f9ff8188249ce330cb6a007ee8651a32"
       },
       {
         "name": "pr-2900",
@@ -339,7 +339,7 @@
         "name": "pr-2927",
         "kind": "pr",
         "source": "upstream#2927",
-        "pin": "311f43ebffe21c6ded7da3b49f028f48eebf2ded",
+        "pin": "2d908cb4a17a2c2453cdb80e9cf646fc04dffc29",
         "fixup": "02cf056eeb3f611bf02fc6f779f156483bbf514b",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -348,7 +348,7 @@
             "pin": "d66dba4442a4ea5c6aabe6c6676d2c5b4ec2988f"
           }
         ],
-        "anchor": "60eccf5653f1f13a2450c9d03bbcd607bbe3bd19"
+        "anchor": "b167136771852c16e4292a7893e06e9c4f311dbc"
       },
       {
         "name": "touch-sidebar-resize",
@@ -360,13 +360,14 @@
         "name": "pr-2954",
         "kind": "pr",
         "source": "upstream#2954",
-        "pin": "ca0aa455107e094f74fb315c29e417fda2bbc9d2"
+        "pin": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
+        "fixup": "aee41701b7ae5aa03c73cc41c624fe65e49ad1c4"
       },
       {
         "name": "assembled-ci-lint-fixes",
         "kind": "patch",
         "source": "patches/assembled-ci-lint-fixes.patch",
-        "pin": "79935769ae30b28b01311627cf9fa6c843782dc0"
+        "pin": "91bb5584623e33b33b308c3686c54dfc73024326"
       },
       {
         "name": "pr-2956",
@@ -418,7 +419,7 @@
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "d5fc0225ddcb900ea375b9e0c05990eaf91eb731"
+            "pin": "0624717fb99aa8d8df6b76a82e01509b3d711443"
           }
         ],
         "anchor": "67972ebe2c41ba660609c1087ff637b1c9e74e15"
@@ -432,7 +433,7 @@
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "d5fc0225ddcb900ea375b9e0c05990eaf91eb731"
+            "pin": "0624717fb99aa8d8df6b76a82e01509b3d711443"
           }
         ],
         "anchor": "67972ebe2c41ba660609c1087ff637b1c9e74e15"
@@ -460,7 +461,7 @@
         "name": "pr-3972",
         "kind": "pr",
         "source": "upstream#3972",
-        "pin": "c4217dc709426b660c6531d9f92525b0021ed601"
+        "pin": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573"
       }
     ],
     "results": [
@@ -495,7 +496,7 @@
         "oid": "24067e5e7bb4ffb788a51ac4eb23f9b8677d98b9",
         "status": "merged",
         "conflicted": false,
-        "fixup": "a5add5681d8266104da33baa16b9926acd4c2542"
+        "fixup": "0a9dcda2fb2537acbf84d2c21425f2a771e81a4d"
       },
       {
         "name": "model-picker-search",
@@ -576,7 +577,7 @@
         "oid": "f183c2917cededb2237eb11cfe30b3b390055a32",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:163fd702ff0b36c46fd89cc3c229dca3ccbac07d",
+        "resolution": "rerere",
         "fixup": "344a6be7c39a27698b9e06ea28ac496ec86d19e4"
       },
       {
@@ -588,21 +589,21 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "b4ab50141042c58b758fdd0c990c4373399f902f",
+        "oid": "6d9efe3a28e682a584fb3908b7ca62b0c69fb1c8",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "f748f49fadd3ab5eef45650c276ddb608451eb38",
+        "fixup": "ae7d26cf5d3a8a216edd0a7c5b2f38c8ea78f89c",
         "derived": {
-          "base_tip": "fbf9a4955217a936cc681fa6498cbd1b8da96ad2",
-          "tip": "6d9efe3a28e682a584fb3908b7ca62b0c69fb1c8"
+          "base_tip": "4c08954ec323126d4750cbd988bb4eab2aa420b8",
+          "tip": "05794b0cc30ff39b046c96470be6f2e9c7180649"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "f1d9654eb6336e6eafdb51cab591d5ea859a15ff",
+        "oid": "30c70f687e9a7cdc2cf7d177cbd93e73659da2a9",
         "status": "applied",
-        "conflicted": true
+        "conflicted": false
       },
       {
         "name": "pr-2730",
@@ -715,7 +716,7 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "983881393b05655d53f56f2b583c027491b147be"
+        "fixup": "74cb8e02f9ff8188249ce330cb6a007ee8651a32"
       },
       {
         "name": "pr-2900",
@@ -726,14 +727,14 @@
       },
       {
         "name": "pr-2927",
-        "oid": "311f43ebffe21c6ded7da3b49f028f48eebf2ded",
+        "oid": "2d908cb4a17a2c2453cdb80e9cf646fc04dffc29",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "02cf056eeb3f611bf02fc6f779f156483bbf514b",
         "derived": {
-          "base_tip": "b167136771852c16e4292a7893e06e9c4f311dbc",
-          "tip": "2d908cb4a17a2c2453cdb80e9cf646fc04dffc29"
+          "base_tip": "d0219e154c9b5d258c9bd82ddfd30dbf424e934e",
+          "tip": "1a93d1f8fc20db95f95d7c171c7e9f1663b79137"
         }
       },
       {
@@ -747,11 +748,12 @@
         "oid": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere",
+        "fixup": "aee41701b7ae5aa03c73cc41c624fe65e49ad1c4"
       },
       {
         "name": "assembled-ci-lint-fixes",
-        "oid": "79935769ae30b28b01311627cf9fa6c843782dc0",
+        "oid": "91bb5584623e33b33b308c3686c54dfc73024326",
         "status": "applied",
         "conflicted": false
       },
@@ -804,8 +806,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "13ea1c27d00b3bc15e25de4b61277e415d17f44c",
-          "tip": "1717300a8e95db6be59b15a07f4d4b0aa15dedf3"
+          "base_tip": "0f2bf2cfafc7a5263c1761383b2be4d5bba8c01d",
+          "tip": "97b505e63f18e95fe097e0d02d88b1a7403eb8b3"
         }
       },
       {
@@ -816,8 +818,8 @@
         "resolution": "rerere",
         "fixup": "0173fe2f2954657ea0f0fa3dca3cec17f8070f42",
         "derived": {
-          "base_tip": "af39fdcc6affad39605556de59891ccecde50666",
-          "tip": "eb2a989cd98460b72d3b02de850bd0b82c096c7a"
+          "base_tip": "d79dd739eeda91d8ae0ec2c2a7e88dfec330e383",
+          "tip": "50e599f5b24b1b8e219f7c0a8e1d18310cc78720"
         }
       },
       {
@@ -842,7 +844,7 @@
       },
       {
         "name": "pr-3972",
-        "oid": "c4217dc709426b660c6531d9f92525b0021ed601",
+        "oid": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"

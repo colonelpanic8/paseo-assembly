@@ -541,6 +541,14 @@ index aac2ac80c..e384b4e30 100644
  export function createInitialMutableDaemonConfig(config: PaseoDaemonConfig): MutableDaemonConfig {
    const providers = config.providerOverrides ?? {};
 
+@@ -587,6 +588,7 @@ export function createInitialMutableDaemonConfig(config: PaseoDaemonConfig): Mut
+   return initialConfig;
+ }
+
++// oxlint-disable-next-line complexity
+ export async function createPaseoDaemon(
+   config: PaseoDaemonConfig,
+   rootLogger: Logger,
 diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
 index 7aaf186b9..7551d7f4e 100644
 --- a/packages/server/src/server/daemon-config-store.ts
