@@ -8,6 +8,7 @@
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
       "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
+      "claude-fable-5-1": "5dc858f0375d8aafe2c4a1e82cd1c48c9d62463b",
       "colonelpanic8/client-settings-file-store": "d98a8ae46ad65b75afc6aef64285bc26471a4519",
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b",
@@ -81,15 +82,15 @@
     }
   },
   "build": {
-    "generated": "2026-08-31T03:28:09.893171441+00:00",
+    "generated": "2026-09-01T18:51:11.733402275+00:00",
     "base": "f2f93087ed782327a2eda11764471ae7032db2a2",
-    "commit": "2901ab80862391ad918ce11972f987b9e2d33bf0",
-    "pre_provenance_commit": "2901ab80862391ad918ce11972f987b9e2d33bf0",
-    "tree": "f792fe9b27545cc427740a2e1417f9931c60c1d1",
-    "built_tree": "f792fe9b27545cc427740a2e1417f9931c60c1d1",
-    "previous_tree": "3df7166efd94ca6bd92df3b9ba4793d86fe719a0",
+    "commit": "ed21cacea2f2e0189c6fcad579c59604ebb44b66",
+    "pre_provenance_commit": "ed21cacea2f2e0189c6fcad579c59604ebb44b66",
+    "tree": "f9dff15d5ee49e67e7568f00da450e68629dbd13",
+    "built_tree": "f9dff15d5ee49e67e7568f00da450e68629dbd13",
+    "previous_tree": "f792fe9b27545cc427740a2e1417f9931c60c1d1",
     "tree_changed": true,
-    "conflicts": 35,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -462,6 +463,12 @@
         "kind": "pr",
         "source": "upstream#3972",
         "pin": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573"
+      },
+      {
+        "name": "claude-fable-5-1",
+        "kind": "branch",
+        "source": "mine:claude-fable-5-1",
+        "pin": "5dc858f0375d8aafe2c4a1e82cd1c48c9d62463b"
       }
     ],
     "results": [
@@ -848,6 +855,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "claude-fable-5-1",
+        "oid": "5dc858f0375d8aafe2c4a1e82cd1c48c9d62463b",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

@@ -265,6 +265,21 @@ pr = 3882
 [[entry]]
 pr = 3972
 
+# Carries only the model-catalog half of upstream#4179. That PR also cuts
+# release 0.7.1 -- every package.json version, package-lock.json, CHANGELOG,
+# the fastlane changelogs and nix/npm-deps.hash -- which collides directly
+# with the assembled-npm-deps-hash patch entry and assembly-build-provenance,
+# and its head is based 20 commits ahead of this base, so a pr entry would
+# advance the base inside one step. The branch is cut from this base instead.
+# It also adds what 4179 lacks: the minimumClaudeCodeVersion gate (2.1.257,
+# the Claude Code release that added Fable 5.1) so the picker does not offer a
+# model the installed CLI cannot run, and an ordering fix in the runtime
+# model-ID normalizer, whose unanchored patterns collapsed the gateway-prefixed
+# anthropic.claude-fable-5-1 onto Fable 5.
+[[entry]]
+branch = "mine:claude-fable-5-1"
+summary = "Add Claude Fable 5.1 to the model catalog, gated on Claude Code 2.1.257"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
