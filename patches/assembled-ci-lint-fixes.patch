@@ -61,20 +61,27 @@ index 7aa992f21..fa66c69ca 100644
    providers,
    selectedProvider,
 diff --git a/packages/app/src/components/message.tsx b/packages/app/src/components/message.tsx
-index 1d5dded50..c19db97e6 100644
+index a91b67135..0d39b5009 100644
 --- a/packages/app/src/components/message.tsx
 +++ b/packages/app/src/components/message.tsx
-@@ -647,9 +647,7 @@ export const AssistantTurnFooter = memo(function AssistantTurnFooter({
-         getContent={getContent}
+@@ -671,6 +671,17 @@ export const AssistantTurnFooter = memo(function AssistantTurnFooter({
          containerStyle={assistantTurnFooterStylesheet.copyButton}
        />
--      {canFork ? (
--        <AssistantForkMenu canForkNatively={canForkNatively} onFork={handleFork} />
--      ) : null}
-+      {canFork ? <AssistantForkMenu canForkNatively={canForkNatively} onFork={handleFork} /> : null}
-       {durationLabel || completionLabel ? (
-         <Text style={assistantTurnFooterStylesheet.label} testID="assistant-turn-completion">
-           {[durationLabel, completionLabel].filter(Boolean).join(" · ")}
+       {canFork ? <AssistantForkMenu canForkNatively={canForkNatively} onFork={handleFork} /> : null}
++      {meta ? (
++        // Outside the duration/timestamp swap: this label doesn't change on
++        // hover, so it must not participate in that width sizer.
++        <Text
++          style={assistantTurnFooterStylesheet.meta}
++          numberOfLines={1}
++          testID="assistant-turn-meta"
++        >
++          {meta}
++        </Text>
++      ) : null}
+       {durationLabel ? (
+         <Pressable
+           onPress={handlePress}
 diff --git a/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx b/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx
 index c0ba41ede..4982516f7 100644
 --- a/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx

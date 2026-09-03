@@ -429,6 +429,18 @@ recorded = "2026-08-01T22:53:56.143182114+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
+hash = "77b41b953cc760055461a627c3c3958db25c87d0"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:07:38.525909487+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
+hash = "7c118a6eba6b09f70d9af3882f7d50fb9b9d461c"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-03T08:07:38.525911240+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
 hash = "88b61061e4aa05c072354ed9033f9f2057eefcc0"
 paths = ["nix/package.nix"]
 recorded = "2026-07-31T22:11:43.053130502+00:00"
@@ -438,6 +450,12 @@ entry = "assembly-build-provenance"
 hash = "8c563655981dc134f5a3916082e5946c368a6322"
 paths = ["nix/desktop-package.nix"]
 recorded = "2026-08-02T21:57:08.368550300+00:00"
+
+[[resolution]]
+entry = "assembly-build-provenance"
+hash = "98d7568421516753c2735fa1d750a89d5a970183"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-03T08:07:38.525912082+00:00"
 
 [[resolution]]
 entry = "assembly-build-provenance"
@@ -458,6 +476,12 @@ paths = ["flake.nix"]
 recorded = "2026-08-01T22:53:56.143184148+00:00"
 
 [[resolution]]
+entry = "assembly-build-provenance"
+hash = "f5cee6102e22c073deab9d65d6ab4b401e966965"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-03T08:07:38.525912333+00:00"
+
+[[resolution]]
 entry = "assembly-fdroid-variant"
 hash = "9d87af859bd02dba3723967fac1c76191fe52e37"
 paths = ["docs/android.md"]
@@ -468,6 +492,12 @@ entry = "colonelpanic8/client-settings-file-store"
 hash = "234642546ba32579213293f38de22692e70fae57"
 paths = ["packages/app/src/storage/settings-seed/index.ts"]
 recorded = "2026-08-05T01:40:57.534333781+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
+hash = "25cb31823bca83f4ec1698b1dea3b60560231890"
+paths = ["docs/data-model.md"]
+recorded = "2026-09-03T08:12:32.373115368+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
@@ -588,10 +618,40 @@ hash = "f9830d618b8b2e92988faea8a0ca684006b05d3b"
 recorded = "2026-08-20T06:58:56.641133739+00:00"
 
 [[resolution]]
+entry = "colorblind-status-dots"
+hash = "fca45c8278183b3a443ada048245d9dfef0dfad4"
+paths = ["docs/design.md"]
+recorded = "2026-09-03T09:02:58.722515207+00:00"
+
+[[resolution]]
+entry = "disable-worktree-setup-callout"
+hash = "29d2fd6519fe755737d9dd7b437f6e562d92356f"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:07:48.985145179+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "0b6729d2cb4ec2f885374814b4b76e85f47d4f14"
+paths = ["packages/app/src/i18n/resources/ar.ts"]
+recorded = "2026-09-03T09:02:19.253827865+00:00"
+
+[[resolution]]
 entry = "live-voice-context-files"
 hash = "0ea6ef1d68e0b3b4f8140381447f84b5436106be"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-20T07:13:34.840664267+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "215efceda0ca942320310342995fa5f19d7d5112"
+paths = ["packages/app/src/i18n/resources/en.ts"]
+recorded = "2026-09-03T09:02:19.253829909+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "3050b4a5da187447702b2f889ef7337f8769a208"
+paths = ["packages/app/src/i18n/resources/es.ts"]
+recorded = "2026-09-03T09:02:19.253830289+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
@@ -619,6 +679,12 @@ recorded = "2026-08-18T21:49:55.654732851+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "894ea610aecfb875aa03cb0007c8a410fd4acc45"
+paths = ["packages/app/src/i18n/resources/pt-BR.ts"]
+recorded = "2026-09-03T09:02:19.253830710+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "9274385b210131283d5dd46acf849bb69b76f8be"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-21T20:57:27.667942562+00:00"
@@ -637,9 +703,33 @@ recorded = "2026-08-18T21:49:55.654733219+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "d0b73eca7b5cdd0a071de645575450ebf6c26367"
+paths = ["packages/app/src/i18n/resources/ja.ts"]
+recorded = "2026-09-03T09:02:19.253830890+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "d2a95ad1d9f015368d9e075497f976740ae3943a"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-09-03T09:02:19.253831141+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "db174f5a38d90fb4c1e6cb2b7112a74e5c6ec368"
 paths = ["packages/server/src/server/live-voice/live-voice-daemon-context.ts"]
 recorded = "2026-08-24T04:27:44.788739258+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "e37c9a3c7b08f4acf09055a7005539b44e1cb133"
+paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
+recorded = "2026-09-03T09:02:19.253833636+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "e4ee7202bd3fb14280a369ddaa2be43a8d5030e6"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T09:02:19.253834056+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
@@ -673,9 +763,21 @@ recorded = "2026-08-17T07:23:10.645352375+00:00"
 
 [[resolution]]
 entry = "model-picker-search"
+hash = "3bdaf7be77e89ed7dec0b521c885e6bf54601ec3"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-09-03T08:07:19.742365552+00:00"
+
+[[resolution]]
+entry = "model-picker-search"
 hash = "81e134b88ad46968b9a47197478088e0923036c5"
 paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
 recorded = "2026-08-11T17:50:33.162761813+00:00"
+
+[[resolution]]
+entry = "personal/sidebar-workflow"
+hash = "8a927a750687d835bb4dcf805f4130efe824877f"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:06:06.517456355+00:00"
 
 [[resolution]]
 entry = "pr-2520"
@@ -733,6 +835,18 @@ recorded = "2026-08-02T13:17:22.947779859+00:00"
 
 [[resolution]]
 entry = "pr-2532"
+hash = "4690e48f5ef527c810ad83d0db8b37de1a2777ce"
+paths = ["packages/app/src/composer/input/input.tsx"]
+recorded = "2026-09-03T08:07:33.079710281+00:00"
+
+[[resolution]]
+entry = "pr-2532"
+hash = "63bc75bb7ed44ee8592838ed89e9f390db584f99"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-03T08:07:33.079712455+00:00"
+
+[[resolution]]
+entry = "pr-2532"
 hash = "6b4f922c43be68a9b7a0d41b42d6b00f71aad58f"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-07-28T10:56:51.235455651+00:00"
@@ -754,6 +868,12 @@ entry = "pr-2532"
 hash = "b149b7fe6dfdec0a46e6374fc5e484ecfd45ed3c"
 paths = ["packages/app/src/agent-stream/view.tsx"]
 recorded = "2026-08-02T13:17:22.947783052+00:00"
+
+[[resolution]]
+entry = "pr-2532"
+hash = "db2b923934f382fb433c6919e36768b48ed24af2"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-09-03T08:07:33.079712826+00:00"
 
 [[resolution]]
 entry = "pr-2532"
@@ -1189,6 +1309,12 @@ recorded = "2026-07-29T23:01:09.357186509+00:00"
 
 [[resolution]]
 entry = "pr-2629"
+hash = "acb81ba31d7e0e37173b49f5d1ecabe56b79817e"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:07:43.121372892+00:00"
+
+[[resolution]]
+entry = "pr-2629"
 hash = "bf91a3e604c32f420adaa527bd9fef9690533cc0"
 paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
 recorded = "2026-08-02T13:19:26.395133176+00:00"
@@ -1267,6 +1393,12 @@ recorded = "2026-08-03T00:25:04.617443816+00:00"
 
 [[resolution]]
 entry = "pr-2658"
+hash = "6f0ce0752c809a58da5dbdfa5b0cb82ad678cd22"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-03T08:08:13.393343336+00:00"
+
+[[resolution]]
+entry = "pr-2658"
 hash = "7a34963b4677e65eff72a55b4a82fe998cf00433"
 paths = ["docs/data-model.md"]
 recorded = "2026-08-02T18:48:38.010432848+00:00"
@@ -1333,6 +1465,18 @@ recorded = "2026-07-31T20:39:30.543732940+00:00"
 
 [[resolution]]
 entry = "pr-2659"
+hash = "4a9803e244646579741a829663bc258d35fb5679"
+paths = ["packages/app/src/agent-stream/view.tsx"]
+recorded = "2026-09-03T08:08:18.616049718+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "64e3eeb03213754e9ac91610c2d009fe3cc7259f"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:08:18.616052353+00:00"
+
+[[resolution]]
+entry = "pr-2659"
 hash = "6697e9324bf0479f16984709d99e211b8412ffd7"
 paths = ["packages/app/src/subagents/track.tsx"]
 recorded = "2026-08-01T21:49:30.655456953+00:00"
@@ -1351,9 +1495,21 @@ recorded = "2026-07-31T20:39:30.543735435+00:00"
 
 [[resolution]]
 entry = "pr-2659"
+hash = "9122fe95595f6a6b7c8a66a103190bc9f4d88b12"
+paths = ["packages/app/src/panels/agent-panel.tsx"]
+recorded = "2026-09-03T08:08:18.616053185+00:00"
+
+[[resolution]]
+entry = "pr-2659"
 hash = "9ef0af2f3c8bd78f770a0b431ec0dfc41c21551d"
 paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
 recorded = "2026-08-28T23:34:33.304452376+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "b84fc7eaa3e3621896787a6374c2f21b7e5efdd6"
+paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
+recorded = "2026-09-03T08:08:18.616053445+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -1495,6 +1651,24 @@ recorded = "2026-08-11T18:53:53.129112376+00:00"
 
 [[resolution]]
 entry = "pr-2843"
+hash = "669bf2f1579073a17f01de6d88b8947fb450cd36"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:12:07.075082196+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "6eda1b2d97507efa645349e22dc6baccdae98a47"
+paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
+recorded = "2026-09-03T08:12:07.075086294+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "840840a6c88d0751f4d3321981aa6bf8a74af91b"
+paths = ["packages/app/src/i18n/resources/en.ts"]
+recorded = "2026-09-03T08:12:07.075087997+00:00"
+
+[[resolution]]
+entry = "pr-2843"
 hash = "87d089c70550220a4431ce6cf251ac161e488fd8"
 paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
 recorded = "2026-08-05T15:11:04.517025053+00:00"
@@ -1507,15 +1681,51 @@ recorded = "2026-08-06T22:39:29.095085888+00:00"
 
 [[resolution]]
 entry = "pr-2843"
+hash = "8bcd4305854eb64bdb40409405d86d09a84f203f"
+paths = ["packages/app/src/i18n/resources/pt-BR.ts"]
+recorded = "2026-09-03T08:12:07.075088488+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "92dbc12945ea0f0474797997cf9390dd05d68bef"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-09-03T08:12:07.075088879+00:00"
+
+[[resolution]]
+entry = "pr-2843"
 hash = "b4ff22ce4f8a67949961c89f6f68969faa303662"
 paths = ["packages/app/src/hooks/use-settings/storage.ts"]
 recorded = "2026-08-11T18:53:53.129122305+00:00"
 
 [[resolution]]
 entry = "pr-2843"
+hash = "ba2b16f7048ff1380b33c6b1d8843fea1a6bd3d2"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-09-03T08:12:07.075089220+00:00"
+
+[[resolution]]
+entry = "pr-2843"
 hash = "bede9bff1de9c9a61b88ccf8ed2634d21768d00f"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-06T22:51:17.699557151+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "c46efba048858ef45b0e146bb8f2495efcd8144f"
+paths = ["packages/app/src/i18n/resources/es.ts"]
+recorded = "2026-09-03T08:12:07.075089550+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "e4f7ae42c38179abaeffc808b6857d4b68e3dc12"
+paths = ["packages/app/src/i18n/resources/ar.ts"]
+recorded = "2026-09-03T08:12:07.075090111+00:00"
+
+[[resolution]]
+entry = "pr-2843"
+hash = "e5ae0520b554a3f236de17bd83f437aea2986ee0"
+paths = ["packages/app/src/components/sidebar-workspace-list.tsx"]
+recorded = "2026-09-03T08:12:07.075090722+00:00"
 
 [[resolution]]
 entry = "pr-2843"
@@ -1530,10 +1740,28 @@ paths = ["packages/app/src/hooks/use-settings/storage.test.ts"]
 recorded = "2026-08-03T23:14:56.559542266+00:00"
 
 [[resolution]]
+entry = "pr-2843"
+hash = "fab57596716f3c178e8d2994c7c68e640fe0b36a"
+paths = ["packages/app/src/i18n/resources/ja.ts"]
+recorded = "2026-09-03T08:12:07.075091093+00:00"
+
+[[resolution]]
 entry = "pr-2845"
 hash = "62d6d7961f0ca99db13276b40254f3174310a32f"
 paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
 recorded = "2026-08-04T20:35:44.517862408+00:00"
+
+[[resolution]]
+entry = "pr-2849"
+hash = "8afd081621a88e69be2e307bb7ee43e2d3f79a71"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-09-03T08:12:23.304177864+00:00"
+
+[[resolution]]
+entry = "pr-2849"
+hash = "8b9df6d82718d841fd155b145fdb9b49806d651b"
+paths = ["packages/app/src/hooks/use-settings/storage.test.ts"]
+recorded = "2026-09-03T08:12:23.304179617+00:00"
 
 [[resolution]]
 entry = "pr-2849"
@@ -1771,9 +1999,27 @@ recorded = "2026-08-21T20:56:14.856393837+00:00"
 
 [[resolution]]
 entry = "pr-2898"
+hash = "56ff4c2a9e0ce0d35c76edd0ee02b40ebae73c6a"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-03T08:13:37.693350942+00:00"
+
+[[resolution]]
+entry = "pr-2898"
+hash = "62d8b59f5726944343a626b971ecbc1e06e66487"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:13:37.693357094+00:00"
+
+[[resolution]]
+entry = "pr-2898"
 hash = "a31229da8840520688bc77ffae824bdd270e0268"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-08-21T20:56:14.856397183+00:00"
+
+[[resolution]]
+entry = "pr-2898"
+hash = "a6c7d19e340a26eae12b9bc713a55f19dc1a64cd"
+paths = ["packages/app/src/agent-stream/view.tsx"]
+recorded = "2026-09-03T08:13:37.693357695+00:00"
 
 [[resolution]]
 entry = "pr-2898"
@@ -1786,6 +2032,12 @@ entry = "pr-2898"
 hash = "edd266b3ac2c261c3ae1fc3bca5172e37939d9b2"
 paths = ["packages/app/src/components/message.tsx"]
 recorded = "2026-08-05T15:18:03.710170077+00:00"
+
+[[resolution]]
+entry = "pr-2898"
+hash = "f6b11b0994afffbd637ecc5bb4a0e490c889a97a"
+paths = ["packages/app/src/components/message.tsx"]
+recorded = "2026-09-03T08:13:37.693358827+00:00"
 
 [[resolution]]
 entry = "pr-2900"
@@ -2005,6 +2257,12 @@ recorded = "2026-08-17T22:03:17.541536220+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "61012d67ae37fd9c6cac71811e2ad4d62eae86c4"
+paths = ["packages/app/src/composer/input/input.tsx"]
+recorded = "2026-09-03T08:14:37.612807503+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "6715da5952b7d898fb6c34ae08235b9c95505626"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-08-24T04:26:17.276511694+00:00"
@@ -2050,6 +2308,12 @@ entry = "pr-2927"
 hash = "87247b8e15368430e19ccb475bf45df666cc5627"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-08-27T22:44:43.130234161+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "88e13b35f3d3f8574b969a54256a34d07a92eb47"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-03T08:48:09.707451575+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2101,6 +2365,12 @@ recorded = "2026-08-09T13:22:44.016638599+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "a83ab3d12d796b4b8c27b22de6735f4fe0c4a415"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:14:42.567117977+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "a8de63f743b25529dba1efb53d2aa2e50d25aa93"
 paths = ["packages/app/src/components/combined-model-selector.tsx"]
 recorded = "2026-08-17T22:03:17.541537655+00:00"
@@ -2122,6 +2392,12 @@ entry = "pr-2927"
 hash = "b74a15f07e3111f26e3abea09e1425cf89d754eb"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-08-17T22:03:17.541537958+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "b79522e854137ac1eed61ecbb1af1cb3d7903bb8"
+paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
+recorded = "2026-09-03T08:14:42.567120001+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2149,6 +2425,12 @@ recorded = "2026-08-17T22:03:17.541538538+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "d10ce9b343424549b041ac4112e521cf7b36f3a9"
+paths = ["packages/app/src/composer/input/input.tsx"]
+recorded = "2026-09-03T08:14:42.567121073+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "d158032314467fa945d1dd9704019d166abf924d"
 paths = ["packages/app/src/screens/settings/keyboard-shortcuts-section.tsx"]
 recorded = "2026-08-06T16:18:57.686784218+00:00"
@@ -2164,6 +2446,12 @@ entry = "pr-2927"
 hash = "d8282ea12d4d49866863e442b97005f2e96ea3bf"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-17T22:03:17.541538810+00:00"
+
+[[resolution]]
+entry = "pr-2927"
+hash = "daa884cfefe30342bf2c3fbb4f6a342982791ca2"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-03T08:14:42.567121343+00:00"
 
 [[resolution]]
 entry = "pr-2927"
@@ -2233,6 +2521,12 @@ recorded = "2026-08-06T07:53:47.461623296+00:00"
 
 [[resolution]]
 entry = "pr-2954"
+hash = "3591fd04c2c89f96787be855ab3e4b6d097c1bbc"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-03T08:14:49.312188640+00:00"
+
+[[resolution]]
+entry = "pr-2954"
 hash = "57df94a051ec515f1d1d27fcf18f2751ee7dcdc8"
 paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
 recorded = "2026-08-06T22:29:58.003260814+00:00"
@@ -2260,6 +2554,12 @@ entry = "pr-2957"
 hash = "1bcdbeac1317a4fad1cd3fec012730341f5a95da"
 paths = ["packages/app/src/screens/workspace/workspace-screen.tsx"]
 recorded = "2026-08-17T07:28:01.978129985+00:00"
+
+[[resolution]]
+entry = "pr-2957"
+hash = "31ae72aa0b20c84ee12479973534db91cd95a55d"
+paths = ["packages/app/src/screens/workspace/workspace-screen.tsx"]
+recorded = "2026-09-03T08:49:27.406005771+00:00"
 
 [[resolution]]
 entry = "pr-2957"
@@ -2437,6 +2737,12 @@ recorded = "2026-08-20T07:13:14.728153657+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "0cd50e9dcdc8b3a7b2bb888758365cf4aa3ea84d"
+paths = ["packages/plugin/src/host.ts"]
+recorded = "2026-09-03T08:43:40.386830945+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "13bf5a20832801a1d99195e28a42b00f820882c8"
 paths = ["packages/app/src/contexts/live-voice-context.tsx"]
 recorded = "2026-08-02T02:20:21.123928054+00:00"
@@ -2446,6 +2752,12 @@ entry = "watch-live-voice"
 hash = "169ccef185da6fe3bd4c8923bf56afc2430933a2"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-02T18:48:53.819259159+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "175d4f9bb6d851d82a2fdaa4ca0da141755e92bf"
+paths = ["plugin-examples/timeline-items/README.md"]
+recorded = "2026-09-03T08:43:40.386832699+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -2515,15 +2827,63 @@ recorded = "2026-08-03T16:03:52.692257184+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "72c48fce00a733c5de18b812e0bbb02f1d98bf1d"
+paths = ["packages/plugin/src/migration-doc.test.ts"]
+recorded = "2026-09-03T08:44:21.116785141+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "7398709430615f49dc5f1963af71bced425ffee0"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-17T07:25:06.955692794+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "77d6edc22334dbb9cd263f7f2740bd8557434e06"
+paths = ["plugin-examples/inline-thinking/README.md"]
+recorded = "2026-09-03T08:43:40.386833140+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "77f019a54d771e2c220b17c8d238931153a153c5"
+paths = ["packages/cli/src/commands/plugin/scaffold.test.ts"]
+recorded = "2026-09-03T08:44:21.116806531+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "7e6d6d0e7c38ee6fae02078dc8e3852fc0c3f986"
 paths = ["packages/client/src/daemon-client.test.ts"]
 recorded = "2026-08-07T20:13:10.482023068+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "81c0c41404dcbab5139b0adecf6420b7f5c505fb"
+paths = ["packages/server/src/server/session.test.ts"]
+recorded = "2026-09-03T08:43:40.386834091+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "84caeafaa4816b752d0fcaa70f448a2848ef9c41"
+paths = ["packages/app/src/plugins/evaluate.ts"]
+recorded = "2026-09-03T08:43:40.386834502+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "893607169e35686d31d4d97dc910e88007fab412"
+paths = ["docs/plugins.md"]
+recorded = "2026-09-03T08:43:40.386834753+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "8c5b8a61c3f6ce962a9de32c61bfda84daef47fb"
+paths = ["skills/paseo-plugin/SKILL.md"]
+recorded = "2026-09-03T08:43:40.386835224+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "8d30dc120628d616d0e6fbce683485b6ccfa5646"
+paths = ["public-docs/plugins/index.md"]
+recorded = "2026-09-03T08:44:21.116807232+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -2542,6 +2902,24 @@ entry = "watch-live-voice"
 hash = "9b999e4daded282ac10083d0a046d6a742f5f048"
 paths = ["packages/server/src/server/agent/agent-manager.ts"]
 recorded = "2026-08-21T20:55:14.674683495+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "9ba00508bd4c466c5330b8ace19a71246b20b9a7"
+paths = ["packages/server/src/server/plugins/plugin-paseo-api.e2e.test.ts"]
+recorded = "2026-09-03T08:43:40.386835474+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "9db576836aecc233f3ff66fddfc3802177f265b1"
+paths = ["packages/app/src/panels/agent-panel.tsx"]
+recorded = "2026-09-03T08:08:28.523860071+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "9e037e2bcc730cdfef1976c8d9f85198c4823235"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-03T08:08:28.523862025+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -2569,6 +2947,18 @@ recorded = "2026-08-02T13:24:42.420727745+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "b00a6c3ac64a4b0200627c38895f21ecd73a601c"
+paths = ["packages/server/src/server/session.ts"]
+recorded = "2026-09-03T08:08:28.523862365+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "b21c229fe52c24c6692107cfe6997917d8785327"
+paths = ["packages/app/src/plugins/timeline/view.test.tsx"]
+recorded = "2026-09-03T08:43:40.386835815+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "bdfdb5dbfa4c03deabd8a171aa1cd18358d490ce"
 paths = ["packages/app/src/keyboard/keyboard-action-dispatcher.ts"]
 recorded = "2026-08-04T20:32:48.987820540+00:00"
@@ -2587,6 +2977,12 @@ recorded = "2026-08-21T20:55:14.674685148+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "c30227bcf193db432ff6c916fd1418f7a0ead71d"
+paths = ["packages/server/src/server/plugins/plugin-process.ts"]
+recorded = "2026-09-03T08:43:40.386836035+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "c66261b07af611251905fc879cb975624a3e20cc"
 paths = ["packages/app/modules/paseo-background-call/android/src/main/java/sh/paseo/backgroundcall/BackgroundCallService.kt"]
 recorded = "2026-08-08T04:37:40.046735740+00:00"
@@ -2599,9 +2995,39 @@ recorded = "2026-08-11T18:37:45.268561941+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "cf70d78cb4329a28a9da99d48564e6765581174c"
+paths = ["nix/npm-deps.hash"]
+recorded = "2026-09-03T08:44:21.116809357+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "d1fe57e096f6a999ff07cd0dce391604d4c6753c"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-08-05T01:38:34.245645246+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "d36edf8f56d6f303f45c85c038ac9022e9c2c939"
+paths = ["packages/server/src/server/plugins/compiler.test.ts"]
+recorded = "2026-09-03T08:43:40.386836356+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "d393c9104514bc7cb7023f1695af8441925f96b8"
+paths = ["docs/plugins.md"]
+recorded = "2026-09-03T08:44:21.116809978+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "d39b7b66d816ab7491adbcfd8f95065294cf43a3"
+paths = ["packages/app/src/plugins/types.ts"]
+recorded = "2026-09-03T08:43:40.386836716+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "d77148266239fc3579b4ee02f4166f220b1a859e"
+paths = ["packages/server/src/server/plugins/runtime.ts"]
+recorded = "2026-09-03T08:44:21.116811020+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -2611,15 +3037,45 @@ recorded = "2026-08-07T09:58:30.392791260+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "e684b5836d5190686c051a9dbd6c983906d92dc0"
+paths = ["packages/server/src/server/plugins/compiler.ts"]
+recorded = "2026-09-03T08:43:40.386836927+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "e9901728cedaec8ad4f42df3dd3dc014364907f8"
+paths = ["public-docs/plugins/v0.7/reference.md"]
+recorded = "2026-09-03T08:44:21.116812182+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "ed887cf9dadb3388d0658d69fc782ce38bac2882"
+paths = ["skills/paseo-plugin/SKILL.md"]
+recorded = "2026-09-03T08:44:21.116812583+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "ee890a53a943facd8d9e32810fe9ebf81f06426e"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-01T21:08:42.299453044+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "ef227f1e0f885d9e332fdd00bfc45a4d801b275f"
+paths = ["packages/server/src/server/plugins/runtime.posix.test.ts"]
+recorded = "2026-09-03T08:44:21.116813184+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "f071a0fdd1f7acacd9248263c3319f2765fc85c0"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-04T20:32:48.987822383+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
+hash = "f25273a2ec5e9d6ce26748a46e1f2ef04ce79938"
+paths = ["packages/plugin/src/contracts.ts"]
+recorded = "2026-09-03T08:43:40.386837147+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"

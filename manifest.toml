@@ -121,10 +121,6 @@ pr = 2730
 summary = "fix(app): make host pickers searchable"
 
 [[entry]]
-pr = 2772
-summary = "Show agent turn completion times"
-
-[[entry]]
 pr = 2784
 summary = "Fix worktree setup with production npm environments"
 
@@ -265,20 +261,13 @@ pr = 3882
 [[entry]]
 pr = 3972
 
-# Carries only the model-catalog half of upstream#4179. That PR also cuts
-# release 0.7.1 -- every package.json version, package-lock.json, CHANGELOG,
-# the fastlane changelogs and nix/npm-deps.hash -- which collides directly
-# with the assembled-npm-deps-hash patch entry and assembly-build-provenance,
-# and its head is based 20 commits ahead of this base, so a pr entry would
-# advance the base inside one step. The branch is cut from this base instead.
-# It also adds what 4179 lacks: the minimumClaudeCodeVersion gate (2.1.257,
-# the Claude Code release that added Fable 5.1) so the picker does not offer a
-# model the installed CLI cannot run, and an ordering fix in the runtime
-# model-ID normalizer, whose unanchored patterns collapsed the gateway-prefixed
-# anthropic.claude-fable-5-1 onto Fable 5.
 [[entry]]
-branch = "mine:claude-fable-5-1"
-summary = "Add Claude Fable 5.1 to the model catalog, gated on Claude Code 2.1.257"
+pr = 4256
+summary = "fix(app): replace painted timeline rows on cursorless tail pages"
+
+[[entry]]
+pr = 4261
+summary = "Handle draft tabs on an offline host"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
@@ -306,3 +295,7 @@ reason = "its live relative-timestamp ticker is now carried by mine:personal/sid
 [[exclude]]
 pr = 2579
 reason = "merged upstream as getpaseo/paseo#2579 (merge commit b7f137c2a000); its changes are already in the refreshed base"
+
+[[exclude]]
+pr = 2772
+reason = "superseded by getpaseo/paseo#4170, which shows completion times in assistant turn footers"

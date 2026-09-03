@@ -1,14 +1,13 @@
 {
   "version": 1,
   "pins": {
-    "base": "f2f93087ed782327a2eda11764471ae7032db2a2",
+    "base": "eb753813a198958dcf75a08d65b71b77c60ffdd7",
     "entries": {
-      "assembled-ci-lint-fixes": "91bb5584623e33b33b308c3686c54dfc73024326",
-      "assembled-npm-deps-hash": "30c70f687e9a7cdc2cf7d177cbd93e73659da2a9",
+      "assembled-ci-lint-fixes": "fc2148b44a6b7fdd901764e1eac18f0ef15f7a17",
+      "assembled-npm-deps-hash": "ed9dcf5b4c932796c1b5c7d404d31b2ba46d9722",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
       "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
-      "claude-fable-5-1": "5dc858f0375d8aafe2c4a1e82cd1c48c9d62463b",
       "colonelpanic8/client-settings-file-store": "d98a8ae46ad65b75afc6aef64285bc26471a4519",
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b",
@@ -16,24 +15,23 @@
       "live-voice-quick-launch": "445b72c9860998dfcacb6e51f63dad2eba40170a",
       "model-picker-search": "64ddbe4e4c2350331e12ed90c032c9ecc069fb36",
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
-      "personal/sidebar-workflow": "24067e5e7bb4ffb788a51ac4eb23f9b8677d98b9",
+      "personal/sidebar-workflow": "36b9c108468759bdcbcc9da556fac4e4260cfcc4",
       "pr-2517": "238714e0ad45d4da86b73d890c556ee0d8baf9cb",
       "pr-2520": "bdae463b7dd22ff47f78ecb49fb67979976ac616",
       "pr-2521": "643d03bc0b1e00d3afa03691a81d68c293d167cf",
-      "pr-2532": "dd7a02a1466fd523b027e294f89699db5884c42c",
+      "pr-2532": "82390c88106fcf17cd2bf27cb37a7386909a1ac8",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
       "pr-2628": "4a7512e56237ac17911d2e5483c0a5124cd6abc0",
-      "pr-2629": "17ca1e57bbb136d92d960ff6425474ee7722db87",
+      "pr-2629": "4d82fb9febf6f368af6f1199c7073f72c5c82263",
       "pr-2650": "c22fde493d28ec2c9e2e5a924e8aef989f3415c5",
       "pr-2658": "9e9c29d5edc5efeeffb43d491b8799ee718a35f1",
-      "pr-2659": "f183c2917cededb2237eb11cfe30b3b390055a32",
+      "pr-2659": "ecce5a0f573e3096f15d03c531ca4b8b016f55ef",
       "pr-2660": "439b7123844fc114d0317824052a5a83945c38da",
       "pr-2730": "3373afdc8e9b164ef507f6ad61ade709c4126dd9",
-      "pr-2772": "b5401b3727e9d8a650d1bc8658453cb71d8929f2",
       "pr-2784": "04f24b57577e9dcb7b329650f02158d365abc851",
       "pr-2785": "baf6a233641318ebf6e3ffeaba769939f5f55809",
-      "pr-2820": "137ec5d469149d1ab3e17f295f2a09200922de07",
-      "pr-2843": "119219e7b720d980f18f83b3c88352824240b236",
+      "pr-2820": "cb8b430791cca8a9b84688192541919dd550593d",
+      "pr-2843": "68d6bcd0021b00280082635d23476d26d4ea457b",
       "pr-2845": "220765d52b840d3243eb93b29cdb900abec35721",
       "pr-2849": "777bbaa5a2f9c07f5468082b34a195d63551890d",
       "pr-2872": "7621be102d514bb292185235bd3e159bef0b307c",
@@ -42,9 +40,9 @@
       "pr-2883": "b91952bbe8f888bf5e9144074604c896b29f3856",
       "pr-2884": "479951217face4d3b7624dda9ab62d3ac1907104",
       "pr-2885": "c523a90a879433d4f908b1d12e02fc7c5f68bf79",
-      "pr-2898": "dde876d339279e1a2aaf161f49fbd6431e040d58",
+      "pr-2898": "b0c2e004d2afa1cd80d15bcc32fb78902dfa16b9",
       "pr-2900": "c68982eb2d477f9b0e895253fffc3399347c3224",
-      "pr-2927": "2d908cb4a17a2c2453cdb80e9cf646fc04dffc29",
+      "pr-2927": "7ffdd9d3c81ae262a89bca0b421a92a1dbd982b8",
       "pr-2954": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
       "pr-2956": "ce453d7ccbc2a9b7e951f4209f926f00c8979358",
       "pr-2957": "d2a097837f44eef12f73079c77fb37901f3be3a2",
@@ -55,42 +53,44 @@
       "pr-3662": "1f3d73a9514220a6af5b2097b1b3f8cf06031d93",
       "pr-3882": "b157af46b9491448287120a0781e369cd56ef1bb",
       "pr-3972": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573",
+      "pr-4256": "2661f94438afbf4f282019c7345e9bcd381511f5",
+      "pr-4261": "1ea871fa20eb39600caffbc3e615e5b0f7279b2c",
       "thinking-control-reachability": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "6d9efe3a28e682a584fb3908b7ca62b0c69fb1c8"
+      "watch-live-voice": "1ec2aa5b65690036a9d172c3cd671c3ed873cb9c"
     },
     "parents": {
       "live-voice-context-files": {
-        "pr-2657": "0624717fb99aa8d8df6b76a82e01509b3d711443"
+        "pr-2657": "50de25110fe013a8a08cd4e5a070e29d0554818b"
       },
       "live-voice-quick-launch": {
-        "pr-2657": "0624717fb99aa8d8df6b76a82e01509b3d711443"
+        "pr-2657": "50de25110fe013a8a08cd4e5a070e29d0554818b"
       },
       "pr-2927": {
-        "pr-3499": "d66dba4442a4ea5c6aabe6c6676d2c5b4ec2988f"
+        "pr-3499": "3fcf7310be7130aacac010564a7c1297594b3d83"
       },
       "watch-live-voice": {
         "pr-2655": "97759726bce318a081e6ed20e128aaed9aec528f",
-        "pr-2657": "0624717fb99aa8d8df6b76a82e01509b3d711443"
+        "pr-2657": "50de25110fe013a8a08cd4e5a070e29d0554818b"
       }
     },
     "anchors": {
       "live-voice-context-files": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
       "live-voice-quick-launch": "67972ebe2c41ba660609c1087ff637b1c9e74e15",
-      "pr-2927": "b167136771852c16e4292a7893e06e9c4f311dbc",
-      "watch-live-voice": "fbf9a4955217a936cc681fa6498cbd1b8da96ad2"
+      "pr-2927": "0d5e91b3bbc675f9efc9f6d732cdac3f364e59d1",
+      "watch-live-voice": "f6838e82e0dea1c0125de0dc82bbe3887133c821"
     }
   },
   "build": {
-    "generated": "2026-09-02T01:12:35.345042907+00:00",
-    "base": "f2f93087ed782327a2eda11764471ae7032db2a2",
-    "commit": "dda98831aa742537ada4487a93b6de11bff20f30",
-    "pre_provenance_commit": "dda98831aa742537ada4487a93b6de11bff20f30",
-    "tree": "f9dff15d5ee49e67e7568f00da450e68629dbd13",
-    "built_tree": "f9dff15d5ee49e67e7568f00da450e68629dbd13",
-    "previous_tree": "f9dff15d5ee49e67e7568f00da450e68629dbd13",
+    "generated": "2026-09-03T09:05:37.911204580+00:00",
+    "base": "eb753813a198958dcf75a08d65b71b77c60ffdd7",
+    "commit": "a0d2f20be8a50b84dbb1c59438214911cd253802",
+    "pre_provenance_commit": "a0d2f20be8a50b84dbb1c59438214911cd253802",
+    "tree": "b8b9b3ee3b1434dc1b05eafac0bc90a5c4f9ae1b",
+    "built_tree": "b8b9b3ee3b1434dc1b05eafac0bc90a5c4f9ae1b",
+    "previous_tree": "b8b9b3ee3b1434dc1b05eafac0bc90a5c4f9ae1b",
     "tree_changed": false,
-    "conflicts": 35,
+    "conflicts": 39,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -121,8 +121,8 @@
         "name": "personal/sidebar-workflow",
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
-        "pin": "24067e5e7bb4ffb788a51ac4eb23f9b8677d98b9",
-        "fixup": "0a9dcda2fb2537acbf84d2c21425f2a771e81a4d"
+        "pin": "36b9c108468759bdcbcc9da556fac4e4260cfcc4",
+        "fixup": "7ca01d9c3f5f014dbd744169ddf17b859c139fd0"
       },
       {
         "name": "model-picker-search",
@@ -134,7 +134,7 @@
         "name": "pr-2532",
         "kind": "pr",
         "source": "upstream#2532",
-        "pin": "dd7a02a1466fd523b027e294f89699db5884c42c"
+        "pin": "82390c88106fcf17cd2bf27cb37a7386909a1ac8"
       },
       {
         "name": "pr-2553",
@@ -171,7 +171,7 @@
         "name": "pr-2629",
         "kind": "pr",
         "source": "upstream#2629",
-        "pin": "17ca1e57bbb136d92d960ff6425474ee7722db87",
+        "pin": "4d82fb9febf6f368af6f1199c7073f72c5c82263",
         "fixup": "0ca7f5acfe52f8d41069cc612bdc6a196d028cdd"
       },
       {
@@ -196,7 +196,7 @@
         "name": "pr-2659",
         "kind": "pr",
         "source": "upstream#2659",
-        "pin": "f183c2917cededb2237eb11cfe30b3b390055a32",
+        "pin": "ecce5a0f573e3096f15d03c531ca4b8b016f55ef",
         "fixup": "344a6be7c39a27698b9e06ea28ac496ec86d19e4"
       },
       {
@@ -209,7 +209,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "6d9efe3a28e682a584fb3908b7ca62b0c69fb1c8",
+        "pin": "1ec2aa5b65690036a9d172c3cd671c3ed873cb9c",
         "fixup": "ae7d26cf5d3a8a216edd0a7c5b2f38c8ea78f89c",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -219,28 +219,22 @@
           },
           {
             "source": "upstream#2657",
-            "pin": "0624717fb99aa8d8df6b76a82e01509b3d711443"
+            "pin": "50de25110fe013a8a08cd4e5a070e29d0554818b"
           }
         ],
-        "anchor": "fbf9a4955217a936cc681fa6498cbd1b8da96ad2"
+        "anchor": "f6838e82e0dea1c0125de0dc82bbe3887133c821"
       },
       {
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "30c70f687e9a7cdc2cf7d177cbd93e73659da2a9"
+        "pin": "ed9dcf5b4c932796c1b5c7d404d31b2ba46d9722"
       },
       {
         "name": "pr-2730",
         "kind": "pr",
         "source": "upstream#2730",
         "pin": "3373afdc8e9b164ef507f6ad61ade709c4126dd9"
-      },
-      {
-        "name": "pr-2772",
-        "kind": "pr",
-        "source": "upstream#2772",
-        "pin": "b5401b3727e9d8a650d1bc8658453cb71d8929f2"
       },
       {
         "name": "pr-2784",
@@ -259,13 +253,13 @@
         "name": "pr-2820",
         "kind": "pr",
         "source": "upstream#2820",
-        "pin": "137ec5d469149d1ab3e17f295f2a09200922de07"
+        "pin": "cb8b430791cca8a9b84688192541919dd550593d"
       },
       {
         "name": "pr-2843",
         "kind": "pr",
         "source": "upstream#2843",
-        "pin": "119219e7b720d980f18f83b3c88352824240b236",
+        "pin": "68d6bcd0021b00280082635d23476d26d4ea457b",
         "fixup": "50c422e0ad6cebf1df0d5a7578a7e12cb209ade3"
       },
       {
@@ -327,7 +321,7 @@
         "name": "pr-2898",
         "kind": "pr",
         "source": "upstream#2898",
-        "pin": "dde876d339279e1a2aaf161f49fbd6431e040d58",
+        "pin": "b0c2e004d2afa1cd80d15bcc32fb78902dfa16b9",
         "fixup": "74cb8e02f9ff8188249ce330cb6a007ee8651a32"
       },
       {
@@ -340,16 +334,16 @@
         "name": "pr-2927",
         "kind": "pr",
         "source": "upstream#2927",
-        "pin": "2d908cb4a17a2c2453cdb80e9cf646fc04dffc29",
+        "pin": "7ffdd9d3c81ae262a89bca0b421a92a1dbd982b8",
         "fixup": "02cf056eeb3f611bf02fc6f779f156483bbf514b",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
           {
             "source": "upstream#3499",
-            "pin": "d66dba4442a4ea5c6aabe6c6676d2c5b4ec2988f"
+            "pin": "3fcf7310be7130aacac010564a7c1297594b3d83"
           }
         ],
-        "anchor": "b167136771852c16e4292a7893e06e9c4f311dbc"
+        "anchor": "0d5e91b3bbc675f9efc9f6d732cdac3f364e59d1"
       },
       {
         "name": "touch-sidebar-resize",
@@ -368,7 +362,7 @@
         "name": "assembled-ci-lint-fixes",
         "kind": "patch",
         "source": "patches/assembled-ci-lint-fixes.patch",
-        "pin": "91bb5584623e33b33b308c3686c54dfc73024326"
+        "pin": "fc2148b44a6b7fdd901764e1eac18f0ef15f7a17"
       },
       {
         "name": "pr-2956",
@@ -420,7 +414,7 @@
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "0624717fb99aa8d8df6b76a82e01509b3d711443"
+            "pin": "50de25110fe013a8a08cd4e5a070e29d0554818b"
           }
         ],
         "anchor": "67972ebe2c41ba660609c1087ff637b1c9e74e15"
@@ -434,7 +428,7 @@
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "0624717fb99aa8d8df6b76a82e01509b3d711443"
+            "pin": "50de25110fe013a8a08cd4e5a070e29d0554818b"
           }
         ],
         "anchor": "67972ebe2c41ba660609c1087ff637b1c9e74e15"
@@ -465,10 +459,16 @@
         "pin": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573"
       },
       {
-        "name": "claude-fable-5-1",
-        "kind": "branch",
-        "source": "mine:claude-fable-5-1",
-        "pin": "5dc858f0375d8aafe2c4a1e82cd1c48c9d62463b"
+        "name": "pr-4256",
+        "kind": "pr",
+        "source": "upstream#4256",
+        "pin": "2661f94438afbf4f282019c7345e9bcd381511f5"
+      },
+      {
+        "name": "pr-4261",
+        "kind": "pr",
+        "source": "upstream#4261",
+        "pin": "1ea871fa20eb39600caffbc3e615e5b0f7279b2c"
       }
     ],
     "results": [
@@ -500,10 +500,11 @@
       },
       {
         "name": "personal/sidebar-workflow",
-        "oid": "24067e5e7bb4ffb788a51ac4eb23f9b8677d98b9",
+        "oid": "36b9c108468759bdcbcc9da556fac4e4260cfcc4",
         "status": "merged",
-        "conflicted": false,
-        "fixup": "0a9dcda2fb2537acbf84d2c21425f2a771e81a4d"
+        "conflicted": true,
+        "resolution": "rerere",
+        "fixup": "7ca01d9c3f5f014dbd744169ddf17b859c139fd0"
       },
       {
         "name": "model-picker-search",
@@ -514,7 +515,7 @@
       },
       {
         "name": "pr-2532",
-        "oid": "dd7a02a1466fd523b027e294f89699db5884c42c",
+        "oid": "82390c88106fcf17cd2bf27cb37a7386909a1ac8",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -554,7 +555,7 @@
       },
       {
         "name": "pr-2629",
-        "oid": "17ca1e57bbb136d92d960ff6425474ee7722db87",
+        "oid": "4d82fb9febf6f368af6f1199c7073f72c5c82263",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -564,7 +565,8 @@
         "name": "disable-worktree-setup-callout",
         "oid": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b",
         "status": "merged",
-        "conflicted": false
+        "conflicted": true,
+        "resolution": "rerere"
       },
       {
         "name": "pr-2650",
@@ -581,7 +583,7 @@
       },
       {
         "name": "pr-2659",
-        "oid": "f183c2917cededb2237eb11cfe30b3b390055a32",
+        "oid": "ecce5a0f573e3096f15d03c531ca4b8b016f55ef",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -596,19 +598,19 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "6d9efe3a28e682a584fb3908b7ca62b0c69fb1c8",
+        "oid": "1ec2aa5b65690036a9d172c3cd671c3ed873cb9c",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "ae7d26cf5d3a8a216edd0a7c5b2f38c8ea78f89c",
         "derived": {
-          "base_tip": "b226df5b4f3afdac40b5746a1621f573c0c10331",
-          "tip": "ff8970f89daca2932cba382850477ff98732bbc4"
+          "base_tip": "617ff22e8b68a4b08f84541c818d8cbc6eb654d1",
+          "tip": "cb10791701b43ed8bec20fb5e3514d418f528266"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "30c70f687e9a7cdc2cf7d177cbd93e73659da2a9",
+        "oid": "ed9dcf5b4c932796c1b5c7d404d31b2ba46d9722",
         "status": "applied",
         "conflicted": false
       },
@@ -618,12 +620,6 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
-      },
-      {
-        "name": "pr-2772",
-        "oid": "b5401b3727e9d8a650d1bc8658453cb71d8929f2",
-        "status": "merged",
-        "conflicted": false
       },
       {
         "name": "pr-2784",
@@ -642,14 +638,14 @@
       },
       {
         "name": "pr-2820",
-        "oid": "137ec5d469149d1ab3e17f295f2a09200922de07",
+        "oid": "cb8b430791cca8a9b84688192541919dd550593d",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "pr-2843",
-        "oid": "119219e7b720d980f18f83b3c88352824240b236",
+        "oid": "68d6bcd0021b00280082635d23476d26d4ea457b",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -719,7 +715,7 @@
       },
       {
         "name": "pr-2898",
-        "oid": "dde876d339279e1a2aaf161f49fbd6431e040d58",
+        "oid": "b0c2e004d2afa1cd80d15bcc32fb78902dfa16b9",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -734,14 +730,14 @@
       },
       {
         "name": "pr-2927",
-        "oid": "2d908cb4a17a2c2453cdb80e9cf646fc04dffc29",
+        "oid": "7ffdd9d3c81ae262a89bca0b421a92a1dbd982b8",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "02cf056eeb3f611bf02fc6f779f156483bbf514b",
         "derived": {
-          "base_tip": "666751cb9544c45ac9cd5369f0484bc11644b76e",
-          "tip": "c5e84dbd9e21023e6b94599dbce1e5e7197263ad"
+          "base_tip": "641f0a95a1331b02cb1a23e02cc0fe8d343c8148",
+          "tip": "32c84122d797680806a4dc4110663cb2fa904c11"
         }
       },
       {
@@ -760,7 +756,7 @@
       },
       {
         "name": "assembled-ci-lint-fixes",
-        "oid": "91bb5584623e33b33b308c3686c54dfc73024326",
+        "oid": "fc2148b44a6b7fdd901764e1eac18f0ef15f7a17",
         "status": "applied",
         "conflicted": false
       },
@@ -774,7 +770,8 @@
         "name": "pr-2957",
         "oid": "d2a097837f44eef12f73079c77fb37901f3be3a2",
         "status": "merged",
-        "conflicted": false
+        "conflicted": true,
+        "resolution": "rerere"
       },
       {
         "name": "thinking-control-reachability",
@@ -813,8 +810,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "4a71bbe4d2f2702a56bd778f701c41d0ee1438ff",
-          "tip": "0db4ec24e7f6a76e9323d6e8af41584bdfc69372"
+          "base_tip": "b7faf27ab9ab78477f4664779bff19619412e139",
+          "tip": "5d6dcd0b385e70c94ce3d1187f31c84855d04469"
         }
       },
       {
@@ -825,15 +822,16 @@
         "resolution": "rerere",
         "fixup": "0173fe2f2954657ea0f0fa3dca3cec17f8070f42",
         "derived": {
-          "base_tip": "2992614a419f0bef6dd4651d351f75646840cf2c",
-          "tip": "ef457556f6262777ab432f73ea49106ce14d73d2"
+          "base_tip": "af1654f12c176ce351872ddc031e03c37c353cd8",
+          "tip": "1f4e02bb187002d9f0188e78c85328e2a0cd0f88"
         }
       },
       {
         "name": "colorblind-status-dots",
         "oid": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
         "status": "merged",
-        "conflicted": false
+        "conflicted": true,
+        "resolution": "rerere"
       },
       {
         "name": "pr-3662",
@@ -857,8 +855,14 @@
         "resolution": "rerere"
       },
       {
-        "name": "claude-fable-5-1",
-        "oid": "5dc858f0375d8aafe2c4a1e82cd1c48c9d62463b",
+        "name": "pr-4256",
+        "oid": "2661f94438afbf4f282019c7345e9bcd381511f5",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-4261",
+        "oid": "1ea871fa20eb39600caffbc3e615e5b0f7279b2c",
         "status": "merged",
         "conflicted": false
       }

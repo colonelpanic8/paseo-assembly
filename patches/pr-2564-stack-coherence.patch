@@ -101,11 +101,11 @@ index 96e1e1139..124025e06 100644
    diffStat: null,
    scripts: [],
 diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-index 80b91c6b6..93c54099b 100644
+index 86eaec472..9c975231b 100644
 --- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
 +++ b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-@@ -193,6 +193,17 @@ function normalizeCurrentBranch(currentBranch: string | null | undefined): strin
-   return trimmed.length === 0 || trimmed === "HEAD" ? null : trimmed;
+@@ -193,6 +193,17 @@ function workspaceRemoteUrl(workspace: WorkspaceDescriptor): string | null {
+   return workspace.gitRuntime?.remoteUrl ?? workspace.project?.checkout.remoteUrl ?? null;
  }
  
 +function workspaceActivityFields(
@@ -134,20 +134,6 @@ index 80b91c6b6..93c54099b 100644
    const effectiveStatus = deriveEffectiveWorkspaceStatus({
      ...input,
      nowMs: input.nowMs ?? Date.now(),
-@@ -225,11 +239,11 @@ export function createSidebarWorkspaceEntry(input: {
-     labels: input.workspace.labels ?? EMPTY_WORKSPACE_LABELS,
-     currentBranch: normalizeCurrentBranch(input.workspace.gitRuntime?.currentBranch),
-     remoteUrl: resolveWorkspaceRemoteUrl(input.workspace),
--    providers: agentActivity?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
-+    providers: workspaceActivity.providers,
-     statusBucket: effectiveStatus.status,
-     statusEnteredAt: effectiveStatus.enteredAt,
-     snoozeWakeAt: effectiveStatus.snoozeWakeAt,
--    lastUserMessageAt: agentActivity?.lastUserMessageAt ?? null,
-+    lastUserMessageAt: workspaceActivity.lastUserMessageAt,
-     activityAt: input.workspace.activityAt,
-     readyToReview: effectiveStatus.readyToReview,
-     archivingAt: input.workspace.archivingAt,
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
 index 46835adb4..90ec2e3a1 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
@@ -388,9 +374,10 @@ index 5b91ccde3..73a0ce76f 100644
  
  export const ManagedHostRegistrySchema = z.object({
 diff --git a/packages/server/src/server/authorization/operation-permissions.ts b/packages/server/src/server/authorization/operation-permissions.ts
+index 95995bc65..9c3764d42 100644
 --- a/packages/server/src/server/authorization/operation-permissions.ts
 +++ b/packages/server/src/server/authorization/operation-permissions.ts
-@@ -181,6 +181,7 @@
+@@ -183,6 +183,7 @@ const INBOUND_PERMISSION = {
    validate_branch_request: "workspace.read",
    voice_audio_chunk: "workspace.write",
    wait_for_finish_request: "workspace.read",
@@ -398,15 +385,15 @@ diff --git a/packages/server/src/server/authorization/operation-permissions.ts b
    "workspace.clear_attention.request": "workspace.write",
    "workspace.create.request": "workspace.manage",
    "workspace.github.search_repositories.request": "workspace.read",
-@@ -195,6 +196,7 @@
+@@ -197,6 +198,7 @@ const INBOUND_PERMISSION = {
    "workspace.script.list.request": "workspace.read",
    "workspace.script.start.request": "workspace.write",
    "workspace.script.stop.request": "workspace.write",
 +  "workspace.snooze.set.request": "workspace.manage",
    "workspace.title.set.request": "workspace.manage",
    workspace_setup_status_request: "workspace.read",
-   write_project_config_request: "workspace.write",
-@@ -389,6 +391,7 @@
+   "workspace.setup.run.request": "workspace.write",
+@@ -393,6 +395,7 @@ const OUTBOUND_PERMISSION = {
    validate_branch_response: "workspace.read",
    voice_input_state: "workspace.write",
    wait_for_finish_response: "workspace.read",
@@ -414,7 +401,7 @@ diff --git a/packages/server/src/server/authorization/operation-permissions.ts b
    "workspace.clear_attention.response": "workspace.write",
    "workspace.create.response": "workspace.manage",
    "workspace.github.search_repositories.response": "workspace.read",
-@@ -404,6 +407,7 @@
+@@ -408,6 +411,7 @@ const OUTBOUND_PERMISSION = {
    "workspace.script.list.response": "workspace.read",
    "workspace.script.start.response": "workspace.write",
    "workspace.script.stop.response": "workspace.write",
