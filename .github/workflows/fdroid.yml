@@ -250,9 +250,11 @@ jobs:
             scripts/fdroid-publish.sh \
               "$publish_root" \
               "$RUNNER_TEMP/sh.paseo.assembly_${APK_VERSION_CODE}.apk" \
+              "$RUNNER_TEMP/sh.paseo.assembly.watch_${{ steps.assembly.outputs.watch_version_code }}.apk" \
               "$secret_root/signing.p12" \
               "$secret_root/keystore-password" \
               "$VERSION_NAME" \
+              "${{ steps.assembly.outputs.watch_version_code }}" \
               "$SOURCE_TREE" \
               "$fingerprint"
 
