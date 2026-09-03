@@ -17,3 +17,37 @@ index 5959c9507..548b3174b 100644
        tools: launchContext.paseoTools,
      });
    }
+diff --git a/packages/server/src/server/agent/agent-manager.ts b/packages/server/src/server/agent/agent-manager.ts
+--- a/packages/server/src/server/agent/agent-manager.ts
++++ b/packages/server/src/server/agent/agent-manager.ts
+@@ -286,6 +286,15 @@ interface AgentManagerRescueTimeouts {
+ interface AgentManagerRescueTimeouts {
+   reloadSessionCloseMs?: number;
+   interruptSessionMs?: number;
+ }
+-
++
++function resolveAgentManagerRescueTimeouts(
++  rescueTimeouts: AgentManagerRescueTimeouts | undefined,
++): Required<AgentManagerRescueTimeouts> {
++  return {
++    reloadSessionCloseMs: rescueTimeouts?.reloadSessionCloseMs ?? RELOAD_SESSION_CLOSE_TIMEOUT_MS,
++    interruptSessionMs: rescueTimeouts?.interruptSessionMs ?? INTERRUPT_SESSION_TIMEOUT_MS,
++  };
++}
++
+ interface ProviderEnabledFlag {
+@@ -854,12 +863,7 @@ export class AgentManager {
+     this.appendSystemPrompt = options.appendSystemPrompt ?? "";
+     this.resolveLaunchEnv = options.resolveLaunchEnv;
+     this.logger = options.logger.child({ module: "agent", component: "agent-manager" });
+-    this.rescueTimeouts = {
+-      reloadSessionCloseMs:
+-        options.rescueTimeouts?.reloadSessionCloseMs ?? RELOAD_SESSION_CLOSE_TIMEOUT_MS,
+-      interruptSessionMs:
+-        options.rescueTimeouts?.interruptSessionMs ?? INTERRUPT_SESSION_TIMEOUT_MS,
+-    };
++    this.rescueTimeouts = resolveAgentManagerRescueTimeouts(options.rescueTimeouts);
+     this.beforeSteerUnavailableFallback = options.beforeSteerUnavailableFallback;
+     this.agentStreamCoalescer = new AgentStreamCoalescer({
+       windowMs: options.agentStreamCoalesceWindowMs ?? AGENT_STREAM_COALESCE_DEFAULT_WINDOW_MS,

@@ -101,11 +101,11 @@ index 96e1e1139..124025e06 100644
    diffStat: null,
    scripts: [],
 diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-index 80b91c6b6..93c54099b 100644
+index 86eaec472..337cb97f9 100644
 --- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
 +++ b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
-@@ -193,6 +193,17 @@ function normalizeCurrentBranch(currentBranch: string | null | undefined): strin
-   return trimmed.length === 0 || trimmed === "HEAD" ? null : trimmed;
+@@ -193,6 +193,17 @@ function workspaceRemoteUrl(workspace: WorkspaceDescriptor): string | null {
+   return workspace.gitRuntime?.remoteUrl ?? workspace.project?.checkout.remoteUrl ?? null;
  }
  
 +function workspaceActivityFields(
@@ -137,7 +137,7 @@ index 80b91c6b6..93c54099b 100644
 @@ -225,11 +239,11 @@ export function createSidebarWorkspaceEntry(input: {
      labels: input.workspace.labels ?? EMPTY_WORKSPACE_LABELS,
      currentBranch: normalizeCurrentBranch(input.workspace.gitRuntime?.currentBranch),
-     remoteUrl: resolveWorkspaceRemoteUrl(input.workspace),
+     remoteUrl: workspaceRemoteUrl(input.workspace),
 -    providers: agentActivity?.providers ?? EMPTY_WORKSPACE_PROVIDERS,
 +    providers: workspaceActivity.providers,
      statusBucket: effectiveStatus.status,
@@ -387,38 +387,3 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
-diff --git a/packages/server/src/server/authorization/operation-permissions.ts b/packages/server/src/server/authorization/operation-permissions.ts
---- a/packages/server/src/server/authorization/operation-permissions.ts
-+++ b/packages/server/src/server/authorization/operation-permissions.ts
-@@ -181,6 +181,7 @@
-   validate_branch_request: "workspace.read",
-   voice_audio_chunk: "workspace.write",
-   wait_for_finish_request: "workspace.read",
-+  "workspace.archived.list.request": "workspace.read",
-   "workspace.clear_attention.request": "workspace.write",
-   "workspace.create.request": "workspace.manage",
-   "workspace.github.search_repositories.request": "workspace.read",
-@@ -195,6 +196,7 @@
-   "workspace.script.list.request": "workspace.read",
-   "workspace.script.start.request": "workspace.write",
-   "workspace.script.stop.request": "workspace.write",
-+  "workspace.snooze.set.request": "workspace.manage",
-   "workspace.title.set.request": "workspace.manage",
-   workspace_setup_status_request: "workspace.read",
-   write_project_config_request: "workspace.write",
-@@ -389,6 +391,7 @@
-   validate_branch_response: "workspace.read",
-   voice_input_state: "workspace.write",
-   wait_for_finish_response: "workspace.read",
-+  "workspace.archived.list.response": "workspace.read",
-   "workspace.clear_attention.response": "workspace.write",
-   "workspace.create.response": "workspace.manage",
-   "workspace.github.search_repositories.response": "workspace.read",
-@@ -404,6 +407,7 @@
-   "workspace.script.list.response": "workspace.read",
-   "workspace.script.start.response": "workspace.write",
-   "workspace.script.stop.response": "workspace.write",
-+  "workspace.snooze.set.response": "workspace.manage",
-   "workspace.title.set.response": "workspace.manage",
-   workspace_setup_progress: "workspace.read",
-   workspace_setup_status_response: "workspace.read",

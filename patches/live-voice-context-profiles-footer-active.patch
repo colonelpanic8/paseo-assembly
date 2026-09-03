@@ -2,6 +2,14 @@ diff --git a/packages/app/src/live-voice/live-voice-footer-button.test.tsx b/pac
 index 24d12e324..04ef7ac4e 100644
 --- a/packages/app/src/live-voice/live-voice-footer-button.test.tsx
 +++ b/packages/app/src/live-voice/live-voice-footer-button.test.tsx
+@@ -109,6 +109,7 @@ vi.mock("@/components/ui/tooltip", () => ({
+ vi.mock("react-native-unistyles", () => ({
+   StyleSheet: { create: () => ({}) },
+   withUnistyles: <T,>(component: T) => component,
++  useUnistyles: () => ({ rt: { breakpoint: "lg" } }),
+ }));
+
+ vi.mock("lucide-react-native", () => {
 @@ -163,7 +163,8 @@ describe("LiveVoiceFooterButton", () => {
    });
  

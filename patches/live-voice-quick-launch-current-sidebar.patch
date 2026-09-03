@@ -1,0 +1,8 @@
+diff --git a/packages/app/src/components/left-sidebar.tsx b/packages/app/src/components/left-sidebar.tsx
+--- a/packages/app/src/components/left-sidebar.tsx
++++ b/packages/app/src/components/left-sidebar.tsx
+@@ -613,3 +613,3 @@ function MobileSidebar({
+         <SidebarFooter
+-          active={dragGestureHostPresented}
++          active={active}
+           theme={theme}

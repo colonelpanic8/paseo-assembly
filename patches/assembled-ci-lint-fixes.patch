@@ -60,21 +60,6 @@ index 7aa992f21..fa66c69ca 100644
  export function CombinedModelSelector({
    providers,
    selectedProvider,
-diff --git a/packages/app/src/components/message.tsx b/packages/app/src/components/message.tsx
-index 1d5dded50..c19db97e6 100644
---- a/packages/app/src/components/message.tsx
-+++ b/packages/app/src/components/message.tsx
-@@ -647,9 +647,7 @@ export const AssistantTurnFooter = memo(function AssistantTurnFooter({
-         getContent={getContent}
-         containerStyle={assistantTurnFooterStylesheet.copyButton}
-       />
--      {canFork ? (
--        <AssistantForkMenu canForkNatively={canForkNatively} onFork={handleFork} />
--      ) : null}
-+      {canFork ? <AssistantForkMenu canForkNatively={canForkNatively} onFork={handleFork} /> : null}
-       {durationLabel || completionLabel ? (
-         <Text style={assistantTurnFooterStylesheet.label} testID="assistant-turn-completion">
-           {[durationLabel, completionLabel].filter(Boolean).join(" · ")}
 diff --git a/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx b/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx
 index c0ba41ede..4982516f7 100644
 --- a/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx
@@ -224,54 +209,18 @@ index 4d3a51138..c5ecf39dd 100644
  import { readValidatedJson } from "@/storage/validated-storage";
 
  const STORAGE_KEY = "@paseo:keyboard-shortcut-overrides";
-diff --git a/packages/app/src/hooks/use-keyboard-shortcuts.ts b/packages/app/src/hooks/use-keyboard-shortcuts.ts
-index 3cecdc974..e71bd7689 100644
---- a/packages/app/src/hooks/use-keyboard-shortcuts.ts
-+++ b/packages/app/src/hooks/use-keyboard-shortcuts.ts
-@@ -1,4 +1,5 @@
- import { useCallback, useEffect, useMemo, useRef } from "react";
-+// oxlint-disable-next-line no-restricted-imports
- import { AppState, TextInput } from "react-native";
- import { usePathname, useRouter } from "expo-router";
- import { getIsElectronRuntime } from "@/constants/layout";
-diff --git a/packages/app/src/i18n/resources/ko.ts b/packages/app/src/i18n/resources/ko.ts
-index 8c8a3d05d..9b5a52450 100644
---- a/packages/app/src/i18n/resources/ko.ts
-+++ b/packages/app/src/i18n/resources/ko.ts
-@@ -2261,6 +2261,13 @@ export const ko: TranslationResources = {
-           auto: "시스템",
-         },
-       },
-+      sidebar: {
-+        title: "사이드바",
-+        alwaysShowHostLabels: {
-+          title: "호스트 레이블 항상 표시",
-+          description: "표시된 모든 워크스페이스가 이 기기에 있어도 호스트 레이블 표시",
-+        },
-+      },
-       detailLevel: {
-         title: "세부 수준",
-       },
-@@ -2418,6 +2425,15 @@ export const ko: TranslationResources = {
-         color: {
-           label: "색상",
-           accessibilityLabel: "색상, {{value}}",
-+          custom: {
-+            action: "사용자 지정…",
-+            title: "사용자 지정 색상",
-+            submit: "적용",
-+            invalid: "#368080 같은 16진수 색상을 입력하세요.",
-+            panelAccessibility: "채도 및 밝기",
-+            hueAccessibility: "색조",
-+            hexAccessibility: "16진수 색상",
-+          },
-           options: {
-             none: "기본",
-             violet: "보라색",
 diff --git a/packages/app/src/keyboard/keyboard-shortcuts.ts b/packages/app/src/keyboard/keyboard-shortcuts.ts
 index 77482b15e..3c2a18993 100644
 --- a/packages/app/src/keyboard/keyboard-shortcuts.ts
 +++ b/packages/app/src/keyboard/keyboard-shortcuts.ts
+@@ -169,6 +169,7 @@ export const SHORTCUT_HELP_ROW_ORDER: Record<ShortcutSectionId, readonly string[
+     "workspace-jump-index",
+     "workspace-prev",
+     "workspace-next",
++    "workspace-next-ready-waiting",
+     "pin-workspace",
+     "archive-workspace",
+   ],
 @@ -383,6 +383,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "toggle-workspace-isolation",
        section: "workspaces",
@@ -377,26 +326,6 @@ index 77482b15e..3c2a18993 100644
      },
    },
  ];
-diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
-index 41ddaa3bc..c4c55e2ef 100644
---- a/packages/app/src/panels/agent-panel.tsx
-+++ b/packages/app/src/panels/agent-panel.tsx
-@@ -382,15 +382,6 @@ function storeFetchedAgentDetail(input: {
-   return hydrated;
- }
-
--function findPanelAgent(
--  state: ReturnType<typeof useSessionStore.getState>,
--  serverId: string,
--  agentId: string,
--) {
--  const session = state.sessions[serverId];
--  return session?.agents?.get(agentId) ?? session?.agentDetails?.get(agentId) ?? null;
--}
--
- function useAgentPanelDescriptor(
-   target: { kind: "agent"; agentId: string },
-   context: { serverId: string },
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
 index 37a06b410..4473c903a 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
@@ -530,10 +459,10 @@ index be431e0dc..850fe2ece 100644
      const paseoHome = path.join(root, ".paseo");
      const staticDir = path.join(root, "static");
 diff --git a/packages/server/src/server/bootstrap.ts b/packages/server/src/server/bootstrap.ts
-index aac2ac80c..e384b4e30 100644
+index 49698f5ad..c2e9b1fee 100644
 --- a/packages/server/src/server/bootstrap.ts
 +++ b/packages/server/src/server/bootstrap.ts
-@@ -547,6 +547,7 @@ function resolveExpressTrustProxySetting(config: PaseoDaemonConfig): true | stri
+@@ -542,6 +542,7 @@ function resolveExpressTrustProxySetting(config: PaseoDaemonConfig): true | stri
    return config.trustedProxies ?? ["loopback"];
  }
 
@@ -541,8 +470,8 @@ index aac2ac80c..e384b4e30 100644
  export function createInitialMutableDaemonConfig(config: PaseoDaemonConfig): MutableDaemonConfig {
    const providers = config.providerOverrides ?? {};
 
-@@ -587,6 +588,7 @@ export function createInitialMutableDaemonConfig(config: PaseoDaemonConfig): Mut
-   return initialConfig;
+@@ -601,6 +602,7 @@ function startAgentPurposeSummaryService(
+   return service;
  }
 
 +// oxlint-disable-next-line complexity

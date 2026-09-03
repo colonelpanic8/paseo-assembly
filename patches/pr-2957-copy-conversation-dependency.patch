@@ -1,0 +1,11 @@
+diff --git a/packages/app/src/screens/workspace/workspace-screen.tsx b/packages/app/src/screens/workspace/workspace-screen.tsx
+--- a/packages/app/src/screens/workspace/workspace-screen.tsx
++++ b/packages/app/src/screens/workspace/workspace-screen.tsx
+@@ -4034,6 +4034,7 @@ export function WorkspaceScreen({
+     navigateToTabId,
+     handleCloseTabById,
+     handleCopyResumeCommand,
++    handleCopyConversation,
+     handleCopyAgentId,
+     handleCopyTerminalId,
+     handleCopyFilePath,

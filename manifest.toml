@@ -82,7 +82,6 @@ summary = "Add rolling agent purpose summaries"
 [[entry]]
 pr = 2659
 summary = "Surface the model and thinking level agents actually use"
-fixup = "patches/agent-purpose-model-display.patch"
 
 [[entry]]
 pr = 2660
@@ -139,7 +138,6 @@ summary = "Serialize draft provider introspection sessions"
 
 [[entry]]
 pr = 2843
-fixup = "patches/pr-2843-custom-host-color-coherence.patch"
 
 [[entry]]
 pr = 2845
@@ -193,7 +191,6 @@ summary = "Stop shipping a hardened runtime on unsigned mac builds"
 [[entry]]
 pr = 2898
 summary = "Fork the provider session instead of pasting a summary"
-fixup = "patches/pr-2898-native-fork-capability-fixtures.patch"
 
 [[entry]]
 pr = 2900
@@ -224,6 +221,7 @@ summary = "Configure usage percentages as used or remaining"
 [[entry]]
 pr = 2957
 summary = "Add conversation copy tab action"
+fixup = "patches/pr-2957-copy-conversation-dependency.patch"
 
 [[entry]]
 branch = "mine:thinking-control-reachability"
@@ -245,6 +243,7 @@ pr = 3506
 [[entry]]
 branch = "mine:live-voice-quick-launch"
 parents = [{ pr = 2657 }]
+fixup = "patches/live-voice-quick-launch-current-sidebar.patch"
 
 [[entry]]
 branch = "mine:live-voice-context-files"
@@ -257,7 +256,6 @@ summary = "Encode host status in dot shape, not only color, and brighten the dar
 
 [[entry]]
 pr = 3662
-fixup = "patches/pr-3662-stack-coherence.patch"
 
 [[entry]]
 pr = 3882

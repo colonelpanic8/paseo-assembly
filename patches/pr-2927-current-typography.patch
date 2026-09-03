@@ -159,3 +159,30 @@ index ca152c5d4..132657662 100644
      isVisible,
      options,
      query: mode === "command" ? commandFilterQuery : fileFilterQuery,
+diff --git a/packages/app/src/components/adaptive-modal-sheet.tsx b/packages/app/src/components/adaptive-modal-sheet.tsx
+--- a/packages/app/src/components/adaptive-modal-sheet.tsx
++++ b/packages/app/src/components/adaptive-modal-sheet.tsx
+@@ -511,5 +511,4 @@ export interface AdaptiveModalSheetProps {
+   onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
+   /** Re-establishes caller-owned contexts inside the compact bottom-sheet portal. */
+   contextBridge?: ContextBridge | null;
+-  onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
+ }
+diff --git a/packages/app/src/components/ui/text-input/text-input.tsx b/packages/app/src/components/ui/text-input/text-input.tsx
+--- a/packages/app/src/components/ui/text-input/text-input.tsx
++++ b/packages/app/src/components/ui/text-input/text-input.tsx
+@@ -1 +1 @@
+-export { EditingTextInput } from "./text-input.native";
++export { EditingTextInput, hasFocusedTextInput } from "./text-input.native";
+diff --git a/packages/app/src/composer/input/input.tsx b/packages/app/src/composer/input/input.tsx
+--- a/packages/app/src/composer/input/input.tsx
++++ b/packages/app/src/composer/input/input.tsx
+@@ -42,7 +42,7 @@ import { useComposerSigils } from "@/composer/tokens/use-composer-sigils";
+ import type { ComposerSigils } from "@/composer/tokens/sigils";
+ import { collectComposerTokens, type ComposerTokenCatalog } from "@/composer/tokens/tokens";
+ import { ComposerTokenHighlightLayer } from "./token-highlight";
+-import { focusWithRetries } from "@/utils/web-focus";
++import { focusWithRetries } from "@/utils/focus-with-retries";
+ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+ import { Shortcut } from "@/components/ui/shortcut";
+ import {
