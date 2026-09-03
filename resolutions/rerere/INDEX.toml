@@ -3037,6 +3037,12 @@ recorded = "2026-08-07T09:58:30.392791260+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "df6abe47c63c4551e71bfe4c0633ae4593aa5a67"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-03T17:21:27.808158792+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "e684b5836d5190686c051a9dbd6c983906d92dc0"
 paths = ["packages/server/src/server/plugins/compiler.ts"]
 recorded = "2026-09-03T08:43:40.386836927+00:00"
