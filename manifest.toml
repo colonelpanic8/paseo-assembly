@@ -295,8 +295,13 @@ pr = 4281
 summary = "Mirror global provider catalogs into workspace snapshots"
 
 [[entry]]
-pr = 4283
-summary = "Reject pending Codex app-server requests on dispose"
+pr = 4304
+summary = "Drive Codex features from the catalog and surface async questions"
+fixup = "patches/pr-4304-async-question-attribution.patch"
+
+[[entry]]
+pr = 4305
+summary = "Show prompt cache status for the current agent"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

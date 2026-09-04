@@ -1,0 +1,22 @@
+diff --git a/packages/server/src/server/agent/providers/codex-app-server-agent.ts b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
+index cc8aea645..44370e953 100644
+--- a/packages/server/src/server/agent/providers/codex-app-server-agent.ts
++++ b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
+@@ -6612,14 +6612,14 @@ export class CodexAppServerAgentSession implements AgentSession, AgentRealtimeVo
+         return;
+       }
+       const isFirstDeltaForItem = prev.length === 0;
+-      const timelineItem: AgentTimelineItem = {
+-        type: "assistant_message",
++      const timelineItem: AgentTimelineItem = assistantMessageWithQuestions({
+         messageId: parsed.itemId,
+         text:
+           isFirstDeltaForItem && this.pendingAssistantMessageBoundary
+             ? `${ASSISTANT_MESSAGE_BOUNDARY_MARKDOWN}${parsed.delta}`
+             : parsed.delta,
+-      };
++        questions,
++      });
+       this.stampActiveTurnAttribution(timelineItem);
+       this.emitEvent({
+         type: "timeline",

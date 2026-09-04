@@ -2593,6 +2593,12 @@ recorded = "2026-08-28T07:22:23.461924668+00:00"
 
 [[resolution]]
 entry = "pr-4281"
+hash = "0b432ef1fda5484c88bfd9f84bd0206068115112"
+paths = ["packages/server/src/server/agent/provider-snapshot-manager.ts"]
+recorded = "2026-09-04T06:35:22.445617210+00:00"
+
+[[resolution]]
+entry = "pr-4281"
 hash = "3373760d38568e31471537497a9f0e1c1a646f7a"
 paths = ["packages/server/src/server/agent/providers/claude/agent.ts", "packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
 recorded = "2026-09-03T21:16:22.713143896+00:00"
@@ -2620,6 +2626,78 @@ entry = "pr-4283"
 hash = "6de04b45fe4b9c1f9855413e842e7b8e4ec3c33d"
 paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.spawn-error.test.ts"]
 recorded = "2026-09-03T21:16:45.668749764+00:00"
+
+[[resolution]]
+entry = "pr-4304"
+hash = "321e802fb47d6de92a664e7ce07210c76948b2f7"
+paths = ["packages/app/src/types/stream.ts"]
+recorded = "2026-09-04T06:38:09.620460457+00:00"
+
+[[resolution]]
+entry = "pr-4304"
+hash = "380b022fa43e4c8a8a2b995b1a34ee453a55d90b"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.test.ts"]
+recorded = "2026-09-04T06:38:09.620462671+00:00"
+
+[[resolution]]
+entry = "pr-4304"
+hash = "6284ea0332b596cf4566941feb375aaa87ab960b"
+paths = ["packages/app/src/timeline/session-stream-reducers.ts"]
+recorded = "2026-09-04T06:38:09.620463673+00:00"
+
+[[resolution]]
+entry = "pr-4304"
+hash = "690b091996219f6d1252cb87e37fd5fa24acd6e4"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-04T06:38:09.620464164+00:00"
+
+[[resolution]]
+entry = "pr-4304"
+hash = "d19d5dcc451cb92faad38f46bb1a48771ded6e86"
+paths = ["packages/server/src/server/agent/agent-sdk-types.ts"]
+recorded = "2026-09-04T06:38:09.620464404+00:00"
+
+[[resolution]]
+entry = "pr-4304"
+hash = "d625bfb718ef0a1ee6242e64bfd5cbe0e71ef5b0"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-04T06:38:09.620464725+00:00"
+
+[[resolution]]
+entry = "pr-4304"
+hash = "ff5720f8dc96303d69a084eca5a8afa2f0216976"
+paths = ["packages/protocol/src/agent-types.ts"]
+recorded = "2026-09-04T06:38:09.620464965+00:00"
+
+[[resolution]]
+entry = "pr-4305"
+hash = "0469b2233b61c3b7f61ef745050b8b374aad9758"
+paths = ["packages/server/src/server/agent/agent-projections.test.ts"]
+recorded = "2026-09-04T06:39:46.712684038+00:00"
+
+[[resolution]]
+entry = "pr-4305"
+hash = "0853d88875c45b8cc6335f28260f0e81d4a42a2f"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-04T06:39:46.712691051+00:00"
+
+[[resolution]]
+entry = "pr-4305"
+hash = "3b0800f80de4eb54cee2eb51857d808ab4fc2854"
+paths = ["packages/app/src/utils/agent-snapshots.ts"]
+recorded = "2026-09-04T06:39:46.712691392+00:00"
+
+[[resolution]]
+entry = "pr-4305"
+hash = "73903752bc7d2a14b265063f2ff30a4dec68ac0a"
+paths = ["packages/app/src/components/ui/tooltip.tsx"]
+recorded = "2026-09-04T06:39:46.712691723+00:00"
+
+[[resolution]]
+entry = "pr-4305"
+hash = "a63d737fcfeea895565906162f3f583afadc25cc"
+paths = ["packages/app/src/components/context-window-meter.tsx"]
+recorded = "2026-09-04T06:39:46.712691933+00:00"
 
 [[resolution]]
 entry = "thinking-control-reachability"
