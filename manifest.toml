@@ -302,6 +302,7 @@ fixup = "patches/pr-4304-async-question-attribution.patch"
 [[entry]]
 pr = 4305
 summary = "Show prompt cache status for the current agent"
+fixup = "patches/pr-4305-register-agent-complexity.patch"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

@@ -1,0 +1,41 @@
+diff --git a/packages/server/src/server/agent/agent-manager.ts b/packages/server/src/server/agent/agent-manager.ts
+index 6f1e50ab2..babf79c13 100644
+--- a/packages/server/src/server/agent/agent-manager.ts
++++ b/packages/server/src/server/agent/agent-manager.ts
+@@ -418,6 +418,24 @@ function resolveInitialLastMessageAt(
+   return options?.lastMessageAt ?? options?.lastUserMessageAt ?? null;
+ }
+ 
++function resolveInitialAgentState(
++  options:
++    | {
++        lastUsage?: AgentUsage;
++        promptCache?: AgentPromptCacheStatus;
++        lastError?: string;
++        lastFailure?: ManagedAgentBase["lastFailure"];
++      }
++    | undefined,
++) {
++  return {
++    lastUsage: options?.lastUsage,
++    promptCache: options?.promptCache,
++    lastError: options?.lastError,
++    lastFailure: options?.lastFailure,
++  };
++}
++
+ interface ManagedAgentBase {
+   id: string;
+   provider: AgentProvider;
+@@ -3901,10 +3919,7 @@ export class AgentManager {
+       summaryUpdatedAt,
+       summaryCursor,
+       summaryTurnsSinceUpdate,
+-      lastUsage: options?.lastUsage,
+-      promptCache: options?.promptCache,
+-      lastError: options?.lastError,
+-      lastFailure: options?.lastFailure,
++      ...resolveInitialAgentState(options),
+       attention: resolveInitialAttention(options?.attention),
+       internal: config.internal ?? false,
+       labels: options?.labels ?? {},
