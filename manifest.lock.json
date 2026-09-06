@@ -7,6 +7,7 @@
       "assembled-npm-deps-hash": "9104a4e3b5ebe4eb3b5e42565a97fa5205607b58",
       "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
+      "assembly-codex-banked-resets": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
       "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
       "claude-fable-5-1": "8d52677190d78a2b356d13936d06372302985167",
       "colonelpanic8/client-settings-file-store": "d98a8ae46ad65b75afc6aef64285bc26471a4519",
@@ -88,15 +89,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-06T05:47:02.935716849+00:00",
+    "generated": "2026-09-06T17:57:36.372912300+00:00",
     "base": "92442e743517cb4f1c304967bd79e2b9401a6ba6",
-    "commit": "532c79d84c3738245a9297a979e1fe75d8dc57db",
-    "pre_provenance_commit": "532c79d84c3738245a9297a979e1fe75d8dc57db",
-    "tree": "92f339876c1872d53fc88366d655af224585cb7f",
-    "built_tree": "92f339876c1872d53fc88366d655af224585cb7f",
-    "previous_tree": "c063c8c9fbf2ec0604077fe2bee2bd588ce03c64",
-    "tree_changed": true,
-    "conflicts": 34,
+    "commit": "50c63e79e646c81e774c210569948b8380d1a55d",
+    "pre_provenance_commit": "50c63e79e646c81e774c210569948b8380d1a55d",
+    "tree": "7f58e93813fb81811204792b1aaa29fbda21ae85",
+    "built_tree": "7f58e93813fb81811204792b1aaa29fbda21ae85",
+    "previous_tree": "7f58e93813fb81811204792b1aaa29fbda21ae85",
+    "tree_changed": false,
+    "conflicts": 35,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -511,6 +512,12 @@
         "source": "upstream#4305",
         "pin": "aa281bb3beda09dc627b07ee86d837bc150c3b8a",
         "fixup": "0ccc32cf27eaa4cda8bfba8790ca323434a555d0"
+      },
+      {
+        "name": "assembly-codex-banked-resets",
+        "kind": "branch",
+        "source": "mine:assembly-codex-banked-resets",
+        "pin": "5f7d648ad1481ee8574b07f68a099783c4e0092a"
       }
     ],
     "results": [
@@ -643,8 +650,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "14352dfb9db2faad00a16cd5dbedefc61f527e97",
-          "tip": "b569ee5f0d1829856bcbeb1c1298ac21a7b15d73"
+          "base_tip": "1375d28565d7cf29e330a97c792c54ee2fa32cbf",
+          "tip": "9b0f7b57a4859701bc0ce1274352db7354a0f267"
         }
       },
       {
@@ -779,8 +786,8 @@
         "resolution": "rerere",
         "fixup": "d9c59938ec1e52a1b797a81dd3658fbb0deee7fe",
         "derived": {
-          "base_tip": "5a43afc6234bed28d4c9060019661328a652ae85",
-          "tip": "be84456199670ec438db3562b78f9f2b9b4048ed"
+          "base_tip": "abfc2b97f3904aaa284b29f5b731b705aaec4adb",
+          "tip": "c2bbc0226f07348ce269419d317344bb9edebae5"
         }
       },
       {
@@ -854,8 +861,8 @@
         "conflicted": false,
         "fixup": "27851a55bf6953689b680a23cc02f23e765405bf",
         "derived": {
-          "base_tip": "c852c7adb2cf90f50f54d2c33aefe983372109bb",
-          "tip": "948d2dc8e1980f06fe2dcf96b5d7be341b15a9c2"
+          "base_tip": "8b03c543a5d29716b028607ac2434af7446831ff",
+          "tip": "b7f3d67f00dd018aa32f448deadca8c81b1305bc"
         }
       },
       {
@@ -866,8 +873,8 @@
         "resolution": "rerere",
         "fixup": "dd21d669561ac84568a9bbd24a70765969b27c80",
         "derived": {
-          "base_tip": "372daa206cac0c17149088e1a8b472a4dba10cd2",
-          "tip": "83e0a8844a9462df9b309aec8e4ce610cf299058"
+          "base_tip": "b7d20fe80166749863bface7a57649de2caa3c30",
+          "tip": "4c79835556b8231ec02c49cb628935778cbe1246"
         }
       },
       {
@@ -942,6 +949,13 @@
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "0ccc32cf27eaa4cda8bfba8790ca323434a555d0"
+      },
+      {
+        "name": "assembly-codex-banked-resets",
+        "oid": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:763054635229403a51f1754384e02e9f119ac0b5"
       }
     ]
   }

@@ -464,6 +464,24 @@ paths = ["flake.nix"]
 recorded = "2026-08-01T22:53:56.143184148+00:00"
 
 [[resolution]]
+entry = "assembly-codex-banked-resets"
+hash = "7e14e1cae3f7704240fb8efcf558ea869474599c"
+paths = ["packages/server/src/services/quota-fetcher/service.ts"]
+recorded = "2026-09-06T17:55:30+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
+hash = "bac54dc828a4e35df0d9493d8b19bec0b9a0d3d4"
+paths = ["packages/app/src/provider-usage/list.tsx"]
+recorded = "2026-09-06T17:55:30+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
+hash = "763054635229403a51f1754384e02e9f119ac0b5"
+paths = ["packages/app/src/provider-usage/settings-section.tsx"]
+recorded = "2026-09-06T17:57:29.615087024+00:00"
+
+[[resolution]]
 entry = "assembly-fdroid-variant"
 hash = "9d87af859bd02dba3723967fac1c76191fe52e37"
 paths = ["docs/android.md"]
