@@ -1,0 +1,14 @@
+diff --git a/packages/app/e2e/support/helpers/banked-resets.ts b/packages/app/e2e/support/helpers/banked-resets.ts
+index 4c4506922..fbc12d6be 100644
+--- a/packages/app/e2e/support/helpers/banked-resets.ts
++++ b/packages/app/e2e/support/helpers/banked-resets.ts
+@@ -128,7 +128,8 @@ export async function openBankedResetManagement(page: Page, options: BankedReset
+         card.getByText("Banked reset used. Codex usage limits have been reset."),
+       ).toBeVisible();
+       await expect(card.getByText("0 available", { exact: true })).toBeVisible();
+-      await expect(card.getByText("Used", { exact: true })).toBeVisible();
++      const resetRow = card.getByText("Referral reward", { exact: true }).locator("../..");
++      await expect(resetRow.getByText("Used", { exact: true })).toBeVisible();
+       await expect(card.getByText("0%", { exact: true })).toBeVisible();
+       expect(requests).toHaveLength(1);
+     },

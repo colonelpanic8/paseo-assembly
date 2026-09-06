@@ -89,14 +89,14 @@
     }
   },
   "build": {
-    "generated": "2026-09-06T17:57:36.372912300+00:00",
+    "generated": "2026-09-06T18:03:37.746667524+00:00",
     "base": "92442e743517cb4f1c304967bd79e2b9401a6ba6",
-    "commit": "50c63e79e646c81e774c210569948b8380d1a55d",
-    "pre_provenance_commit": "50c63e79e646c81e774c210569948b8380d1a55d",
-    "tree": "7f58e93813fb81811204792b1aaa29fbda21ae85",
-    "built_tree": "7f58e93813fb81811204792b1aaa29fbda21ae85",
+    "commit": "8e217dcddbe1e4bd814ed2376dcf2d9c2ab7eab3",
+    "pre_provenance_commit": "8e217dcddbe1e4bd814ed2376dcf2d9c2ab7eab3",
+    "tree": "9b90079169e07e085732729b8f15a15d1230ad71",
+    "built_tree": "9b90079169e07e085732729b8f15a15d1230ad71",
     "previous_tree": "7f58e93813fb81811204792b1aaa29fbda21ae85",
-    "tree_changed": false,
+    "tree_changed": true,
     "conflicts": 35,
     "manifest_entries": [
       {
@@ -517,7 +517,8 @@
         "name": "assembly-codex-banked-resets",
         "kind": "branch",
         "source": "mine:assembly-codex-banked-resets",
-        "pin": "5f7d648ad1481ee8574b07f68a099783c4e0092a"
+        "pin": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
+        "fixup": "4236b5285b3c44dde0245ef467bba302a4e74dbb"
       }
     ],
     "results": [
@@ -650,8 +651,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "1375d28565d7cf29e330a97c792c54ee2fa32cbf",
-          "tip": "9b0f7b57a4859701bc0ce1274352db7354a0f267"
+          "base_tip": "4a4294325806ddbe1a5c97f56c143736b0dc3fcf",
+          "tip": "1eb7168f2b5c07979945ab8988c8cc5667ebbd58"
         }
       },
       {
@@ -786,8 +787,8 @@
         "resolution": "rerere",
         "fixup": "d9c59938ec1e52a1b797a81dd3658fbb0deee7fe",
         "derived": {
-          "base_tip": "abfc2b97f3904aaa284b29f5b731b705aaec4adb",
-          "tip": "c2bbc0226f07348ce269419d317344bb9edebae5"
+          "base_tip": "c96cfaeb0d189db218ec2b45741e1f65b6c28152",
+          "tip": "4215c117cdefb9214c69343b57cc9a3b633a330f"
         }
       },
       {
@@ -861,8 +862,8 @@
         "conflicted": false,
         "fixup": "27851a55bf6953689b680a23cc02f23e765405bf",
         "derived": {
-          "base_tip": "8b03c543a5d29716b028607ac2434af7446831ff",
-          "tip": "b7f3d67f00dd018aa32f448deadca8c81b1305bc"
+          "base_tip": "01011c8f0af6218a6c5a8c0f5921737dccace844",
+          "tip": "f4305c4c8316b09f8834161571f64a04067f136d"
         }
       },
       {
@@ -873,8 +874,8 @@
         "resolution": "rerere",
         "fixup": "dd21d669561ac84568a9bbd24a70765969b27c80",
         "derived": {
-          "base_tip": "b7d20fe80166749863bface7a57649de2caa3c30",
-          "tip": "4c79835556b8231ec02c49cb628935778cbe1246"
+          "base_tip": "9843c435a757f79927f6924d2a64b6552299d926",
+          "tip": "07f94592020077d80a250148f321aa306feb0066"
         }
       },
       {
@@ -955,7 +956,8 @@
         "oid": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:763054635229403a51f1754384e02e9f119ac0b5"
+        "resolution": "rerere",
+        "fixup": "4236b5285b3c44dde0245ef467bba302a4e74dbb"
       }
     ]
   }
