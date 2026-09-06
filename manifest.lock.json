@@ -9,6 +9,8 @@
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
       "assembly-codex-banked-resets": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
       "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
+      "assembly-sidebar-unarchive": "68c73f920878e6b83d4f8cc3447f5a8f482177ad",
+      "assembly-workspace-restore": "f1e221af05ddc8c53a1f05ad8a161cdc065b7b85",
       "claude-fable-5-1": "8d52677190d78a2b356d13936d06372302985167",
       "colonelpanic8/client-settings-file-store": "d98a8ae46ad65b75afc6aef64285bc26471a4519",
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
@@ -89,15 +91,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-06T18:03:37.746667524+00:00",
+    "generated": "2026-09-06T19:59:46.698932783+00:00",
     "base": "92442e743517cb4f1c304967bd79e2b9401a6ba6",
-    "commit": "8e217dcddbe1e4bd814ed2376dcf2d9c2ab7eab3",
-    "pre_provenance_commit": "8e217dcddbe1e4bd814ed2376dcf2d9c2ab7eab3",
-    "tree": "9b90079169e07e085732729b8f15a15d1230ad71",
-    "built_tree": "9b90079169e07e085732729b8f15a15d1230ad71",
-    "previous_tree": "7f58e93813fb81811204792b1aaa29fbda21ae85",
+    "commit": "40d8ac24f727c8cd240431d780f330dca2c14dc2",
+    "pre_provenance_commit": "40d8ac24f727c8cd240431d780f330dca2c14dc2",
+    "tree": "668afc35da73224407dcc8306514640ab2220252",
+    "built_tree": "668afc35da73224407dcc8306514640ab2220252",
+    "previous_tree": "9b90079169e07e085732729b8f15a15d1230ad71",
     "tree_changed": true,
-    "conflicts": 35,
+    "conflicts": 1,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -519,6 +521,18 @@
         "source": "mine:assembly-codex-banked-resets",
         "pin": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
         "fixup": "4236b5285b3c44dde0245ef467bba302a4e74dbb"
+      },
+      {
+        "name": "assembly-workspace-restore",
+        "kind": "branch",
+        "source": "mine:assembly-workspace-restore",
+        "pin": "f1e221af05ddc8c53a1f05ad8a161cdc065b7b85"
+      },
+      {
+        "name": "assembly-sidebar-unarchive",
+        "kind": "branch",
+        "source": "mine:assembly-sidebar-unarchive",
+        "pin": "68c73f920878e6b83d4f8cc3447f5a8f482177ad"
       }
     ],
     "results": [
@@ -958,6 +972,19 @@
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "4236b5285b3c44dde0245ef467bba302a4e74dbb"
+      },
+      {
+        "name": "assembly-workspace-restore",
+        "oid": "f1e221af05ddc8c53a1f05ad8a161cdc065b7b85",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere"
+      },
+      {
+        "name": "assembly-sidebar-unarchive",
+        "oid": "68c73f920878e6b83d4f8cc3447f5a8f482177ad",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

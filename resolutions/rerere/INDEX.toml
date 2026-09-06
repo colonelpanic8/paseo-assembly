@@ -488,6 +488,24 @@ paths = ["docs/android.md"]
 recorded = "2026-07-31T19:38:29.346167816+00:00"
 
 [[resolution]]
+entry = "assembly-workspace-restore"
+hash = "0cb25ad8e44eb36c2ed54199f1c07e998256fb20"
+paths = ["packages/server/src/server/session.ts"]
+recorded = "2026-09-06T19:58:28+00:00"
+
+[[resolution]]
+entry = "assembly-workspace-restore"
+hash = "1d0d624a39e87770cc0b74d765557f67b8293bcc"
+paths = ["packages/server/src/server/session/workspace-provisioning/workspace-provisioning-service.ts"]
+recorded = "2026-09-06T19:58:28+00:00"
+
+[[resolution]]
+entry = "assembly-workspace-restore"
+hash = "4284e7fbc56d5b91346830154539d96784e87ba7"
+paths = ["docs/data-model.md"]
+recorded = "2026-09-06T19:58:28+00:00"
+
+[[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
 hash = "234642546ba32579213293f38de22692e70fae57"
 paths = ["packages/app/src/storage/settings-seed/index.ts"]

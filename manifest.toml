@@ -308,6 +308,16 @@ fixup = "patches/pr-4305-register-agent-complexity.patch"
 branch = "mine:assembly-codex-banked-resets"
 fixup = "patches/codex-banked-resets-usage-preferences.patch"
 
+[[entry]]
+branch = "mine:assembly-workspace-restore"
+summary = "Keep restores responsive and safe against auto-archive; replayed onto pinned base 92442e743517"
+
+# Linear follow-up to the pinned sidebar topic (31c12c5ab92f), carrying only
+# the restore feedback fix without advancing personal/sidebar-workflow.
+[[entry]]
+branch = "mine:assembly-sidebar-unarchive"
+summary = "Keep optimistic sidebar restores consistent across refetches and failed responses"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
