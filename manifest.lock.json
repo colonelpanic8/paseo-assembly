@@ -63,40 +63,40 @@
       "pr-4305": "aa281bb3beda09dc627b07ee86d837bc150c3b8a",
       "thinking-control-reachability": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "7a426838dba930c7631a66257eae9e6ff4a93ef5"
+      "watch-live-voice": "839c79b9793abbb721f7fcf9f71f65c321cd377b"
     },
     "parents": {
       "live-voice-context-files": {
-        "pr-2657": "052cdf3d85f0c47a91adbc0108481293cb492118"
+        "pr-2657": "23ae875da5b8fc580f56b82b5d918c7836feceee"
       },
       "live-voice-quick-launch": {
-        "pr-2657": "052cdf3d85f0c47a91adbc0108481293cb492118"
+        "pr-2657": "23ae875da5b8fc580f56b82b5d918c7836feceee"
       },
       "pr-2927": {
         "pr-3499": "9e145516639f20b9ce4562c5df50f1bab0f841a6"
       },
       "watch-live-voice": {
         "pr-2655": "5d517c8ed9239088cb4153ff299e2e651a0334bf",
-        "pr-2657": "052cdf3d85f0c47a91adbc0108481293cb492118"
+        "pr-2657": "23ae875da5b8fc580f56b82b5d918c7836feceee"
       }
     },
     "anchors": {
       "live-voice-context-files": "c335b67b46429250e99960d892f8ab2e68ffa123",
       "live-voice-quick-launch": "7e3e520b4384e181ba60ea2b012f0002ff62431d",
       "pr-2927": "538602f1448d971d04e8c8fea1f922788bf1a4d4",
-      "watch-live-voice": "52b54a732d9a55f670a3f449f60f9d4e033753da"
+      "watch-live-voice": "154958f2351a2bcdf8a6077801f6e2db0b01bd3c"
     }
   },
   "build": {
-    "generated": "2026-09-04T06:48:21.771966384+00:00",
+    "generated": "2026-09-06T05:47:02.935716849+00:00",
     "base": "92442e743517cb4f1c304967bd79e2b9401a6ba6",
-    "commit": "13be0de9c438466ebf279622564e57bd69bc3edc",
-    "pre_provenance_commit": "13be0de9c438466ebf279622564e57bd69bc3edc",
-    "tree": "2cf4450adc2b4b4535176354a1f41917d176f38c",
-    "built_tree": "2cf4450adc2b4b4535176354a1f41917d176f38c",
-    "previous_tree": "7e2c20e808fe6eecc04417c575f7ac18d2f75234",
+    "commit": "532c79d84c3738245a9297a979e1fe75d8dc57db",
+    "pre_provenance_commit": "532c79d84c3738245a9297a979e1fe75d8dc57db",
+    "tree": "92f339876c1872d53fc88366d655af224585cb7f",
+    "built_tree": "92f339876c1872d53fc88366d655af224585cb7f",
+    "previous_tree": "c063c8c9fbf2ec0604077fe2bee2bd588ce03c64",
     "tree_changed": true,
-    "conflicts": 33,
+    "conflicts": 34,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -214,7 +214,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "7a426838dba930c7631a66257eae9e6ff4a93ef5",
+        "pin": "839c79b9793abbb721f7fcf9f71f65c321cd377b",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -224,10 +224,10 @@
           },
           {
             "source": "upstream#2657",
-            "pin": "052cdf3d85f0c47a91adbc0108481293cb492118"
+            "pin": "23ae875da5b8fc580f56b82b5d918c7836feceee"
           }
         ],
-        "anchor": "52b54a732d9a55f670a3f449f60f9d4e033753da"
+        "anchor": "154958f2351a2bcdf8a6077801f6e2db0b01bd3c"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -425,7 +425,7 @@
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "052cdf3d85f0c47a91adbc0108481293cb492118"
+            "pin": "23ae875da5b8fc580f56b82b5d918c7836feceee"
           }
         ],
         "anchor": "7e3e520b4384e181ba60ea2b012f0002ff62431d"
@@ -435,11 +435,11 @@
         "kind": "branch",
         "source": "mine:live-voice-context-files",
         "pin": "1e4a303c7eb14d7bc4cca82c8a19e3af98b865db",
-        "fixup": "359fdeea35fd4aa177fb40a2ce8f24f83aa4e579",
+        "fixup": "dd21d669561ac84568a9bbd24a70765969b27c80",
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "052cdf3d85f0c47a91adbc0108481293cb492118"
+            "pin": "23ae875da5b8fc580f56b82b5d918c7836feceee"
           }
         ],
         "anchor": "c335b67b46429250e99960d892f8ab2e68ffa123"
@@ -637,14 +637,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "7a426838dba930c7631a66257eae9e6ff4a93ef5",
+        "oid": "839c79b9793abbb721f7fcf9f71f65c321cd377b",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "154958f2351a2bcdf8a6077801f6e2db0b01bd3c",
-          "tip": "839c79b9793abbb721f7fcf9f71f65c321cd377b"
+          "base_tip": "14352dfb9db2faad00a16cd5dbedefc61f527e97",
+          "tip": "b569ee5f0d1829856bcbeb1c1298ac21a7b15d73"
         }
       },
       {
@@ -779,8 +779,8 @@
         "resolution": "rerere",
         "fixup": "d9c59938ec1e52a1b797a81dd3658fbb0deee7fe",
         "derived": {
-          "base_tip": "11f84dde424b14ebb5a6201a5b58aa1593f1ffce",
-          "tip": "bc455470e7314a7e00af629364176f35b6403de8"
+          "base_tip": "5a43afc6234bed28d4c9060019661328a652ae85",
+          "tip": "be84456199670ec438db3562b78f9f2b9b4048ed"
         }
       },
       {
@@ -854,8 +854,8 @@
         "conflicted": false,
         "fixup": "27851a55bf6953689b680a23cc02f23e765405bf",
         "derived": {
-          "base_tip": "b31642a4d59be4f68163359dfd1df674691e62ab",
-          "tip": "adf18a078970a1c599bec2e0fb6693184b61a796"
+          "base_tip": "c852c7adb2cf90f50f54d2c33aefe983372109bb",
+          "tip": "948d2dc8e1980f06fe2dcf96b5d7be341b15a9c2"
         }
       },
       {
@@ -864,10 +864,10 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "359fdeea35fd4aa177fb40a2ce8f24f83aa4e579",
+        "fixup": "dd21d669561ac84568a9bbd24a70765969b27c80",
         "derived": {
-          "base_tip": "dd6e464280a2df799cf50542d1c81442d926b677",
-          "tip": "6e90b97dd9be091bd5ac049b4adfca295e3018e8"
+          "base_tip": "372daa206cac0c17149088e1a8b472a4dba10cd2",
+          "tip": "83e0a8844a9462df9b309aec8e4ce610cf299058"
         }
       },
       {

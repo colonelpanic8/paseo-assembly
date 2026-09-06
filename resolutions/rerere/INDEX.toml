@@ -613,6 +613,12 @@ recorded = "2026-08-20T07:13:34.840664267+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "3ed3f2b6d58a0006a387df3e12c60ccdd6960074"
+paths = ["packages/app/src/live-voice/live-voice-runtime.ts"]
+recorded = "2026-09-06T05:46:23.278141277+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "3f13bc7077cf729ab26bc33a9f1335a35b2dd78b"
 paths = ["packages/server/src/server/live-voice/live-voice-coordinator.ts"]
 recorded = "2026-08-21T20:58:43.194178702+00:00"
