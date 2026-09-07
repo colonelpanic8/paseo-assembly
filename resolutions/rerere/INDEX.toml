@@ -45,12 +45,6 @@ recorded = "2026-08-03T22:37:38.138428605+00:00"
 
 [[resolution]]
 entry = "agent-hierarchy-tree"
-hash = "1947f57d3f724f877ff4971e902361958e04dab0"
-paths = ["packages/app/src/components/agent-list.tsx"]
-recorded = "2026-08-03T20:23:05.555560724+00:00"
-
-[[resolution]]
-entry = "agent-hierarchy-tree"
 hash = "1b3c9170fbcbccc3340d1b69da779039ee48f6f5"
 paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
 recorded = "2026-08-05T06:24:01.651267272+00:00"
@@ -465,6 +459,12 @@ recorded = "2026-08-01T22:53:56.143184148+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
+hash = "763054635229403a51f1754384e02e9f119ac0b5"
+paths = ["packages/app/src/provider-usage/settings-section.tsx"]
+recorded = "2026-09-06T17:57:29.615087024+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
 hash = "7e14e1cae3f7704240fb8efcf558ea869474599c"
 paths = ["packages/server/src/services/quota-fetcher/service.ts"]
 recorded = "2026-09-06T17:55:30+00:00"
@@ -476,16 +476,106 @@ paths = ["packages/app/src/provider-usage/list.tsx"]
 recorded = "2026-09-06T17:55:30+00:00"
 
 [[resolution]]
-entry = "assembly-codex-banked-resets"
-hash = "763054635229403a51f1754384e02e9f119ac0b5"
-paths = ["packages/app/src/provider-usage/settings-section.tsx"]
-recorded = "2026-09-06T17:57:29.615087024+00:00"
-
-[[resolution]]
 entry = "assembly-fdroid-variant"
 hash = "9d87af859bd02dba3723967fac1c76191fe52e37"
 paths = ["docs/android.md"]
 recorded = "2026-07-31T19:38:29.346167816+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "01e253175bb1218c3c83374d662f43b4fdbdc63c"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-07T20:23:44.925414721+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "0dc17cfa84c4cbcd364ccde233ea90e34a6b80ea"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-09-07T20:23:44.925421834+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "1947f57d3f724f877ff4971e902361958e04dab0"
+paths = ["packages/app/src/components/agent-list.tsx"]
+recorded = "2026-09-07T20:23:44.925422676+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "3323713da4d56f5a554fa3ff009262e7664a8543"
+paths = ["packages/app/src/hooks/use-archived-workspaces.ts"]
+recorded = "2026-09-07T20:23:44.925423217+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "3d764ebddad8f0664c6434e067229b2d497c5f1b"
+paths = ["packages/app/src/hooks/use-archived-workspaces.test.ts"]
+recorded = "2026-09-07T20:23:44.925427715+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "3e1fc4c92c2b59a33126a4e78819d68b4bd1e2ee"
+paths = ["packages/server/src/server/session.ts"]
+recorded = "2026-09-07T20:23:44.925428026+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "4b9fc4c4679f75d302e8480e60ea2428ce7ad8f0"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-07T20:23:44.925428537+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "594422efb68971d029bc1c0f6c38630bd355f84e"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-07T20:23:44.925429319+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "83d02b3a79f5e76967bc80281c373c642cd127d5"
+paths = ["packages/app/src/components/sidebar/sidebar-archived-group.test.tsx"]
+recorded = "2026-09-07T20:23:44.925429779+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "8981a095342ba2c6bc1f063a00b288ec44ee3296"
+paths = ["packages/app/src/stores/session-store.ts"]
+recorded = "2026-09-07T20:23:44.925431833+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "938dd3daa4161d69ecffd116998f241d6f3bd473"
+paths = ["packages/app/src/components/sidebar/sidebar-archived-group.tsx"]
+recorded = "2026-09-07T20:23:44.925432304+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "9e40509b32e60ae59a51e91200fad4c6a8abc6eb"
+paths = ["packages/app/src/runtime/replica-cache/index.ts"]
+recorded = "2026-09-07T20:23:44.925432905+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "b951f36c09b0c01a50ae85aa0c6522067b55bad4"
+paths = ["docs/data-model.md"]
+recorded = "2026-09-07T20:23:44.925486347+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "c7a46e419627ff30b371758d218516f26514b3d6"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx"]
+recorded = "2026-09-07T20:23:44.925487208+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "eb1ab7874961b5bcaffb5c262867c3327ceedeff"
+paths = ["packages/app/src/hooks/sidebar-workspaces-view-model.ts"]
+recorded = "2026-09-07T20:23:44.925487699+00:00"
+
+[[resolution]]
+entry = "assembly-sidebar-unarchive"
+hash = "f0932b4244f39847e08eebf7a729b39e581deec6"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-07T20:23:44.925488421+00:00"
 
 [[resolution]]
 entry = "assembly-workspace-restore"
@@ -643,9 +733,27 @@ recorded = "2026-09-03T19:27:45.303422877+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "0b1b57e5a47b37fa126df4976eaf70eba7b277e5"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-07T20:19:21.935275030+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "0ea6ef1d68e0b3b4f8140381447f84b5436106be"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-20T07:13:34.840664267+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "3b912b11001c1244e61283953fd1756fc7f0bdea"
+paths = ["packages/app/src/live-voice/live-voice-runtime.ts"]
+recorded = "2026-09-07T20:20:08.161613367+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "3c5d4de9701bcff9fa17827dc872f4e89e0b0b8d"
+paths = ["packages/app/src/live-voice/live-voice-availability.ts"]
+recorded = "2026-09-07T20:20:08.161618106+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
@@ -673,15 +781,39 @@ recorded = "2026-08-27T22:45:56.508107393+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "654b0885c3aec4ae4fb832d2fec13e06201ddac6"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-09-07T20:20:08.161618527+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "6ec404aaef5ce3a9f3ff34ecbab572bc64493f58"
 paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
 recorded = "2026-08-18T21:49:55.654732851+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "866e01b1add930e43e1e37426477af77dddd2dc6"
+paths = ["packages/server/src/server/live-voice/live-voice-context.ts"]
+recorded = "2026-09-07T20:19:07.828314052+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "9274385b210131283d5dd46acf849bb69b76f8be"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-21T20:57:27.667942562+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "982a99885b8bbb1d5c25e5999e8ba286ecd03727"
+paths = ["packages/app/src/contexts/live-voice-context.tsx"]
+recorded = "2026-09-07T20:20:08.161618737+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
+hash = "9ad644c9fdbae92fe5010f638fb66682a170832c"
+paths = ["packages/app/src/live-voice/live-voice-availability-policy.ts"]
+recorded = "2026-09-07T20:20:18.671490941+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
@@ -703,6 +835,12 @@ recorded = "2026-08-24T04:27:44.788739258+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
+hash = "dc2f67c5153ec3ad726a3168452929cbf3dcb79d"
+paths = ["packages/app/src/live-voice/live-voice-availability-policy.ts"]
+recorded = "2026-09-07T20:20:08.161618988+00:00"
+
+[[resolution]]
+entry = "live-voice-context-files"
 hash = "ea39f48a1cc8ccf83bd848196eb4196361af5c73"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-18T21:49:55.654733506+00:00"
@@ -712,6 +850,366 @@ entry = "live-voice-context-files"
 hash = "fd1d74b792730f6dd3f185e6559ce6a07ee7a868"
 paths = ["packages/server/src/server/persisted-config.ts"]
 recorded = "2026-08-18T08:09:20.619476676+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "00d303009ac2e655a546fa4764cc419af4466eff"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-07T20:24:05.976553777+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "035f49082bf26435e584addb1c210294b52a5977"
+paths = ["packages/app/src/runtime/replica-cache/index.ts"]
+recorded = "2026-09-07T20:24:05.976569356+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "094f8a27d65579a56d5d13a5c64faf5a1a95555b"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-09-07T20:24:05.976570609+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "0a10e724a0c11ed4dc83f0fd80bf5485627f8865"
+paths = ["packages/app/src/i18n/resources/ja.ts"]
+recorded = "2026-09-07T20:24:05.976571330+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "0d2a85b09e2d2ab531f2bab90e5b41451fff405f"
+paths = ["packages/app/src/live-voice/live-voice-availability-policy.ts"]
+recorded = "2026-09-07T20:24:05.976572412+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "0f9e6f32148d023dc52cbc2da18c978f9d04825b"
+paths = ["packages/app/src/live-voice/live-voice-call-notification.test.ts"]
+recorded = "2026-09-07T20:24:05.976573134+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "13f486ba3149b3b6a04101066beb9912e5e068fb"
+paths = ["packages/app/src/i18n/resources/ko.ts"]
+recorded = "2026-09-07T20:24:05.976573785+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "1587688a31897d6302e0375f5073f631463bc9e4"
+paths = ["packages/server/src/server/session.test.ts"]
+recorded = "2026-09-07T20:24:05.976574767+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "16ffee6427e5f4b2c33bd54a46f1f526c4b5e170"
+paths = ["packages/app/src/live-voice/live-voice-sidebar-card.tsx"]
+recorded = "2026-09-07T20:24:05.976575197+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "1a934fd2368b7627fa9cd5678cc58c4a92778dec"
+paths = ["packages/app/src/live-voice/live-voice-runtime.ts"]
+recorded = "2026-09-07T20:24:05.976577863+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "21096d12d81e4e1381f334468b1a03be6ece0811"
+paths = ["packages/app/modules/paseo-background-call/android/src/main/java/sh/paseo/backgroundcall/BackgroundCallLifetime.kt"]
+recorded = "2026-09-07T20:24:05.976578424+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "21e05ec46f6fa2fc43572d03e467305c10e1ef2c"
+paths = ["packages/app/src/keyboard/route-shortcut.ts"]
+recorded = "2026-09-07T20:24:05.976579085+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "23d7b88e0ab43450d5ba121f8a8c5b2bc21d3ef3"
+paths = ["packages/app/src/live-voice/background-call-lifetime.native.test.ts"]
+recorded = "2026-09-07T20:24:05.976579866+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "24369e8ce642d6381b917aaf11b2273eaa61c101"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-07T20:24:05.976580498+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "252b93672ccdf2dbbed57612c632b03917df4d65"
+paths = ["packages/app/modules/paseo-background-call/android/build.gradle"]
+recorded = "2026-09-07T20:24:05.976581199+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "25bbcf8d2d95b29d7d94bead4b7ccddeca85370f"
+paths = ["packages/app/src/live-voice/live-voice-runtime.test.ts"]
+recorded = "2026-09-07T20:24:05.976582131+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "27273d42570d9fe3201ef0fc1394593bd6b7ccb3"
+paths = ["packages/app/modules/paseo-background-call/android/src/main/java/sh/paseo/backgroundcall/BackgroundCallService.kt"]
+recorded = "2026-09-07T20:24:05.976582772+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "2d6855347090082514a97504964dd6cc676e5ab2"
+paths = ["packages/app/src/keyboard/actions.ts"]
+recorded = "2026-09-07T20:24:05.976590286+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "346565b2930d0c6868a04f3fbcacd56a04fdf5e0"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-07T20:24:05.976590867+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "373ad5a2d716ae4866954a7f42b5d07f7d427a0f"
+paths = ["packages/app/src/live-voice/background-call-lifetime.native.ts"]
+recorded = "2026-09-07T20:24:05.976594915+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "4804df94ec833313c3513e2c3ef01370f1f6b40b"
+paths = ["packages/app/src/live-voice/live-voice-surfaces.test.tsx"]
+recorded = "2026-09-07T20:24:05.976595777+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "57622e06bb7cfca05052a80cba05e7d1c3d93743"
+paths = ["packages/app/src/live-voice/background-call-lifetime.ts"]
+recorded = "2026-09-07T20:24:05.976596478+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "5c712f30b99118d01996c5bb2c4e0120b81ce305"
+paths = ["packages/server/src/server/agent/providers/codex-live-voice-host-profile.ts"]
+recorded = "2026-09-07T20:24:05.976597149+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "5ce52e9b3b42ed04e2d8dc09208d1f827f53fd9c"
+paths = ["packages/server/src/server/live-voice/live-voice-coordinator.test.ts"]
+recorded = "2026-09-07T20:24:05.976597870+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "67d8d6bacffb5a81c4dd2ccebad032a01a3333f6"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-07T20:24:05.976598502+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "7971b4790533502016b46c680455570d0f0561d7"
+paths = ["packages/app/src/i18n/resources/es.ts"]
+recorded = "2026-09-07T20:24:05.976599173+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "7bffe7b875eb254598c1d654a14cd2592ef0f88c"
+paths = ["packages/server/src/server/live-voice/live-voice-context.ts"]
+recorded = "2026-09-07T20:24:05.976599884+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "7d446adc7a9c3e8214ea707cfbd1d2b83713701a"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-07T20:24:05.976600455+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "86515d0fbd752d1478cb5a810a921a7f6a7109a4"
+paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
+recorded = "2026-09-07T20:24:05.976601077+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "8c6857e6f161feefd5044b00de9a1d1c03c98a09"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-07T20:24:05.976601648+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "912ba5a67151d320fb01c5507186195a215bb0c9"
+paths = ["docs/architecture.md"]
+recorded = "2026-09-07T20:24:05.976602579+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "94185069afc595b1c5330cdfac557dbe8b8caeea"
+paths = ["packages/server/src/server/session.ts"]
+recorded = "2026-09-07T20:24:05.976603211+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "969b1b3f5d6d1d49f77e2fe6c70a98e8b6ff15bb"
+paths = ["packages/app/src/utils/agent-snapshots.ts"]
+recorded = "2026-09-07T20:24:05.976603822+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "9a103fc8376bcd1bd0ae91dd21503ba6f0f69df3"
+paths = ["packages/protocol/src/messages.live-voice.test.ts"]
+recorded = "2026-09-07T20:24:05.976604463+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "a046f76319e2f8d09129d6a79507f73d0b21e2e8"
+paths = ["packages/server/src/server/agent/agent-storage.ts"]
+recorded = "2026-09-07T20:24:05.976605104+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "a169e55a0782c07af8ebd0f3f2b0564346dc8c1e"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-09-07T20:24:05.976605836+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "abf433f12519d0186babedf3d8a51bc012135c0b"
+paths = ["packages/client/src/daemon-client.live-voice-routing.test.ts"]
+recorded = "2026-09-07T20:24:05.976606407+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "af2d9cbe00f58b7284b8ac27785a02082acbdd98"
+paths = ["packages/app/src/i18n/resources/en.ts"]
+recorded = "2026-09-07T20:24:05.976607198+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "b0041617706e75e1b864578f91d74be06c204e5f"
+paths = ["packages/server/src/server/live-voice/live-voice-coordinator.ts"]
+recorded = "2026-09-07T20:24:05.976608100+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "c36ccfa8b2f275d0690ece0ece784cd228d3e7dd"
+paths = ["packages/app/src/i18n/resources/ar.ts"]
+recorded = "2026-09-07T20:24:05.976608811+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "ccb94d65698b91dfb5d80036c2e0b096e4597cd4"
+paths = ["packages/app/src/live-voice/live-voice-availability.test.ts"]
+recorded = "2026-09-07T20:24:05.976609493+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "ccf98ee6288e894220200852634ba30d52b8f370"
+paths = ["packages/app/src/utils/agent-snapshots.test.ts"]
+recorded = "2026-09-07T20:24:05.976610344+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "d0bf0e8fd0179323b04629c4b17933b554e63932"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-09-07T20:24:05.976610955+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "d292ab46407dfc68390c2441e481451c484648a6"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-09-07T20:24:05.976611927+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "d2fdd15171b6dcd914094528d5344df62e9ad2ef"
+paths = ["packages/client/src/daemon-client.ts"]
+recorded = "2026-09-07T20:24:05.976612689+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "d622e60dfd8d4f6ba35c2f52450a0417faec4c54"
+paths = ["packages/app/modules/paseo-background-call/android/src/main/java/sh/paseo/backgroundcall/PaseoBackgroundCallModule.kt"]
+recorded = "2026-09-07T20:24:05.976613310+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "d8e0a61f2762b65ee6f1334bb57532e64c4471c5"
+paths = ["packages/app/src/i18n/resources/pt-BR.ts"]
+recorded = "2026-09-07T20:24:05.976614232+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "e0a045cb305fc99457f0ed601bc54a0a82ab5fa5"
+paths = ["packages/app/src/live-voice/live-voice-call-ui.tsx"]
+recorded = "2026-09-07T20:24:05.976615043+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "e359c03ed41278660bf3d2f3671cc68cfac84b24"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.test.tsx"]
+recorded = "2026-09-07T20:24:05.976615774+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "e3a10b34db084c2ce60e89529ba0d92b418be49c"
+paths = ["packages/client/src/daemon-client.test.ts"]
+recorded = "2026-09-07T20:24:05.976616356+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "e4080999d3689a24e35ac81aee5a011950f30286"
+paths = ["packages/app/src/live-voice/live-voice-strip.tsx"]
+recorded = "2026-09-07T20:24:05.976616937+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "e5902131dfa5eece4b3b07895711d8a55d0a83af"
+paths = ["packages/app/src/live-voice/live-voice-availability.ts"]
+recorded = "2026-09-07T20:24:05.976617488+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "ed0e34810aa3bcd262922c0ee98aeb0532024bb4"
+paths = ["packages/server/src/server/agent/agent-projections.ts"]
+recorded = "2026-09-07T20:24:05.976618079+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "ee9680df68da5aeb6109ffb03b0962c1625cb3ce"
+paths = ["packages/app/src/contexts/live-voice-context.tsx"]
+recorded = "2026-09-07T20:24:05.976619211+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "ef9882da133b4fe28a544070ec4b7888291c11c9"
+paths = ["packages/server/src/server/live-voice/live-voice-context.test.ts"]
+recorded = "2026-09-07T20:24:05.976620023+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "efbd820f36e9fca81fcc0cc035ec262f37cd8629"
+paths = ["packages/app/src/stores/live-voice-settings-store.ts"]
+recorded = "2026-09-07T20:24:05.976620594+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "f30214785742ed32e92a1634c1d2203f3bfcad87"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-07T20:24:05.976621155+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "f45077a4a8789cca2fb5dd67c17690e3519c0a4f"
+paths = ["packages/app/src/components/left-sidebar.tsx"]
+recorded = "2026-09-07T20:24:05.976621826+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "fcd0e5fcbc4e8e22efde5ae5a00df6d2aaf18948"
+paths = ["packages/app/src/live-voice/live-voice-route-authority.test.ts"]
+recorded = "2026-09-07T20:24:05.976622678+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
+hash = "fee730a65cea06de0c5168cf010abecec01dc95f"
+paths = ["packages/server/src/server/live-voice/live-voice-daemon-context.ts"]
+recorded = "2026-09-07T20:24:05.976623499+00:00"
 
 [[resolution]]
 entry = "live-voice-quick-launch"
@@ -724,6 +1222,12 @@ entry = "live-voice-quick-launch"
 hash = "d89757cc7bc4e079a7142057da2768a0a40df57f"
 paths = ["packages/app/src/app/_layout.tsx"]
 recorded = "2026-08-21T20:56:54.918993578+00:00"
+
+[[resolution]]
+entry = "live-voice-quick-launch"
+hash = "e166cd9b96b2303dca398f8e57f96398efa8fe56"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-09-07T20:14:40.926763693+00:00"
 
 [[resolution]]
 entry = "model-picker-search"
@@ -1431,7 +1935,13 @@ recorded = "2026-07-31T20:39:30.543732940+00:00"
 entry = "pr-2659"
 hash = "4097d5b246089947efd968880ceaff5dae683021"
 paths = ["packages/app/src/panels/agent-panel.tsx"]
-recorded = "2026-09-03T19:41:51.883029071+00:00"
+recorded = "2026-09-07T20:09:24.381178633+00:00"
+
+[[resolution]]
+entry = "pr-2659"
+hash = "5658be5840b1c07cf11570fe6ae732ab1144a52a"
+paths = ["packages/app/src/runtime/replica-cache/index.test.ts"]
+recorded = "2026-09-07T20:09:24.381188021+00:00"
 
 [[resolution]]
 entry = "pr-2659"
@@ -1528,6 +2038,12 @@ entry = "pr-2785"
 hash = "05ef165958048494d3a0914bc3c136f2bc457cdb"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-03T23:14:27.602706956+00:00"
+
+[[resolution]]
+entry = "pr-2785"
+hash = "0601f4c2740c28b94e2c56be854726ae7f46c975"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-07T20:11:07.992042145+00:00"
 
 [[resolution]]
 entry = "pr-2785"
@@ -2059,6 +2575,12 @@ recorded = "2026-08-17T22:03:17.541527084+00:00"
 
 [[resolution]]
 entry = "pr-2927"
+hash = "0626a5b5edbaca973148fef37b0a294e1edb04b9"
+paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
+recorded = "2026-09-07T20:12:18.868387124+00:00"
+
+[[resolution]]
+entry = "pr-2927"
 hash = "06311321f40e18bda9f6b315975597fca278f913"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
 recorded = "2026-08-17T22:03:17.541529201+00:00"
@@ -2533,6 +3055,12 @@ recorded = "2026-08-09T13:25:10.825893356+00:00"
 
 [[resolution]]
 entry = "pr-3662"
+hash = "084c137c6c7d4819841a830b232f1c4c3423d1bf"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-07T20:21:33.108533518+00:00"
+
+[[resolution]]
+entry = "pr-3662"
 hash = "217d480d0242b1858396a1ae6e647deceefd56ce"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-08-21T20:38:48.226852512+00:00"
@@ -2707,6 +3235,12 @@ recorded = "2026-09-04T06:38:09.620464725+00:00"
 
 [[resolution]]
 entry = "pr-4304"
+hash = "fa0ca97cf13129e8bbd4395e4db59bbf146ae13f"
+paths = ["packages/app/src/types/stream.ts"]
+recorded = "2026-09-07T20:22:11.569829180+00:00"
+
+[[resolution]]
+entry = "pr-4304"
 hash = "ff5720f8dc96303d69a084eca5a8afa2f0216976"
 paths = ["packages/protocol/src/agent-types.ts"]
 recorded = "2026-09-04T06:38:09.620464965+00:00"
@@ -2722,6 +3256,12 @@ entry = "pr-4305"
 hash = "0853d88875c45b8cc6335f28260f0e81d4a42a2f"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-09-04T06:39:46.712691051+00:00"
+
+[[resolution]]
+entry = "pr-4305"
+hash = "1b1e52fdeeae44ac51f0881d6773d7a9dbb61047"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-07T20:22:57.012946934+00:00"
 
 [[resolution]]
 entry = "pr-4305"
@@ -2742,10 +3282,76 @@ paths = ["packages/app/src/components/context-window-meter.tsx"]
 recorded = "2026-09-04T06:39:46.712691933+00:00"
 
 [[resolution]]
+entry = "pr-4405"
+hash = "0d97a0ae17f2f2c978448d78ba6229277194ba2b"
+paths = ["docs/design.md"]
+recorded = "2026-09-07T20:25:53.585460838+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "329670be21eecb85c01f0046291e79d24cf4e2c6"
+paths = ["packages/app/src/screens/settings/host-appearance-section.tsx"]
+recorded = "2026-09-07T20:25:53.585467661+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "58f546d185f69dad0cb574480f65a2dcc5372d22"
+paths = ["packages/server/src/server/bootstrap.ts"]
+recorded = "2026-09-07T20:25:53.585468433+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "7342487e5715e3ffb42ca42a41e9afcb3e9dda04"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-07T20:25:53.585468854+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "7f0bdaef110bc5e080a16e39fca056a5da5ef628"
+paths = ["packages/app/src/hosts/appearance.ts"]
+recorded = "2026-09-07T20:25:53.585469284+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "94010aeeef48a2535979830ba26d41482f243938"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-07T20:25:53.585469825+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "a5d1ba77ee57e38c861823befef2829f8ea4a01c"
+paths = ["packages/app/src/hosts/host-badge.tsx"]
+recorded = "2026-09-07T20:25:53.585470687+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "af063cfddbc046a37666d630178aafe6f43f008d"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-09-07T20:25:53.585471138+00:00"
+
+[[resolution]]
+entry = "pr-4445"
+hash = "1df114f265f2fcae0d2440726054b6151f076326"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-07T20:26:13.271694672+00:00"
+
+[[resolution]]
+entry = "pr-4445"
+hash = "bc27bbfdd4926d7bd61c2bab2696b23b6730aa3a"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-07T20:26:13.271699882+00:00"
+
+[[resolution]]
+entry = "pr-4445"
+hash = "ff69408d167e0a4915ee99826b8e5daef0560594"
+paths = ["packages/server/src/server/authorization/operation-permissions.ts"]
+recorded = "2026-09-07T20:26:13.271700804+00:00"
+
+[[resolution]]
 entry = "thinking-control-reachability"
 hash = "430d4acd7331ccc082b99d008f86a0b12ef34cef"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
-recorded = "2026-08-20T07:13:14.728153657+00:00"
+recorded = "2026-09-07T20:13:56.111057601+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
@@ -2845,6 +3451,12 @@ recorded = "2026-08-03T16:03:52.692257184+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "72251680bf051ebeaee12950a5c5d4904c3bfa7b"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-07T20:09:56.775156404+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "7398709430615f49dc5f1963af71bced425ffee0"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-08-17T07:25:06.955692794+00:00"
@@ -2931,7 +3543,7 @@ recorded = "2026-08-04T20:32:48.987822113+00:00"
 entry = "watch-live-voice"
 hash = "c23ab3acb6d258a17870f815f21a8180de24399e"
 paths = ["packages/app/src/runtime/replica-cache/index.ts"]
-recorded = "2026-08-21T20:55:14.674685148+00:00"
+recorded = "2026-09-07T20:09:56.775180059+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"

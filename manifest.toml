@@ -84,8 +84,8 @@ pr = 2659
 summary = "Surface the model and thinking level agents actually use"
 
 [[entry]]
-pr = 2660
-summary = "Restore a workspace's agents when the workspace is unarchived"
+branch = "mine:unarchive-threads"
+summary = "Restore a workspace's agents when the workspace is unarchived (was PR 2660, closed upstream; refs/pull/2660/head is frozen at the pre-rebase commit, so the branch is the only live source)"
 
 # Merges 2655 (Wear OS companion) and 2657 (Live Voice) and adds what needs
 # both: watch-side start/end/mute and transcript, the Android AudioManager
@@ -130,7 +130,6 @@ summary = "Fix worktree setup with production npm environments"
 [[entry]]
 pr = 2785
 summary = "Add UI and CLI for creating provider accounts"
-fixup = "patches/pr-2785-usage-service-clobber.patch"
 
 [[entry]]
 pr = 2820
@@ -243,12 +242,10 @@ pr = 3506
 [[entry]]
 branch = "mine:live-voice-quick-launch"
 parents = [{ pr = 2657 }]
-fixup = "patches/live-voice-quick-launch-current-sidebar.patch"
 
 [[entry]]
 branch = "mine:live-voice-context-files"
 parents = [{ pr = 2657 }]
-fixup = "patches/live-voice-context-profiles-footer-active.patch"
 
 [[entry]]
 branch = "mine:colorblind-status-dots"
@@ -287,8 +284,8 @@ pr = 4261
 summary = "Handle draft tabs on an offline host"
 
 [[entry]]
-pr = 4280
-summary = "Keep the draft tab locked while its create request is in flight"
+branch = "mine:fix/draft-tab-inflight-create"
+summary = "Keep the draft tab locked while its create request is in flight (was PR 4280, closed upstream; refs/pull/4280/head is frozen at the pre-rebase commit, so the branch is the only live source)"
 
 [[entry]]
 pr = 4281
@@ -328,6 +325,14 @@ summary = "Keep optimistic sidebar restores consistent across refetches and fail
 [[entry]]
 branch = "mine:live-voice-error-detail"
 summary = "Show the provider's reason when a Live Voice call cannot start"
+
+[[entry]]
+pr = 4405
+summary = "Let hosts declare a default color so devices agree"
+
+[[entry]]
+pr = 4445
+summary = "Add a Usage history page: daily token and cost usage from provider transcripts"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

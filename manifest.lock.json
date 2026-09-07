@@ -1,106 +1,108 @@
 {
   "version": 1,
   "pins": {
-    "base": "92442e743517cb4f1c304967bd79e2b9401a6ba6",
+    "base": "a7a708bec99e935ee4b8c6f7314a4b9a9984cfa6",
     "entries": {
       "assembled-ci-lint-fixes": "d89687e2f3427e36bc293398dcd7b1057ee51678",
-      "assembled-npm-deps-hash": "9104a4e3b5ebe4eb3b5e42565a97fa5205607b58",
-      "assembly-agent-env": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
+      "assembled-npm-deps-hash": "068f2f1f06a9f06dd2aa6f2f887cc611f0b5408e",
+      "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
-      "assembly-codex-banked-resets": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
+      "assembly-codex-banked-resets": "d034a0de8dc08fb082757ccd98b495f8ae51ddfe",
       "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
-      "assembly-sidebar-unarchive": "68c73f920878e6b83d4f8cc3447f5a8f482177ad",
+      "assembly-sidebar-unarchive": "c6077bde04e4527b8bdb51cd5520aebfbc641ded",
       "assembly-workspace-restore": "f1e221af05ddc8c53a1f05ad8a161cdc065b7b85",
       "claude-fable-5-1": "8d52677190d78a2b356d13936d06372302985167",
       "colonelpanic8/client-settings-file-store": "d98a8ae46ad65b75afc6aef64285bc26471a4519",
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
-      "disable-worktree-setup-callout": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b",
+      "disable-worktree-setup-callout": "32ec3263413021b0b43566c2c2128af0983aeb15",
+      "fix/draft-tab-inflight-create": "9352e9dca1cfb38af966b0c086f7d8c316a03826",
       "live-voice-context-files": "1e4a303c7eb14d7bc4cca82c8a19e3af98b865db",
-      "live-voice-error-detail": "3e9ff90e9ecf843fe0afca92d876213f127bfcc7",
-      "live-voice-quick-launch": "160d82956cdebe966ac56bcaf09bcc528ba94aec",
-      "model-picker-search": "64ddbe4e4c2350331e12ed90c032c9ecc069fb36",
+      "live-voice-error-detail": "2eb1a0976730560a764809da682321f58ec0f2fa",
+      "live-voice-quick-launch": "7e6db98790fe1141a57c111d0ca648558021711f",
+      "model-picker-search": "3a26a4f24194e736271d7335358e1396d3b73f7f",
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
-      "personal/sidebar-workflow": "31c12c5ab92f7f34c16bb325b14bf68965fa8fed",
+      "personal/sidebar-workflow": "d0ae6cc2be6273976dcd88fdd6f372a11b0b7249",
       "pr-2517": "238714e0ad45d4da86b73d890c556ee0d8baf9cb",
       "pr-2520": "bdae463b7dd22ff47f78ecb49fb67979976ac616",
       "pr-2521": "643d03bc0b1e00d3afa03691a81d68c293d167cf",
       "pr-2532": "3cef91f0ba55545bef12a6f0b055dbe0e6d3fd32",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
-      "pr-2628": "e19cf9af84763026996999c35a192b7d0d504b3f",
-      "pr-2629": "e0120a2038f0b3c3bf62c8317eda8badab4ccaed",
+      "pr-2628": "d8fa5025347e611fb03b80439c8930577fe3623e",
+      "pr-2629": "8373126949d3bd1e7704d99e5261969172f7bcf5",
       "pr-2650": "c22fde493d28ec2c9e2e5a924e8aef989f3415c5",
-      "pr-2658": "e91bb097f921e7cc5e09cc594e547aa76ce73356",
-      "pr-2659": "b6164d2df5c10c9217ab2aa8bc97382a560e617f",
-      "pr-2660": "32ea53acff1c38dae1daf7a3b8dc0e12a6fa7c37",
+      "pr-2658": "864d700ffd4f5ec45d5a304d92ff96b636db5ab8",
+      "pr-2659": "396b5b776eda51ee4d8e4bdd6052eaecd57389fa",
       "pr-2730": "3373afdc8e9b164ef507f6ad61ade709c4126dd9",
       "pr-2772": "de4a2323e86e58a4e8f6373673f35d91102c5c9b",
       "pr-2784": "04f24b57577e9dcb7b329650f02158d365abc851",
-      "pr-2785": "e13a58b9822af8c22d687d05c2e189cf2d1840de",
-      "pr-2820": "f20b53af5f62ace840a8b8592711bfdea124ea8f",
+      "pr-2785": "72ea80ce9a8240272550c8f2895bd3e232798b0c",
+      "pr-2820": "7088d1e303892bed0a42ad46cc078ee4a88a25a1",
       "pr-2843": "9f990dbf1b5529c386533f07f816de3017ad9162",
       "pr-2845": "220765d52b840d3243eb93b29cdb900abec35721",
       "pr-2849": "777bbaa5a2f9c07f5468082b34a195d63551890d",
       "pr-2872": "7621be102d514bb292185235bd3e159bef0b307c",
       "pr-2873": "650117d783e69579d41a927899e410058b3edfa4",
-      "pr-2875": "61887987929e947f7d6a1f98881d3315f6e1d9e6",
+      "pr-2875": "e1ca50f19d7b76774939c942fe487de929b914e4",
       "pr-2883": "b91952bbe8f888bf5e9144074604c896b29f3856",
       "pr-2884": "479951217face4d3b7624dda9ab62d3ac1907104",
       "pr-2885": "c523a90a879433d4f908b1d12e02fc7c5f68bf79",
-      "pr-2898": "bb95f0d163bde407d8e102b481a1086bf2a6b6dc",
+      "pr-2898": "ac8fdfdc664532b7bb0343eebf3f0ed5562c7f0e",
       "pr-2900": "c68982eb2d477f9b0e895253fffc3399347c3224",
-      "pr-2927": "9615c79e6b69e23d7f3657ec569d6ee31ebf0af3",
-      "pr-2954": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
+      "pr-2927": "4215c117cdefb9214c69343b57cc9a3b633a330f",
+      "pr-2954": "2f9e4d61ed6f6aaf16c6396e3b469c238fd18ebf",
       "pr-2956": "a60304f0e5616e45d8828ae0a91991444e55da48",
       "pr-2957": "d2a097837f44eef12f73079c77fb37901f3be3a2",
       "pr-3006": "5509b76433b1dd5a6adf0a10df9b3afd9f1502d4",
       "pr-3087": "a017885b001f1cd083b2b09f4a12ecfca9b45e16",
-      "pr-3475": "cc10084d2a9b3cd28139bd4589c078f421677bc2",
+      "pr-3475": "32ec5c4acfbfe9c8f338ecc289509cfcc5c97010",
       "pr-3506": "c76bcebdfef8976c37fab1b92e5fd99946c30076",
-      "pr-3662": "83df99c20a71ad98b6c78f1d9c8d98dd1eeeaf03",
+      "pr-3662": "701e88bafc9cca05da45bc311150724deeac29b8",
       "pr-3882": "b157af46b9491448287120a0781e369cd56ef1bb",
       "pr-3972": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573",
       "pr-4256": "2661f94438afbf4f282019c7345e9bcd381511f5",
-      "pr-4261": "d8062bd2995f1ec96cd809dd769da525c68236a8",
-      "pr-4280": "25814b530f0295f6e519a31b56a3f6e1b3f5a6db",
-      "pr-4281": "8fe1252e248a0e08abf3d9ae4e62febc3beb2de9",
-      "pr-4304": "c126ca81958f5b0d4a65ebda67e2b2ffde28058b",
-      "pr-4305": "aa281bb3beda09dc627b07ee86d837bc150c3b8a",
-      "thinking-control-reachability": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84",
+      "pr-4261": "e564de4e9cf869dcdbde3a7b5f3d05d30a5cd5ff",
+      "pr-4281": "3df13ba354e16fc203205700004bd4312215b014",
+      "pr-4304": "3810a85ece99341b111b6ec8a6c1de469026c589",
+      "pr-4305": "05e474759cab5c5ba0a544b3fde58bd66a3da66e",
+      "pr-4405": "cec6798d01c92bc4b83824a6f0e4150ea9a6c20e",
+      "pr-4445": "0ba795f8066499a400f3dd66d4956fe81953e260",
+      "thinking-control-reachability": "cb75c024d325e97ba107c6275f91248efa543b33",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
-      "watch-live-voice": "839c79b9793abbb721f7fcf9f71f65c321cd377b"
+      "unarchive-threads": "806bf2ff8b4f9a8011dece3a6f214696ace06827",
+      "watch-live-voice": "1eb7168f2b5c07979945ab8988c8cc5667ebbd58"
     },
     "parents": {
       "live-voice-context-files": {
-        "pr-2657": "23ae875da5b8fc580f56b82b5d918c7836feceee"
+        "pr-2657": "d92d1765313befea3a29e64252f8646909da9ed0"
       },
       "live-voice-quick-launch": {
-        "pr-2657": "23ae875da5b8fc580f56b82b5d918c7836feceee"
+        "pr-2657": "d92d1765313befea3a29e64252f8646909da9ed0"
       },
       "pr-2927": {
-        "pr-3499": "9e145516639f20b9ce4562c5df50f1bab0f841a6"
+        "pr-3499": "f30ec145fe57722c7dcca52ada1aaf4803e68a49"
       },
       "watch-live-voice": {
         "pr-2655": "5d517c8ed9239088cb4153ff299e2e651a0334bf",
-        "pr-2657": "23ae875da5b8fc580f56b82b5d918c7836feceee"
+        "pr-2657": "d92d1765313befea3a29e64252f8646909da9ed0"
       }
     },
     "anchors": {
       "live-voice-context-files": "c335b67b46429250e99960d892f8ab2e68ffa123",
       "live-voice-quick-launch": "7e3e520b4384e181ba60ea2b012f0002ff62431d",
-      "pr-2927": "538602f1448d971d04e8c8fea1f922788bf1a4d4",
-      "watch-live-voice": "154958f2351a2bcdf8a6077801f6e2db0b01bd3c"
+      "pr-2927": "c96cfaeb0d189db218ec2b45741e1f65b6c28152",
+      "watch-live-voice": "4a4294325806ddbe1a5c97f56c143736b0dc3fcf"
     }
   },
   "build": {
-    "generated": "2026-09-07T00:59:49.032915970+00:00",
-    "base": "92442e743517cb4f1c304967bd79e2b9401a6ba6",
-    "commit": "3d0fac20390abbd602205057496efdb14ee38d3f",
-    "pre_provenance_commit": "3d0fac20390abbd602205057496efdb14ee38d3f",
-    "tree": "b03203c982dde6f1607488bc70fe7722e7301441",
-    "built_tree": "b03203c982dde6f1607488bc70fe7722e7301441",
-    "previous_tree": "668afc35da73224407dcc8306514640ab2220252",
+    "generated": "2026-09-07T20:26:20.917141961+00:00",
+    "base": "a7a708bec99e935ee4b8c6f7314a4b9a9984cfa6",
+    "commit": "fba885ce95267d23fcedd7c61d72a949db91bf8b",
+    "pre_provenance_commit": "fba885ce95267d23fcedd7c61d72a949db91bf8b",
+    "tree": "e09732470c7ff922e0cbabd95e4913c12aecce8e",
+    "built_tree": "e09732470c7ff922e0cbabd95e4913c12aecce8e",
+    "previous_tree": "b03203c982dde6f1607488bc70fe7722e7301441",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 44,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -131,14 +133,14 @@
         "name": "personal/sidebar-workflow",
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
-        "pin": "31c12c5ab92f7f34c16bb325b14bf68965fa8fed",
+        "pin": "d0ae6cc2be6273976dcd88fdd6f372a11b0b7249",
         "fixup": "6a57bd60a1a63b94c43eba1fdf14be5bd6dfeff8"
       },
       {
         "name": "model-picker-search",
         "kind": "branch",
         "source": "mine:model-picker-search",
-        "pin": "64ddbe4e4c2350331e12ed90c032c9ecc069fb36"
+        "pin": "3a26a4f24194e736271d7335358e1396d3b73f7f"
       },
       {
         "name": "pr-2532",
@@ -169,26 +171,26 @@
         "name": "pr-2628",
         "kind": "pr",
         "source": "upstream#2628",
-        "pin": "e19cf9af84763026996999c35a192b7d0d504b3f"
+        "pin": "d8fa5025347e611fb03b80439c8930577fe3623e"
       },
       {
         "name": "assembly-agent-env",
         "kind": "branch",
         "source": "mine:assembly-agent-env",
-        "pin": "af119eab4b353f2ed1168d7699ce1494b79e33d2"
+        "pin": "a121c6b440a2785a43fc5ce11958944ae0fd4332"
       },
       {
         "name": "pr-2629",
         "kind": "pr",
         "source": "upstream#2629",
-        "pin": "e0120a2038f0b3c3bf62c8317eda8badab4ccaed",
+        "pin": "8373126949d3bd1e7704d99e5261969172f7bcf5",
         "fixup": "0ca7f5acfe52f8d41069cc612bdc6a196d028cdd"
       },
       {
         "name": "disable-worktree-setup-callout",
         "kind": "branch",
         "source": "mine:disable-worktree-setup-callout",
-        "pin": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b"
+        "pin": "32ec3263413021b0b43566c2c2128af0983aeb15"
       },
       {
         "name": "pr-2650",
@@ -200,25 +202,25 @@
         "name": "pr-2658",
         "kind": "pr",
         "source": "upstream#2658",
-        "pin": "e91bb097f921e7cc5e09cc594e547aa76ce73356"
+        "pin": "864d700ffd4f5ec45d5a304d92ff96b636db5ab8"
       },
       {
         "name": "pr-2659",
         "kind": "pr",
         "source": "upstream#2659",
-        "pin": "b6164d2df5c10c9217ab2aa8bc97382a560e617f"
+        "pin": "396b5b776eda51ee4d8e4bdd6052eaecd57389fa"
       },
       {
-        "name": "pr-2660",
-        "kind": "pr",
-        "source": "upstream#2660",
-        "pin": "32ea53acff1c38dae1daf7a3b8dc0e12a6fa7c37"
+        "name": "unarchive-threads",
+        "kind": "branch",
+        "source": "mine:unarchive-threads",
+        "pin": "806bf2ff8b4f9a8011dece3a6f214696ace06827"
       },
       {
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "839c79b9793abbb721f7fcf9f71f65c321cd377b",
+        "pin": "1eb7168f2b5c07979945ab8988c8cc5667ebbd58",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -228,16 +230,16 @@
           },
           {
             "source": "upstream#2657",
-            "pin": "23ae875da5b8fc580f56b82b5d918c7836feceee"
+            "pin": "d92d1765313befea3a29e64252f8646909da9ed0"
           }
         ],
-        "anchor": "154958f2351a2bcdf8a6077801f6e2db0b01bd3c"
+        "anchor": "4a4294325806ddbe1a5c97f56c143736b0dc3fcf"
       },
       {
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "9104a4e3b5ebe4eb3b5e42565a97fa5205607b58"
+        "pin": "068f2f1f06a9f06dd2aa6f2f887cc611f0b5408e"
       },
       {
         "name": "pr-2730",
@@ -261,14 +263,13 @@
         "name": "pr-2785",
         "kind": "pr",
         "source": "upstream#2785",
-        "pin": "e13a58b9822af8c22d687d05c2e189cf2d1840de",
-        "fixup": "0623bcc09f185a11aba2c70f7d3616c2bc348311"
+        "pin": "72ea80ce9a8240272550c8f2895bd3e232798b0c"
       },
       {
         "name": "pr-2820",
         "kind": "pr",
         "source": "upstream#2820",
-        "pin": "f20b53af5f62ace840a8b8592711bfdea124ea8f"
+        "pin": "7088d1e303892bed0a42ad46cc078ee4a88a25a1"
       },
       {
         "name": "pr-2843",
@@ -305,7 +306,7 @@
         "name": "pr-2875",
         "kind": "pr",
         "source": "upstream#2875",
-        "pin": "61887987929e947f7d6a1f98881d3315f6e1d9e6"
+        "pin": "e1ca50f19d7b76774939c942fe487de929b914e4"
       },
       {
         "name": "colonelpanic8/client-settings-file-store",
@@ -335,7 +336,7 @@
         "name": "pr-2898",
         "kind": "pr",
         "source": "upstream#2898",
-        "pin": "bb95f0d163bde407d8e102b481a1086bf2a6b6dc"
+        "pin": "ac8fdfdc664532b7bb0343eebf3f0ed5562c7f0e"
       },
       {
         "name": "pr-2900",
@@ -347,16 +348,16 @@
         "name": "pr-2927",
         "kind": "pr",
         "source": "upstream#2927",
-        "pin": "9615c79e6b69e23d7f3657ec569d6ee31ebf0af3",
+        "pin": "4215c117cdefb9214c69343b57cc9a3b633a330f",
         "fixup": "d9c59938ec1e52a1b797a81dd3658fbb0deee7fe",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
           {
             "source": "upstream#3499",
-            "pin": "9e145516639f20b9ce4562c5df50f1bab0f841a6"
+            "pin": "f30ec145fe57722c7dcca52ada1aaf4803e68a49"
           }
         ],
-        "anchor": "538602f1448d971d04e8c8fea1f922788bf1a4d4"
+        "anchor": "c96cfaeb0d189db218ec2b45741e1f65b6c28152"
       },
       {
         "name": "touch-sidebar-resize",
@@ -368,7 +369,7 @@
         "name": "pr-2954",
         "kind": "pr",
         "source": "upstream#2954",
-        "pin": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
+        "pin": "2f9e4d61ed6f6aaf16c6396e3b469c238fd18ebf",
         "fixup": "00d6a9e3ed616862cb5bb70f0d5505a6d434f1ea"
       },
       {
@@ -394,7 +395,7 @@
         "name": "thinking-control-reachability",
         "kind": "branch",
         "source": "mine:thinking-control-reachability",
-        "pin": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84"
+        "pin": "cb75c024d325e97ba107c6275f91248efa543b33"
       },
       {
         "name": "pr-3006",
@@ -412,7 +413,7 @@
         "name": "pr-3475",
         "kind": "pr",
         "source": "upstream#3475",
-        "pin": "cc10084d2a9b3cd28139bd4589c078f421677bc2"
+        "pin": "32ec5c4acfbfe9c8f338ecc289509cfcc5c97010"
       },
       {
         "name": "pr-3506",
@@ -424,12 +425,11 @@
         "name": "live-voice-quick-launch",
         "kind": "branch",
         "source": "mine:live-voice-quick-launch",
-        "pin": "160d82956cdebe966ac56bcaf09bcc528ba94aec",
-        "fixup": "27851a55bf6953689b680a23cc02f23e765405bf",
+        "pin": "7e6db98790fe1141a57c111d0ca648558021711f",
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "23ae875da5b8fc580f56b82b5d918c7836feceee"
+            "pin": "d92d1765313befea3a29e64252f8646909da9ed0"
           }
         ],
         "anchor": "7e3e520b4384e181ba60ea2b012f0002ff62431d"
@@ -439,11 +439,10 @@
         "kind": "branch",
         "source": "mine:live-voice-context-files",
         "pin": "1e4a303c7eb14d7bc4cca82c8a19e3af98b865db",
-        "fixup": "dd21d669561ac84568a9bbd24a70765969b27c80",
         "parents": [
           {
             "source": "upstream#2657",
-            "pin": "23ae875da5b8fc580f56b82b5d918c7836feceee"
+            "pin": "d92d1765313befea3a29e64252f8646909da9ed0"
           }
         ],
         "anchor": "c335b67b46429250e99960d892f8ab2e68ffa123"
@@ -458,7 +457,7 @@
         "name": "pr-3662",
         "kind": "pr",
         "source": "upstream#3662",
-        "pin": "83df99c20a71ad98b6c78f1d9c8d98dd1eeeaf03"
+        "pin": "701e88bafc9cca05da45bc311150724deeac29b8"
       },
       {
         "name": "pr-3882",
@@ -488,39 +487,39 @@
         "name": "pr-4261",
         "kind": "pr",
         "source": "upstream#4261",
-        "pin": "d8062bd2995f1ec96cd809dd769da525c68236a8"
+        "pin": "e564de4e9cf869dcdbde3a7b5f3d05d30a5cd5ff"
       },
       {
-        "name": "pr-4280",
-        "kind": "pr",
-        "source": "upstream#4280",
-        "pin": "25814b530f0295f6e519a31b56a3f6e1b3f5a6db"
+        "name": "fix/draft-tab-inflight-create",
+        "kind": "branch",
+        "source": "mine:fix/draft-tab-inflight-create",
+        "pin": "9352e9dca1cfb38af966b0c086f7d8c316a03826"
       },
       {
         "name": "pr-4281",
         "kind": "pr",
         "source": "upstream#4281",
-        "pin": "8fe1252e248a0e08abf3d9ae4e62febc3beb2de9"
+        "pin": "3df13ba354e16fc203205700004bd4312215b014"
       },
       {
         "name": "pr-4304",
         "kind": "pr",
         "source": "upstream#4304",
-        "pin": "c126ca81958f5b0d4a65ebda67e2b2ffde28058b",
+        "pin": "3810a85ece99341b111b6ec8a6c1de469026c589",
         "fixup": "c2b2d99b24928f38eb3dc82ac93089f6e55c5cb0"
       },
       {
         "name": "pr-4305",
         "kind": "pr",
         "source": "upstream#4305",
-        "pin": "aa281bb3beda09dc627b07ee86d837bc150c3b8a",
+        "pin": "05e474759cab5c5ba0a544b3fde58bd66a3da66e",
         "fixup": "0ccc32cf27eaa4cda8bfba8790ca323434a555d0"
       },
       {
         "name": "assembly-codex-banked-resets",
         "kind": "branch",
         "source": "mine:assembly-codex-banked-resets",
-        "pin": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
+        "pin": "d034a0de8dc08fb082757ccd98b495f8ae51ddfe",
         "fixup": "4236b5285b3c44dde0245ef467bba302a4e74dbb"
       },
       {
@@ -533,13 +532,25 @@
         "name": "assembly-sidebar-unarchive",
         "kind": "branch",
         "source": "mine:assembly-sidebar-unarchive",
-        "pin": "68c73f920878e6b83d4f8cc3447f5a8f482177ad"
+        "pin": "c6077bde04e4527b8bdb51cd5520aebfbc641ded"
       },
       {
         "name": "live-voice-error-detail",
         "kind": "branch",
         "source": "mine:live-voice-error-detail",
-        "pin": "3e9ff90e9ecf843fe0afca92d876213f127bfcc7"
+        "pin": "2eb1a0976730560a764809da682321f58ec0f2fa"
+      },
+      {
+        "name": "pr-4405",
+        "kind": "pr",
+        "source": "upstream#4405",
+        "pin": "cec6798d01c92bc4b83824a6f0e4150ea9a6c20e"
+      },
+      {
+        "name": "pr-4445",
+        "kind": "pr",
+        "source": "upstream#4445",
+        "pin": "0ba795f8066499a400f3dd66d4956fe81953e260"
       }
     ],
     "results": [
@@ -571,14 +582,14 @@
       },
       {
         "name": "personal/sidebar-workflow",
-        "oid": "31c12c5ab92f7f34c16bb325b14bf68965fa8fed",
+        "oid": "d0ae6cc2be6273976dcd88fdd6f372a11b0b7249",
         "status": "merged",
         "conflicted": false,
         "fixup": "6a57bd60a1a63b94c43eba1fdf14be5bd6dfeff8"
       },
       {
         "name": "model-picker-search",
-        "oid": "64ddbe4e4c2350331e12ed90c032c9ecc069fb36",
+        "oid": "3a26a4f24194e736271d7335358e1396d3b73f7f",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -612,20 +623,20 @@
       },
       {
         "name": "pr-2628",
-        "oid": "e19cf9af84763026996999c35a192b7d0d504b3f",
+        "oid": "d8fa5025347e611fb03b80439c8930577fe3623e",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "assembly-agent-env",
-        "oid": "af119eab4b353f2ed1168d7699ce1494b79e33d2",
+        "oid": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
         "status": "merged",
         "conflicted": false
       },
       {
         "name": "pr-2629",
-        "oid": "e0120a2038f0b3c3bf62c8317eda8badab4ccaed",
+        "oid": "8373126949d3bd1e7704d99e5261969172f7bcf5",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -633,7 +644,7 @@
       },
       {
         "name": "disable-worktree-setup-callout",
-        "oid": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b",
+        "oid": "32ec3263413021b0b43566c2c2128af0983aeb15",
         "status": "merged",
         "conflicted": false
       },
@@ -645,40 +656,40 @@
       },
       {
         "name": "pr-2658",
-        "oid": "e91bb097f921e7cc5e09cc594e547aa76ce73356",
+        "oid": "864d700ffd4f5ec45d5a304d92ff96b636db5ab8",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "pr-2659",
-        "oid": "b6164d2df5c10c9217ab2aa8bc97382a560e617f",
+        "oid": "396b5b776eda51ee4d8e4bdd6052eaecd57389fa",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
-        "name": "pr-2660",
-        "oid": "32ea53acff1c38dae1daf7a3b8dc0e12a6fa7c37",
+        "name": "unarchive-threads",
+        "oid": "806bf2ff8b4f9a8011dece3a6f214696ace06827",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "watch-live-voice",
-        "oid": "839c79b9793abbb721f7fcf9f71f65c321cd377b",
+        "oid": "1eb7168f2b5c07979945ab8988c8cc5667ebbd58",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "4a4294325806ddbe1a5c97f56c143736b0dc3fcf",
-          "tip": "1eb7168f2b5c07979945ab8988c8cc5667ebbd58"
+          "base_tip": "f5552b3150740f04051dd57309c4a3cd8b6ea076",
+          "tip": "2c93a906a2aa0884778dac483495bf03fe083db0"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "9104a4e3b5ebe4eb3b5e42565a97fa5205607b58",
+        "oid": "068f2f1f06a9f06dd2aa6f2f887cc611f0b5408e",
         "status": "applied",
         "conflicted": false
       },
@@ -704,15 +715,14 @@
       },
       {
         "name": "pr-2785",
-        "oid": "e13a58b9822af8c22d687d05c2e189cf2d1840de",
+        "oid": "72ea80ce9a8240272550c8f2895bd3e232798b0c",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
-        "fixup": "0623bcc09f185a11aba2c70f7d3616c2bc348311"
+        "resolution": "rerere"
       },
       {
         "name": "pr-2820",
-        "oid": "f20b53af5f62ace840a8b8592711bfdea124ea8f",
+        "oid": "7088d1e303892bed0a42ad46cc078ee4a88a25a1",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -754,7 +764,7 @@
       },
       {
         "name": "pr-2875",
-        "oid": "61887987929e947f7d6a1f98881d3315f6e1d9e6",
+        "oid": "e1ca50f19d7b76774939c942fe487de929b914e4",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -788,7 +798,7 @@
       },
       {
         "name": "pr-2898",
-        "oid": "bb95f0d163bde407d8e102b481a1086bf2a6b6dc",
+        "oid": "ac8fdfdc664532b7bb0343eebf3f0ed5562c7f0e",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -802,14 +812,14 @@
       },
       {
         "name": "pr-2927",
-        "oid": "9615c79e6b69e23d7f3657ec569d6ee31ebf0af3",
+        "oid": "4215c117cdefb9214c69343b57cc9a3b633a330f",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "d9c59938ec1e52a1b797a81dd3658fbb0deee7fe",
         "derived": {
-          "base_tip": "c96cfaeb0d189db218ec2b45741e1f65b6c28152",
-          "tip": "4215c117cdefb9214c69343b57cc9a3b633a330f"
+          "base_tip": "c6078b23fee1c4afadb325bbed2d6362f74d8d92",
+          "tip": "2cf4d7c63bf71b8f78eb9ab308fe8356c61b47f2"
         }
       },
       {
@@ -820,7 +830,7 @@
       },
       {
         "name": "pr-2954",
-        "oid": "ca0aa455107e094f74fb315c29e417fda2bbc9d2",
+        "oid": "2f9e4d61ed6f6aaf16c6396e3b469c238fd18ebf",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -847,7 +857,7 @@
       },
       {
         "name": "thinking-control-reachability",
-        "oid": "9b90d3fe5b491a4b0faf03a60bbb510d99ad5e84",
+        "oid": "cb75c024d325e97ba107c6275f91248efa543b33",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -866,7 +876,7 @@
       },
       {
         "name": "pr-3475",
-        "oid": "cc10084d2a9b3cd28139bd4589c078f421677bc2",
+        "oid": "32ec5c4acfbfe9c8f338ecc289509cfcc5c97010",
         "status": "merged",
         "conflicted": false
       },
@@ -878,13 +888,12 @@
       },
       {
         "name": "live-voice-quick-launch",
-        "oid": "160d82956cdebe966ac56bcaf09bcc528ba94aec",
+        "oid": "7e6db98790fe1141a57c111d0ca648558021711f",
         "status": "merged",
         "conflicted": false,
-        "fixup": "27851a55bf6953689b680a23cc02f23e765405bf",
         "derived": {
-          "base_tip": "01011c8f0af6218a6c5a8c0f5921737dccace844",
-          "tip": "f4305c4c8316b09f8834161571f64a04067f136d"
+          "base_tip": "c59b5d97e9f9b55c29c994c3f1a5ecc59cf5515d",
+          "tip": "80e42ef92e766cc4d274d0ad6f24ac62fe7a4075"
         }
       },
       {
@@ -893,10 +902,9 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "dd21d669561ac84568a9bbd24a70765969b27c80",
         "derived": {
-          "base_tip": "9843c435a757f79927f6924d2a64b6552299d926",
-          "tip": "07f94592020077d80a250148f321aa306feb0066"
+          "base_tip": "2ff3027d46952102e1a0483b86637bf95637d125",
+          "tip": "67ad485316e04e51b1c6d7b69f44433ae56c132b"
         }
       },
       {
@@ -907,10 +915,10 @@
       },
       {
         "name": "pr-3662",
-        "oid": "83df99c20a71ad98b6c78f1d9c8d98dd1eeeaf03",
+        "oid": "701e88bafc9cca05da45bc311150724deeac29b8",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:084c137c6c7d4819841a830b232f1c4c3423d1bf"
       },
       {
         "name": "pr-3882",
@@ -939,42 +947,41 @@
       },
       {
         "name": "pr-4261",
-        "oid": "d8062bd2995f1ec96cd809dd769da525c68236a8",
+        "oid": "e564de4e9cf869dcdbde3a7b5f3d05d30a5cd5ff",
         "status": "merged",
         "conflicted": false
       },
       {
-        "name": "pr-4280",
-        "oid": "25814b530f0295f6e519a31b56a3f6e1b3f5a6db",
+        "name": "fix/draft-tab-inflight-create",
+        "oid": "9352e9dca1cfb38af966b0c086f7d8c316a03826",
         "status": "merged",
         "conflicted": false
       },
       {
         "name": "pr-4281",
-        "oid": "8fe1252e248a0e08abf3d9ae4e62febc3beb2de9",
+        "oid": "3df13ba354e16fc203205700004bd4312215b014",
         "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere"
+        "conflicted": false
       },
       {
         "name": "pr-4304",
-        "oid": "c126ca81958f5b0d4a65ebda67e2b2ffde28058b",
+        "oid": "3810a85ece99341b111b6ec8a6c1de469026c589",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolution": "rerere:fa0ca97cf13129e8bbd4395e4db59bbf146ae13f",
         "fixup": "c2b2d99b24928f38eb3dc82ac93089f6e55c5cb0"
       },
       {
         "name": "pr-4305",
-        "oid": "aa281bb3beda09dc627b07ee86d837bc150c3b8a",
+        "oid": "05e474759cab5c5ba0a544b3fde58bd66a3da66e",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolution": "rerere:1b1e52fdeeae44ac51f0881d6773d7a9dbb61047",
         "fixup": "0ccc32cf27eaa4cda8bfba8790ca323434a555d0"
       },
       {
         "name": "assembly-codex-banked-resets",
-        "oid": "5f7d648ad1481ee8574b07f68a099783c4e0092a",
+        "oid": "d034a0de8dc08fb082757ccd98b495f8ae51ddfe",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -989,15 +996,31 @@
       },
       {
         "name": "assembly-sidebar-unarchive",
-        "oid": "68c73f920878e6b83d4f8cc3447f5a8f482177ad",
+        "oid": "c6077bde04e4527b8bdb51cd5520aebfbc641ded",
         "status": "merged",
-        "conflicted": false
+        "conflicted": true,
+        "resolution": "rerere:01e253175bb1218c3c83374d662f43b4fdbdc63c,0dc17cfa84c4cbcd364ccde233ea90e34a6b80ea,1947f57d3f724f877ff4971e902361958e04dab0,3323713da4d56f5a554fa3ff009262e7664a8543,3d764ebddad8f0664c6434e067229b2d497c5f1b,3e1fc4c92c2b59a33126a4e78819d68b4bd1e2ee,4b9fc4c4679f75d302e8480e60ea2428ce7ad8f0,594422efb68971d029bc1c0f6c38630bd355f84e,83d02b3a79f5e76967bc80281c373c642cd127d5,8981a095342ba2c6bc1f063a00b288ec44ee3296,938dd3daa4161d69ecffd116998f241d6f3bd473,9e40509b32e60ae59a51e91200fad4c6a8abc6eb,b951f36c09b0c01a50ae85aa0c6522067b55bad4,c7a46e419627ff30b371758d218516f26514b3d6,eb1ab7874961b5bcaffb5c262867c3327ceedeff,f0932b4244f39847e08eebf7a729b39e581deec6"
       },
       {
         "name": "live-voice-error-detail",
-        "oid": "3e9ff90e9ecf843fe0afca92d876213f127bfcc7",
+        "oid": "2eb1a0976730560a764809da682321f58ec0f2fa",
         "status": "merged",
-        "conflicted": false
+        "conflicted": true,
+        "resolution": "rerere:00d303009ac2e655a546fa4764cc419af4466eff,035f49082bf26435e584addb1c210294b52a5977,094f8a27d65579a56d5d13a5c64faf5a1a95555b,0a10e724a0c11ed4dc83f0fd80bf5485627f8865,0d2a85b09e2d2ab531f2bab90e5b41451fff405f,0f9e6f32148d023dc52cbc2da18c978f9d04825b,13f486ba3149b3b6a04101066beb9912e5e068fb,1587688a31897d6302e0375f5073f631463bc9e4,16ffee6427e5f4b2c33bd54a46f1f526c4b5e170,1a934fd2368b7627fa9cd5678cc58c4a92778dec,21096d12d81e4e1381f334468b1a03be6ece0811,21e05ec46f6fa2fc43572d03e467305c10e1ef2c,23d7b88e0ab43450d5ba121f8a8c5b2bc21d3ef3,24369e8ce642d6381b917aaf11b2273eaa61c101,252b93672ccdf2dbbed57612c632b03917df4d65,25bbcf8d2d95b29d7d94bead4b7ccddeca85370f,27273d42570d9fe3201ef0fc1394593bd6b7ccb3,2d6855347090082514a97504964dd6cc676e5ab2,346565b2930d0c6868a04f3fbcacd56a04fdf5e0,373ad5a2d716ae4866954a7f42b5d07f7d427a0f,4804df94ec833313c3513e2c3ef01370f1f6b40b,57622e06bb7cfca05052a80cba05e7d1c3d93743,5c712f30b99118d01996c5bb2c4e0120b81ce305,5ce52e9b3b42ed04e2d8dc09208d1f827f53fd9c,67d8d6bacffb5a81c4dd2ccebad032a01a3333f6,7971b4790533502016b46c680455570d0f0561d7,7bffe7b875eb254598c1d654a14cd2592ef0f88c,7d446adc7a9c3e8214ea707cfbd1d2b83713701a,86515d0fbd752d1478cb5a810a921a7f6a7109a4,8c6857e6f161feefd5044b00de9a1d1c03c98a09,912ba5a67151d320fb01c5507186195a215bb0c9,94185069afc595b1c5330cdfac557dbe8b8caeea,969b1b3f5d6d1d49f77e2fe6c70a98e8b6ff15bb,9a103fc8376bcd1bd0ae91dd21503ba6f0f69df3,a046f76319e2f8d09129d6a79507f73d0b21e2e8,a169e55a0782c07af8ebd0f3f2b0564346dc8c1e,abf433f12519d0186babedf3d8a51bc012135c0b,af2d9cbe00f58b7284b8ac27785a02082acbdd98,b0041617706e75e1b864578f91d74be06c204e5f,c36ccfa8b2f275d0690ece0ece784cd228d3e7dd,ccb94d65698b91dfb5d80036c2e0b096e4597cd4,ccf98ee6288e894220200852634ba30d52b8f370,d0bf0e8fd0179323b04629c4b17933b554e63932,d292ab46407dfc68390c2441e481451c484648a6,d2fdd15171b6dcd914094528d5344df62e9ad2ef,d622e60dfd8d4f6ba35c2f52450a0417faec4c54,d8e0a61f2762b65ee6f1334bb57532e64c4471c5,e0a045cb305fc99457f0ed601bc54a0a82ab5fa5,e359c03ed41278660bf3d2f3671cc68cfac84b24,e3a10b34db084c2ce60e89529ba0d92b418be49c,e4080999d3689a24e35ac81aee5a011950f30286,e5902131dfa5eece4b3b07895711d8a55d0a83af,ed0e34810aa3bcd262922c0ee98aeb0532024bb4,ee9680df68da5aeb6109ffb03b0962c1625cb3ce,ef9882da133b4fe28a544070ec4b7888291c11c9,efbd820f36e9fca81fcc0cc035ec262f37cd8629,f30214785742ed32e92a1634c1d2203f3bfcad87,f45077a4a8789cca2fb5dd67c17690e3519c0a4f,fcd0e5fcbc4e8e22efde5ae5a00df6d2aaf18948,fee730a65cea06de0c5168cf010abecec01dc95f"
+      },
+      {
+        "name": "pr-4405",
+        "oid": "cec6798d01c92bc4b83824a6f0e4150ea9a6c20e",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:0d97a0ae17f2f2c978448d78ba6229277194ba2b,329670be21eecb85c01f0046291e79d24cf4e2c6,58f546d185f69dad0cb574480f65a2dcc5372d22,7342487e5715e3ffb42ca42a41e9afcb3e9dda04,7f0bdaef110bc5e080a16e39fca056a5da5ef628,94010aeeef48a2535979830ba26d41482f243938,a5d1ba77ee57e38c861823befef2829f8ea4a01c,af063cfddbc046a37666d630178aafe6f43f008d"
+      },
+      {
+        "name": "pr-4445",
+        "oid": "0ba795f8066499a400f3dd66d4956fe81953e260",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:1df114f265f2fcae0d2440726054b6151f076326,bc27bbfdd4926d7bd61c2bab2696b23b6730aa3a,ff69408d167e0a4915ee99826b8e5daef0560594"
       }
     ]
   }
