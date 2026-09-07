@@ -16,6 +16,7 @@
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "4d499ecd68b4cd3e888ffc69a3abc6259bac4d2b",
       "live-voice-context-files": "1e4a303c7eb14d7bc4cca82c8a19e3af98b865db",
+      "live-voice-error-detail": "3e9ff90e9ecf843fe0afca92d876213f127bfcc7",
       "live-voice-quick-launch": "160d82956cdebe966ac56bcaf09bcc528ba94aec",
       "model-picker-search": "64ddbe4e4c2350331e12ed90c032c9ecc069fb36",
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
@@ -91,15 +92,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-06T19:59:46.698932783+00:00",
+    "generated": "2026-09-07T00:59:49.032915970+00:00",
     "base": "92442e743517cb4f1c304967bd79e2b9401a6ba6",
-    "commit": "40d8ac24f727c8cd240431d780f330dca2c14dc2",
-    "pre_provenance_commit": "40d8ac24f727c8cd240431d780f330dca2c14dc2",
-    "tree": "668afc35da73224407dcc8306514640ab2220252",
-    "built_tree": "668afc35da73224407dcc8306514640ab2220252",
-    "previous_tree": "9b90079169e07e085732729b8f15a15d1230ad71",
+    "commit": "3d0fac20390abbd602205057496efdb14ee38d3f",
+    "pre_provenance_commit": "3d0fac20390abbd602205057496efdb14ee38d3f",
+    "tree": "b03203c982dde6f1607488bc70fe7722e7301441",
+    "built_tree": "b03203c982dde6f1607488bc70fe7722e7301441",
+    "previous_tree": "668afc35da73224407dcc8306514640ab2220252",
     "tree_changed": true,
-    "conflicts": 1,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -533,6 +534,12 @@
         "kind": "branch",
         "source": "mine:assembly-sidebar-unarchive",
         "pin": "68c73f920878e6b83d4f8cc3447f5a8f482177ad"
+      },
+      {
+        "name": "live-voice-error-detail",
+        "kind": "branch",
+        "source": "mine:live-voice-error-detail",
+        "pin": "3e9ff90e9ecf843fe0afca92d876213f127bfcc7"
       }
     ],
     "results": [
@@ -983,6 +990,12 @@
       {
         "name": "assembly-sidebar-unarchive",
         "oid": "68c73f920878e6b83d4f8cc3447f5a8f482177ad",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "live-voice-error-detail",
+        "oid": "3e9ff90e9ecf843fe0afca92d876213f127bfcc7",
         "status": "merged",
         "conflicted": false
       }

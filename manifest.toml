@@ -318,6 +318,17 @@ summary = "Keep restores responsive and safe against auto-archive; replayed onto
 branch = "mine:assembly-sidebar-unarchive"
 summary = "Keep optimistic sidebar restores consistent across refetches and failed responses"
 
+# Stacked directly on 2657's pinned head (23ae875da5b8), like
+# colonelpanic8/client-settings-file-store is on 2849: its one commit sits on
+# that head, so it extends 2657 linearly rather than merging it. Not a derived
+# entry -- there is no merge boundary to anchor on, and declaring 2657 as a
+# parent would repin it to its live head, 21 commits and a main merge past what
+# the rest of the stack carries. The fix is also on the PR itself; when 2657's
+# pin advances past 493157568 this entry becomes redundant and should be pruned.
+[[entry]]
+branch = "mine:live-voice-error-detail"
+summary = "Show the provider's reason when a Live Voice call cannot start"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
