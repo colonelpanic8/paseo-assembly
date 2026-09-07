@@ -1,52 +1,17 @@
 diff --git a/packages/app/src/components/adaptive-modal-sheet.tsx b/packages/app/src/components/adaptive-modal-sheet.tsx
-index 7fa96fe60..6f530fc3d 100644
+index adbe3c5fc..6365b66ce 100644
 --- a/packages/app/src/components/adaptive-modal-sheet.tsx
 +++ b/packages/app/src/components/adaptive-modal-sheet.tsx
-@@ -6,7 +6,6 @@ import { Modal, Platform, Pressable, ScrollView, Text, View } from "react-native
- import type {
-   NativeSyntheticEvent,
-   StyleProp,
--  TextInput,
-   TextInputKeyPressEventData,
-   ViewStyle,
- } from "react-native";
-@@ -42,6 +41,7 @@ import { useKeyboardVisibility } from "@/hooks/use-keyboard-visibility";
- import { useInputFocus } from "@/hooks/use-input-focus";
- import { useSafeAreaInsets } from "react-native-safe-area-context";
- import { AdaptiveTextInput } from "@/components/adaptive-text-input";
-+import type { EditingTextInputHandle } from "@/components/ui/text-input";
- export { AdaptiveTextInput, type AdaptiveTextInputProps } from "@/components/adaptive-text-input";
- 
- // Horizontal indent token shared by the sheet header (title, back arrow,
-@@ -308,7 +308,7 @@ function BottomSheetVisibleContent({ children }: { children: ReactNode }) {
+@@ -515,7 +515,6 @@ export interface AdaptiveModalSheetProps {
+   onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
+   /** Re-establishes caller-owned contexts inside the compact bottom-sheet portal. */
+   contextBridge?: ContextBridge | null;
+-  onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
  }
  
- function useHeaderSearchInputFocus(enabled: boolean) {
--  const inputRef = useRef<TextInput>(null);
-+  const inputRef = useRef<EditingTextInputHandle>(null);
-   useInputFocus(inputRef, enabled);
-   return inputRef;
- }
-@@ -404,8 +404,6 @@ export function SheetHeaderView({
-             onSubmitEditing={search.onSubmit}
-             onFocus={search.onFocus}
-             onBlur={search.onBlur}
--            onKeyPress={search.onKeyPress}
--            onSubmitEditing={search.onSubmit}
-             autoCapitalize="none"
-             autoCorrect={false}
-             autoFocus={search.autoFocus && active}
-@@ -472,8 +470,6 @@ export function InlineHeaderView({ header }: { header: SheetHeader }) {
-             onSubmitEditing={header.search.onSubmit}
-             onFocus={header.search.onFocus}
-             onBlur={header.search.onBlur}
--            onKeyPress={header.search.onKeyPress}
--            onSubmitEditing={header.search.onSubmit}
-             autoCapitalize="none"
-             autoCorrect={false}
-             autoFocus={header.search.autoFocus}
+ export function AdaptiveModalSheet({
 diff --git a/packages/app/src/components/model-browser.tsx b/packages/app/src/components/model-browser.tsx
-index f4a73e478..7192d4bb4 100644
+index 34cd11a28..c2d37c8ef 100644
 --- a/packages/app/src/components/model-browser.tsx
 +++ b/packages/app/src/components/model-browser.tsx
 @@ -1,4 +1,13 @@
@@ -64,7 +29,7 @@ index f4a73e478..7192d4bb4 100644
  import { useTranslation } from "react-i18next";
  import {
    FlatList,
-@@ -669,6 +678,18 @@ function ModelBrowserPressable({
+@@ -678,6 +687,18 @@ function ModelBrowserPressable({
  
  type ModelBrowserRowTone = "default" | "elevated" | "drillDown";
  
@@ -83,7 +48,7 @@ index f4a73e478..7192d4bb4 100644
  function ModelBrowserRow({
    label,
    description,
-@@ -1954,7 +1975,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -1997,7 +2018,7 @@ const styles = StyleSheet.create((theme) => ({
    },
    sectionHeadingText: {
      flex: 1,
@@ -92,7 +57,7 @@ index f4a73e478..7192d4bb4 100644
      fontWeight: theme.fontWeight.normal,
      color: theme.colors.foregroundMuted,
    },
-@@ -2018,7 +2039,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2061,7 +2082,7 @@ const styles = StyleSheet.create((theme) => ({
      flexShrink: 0,
    },
    browserRowDescription: {
@@ -101,7 +66,7 @@ index f4a73e478..7192d4bb4 100644
      color: theme.colors.foregroundMuted,
      flexShrink: 1,
    },
-@@ -2039,7 +2060,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2082,7 +2103,7 @@ const styles = StyleSheet.create((theme) => ({
      gap: theme.spacing[1],
    },
    drillDownCount: {
@@ -110,7 +75,7 @@ index f4a73e478..7192d4bb4 100644
      color: theme.colors.foregroundMuted,
    },
    rowStateInline: {
-@@ -2078,7 +2099,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2121,7 +2142,7 @@ const styles = StyleSheet.create((theme) => ({
      color: theme.colors.foregroundMuted,
    },
    tooltipText: {
@@ -119,8 +84,28 @@ index f4a73e478..7192d4bb4 100644
      color: theme.colors.foreground,
    },
    virtualizedModelList: {
+diff --git a/packages/app/src/components/ui/text-input/text-input.tsx b/packages/app/src/components/ui/text-input/text-input.tsx
+index eb3f68be8..248be2405 100644
+--- a/packages/app/src/components/ui/text-input/text-input.tsx
++++ b/packages/app/src/components/ui/text-input/text-input.tsx
+@@ -1 +1 @@
+-export { EditingTextInput } from "./text-input.native";
++export { EditingTextInput, hasFocusedTextInput } from "./text-input.native";
+diff --git a/packages/app/src/composer/input/input.tsx b/packages/app/src/composer/input/input.tsx
+index de3ae13b2..f9bb3fb9a 100644
+--- a/packages/app/src/composer/input/input.tsx
++++ b/packages/app/src/composer/input/input.tsx
+@@ -42,7 +42,7 @@ import { useComposerSigils } from "@/composer/tokens/use-composer-sigils";
+ import type { ComposerSigils } from "@/composer/tokens/sigils";
+ import { collectComposerTokens, type ComposerTokenCatalog } from "@/composer/tokens/tokens";
+ import { ComposerTokenHighlightLayer } from "./token-highlight";
+-import { focusWithRetries } from "@/utils/web-focus";
++import { focusWithRetries } from "@/utils/focus-with-retries";
+ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+ import { Shortcut } from "@/components/ui/shortcut";
+ import {
 diff --git a/packages/app/src/hooks/use-agent-autocomplete.ts b/packages/app/src/hooks/use-agent-autocomplete.ts
-index ca152c5d4..132657662 100644
+index a1e15816d..e9bbccae5 100644
 --- a/packages/app/src/hooks/use-agent-autocomplete.ts
 +++ b/packages/app/src/hooks/use-agent-autocomplete.ts
 @@ -9,7 +9,7 @@ import {
@@ -132,7 +117,7 @@ index ca152c5d4..132657662 100644
  import { useSessionStore } from "@/stores/session-store";
  import { useHostRuntimeClient, useHostRuntimeIsConnected } from "@/runtime/host-runtime";
  import { CLIENT_SLASH_COMMANDS, type ClientSlashCommand } from "@/client-slash-commands";
-@@ -42,7 +42,7 @@ interface UseAgentAutocompleteInput {
+@@ -45,7 +45,7 @@ interface UseAgentAutocompleteInput {
    sigils: ComposerSigils;
  }
  
@@ -141,7 +126,7 @@ index ca152c5d4..132657662 100644
    input: AgentAutocompleteInputSnapshot;
  }
  
-@@ -574,12 +574,15 @@ export function useAgentAutocomplete(input: UseAgentAutocompleteInput): AgentAut
+@@ -590,12 +590,15 @@ export function useAgentAutocomplete(input: UseAgentAutocompleteInput): AgentAut
    );
  
    const selectOptionFromKeyPress = useCallback(
@@ -159,30 +144,3 @@ index ca152c5d4..132657662 100644
      isVisible,
      options,
      query: mode === "command" ? commandFilterQuery : fileFilterQuery,
-diff --git a/packages/app/src/components/adaptive-modal-sheet.tsx b/packages/app/src/components/adaptive-modal-sheet.tsx
---- a/packages/app/src/components/adaptive-modal-sheet.tsx
-+++ b/packages/app/src/components/adaptive-modal-sheet.tsx
-@@ -511,5 +511,4 @@ export interface AdaptiveModalSheetProps {
-   onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
-   /** Re-establishes caller-owned contexts inside the compact bottom-sheet portal. */
-   contextBridge?: ContextBridge | null;
--  onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
- }
-diff --git a/packages/app/src/components/ui/text-input/text-input.tsx b/packages/app/src/components/ui/text-input/text-input.tsx
---- a/packages/app/src/components/ui/text-input/text-input.tsx
-+++ b/packages/app/src/components/ui/text-input/text-input.tsx
-@@ -1 +1 @@
--export { EditingTextInput } from "./text-input.native";
-+export { EditingTextInput, hasFocusedTextInput } from "./text-input.native";
-diff --git a/packages/app/src/composer/input/input.tsx b/packages/app/src/composer/input/input.tsx
---- a/packages/app/src/composer/input/input.tsx
-+++ b/packages/app/src/composer/input/input.tsx
-@@ -42,7 +42,7 @@ import { useComposerSigils } from "@/composer/tokens/use-composer-sigils";
- import type { ComposerSigils } from "@/composer/tokens/sigils";
- import { collectComposerTokens, type ComposerTokenCatalog } from "@/composer/tokens/tokens";
- import { ComposerTokenHighlightLayer } from "./token-highlight";
--import { focusWithRetries } from "@/utils/web-focus";
-+import { focusWithRetries } from "@/utils/focus-with-retries";
- import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
- import { Shortcut } from "@/components/ui/shortcut";
- import {
