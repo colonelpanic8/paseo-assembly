@@ -1,0 +1,428 @@
+diff --git a/packages/app/src/agent-stream/view.tsx b/packages/app/src/agent-stream/view.tsx
+index c666caf80..72451288f 100644
+--- a/packages/app/src/agent-stream/view.tsx
++++ b/packages/app/src/agent-stream/view.tsx
+@@ -809,6 +809,7 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
+         throw new Error(t("workspace.terminal.hostDisconnected"));
+       }
+       const session = useSessionStore.getState().sessions[resolvedServerId];
++      const activeTurn = session?.agents.get(agentId)?.turn;
+       await dispatchComposerAgentMessage({
+         client,
+         agentId,
+@@ -817,7 +818,7 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
+         encodeImages,
+         submission: createMessageSubmissionWriter(resolvedServerId),
+         activeTurnBehavior: "steer",
+-        activeTurnId: session?.agents.get(agentId)?.activeTurn?.turnId ?? undefined,
++        activeTurnId: activeTurn?.phase === "open" ? (activeTurn.turnId ?? undefined) : undefined,
+       });
+     });
+ 
+diff --git a/packages/app/src/components/model-browser-view.test.ts b/packages/app/src/components/model-browser-view.test.ts
+index 21118c4da..497352d6a 100644
+--- a/packages/app/src/components/model-browser-view.test.ts
++++ b/packages/app/src/components/model-browser-view.test.ts
+@@ -8,7 +8,7 @@ import {
+   resolveModelBrowserAllView,
+   resolveModelBrowserScrolling,
+   groupProfilesByProviderModel,
+-  resolveModelBrowserScrolling,
++  clampModelBrowserScrolling,
+ } from "./model-browser-view";
+ 
+ function provider(
+@@ -260,16 +260,16 @@ describe("model browser all view", () => {
+   });
+ });
+ 
+-describe("resolveModelBrowserScrolling", () => {
++describe("clampModelBrowserScrolling", () => {
+   it("keeps sheet scrolling inside a bottom sheet", () => {
+-    expect(resolveModelBrowserScrolling("sheet", true)).toBe("sheet");
++    expect(clampModelBrowserScrolling("sheet", true)).toBe("sheet");
+   });
+ 
+   it("falls back to independent scrolling outside a bottom sheet", () => {
+-    expect(resolveModelBrowserScrolling("sheet", false)).toBe("independent");
++    expect(clampModelBrowserScrolling("sheet", false)).toBe("independent");
+   });
+ 
+   it("never promotes an independent list to a sheet scrollable", () => {
+-    expect(resolveModelBrowserScrolling("independent", true)).toBe("independent");
++    expect(clampModelBrowserScrolling("independent", true)).toBe("independent");
+   });
+ });
+diff --git a/packages/app/src/components/model-browser-view.ts b/packages/app/src/components/model-browser-view.ts
+index 9ed594c92..f145e61f8 100644
+--- a/packages/app/src/components/model-browser-view.ts
++++ b/packages/app/src/components/model-browser-view.ts
+@@ -128,7 +128,7 @@ export type ModelBrowserScrolling = "sheet" | "independent";
+  * context and throw without it. Callers pick `scrolling` from platform or form factor, which is a
+  * different question from whether this particular render sits inside a sheet.
+  */
+-export function resolveModelBrowserScrolling(
++export function clampModelBrowserScrolling(
+   requested: ModelBrowserScrolling,
+   insideBottomSheet: boolean,
+ ): ModelBrowserScrolling {
+diff --git a/packages/app/src/components/model-browser.tsx b/packages/app/src/components/model-browser.tsx
+index 16ff5a472..bfc219607 100644
+--- a/packages/app/src/components/model-browser.tsx
++++ b/packages/app/src/components/model-browser.tsx
+@@ -79,7 +79,7 @@ import {
+   groupProfilesByProviderModel,
+   resolveInitialModelBrowserView,
+   resolveModelBrowserAllView,
+-  resolveModelBrowserScrolling,
++  clampModelBrowserScrolling,
+   type ModelBrowserView,
+ } from "@/components/model-browser-view";
+ import {
+@@ -1512,6 +1512,7 @@ function ModelRowList({
+ 
+ function AllModelsList({
+   items,
++  serverId,
+   selectedProvider,
+   selectedModel,
+   highlightedKey,
+@@ -1524,6 +1525,7 @@ function AllModelsList({
+   scrolling,
+ }: {
+   items: ModelBrowserListItem[];
++  serverId: string | null;
+   selectedProvider: string;
+   selectedModel: string;
+   highlightedKey: string | null;
+@@ -1551,6 +1553,7 @@ function AllModelsList({
+       return (
+         <SelectableModelRow
+           row={item.row}
++          serverId={serverId}
+           isSelected={item.row.provider === selectedProvider && item.row.modelId === selectedModel}
+           isHighlighted={item.row.favoriteKey === highlightedKey}
+           showProviderLabel={item.showProvider}
+@@ -1596,7 +1599,7 @@ function AllModelsList({
+ 
+   if (isCompact && isNative) {
+     return (
+-      <BottomSheetFlatList
++      <SheetFlatList
+         data={items}
+         renderItem={renderItem}
+         keyExtractor={keyExtractor}
+@@ -1819,6 +1822,7 @@ function ModelBrowserContent({
+     return (
+       <AllModelsList
+         items={items}
++        serverId={serverId}
+         selectedProvider={selectedProvider}
+         selectedModel={selectedModel}
+         highlightedKey={highlightedKey}
+@@ -1982,7 +1986,7 @@ export function ModelBrowser({
+       onShowAllModels={state.showAllModels}
+       onRetryProvider={onRetryProvider}
+       isRetryingProvider={isRetryingProvider}
+-      scrolling={resolveModelBrowserScrolling(scrolling, insideBottomSheet)}
++      scrolling={clampModelBrowserScrolling(scrolling, insideBottomSheet)}
+       searchAllOnFocus={searchAllOnFocus}
+       rootBrowseContent={rootBrowseContent}
+       showProfilesSection={showProfilesSection}
+diff --git a/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx b/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx
+index 8e6ce060c..5cdabb71b 100644
+--- a/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx
++++ b/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx
+@@ -227,7 +227,7 @@ describe("SidebarArchivedGroup", () => {
+             new Map([
+               [
+                 "server",
+-                { serverId: "server", label: "Local", color: "none" as const, showLabel: true },
++                { serverId: "server", label: "Local", color: "blue" as const, showLabel: true },
+               ],
+             ])
+           }
+@@ -270,7 +270,7 @@ describe("SidebarArchivedGroup", () => {
+             new Map([
+               [
+                 "server",
+-                { serverId: "server", label: "Local", color: "none" as const, showLabel: true },
++                { serverId: "server", label: "Local", color: "blue" as const, showLabel: true },
+               ],
+             ])
+           }
+diff --git a/packages/app/src/i18n/resources/ru.ts b/packages/app/src/i18n/resources/ru.ts
+index ee537a3d2..72461b0a4 100644
+--- a/packages/app/src/i18n/resources/ru.ts
++++ b/packages/app/src/i18n/resources/ru.ts
+@@ -1105,6 +1105,7 @@ export const ru: TranslationResources = {
+         label: "Заголовок",
+         title: "Заголовок",
+         branch: "Имя ветки",
++        worktree: "Суффикс worktree",
+       },
+       show: {
+         label: "Показывать",
+@@ -1224,12 +1225,27 @@ export const ru: TranslationResources = {
+         rename: "Переименовать рабочее пространство",
+         pin: "Закрепить вверху",
+         unpin: "Открепить",
++        snooze: "Отложить",
++        snoozeHour: "Отложить на 1 час",
++        snoozeEvening: "Отложить до вечера",
++        snoozeTomorrow: "Отложить до завтра",
++        snoozeNextWeek: "Отложить до следующей недели",
++        snoozeCustom: "Выбрать срок…",
++        wake: "Возобновить",
++        snoozedUntil: "Отложено до {{time}} ({{duration}})",
++        snoozedChip: "{{time}} · {{duration}}",
+         archive: "Архивировать",
+         archiveWorkspace: "Архивировать рабочее пространство",
+         hideFromSidebar: "Скрыть на боковой панели",
+         archiving: "Архивирование...",
+         hiding: "Скрытие...",
+       },
++      archived: {
++        groupTitle: "Недавно архивированные",
++        unarchive: "Разархивировать",
++        unarchiving: "Разархивирование…",
++        unarchiveFailed: "Не удалось разархивировать рабочее пространство",
++      },
+       confirmations: {
+         hideTitle: "Скрыть рабочее пространство?",
+         hideMessage:
+@@ -1247,10 +1263,24 @@ export const ru: TranslationResources = {
+         submit: "Переименовать",
+         invalidBranchName: "Недопустимое имя ветки",
+       },
++      customSnooze: {
++        title: "Отложить до указанного времени",
++        until: "Отложить до",
++        date: "Дата",
++        time: "Время",
++        pastTime: "Выберите время в будущем.",
++        confirm: "Отложить",
++      },
+       toasts: {
+         workspacePathUnavailable: "Путь к рабочему пространству недоступен",
+         pathCopied: "Путь скопирован",
+         branchNameCopied: "Имя ветки скопировано",
++        snoozingWorkspace: "Рабочее пространство откладывается…",
++        snoozedWorkspace: "Рабочее пространство отложено",
++        failedToSnoozeWorkspace: "Не удалось отложить рабочее пространство",
++        wakingWorkspace: "Рабочее пространство возобновляется…",
++        wokeWorkspace: "Рабочее пространство возобновлено",
++        failedToWakeWorkspace: "Не удалось возобновить рабочее пространство",
+         hostDisconnected: "Хост не подключён",
+         hideFailed: "Не удалось скрыть рабочее пространство",
+         archiveFailed: "Не удалось архивировать рабочее пространство",
+@@ -2959,6 +2989,26 @@ export const ru: TranslationResources = {
+           placeholder: "Мой хост",
+           submit: "Переименовать",
+         },
++        color: {
++          section: "Внешний вид",
++          title: "Цвет",
++          hint: "Окрашивает метку хоста на боковой панели",
++          options: {
++            none: "Нет",
++            blue: "Синий",
++            green: "Зелёный",
++            amber: "Янтарный",
++            orange: "Оранжевый",
++            red: "Красный",
++            purple: "Фиолетовый",
++          },
++          custom: {
++            label: "Другой",
++            title: "Другой цвет",
++            submit: "Применить",
++            invalid: "Введите HEX-цвет, например #4f46e5",
++          },
++        },
+         restart: {
+           title: "Перезапустить демон",
+           hint: "Перезапускает процесс демона. Приложение автоматически переподключится",
+diff --git a/packages/app/src/runtime/replica-cache/index.ts b/packages/app/src/runtime/replica-cache/index.ts
+index 120c03869..037a33d35 100644
+--- a/packages/app/src/runtime/replica-cache/index.ts
++++ b/packages/app/src/runtime/replica-cache/index.ts
+@@ -711,7 +711,8 @@ function serializeWorkspace(workspace: WorkspaceDescriptor): StoredWorkspace {
+     name: workspace.name,
+     title: workspace.title ?? null,
+     pinnedAt: workspace.pinnedAt ?? null,
+-    labels: workspace.labels,
++    labels: workspace.labels ?? [],
++    snoozeStatus: workspace.snoozeStatus ?? null,
+     status: workspace.status,
+     statusEnteredAt: workspace.statusEnteredAt?.toISOString() ?? null,
+     activityAt: null,
+diff --git a/packages/app/src/screens/settings/appearance/appearance-section.tsx b/packages/app/src/screens/settings/appearance/appearance-section.tsx
+index 64b85e362..87f070af6 100644
+--- a/packages/app/src/screens/settings/appearance/appearance-section.tsx
++++ b/packages/app/src/screens/settings/appearance/appearance-section.tsx
+@@ -1,7 +1,7 @@
+ import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+ import type { TFunction } from "i18next";
+ import { useTranslation } from "react-i18next";
+-import { Text, View, type PressableStateCallbackType } from "react-native";
++import { Switch, Text, View, type PressableStateCallbackType } from "react-native";
+ import { StyleSheet, withUnistyles } from "react-native-unistyles";
+ import { ChevronDown, Monitor, Moon, Sun } from "lucide-react-native";
+ import {
+diff --git a/packages/app/src/screens/settings/host-appearance-section.tsx b/packages/app/src/screens/settings/host-appearance-section.tsx
+index 6eaac42bd..1b81e17bc 100644
+--- a/packages/app/src/screens/settings/host-appearance-section.tsx
++++ b/packages/app/src/screens/settings/host-appearance-section.tsx
+@@ -20,6 +20,7 @@ import {
+   HOST_COLORS,
+   hostColorValue,
+   isCustomHostColor,
++  resolveHostColor,
+   resolveHostBadgeDisplay,
+   type CustomHostColor,
+   type HostBadgeDisplay,
+@@ -342,7 +343,7 @@ function BadgePreview({
+         : {
+             serverId: host.serverId,
+             label: host.label,
+-            color: host.appearance.color,
++            color: resolveHostColor(host),
+             showLabel: badgeDisplay === "name",
+           },
+     [badgeDisplay, host.serverId, host.label, host.appearance.color],
+diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
+index 6a4056b76..3c375cbbd 100644
+--- a/packages/app/src/stores/session-store.ts
++++ b/packages/app/src/stores/session-store.ts
+@@ -131,6 +131,7 @@ export interface WorkspaceDescriptor {
+   name: string;
+   title?: string | null;
+   pinnedAt?: string | null;
++  labels?: string[];
+   snoozeStatus?: { snoozedAt: string; snoozedUntil: string } | null;
+   status: WorkspaceDescriptorPayload["status"];
+   statusEnteredAt: Date | null;
+@@ -174,6 +175,7 @@ export function normalizeWorkspaceDescriptor(
+     name: payload.name,
+     title: payload.title ?? null,
+     pinnedAt: payload.pinnedAt ?? null,
++    labels: payload.labels ?? [],
+     snoozeStatus: payload.snoozeStatus ?? null,
+     status: payload.status,
+     statusEnteredAt,
+@@ -656,6 +658,7 @@ interface SessionStoreActions {
+   // Hydration
+   setHasHydratedAgents: (serverId: string, hydrated: boolean) => void;
+   setHasHydratedWorkspaces: (serverId: string, hydrated: boolean) => void;
++  setHasWorkspaceDirectorySnapshot: (serverId: string, hydrated: boolean) => void;
+ 
+   // Agent directory (derived from agents)
+   getAgentDirectory: (serverId: string) => AgentDirectoryEntry[] | undefined;
+@@ -1944,6 +1947,20 @@ export const useSessionStore = create<SessionStore>()(
+         });
+       },
+ 
++      setHasWorkspaceDirectorySnapshot: (serverId, hydrated) => {
++        set((prev) => {
++          const session = prev.sessions[serverId];
++          if (!session || session.hasWorkspaceDirectorySnapshot === hydrated) return prev;
++          return {
++            ...prev,
++            sessions: {
++              ...prev.sessions,
++              [serverId]: { ...session, hasWorkspaceDirectorySnapshot: hydrated },
++            },
++          };
++        });
++      },
++
+       // Agent directory - derived from agents (computed on-demand)
+       getAgentDirectory: (serverId) => {
+         const state = get();
+diff --git a/packages/app/src/test/seed-session.ts b/packages/app/src/test/seed-session.ts
+index d483e01c5..a7eb42bf6 100644
+--- a/packages/app/src/test/seed-session.ts
++++ b/packages/app/src/test/seed-session.ts
+@@ -47,6 +47,7 @@ export function seedSessionHosts(serverIds: readonly string[]): void {
+     serverIds.map((serverId) => ({
+       serverId,
+       label: serverId,
++      declaredColor: null,
+       appearance: defaultHostAppearance(),
+       lifecycle: {},
+       connections: [],
+diff --git a/packages/app/src/utils/agent-directory-reconciliation.test.ts b/packages/app/src/utils/agent-directory-reconciliation.test.ts
+index e95a34b84..cda9cc6d3 100644
+--- a/packages/app/src/utils/agent-directory-reconciliation.test.ts
++++ b/packages/app/src/utils/agent-directory-reconciliation.test.ts
+@@ -211,7 +211,6 @@ describe("agent directory reconciliation", () => {
+ 
+   it("accepts prompt cache status from a stale buffered upsert without regressing metadata", () => {
+     const result = reconcileAgentDirectory({
+-      previous: new Map(),
+       snapshot: [
+         {
+           ...entry("agent", "idle"),
+@@ -248,9 +247,9 @@ describe("agent directory reconciliation", () => {
+     });
+ 
+     expect({
+-      title: result.entries[0]?.agent.title,
+-      status: result.entries[0]?.agent.status,
+-      promptCache: result.entries[0]?.agent.promptCache,
++      title: result[0]?.agent.title,
++      status: result[0]?.agent.status,
++      promptCache: result[0]?.agent.promptCache,
+     }).toEqual({
+       title: "newer page",
+       status: "idle",
+@@ -265,7 +264,6 @@ describe("agent directory reconciliation", () => {
+ 
+   it("preserves prompt cache status when a stale buffered upsert omits it", () => {
+     const result = reconcileAgentDirectory({
+-      previous: new Map(),
+       snapshot: [
+         {
+           ...entry("agent", "idle"),
+@@ -293,7 +291,7 @@ describe("agent directory reconciliation", () => {
+       ],
+     });
+ 
+-    expect(result.entries[0]?.agent.promptCache).toEqual({
++    expect(result[0]?.agent.promptCache).toEqual({
+       observedAt: "2026-07-12T11:30:00.000Z",
+       ttlSeconds: 300,
+       lastRequest: { inputTokens: 10, cachedInputTokens: 90 },
+diff --git a/packages/app/src/wear/wear-bridge.test.ts b/packages/app/src/wear/wear-bridge.test.ts
+index 75a4370c0..c1f85b296 100644
+--- a/packages/app/src/wear/wear-bridge.test.ts
++++ b/packages/app/src/wear/wear-bridge.test.ts
+@@ -1631,6 +1631,7 @@ describe("WearBridge live voice", () => {
+ 
+   const IDLE_SNAPSHOT: LiveVoiceSnapshot = {
+     phase: "idle",
++    assistantId: null,
+     serverId: null,
+     liveSessionId: null,
+     isMuted: false,
+@@ -1937,6 +1938,7 @@ describe("WearBridge dispatch", () => {
+   };
+   const snapshot: LiveVoiceSnapshot = {
+     phase: "idle",
++    assistantId: null,
+     serverId: null,
+     liveSessionId: null,
+     isMuted: false,
+diff --git a/packages/app/src/wear/wear-live-voice.test.ts b/packages/app/src/wear/wear-live-voice.test.ts
+index 5b92623af..52198bc88 100644
+--- a/packages/app/src/wear/wear-live-voice.test.ts
++++ b/packages/app/src/wear/wear-live-voice.test.ts
+@@ -13,6 +13,7 @@ const NOW = 1_750_000_000_000;
+ 
+ const IDLE: LiveVoiceSnapshot = {
+   phase: "idle",
++  assistantId: null,
+   serverId: null,
+   liveSessionId: null,
+   isMuted: false,

@@ -259,7 +259,8 @@ pr = 3662
 pr = 3882
 
 [[entry]]
-pr = 3972
+branch = "mine:fix/model-browser-sheet-scope"
+summary = "Stop model browser sheet scrollables outside sheets (was PR 3972, closed upstream; refs/pull/3972/head is frozen at the pre-rebase commit, so the branch is the only live source)"
 
 # Carries only the model-catalog half of upstream#4179. That PR also cuts
 # release 0.7.1 -- every package.json version, package-lock.json, CHANGELOG,
@@ -335,6 +336,12 @@ summary = "Let hosts declare a default color so devices agree"
 [[entry]]
 pr = 4445
 summary = "Add a Usage history page: daily token and cost usage from provider transcripts"
+
+# These are assembly-wide API and type-shape interactions spanning the refreshed
+# sidebar, model-browser, live-voice, host-color, and directory-cache topics.
+# No single entry owns the combined compatibility surface.
+[[entry]]
+patch = "patches/assembled-current-coherence.patch"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

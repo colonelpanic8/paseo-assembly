@@ -732,6 +732,12 @@ paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-09-03T19:27:45.303422877+00:00"
 
 [[resolution]]
+entry = "fix/model-browser-sheet-scope"
+hash = "f25c74fbb1614380bf842019c415fa9100e04015"
+paths = ["packages/app/src/components/model-browser.tsx"]
+recorded = "2026-09-07T21:32:40.386523001+00:00"
+
+[[resolution]]
 entry = "live-voice-context-files"
 hash = "0b1b57e5a47b37fa126df4976eaf70eba7b277e5"
 paths = ["packages/server/src/server/websocket-server.ts"]

@@ -4,6 +4,7 @@
     "base": "a7a708bec99e935ee4b8c6f7314a4b9a9984cfa6",
     "entries": {
       "assembled-ci-lint-fixes": "d89687e2f3427e36bc293398dcd7b1057ee51678",
+      "assembled-current-coherence": "63642ecd2b8a4c181d7efbff7d2224942e728617",
       "assembled-npm-deps-hash": "538177a84c5679356aad2b1ca5c070333b353a90",
       "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "65ea77f683a603b08da31a22d81357bedd7caf39",
@@ -16,6 +17,7 @@
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "disable-worktree-setup-callout": "32ec3263413021b0b43566c2c2128af0983aeb15",
       "fix/draft-tab-inflight-create": "9352e9dca1cfb38af966b0c086f7d8c316a03826",
+      "fix/model-browser-sheet-scope": "36e106f7b5155f8ccbfb3323610acf7366d55f27",
       "live-voice-context-files": "1e4a303c7eb14d7bc4cca82c8a19e3af98b865db",
       "live-voice-error-detail": "2eb1a0976730560a764809da682321f58ec0f2fa",
       "live-voice-quick-launch": "7e6db98790fe1141a57c111d0ca648558021711f",
@@ -58,7 +60,6 @@
       "pr-3506": "c76bcebdfef8976c37fab1b92e5fd99946c30076",
       "pr-3662": "701e88bafc9cca05da45bc311150724deeac29b8",
       "pr-3882": "b157af46b9491448287120a0781e369cd56ef1bb",
-      "pr-3972": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573",
       "pr-4256": "2661f94438afbf4f282019c7345e9bcd381511f5",
       "pr-4261": "e564de4e9cf869dcdbde3a7b5f3d05d30a5cd5ff",
       "pr-4281": "3df13ba354e16fc203205700004bd4312215b014",
@@ -94,15 +95,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-07T21:22:07.042769374+00:00",
+    "generated": "2026-09-07T21:42:36.406074993+00:00",
     "base": "a7a708bec99e935ee4b8c6f7314a4b9a9984cfa6",
-    "commit": "cb22384d4cf4f3f7921d94b56f7ccfe034fe37af",
-    "pre_provenance_commit": "cb22384d4cf4f3f7921d94b56f7ccfe034fe37af",
-    "tree": "38bc824c49577e7a4424876a5ae124c5acd44ecd",
-    "built_tree": "38bc824c49577e7a4424876a5ae124c5acd44ecd",
-    "previous_tree": "55ce9bb57100d49ff8b503737a350b78d2ba20dd",
+    "commit": "8ca35acf0910e07298192b787f0533d5e3db01f1",
+    "pre_provenance_commit": "8ca35acf0910e07298192b787f0533d5e3db01f1",
+    "tree": "21dda3d00bde3c9371f04457f1ecaaa08ad5ce72",
+    "built_tree": "21dda3d00bde3c9371f04457f1ecaaa08ad5ce72",
+    "previous_tree": "e693495f7c7d72cd06f95eeba6a9e3caaa3d41b9",
     "tree_changed": true,
-    "conflicts": 44,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -467,10 +468,10 @@
         "pin": "b157af46b9491448287120a0781e369cd56ef1bb"
       },
       {
-        "name": "pr-3972",
-        "kind": "pr",
-        "source": "upstream#3972",
-        "pin": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573"
+        "name": "fix/model-browser-sheet-scope",
+        "kind": "branch",
+        "source": "mine:fix/model-browser-sheet-scope",
+        "pin": "36e106f7b5155f8ccbfb3323610acf7366d55f27"
       },
       {
         "name": "claude-fable-5-1",
@@ -553,6 +554,12 @@
         "kind": "pr",
         "source": "upstream#4445",
         "pin": "0ba795f8066499a400f3dd66d4956fe81953e260"
+      },
+      {
+        "name": "assembled-current-coherence",
+        "kind": "patch",
+        "source": "patches/assembled-current-coherence.patch",
+        "pin": "63642ecd2b8a4c181d7efbff7d2224942e728617"
       }
     ],
     "results": [
@@ -686,8 +693,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "cbb3b433f6a72c4685e6ec0122cd82381e583a1c",
-          "tip": "677fd80b11438ce618ef90267663705226c8bbc4"
+          "base_tip": "b1465590c2e8262db6a8714b5fcd85ae8e74e9a1",
+          "tip": "d7bfb73e55bae9403a68502624cf6492c6be2dda"
         }
       },
       {
@@ -821,8 +828,8 @@
         "resolution": "rerere",
         "fixup": "d9c59938ec1e52a1b797a81dd3658fbb0deee7fe",
         "derived": {
-          "base_tip": "ac1500a20946dce97586174d63bdf5ab596d2827",
-          "tip": "26277f6dfeb85b0cb213499e5333955f6bb957df"
+          "base_tip": "d67235753f38a03f59f762e78b6ff34e0ff89ea4",
+          "tip": "e957be2280974214eec583927f3f422ea9a9ac89"
         }
       },
       {
@@ -895,8 +902,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "5c7b12e8ea598e5aa4507d695d19c4c4048ce41d",
-          "tip": "1c6dcf2484162b98b67368359a6c9bfcf4163cae"
+          "base_tip": "5e30254ab206aedf3421d9180505d71e176d7686",
+          "tip": "0a641ef81a0c2efab2a24a9b9b9300a488623fee"
         }
       },
       {
@@ -906,8 +913,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "6262868309241b3cca89994ac74f3a4996ae42cc",
-          "tip": "ad7d0733f1e4be51bb55c14afd34186f81559b38"
+          "base_tip": "4c2378de3235f893075552627f8f71fe646a1d66",
+          "tip": "7fe9ec2807329f79463808a79bea0cae8cdf3520"
         }
       },
       {
@@ -930,11 +937,11 @@
         "conflicted": false
       },
       {
-        "name": "pr-3972",
-        "oid": "0b87f972d1f8aaa4ab58c2d6b1dd1efb81f77573",
+        "name": "fix/model-browser-sheet-scope",
+        "oid": "36e106f7b5155f8ccbfb3323610acf7366d55f27",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:f25c74fbb1614380bf842019c415fa9100e04015"
       },
       {
         "name": "claude-fable-5-1",
@@ -1025,6 +1032,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "assembled-current-coherence",
+        "oid": "63642ecd2b8a4c181d7efbff7d2224942e728617",
+        "status": "applied",
+        "conflicted": false
       }
     ]
   }
