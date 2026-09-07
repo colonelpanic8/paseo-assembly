@@ -80,7 +80,9 @@ jobs:
       # breakage being looked for.
       - name: Build workspace declarations
         working-directory: assembled
-        run: npm run build:app-deps
+        run: |
+          npm run build:app-deps
+          npm run build:server
 
       - name: Typecheck
         working-directory: assembled
