@@ -1,0 +1,17 @@
+diff --git a/packages/server/src/server/agent/plugin-provider.ts b/packages/server/src/server/agent/plugin-provider.ts
+index 7b7df64a2..33791d1aa 100644
+--- a/packages/server/src/server/agent/plugin-provider.ts
++++ b/packages/server/src/server/agent/plugin-provider.ts
+@@ -1528,7 +1528,11 @@ function mapSessionConfig(
+ ): ProviderSessionConfig {
+   return {
+     cwd: config.cwd,
+-    env: { ...launchContext?.env },
++    env: Object.fromEntries(
++      Object.entries(launchContext?.env ?? {}).filter(
++        (entry): entry is [string, string] => typeof entry[1] === "string",
++      ),
++    ),
+     systemPrompt: combineSystemPrompts(config.systemPrompt, config.daemonAppendSystemPrompt),
+     mcpServers: { ...config.mcpServers },
+     toolPolicy: config.toolPolicy

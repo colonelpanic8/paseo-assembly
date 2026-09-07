@@ -61,6 +61,7 @@ summary = "feat(composer): prompt stash — cmd+S saves the draft to a per-provi
 [[entry]]
 branch = "mine:assembly-agent-env"
 summary = "Add agentEnv: capture project environment (direnv/mise) before agent launch"
+fixup = "patches/assembly-agent-env-plugin-provider.patch"
 
 [[entry]]
 pr = 2629
@@ -325,6 +326,7 @@ summary = "Keep optimistic sidebar restores consistent across refetches and fail
 [[entry]]
 branch = "mine:live-voice-error-detail"
 summary = "Show the provider's reason when a Live Voice call cannot start"
+fixup = "patches/live-voice-error-detail-shortcut-coherence.patch"
 
 [[entry]]
 pr = 4405

@@ -94,13 +94,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-07T20:34:41.019442448+00:00",
+    "generated": "2026-09-07T21:22:07.042769374+00:00",
     "base": "a7a708bec99e935ee4b8c6f7314a4b9a9984cfa6",
-    "commit": "e7ed46b282c42da671e7e063bde56dd2b1c706a5",
-    "pre_provenance_commit": "e7ed46b282c42da671e7e063bde56dd2b1c706a5",
-    "tree": "55ce9bb57100d49ff8b503737a350b78d2ba20dd",
-    "built_tree": "55ce9bb57100d49ff8b503737a350b78d2ba20dd",
-    "previous_tree": "e09732470c7ff922e0cbabd95e4913c12aecce8e",
+    "commit": "cb22384d4cf4f3f7921d94b56f7ccfe034fe37af",
+    "pre_provenance_commit": "cb22384d4cf4f3f7921d94b56f7ccfe034fe37af",
+    "tree": "38bc824c49577e7a4424876a5ae124c5acd44ecd",
+    "built_tree": "38bc824c49577e7a4424876a5ae124c5acd44ecd",
+    "previous_tree": "55ce9bb57100d49ff8b503737a350b78d2ba20dd",
     "tree_changed": true,
     "conflicts": 44,
     "manifest_entries": [
@@ -177,7 +177,8 @@
         "name": "assembly-agent-env",
         "kind": "branch",
         "source": "mine:assembly-agent-env",
-        "pin": "a121c6b440a2785a43fc5ce11958944ae0fd4332"
+        "pin": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
+        "fixup": "971c390c91ee5534602535a4d86c11fca20bd0aa"
       },
       {
         "name": "pr-2629",
@@ -538,7 +539,8 @@
         "name": "live-voice-error-detail",
         "kind": "branch",
         "source": "mine:live-voice-error-detail",
-        "pin": "2eb1a0976730560a764809da682321f58ec0f2fa"
+        "pin": "2eb1a0976730560a764809da682321f58ec0f2fa",
+        "fixup": "1d866d6e1ed478667ac70813f073c4ccffa26062"
       },
       {
         "name": "pr-4405",
@@ -632,7 +634,8 @@
         "name": "assembly-agent-env",
         "oid": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "fixup": "971c390c91ee5534602535a4d86c11fca20bd0aa"
       },
       {
         "name": "pr-2629",
@@ -683,8 +686,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "80da68607021db3e82b1cd72cba9d2b6a8c02fdb",
-          "tip": "a9737a50be20fb940644994d3ea6feaff2be8aa3"
+          "base_tip": "cbb3b433f6a72c4685e6ec0122cd82381e583a1c",
+          "tip": "677fd80b11438ce618ef90267663705226c8bbc4"
         }
       },
       {
@@ -818,8 +821,8 @@
         "resolution": "rerere",
         "fixup": "d9c59938ec1e52a1b797a81dd3658fbb0deee7fe",
         "derived": {
-          "base_tip": "5bf0e423c43442d7d8f06a0bfcd6ba652ebf7edd",
-          "tip": "cb0b13c1c0635d4b5c2d7c6537783781029486c0"
+          "base_tip": "ac1500a20946dce97586174d63bdf5ab596d2827",
+          "tip": "26277f6dfeb85b0cb213499e5333955f6bb957df"
         }
       },
       {
@@ -892,8 +895,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "faeb70804bdc034bbe82c28ad4d16b42a680b4ac",
-          "tip": "81b2d1ce659ec3438636f68d52eb2ac1ec4c7985"
+          "base_tip": "5c7b12e8ea598e5aa4507d695d19c4c4048ce41d",
+          "tip": "1c6dcf2484162b98b67368359a6c9bfcf4163cae"
         }
       },
       {
@@ -903,8 +906,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "4ef7187d09a6509930ef23355df73467571a19a2",
-          "tip": "1eef1dec4ed26a3b4ff21a8cd16a13d4ae97a734"
+          "base_tip": "6262868309241b3cca89994ac74f3a4996ae42cc",
+          "tip": "ad7d0733f1e4be51bb55c14afd34186f81559b38"
         }
       },
       {
@@ -1006,7 +1009,8 @@
         "oid": "2eb1a0976730560a764809da682321f58ec0f2fa",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere",
+        "fixup": "1d866d6e1ed478667ac70813f073c4ccffa26062"
       },
       {
         "name": "pr-4405",
