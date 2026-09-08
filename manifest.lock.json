@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pins": {
-    "base": "1f5b6143d603ebecc678daf76d407938175be044",
+    "base": "1622da40d9ea6d5d173438a90118f83a1b30aa18",
     "entries": {
       "assembled-ci-lint-fixes": "d89687e2f3427e36bc293398dcd7b1057ee51678",
       "assembled-current-coherence": "63642ecd2b8a4c181d7efbff7d2224942e728617",
@@ -70,7 +70,7 @@
       "thinking-control-reachability": "cb75c024d325e97ba107c6275f91248efa543b33",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "unarchive-threads": "806bf2ff8b4f9a8011dece3a6f214696ace06827",
-      "watch-live-voice": "9038f168a139558ed3493237949c5222eca5d0ad"
+      "watch-live-voice": "15db72b4e300e79af8164eb022024f831ae75197"
     },
     "parents": {
       "live-voice-context-files": {
@@ -91,17 +91,17 @@
       "live-voice-context-files": "c335b67b46429250e99960d892f8ab2e68ffa123",
       "live-voice-quick-launch": "7e3e520b4384e181ba60ea2b012f0002ff62431d",
       "pr-2927": "6828ae790cd0d33cf4639b62fd6e3ee7844e93a3",
-      "watch-live-voice": "e4d47faa4de8923e99d3ab20c896c70a70c2aa63"
+      "watch-live-voice": "102dff688b99e4f49df70ccdb6a6e8a05a057ea4"
     }
   },
   "build": {
-    "generated": "2026-09-08T06:44:26.158048783+00:00",
-    "base": "1f5b6143d603ebecc678daf76d407938175be044",
-    "commit": "8f93824c712e67ec29f51b55dca74ee19f292309",
-    "pre_provenance_commit": "8f93824c712e67ec29f51b55dca74ee19f292309",
-    "tree": "fc8e8f360e668a8cba11764b78d30e3252682aee",
-    "built_tree": "fc8e8f360e668a8cba11764b78d30e3252682aee",
-    "previous_tree": "37b63ec3e8099a3f76cad366e08b57507e9eb336",
+    "generated": "2026-09-08T08:13:57.671277024+00:00",
+    "base": "1622da40d9ea6d5d173438a90118f83a1b30aa18",
+    "commit": "b4994b957935af6a9b992c577bd1c8d95ec078db",
+    "pre_provenance_commit": "b4994b957935af6a9b992c577bd1c8d95ec078db",
+    "tree": "5b56d526fdfe912f1869add78e698348c67aed0a",
+    "built_tree": "5b56d526fdfe912f1869add78e698348c67aed0a",
+    "previous_tree": "fc8e8f360e668a8cba11764b78d30e3252682aee",
     "tree_changed": true,
     "conflicts": 43,
     "manifest_entries": [
@@ -222,7 +222,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "9038f168a139558ed3493237949c5222eca5d0ad",
+        "pin": "15db72b4e300e79af8164eb022024f831ae75197",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -235,7 +235,7 @@
             "pin": "8c0b1fbf676e62de05af87f0d3612d49c134bc9c"
           }
         ],
-        "anchor": "e4d47faa4de8923e99d3ab20c896c70a70c2aa63"
+        "anchor": "102dff688b99e4f49df70ccdb6a6e8a05a057ea4"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -687,14 +687,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "9038f168a139558ed3493237949c5222eca5d0ad",
+        "oid": "15db72b4e300e79af8164eb022024f831ae75197",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "102dff688b99e4f49df70ccdb6a6e8a05a057ea4",
-          "tip": "15db72b4e300e79af8164eb022024f831ae75197"
+          "base_tip": "4fad99f475347128792dcfdc55f4fd162dd551df",
+          "tip": "7413d4038a9a450c6fa06a6a156f0c1c8abafe3b"
         }
       },
       {
@@ -828,8 +828,8 @@
         "resolution": "rerere",
         "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
         "derived": {
-          "base_tip": "b4c10f4cb3b54120424770cfa2b51799319ff606",
-          "tip": "f74a3d0bc387fa1256bad769ba23111929978e33"
+          "base_tip": "1a46536f610844fefc34f802ac6567c07287543a",
+          "tip": "a9d9dad8229f6b57bbe6fb8edd6c525c76e35e03"
         }
       },
       {
@@ -902,8 +902,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "70fe6ebd90cafc6a0cbf82a4b7e19d85500a90bb",
-          "tip": "c3625efeb00ce9ab638972257f5481eeb8597e41"
+          "base_tip": "97ed989d7453acb2705a7155aa0c8638c561c3b7",
+          "tip": "41bb13053faec74740586040e78ddfef54d804f4"
         }
       },
       {
@@ -913,8 +913,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "7836bee0b1646ea086d257db41724f03a953c02c",
-          "tip": "617ce2465842b7a55c254c90d9e19bc0e2175316"
+          "base_tip": "fb122951bb7e4f345181ee08fe5fe07625f6d6d0",
+          "tip": "e3666ec5fc6868aec9ecbd321e9f4f04b48917dd"
         }
       },
       {
