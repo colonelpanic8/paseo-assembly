@@ -3355,6 +3355,18 @@ recorded = "2026-09-07T20:26:13.271694672+00:00"
 
 [[resolution]]
 entry = "pr-4445"
+hash = "7a2e2bf6809cfeec81fd8479ee5917b4a4050d99"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-08T09:19:08.016588951+00:00"
+
+[[resolution]]
+entry = "pr-4445"
+hash = "a87a0db8013396fa40f953b0391119d653caa1f4"
+paths = ["packages/app/src/runtime/host-runtime.ts"]
+recorded = "2026-09-08T09:19:08.016598186+00:00"
+
+[[resolution]]
+entry = "pr-4445"
 hash = "bc27bbfdd4926d7bd61c2bab2696b23b6730aa3a"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-09-07T20:26:13.271699882+00:00"
