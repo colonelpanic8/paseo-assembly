@@ -1,0 +1,16 @@
+diff --git a/packages/protocol/src/messages.ts b/packages/protocol/src/messages.ts
+index 6c8aac316..d7b4b3371 100644
+--- a/packages/protocol/src/messages.ts
++++ b/packages/protocol/src/messages.ts
+@@ -3846,11 +3846,6 @@ export const ServerInfoStatusPayloadSchema = z
+         // COMPAT(workspaceSnooze): added in v0.2.4, drop the gate when floor >= v0.2.4.
+         workspaceSnooze: z.boolean().optional(),
+         // COMPAT(workspaceSetupRun): added in v0.8.0, remove gate after 2027-09-02.
+-        // COMPAT(archivedWorkspacesList): added in v0.2.0, remove gate after 2027-01-28.
+-        archivedWorkspacesList: z.boolean().optional(),
+-        // COMPAT(workspaceSnooze): added in v0.2.4, drop the gate when floor >= v0.2.4.
+-        workspaceSnooze: z.boolean().optional(),
+-        // COMPAT(workspaceSetupRun): added in v0.8.0, remove gate after 2027-09-02.
+         workspaceSetupRun: z.boolean().optional(),
+         // COMPAT(workspaceTerminals): added in v0.8.0, remove gate after 2027-09-05.
+         workspaceTerminals: z.boolean().optional(),

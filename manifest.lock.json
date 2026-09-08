@@ -95,13 +95,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-08T08:50:37.021618178+00:00",
+    "generated": "2026-09-08T08:56:26.557630088+00:00",
     "base": "1622da40d9ea6d5d173438a90118f83a1b30aa18",
-    "commit": "068f2dea8bdc83e817456407943a139baccbbeb0",
-    "pre_provenance_commit": "068f2dea8bdc83e817456407943a139baccbbeb0",
-    "tree": "c209a4d40cda9d3f54f416298d17f71e962a6d53",
-    "built_tree": "c209a4d40cda9d3f54f416298d17f71e962a6d53",
-    "previous_tree": "894f9a3e176b29842efbf0fce8c36a80fee53ecb",
+    "commit": "d378463aab62bae6f850b0a40f177aa25ff37f0f",
+    "pre_provenance_commit": "d378463aab62bae6f850b0a40f177aa25ff37f0f",
+    "tree": "c41cc7efdef0fc2b02c7ace9e32ab4384c11bc33",
+    "built_tree": "c41cc7efdef0fc2b02c7ace9e32ab4384c11bc33",
+    "previous_tree": "c209a4d40cda9d3f54f416298d17f71e962a6d53",
     "tree_changed": true,
     "conflicts": 43,
     "manifest_entries": [
@@ -535,7 +535,8 @@
         "name": "assembly-sidebar-unarchive",
         "kind": "branch",
         "source": "mine:assembly-sidebar-unarchive",
-        "pin": "06e8e02b796348fed8f35b1f05dbc00161e42afc"
+        "pin": "06e8e02b796348fed8f35b1f05dbc00161e42afc",
+        "fixup": "667757e5019ab833acc54c6495cb393fa20fc117"
       },
       {
         "name": "live-voice-error-detail",
@@ -694,8 +695,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "3c4f978163c047bbcaf2f9370c485c16f558c9e9",
-          "tip": "39da84ac9b71d93c277a435ae44158f1c4a21ac5"
+          "base_tip": "3dfe53cb969362a3e572fa755f2dd97a88489ffb",
+          "tip": "5c383ec18011c91142184bd999dfe604a869ddb3"
         }
       },
       {
@@ -830,8 +831,8 @@
         "resolution": "rerere",
         "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
         "derived": {
-          "base_tip": "08f7cde8730ef1dfd855a98f467acf99e6aa6260",
-          "tip": "30e5526525ff6190b4f05270020aa1a624274a24"
+          "base_tip": "547efa11ebd39edeeb206e7140ef0ab71f066cea",
+          "tip": "0637bfb6424e8a9ca4838b4b4c86bc0da5a7c8ef"
         }
       },
       {
@@ -904,8 +905,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "dd61498bc63413433632433806546537513e58a4",
-          "tip": "29c0c833c8a89365deb52ea550db10802f047576"
+          "base_tip": "0c715c1a1f7627863a5e40fd5b2a7e6a76327360",
+          "tip": "97db2e17ce20c5f79d49942420b11447fb7aec64"
         }
       },
       {
@@ -915,8 +916,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "497ecf3ccf10a011fbdb51d1e69208757e5a0a3e",
-          "tip": "7a71c0a9243736ce8ed70612aa27c61460cc728b"
+          "base_tip": "86eaab832ee0497096d076c3e310a605179b0385",
+          "tip": "71e2476a71fa2d7d744839ce5832206a687ad900"
         }
       },
       {
@@ -1011,7 +1012,8 @@
         "oid": "06e8e02b796348fed8f35b1f05dbc00161e42afc",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere",
+        "fixup": "667757e5019ab833acc54c6495cb393fa20fc117"
       },
       {
         "name": "live-voice-error-detail",

@@ -317,6 +317,7 @@ summary = "Keep restores responsive and safe against auto-archive; replayed onto
 [[entry]]
 branch = "mine:assembly-sidebar-unarchive"
 summary = "Keep optimistic sidebar restores consistent across refetches and failed responses"
+fixup = "patches/sidebar-unarchive-capabilities.patch"
 
 # Stacked directly on 2657's pinned head (23ae875da5b8), like
 # colonelpanic8/client-settings-file-store is on 2849: its one commit sits on
