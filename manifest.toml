@@ -345,6 +345,25 @@ summary = "Add a Usage history page: daily token and cost usage from provider tr
 [[entry]]
 patch = "patches/assembled-current-coherence.patch"
 
+# Linear on mine:watch-live-voice's published reconstruction tip 5c383ec180, the
+# way mine:live-voice-error-detail is linear on 2657's pinned head: its commits
+# sit directly on that tip, so it extends watch-live-voice rather than merging
+# it. Not a derived entry -- there is no merge boundary to anchor on, and
+# declaring watch-live-voice (or 2657) as a parent would repin it and rebuild a
+# large tail. It also duplicates mine:live-voice-quick-launch's two commits
+# (6cbe0daaec, 373c876dae -- identical patches to what that entry carries at
+# 7e6db98790) so that it compiles on its own.
+[[entry]]
+branch = "mine:voice-actions"
+summary = "Shortcut links: default-assistant Live Voice call and one-shot dispatch"
+# Three clashes with entries already in the stack that a rerere pair cannot hold:
+# the stack merge re-inserts a second copy of
+# readLiveVoiceHostAvailability/readLiveVoiceAvailability outside every conflict
+# hunk; live-voice-context-files' start() wrapper swallows the options object, so
+# ?assistant= would reach the runtime as undefined; and the wear snapshot
+# fixtures end up with `assistantId` twice, which does not compile.
+fixup = "patches/voice-actions-stack-coherence.patch"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.

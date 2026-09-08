@@ -1,0 +1,96 @@
+diff --git a/packages/app/src/live-voice/live-voice-availability.ts b/packages/app/src/live-voice/live-voice-availability.ts
+index dad55c960..3229a364d 100644
+--- a/packages/app/src/live-voice/live-voice-availability.ts
++++ b/packages/app/src/live-voice/live-voice-availability.ts
+@@ -48,40 +48,6 @@ export function readLiveVoiceAvailability(): LiveVoiceAvailability {
+   });
+ }
+ 
+-/**
+- * Availability read straight from the stores, for callers that live outside
+- * React — the Wear bridge, which publishes to the watch on a subscription rather
+- * than a render. Same policy as [useLiveVoiceAvailability]; only the plumbing
+- * differs, so the wrist and the phone can never disagree about what is callable.
+- */
+-export function readLiveVoiceHostAvailability(): LiveVoiceHostAvailability[] {
+-  const sessions = useSessionStore.getState().sessions;
+-  const store = getHostRuntimeStore();
+-  return store.getHosts().map((host): LiveVoiceHostAvailability => {
+-    const serverInfo = sessions[host.serverId]?.serverInfo ?? null;
+-    return {
+-      serverId: host.serverId,
+-      label: host.label,
+-      connectionStatus: store.getSnapshot(host.serverId)?.connectionStatus ?? "connecting",
+-      version: serverInfo?.version ?? null,
+-      // COMPAT(liveVoice): added in v0.2.5, drop the gate when floor >= v0.2.5.
+-      supportsLiveVoice: serverInfo ? serverInfo.features?.liveVoice === true : null,
+-      // COMPAT(liveVoiceVoiceCatalog): older Live Voice daemons use the fallback list.
+-      supportsVoiceCatalog: serverInfo?.features?.liveVoiceVoiceCatalog === true,
+-      // COMPAT(agentPaseoTools): added in v0.2.6. Missing means an older
+-      // Live Voice daemon whose start response remains authoritative.
+-      paseoToolsEnabled: serverInfo ? serverInfo.features?.agentPaseoTools !== false : null,
+-    };
+-  });
+-}
+-
+-export function readLiveVoiceAvailability(): LiveVoiceAvailability {
+-  return resolveLiveVoiceAvailability({
+-    isPlatformSupported: isLiveVoiceSessionSupported,
+-    hosts: readLiveVoiceHostAvailability(),
+-  });
+-}
+-
+ /**
+  * Every configured host with the facts live voice availability is decided from,
+  * unfiltered. `useLiveVoiceAvailability` narrows this to the hosts that can take
+diff --git a/packages/app/src/contexts/live-voice-context.tsx b/packages/app/src/contexts/live-voice-context.tsx
+index 1b7909d95..10f66bb0e 100644
+--- a/packages/app/src/contexts/live-voice-context.tsx
++++ b/packages/app/src/contexts/live-voice-context.tsx
+@@ -138,9 +138,12 @@ export function useLiveVoiceOptional(): LiveVoiceContextValue | null {
+     }
+     return {
+       ...snapshot,
+-      start: (serverId) => {
++      start: (serverId, options) => {
+         const contextProfileId = getSelectedContextProfileId(serverId);
+-        return runtime.start(serverId, contextProfileId ? { contextProfileId } : undefined);
++        return runtime.start(
++          serverId,
++          contextProfileId ? { ...options, contextProfileId } : options,
++        );
+       },
+       stop: runtime.stop,
+       setMuted: runtime.setMuted,
+diff --git a/packages/app/src/wear/wear-bridge.test.ts b/packages/app/src/wear/wear-bridge.test.ts
+index 6e2efebfa..c1f85b296 100644
+--- a/packages/app/src/wear/wear-bridge.test.ts
++++ b/packages/app/src/wear/wear-bridge.test.ts
+@@ -1633,7 +1633,6 @@ describe("WearBridge live voice", () => {
+     phase: "idle",
+     assistantId: null,
+     serverId: null,
+-    assistantId: null,
+     liveSessionId: null,
+     isMuted: false,
+     isAudioBlocked: false,
+@@ -1941,7 +1940,6 @@ describe("WearBridge dispatch", () => {
+     phase: "idle",
+     assistantId: null,
+     serverId: null,
+-    assistantId: null,
+     liveSessionId: null,
+     isMuted: false,
+     isAudioBlocked: false,
+diff --git a/packages/app/src/wear/wear-live-voice.test.ts b/packages/app/src/wear/wear-live-voice.test.ts
+index b86ba5d8a..52198bc88 100644
+--- a/packages/app/src/wear/wear-live-voice.test.ts
++++ b/packages/app/src/wear/wear-live-voice.test.ts
+@@ -15,7 +15,6 @@ const IDLE: LiveVoiceSnapshot = {
+   phase: "idle",
+   assistantId: null,
+   serverId: null,
+-  assistantId: null,
+   liveSessionId: null,
+   isMuted: false,
+   isAudioBlocked: false,

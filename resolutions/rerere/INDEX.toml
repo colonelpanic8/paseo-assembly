@@ -3372,6 +3372,126 @@ paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
 recorded = "2026-09-07T20:13:56.111057601+00:00"
 
 [[resolution]]
+entry = "voice-actions"
+hash = "0662b59fda446dbcdc40abd18d15ddb51d273607"
+paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
+recorded = "2026-09-08T09:05:47.963814533+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "0ba3b54c68d46c4feec75fb9204f7a868cd848c5"
+paths = ["packages/app/src/live-voice/live-voice-link.test.ts"]
+recorded = "2026-09-08T09:05:47.963817378+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "164a7949a40f269cecb2953481e14437296e84fb"
+paths = ["packages/app/src/i18n/resources/ar.ts"]
+recorded = "2026-09-08T09:05:47.963817919+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "1fa26967def50282cd9b9868e0d8400cde419cc2"
+paths = ["packages/app/src/i18n/resources/ko.ts"]
+recorded = "2026-09-08T09:05:47.963818290+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "39c540469e423f70da3267dcb0172d10677ff172"
+paths = ["packages/app/src/live-voice/live-voice-launch.ts"]
+recorded = "2026-09-08T09:05:47.963818701+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "431477e7f1d648f7d6f12c7bfd6cf0807fe13bcd"
+paths = ["packages/app/src/app/+native-intent.tsx"]
+recorded = "2026-09-08T09:05:47.963818972+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "459eb700da4ee41af4e96e69910b9abb2dcd83fa"
+paths = ["packages/app/src/live-voice/live-voice-link.ts"]
+recorded = "2026-09-08T09:05:47.963819352+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "62236663d2b97199c3eca475b480876433d7d8eb"
+paths = ["packages/app/src/i18n/resources/ja.ts"]
+recorded = "2026-09-08T09:05:47.963819923+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "678af8057433437b0ac2d89f2b355deeb2018021"
+paths = ["packages/app/src/i18n/resources/es.ts"]
+recorded = "2026-09-08T09:05:47.963822839+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "80aac18eb05ed185887bf9387b6e71afe0c3e3ff"
+paths = ["packages/app/src/wear/wear-live-voice.test.ts"]
+recorded = "2026-09-08T09:05:47.963823190+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "87ea738e1c0e65384953fcf507e62b7c83530a07"
+paths = ["packages/app/src/wear/wear-bridge.test.ts"]
+recorded = "2026-09-08T09:05:47.963823931+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "87ec60d75bf8d6cd105c435a335ef7c966517527"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-08T09:05:47.963824232+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "91144b0d6eb417a6eafa7e80a5e87a32da872309"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-08T09:05:47.963824713+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "94eebb60701f47e22d86d1b2f77382751380bd53"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-09-08T09:05:47.963825043+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "a7e7ef32c8c93d9ee79fa2adac0159316e17817f"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-08T09:05:47.963825625+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "bdda23e2aefcf1d1b0efa3f24d2e824709a91441"
+paths = ["packages/app/src/i18n/resources/pt-BR.ts"]
+recorded = "2026-09-08T09:05:47.963826186+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "c03eeede0ef434da3c5c3b372ae9f4dd00209fa1"
+paths = ["packages/app/src/i18n/resources/en.ts"]
+recorded = "2026-09-08T09:05:47.963826476+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "f698c617b499b93494d0540ed4043d5ab2594251"
+paths = ["packages/app/src/contexts/live-voice-context.tsx"]
+recorded = "2026-09-08T09:05:47.963826727+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "fc39140fc8fad738acd2e6a07412feffa3389df2"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-09-08T09:05:47.963827148+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "fd135d87d71a04989c2f82fcda94b67d3d056d68"
+paths = ["packages/app/src/live-voice/live-voice-runtime.ts"]
+recorded = "2026-09-08T09:05:47.963827418+00:00"
+
+[[resolution]]
 entry = "watch-live-voice"
 hash = "0ebf33c01c3b2e13b901443af63a845fc6e08a81"
 paths = ["packages/watch/HANDOFF.md"]
