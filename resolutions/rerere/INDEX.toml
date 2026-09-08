@@ -2095,6 +2095,12 @@ recorded = "2026-08-21T20:55:39.441398264+00:00"
 
 [[resolution]]
 entry = "pr-2820"
+hash = "0c9c999d8591249872cd28e9e21b3b8ad39aecd9"
+paths = ["packages/app/src/hooks/use-agent-commands-query.ts"]
+recorded = "2026-09-08T08:49:03.172551760+00:00"
+
+[[resolution]]
+entry = "pr-2820"
 hash = "3e0314f7cbe250e99b2603e14150cb16ea1eb8a3"
 paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
 recorded = "2026-08-03T20:19:52.564337781+00:00"
@@ -2110,6 +2116,12 @@ entry = "pr-2820"
 hash = "b5edf7e5782e327f7e4cabaff4b57376bf9e15cc"
 paths = ["packages/app/src/hooks/use-agent-commands-query.ts"]
 recorded = "2026-08-03T20:19:52.564339804+00:00"
+
+[[resolution]]
+entry = "pr-2820"
+hash = "c295d5cc41ba8dd7f6796ad35ee5877f9748fc2b"
+paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
+recorded = "2026-09-08T08:49:03.172556318+00:00"
 
 [[resolution]]
 entry = "pr-2843"

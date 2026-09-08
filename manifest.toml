@@ -39,8 +39,8 @@ branch = "mine:model-picker-search"
 summary = "Keep grouped all-model browsing and keyboard navigation beyond upstream model profiles"
 
 [[entry]]
-pr = 2532
-summary = "Add configurable composer command and skill triggers"
+branch = "mine:skill-pills-config"
+summary = "Configurable composer command and skill triggers; track the live branch because closed PR #2532 has a frozen head"
 
 [[entry]]
 pr = 2553
@@ -135,6 +135,7 @@ summary = "Add UI and CLI for creating provider accounts"
 [[entry]]
 pr = 2820
 summary = "Serialize draft provider introspection sessions"
+fixup = "patches/command-loading-session-errors.patch"
 
 [[entry]]
 pr = 2843
@@ -373,3 +374,7 @@ reason = "merged upstream as getpaseo/paseo#2579 (merge commit b7f137c2a000); it
 [[exclude]]
 pr = 4386
 reason = "carried by mine:assembly-codex-banked-resets: identical PR commits replayed onto pinned base 92442e743517 to avoid importing unrelated upstream changes; switch back to the PR when the base catches up"
+
+[[exclude]]
+pr = 2532
+reason = "Carried by mine:skill-pills-config; the closed PR head is frozen and misses command-loading fixes"

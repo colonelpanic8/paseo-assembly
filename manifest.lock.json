@@ -27,7 +27,6 @@
       "pr-2517": "238714e0ad45d4da86b73d890c556ee0d8baf9cb",
       "pr-2520": "bdae463b7dd22ff47f78ecb49fb67979976ac616",
       "pr-2521": "643d03bc0b1e00d3afa03691a81d68c293d167cf",
-      "pr-2532": "3cef91f0ba55545bef12a6f0b055dbe0e6d3fd32",
       "pr-2553": "4a4d0120189df09c793244405be3958b9713bdec",
       "pr-2628": "d8fa5025347e611fb03b80439c8930577fe3623e",
       "pr-2629": "8373126949d3bd1e7704d99e5261969172f7bcf5",
@@ -67,6 +66,7 @@
       "pr-4305": "05e474759cab5c5ba0a544b3fde58bd66a3da66e",
       "pr-4405": "cec6798d01c92bc4b83824a6f0e4150ea9a6c20e",
       "pr-4445": "0466d29e0de0d5aad4fd56ce576c355dac3edf8e",
+      "skill-pills-config": "65a169cae291293a7ebb786ed9ef1865105b61b9",
       "thinking-control-reachability": "cb75c024d325e97ba107c6275f91248efa543b33",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "unarchive-threads": "806bf2ff8b4f9a8011dece3a6f214696ace06827",
@@ -95,13 +95,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-08T08:13:57.671277024+00:00",
+    "generated": "2026-09-08T08:50:37.021618178+00:00",
     "base": "1622da40d9ea6d5d173438a90118f83a1b30aa18",
-    "commit": "b4994b957935af6a9b992c577bd1c8d95ec078db",
-    "pre_provenance_commit": "b4994b957935af6a9b992c577bd1c8d95ec078db",
-    "tree": "5b56d526fdfe912f1869add78e698348c67aed0a",
-    "built_tree": "5b56d526fdfe912f1869add78e698348c67aed0a",
-    "previous_tree": "fc8e8f360e668a8cba11764b78d30e3252682aee",
+    "commit": "068f2dea8bdc83e817456407943a139baccbbeb0",
+    "pre_provenance_commit": "068f2dea8bdc83e817456407943a139baccbbeb0",
+    "tree": "c209a4d40cda9d3f54f416298d17f71e962a6d53",
+    "built_tree": "c209a4d40cda9d3f54f416298d17f71e962a6d53",
+    "previous_tree": "894f9a3e176b29842efbf0fce8c36a80fee53ecb",
     "tree_changed": true,
     "conflicts": 43,
     "manifest_entries": [
@@ -144,10 +144,10 @@
         "pin": "3a26a4f24194e736271d7335358e1396d3b73f7f"
       },
       {
-        "name": "pr-2532",
-        "kind": "pr",
-        "source": "upstream#2532",
-        "pin": "3cef91f0ba55545bef12a6f0b055dbe0e6d3fd32"
+        "name": "skill-pills-config",
+        "kind": "branch",
+        "source": "mine:skill-pills-config",
+        "pin": "65a169cae291293a7ebb786ed9ef1865105b61b9"
       },
       {
         "name": "pr-2553",
@@ -271,7 +271,8 @@
         "name": "pr-2820",
         "kind": "pr",
         "source": "upstream#2820",
-        "pin": "7088d1e303892bed0a42ad46cc078ee4a88a25a1"
+        "pin": "7088d1e303892bed0a42ad46cc078ee4a88a25a1",
+        "fixup": "9314f7dd4dd7284fbf84c4f2c886f539382ac1c2"
       },
       {
         "name": "pr-2843",
@@ -604,8 +605,8 @@
         "resolution": "rerere"
       },
       {
-        "name": "pr-2532",
-        "oid": "3cef91f0ba55545bef12a6f0b055dbe0e6d3fd32",
+        "name": "skill-pills-config",
+        "oid": "65a169cae291293a7ebb786ed9ef1865105b61b9",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -693,8 +694,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "4fad99f475347128792dcfdc55f4fd162dd551df",
-          "tip": "7413d4038a9a450c6fa06a6a156f0c1c8abafe3b"
+          "base_tip": "3c4f978163c047bbcaf2f9370c485c16f558c9e9",
+          "tip": "39da84ac9b71d93c277a435ae44158f1c4a21ac5"
         }
       },
       {
@@ -735,7 +736,8 @@
         "oid": "7088d1e303892bed0a42ad46cc078ee4a88a25a1",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere",
+        "fixup": "9314f7dd4dd7284fbf84c4f2c886f539382ac1c2"
       },
       {
         "name": "pr-2843",
@@ -828,8 +830,8 @@
         "resolution": "rerere",
         "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
         "derived": {
-          "base_tip": "1a46536f610844fefc34f802ac6567c07287543a",
-          "tip": "a9d9dad8229f6b57bbe6fb8edd6c525c76e35e03"
+          "base_tip": "08f7cde8730ef1dfd855a98f467acf99e6aa6260",
+          "tip": "30e5526525ff6190b4f05270020aa1a624274a24"
         }
       },
       {
@@ -902,8 +904,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "97ed989d7453acb2705a7155aa0c8638c561c3b7",
-          "tip": "41bb13053faec74740586040e78ddfef54d804f4"
+          "base_tip": "dd61498bc63413433632433806546537513e58a4",
+          "tip": "29c0c833c8a89365deb52ea550db10802f047576"
         }
       },
       {
@@ -913,8 +915,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "fb122951bb7e4f345181ee08fe5fe07625f6d6d0",
-          "tip": "e3666ec5fc6868aec9ecbd321e9f4f04b48917dd"
+          "base_tip": "497ecf3ccf10a011fbdb51d1e69208757e5a0a3e",
+          "tip": "7a71c0a9243736ce8ed70612aa27c61460cc728b"
         }
       },
       {
