@@ -18,6 +18,7 @@
       "disable-worktree-setup-callout": "32ec3263413021b0b43566c2c2128af0983aeb15",
       "fix/draft-tab-inflight-create": "9352e9dca1cfb38af966b0c086f7d8c316a03826",
       "fix/model-browser-sheet-scope": "36e106f7b5155f8ccbfb3323610acf7366d55f27",
+      "fix/workspace-message-timestamps": "cfc0d88fa2b8c952f9521943633315eed515833a",
       "live-voice-context-files": "1e4a303c7eb14d7bc4cca82c8a19e3af98b865db",
       "live-voice-error-detail": "ca8991b7ab849aba779ef26264d4a01db610fd37",
       "live-voice-quick-launch": "7e6db98790fe1141a57c111d0ca648558021711f",
@@ -96,13 +97,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-09T22:04:16.127606234+00:00",
+    "generated": "2026-09-09T23:50:38.136610916+00:00",
     "base": "1622da40d9ea6d5d173438a90118f83a1b30aa18",
-    "commit": "55935b939e45a335b9323bc12546bb560f3b6650",
-    "pre_provenance_commit": "55935b939e45a335b9323bc12546bb560f3b6650",
-    "tree": "2297c69d2e8d6313801c870faf44741912630de2",
-    "built_tree": "2297c69d2e8d6313801c870faf44741912630de2",
-    "previous_tree": "281eb0f1b3685d923d8b2169530685abc8160e96",
+    "commit": "d8488b162f20952de3562ba70c6c94b0a09a1892",
+    "pre_provenance_commit": "d8488b162f20952de3562ba70c6c94b0a09a1892",
+    "tree": "ea73b4c0d718f75aff0b8d55d446c7265dd246c7",
+    "built_tree": "ea73b4c0d718f75aff0b8d55d446c7265dd246c7",
+    "previous_tree": "2297c69d2e8d6313801c870faf44741912630de2",
     "tree_changed": true,
     "conflicts": 44,
     "manifest_entries": [
@@ -570,6 +571,12 @@
         "source": "mine:voice-actions",
         "pin": "d98bc52899fef6297bc7d9214282c54edf4f1b80",
         "fixup": "f5a25e6cc271e0c324e1897d4972955ccfcbecc6"
+      },
+      {
+        "name": "fix/workspace-message-timestamps",
+        "kind": "branch",
+        "source": "mine:fix/workspace-message-timestamps",
+        "pin": "cfc0d88fa2b8c952f9521943633315eed515833a"
       }
     ],
     "results": [
@@ -703,8 +710,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "b624a055894f7eb2f62031423ec9157388590018",
-          "tip": "0486bd90b2128be2c2d9668d149c22f7c538bdd9"
+          "base_tip": "0949d8adfaf22de3a205b161cf0c499f44038b13",
+          "tip": "eb46ab2c414464552186a4499fc58fb88879fcdc"
         }
       },
       {
@@ -839,8 +846,8 @@
         "resolution": "rerere",
         "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
         "derived": {
-          "base_tip": "f35acc254bd90f895e0820ce14a7f052cf32f6f8",
-          "tip": "3c9bed1b7b05830f7a26b5e53cb27746bee748fa"
+          "base_tip": "0e2b1027f34e2c48834b381d5a7ef1fb98f13d34",
+          "tip": "781d335a194757550e3df708a8583bd71e2c8cdf"
         }
       },
       {
@@ -913,8 +920,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "46154cef1decc333439cacf2ed4ee557bfafc69b",
-          "tip": "bd87c505e7a4359257162fb1510db27c37f5c547"
+          "base_tip": "d86277e3765d09362fc142b73718d9c1262a60f3",
+          "tip": "578d6fcba7196dea860a9426a2746916afff4e52"
         }
       },
       {
@@ -924,8 +931,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "fd6e2c14501c9567b27f3a2d5b5bc87490d4ee05",
-          "tip": "e299520db12801ac071fe7a10896aca25a8e2c82"
+          "base_tip": "65c90196d7e39f6bb23ef4de61d157c6c1ddb361",
+          "tip": "a7807785c65ec83bfd08301ec243ef8fe7eccda9"
         }
       },
       {
@@ -1056,8 +1063,14 @@
         "oid": "d98bc52899fef6297bc7d9214282c54edf4f1b80",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:21872bca4e8f71f56dcd5892701c45b4b9e516ac,693cfb338e80ac6e5ba88624aa8da59d41e31e64,6d6ad929cc4724da228e43887a4e2bb7097a66a9,88014f89719f7020f97dd1bde4876c8d262d1ed6,8cf038035ae49d16c4a107f5d1aa99e8af14c4c9",
+        "resolution": "rerere",
         "fixup": "f5a25e6cc271e0c324e1897d4972955ccfcbecc6"
+      },
+      {
+        "name": "fix/workspace-message-timestamps",
+        "oid": "cfc0d88fa2b8c952f9521943633315eed515833a",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

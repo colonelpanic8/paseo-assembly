@@ -364,6 +364,10 @@ summary = "Shortcut links: default-assistant Live Voice call and one-shot dispat
 # fixtures end up with `assistantId` twice, which does not compile.
 fixup = "patches/voice-actions-stack-coherence.patch"
 
+[[entry]]
+branch = "mine:fix/workspace-message-timestamps"
+summary = "Restore live message activity, preserve it across session refresh, and recover known timestamps; follow-up to sidebar pin 6d52c4687513"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
