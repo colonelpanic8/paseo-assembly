@@ -3409,6 +3409,12 @@ recorded = "2026-09-08T09:05:47.963818290+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "21872bca4e8f71f56dcd5892701c45b4b9e516ac"
+paths = ["packages/app/src/live-voice/live-voice-launch.ts"]
+recorded = "2026-09-09T22:04:09.416818418+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "39c540469e423f70da3267dcb0172d10677ff172"
 paths = ["packages/app/src/live-voice/live-voice-launch.ts"]
 recorded = "2026-09-08T09:05:47.963818701+00:00"
@@ -3439,6 +3445,18 @@ recorded = "2026-09-08T09:05:47.963822839+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "693cfb338e80ac6e5ba88624aa8da59d41e31e64"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-09-09T22:04:09.416831352+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "6d6ad929cc4724da228e43887a4e2bb7097a66a9"
+paths = ["packages/app/src/live-voice/live-voice-link.ts"]
+recorded = "2026-09-09T22:04:09.416831873+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "80aac18eb05ed185887bf9387b6e71afe0c3e3ff"
 paths = ["packages/app/src/wear/wear-live-voice.test.ts"]
 recorded = "2026-09-08T09:05:47.963823190+00:00"
@@ -3454,6 +3472,18 @@ entry = "voice-actions"
 hash = "87ec60d75bf8d6cd105c435a335ef7c966517527"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-09-08T09:05:47.963824232+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "88014f89719f7020f97dd1bde4876c8d262d1ed6"
+paths = ["packages/app/src/live-voice/live-voice-link.test.ts"]
+recorded = "2026-09-09T22:04:09.416832214+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "8cf038035ae49d16c4a107f5d1aa99e8af14c4c9"
+paths = ["packages/app/src/live-voice/live-voice-link-listener.tsx"]
+recorded = "2026-09-09T22:04:09.416832625+00:00"
 
 [[resolution]]
 entry = "voice-actions"

@@ -70,7 +70,7 @@
       "thinking-control-reachability": "cb75c024d325e97ba107c6275f91248efa543b33",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "unarchive-threads": "806bf2ff8b4f9a8011dece3a6f214696ace06827",
-      "voice-actions": "1d97e51e6d99169b8cfbc17ee31b9d3f3f2ba602",
+      "voice-actions": "d98bc52899fef6297bc7d9214282c54edf4f1b80",
       "watch-live-voice": "15db72b4e300e79af8164eb022024f831ae75197"
     },
     "parents": {
@@ -96,13 +96,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-08T09:19:15.605114910+00:00",
+    "generated": "2026-09-09T22:04:16.127606234+00:00",
     "base": "1622da40d9ea6d5d173438a90118f83a1b30aa18",
-    "commit": "3a19a582e4b0fe510b0f01290f01a111320bc5af",
-    "pre_provenance_commit": "3a19a582e4b0fe510b0f01290f01a111320bc5af",
-    "tree": "281eb0f1b3685d923d8b2169530685abc8160e96",
-    "built_tree": "281eb0f1b3685d923d8b2169530685abc8160e96",
-    "previous_tree": "e2b5c9c19a182e34a743c51ebe79b28583a3fdc0",
+    "commit": "55935b939e45a335b9323bc12546bb560f3b6650",
+    "pre_provenance_commit": "55935b939e45a335b9323bc12546bb560f3b6650",
+    "tree": "2297c69d2e8d6313801c870faf44741912630de2",
+    "built_tree": "2297c69d2e8d6313801c870faf44741912630de2",
+    "previous_tree": "281eb0f1b3685d923d8b2169530685abc8160e96",
     "tree_changed": true,
     "conflicts": 44,
     "manifest_entries": [
@@ -568,7 +568,7 @@
         "name": "voice-actions",
         "kind": "branch",
         "source": "mine:voice-actions",
-        "pin": "1d97e51e6d99169b8cfbc17ee31b9d3f3f2ba602",
+        "pin": "d98bc52899fef6297bc7d9214282c54edf4f1b80",
         "fixup": "f5a25e6cc271e0c324e1897d4972955ccfcbecc6"
       }
     ],
@@ -703,8 +703,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "a9d71a5078f80d84e7e7b204ca10829f75f925e2",
-          "tip": "d49b0a47945a2ac94394925a48355ddb3bca6f30"
+          "base_tip": "b624a055894f7eb2f62031423ec9157388590018",
+          "tip": "0486bd90b2128be2c2d9668d149c22f7c538bdd9"
         }
       },
       {
@@ -839,8 +839,8 @@
         "resolution": "rerere",
         "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
         "derived": {
-          "base_tip": "6b1d91bcf96aed8205af4f4671353cb770ad3a98",
-          "tip": "e6849ac3288486f24fee9a6a2f33fe2e59f4759e"
+          "base_tip": "f35acc254bd90f895e0820ce14a7f052cf32f6f8",
+          "tip": "3c9bed1b7b05830f7a26b5e53cb27746bee748fa"
         }
       },
       {
@@ -913,8 +913,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "005f9319df81640ea372c8467f63c1d7568373f0",
-          "tip": "81acd17abd649c217a5c2317b7ac48328702b696"
+          "base_tip": "46154cef1decc333439cacf2ed4ee557bfafc69b",
+          "tip": "bd87c505e7a4359257162fb1510db27c37f5c547"
         }
       },
       {
@@ -924,8 +924,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "a21c8b8b855b41c7f3fc0f33f1aaec4a19cf0615",
-          "tip": "fd3692b4ee2f0d99bd1b6c4bafd435128bd11a5b"
+          "base_tip": "fd6e2c14501c9567b27f3a2d5b5bc87490d4ee05",
+          "tip": "e299520db12801ac071fe7a10896aca25a8e2c82"
         }
       },
       {
@@ -1043,7 +1043,7 @@
         "oid": "55ae629197ffcb7c5ed9720eb37b4e321ab7af02",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:7a2e2bf6809cfeec81fd8479ee5917b4a4050d99,a87a0db8013396fa40f953b0391119d653caa1f4"
+        "resolution": "rerere"
       },
       {
         "name": "assembled-current-coherence",
@@ -1053,10 +1053,10 @@
       },
       {
         "name": "voice-actions",
-        "oid": "1d97e51e6d99169b8cfbc17ee31b9d3f3f2ba602",
+        "oid": "d98bc52899fef6297bc7d9214282c54edf4f1b80",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolution": "rerere:21872bca4e8f71f56dcd5892701c45b4b9e516ac,693cfb338e80ac6e5ba88624aa8da59d41e31e64,6d6ad929cc4724da228e43887a4e2bb7097a66a9,88014f89719f7020f97dd1bde4876c8d262d1ed6,8cf038035ae49d16c4a107f5d1aa99e8af14c4c9",
         "fixup": "f5a25e6cc271e0c324e1897d4972955ccfcbecc6"
       }
     ]
