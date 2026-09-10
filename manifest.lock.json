@@ -65,12 +65,12 @@
       "pr-4281": "3df13ba354e16fc203205700004bd4312215b014",
       "pr-4305": "05e474759cab5c5ba0a544b3fde58bd66a3da66e",
       "pr-4405": "cec6798d01c92bc4b83824a6f0e4150ea9a6c20e",
-      "pr-4445": "55ae629197ffcb7c5ed9720eb37b4e321ab7af02",
       "skill-pills-config": "65a169cae291293a7ebb786ed9ef1865105b61b9",
       "thinking-control-reachability": "cb75c024d325e97ba107c6275f91248efa543b33",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "unarchive-threads": "2cfa48268ec385d9890c98e56a1861f93a678ac6",
       "unconditional-host-display": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
+      "usage-history": "dea4100133cf0df52a42ae1e4bbfef25eb5c5248",
       "voice-actions": "812e758d2317f3589d0b42120360d660135d8a8c",
       "watch-live-voice": "eb46ab2c414464552186a4499fc58fb88879fcdc"
     },
@@ -97,14 +97,14 @@
     }
   },
   "build": {
-    "generated": "2026-09-10T00:57:31.430111044+00:00",
+    "generated": "2026-09-10T01:04:23.037443043+00:00",
     "base": "92504cd525c7e594539a369ed441eb836372dd2d",
-    "commit": "f7bb69206b599dddc66eb88a5b6feef5fbd5bc01",
-    "pre_provenance_commit": "f7bb69206b599dddc66eb88a5b6feef5fbd5bc01",
-    "tree": "735ffa3ed9280daabd1b4e24bae2483fdc17de3d",
-    "built_tree": "735ffa3ed9280daabd1b4e24bae2483fdc17de3d",
-    "previous_tree": "ea73b4c0d718f75aff0b8d55d446c7265dd246c7",
-    "tree_changed": true,
+    "commit": "3f9a1c7b36c66f4b95d5c9908bcde7540bcea74b",
+    "pre_provenance_commit": "3f9a1c7b36c66f4b95d5c9908bcde7540bcea74b",
+    "tree": "c3d7dc0ff8efe8bf933e97443a2832264cd2c4cc",
+    "built_tree": "c3d7dc0ff8efe8bf933e97443a2832264cd2c4cc",
+    "previous_tree": "c3d7dc0ff8efe8bf933e97443a2832264cd2c4cc",
+    "tree_changed": false,
     "conflicts": 44,
     "manifest_entries": [
       {
@@ -554,10 +554,10 @@
         "pin": "cec6798d01c92bc4b83824a6f0e4150ea9a6c20e"
       },
       {
-        "name": "pr-4445",
-        "kind": "pr",
-        "source": "upstream#4445",
-        "pin": "55ae629197ffcb7c5ed9720eb37b4e321ab7af02"
+        "name": "usage-history",
+        "kind": "branch",
+        "source": "mine:usage-history",
+        "pin": "dea4100133cf0df52a42ae1e4bbfef25eb5c5248"
       },
       {
         "name": "assembled-current-coherence",
@@ -710,8 +710,8 @@
         "resolution": "rerere",
         "fixup": "c1b4b865bd421499a41bde54eca388c590bfd0df",
         "derived": {
-          "base_tip": "3da4d8b335f15cda585d14525da140b01393c301",
-          "tip": "37463850d051f1417eec64b586828c100adf8286"
+          "base_tip": "2bc721b54cc374a78aeaf183f4c11710e686f20d",
+          "tip": "17faca4ea0c6ecd89db4b948da4903d4e770b594"
         }
       },
       {
@@ -846,8 +846,8 @@
         "resolution": "rerere",
         "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
         "derived": {
-          "base_tip": "767ea699d570d4d17fe0fbba4c05864535e592b1",
-          "tip": "2427a0840f40b313e68db169c63ffb4d9690e81d"
+          "base_tip": "b34f15e72c3cc1049a8a9cb39c26ab4f8a9b4634",
+          "tip": "240c48f493f801acc3703b6a942bd7053da99b9c"
         }
       },
       {
@@ -920,8 +920,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "63d20203bf522af5d66cf2a97719517f9801e017",
-          "tip": "36e876ab3729a6449d8748f96f31a020eea967a4"
+          "base_tip": "6e319e1565eff5b383a3e22c23deaf7f8a27f4ba",
+          "tip": "d7cce0b45d9e7aefe0507c1405a91956cca5c569"
         }
       },
       {
@@ -931,8 +931,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "46694655e4ea1807edf9bf94d8e57134e1a26c56",
-          "tip": "3d11e741273ca77e58c063ca42cb6934b1616bd9"
+          "base_tip": "da9cce859d24f17d22f255a3538c166c87f536a8",
+          "tip": "f7dcc0b76bfd1b1d0ae35c3a94efccc9b1cd3349"
         }
       },
       {
@@ -1045,8 +1045,8 @@
         "resolution": "rerere"
       },
       {
-        "name": "pr-4445",
-        "oid": "55ae629197ffcb7c5ed9720eb37b4e321ab7af02",
+        "name": "usage-history",
+        "oid": "dea4100133cf0df52a42ae1e4bbfef25eb5c5248",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -1070,7 +1070,7 @@
         "oid": "6e9bf2d493b369e626b1dfec3860f3ccb5c3e82f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:58739187c373a4a91ff1335bac358aa13553bb6f,74badb33d14116eba067af3566b487b1b80a4be7,77bceb91f2d47161399829b8b7aafa7758eb82fc,a2bba3060a6e70120049cfebd880e036c55478cb,d337c5cbaa5c0876c67ccea1b7b91297417ff938"
+        "resolution": "rerere"
       }
     ]
   }

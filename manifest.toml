@@ -337,8 +337,8 @@ pr = 4405
 summary = "Let hosts declare a default color so devices agree"
 
 [[entry]]
-pr = 4445
-summary = "Add a Usage history page: daily token and cost usage from provider transcripts"
+branch = "mine:usage-history"
+summary = "Add a Usage history page; track the live branch because closed PR #4445 has a frozen head"
 
 # These are assembly-wide API and type-shape interactions spanning the refreshed
 # sidebar, model-browser, live-voice, host-color, and directory-cache topics.
@@ -403,3 +403,7 @@ reason = "carried by mine:assembly-codex-banked-resets: identical PR commits rep
 [[exclude]]
 pr = 2532
 reason = "Carried by mine:skill-pills-config; the closed PR head is frozen and misses command-loading fixes"
+
+[[exclude]]
+pr = 4445
+reason = "carried by mine:usage-history; the closed PR head is frozen and cannot receive follow-up fixes"
