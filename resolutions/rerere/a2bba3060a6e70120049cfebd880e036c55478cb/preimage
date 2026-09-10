@@ -1,0 +1,600 @@
+<<<<<<<
+/**
+ * @vitest-environment jsdom
+ */
+import React from "react";
+import { flushSync } from "react-dom";
+import { createRoot, type Root } from "react-dom/client";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { ArchivedWorkspaceEntry } from "@/hooks/use-archived-workspaces";
+
+const { theme } = vi.hoisted(() => ({
+  theme: {
+    spacing: { 1: 4, 2: 8, 3: 12 },
+    iconSize: { md: 18 },
+    borderRadius: { lg: 8 },
+    fontSize: { xs: 11, sm: 13 },
+    colors: {
+      foregroundMuted: "#aaa",
+      surfaceSidebarHover: "#222",
+      surface2: "#333",
+    },
+  },
+}));
+
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) =>
+      (
+        ({
+          "sidebar.workspace.archived.groupTitle": "Recently archived",
+          "sidebar.workspace.archived.unarchive": "Unarchive",
+          "sidebar.workspace.archived.unarchiving": "Unarchiving…",
+        }) as Record<string, string>
+      )[key] ?? key,
+  }),
+}));
+
+vi.mock("react-native-unistyles", () => ({
+  StyleSheet: {
+    create: (factory: unknown) =>
+      typeof factory === "function"
+        ? (factory as (value: typeof theme) => unknown)(theme)
+        : factory,
+  },
+  withUnistyles: (component: unknown) => component,
+}));
+
+vi.mock("react-native-reanimated", () => {
+  const animation: {
+    duration: () => typeof animation;
+    delay: () => typeof animation;
+    easing: () => typeof animation;
+  } = {
+    duration: () => animation,
+    delay: () => animation,
+    easing: () => animation,
+  };
+  return {
+    Easing: { bezier: () => ({}) },
+    default: {
+      View: ({
+        children,
+        entering: _entering,
+        exiting: _exiting,
+        layout: _layout,
+        collapsable: _collapsable,
+        accessible: _accessible,
+        accessibilityLabel: _accessibilityLabel,
+        accessibilityState: _accessibilityState,
+        testID,
+        ...props
+      }: React.PropsWithChildren<Record<string, unknown>>) =>
+        React.createElement("div", testID ? { ...props, "data-testid": testID } : props, children),
+    },
+    FadeIn: animation,
+    FadeInUp: animation,
+    FadeOut: animation,
+    LinearTransition: animation,
+  };
+});
+
+vi.mock("lucide-react-native", () => {
+  const createIcon = (name: string) => (props: Record<string, unknown>) =>
+    React.createElement("span", { ...props, "data-icon": name });
+  return {
+    Archive: createIcon("Archive"),
+    ArchiveRestore: createIcon("ArchiveRestore"),
+    ChevronDown: createIcon("ChevronDown"),
+    ChevronRight: createIcon("ChevronRight"),
+  };
+});
+
+vi.mock("@tanstack/react-query", () => ({
+  useMutation: () => ({
+    isPending: false,
+    mutate: vi.fn(),
+  }),
+}));
+
+vi.mock("@/constants/platform", () => ({
+  isNative: false,
+  isWeb: true,
+}));
+
+vi.mock("@/constants/layout", () => ({
+  useIsCompactFormFactor: () => false,
+}));
+
+vi.mock("@/contexts/toast-context", () => ({
+  useToast: () => ({ error: vi.fn() }),
+}));
+
+vi.mock("@/runtime/host-runtime", () => ({
+  getHostRuntimeStore: () => ({ getClient: () => null }),
+}));
+
+vi.mock("@/stores/sidebar-collapsed-sections-store", () => ({
+  useSidebarCollapsedSectionsStore: (
+    selector: (state: {
+      collapsedStatusGroupKeys: Set<string>;
+      toggleStatusGroupCollapsed: () => void;
+    }) => unknown,
+  ) =>
+    selector({
+      collapsedStatusGroupKeys: new Set(),
+      toggleStatusGroupCollapsed: vi.fn(),
+    }),
+}));
+
+vi.mock("@/components/sidebar/sidebar-group-toggle-row", () => ({
+  SidebarGroupToggleRow: ({
+    expanded,
+    onPress,
+    testID,
+  }: {
+    expanded: boolean;
+    onPress: () => void;
+    testID: string;
+  }) =>
+    React.createElement(
+      "button",
+      { "data-testid": testID, onClick: onPress, type: "button" },
+      expanded ? "Show less" : "Show more",
+    ),
+}));
+
+vi.stubGlobal("React", React);
+vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
+
+import { SidebarArchivedGroup } from "./sidebar-archived-group";
+
+function archivedEntry(index: number): ArchivedWorkspaceEntry {
+  return {
+    workspaceKey: `server:workspace-${index}`,
+    serverId: "server",
+    workspaceId: `workspace-${index}`,
+    projectName: "Paseo",
+    name: `Archived ${index}`,
+    archivedAt: new Date(Date.UTC(2026, 6, index)),
+    phase: "archived",
+  };
+}
+
+describe("SidebarArchivedGroup", () => {
+  let root: Root | null = null;
+  let container: HTMLElement | null = null;
+
+  beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+  });
+
+  afterEach(() => {
+    if (root) {
+      flushSync(() => root?.unmount());
+    }
+    root = null;
+    container?.remove();
+    container = null;
+  });
+
+  it("renders five recent rows before Show more expands the tail", () => {
+    const entries = Array.from({ length: 7 }, (_, index) => archivedEntry(index + 1));
+    flushSync(() => {
+      root?.render(
+        <SidebarArchivedGroup
+          entries={entries}
+          hostBadgeByServerId={
+            new Map([
+              [
+                "server",
+                { serverId: "server", label: "Local", color: "none" as const, showLabel: true },
+              ],
+            ])
+          }
+        />,
+      );
+    });
+
+    expect(container?.textContent).toContain("Recently archived");
+    expect(container?.textContent).toContain("Archived 5");
+    expect(container?.textContent).not.toContain("Archived 6");
+    expect(container?.textContent).toContain("Paseo · Local");
+
+    const toggle = container?.querySelector(
+      '[data-testid="sidebar-archived-show-more"]',
+    ) as HTMLButtonElement | null;
+    expect(toggle?.textContent).toBe("Show more");
+
+    flushSync(() => toggle?.click());
+
+    expect(container?.textContent).toContain("Archived 6");
+    expect(container?.textContent).toContain("Archived 7");
+    expect(toggle?.textContent).toBe("Show less");
+  });
+
+  it("renders nothing when there are no archived workspaces", () => {
+    flushSync(() => {
+      root?.render(<SidebarArchivedGroup entries={[]} hostBadgeByServerId={new Map()} />);
+    });
+
+    expect(container?.textContent).toBe("");
+  });
+
+  it("shows a pending indicator instead of unarchive while the workspace is moving", () => {
+    const pending = { ...archivedEntry(1), phase: "archiving" as const };
+    flushSync(() => {
+      root?.render(
+        <SidebarArchivedGroup
+          entries={[pending]}
+          hostBadgeByServerId={
+            new Map([
+              [
+                "server",
+                { serverId: "server", label: "Local", color: "none" as const, showLabel: true },
+              ],
+            ])
+          }
+        />,
+      );
+    });
+
+    expect(
+      container?.querySelector(`[data-testid="sidebar-archived-pending-${pending.workspaceKey}"]`),
+    ).not.toBeNull();
+    expect(
+      container?.querySelector(
+        `[data-testid="sidebar-archived-unarchive-${pending.workspaceKey}"]`,
+      ),
+    ).toBeNull();
+  });
+});
+=======
+/**
+ * @vitest-environment jsdom
+ */
+import React, { act } from "react";
+import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
+import { flushSync } from "react-dom";
+import { createRoot, type Root } from "react-dom/client";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  archivedWorkspacesQueryKey,
+  mergeArchivedWorkspaces,
+  useRestoringArchivedWorkspaceKeys,
+  type ArchivedWorkspaceEntry,
+} from "@/hooks/use-archived-workspaces";
+
+const { theme, restoreWorkspace, toastError } = vi.hoisted(() => ({
+  restoreWorkspace: vi.fn<(workspaceId: string) => Promise<void>>(),
+  toastError: vi.fn(),
+  theme: {
+    spacing: { 1: 4, 2: 8, 3: 12 },
+    iconSize: { md: 18 },
+    borderRadius: { lg: 8 },
+    fontSize: { xs: 11, sm: 13 },
+    colors: {
+      foregroundMuted: "#aaa",
+      surfaceSidebarHover: "#222",
+      surface2: "#333",
+    },
+  },
+}));
+
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) =>
+      (
+        ({
+          "sidebar.workspace.archived.groupTitle": "Recently archived",
+          "sidebar.workspace.archived.unarchive": "Unarchive",
+          "sidebar.workspace.archived.unarchiving": "Unarchiving…",
+        }) as Record<string, string>
+      )[key] ?? key,
+  }),
+}));
+
+vi.mock("react-native-unistyles", () => ({
+  StyleSheet: {
+    create: (factory: unknown) =>
+      typeof factory === "function"
+        ? (factory as (value: typeof theme) => unknown)(theme)
+        : factory,
+  },
+  withUnistyles: (component: unknown) => component,
+}));
+
+vi.mock("react-native-reanimated", () => {
+  const animation: {
+    duration: () => typeof animation;
+    delay: () => typeof animation;
+    easing: () => typeof animation;
+  } = {
+    duration: () => animation,
+    delay: () => animation,
+    easing: () => animation,
+  };
+  return {
+    Easing: { bezier: () => ({}) },
+    default: {
+      View: ({
+        children,
+        entering: _entering,
+        exiting: _exiting,
+        layout: _layout,
+        collapsable: _collapsable,
+        accessible: _accessible,
+        accessibilityLabel: _accessibilityLabel,
+        accessibilityState: _accessibilityState,
+        testID,
+        ...props
+      }: React.PropsWithChildren<Record<string, unknown>>) =>
+        React.createElement("div", testID ? { ...props, "data-testid": testID } : props, children),
+    },
+    FadeIn: animation,
+    FadeInUp: animation,
+    FadeOut: animation,
+    LinearTransition: animation,
+  };
+});
+
+vi.mock("lucide-react-native", () => {
+  const createIcon = (name: string) => (props: Record<string, unknown>) =>
+    React.createElement("span", { ...props, "data-icon": name });
+  return {
+    Archive: createIcon("Archive"),
+    ArchiveRestore: createIcon("ArchiveRestore"),
+    ChevronDown: createIcon("ChevronDown"),
+    ChevronRight: createIcon("ChevronRight"),
+  };
+});
+
+vi.mock("@/constants/platform", () => ({
+  isNative: false,
+  isWeb: true,
+}));
+
+vi.mock("@/constants/layout", () => ({
+  useIsCompactFormFactor: () => false,
+}));
+
+vi.mock("@/contexts/toast-context", () => ({
+  useToast: () => ({ error: toastError }),
+}));
+
+vi.mock("@/runtime/host-runtime", () => ({
+  getHostRuntimeStore: () => ({ getClient: () => ({ restoreWorkspace }) }),
+}));
+
+vi.mock("@/stores/sidebar-collapsed-sections-store", () => ({
+  useSidebarCollapsedSectionsStore: (
+    selector: (state: {
+      collapsedStatusGroupKeys: Set<string>;
+      toggleStatusGroupCollapsed: () => void;
+    }) => unknown,
+  ) =>
+    selector({
+      collapsedStatusGroupKeys: new Set(),
+      toggleStatusGroupCollapsed: vi.fn(),
+    }),
+}));
+
+vi.mock("@/components/sidebar/sidebar-group-toggle-row", () => ({
+  SidebarGroupToggleRow: ({
+    expanded,
+    onPress,
+    testID,
+  }: {
+    expanded: boolean;
+    onPress: () => void;
+    testID: string;
+  }) =>
+    React.createElement(
+      "button",
+      { "data-testid": testID, onClick: onPress, type: "button" },
+      expanded ? "Show less" : "Show more",
+    ),
+}));
+
+vi.stubGlobal("React", React);
+vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
+
+import { SidebarArchivedGroup } from "./sidebar-archived-group";
+
+function archivedEntry(index: number): ArchivedWorkspaceEntry {
+  return {
+    workspaceKey: `server:workspace-${index}`,
+    serverId: "server",
+    workspaceId: `workspace-${index}`,
+    projectName: "Paseo",
+    name: `Archived ${index}`,
+    archivedAt: new Date(Date.UTC(2026, 6, index)),
+    phase: "archived",
+  };
+}
+
+function createDeferred() {
+  let resolve!: () => void;
+  let reject!: (error: Error) => void;
+  const promise = new Promise<void>((resolvePromise, rejectPromise) => {
+    resolve = resolvePromise;
+    reject = rejectPromise;
+  });
+  return { promise, resolve, reject };
+}
+
+function ArchivedQueryHarness({
+  fetchEntries,
+}: {
+  fetchEntries: () => Promise<ArchivedWorkspaceEntry[]>;
+}) {
+  const query = useQuery({ queryKey: archivedWorkspacesQueryKey("server"), queryFn: fetchEntries });
+  const restoring = useRestoringArchivedWorkspaceKeys();
+  const entries = mergeArchivedWorkspaces([{ isOnline: true, entries: query.data }], restoring);
+  return <SidebarArchivedGroup entries={entries} hostBadgeByServerId={new Map()} />;
+}
+
+describe("SidebarArchivedGroup", () => {
+  let root: Root | null = null;
+  let container: HTMLElement | null = null;
+
+  let queryClient: QueryClient;
+  function render(element: React.ReactNode) {
+    root?.render(<QueryClientProvider client={queryClient}>{element}</QueryClientProvider>);
+  }
+  function unarchiveButton(entry: ArchivedWorkspaceEntry) {
+    return container?.querySelector<HTMLElement>(
+      `[data-testid="sidebar-archived-unarchive-${entry.workspaceKey}"]`,
+    );
+  }
+
+  beforeEach(() => {
+    queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
+    });
+    restoreWorkspace.mockReset();
+    toastError.mockReset();
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+  });
+
+  afterEach(() => {
+    if (root) {
+      flushSync(() => root?.unmount());
+    }
+    root = null;
+    container?.remove();
+    container = null;
+    queryClient.clear();
+  });
+
+  it("renders five recent rows before Show more expands the tail", () => {
+    const entries = Array.from({ length: 7 }, (_, index) => archivedEntry(index + 1));
+    flushSync(() => {
+      render(
+        <SidebarArchivedGroup
+          entries={entries}
+          hostBadgeByServerId={
+            new Map([
+              [
+                "server",
+                { serverId: "server", label: "Local", color: "blue" as const, showLabel: true },
+              ],
+            ])
+          }
+        />,
+      );
+    });
+
+    expect(container?.textContent).toContain("Recently archived");
+    expect(container?.textContent).toContain("Archived 5");
+    expect(container?.textContent).not.toContain("Archived 6");
+    expect(container?.textContent).toContain("Paseo · Local");
+
+    const toggle = container?.querySelector(
+      '[data-testid="sidebar-archived-show-more"]',
+    ) as HTMLButtonElement | null;
+    expect(toggle?.textContent).toBe("Show more");
+
+    flushSync(() => toggle?.click());
+
+    expect(container?.textContent).toContain("Archived 6");
+    expect(container?.textContent).toContain("Archived 7");
+    expect(toggle?.textContent).toBe("Show less");
+  });
+
+  it("renders nothing when there are no archived workspaces", () => {
+    flushSync(() => {
+      render(<SidebarArchivedGroup entries={[]} hostBadgeByServerId={new Map()} />);
+    });
+
+    expect(container?.textContent).toBe("");
+  });
+
+  it("shows a pending indicator instead of unarchive while the workspace is moving", () => {
+    const pending = { ...archivedEntry(1), phase: "archiving" as const };
+    flushSync(() => {
+      render(
+        <SidebarArchivedGroup
+          entries={[pending]}
+          hostBadgeByServerId={
+            new Map([
+              [
+                "server",
+                { serverId: "server", label: "Local", color: "blue" as const, showLabel: true },
+              ],
+            ])
+          }
+        />,
+      );
+    });
+
+    expect(
+      container?.querySelector(`[data-testid="sidebar-archived-pending-${pending.workspaceKey}"]`),
+    ).not.toBeNull();
+    expect(
+      container?.querySelector(
+        `[data-testid="sidebar-archived-unarchive-${pending.workspaceKey}"]`,
+      ),
+    ).toBeNull();
+  });
+
+  it("keeps an unmounted restore hidden when a concurrent restore refetches the host list", async () => {
+    const first = archivedEntry(1);
+    const second = archivedEntry(2);
+    const firstRestore = createDeferred();
+    const secondRestore = createDeferred();
+    restoreWorkspace.mockImplementation((id) =>
+      id === first.workspaceId ? firstRestore.promise : secondRestore.promise,
+    );
+    let archived = [first, second];
+    const fetchEntries = vi.fn(async () => archived);
+    queryClient.setQueryData(archivedWorkspacesQueryKey("server"), archived);
+    await act(async () => render(<ArchivedQueryHarness fetchEntries={fetchEntries} />));
+
+    await act(async () => unarchiveButton(first)?.click());
+    await vi.waitFor(() => expect(unarchiveButton(first)).toBeNull());
+    await act(async () => unarchiveButton(second)?.click());
+    await vi.waitFor(() => expect(unarchiveButton(second)).toBeNull());
+
+    archived = [first];
+    await act(async () => secondRestore.resolve());
+    await vi.waitFor(() => expect(queryClient.isMutating()).toBe(1));
+    expect(queryClient.getQueryData(archivedWorkspacesQueryKey("server"))).toEqual([first]);
+    expect(unarchiveButton(first)).toBeNull();
+    expect(restoreWorkspace).toHaveBeenCalledTimes(2);
+
+    archived = [];
+    await act(async () => firstRestore.resolve());
+    await vi.waitFor(() => expect(queryClient.isMutating()).toBe(0));
+    expect(unarchiveButton(first)).toBeNull();
+    expect(toastError).not.toHaveBeenCalled();
+  });
+
+  it.each([false, true])(
+    "reconciles an unmounted failed restore with the host (restored remotely: %s)",
+    async (restoredRemotely) => {
+      const entry = archivedEntry(1);
+      const restore = createDeferred();
+      restoreWorkspace.mockReturnValue(restore.promise);
+      let archived = [entry];
+      const fetchEntries = vi.fn(async () => archived);
+      queryClient.setQueryData(archivedWorkspacesQueryKey("server"), archived);
+      await act(async () => render(<ArchivedQueryHarness fetchEntries={fetchEntries} />));
+      await act(async () => unarchiveButton(entry)?.click());
+      await vi.waitFor(() => expect(unarchiveButton(entry)).toBeNull());
+
+      archived = restoredRemotely ? [] : [entry];
+      await act(async () => restore.reject(new Error("Restore response lost")));
+      await vi.waitFor(() => expect(queryClient.isMutating()).toBe(0));
+      expect(toastError).toHaveBeenCalledWith("Restore response lost");
+      expect(queryClient.getQueryData(archivedWorkspacesQueryKey("server"))).toEqual(archived);
+      await vi.waitFor(() => expect(Boolean(unarchiveButton(entry))).toBe(!restoredRemotely));
+      expect(restoreWorkspace).toHaveBeenCalledTimes(1);
+    },
+  );
+});
+>>>>>>>

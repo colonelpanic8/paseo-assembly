@@ -67,7 +67,7 @@ index 9ed594c92..f145e61f8 100644
    insideBottomSheet: boolean,
  ): ModelBrowserScrolling {
 diff --git a/packages/app/src/components/model-browser.tsx b/packages/app/src/components/model-browser.tsx
-index 16ff5a472..bfc219607 100644
+index 0a6980097..bd219b544 100644
 --- a/packages/app/src/components/model-browser.tsx
 +++ b/packages/app/src/components/model-browser.tsx
 @@ -79,7 +79,7 @@ import {
@@ -152,111 +152,27 @@ index 8e6ce060c..5cdabb71b 100644
              ])
            }
 diff --git a/packages/app/src/i18n/resources/ru.ts b/packages/app/src/i18n/resources/ru.ts
-index ee537a3d2..72461b0a4 100644
+index 4128b90f3..ed6a68097 100644
 --- a/packages/app/src/i18n/resources/ru.ts
 +++ b/packages/app/src/i18n/resources/ru.ts
-@@ -1105,6 +1105,7 @@ export const ru: TranslationResources = {
-         label: "Заголовок",
-         title: "Заголовок",
-         branch: "Имя ветки",
-+        worktree: "Суффикс worktree",
-       },
-       show: {
-         label: "Показывать",
-@@ -1224,12 +1225,27 @@ export const ru: TranslationResources = {
-         rename: "Переименовать рабочее пространство",
-         pin: "Закрепить вверху",
-         unpin: "Открепить",
-+        snooze: "Отложить",
-+        snoozeHour: "Отложить на 1 час",
-+        snoozeEvening: "Отложить до вечера",
-+        snoozeTomorrow: "Отложить до завтра",
-+        snoozeNextWeek: "Отложить до следующей недели",
-+        snoozeCustom: "Выбрать срок…",
-+        wake: "Возобновить",
-+        snoozedUntil: "Отложено до {{time}} ({{duration}})",
-+        snoozedChip: "{{time}} · {{duration}}",
-         archive: "Архивировать",
-         archiveWorkspace: "Архивировать рабочее пространство",
-         hideFromSidebar: "Скрыть на боковой панели",
-         archiving: "Архивирование...",
-         hiding: "Скрытие...",
-       },
-+      archived: {
-+        groupTitle: "Недавно архивированные",
-+        unarchive: "Разархивировать",
-+        unarchiving: "Разархивирование…",
-+        unarchiveFailed: "Не удалось разархивировать рабочее пространство",
-+      },
-       confirmations: {
-         hideTitle: "Скрыть рабочее пространство?",
-         hideMessage:
-@@ -1247,10 +1263,24 @@ export const ru: TranslationResources = {
-         submit: "Переименовать",
-         invalidBranchName: "Недопустимое имя ветки",
-       },
-+      customSnooze: {
-+        title: "Отложить до указанного времени",
-+        until: "Отложить до",
-+        date: "Дата",
-+        time: "Время",
-+        pastTime: "Выберите время в будущем.",
-+        confirm: "Отложить",
-+      },
-       toasts: {
+@@ -1289,13 +1289,13 @@ export const ru: TranslationResources = {
          workspacePathUnavailable: "Путь к рабочему пространству недоступен",
          pathCopied: "Путь скопирован",
          branchNameCopied: "Имя ветки скопировано",
-+        snoozingWorkspace: "Рабочее пространство откладывается…",
-+        snoozedWorkspace: "Рабочее пространство отложено",
-+        failedToSnoozeWorkspace: "Не удалось отложить рабочее пространство",
+-        hostDisconnected: "Хост не подключён",
+         snoozingWorkspace: "Рабочее пространство откладывается…",
+         snoozedWorkspace: "Рабочее пространство отложено",
+         failedToSnoozeWorkspace: "Не удалось отложить рабочее пространство",
+-        wakingWorkspace: "Рабочее пространство пробуждается…",
+-        wokeWorkspace: "Рабочее пространство разбужено",
+-        failedToWakeWorkspace: "Не удалось разбудить рабочее пространство",
 +        wakingWorkspace: "Рабочее пространство возобновляется…",
 +        wokeWorkspace: "Рабочее пространство возобновлено",
 +        failedToWakeWorkspace: "Не удалось возобновить рабочее пространство",
-         hostDisconnected: "Хост не подключён",
++        hostDisconnected: "Хост не подключён",
          hideFailed: "Не удалось скрыть рабочее пространство",
          archiveFailed: "Не удалось архивировать рабочее пространство",
-@@ -2959,6 +2989,26 @@ export const ru: TranslationResources = {
-           placeholder: "Мой хост",
-           submit: "Переименовать",
-         },
-+        color: {
-+          section: "Внешний вид",
-+          title: "Цвет",
-+          hint: "Окрашивает метку хоста на боковой панели",
-+          options: {
-+            none: "Нет",
-+            blue: "Синий",
-+            green: "Зелёный",
-+            amber: "Янтарный",
-+            orange: "Оранжевый",
-+            red: "Красный",
-+            purple: "Фиолетовый",
-+          },
-+          custom: {
-+            label: "Другой",
-+            title: "Другой цвет",
-+            submit: "Применить",
-+            invalid: "Введите HEX-цвет, например #4f46e5",
-+          },
-+        },
-         restart: {
-           title: "Перезапустить демон",
-           hint: "Перезапускает процесс демона. Приложение автоматически переподключится",
-diff --git a/packages/app/src/runtime/replica-cache/index.ts b/packages/app/src/runtime/replica-cache/index.ts
-index 120c03869..037a33d35 100644
---- a/packages/app/src/runtime/replica-cache/index.ts
-+++ b/packages/app/src/runtime/replica-cache/index.ts
-@@ -711,7 +711,8 @@ function serializeWorkspace(workspace: WorkspaceDescriptor): StoredWorkspace {
-     name: workspace.name,
-     title: workspace.title ?? null,
-     pinnedAt: workspace.pinnedAt ?? null,
--    labels: workspace.labels,
-+    labels: workspace.labels ?? [],
-+    snoozeStatus: workspace.snoozeStatus ?? null,
-     status: workspace.status,
-     statusEnteredAt: workspace.statusEnteredAt?.toISOString() ?? null,
-     activityAt: null,
+       },
 diff --git a/packages/app/src/screens/settings/appearance/appearance-section.tsx b/packages/app/src/screens/settings/appearance/appearance-section.tsx
 index 64b85e362..87f070af6 100644
 --- a/packages/app/src/screens/settings/appearance/appearance-section.tsx
@@ -291,55 +207,6 @@ index 6eaac42bd..1b81e17bc 100644
              showLabel: badgeDisplay === "name",
            },
      [badgeDisplay, host.serverId, host.label, host.appearance.color],
-diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
-index 6a4056b76..3c375cbbd 100644
---- a/packages/app/src/stores/session-store.ts
-+++ b/packages/app/src/stores/session-store.ts
-@@ -131,6 +131,7 @@ export interface WorkspaceDescriptor {
-   name: string;
-   title?: string | null;
-   pinnedAt?: string | null;
-+  labels?: string[];
-   snoozeStatus?: { snoozedAt: string; snoozedUntil: string } | null;
-   status: WorkspaceDescriptorPayload["status"];
-   statusEnteredAt: Date | null;
-@@ -174,6 +175,7 @@ export function normalizeWorkspaceDescriptor(
-     name: payload.name,
-     title: payload.title ?? null,
-     pinnedAt: payload.pinnedAt ?? null,
-+    labels: payload.labels ?? [],
-     snoozeStatus: payload.snoozeStatus ?? null,
-     status: payload.status,
-     statusEnteredAt,
-@@ -656,6 +658,7 @@ interface SessionStoreActions {
-   // Hydration
-   setHasHydratedAgents: (serverId: string, hydrated: boolean) => void;
-   setHasHydratedWorkspaces: (serverId: string, hydrated: boolean) => void;
-+  setHasWorkspaceDirectorySnapshot: (serverId: string, hydrated: boolean) => void;
- 
-   // Agent directory (derived from agents)
-   getAgentDirectory: (serverId: string) => AgentDirectoryEntry[] | undefined;
-@@ -1944,6 +1947,20 @@ export const useSessionStore = create<SessionStore>()(
-         });
-       },
- 
-+      setHasWorkspaceDirectorySnapshot: (serverId, hydrated) => {
-+        set((prev) => {
-+          const session = prev.sessions[serverId];
-+          if (!session || session.hasWorkspaceDirectorySnapshot === hydrated) return prev;
-+          return {
-+            ...prev,
-+            sessions: {
-+              ...prev.sessions,
-+              [serverId]: { ...session, hasWorkspaceDirectorySnapshot: hydrated },
-+            },
-+          };
-+        });
-+      },
-+
-       // Agent directory - derived from agents (computed on-demand)
-       getAgentDirectory: (serverId) => {
-         const state = get();
 diff --git a/packages/app/src/test/seed-session.ts b/packages/app/src/test/seed-session.ts
 index d483e01c5..a7eb42bf6 100644
 --- a/packages/app/src/test/seed-session.ts
@@ -426,3 +293,4 @@ index 5b92623af..52198bc88 100644
    serverId: null,
    liveSessionId: null,
    isMuted: false,
+

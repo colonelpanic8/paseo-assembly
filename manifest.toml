@@ -101,7 +101,7 @@ summary = "Restore a workspace's agents when the workspace is unarchived (was PR
 [[entry]]
 branch = "mine:watch-live-voice"
 summary = "Drive Live Voice from the watch; route call audio to a Bluetooth headset"
-parents = [{ pr = 2655 }, { pr = 2657 }]
+parents = [{ pr = 2655 }, { branch = "mine:realtime-voice-actions" }]
 reconstruction_publish = "mine:watch-live-voice"
 # The agent payload builders only trip oxlint's complexity rule once 2657,
 # 2658 and 2659 stack, so this belongs to no single topic branch.
@@ -129,8 +129,8 @@ pr = 2784
 summary = "Fix worktree setup with production npm environments"
 
 [[entry]]
-pr = 2785
-summary = "Add UI and CLI for creating provider accounts"
+branch = "mine:multi-account-provider"
+summary = "Add UI and CLI for creating provider accounts (rebased from closed PR #2785)"
 
 [[entry]]
 pr = 2820
@@ -138,7 +138,8 @@ summary = "Serialize draft provider introspection sessions"
 fixup = "patches/command-loading-session-errors.patch"
 
 [[entry]]
-pr = 2843
+branch = "mine:unconditional-host-display"
+summary = "Add host display and custom color preferences (rebased from closed PR #2843)"
 
 [[entry]]
 pr = 2845
@@ -190,8 +191,8 @@ pr = 2885
 summary = "Stop shipping a hardened runtime on unsigned mac builds"
 
 [[entry]]
-pr = 2898
-summary = "Fork the provider session instead of pasting a summary"
+branch = "mine:fork-native-session"
+summary = "Fork the provider session instead of pasting a summary (rebased from closed PR #2898)"
 
 [[entry]]
 pr = 2900
@@ -200,7 +201,7 @@ summary = "Separate config from the rest of PASEO_HOME"
 [[entry]]
 pr = 2927
 summary = "Hardware keyboard shortcuts on native, mod-key setting, Shift+Enter send"
-parents = [{ pr = 3499 }]
+parents = [{ branch = "mine:extend-cn-cp-omni-menu" }]
 reconstruction_publish = "mine:keyboard-shortcuts-mobile"
 fixup = "patches/pr-2927-current-typography.patch"
 
@@ -243,11 +244,11 @@ pr = 3506
 
 [[entry]]
 branch = "mine:live-voice-quick-launch"
-parents = [{ pr = 2657 }]
+parents = [{ branch = "mine:realtime-voice-actions" }]
 
 [[entry]]
 branch = "mine:live-voice-context-files"
-parents = [{ pr = 2657 }]
+parents = [{ branch = "mine:realtime-voice-actions" }]
 
 [[entry]]
 branch = "mine:colorblind-status-dots"
@@ -295,8 +296,8 @@ pr = 4281
 summary = "Mirror global provider catalogs into workspace snapshots"
 
 [[entry]]
-pr = 4304
-summary = "Drive Codex features from the catalog and surface async questions"
+branch = "mine:codex-astra-support"
+summary = "Drive Codex features from the catalog and surface async questions (rebased from closed PR #4304)"
 fixup = "patches/pr-4304-async-question-attribution.patch"
 
 [[entry]]

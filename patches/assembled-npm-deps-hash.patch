@@ -2,5 +2,5 @@ diff --git a/nix/npm-deps.hash b/nix/npm-deps.hash
 --- a/nix/npm-deps.hash
 +++ b/nix/npm-deps.hash
 @@ -1 +1 @@
--sha256-40KXWVtW9wgHYJmn7XrLHzHWdOJiSCiajj9duHnDfXA=
-+sha256-FDY7k5mUVqanD85oIPrdoQ4nC/eOGqER5c/gVbX32PU=
+-sha256-8P7kk9B2A81e13IIyyfo8fIoNGlrutfV/WGKAFHscUc=
++sha256-M446qb0e82pX2VZsZEEmoXQ4u78oGTJj3RsJ2fy/HwU=
