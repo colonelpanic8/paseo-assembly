@@ -1,0 +1,573 @@
+diff --git a/packages/app/e2e/support/helpers/seed-client.ts b/packages/app/e2e/support/helpers/seed-client.ts
+index d7946f07d..e638d216e 100644
+--- a/packages/app/e2e/support/helpers/seed-client.ts
++++ b/packages/app/e2e/support/helpers/seed-client.ts
+@@ -46,6 +46,7 @@ export interface SeedDaemonClient {
+     entries: SeedWorkspaceDescriptor[];
+   }>;
+   setWorkspacePinned(workspaceId: string, pinned: boolean): Promise<{ pinnedAt: string | null }>;
++  clearWorkspaceAttention(workspaceId: string): Promise<void>;
+   setWorkspaceLabel(input: {
+     workspaceId: string;
+     label: { name: string; color: "red" };
+@@ -164,6 +165,7 @@ export interface SeedDaemonClient {
+     features?: {
+       projectAdd?: boolean;
+       workspaceRecovery?: boolean;
++      workspaceMarkUnread?: boolean;
+     } | null;
+   } | null;
+   fetchAgentHistory(options?: {
+diff --git a/packages/app/src/contexts/live-voice-context.tsx b/packages/app/src/contexts/live-voice-context.tsx
+index 3872fead0..486fbf8c0 100644
+--- a/packages/app/src/contexts/live-voice-context.tsx
++++ b/packages/app/src/contexts/live-voice-context.tsx
+@@ -17,6 +17,7 @@ import {
+   type LiveVoiceDaemonClient,
+   type LiveVoiceRuntime,
+   type LiveVoiceSnapshot,
++  type LiveVoiceStartOptions,
+ } from "@/live-voice/live-voice-runtime";
+ import { registerLiveVoiceRouteAuthority } from "@/live-voice/live-voice-route-authority";
+ import { attachLiveVoiceCues } from "@/live-voice/live-voice-cues";
+@@ -53,7 +54,7 @@ const ambientWatchDeps: LiveVoiceAmbientWatchDeps = {
+ };
+ 
+ interface LiveVoiceContextValue extends LiveVoiceSnapshot {
+-  start: (serverId: string) => Promise<void>;
++  start: (serverId: string, options?: LiveVoiceStartOptions) => Promise<void>;
+   stop: () => Promise<void>;
+   setMuted: (muted: boolean) => void;
+   toggleMute: () => void;
+diff --git a/packages/app/src/i18n/resources/ru.ts b/packages/app/src/i18n/resources/ru.ts
+index ed6a68097..003323787 100644
+--- a/packages/app/src/i18n/resources/ru.ts
++++ b/packages/app/src/i18n/resources/ru.ts
+@@ -950,11 +950,8 @@ export const ru: TranslationResources = {
+         refresh: "Обновить",
+         refreshState: "Обновить состояние Git и {{brand}}",
+         failedRefresh: "Не удалось обновить состояние Git.",
+-        emptyHiddenWhitespace: "После скрытия пробельных изменений видимых изменений нет",
+-        emptyUncommitted: "Нет незафиксированных изменений",
+         seeUncommittedChanges: "Показать незафиксированные изменения",
+         seeCommittedChanges: "Показать зафиксированные изменения",
+-        emptyAgainstBase: "Нет изменений относительно {{baseRef}}",
+         checkingRepository: "Проверяем репозиторий...",
+         notRepository: "Это не репозиторий Git",
+         diffMode: "Режим диффа",
+@@ -1125,7 +1122,6 @@ export const ru: TranslationResources = {
+         branch: "Ветка",
+         project: "Проект",
+         host: "Хост",
+-        alwaysShowHost: "Всегда показывать хост",
+         changeRequest: "PR",
+         checks: "Проверки",
+         services: "Сервисы",
+@@ -2616,14 +2612,6 @@ export const ru: TranslationResources = {
+           auto: "Системная",
+         },
+       },
+-      sidebar: {
+-        title: "Боковая панель",
+-        alwaysShowHostLabels: {
+-          title: "Всегда показывать метки хоста",
+-          description:
+-            "Показывает метки хоста, даже когда все видимые рабочие области находятся на этом устройстве",
+-        },
+-      },
+       detailLevel: {
+         title: "Уровень детализации",
+       },
+@@ -2633,6 +2621,11 @@ export const ru: TranslationResources = {
+       },
+       sidebar: {
+         title: "Боковая панель",
++        alwaysShowHostLabels: {
++          title: "Всегда показывать метки хоста",
++          description:
++            "Показывает метки хоста, даже когда все видимые рабочие области находятся на этом устройстве",
++        },
+         description:
+           "Выберите, какие элементы отображаются вверху боковой панели и в каком порядке",
+         moveUp: "Переместить вверх",
+diff --git a/packages/app/src/live-voice/live-voice-availability.ts b/packages/app/src/live-voice/live-voice-availability.ts
+index 5f137ba99..56e975bbb 100644
+--- a/packages/app/src/live-voice/live-voice-availability.ts
++++ b/packages/app/src/live-voice/live-voice-availability.ts
+@@ -7,12 +7,40 @@ import {
+   type LiveVoiceHostAvailability,
+ } from "@/live-voice/live-voice-availability-policy";
+ import {
++  getHostRuntimeStore,
+   useHosts,
+   useHostRuntimeConnectionStatuses,
+ } from "@/runtime/host-runtime";
+ import { useSessionStore } from "@/stores/session-store";
+ import { getLiveVoiceContextProfileHostInfo } from "@/live-voice/live-voice-context-profile-selection";
+ 
++/** Availability read straight from stores for non-React consumers such as Wear. */
++export function readLiveVoiceHostAvailability(): LiveVoiceHostAvailability[] {
++  const sessions = useSessionStore.getState().sessions;
++  const store = getHostRuntimeStore();
++  return store.getHosts().map((host): LiveVoiceHostAvailability => {
++    const serverInfo = sessions[host.serverId]?.serverInfo ?? null;
++    return {
++      serverId: host.serverId,
++      label: host.label,
++      connectionStatus: store.getSnapshot(host.serverId)?.connectionStatus ?? "connecting",
++      version: serverInfo?.version ?? null,
++      supportsLiveVoice: serverInfo ? serverInfo.features?.liveVoice === true : null,
++      supportsVoiceCatalog: serverInfo?.features?.liveVoiceVoiceCatalog === true,
++      paseoToolsEnabled: serverInfo ? serverInfo.features?.agentPaseoTools !== false : null,
++      supportsAssistants: serverInfo?.features?.assistants === true,
++      contextProfiles: getLiveVoiceContextProfileHostInfo(serverInfo),
++    };
++  });
++}
++
++export function readLiveVoiceAvailability(): LiveVoiceAvailability {
++  return resolveLiveVoiceAvailability({
++    isPlatformSupported: isLiveVoiceSessionSupported,
++    hosts: readLiveVoiceHostAvailability(),
++  });
++}
++
+ /**
+  * Every configured host with the facts live voice availability is decided from,
+  * unfiltered. `useLiveVoiceAvailability` narrows this to the hosts that can take
+diff --git a/packages/app/src/live-voice/live-voice-footer-button.tsx b/packages/app/src/live-voice/live-voice-footer-button.tsx
+index 391add8d2..6bb6f18fc 100644
+--- a/packages/app/src/live-voice/live-voice-footer-button.tsx
++++ b/packages/app/src/live-voice/live-voice-footer-button.tsx
+@@ -26,6 +26,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
+ import { useAssistants } from "@/assistants/assistant-queries";
+ import { useAssistantSelectionStore } from "@/assistants/assistant-selection-store";
+ import { AssistantsSheet } from "@/assistants/assistants-sheet";
++import { useAppVisible } from "@/hooks/use-app-visible";
+ import { useLiveVoiceOptional } from "@/contexts/live-voice-context";
+ import { useIsCompactFormFactor } from "@/constants/layout";
+ import { useLiveVoiceAvailability } from "@/live-voice/live-voice-availability";
+@@ -402,10 +403,11 @@ export function LiveVoiceFooterButton({ active }: { active: boolean }) {
+   const [isManagingAssistants, setIsManagingAssistants] = useState(false);
+   const isCompactLayout = useIsCompactFormFactor();
+   const isLauncherRequested = useLiveVoiceLauncherRequested();
++  const isAppVisible = useAppVisible();
+   const openAgentListForLayout = usePanelStore((state) => state.openAgentListForLayout);
+ 
+   useEffect(() => {
+-    if (!isLauncherRequested) {
++    if (!isLauncherRequested || !isAppVisible) {
+       return;
+     }
+     openAgentListForLayout({ isCompact: isCompactLayout });
+@@ -414,7 +416,7 @@ export function LiveVoiceFooterButton({ active }: { active: boolean }) {
+     }
+     setIsOpen(true);
+     consumeLiveVoiceLauncherRequest();
+-  }, [active, isCompactLayout, isLauncherRequested, openAgentListForLayout]);
++  }, [active, isAppVisible, isCompactLayout, isLauncherRequested, openAgentListForLayout]);
+ 
+   const availableHosts = availability.kind === "available" ? availability.hosts : [];
+   const selectedHost =
+diff --git a/packages/app/src/live-voice/live-voice-launch.ts b/packages/app/src/live-voice/live-voice-launch.ts
+index 44122ad67..98ebcb317 100644
+--- a/packages/app/src/live-voice/live-voice-launch.ts
++++ b/packages/app/src/live-voice/live-voice-launch.ts
+@@ -1,5 +1,5 @@
+ import { useSyncExternalStore } from "react";
+-import type { LiveVoiceSnapshot } from "@/live-voice/live-voice-runtime";
++import type { LiveVoiceSnapshot, LiveVoiceStartOptions } from "@/live-voice/live-voice-runtime";
+ import { LiveVoiceStartError } from "@/live-voice/live-voice-runtime";
+ 
+ let isLauncherRequested = false;
+@@ -56,13 +56,20 @@ export function isLiveVoiceCallActive(phase: LiveVoiceSnapshot["phase"]): boolea
+   return phase === "starting" || phase === "active" || phase === "stopping";
+ }
+ 
+-export function startLiveVoiceCall(
+-  start: (serverId: string) => Promise<void>,
+-  serverId: string,
+-): void {
+-  void start(serverId).catch((error: unknown) => {
++interface StartLiveVoiceCallInput {
++  start: (serverId: string, options?: LiveVoiceStartOptions) => Promise<void>;
++  serverId: string;
++  options?: LiveVoiceStartOptions;
++  showLauncher: () => void;
++}
++
++export async function startLiveVoiceCall(input: StartLiveVoiceCallInput): Promise<void> {
++  try {
++    await input.start(input.serverId, input.options);
++  } catch (error) {
++    input.showLauncher();
+     if (!(error instanceof LiveVoiceStartError)) {
+       console.error("[LiveVoice] Failed to start session", error);
+     }
+-  });
++  }
+ }
+diff --git a/packages/app/src/live-voice/live-voice-link-listener.tsx b/packages/app/src/live-voice/live-voice-link-listener.tsx
+index 884ab172d..fbb21e457 100644
+--- a/packages/app/src/live-voice/live-voice-link-listener.tsx
++++ b/packages/app/src/live-voice/live-voice-link-listener.tsx
+@@ -1,5 +1,6 @@
+ import * as Linking from "expo-linking";
+ import { useEffect, useState } from "react";
++import { useAppVisible } from "@/hooks/use-app-visible";
+ import { isNative } from "@/constants/platform";
+ import { useLiveVoiceOptional } from "@/contexts/live-voice-context";
+ import {
+@@ -17,12 +18,42 @@ import {
+   resolveLiveVoiceLinkHost,
+   type LiveVoiceLink,
+ } from "@/live-voice/live-voice-link";
++import { matchLinkAssistant } from "@/live-voice/live-voice-link-assistant";
++import type { LiveVoiceStartOptions } from "@/live-voice/live-voice-runtime";
+ import { getHostRuntimeStore } from "@/runtime/host-runtime";
++import { useLiveVoiceSettingsStore } from "@/stores/live-voice-settings-store";
++import { useSessionStore } from "@/stores/session-store";
++
++async function resolveLinkStartOptions(
++  serverId: string,
++  link: LiveVoiceLink,
++): Promise<LiveVoiceStartOptions> {
++  if (!link.assistant) {
++    return {};
++  }
++  const client = useSessionStore.getState().sessions[serverId]?.client ?? null;
++  if (!client) {
++    return { assistantId: null };
++  }
++  try {
++    const assistants = await client.listAssistants();
++    const assistantId = matchLinkAssistant(assistants, link.assistant);
++    if (!assistantId) {
++      console.warn("[Linking] Live Voice link named an unknown assistant", link.assistant);
++    }
++    return { assistantId };
++  } catch (error) {
++    console.warn("[Linking] Could not resolve the Live Voice link assistant", error);
++    return { assistantId: null };
++  }
++}
+ 
+ export function LiveVoiceLinkListener() {
+   const liveVoice = useLiveVoiceOptional();
++  const isAppVisible = useAppVisible();
+   const availability = useLiveVoiceAvailability();
+   const hosts = useLiveVoiceHostAvailability();
++  const defaultHost = useLiveVoiceSettingsStore((state) => state.quickLaunchServerId);
+   const [pendingLink, setPendingLink] = useState<LiveVoiceLink | null>(null);
+   const [isHostBootstrapReady, setIsHostBootstrapReady] = useState(false);
+ 
+@@ -96,7 +127,9 @@ export function LiveVoiceLinkListener() {
+ 
+     const decision = resolveLiveVoiceLinkHost({
+       link: pendingLink,
++      defaultHost,
+       isHostBootstrapReady,
++      isAppVisible,
+       availability,
+       hosts,
+     });
+@@ -109,8 +142,26 @@ export function LiveVoiceLinkListener() {
+       requestLiveVoiceLauncher();
+       return;
+     }
+-    startLiveVoiceCall(liveVoice.start, decision.serverId);
+-  }, [availability, hosts, isHostBootstrapReady, liveVoice, pendingLink]);
++    const link = pendingLink;
++    const startWithLinkOptions = async () => {
++      const options = await resolveLinkStartOptions(decision.serverId, link);
++      await startLiveVoiceCall({
++        start: liveVoice.start,
++        serverId: decision.serverId,
++        options,
++        showLauncher: requestLiveVoiceLauncher,
++      });
++    };
++    void startWithLinkOptions();
++  }, [
++    availability,
++    defaultHost,
++    hosts,
++    isAppVisible,
++    isHostBootstrapReady,
++    liveVoice,
++    pendingLink,
++  ]);
+ 
+   return null;
+ }
+diff --git a/packages/app/src/live-voice/live-voice-link.test.ts b/packages/app/src/live-voice/live-voice-link.test.ts
+index 56bf28da2..3af0e189c 100644
+--- a/packages/app/src/live-voice/live-voice-link.test.ts
++++ b/packages/app/src/live-voice/live-voice-link.test.ts
+@@ -25,13 +25,17 @@ function host(overrides: Partial<LiveVoiceHostAvailability> = {}): LiveVoiceHost
+ 
+ function decide(input: {
+   link?: LiveVoiceLink;
++  defaultHost?: string | null;
+   isHostBootstrapReady?: boolean;
++  isAppVisible?: boolean;
+   availability: LiveVoiceAvailability;
+   hosts?: LiveVoiceHostAvailability[];
+ }) {
+   return resolveLiveVoiceLinkHost({
+-    link: input.link ?? { host: null },
++    link: input.link ?? { host: null, assistant: null },
++    defaultHost: input.defaultHost ?? null,
+     isHostBootstrapReady: input.isHostBootstrapReady ?? true,
++    isAppVisible: input.isAppVisible ?? true,
+     availability: input.availability,
+     hosts: input.hosts ?? input.availability.hosts,
+   });
+@@ -39,12 +43,13 @@ function decide(input: {
+ 
+ describe("parseLiveVoiceLink", () => {
+   it("parses the Live Voice link without a host", () => {
+-    expect(parseLiveVoiceLink("paseo://live-voice")).toEqual({ host: null });
++    expect(parseLiveVoiceLink("paseo://live-voice")).toEqual({ host: null, assistant: null });
+   });
+ 
+   it("parses and decodes an explicit host", () => {
+     expect(parseLiveVoiceLink("paseo://live-voice?host=host%2Fremote")).toEqual({
+       host: "host/remote",
++      assistant: null,
+     });
+   });
+ 
+@@ -85,7 +90,7 @@ describe("resolveLiveVoiceLinkHost", () => {
+ 
+     expect(
+       decide({
+-        link: { host: "host-b" },
++        link: { host: "host-b", assistant: null },
+         availability: { kind: "available", hosts: [hostA, hostB] },
+       }),
+     ).toEqual({ kind: "start", serverId: "host-b" });
+@@ -102,7 +107,7 @@ describe("resolveLiveVoiceLinkHost", () => {
+ 
+     expect(
+       decide({
+-        link: { host: "host-b" },
++        link: { host: "host-b", assistant: null },
+         availability: { kind: "available", hosts: [readyHost] },
+         hosts: [readyHost, connectingHost],
+       }),
+@@ -114,7 +119,7 @@ describe("resolveLiveVoiceLinkHost", () => {
+ 
+     expect(
+       decide({
+-        link: { host: "host-b" },
++        link: { host: "host-b", assistant: null },
+         isHostBootstrapReady: false,
+         availability: { kind: "available", hosts: [available] },
+       }),
+@@ -131,7 +136,7 @@ describe("resolveLiveVoiceLinkHost", () => {
+ 
+     expect(
+       decide({
+-        link: { host: "host-b" },
++        link: { host: "host-b", assistant: null },
+         availability: { kind: "available", hosts: [available] },
+         hosts: [available, offline],
+       }),
+@@ -199,7 +204,7 @@ describe("Live Voice native routing", () => {
+     (initial) => {
+       const path = "paseo://live-voice/?host=host%2Fremote";
+       expect(redirectSystemPath({ path, initial })).toBe(initial ? "/" : "");
+-      expect(parseLiveVoiceLink(path)).toEqual({ host: "host/remote" });
++      expect(parseLiveVoiceLink(path)).toEqual({ host: "host/remote", assistant: null });
+     },
+   );
+ 
+diff --git a/packages/app/src/live-voice/live-voice-link.ts b/packages/app/src/live-voice/live-voice-link.ts
+index 069f29764..bdd8dacda 100644
+--- a/packages/app/src/live-voice/live-voice-link.ts
++++ b/packages/app/src/live-voice/live-voice-link.ts
+@@ -5,6 +5,7 @@ import type {
+ 
+ export interface LiveVoiceLink {
+   host: string | null;
++  assistant: string | null;
+ }
+ 
+ export type LiveVoiceLinkHostDecision =
+@@ -14,7 +15,9 @@ export type LiveVoiceLinkHostDecision =
+ 
+ export interface ResolveLiveVoiceLinkHostInput {
+   link: LiveVoiceLink;
++  defaultHost?: string | null;
+   isHostBootstrapReady: boolean;
++  isAppVisible: boolean;
+   availability: LiveVoiceAvailability;
+   hosts: LiveVoiceHostAvailability[];
+ }
+@@ -36,7 +39,8 @@ export function parseLiveVoiceLink(url: string): LiveVoiceLink | null {
+   }
+ 
+   const host = parsed.searchParams.get("host")?.trim() || null;
+-  return { host };
++  const assistant = parsed.searchParams.get("assistant")?.trim() || null;
++  return { host, assistant };
+ }
+ 
+ function isHostEligibilityPending(host: LiveVoiceHostAvailability): boolean {
+@@ -49,22 +53,26 @@ function isHostEligibilityPending(host: LiveVoiceHostAvailability): boolean {
+ export function resolveLiveVoiceLinkHost(
+   input: ResolveLiveVoiceLinkHostInput,
+ ): LiveVoiceLinkHostDecision {
+-  const requestedHost = input.link.host
+-    ? (input.hosts.find((host) => host.serverId === input.link.host) ?? null)
++  if (!input.isAppVisible) {
++    return { kind: "wait" };
++  }
++  const requestedHostId = input.link.host ?? input.defaultHost ?? null;
++  const requestedHost = requestedHostId
++    ? (input.hosts.find((host) => host.serverId === requestedHostId) ?? null)
+     : null;
+   if (requestedHost && isHostEligibilityPending(requestedHost)) {
+     return { kind: "wait" };
+   }
+ 
+   if (input.availability.kind === "available") {
+-    const requestedAvailableHost = input.link.host
+-      ? (input.availability.hosts.find((host) => host.serverId === input.link.host) ?? null)
++    const requestedAvailableHost = requestedHostId
++      ? (input.availability.hosts.find((host) => host.serverId === requestedHostId) ?? null)
+       : null;
+     if (requestedAvailableHost) {
+       return { kind: "start", serverId: requestedAvailableHost.serverId };
+     }
+ 
+-    const isRequestedHostStillUnknown = input.link.host !== null && requestedHost === null;
++    const isRequestedHostStillUnknown = requestedHostId !== null && requestedHost === null;
+     if (isRequestedHostStillUnknown && !input.isHostBootstrapReady) {
+       return { kind: "wait" };
+     }
+diff --git a/packages/app/src/live-voice/live-voice-runtime.ts b/packages/app/src/live-voice/live-voice-runtime.ts
+index f0627c3b6..607fa0918 100644
+--- a/packages/app/src/live-voice/live-voice-runtime.ts
++++ b/packages/app/src/live-voice/live-voice-runtime.ts
+@@ -145,14 +145,22 @@ export interface LiveVoiceRuntimeDeps {
+    * them anyway, so they are not sent.
+    */
+   assistant?: {
+-    read(serverId: string): string | undefined;
++    read(serverId: string, override?: LiveVoiceAssistantOverride): string | undefined;
+   };
+ }
+ 
++/** `undefined` defers to the launcher's selection; `null` forces a legacy call. */
++export type LiveVoiceAssistantOverride = string | null | undefined;
++
++export interface LiveVoiceStartOptions {
++  assistantId?: LiveVoiceAssistantOverride;
++  contextProfileId?: string;
++}
++
+ export interface LiveVoiceRuntime {
+   subscribe(listener: () => void): () => void;
+   getSnapshot(): LiveVoiceSnapshot;
+-  start(serverId: string, options?: { contextProfileId?: string }): Promise<void>;
++  start(serverId: string, options?: LiveVoiceStartOptions): Promise<void>;
+   /** Pending platform startup cannot be cancelled; its lease survives until it settles. */
+   stop(): Promise<void>;
+   /** Drive mute to an absolute value. No-op unless a call is active. */
+@@ -589,7 +597,7 @@ export function createLiveVoiceRuntime(deps: LiveVoiceRuntimeDeps): LiveVoiceRun
+       if (!deps.isSessionSupported) failStart(serverId, { code: "unsupported", message: null });
+       let assistantId: string | null;
+       try {
+-        assistantId = deps.assistant?.read(serverId) ?? null;
++        assistantId = deps.assistant?.read(serverId, options?.assistantId) ?? null;
+       } catch (error) {
+         failStart(serverId, error instanceof LiveVoiceStartError ? error.info : toErrorInfo(error));
+       }
+diff --git a/packages/app/src/stores/live-voice-settings-store.ts b/packages/app/src/stores/live-voice-settings-store.ts
+index 0291b2051..407a22344 100644
+--- a/packages/app/src/stores/live-voice-settings-store.ts
++++ b/packages/app/src/stores/live-voice-settings-store.ts
+@@ -53,6 +53,7 @@ export const MAX_DEFAULT_WORKSPACE_DIRECTORY_LENGTH = 256;
+ interface LiveVoiceSettingsState {
+   /** The realtime voice to use for new calls; null leaves selection to the provider. */
+   voice: string | null;
++  quickLaunchServerId: string | null;
+   /**
+    * Report agent sessions the call did not start — anything finishing, failing,
+    * or asking for permission on any connected host.
+@@ -80,6 +81,7 @@ interface LiveVoiceSettingsState {
+   /** Last context-profile choice, scoped by daemon identity. */
+   contextProfileIdsByHost: Record<string, string>;
+   setVoice: (voice: string | null) => void;
++  setQuickLaunchServerId: (serverId: string | null) => void;
+   setAmbientAgentReports: (enabled: boolean) => void;
+   setAmbientAgentGuidance: (guidance: string) => void;
+   setPromptComponentEnabled: (id: LiveVoiceOptionalPromptComponent, enabled: boolean) => void;
+@@ -94,6 +96,7 @@ export const useLiveVoiceSettingsStore = create<LiveVoiceSettingsState>()(
+   persist(
+     (set) => ({
+       voice: null,
++      quickLaunchServerId: null,
+       // Off by default: it turns a call the user started for one thing into a
+       // channel their whole machine can interrupt, which should be chosen.
+       ambientAgentReports: false,
+@@ -105,6 +108,7 @@ export const useLiveVoiceSettingsStore = create<LiveVoiceSettingsState>()(
+       backendThinkingOptionId: null,
+       contextProfileIdsByHost: {},
+       setVoice: (voice) => set({ voice }),
++      setQuickLaunchServerId: (serverId) => set({ quickLaunchServerId: serverId }),
+       setAmbientAgentReports: (enabled) => set({ ambientAgentReports: enabled }),
+       setAmbientAgentGuidance: (guidance) =>
+         set({ ambientAgentGuidance: guidance.slice(0, MAX_AMBIENT_AGENT_GUIDANCE_LENGTH) }),
+diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
+index 6a4056b76..6b03aae2f 100644
+--- a/packages/app/src/stores/session-store.ts
++++ b/packages/app/src/stores/session-store.ts
+@@ -131,6 +131,7 @@ export interface WorkspaceDescriptor {
+   name: string;
+   title?: string | null;
+   pinnedAt?: string | null;
++  labels?: string[];
+   snoozeStatus?: { snoozedAt: string; snoozedUntil: string } | null;
+   status: WorkspaceDescriptorPayload["status"];
+   statusEnteredAt: Date | null;
+@@ -174,6 +175,8 @@ export function normalizeWorkspaceDescriptor(
+     name: payload.name,
+     title: payload.title ?? null,
+     pinnedAt: payload.pinnedAt ?? null,
++    // COMPAT(workspaceLabels): old daemons omit assignments.
++    labels: payload.labels ?? [],
+     snoozeStatus: payload.snoozeStatus ?? null,
+     status: payload.status,
+     statusEnteredAt,
+@@ -656,6 +659,7 @@ interface SessionStoreActions {
+   // Hydration
+   setHasHydratedAgents: (serverId: string, hydrated: boolean) => void;
+   setHasHydratedWorkspaces: (serverId: string, hydrated: boolean) => void;
++  setHasWorkspaceDirectorySnapshot: (serverId: string, available: boolean) => void;
+ 
+   // Agent directory (derived from agents)
+   getAgentDirectory: (serverId: string) => AgentDirectoryEntry[] | undefined;
+@@ -1944,6 +1948,20 @@ export const useSessionStore = create<SessionStore>()(
+         });
+       },
+ 
++      setHasWorkspaceDirectorySnapshot: (serverId, available) => {
++        set((prev) => {
++          const session = prev.sessions[serverId];
++          if (!session || session.hasWorkspaceDirectorySnapshot === available) return prev;
++          return {
++            ...prev,
++            sessions: {
++              ...prev.sessions,
++              [serverId]: { ...session, hasWorkspaceDirectorySnapshot: available },
++            },
++          };
++        });
++      },
++
+       // Agent directory - derived from agents (computed on-demand)
+       getAgentDirectory: (serverId) => {
+         const state = get();

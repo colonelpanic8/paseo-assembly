@@ -6,6 +6,7 @@
       "assembled-ci-lint-fixes": "d89687e2f3427e36bc293398dcd7b1057ee51678",
       "assembled-current-coherence": "76f779ef9b4db2eb38b47eccc8bf6b49c7a70a69",
       "assembled-npm-deps-hash": "6b6b06c5ea3f73f0a3f36cc943b57ee0bb4dcdfc",
+      "assembled-typecheck-coherence": "553eb60fe62cfe334652dffa7432eec8cdff0c99",
       "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "fa06376798cb478d5c4d0612ab6714aa3787c45e",
       "assembly-codex-banked-resets": "d034a0de8dc08fb082757ccd98b495f8ae51ddfe",
@@ -97,15 +98,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-10T06:15:58.015089363+00:00",
+    "generated": "2026-09-10T06:59:13.805278688+00:00",
     "base": "92504cd525c7e594539a369ed441eb836372dd2d",
-    "commit": "e61cc3f9d169877aa2c3298be8e9133188f364b6",
-    "pre_provenance_commit": "e61cc3f9d169877aa2c3298be8e9133188f364b6",
-    "tree": "91d10aaf7f1fff7911b82aa013e5bba067b7a343",
-    "built_tree": "91d10aaf7f1fff7911b82aa013e5bba067b7a343",
+    "commit": "0cf5b6d6ab1db792d7eff80df4be3681c8ed4b2d",
+    "pre_provenance_commit": "0cf5b6d6ab1db792d7eff80df4be3681c8ed4b2d",
+    "tree": "a8eb98e1da50b75911024c0c4a5159ab3719e012",
+    "built_tree": "a8eb98e1da50b75911024c0c4a5159ab3719e012",
     "previous_tree": "91d10aaf7f1fff7911b82aa013e5bba067b7a343",
-    "tree_changed": false,
-    "conflicts": 44,
+    "tree_changed": true,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -578,6 +579,12 @@
         "source": "mine:fix/workspace-message-timestamps",
         "pin": "6e9bf2d493b369e626b1dfec3860f3ccb5c3e82f",
         "fixup": "b6bea6aa397d6fc6442d57213df890d46eaf2901"
+      },
+      {
+        "name": "assembled-typecheck-coherence",
+        "kind": "patch",
+        "source": "patches/assembled-typecheck-coherence.patch",
+        "pin": "553eb60fe62cfe334652dffa7432eec8cdff0c99"
       }
     ],
     "results": [
@@ -1073,6 +1080,12 @@
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "b6bea6aa397d6fc6442d57213df890d46eaf2901"
+      },
+      {
+        "name": "assembled-typecheck-coherence",
+        "oid": "553eb60fe62cfe334652dffa7432eec8cdff0c99",
+        "status": "applied",
+        "conflicted": false
       }
     ]
   }
