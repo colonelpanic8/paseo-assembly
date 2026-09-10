@@ -301,7 +301,7 @@ summary = "Drive Codex features from the catalog and surface async questions (re
 fixup = "patches/pr-4304-async-question-attribution.patch"
 
 [[entry]]
-pr = 4305
+branch = "mine:prompt-cache-status"
 summary = "Show prompt cache status for the current agent"
 fixup = "patches/pr-4305-register-agent-complexity.patch"
 
@@ -375,6 +375,10 @@ fixup = "patches/workspace-message-timestamps-stack-coherence.patch"
 # overlap. Kept at the tail because it reconciles several independent entries.
 [[entry]]
 patch = "patches/assembled-typecheck-coherence.patch"
+
+[[entry]]
+branch = "mine:live-voice-start-sound"
+parents = [{ branch = "mine:realtime-voice-actions" }]
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

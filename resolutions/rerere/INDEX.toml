@@ -1249,6 +1249,12 @@ recorded = "2026-09-07T20:24:05.976621826+00:00"
 
 [[resolution]]
 entry = "live-voice-error-detail"
+hash = "f55f34b1bfa31ce674d8c2579c9d52f3338252f1"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-10T08:32:05.148947069+00:00"
+
+[[resolution]]
+entry = "live-voice-error-detail"
 hash = "fcd0e5fcbc4e8e22efde5ae5a00df6d2aaf18948"
 paths = ["packages/app/src/live-voice/live-voice-route-authority.test.ts"]
 recorded = "2026-09-07T20:24:05.976622678+00:00"
@@ -3436,6 +3442,12 @@ entry = "voice-actions"
 hash = "0738161228cb8a31e8749a06379b158afc5635a3"
 paths = ["packages/server/src/server/live-voice/live-voice-coordinator.test.ts"]
 recorded = "2026-09-10T06:09:33.401085198+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "0a5496052b00535e4b210207846459a4d72e8d27"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-10T08:32:54.224045564+00:00"
 
 [[resolution]]
 entry = "voice-actions"
