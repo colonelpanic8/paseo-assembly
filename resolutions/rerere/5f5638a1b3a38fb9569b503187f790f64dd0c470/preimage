@@ -45,6 +45,7 @@ import {
   toAgentPersistenceHandle,
 } from "./persistence-hooks.js";
 import { ensureAgentLoaded, ensureUnarchivedAgentLoaded } from "./agent/agent-loading.js";
+import { collectAgentMessageActivity } from "./agent/message-activity.js";
 import {
   sendPromptToAgent,
   waitForAgentRunStartWithTimeout,
@@ -2978,6 +2979,9 @@ export class Session {
         return this.handleProjectRemoveRequest(msg);
       case "workspace.create.request":
         return this.handleWorkspaceCreateRequest(msg);
+<<<<<<<
+      case "workspace.clear_attention.request":
+        return this.handleWorkspaceClearAttentionRequest(msg);
       default:
         return undefined;
     }
@@ -2985,6 +2989,15 @@ export class Session {
 
   private dispatchWorkspaceMetadataMessage(msg: SessionInboundMessage): Promise<void> | undefined {
     switch (msg.type) {
+=======
+      default:
+        return undefined;
+    }
+  }
+
+  private dispatchWorkspaceMetadataMessage(msg: SessionInboundMessage): Promise<void> | undefined {
+    switch (msg.type) {
+>>>>>>>
       case "workspace.title.set.request":
         return this.handleWorkspaceTitleSetRequest(msg.workspaceId, msg.title, msg.requestId);
       case "workspace.pin.set.request":
@@ -5112,6 +5125,7 @@ export class Session {
     return agents;
   }
 
+<<<<<<<
   private async listAgentActivityAt(): Promise<ReadonlyMap<string, string>> {
     const records = await this.agentStorage.list();
     const activityAtByAgentId = new Map<string, string>();
@@ -5131,6 +5145,13 @@ export class Session {
     return activityAtByAgentId;
   }
 
+=======
+  private async listAgentActivityAt(): Promise<ReadonlyMap<string, string>> {
+    const records = await this.agentStorage.list();
+    return collectAgentMessageActivity([...records, ...this.agentManager.listAgents()]);
+  }
+
+>>>>>>>
   private async resolveAgentIdentifier(
     identifier: string,
   ): Promise<{ ok: true; agentId: string } | { ok: false; error: string }> {

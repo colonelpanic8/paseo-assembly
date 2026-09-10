@@ -15,6 +15,7 @@ import {
   type AgentRealtimeVoiceSession,
 } from "../agent/agent-realtime-voice.js";
 import type { LiveVoiceStartContext } from "./live-voice-context.js";
+import { LiveVoiceContextProfileNotFoundError } from "./live-voice-daemon-context.js";
 import type { LiveVoiceHostProfile } from "./live-voice-host-profile.js";
 import {
   LiveVoiceRouteBroker,
@@ -56,6 +57,7 @@ export type LiveVoiceStartErrorCode =
   | "not_found"
   | "unsupported"
   | "paseo_tools_disabled"
+  | "context_profile_not_found"
   | "start_failed";
 
 export type LiveVoiceCloseCause =
@@ -125,6 +127,8 @@ export interface LiveVoiceStartRequest {
   disabledPromptComponents?: readonly string[] | undefined;
   /** The user's standing instructions for the whole call, verbatim. */
   customVoiceInstructions?: string | undefined;
+  /** Named daemon context profile selected for this call. */
+  contextProfileId?: string | undefined;
   /** Where new workspaces go when a request names no workspace of its own. */
   defaultWorkspaceDirectory?: string | undefined;
   /** Backend-executor model override; absent uses the daemon's fast default. */
@@ -141,6 +145,7 @@ export interface LiveVoiceContextBuildOptions {
   ambientAgentGuidance?: string | undefined;
   disabledPromptComponents?: readonly string[] | undefined;
   customVoiceInstructions?: string | undefined;
+  contextProfileId?: string | undefined;
   defaultWorkspaceDirectory?: string | undefined;
 }
 
@@ -159,6 +164,9 @@ function toContextBuildOptions(
       : {}),
     ...(request.customVoiceInstructions
       ? { customVoiceInstructions: request.customVoiceInstructions }
+      : {}),
+    ...(request.contextProfileId !== undefined
+      ? { contextProfileId: request.contextProfileId }
       : {}),
     ...(request.defaultWorkspaceDirectory
       ? { defaultWorkspaceDirectory: request.defaultWorkspaceDirectory }
@@ -287,6 +295,9 @@ function resolveStartErrorCode(error: unknown): LiveVoiceStartErrorCode {
     return error.code;
   if (error instanceof LiveVoiceUnsupportedError) return "unsupported";
   if (error instanceof LiveVoicePaseoToolsDisabledError) return "paseo_tools_disabled";
+  if (error instanceof LiveVoiceContextProfileNotFoundError) {
+    return "context_profile_not_found";
+  }
   return "start_failed";
 }
 
@@ -853,6 +864,9 @@ export class LiveVoiceCoordinator {
     try {
       return await this.context.build(options);
     } catch (error) {
+      if (error instanceof LiveVoiceContextProfileNotFoundError) {
+        throw error;
+      }
       this.logger.warn({ err: error }, "live_voice.context.build_failed");
       return null;
     }

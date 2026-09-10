@@ -1,4 +1,5 @@
 import type { HostRuntimeConnectionStatus } from "@/runtime/host-runtime";
+import type { LiveVoiceContextProfileHostInfo } from "@/live-voice/live-voice-context-profile-selection";
 
 export interface LiveVoiceHostAvailability {
   serverId: string;
@@ -11,6 +12,11 @@ export interface LiveVoiceHostAvailability {
   paseoToolsEnabled: boolean | null;
   /** Durable assistants; older daemons only place legacy ephemeral calls. */
   supportsAssistants?: boolean;
+  /**
+   * Absent when the host predates context profiles, and on callers that build
+   * availability without reading server capabilities.
+   */
+  contextProfiles?: LiveVoiceContextProfileHostInfo;
 }
 
 export type LiveVoiceUnavailableReason =

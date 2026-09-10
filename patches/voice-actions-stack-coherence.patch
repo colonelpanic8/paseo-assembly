@@ -1,66 +1,56 @@
-diff --git a/packages/app/src/app/_layout.tsx b/packages/app/src/app/_layout.tsx
---- a/packages/app/src/app/_layout.tsx
-+++ b/packages/app/src/app/_layout.tsx
-@@ -28,7 +28,6 @@ import { CommandCenterProvider } from "@/command-center/provider";
- import { CommandCenterWorkspaceActions } from "@/command-center/workspace-registration";
- import { PluginCommandCenterActions } from "@/plugins/command-center/registration";
- import { AddProjectFlowHost } from "@/components/add-project-flow-host";
--import { WorktreeSetupCalloutSource } from "@/components/worktree-setup-callout-source";
- import { DownloadToast } from "@/components/download-toast";
- import { QuittingOverlay } from "@/components/quitting-overlay";
- import { KeyboardShortcutsDialog } from "@/components/keyboard-shortcuts-dialog";
-@@ -619,7 +618,6 @@ function AppContainerContent({
-         <RosettaCalloutSource />
-         <UpdateCalloutSource />
-         <LegacyAgentSkillsMigration />
--        <WorktreeSetupCalloutSource />
-         <CommandCenterRootActions />
-         <CommandCenterWorkspaceActions />
-         <PluginCommandCenterActions />
 diff --git a/packages/app/src/contexts/live-voice-context.tsx b/packages/app/src/contexts/live-voice-context.tsx
-index f7c049ed7..9a2c79847 100644
+index 8e968dbb4..3872fead0 100644
 --- a/packages/app/src/contexts/live-voice-context.tsx
 +++ b/packages/app/src/contexts/live-voice-context.tsx
-@@ -122,7 +122,13 @@ export function useLiveVoiceOptional(): LiveVoiceContextValue | null {
+@@ -137,9 +137,12 @@ export function useLiveVoiceOptional(): LiveVoiceContextValue | null {
      }
      return {
        ...snapshot,
--      start: runtime.start,
+-      start: (serverId) => {
 +      start: (serverId, options) => {
-+        const contextProfileId = getSelectedContextProfileId(serverId);
+         const contextProfileId = getSelectedContextProfileId(serverId);
+-        return runtime.start(serverId, contextProfileId ? { contextProfileId } : undefined);
 +        return runtime.start(
 +          serverId,
 +          contextProfileId ? { ...options, contextProfileId } : options,
 +        );
-+      },
+       },
        stop: runtime.stop,
        setMuted: runtime.setMuted,
-       toggleMute: runtime.toggleMute,
 diff --git a/packages/app/src/keyboard/keyboard-shortcuts.ts b/packages/app/src/keyboard/keyboard-shortcuts.ts
+index 782da1c56..6db7b1a71 100644
 --- a/packages/app/src/keyboard/keyboard-shortcuts.ts
 +++ b/packages/app/src/keyboard/keyboard-shortcuts.ts
 @@ -1635,12 +1635,6 @@ function ignoresRepeat(binding: ShortcutBinding): boolean {
    return binding.repeat === false || binding.hold === true;
  }
 -
++
 -// A hold binding must ignore auto-repeat: the key going down again while it is
 -// already held is the OS repeating, not a second press.
 -function ignoresRepeat(binding: ShortcutBinding): boolean {
 -  return binding.repeat === false || binding.hold === true;
 -}
 -
-+
  function parseBinding(binding: ShortcutBinding): ParsedShortcutBinding {
    const parsedChord = parseBindingChord(binding.combo);
    const lastCombo = parsedChord.at(-1);
 diff --git a/packages/app/src/live-voice/live-voice-availability.ts b/packages/app/src/live-voice/live-voice-availability.ts
-index ea7c8f273..4f3156f11 100644
+index 3229a364d..5f137ba99 100644
 --- a/packages/app/src/live-voice/live-voice-availability.ts
 +++ b/packages/app/src/live-voice/live-voice-availability.ts
-@@ -13,40 +13,6 @@ import {
+@@ -7,47 +7,12 @@ import {
+   type LiveVoiceHostAvailability,
+ } from "@/live-voice/live-voice-availability-policy";
+ import {
+-  getHostRuntimeStore,
+   useHosts,
+   useHostRuntimeConnectionStatuses,
  } from "@/runtime/host-runtime";
  import { useSessionStore } from "@/stores/session-store";
- 
+ import { getLiveVoiceContextProfileHostInfo } from "@/live-voice/live-voice-context-profile-selection";
+-
++
 -/**
 - * Availability read straight from the stores, for callers that live outside
 - * React — the Wear bridge, which publishes to the watch on a subscription rather
@@ -98,35 +88,12 @@ index ea7c8f273..4f3156f11 100644
  /**
   * Every configured host with the facts live voice availability is decided from,
   * unfiltered. `useLiveVoiceAvailability` narrows this to the hosts that can take
-diff --git a/packages/app/src/wear/wear-bridge.test.ts b/packages/app/src/wear/wear-bridge.test.ts
-index 16bf00362..75a4370c0 100644
---- a/packages/app/src/wear/wear-bridge.test.ts
-+++ b/packages/app/src/wear/wear-bridge.test.ts
-@@ -1632,7 +1632,6 @@ describe("WearBridge live voice", () => {
-   const IDLE_SNAPSHOT: LiveVoiceSnapshot = {
-     phase: "idle",
-     serverId: null,
--    assistantId: null,
-     liveSessionId: null,
-     isMuted: false,
-     isAudioBlocked: false,
-@@ -1939,7 +1938,6 @@ describe("WearBridge dispatch", () => {
-   const snapshot: LiveVoiceSnapshot = {
-     phase: "idle",
-     serverId: null,
--    assistantId: null,
-     liveSessionId: null,
-     isMuted: false,
-     isAudioBlocked: false,
-diff --git a/packages/app/src/wear/wear-live-voice.test.ts b/packages/app/src/wear/wear-live-voice.test.ts
-index b86ba5d8a..52198bc88 100644
---- a/packages/app/src/wear/wear-live-voice.test.ts
-+++ b/packages/app/src/wear/wear-live-voice.test.ts
-@@ -15,7 +15,6 @@ const IDLE: LiveVoiceSnapshot = {
-   phase: "idle",
-   assistantId: null,
-   serverId: null,
--  assistantId: null,
-   liveSessionId: null,
-   isMuted: false,
-   isAudioBlocked: false,
+diff --git a/packages/client/src/daemon-client.ts b/packages/client/src/daemon-client.ts
+index 7b6e55f1e..91e376d98 100644
+--- a/packages/client/src/daemon-client.ts
++++ b/packages/client/src/daemon-client.ts
+@@ -1,4 +1,3 @@
+-import type { AssistantRequest } from "@getpaseo/protocol/assistants";
+ import { ProviderSnapshotUpdates } from "./provider-snapshots/index.js";
+ import type { SessionEventSubscription } from "@getpaseo/protocol/messages";
+ import {

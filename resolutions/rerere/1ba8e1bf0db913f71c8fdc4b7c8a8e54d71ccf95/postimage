@@ -28,7 +28,6 @@ import { CommandCenterProvider } from "@/command-center/provider";
 import { CommandCenterWorkspaceActions } from "@/command-center/workspace-registration";
 import { PluginCommandCenterActions } from "@/plugins/command-center/registration";
 import { AddProjectFlowHost } from "@/components/add-project-flow-host";
-import { WorktreeSetupCalloutSource } from "@/components/worktree-setup-callout-source";
 import { DownloadToast } from "@/components/download-toast";
 import { QuittingOverlay } from "@/components/quitting-overlay";
 import { KeyboardShortcutsDialog } from "@/components/keyboard-shortcuts-dialog";
@@ -64,13 +63,12 @@ import { HorizontalScrollProvider } from "@/contexts/horizontal-scroll-context";
 import { SessionProvider } from "@/contexts/session-context";
 import { SidebarCalloutProvider } from "@/contexts/sidebar-callout-context";
 import { ToastProvider } from "@/contexts/toast-context";
+import { WorkspaceCustomSnoozeSheetHost } from "@/workspace-snooze/custom-snooze-sheet";
 import { VoiceProvider } from "@/contexts/voice-context";
 import { LiveVoiceProvider } from "@/contexts/live-voice-context";
 import { LiveVoiceStrip } from "@/live-voice/live-voice-strip";
 import { LiveVoiceMuteShortcut } from "@/live-voice/live-voice-mute-shortcut";
 import { LiveVoiceLinkListener } from "@/live-voice/live-voice-link-listener";
-import { DispatchLinkListener } from "@/dispatch/dispatch-link-listener";
-import { DispatchStrip } from "@/dispatch/dispatch-strip";
 import {
   resolveStartupBlocker,
   resolveStartupNavigationReady,
@@ -473,7 +471,18 @@ interface AppContainerProps {
 
 const WINDOW_SIDEBAR_TOGGLE_HORIZONTAL_PADDING = 12;
 
-function AppContainer({ children, chromeEnabled: chromeEnabledOverride }: AppContainerProps) {
+function AppContainer(props: AppContainerProps) {
+  return (
+    <CommandCenterProvider>
+      <AppContainerContent {...props} />
+    </CommandCenterProvider>
+  );
+}
+
+function AppContainerContent({
+  children,
+  chromeEnabled: chromeEnabledOverride,
+}: AppContainerProps) {
   const keyboardActionDispatcher = useKeyboardActionDispatcher();
   const daemons = useHosts();
   const { settings, updateSettings } = useAppSettings();
@@ -599,7 +608,6 @@ function AppContainer({ children, chromeEnabled: chromeEnabledOverride }: AppCon
       {/* In normal flow below the content row: a live call belongs to no screen,
           so its surface docks at the app's edge instead of floating over one. */}
       <LiveVoiceStrip />
-      <DispatchStrip />
       <LiveVoiceMuteShortcut />
       <AppearanceStyleBoundary>
         {!isCompactLayout && appChromeLayout.sidebarToggleOwner === "window" ? (
@@ -622,7 +630,6 @@ function AppContainer({ children, chromeEnabled: chromeEnabledOverride }: AppCon
         <RosettaCalloutSource />
         <UpdateCalloutSource />
         <LegacyAgentSkillsMigration />
-        <WorktreeSetupCalloutSource />
         <CommandCenterRootActions />
         <CommandCenterWorkspaceActions />
         <PluginCommandCenterActions />
@@ -647,7 +654,7 @@ function AppContainer({ children, chromeEnabled: chromeEnabledOverride }: AppCon
     surface
   );
 
-  return <CommandCenterProvider>{content}</CommandCenterProvider>;
+  return content;
 }
 
 function SidebarChrome({
@@ -664,7 +671,7 @@ function SidebarChrome({
   const isDesktopOpen = usePanelStore((state) => state.desktop.agentListOpen);
   const active = visible && (isCompactLayout ? isMobileActive : isDesktopOpen);
   return (
-    <SidebarModelProvider active={active}>
+    <SidebarModelProvider active={active || keyboardShortcutsEnabled}>
       {mounted ? <LeftSidebar active={active} /> : null}
       <WorkspaceShortcutTargetsSubscriber enabled={keyboardShortcutsEnabled} />
     </SidebarModelProvider>
@@ -699,7 +706,6 @@ function ProvidersWrapper({ children }: { children: ReactNode }) {
           <DesktopWindowControlsSync />
           <OfferLinkListener upsertDaemonFromOfferUrl={upsertConnectionFromOfferUrl} />
           <LiveVoiceLinkListener />
-          <DispatchLinkListener />
           <HostSessionManager />
           <FaviconStatusSync />
           {children}
@@ -965,6 +971,7 @@ function AppShell() {
           <WorkspaceRouteNavigationBridge />
           <RootStack />
         </AppWithSidebar>
+        <WorkspaceCustomSnoozeSheetHost />
       </HorizontalScrollProvider>
     </MobilePanelsProvider>
   );

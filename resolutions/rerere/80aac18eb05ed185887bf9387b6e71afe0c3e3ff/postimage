@@ -15,7 +15,6 @@ const IDLE: LiveVoiceSnapshot = {
   phase: "idle",
   assistantId: null,
   serverId: null,
-  assistantId: null,
   liveSessionId: null,
   isMuted: false,
   isAudioBlocked: false,

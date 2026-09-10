@@ -17,6 +17,7 @@ import {
   type LiveVoiceUpdate,
 } from "./live-voice-coordinator.js";
 import { buildLiveVoicePrompt } from "./live-voice-context.js";
+import { LiveVoiceContextProfileNotFoundError } from "./live-voice-daemon-context.js";
 import type { LiveVoiceHostProfile } from "./live-voice-host-profile.js";
 import { LiveVoiceRouteBroker } from "./live-voice-route-broker.js";
 
@@ -942,6 +943,29 @@ describe("LiveVoiceCoordinator", () => {
     // Falls back to the provider's own context rather than failing the call.
     expect(harness.provider().startCalls[0]?.prompt).toBeUndefined();
     expect(harness.provider().startCalls[0]?.includeStartupContext).toBeUndefined();
+  });
+
+  it("rejects an unknown requested context profile with a specific error", async () => {
+    const context: LiveVoiceContextProvider = {
+      build: async () => {
+        throw new LiveVoiceContextProfileNotFoundError("missing");
+      },
+    };
+    const harness = createHarness({ context });
+
+    const result = await harness.coordinator.start({
+      offerSdp: OFFER_SDP,
+      contextProfileId: "missing",
+      owner: harness.owner,
+      emit: (update) => harness.updates.push(update),
+    });
+
+    expect(result).toEqual({
+      accepted: false,
+      errorCode: "context_profile_not_found",
+      errorMessage: "Unknown Live Voice context profile 'missing'.",
+    });
+    expect(harness.hosts).toEqual([]);
   });
 
   it("omits context fields entirely when no provider is configured", async () => {

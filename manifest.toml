@@ -369,6 +369,7 @@ fixup = "patches/voice-actions-stack-coherence.patch"
 [[entry]]
 branch = "mine:fix/workspace-message-timestamps"
 summary = "Restore live message activity, preserve it across session refresh, and recover known timestamps; follow-up to sidebar pin 6d52c4687513"
+fixup = "patches/workspace-message-timestamps-stack-coherence.patch"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

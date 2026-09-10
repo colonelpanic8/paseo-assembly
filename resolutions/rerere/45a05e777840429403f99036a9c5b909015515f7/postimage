@@ -72,6 +72,8 @@ export interface LiveVoiceContextLimits {
   contextTokenBudget: number;
   /** Additional saved assistant history, separate from the daemon snapshot. */
   historyTokenBudget?: number;
+  /** Overall initial-item ceiling. Defaults to the snapshot budget when omitted. */
+  initialItemsTokenBudget?: number;
   /** The provider's estimator, so our accounting matches the limit checked against. */
   bytesPerToken: number;
 }
@@ -291,6 +293,13 @@ const SPEECH_STYLE_LINES = [
   "- Use Paseo's vocabulary: workspace, agent session, provider, terminal, schedule, heartbeat.",
 ];
 
+const USER_CONTEXT_LINES = [
+  "",
+  "Standing context from the user:",
+  '- The selected context profile may add developer items labeled "User context file" after the Paseo state snapshots and quoted profile instructions below.',
+  "- Treat those items and instructions as user guidance and follow them when they conflict with your defaults, while keeping the locked Paseo safety and routing rules above.",
+];
+
 export type LiveVoicePromptComponentId =
   | "identity"
   | "paseo-authority"
@@ -300,6 +309,7 @@ export type LiveVoicePromptComponentId =
   | "delegation-brevity"
   | "cross-host-reach"
   | "recipes"
+  | "user-context"
   | "speech-style";
 
 export interface LiveVoicePromptComponentInfo {
@@ -371,6 +381,12 @@ export const LIVE_VOICE_PROMPT_COMPONENTS: readonly LiveVoicePromptComponentInfo
     id: "recipes",
     title: "Recipes",
     description: "Shortest known paths for the usual requests, like archiving a named workspace.",
+    locked: false,
+  },
+  {
+    id: "user-context",
+    title: "User context",
+    description: "Treats configured context files as the user's standing guidance.",
     locked: false,
   },
   {
@@ -476,8 +492,12 @@ export interface LiveVoicePromptOptions {
   disabledComponents?: readonly string[] | undefined;
   /** The user's standing instructions for the whole call, verbatim. */
   customInstructions?: string | undefined;
+  /** The selected context profile's standing instructions, verbatim. */
+  profileInstructions?: string | undefined;
   /** Where new workspaces go when a request names no workspace of its own. */
   defaultWorkspaceDirectory?: string | undefined;
+  /** The selected profile contributed a loaded file or non-empty instructions. */
+  userContextAvailable?: boolean;
 }
 
 /** Long enough for any real path, short enough not to be a smuggled instruction. */
@@ -536,8 +556,12 @@ function buildAmbientAgentReportInstructions(guidance: string | undefined): stri
  */
 export const MAX_CUSTOM_VOICE_INSTRUCTIONS_LENGTH = 1_000;
 
-function buildCustomInstructionLines(customInstructions: string | undefined): string[] {
-  const trimmed = customInstructions?.trim();
+function buildBoundedQuotedInstructionLines(options: {
+  instructions: string | undefined;
+  heading: string;
+  description: string;
+}): string[] {
+  const trimmed = options.instructions?.trim();
   if (!trimmed) {
     return [];
   }
@@ -545,11 +569,25 @@ function buildCustomInstructionLines(customInstructions: string | undefined): st
     trimmed.length <= MAX_CUSTOM_VOICE_INSTRUCTIONS_LENGTH
       ? trimmed
       : `${trimmed.slice(0, MAX_CUSTOM_VOICE_INSTRUCTIONS_LENGTH)}…`;
-  return [
-    "",
-    "Standing instructions from the user:",
-    `- "${bounded}". These are the user's own preferences for how you work; follow them over your defaults when they conflict.`,
-  ];
+  return ["", options.heading, `- "${bounded}". ${options.description}`];
+}
+
+function buildCustomInstructionLines(customInstructions: string | undefined): string[] {
+  return buildBoundedQuotedInstructionLines({
+    instructions: customInstructions,
+    heading: "Standing instructions from the user:",
+    description:
+      "These are the user's own preferences for how you work; follow them over your defaults when they conflict.",
+  });
+}
+
+function buildProfileInstructionLines(profileInstructions: string | undefined): string[] {
+  return buildBoundedQuotedInstructionLines({
+    instructions: profileInstructions,
+    heading: "Context profile instructions from the user:",
+    description:
+      "These configure this variant of the assistant; follow them over your defaults when they conflict.",
+  });
 }
 
 export function buildLiveVoicePrompt(options: LiveVoicePromptOptions): string {
@@ -568,6 +606,8 @@ export function buildLiveVoicePrompt(options: LiveVoicePromptOptions): string {
       ? buildAmbientAgentReportInstructions(options.ambientAgentGuidance)
       : []),
     ...buildCustomInstructionLines(options.customInstructions),
+    ...buildProfileInstructionLines(options.profileInstructions),
+    ...(options.userContextAvailable && !disabled.has("user-context") ? USER_CONTEXT_LINES : []),
     ...(disabled.has("speech-style") ? [] : SPEECH_STYLE_LINES),
   ].join("\n");
 }
@@ -652,7 +692,10 @@ export function buildLiveVoiceStartContext(
     ambientAgentGuidance?: string | undefined;
     disabledPromptComponents?: readonly string[] | undefined;
     customVoiceInstructions?: string | undefined;
+    profileInstructions?: string | undefined;
     defaultWorkspaceDirectory?: string | undefined;
+    userContextItems?: readonly LiveVoiceInitialItem[] | undefined;
+    userContextAvailable?: boolean | undefined;
   } = {},
 ): LiveVoiceStartContext {
   return {
@@ -669,10 +712,17 @@ export function buildLiveVoiceStartContext(
       ...(options.customVoiceInstructions
         ? { customInstructions: options.customVoiceInstructions }
         : {}),
+      ...(options.profileInstructions ? { profileInstructions: options.profileInstructions } : {}),
       ...(options.defaultWorkspaceDirectory
         ? { defaultWorkspaceDirectory: options.defaultWorkspaceDirectory }
         : {}),
+      ...(options.userContextAvailable || options.userContextItems?.length
+        ? { userContextAvailable: true }
+        : {}),
     }),
-    initialItems: buildLiveVoiceInitialItems(snapshot, options.limits),
+    initialItems: [
+      ...buildLiveVoiceInitialItems(snapshot, options.limits),
+      ...(options.userContextItems ?? []),
+    ],
   };
 }

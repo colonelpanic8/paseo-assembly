@@ -12,6 +12,7 @@ import {
   useHostRuntimeConnectionStatuses,
 } from "@/runtime/host-runtime";
 import { useSessionStore } from "@/stores/session-store";
+import { getLiveVoiceContextProfileHostInfo } from "@/live-voice/live-voice-context-profile-selection";
 
 /**
  * Availability read straight from the stores, for callers that live outside
@@ -80,6 +81,7 @@ export function useLiveVoiceHostAvailability(): LiveVoiceHostAvailability[] {
           paseoToolsEnabled: serverInfo ? serverInfo.features?.agentPaseoTools !== false : null,
           // COMPAT(assistants): added in v0.7.2, drop the gate when floor >= v0.7.2.
           supportsAssistants: serverInfo?.features?.assistants === true,
+          contextProfiles: getLiveVoiceContextProfileHostInfo(serverInfo),
         };
       }),
     [connectionStatuses, hosts, serverInfos],

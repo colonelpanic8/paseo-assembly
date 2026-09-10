@@ -1,0 +1,11 @@
+diff --git a/packages/server/src/server/session.ts b/packages/server/src/server/session.ts
+--- a/packages/server/src/server/session.ts
++++ b/packages/server/src/server/session.ts
+@@ -45,7 +45,6 @@ import {
+   toAgentPersistenceHandle,
+ } from "./persistence-hooks.js";
+ import { ensureAgentLoaded, ensureUnarchivedAgentLoaded } from "./agent/agent-loading.js";
+-import { collectAgentMessageActivity } from "./agent/message-activity.js";
+ import {
+   sendPromptToAgent,
+   waitForAgentRunStartWithTimeout,

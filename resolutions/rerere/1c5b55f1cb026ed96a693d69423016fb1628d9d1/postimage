@@ -10,6 +10,7 @@ import {
 import {
   connectionFromListen,
   createRemoteSshHostConnection,
+  hostHasConnection,
   normalizeStoredHostProfile,
   upsertHostConnectionInProfiles,
   registryHasConnection,
@@ -18,6 +19,7 @@ import {
   type HostProfile,
 } from "@/types/host-connection";
 import { defaultHostAppearance, type HostBadgeDisplay, type HostColor } from "@/hosts/appearance";
+import type { IdentityColorName } from "@/styles/identity-colors";
 import {
   buildDaemonWebSocketUrl,
   buildRelayWebSocketUrl,
@@ -27,6 +29,10 @@ import {
 } from "@/utils/daemon-endpoints";
 import { resolveAppVersion } from "@/utils/app-version";
 import { ConnectionOfferSchema, type ConnectionOffer } from "@getpaseo/protocol/connection-offer";
+import {
+  ManagedHostRegistrySchema,
+  type ManagedHostRegistry,
+} from "@getpaseo/protocol/managed-hosts";
 import { shouldUseDesktopDaemon } from "@/desktop/daemon/desktop-daemon";
 import { isWeb } from "@/constants/platform";
 import { connectToDaemon } from "@/utils/test-daemon-connection";
@@ -232,6 +238,7 @@ export interface HostRuntimeControllerDeps {
   }>;
   getClientId: () => Promise<string>;
   readInitialConnectionHint?: () => InitialDaemonConnectionHint | null;
+  readManagedHostRegistry?: () => Promise<ManagedHostRegistry | null>;
   mountClientHandlers?: (input: {
     client: DaemonClient;
     host: HostProfile;
@@ -260,6 +267,7 @@ const PROBE_INACTIVE_WHILE_ONLINE_MS = 120_000;
 const ADAPTIVE_SWITCH_THRESHOLD_MS = 40;
 const ADAPTIVE_SWITCH_CONSECUTIVE_PROBES = 3;
 const CONFIGURED_OVERRIDE_BOOTSTRAP_RETRY_MS = 1_000;
+const MANAGED_HOST_BOOTSTRAP_RETRY_MS = 10_000;
 
 function toActiveConnection(connection: HostConnection): ActiveConnection {
   if (connection.type === "directSocket") {
@@ -635,6 +643,14 @@ function createDefaultDeps(): HostRuntimeControllerDeps {
         trace: nativePerformanceTrace,
       }),
     getClientId: () => getOrCreateClientId(),
+    readManagedHostRegistry: async () => {
+      const read = getDesktopHost()?.managedHosts?.read;
+      if (!read) {
+        return null;
+      }
+      const registry = await read();
+      return registry ? ManagedHostRegistrySchema.parse(registry) : null;
+    },
     mountClientHandlers: ({ client, host }) => {
       const unmountServerData = mountServerDataPushRouter({
         client,
@@ -1513,6 +1529,26 @@ interface AgentDirectoryRefreshInput {
   page?: FetchAgentsOptions["page"];
 }
 
+interface ManagedHostBootstrapInput {
+  label: string;
+  endpoint: string;
+  connection: HostConnection;
+  color?: HostColor;
+}
+
+function normalizeManagedHostColor(
+  color: ManagedHostRegistry["hosts"][number]["color"],
+): HostColor | undefined {
+  switch (color) {
+    case "green":
+      return "emerald";
+    case "purple":
+      return "violet";
+    default:
+      return color;
+  }
+}
+
 export class HostRuntimeStore {
   private controllers = new Map<string, HostRuntimeController>();
   private serverListeners = new Map<string, Set<() => void>>();
@@ -1589,6 +1625,7 @@ export class HostRuntimeStore {
     const override = readConfiguredLocalDaemonOverride();
     await this.loadFromStorage();
     this.markHostRegistryLoaded();
+    const hasManagedHosts = await this.startManagedHostBootstrap();
 
     let isE2E: string | null = null;
     try {
@@ -1614,10 +1651,95 @@ export class HostRuntimeStore {
       }
     }
 
+    if (hasManagedHosts) {
+      return;
+    }
+
     if (override) {
       this.bootstrapConfiguredOverride(override);
     } else {
       await this.bootstrapDefaultLocalhost();
+    }
+  }
+
+  private async startManagedHostBootstrap(): Promise<boolean> {
+    const readRegistry = this.deps.readManagedHostRegistry;
+    if (!readRegistry) {
+      return false;
+    }
+
+    let registry: ManagedHostRegistry | null;
+    try {
+      registry = await readRegistry();
+    } catch (error) {
+      console.error("[HostRuntime] Failed to load managed host registry", error);
+      return false;
+    }
+    if (!registry || registry.hosts.length === 0) {
+      return false;
+    }
+
+    let hasValidHost = false;
+    for (const host of registry.hosts) {
+      let endpoint: string;
+      try {
+        endpoint = normalizeHostPort(host.endpoint);
+      } catch (error) {
+        console.error("[HostRuntime] Ignoring invalid managed host endpoint", {
+          endpoint: host.endpoint,
+          error,
+        });
+        continue;
+      }
+      const connection: HostConnection = {
+        id: `direct:${endpoint}`,
+        type: "directTcp",
+        endpoint,
+        useTls: host.useTls,
+        ...(host.password ? { password: host.password } : {}),
+      };
+      hasValidHost = true;
+      void this.bootstrapManagedHost({
+        label: host.label,
+        endpoint,
+        connection,
+        color: normalizeManagedHostColor(host.color),
+      });
+    }
+    return hasValidHost;
+  }
+
+  private async bootstrapManagedHost(input: ManagedHostBootstrapInput): Promise<void> {
+    const { color, connection, endpoint, label } = input;
+    let attempt = 0;
+    while (true) {
+      attempt += 1;
+      try {
+        const existingHost = this.hosts.find((host) => hostHasConnection(host, connection));
+        const serverId =
+          existingHost?.serverId ??
+          (
+            await this.probeAndUpsertConnection({
+              connection,
+              label,
+              timeoutMs: DEFAULT_LOCALHOST_BOOTSTRAP_TIMEOUT_MS,
+            })
+          ).serverId;
+        const currentHost = this.hosts.find((host) => host.serverId === serverId);
+        if (color !== undefined && currentHost?.appearance.color !== color) {
+          await this.setHostColor(serverId, color);
+        }
+        return;
+      } catch (error) {
+        if (attempt === 1 || attempt % 10 === 0) {
+          console.warn("[HostRuntime] managed host bootstrap probe failed", {
+            endpoint,
+            attempt,
+            error,
+          });
+        }
+        await delay(MANAGED_HOST_BOOTSTRAP_RETRY_MS);
+      }
     }
   }
 
@@ -1884,6 +2006,7 @@ export class HostRuntimeStore {
       serverId: "",
       label: input.label ?? input.connection.id,
       appearance: defaultHostAppearance(),
+      declaredColor: null,
       lifecycle: {},
       connections: [input.connection],
       preferredConnectionId: input.connection.id,
@@ -2044,6 +2167,18 @@ export class HostRuntimeStore {
     }));
   }
 
+  /** Called on every `server_info`, so a host that stops declaring a color is cleared too. */
+  async recordDeclaredHostColor(
+    serverId: string,
+    declaredColor: IdentityColorName | null,
+  ): Promise<void> {
+    const host = this.hosts.find((candidate) => candidate.serverId === serverId);
+    if (!host || host.declaredColor === declaredColor) {
+      return;
+    }
+    await this.updateHostAppearance(serverId, (current) => ({ ...current, declaredColor }));
+  }
+
   private updateHostAppearance(
     serverId: string,
     apply: (host: HostProfile) => HostProfile,
@@ -2059,12 +2194,41 @@ export class HostRuntimeStore {
     serverId: string,
     apply: (host: HostProfile) => HostProfile,
   ): Promise<void> {
-    const updatedAt = new Date().toISOString();
-    const next = this.hosts.map((host) =>
-      host.serverId === serverId ? { ...apply(host), updatedAt } : host,
-    );
-    await this.persistHosts(next);
-    this.setHostsAndSync(next);
+    // Rebased over concurrent host-list changes rather than applied to a snapshot:
+    // reconnects can rewrite serverIds mid-write (ID reconciliation), so the target is
+    // re-found by connection id and the mutation retried until it lands on a stable list.
+    let targetConnectionIds: readonly string[] | null = null;
+    let wroteSupersededSnapshot = false;
+    while (true) {
+      const baseHosts = this.hosts;
+      const target = baseHosts.find(
+        (host) =>
+          host.serverId === serverId ||
+          targetConnectionIds?.some((connectionId) =>
+            host.connections.some((connection) => connection.id === connectionId),
+          ) === true,
+      );
+      if (!target) {
+        // A concurrent removal won. Any snapshot we already wrote still contains the
+        // removed host, so rewrite the current list before giving up or it comes back.
+        if (wroteSupersededSnapshot) {
+          await this.persistHosts(baseHosts);
+        }
+        throw new Error(`Host ${serverId} no longer exists.`);
+      }
+      targetConnectionIds ??= target.connections.map((connection) => connection.id);
+      const updatedAt = new Date().toISOString();
+      const next = baseHosts.map((host) =>
+        host === target ? { ...apply(host), updatedAt } : host,
+      );
+      await this.persistHosts(next);
+      if (this.hosts !== baseHosts) {
+        wroteSupersededSnapshot = true;
+        continue;
+      }
+      this.setHostsAndSync(next);
+      return;
+    }
   }
 
   async removeHost(serverId: string): Promise<void> {
@@ -2710,6 +2874,61 @@ export function useHostRuntimeConnectionStatuses(
   serverIds: readonly string[],
 ): ReadonlyMap<string, HostRuntimeConnectionStatus> {
   return useHostRuntimeConnectionStatusesFromStore(getHostRuntimeStore(), serverIds);
+}
+
+/**
+ * Where each host is reached right now, formatted for display. Two hosts can
+ * carry the same label — three daemons on one machine all call themselves after
+ * it — and the endpoint is what tells them apart.
+ *
+ * Subscribes to the serialized labels themselves, for the reason spelled out on
+ * {@link useHostRuntimeConnectionStatuses}.
+ */
+export function useHostRuntimeActiveConnectionLabels(
+  serverIds: readonly string[],
+): ReadonlyMap<string, string> {
+  const store = getHostRuntimeStore();
+  const serialized = useSyncExternalStore(
+    (onStoreChange) => store.subscribeAll(onStoreChange),
+    () => serializeConnectionLabels(store, serverIds),
+    () => serializeConnectionLabels(store, serverIds),
+  );
+
+  return useMemo(() => {
+    const entries: Array<[string, string]> =
+      serialized === ""
+        ? []
+        : serialized.split("\n").flatMap((line) => {
+            const separator = line.lastIndexOf("\t");
+            const label = line.slice(separator + 1);
+            return label === "" ? [] : [[line.slice(0, separator), label] as [string, string]];
+          });
+    return new Map(entries);
+  }, [serialized]);
+}
+
+function serializeConnectionLabels(store: HostRuntimeStore, serverIds: readonly string[]): string {
+  return serverIds
+    .map((serverId) => {
+      const connection = store.getSnapshot(serverId)?.activeConnection ?? null;
+      return `${serverId}\t${connection === null ? "" : formatActiveConnectionLabel(connection)}`;
+    })
+    .join("\n");
+}
+
+// Standard secure/plain web ports carry no information in the host display, so
+// "relay.paseo.sh:443" reads as "relay.paseo.sh" while "127.0.0.1:6767" is kept.
+function formatConnectionEndpoint(endpoint: string): string {
+  return endpoint.replace(/:(?:443|80)$/, "");
+}
+
+// Socket/pipe transports have no host:port — their endpoint is a filesystem
+// path, so they read as "Local". TCP and relay show the address being used.
+export function formatActiveConnectionLabel(connection: ActiveConnection): string {
+  if (connection.type === "directSocket" || connection.type === "directPipe") {
+    return "Local";
+  }
+  return formatConnectionEndpoint(connection.endpoint);
 }
 
 export function useHostRuntimeLastError(serverId: string): string | null {

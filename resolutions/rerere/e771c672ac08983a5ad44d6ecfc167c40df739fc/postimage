@@ -81,6 +81,7 @@ export interface LiveVoiceDaemonClient {
   startLiveVoice(input: {
     negotiation: { kind: "webrtc_sdp"; offerSdp: string };
     assistantId?: string;
+    contextProfileId?: string;
     voice?: string;
     ambientAgentReports?: boolean;
     ambientAgentGuidance?: string;
@@ -144,25 +145,14 @@ export interface LiveVoiceRuntimeDeps {
    * them anyway, so they are not sent.
    */
   assistant?: {
-    /**
-     * `override` comes from a quick-launch link: an explicit id, or `null` for
-     * "no assistant" even though the launcher has one selected.
-     */
-    read(serverId: string, override?: LiveVoiceAssistantOverride): string | undefined;
+    read(serverId: string): string | undefined;
   };
-}
-
-/** `undefined` defers to the launcher's selection; `null` forces a legacy call. */
-export type LiveVoiceAssistantOverride = string | null | undefined;
-
-export interface LiveVoiceStartOptions {
-  assistantId?: LiveVoiceAssistantOverride;
 }
 
 export interface LiveVoiceRuntime {
   subscribe(listener: () => void): () => void;
   getSnapshot(): LiveVoiceSnapshot;
-  start(serverId: string, options?: LiveVoiceStartOptions): Promise<void>;
+  start(serverId: string, options?: { contextProfileId?: string }): Promise<void>;
   /** Pending platform startup cannot be cancelled; its lease survives until it settles. */
   stop(): Promise<void>;
   /** Drive mute to an absolute value. No-op unless a call is active. */
@@ -296,6 +286,7 @@ interface LiveVoiceCall {
   client: LiveVoiceDaemonClient;
   pin: LiveVoiceConnectionPin | null;
   assistantId: string | null;
+  contextProfileId: string | null;
   leaseToken: AudioSessionLeaseToken | null;
   session: LiveVoiceSession | null;
   unsubscribe: (() => void) | null;
@@ -506,6 +497,7 @@ export function createLiveVoiceRuntime(deps: LiveVoiceRuntimeDeps): LiveVoiceRun
           const result = await call.client.startLiveVoice({
             negotiation: { kind: "webrtc_sdp", offerSdp },
             ...(assistantId ? { assistantId } : {}),
+            ...(call.contextProfileId ? { contextProfileId: call.contextProfileId } : {}),
             ...(voice ? { voice } : {}),
             ...ambientStartFields,
             ...(callSettings?.disabledPromptComponents?.length
@@ -597,7 +589,7 @@ export function createLiveVoiceRuntime(deps: LiveVoiceRuntimeDeps): LiveVoiceRun
       if (!deps.isSessionSupported) failStart(serverId, { code: "unsupported", message: null });
       let assistantId: string | null;
       try {
-        assistantId = deps.assistant?.read(serverId, options?.assistantId) ?? null;
+        assistantId = deps.assistant?.read(serverId) ?? null;
       } catch (error) {
         failStart(serverId, error instanceof LiveVoiceStartError ? error.info : toErrorInfo(error));
       }
@@ -621,6 +613,7 @@ export function createLiveVoiceRuntime(deps: LiveVoiceRuntimeDeps): LiveVoiceRun
         client,
         pin,
         assistantId,
+        contextProfileId: options?.contextProfileId ?? null,
         leaseToken: token,
         session: null,
         unsubscribe: null,

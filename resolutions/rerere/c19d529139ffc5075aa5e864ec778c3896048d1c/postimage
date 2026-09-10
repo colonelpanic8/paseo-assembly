@@ -14,7 +14,11 @@ import type { ProjectRegistry, WorkspaceRegistry } from "./workspace-registry.js
 import type { ProjectUpdate } from "./workspace-reconciliation-service.js";
 import type { ScheduleService } from "./schedule/service.js";
 import type { CheckoutDiffManager, CheckoutDiffMetrics } from "./checkout-diff-manager.js";
-import type { DaemonConfigStore, MutableDaemonConfig } from "./daemon-config-store.js";
+import type {
+  DaemonConfigStore,
+  MutableDaemonConfig,
+  ProviderRename,
+} from "./daemon-config-store.js";
 import {
   type ServerInfoStatusPayload,
   type SessionOutboundMessage,
@@ -39,7 +43,10 @@ import {
 } from "./session.js";
 import { LiveVoiceCoordinator } from "./live-voice/live-voice-coordinator.js";
 import { AssistantStore } from "./assistants/assistant-store.js";
-import { LiveVoiceDaemonContextProvider } from "./live-voice/live-voice-daemon-context.js";
+import {
+  LiveVoiceDaemonContextProvider,
+  type LiveVoiceContextProfilesConfig,
+} from "./live-voice/live-voice-daemon-context.js";
 import { resolveLiveVoiceHostProfile } from "./agent/providers/live-voice-host-profiles.js";
 import type { HubRelationshipManagement } from "./hub/relationship-controller.js";
 import { WorkspaceSetupRuntime } from "./workspace-setup-runtime.js";
@@ -56,12 +63,14 @@ import type { GitCommandRuntimeMetricsSnapshot } from "../utils/git-command-runt
 import { snapshotGitCommandRuntimeMetrics } from "../utils/run-git-command.js";
 import { createPluginClientId, isPluginClientId } from "./plugins/plugin-session-identity.js";
 import type { WorkspaceAutoName } from "./workspace-auto-name.js";
+import { getBuildInfo } from "./build-info.js";
 import { deriveProjectSlug } from "./workspace-git-metadata.js";
 import {
   createPushNotifications,
   type PushNotifications,
   type PushNotificationSender,
 } from "./push/index.js";
+import { resolvePaseoWorktreesBaseRoot } from "../utils/worktree.js";
 import type { ScriptHealthState } from "./script-health-monitor.js";
 import type { ServiceProxySubsystem } from "./service-proxy.js";
 import type { WorkspaceScriptRuntimeStore } from "./workspace-script-runtime-store.js";
@@ -90,6 +99,7 @@ import {
   type WebSocketRuntimeDiagnosticSnapshot,
 } from "./websocket/runtime-metrics.js";
 import { ProviderUsageService } from "../services/quota-fetcher/service.js";
+import { UsageHistoryService } from "../services/usage-history/service.js";
 import { getProcessMemoryDiagnostics, getProcessUptimeSeconds } from "./process-diagnostics.js";
 import {
   CLIENT_SHUTDOWN_RPC_REASON,
@@ -165,6 +175,7 @@ interface WebSocketServerConfig {
   daemonStatusRpc?: boolean;
   relayConfig?: boolean;
   startPaused?: boolean;
+  liveVoiceContextProfiles?: LiveVoiceContextProfilesConfig;
 }
 
 type WebSocketRuntimeMetrics = SessionRuntimeMetrics & CheckoutDiffMetrics;
@@ -621,12 +632,14 @@ export class VoiceAssistantWebSocketServer {
   private unsubscribeSpeechReadiness: (() => void) | null = null;
   private unsubscribeDaemonConfigChange: (() => void) | null = null;
   private readonly providerUsageService: ProviderUsageService;
+  private readonly usageHistoryService: UsageHistoryService;
   private unsubscribeTerminalActivity: (() => void) | null = null;
   private readonly browserToolsBroker: BrowserToolsBroker | null;
   private readonly liveVoiceRouteBroker: LiveVoiceRouteBroker;
   private readonly liveVoiceToolExecutor: LiveVoiceToolExecutor;
   private readonly liveVoiceToolExecutionAvailable: boolean;
   private readonly liveVoiceAgentNotifier: LiveVoiceAgentNotifier;
+  private readonly liveVoiceContextProfiles: LiveVoiceContextProfilesConfig | undefined;
   private readonly hubRelationships: HubRelationshipManagement | null;
   private readonly browserToolsRegistrations = new Map<string, BrowserToolsRegistration>();
   private connectionLifecycle: "starting" | "accepting" | "stopping" = "accepting";
@@ -636,6 +649,7 @@ export class VoiceAssistantWebSocketServer {
   private readonly pluginRuntime: SessionOptions["pluginRuntime"];
   private readonly orchestrationSkills: SessionOptions["orchestrationSkills"];
 
+  // oxlint-disable-next-line complexity
   constructor(
     server: HTTPServer,
     logger: pino.Logger,
@@ -684,6 +698,7 @@ export class VoiceAssistantWebSocketServer {
     pluginRuntime?: SessionOptions["pluginRuntime"],
     orchestrationSkills?: SessionOptions["orchestrationSkills"],
     workspaceLabelService?: WorkspaceLabelService,
+    providerUsageService?: ProviderUsageService,
   ) {
     this.logger = logger.child({ module: "websocket-server" });
     this.workspaceSetupRuntime = workspaceSetupRuntime;
@@ -699,6 +714,7 @@ export class VoiceAssistantWebSocketServer {
     this.browserToolsBroker = browserToolsBroker ?? null;
     const liveVoiceToolExecution = resolveLiveVoiceToolExecution(liveVoiceToolExecutor);
     this.liveVoiceToolExecutionAvailable = liveVoiceToolExecution.available;
+    this.liveVoiceContextProfiles = wsConfig.liveVoiceContextProfiles;
     this.liveVoiceRouteBroker = liveVoiceRouteBroker ?? new LiveVoiceRouteBroker();
     this.liveVoiceToolExecutor = liveVoiceToolExecution.executor;
     this.liveVoiceAgentNotifier = new LiveVoiceAgentNotifier({
@@ -755,19 +771,34 @@ export class VoiceAssistantWebSocketServer {
       this.speech?.onReadinessChange((snapshot) => {
         this.publishSpeechReadiness(snapshot);
       }) ?? null;
+    this.providerUsageService =
+      providerUsageService ?? new ProviderUsageService({ logger: this.logger });
     const unsubscribeProviderConfig = attachMutableProviderConfigOwner({
       store: this.daemonConfigStore,
       providerSnapshotManager: this.providerSnapshotManager,
       updateProviderRegistry: (state) => this.agentManager.updateProviderRegistry(state),
     });
-    const unsubscribeChange = this.daemonConfigStore.onChange((config) => {
+    const unsubscribeChange = this.daemonConfigStore.onChange((config, details) => {
+      // Live agents move first: the registry already knows the new id, and repointing them
+      // before storage means a persistence flush can't write the old id back.
+      for (const rename of details.renamedProviders) {
+        this.agentManager.renameProviderOnLiveAgents(rename.from, rename.to);
+      }
+      this.providerUsageService.updateProviderConfigs(config.providers);
       this.broadcastDaemonConfigChanged(config);
       this.broadcastCapabilitiesUpdate();
+      void this.migrateRenamedProviders(details.renamedProviders, config);
     });
     this.unsubscribeDaemonConfigChange = () => {
       unsubscribeProviderConfig();
       unsubscribeChange();
     };
+
+    this.usageHistoryService = new UsageHistoryService({
+      paseoHome,
+      logger: this.logger,
+      readProviderOverrides: () => this.daemonConfigStore.get().providers,
+    });
 
     const pushLogger = this.logger.child({ module: "push" });
     this.pushNotifications = createPushNotifications({
@@ -782,8 +813,27 @@ export class VoiceAssistantWebSocketServer {
       });
     });
 
-    this.providerUsageService = new ProviderUsageService({
+    // One store for the daemon; every read and write is keyed by the admitted
+    // principal, so sharing the instance never shares data across principals.
+    this.assistantStore = new AssistantStore(join(paseoHome, "assistants"));
+
+    // Daemon-global: a call belongs to the daemon, not to an agent, and each one
+    // runs on a hidden host session the coordinator spawns for it.
+    this.liveVoiceCoordinator = new LiveVoiceCoordinator({
+      agents: this.agentManager,
       logger: this.logger,
+      hostProfile: resolveLiveVoiceHostProfile(),
+      routeBroker: this.liveVoiceRouteBroker,
+      assistantStore: this.assistantStore,
+      // Teaches the voice model what Paseo is and what is currently running. The
+      // host session carries Paseo's MCP tools, so this is what turns "can talk"
+      // into "can act on Paseo".
+      context: new LiveVoiceDaemonContextProvider({
+        agents: this.agentManager,
+        workspaces: this.workspaceRegistry,
+        logger: this.logger,
+        contextProfiles: wsConfig.liveVoiceContextProfiles,
+      }),
     });
 
     // One store for the daemon; every read and write is keyed by the admitted
@@ -1510,6 +1560,7 @@ export class VoiceAssistantWebSocketServer {
       terminalManager: this.terminalManager,
       providerSnapshotManager: this.providerSnapshotManager,
       providerUsageService: this.providerUsageService,
+      usageHistoryService: this.usageHistoryService,
       hubExecutionAgents: options.hubExecutionAgents,
       hubRelationships: options.hubRelationships,
       serviceProxy: this.serviceProxy ?? undefined,
@@ -1705,22 +1756,46 @@ export class VoiceAssistantWebSocketServer {
   }
 
   private buildServerInfoStatusPayload(session: Session): ServerInfoStatusPayload {
+    const build = getBuildInfo();
+    const hostColor = this.daemonConfigStore.get().appearance?.color;
     return {
       status: "server_info",
       serverId: this.serverId,
       hostname: getHostname(),
       version: this.daemonVersion,
       permissions: session.getPermissions(),
+      ...(build ? { build } : {}),
       // COMPAT(desktopManaged): added in v0.1.X, remove optional parsing after 2027-01-16.
       desktopManaged: this.daemonRuntimeConfig?.desktopManaged === true,
-      ...(this.serverCapabilities ? { capabilities: this.serverCapabilities } : {}),
+      // Clients cannot derive this — see the schema comment in packages/protocol.
+      worktreesRoot: resolvePaseoWorktreesBaseRoot({
+        paseoHome: this.paseoHome,
+        worktreesRoot: this.worktreesRoot,
+      }),
+      capabilities: {
+        ...this.serverCapabilities,
+        liveVoice: {
+          contextProfiles: (this.liveVoiceContextProfiles?.profiles ?? []).map((profile) => ({
+            id: profile.id,
+            label: profile.label,
+          })),
+          ...(this.liveVoiceContextProfiles?.defaultProfileId
+            ? { defaultContextProfileId: this.liveVoiceContextProfiles.defaultProfileId }
+            : {}),
+        },
+      },
+      ...(hostColor ? { appearance: { color: hostColor } } : {}),
       features: {
         agentRequestReceipts: true,
         hubAgentRpc: true,
+        // COMPAT(hostAppearance): added in v0.7.3, remove gate after 2027-09-06.
+        hostAppearance: true,
         // COMPAT(directorySync): added in v0.3.x, remove gate after 2027-02-12.
         directorySync: true,
         // COMPAT(workspaceLabels): added in v0.5.0, remove after 2027-08-14.
         ...(this.workspaceLabelService ? { workspaceLabels: true } : {}),
+        archivedWorkspacesList: true,
+        workspaceSnooze: true,
         // COMPAT(workspaceSetupRun): added in v0.7.3, remove gate after 2027-09-02.
         workspaceSetupRun: true,
         // COMPAT(providersSnapshot): keep optional until all clients rely on snapshot flow.
@@ -1797,10 +1872,15 @@ export class VoiceAssistantWebSocketServer {
         workspaceFileEditing: true,
         // COMPAT(providerUsageList): added in v0.1.98, drop the gate when daemon floor >= v0.1.98.
         providerUsageList: true,
+        codexBankedResets: this.providerUsageService.supportsCodexBankedResets,
+        // COMPAT(providerUsageHistory): added in v0.7.3, remove gate after 2027-03-07 once daemon floor >= v0.7.3.
+        providerUsageHistory: true,
         // COMPAT(agentDetach): added in v0.1.98, remove gate after 2026-12-19 once daemon floor >= v0.1.98.
         agentDetach: true,
         // COMPAT(agentThinkingUpdate): added in v0.2.4, remove gate after 2027-01-28.
         agentThinkingUpdate: true,
+        // COMPAT(activeTurnReject): added in v0.7.3, remove gate after 2027-09-04.
+        activeTurnReject: true,
         // COMPAT(daemonDiagnostics): added in v0.1.100, remove gate after 2026-12-25 once daemon floor >= v0.1.100.
         daemonDiagnostics: true,
         // COMPAT(daemonSelfUpdate): added in v0.1.93, remove gate after 2026-12-13.
@@ -1809,6 +1889,8 @@ export class VoiceAssistantWebSocketServer {
         agentForkContext: true,
         // COMPAT(agentForkContextCursor): added in v0.1.108, remove gate after 2027-01-14.
         agentForkContextCursor: true,
+        // COMPAT(agentForkNative): added in v0.3.0, remove gate after 2027-02-05.
+        agentForkNative: true,
         // COMPAT(providerSubagents): added in v0.1.107, remove gate after 2027-01-12.
         providerSubagents: true,
         // COMPAT(providerSubagentNesting): added in v0.7, remove gate after 2027-03-04.
@@ -1831,6 +1913,10 @@ export class VoiceAssistantWebSocketServer {
         commitBaseClassification: true,
         // COMPAT(providerRemoval): added in v0.1.105, drop the gate when floor >= v0.1.105.
         providerRemoval: true,
+        // COMPAT(providerConfigReplace): added in v0.2.X, remove after 2027-02-02 when old daemons are unsupported.
+        providerConfigReplace: true,
+        // COMPAT(providerConfigRename): added in v0.2.X, remove after 2027-02-02 when old daemons are unsupported.
+        providerConfigRename: true,
         // COMPAT(importSessionWorkspaceTarget): added in v0.1.110, remove gate after 2027-01-16.
         importSessionWorkspaceTarget: true,
         // COMPAT(importSessionSearch): added in v0.7.3, remove gate after 2027-03-02.
@@ -1851,6 +1937,8 @@ export class VoiceAssistantWebSocketServer {
         assistants: true,
         // COMPAT(liveVoiceVoiceCatalog): added in v0.2.6, remove after 2027-02-28.
         liveVoiceVoiceCatalog: true,
+        // COMPAT(liveVoiceContextProfiles): added in v0.4.0, remove after 2027-02-18.
+        liveVoiceContextProfiles: true,
         // COMPAT(agentPaseoTools): added in v0.2.6, remove after 2027-02-28.
         agentPaseoTools: this.agentManager.hasPaseoMcpInjection(),
         // COMPAT(liveVoiceToolExecution): added in v0.2.5, remove after 2027-01-30.
@@ -1876,6 +1964,9 @@ export class VoiceAssistantWebSocketServer {
         agentProfiles: true,
         // COMPAT(agentConfigApply): added in v0.3.2, remove gate after 2027-02-11.
         agentConfigApply: true,
+        // COMPAT(agentEnv): added in v0.2.4, drop the gate when floor >= v0.2.4.
+        agentEnv: true,
+        agentPurposeSummary: true,
       },
     };
   }
@@ -1903,6 +1994,35 @@ export class VoiceAssistantWebSocketServer {
   private broadcastCapabilitiesUpdate(): void {
     for (const connection of new Set(this.sessions.values())) {
       this.sendToConnection(connection, this.createServerInfoMessage(connection.session));
+    }
+  }
+
+  /**
+   * Storage migration is async, so it runs after the config broadcast. Clients get a second
+   * `daemon_config_changed` once records have moved, which is what makes them refetch the
+   * agent list and see the migrated agents under the new provider id.
+   */
+  private async migrateRenamedProviders(
+    renames: readonly ProviderRename[],
+    config: MutableDaemonConfig,
+  ): Promise<void> {
+    if (renames.length === 0) {
+      return;
+    }
+    let migratedAny = false;
+    for (const rename of renames) {
+      try {
+        const migrated = await this.agentStorage.renameProvider(rename.from, rename.to);
+        migratedAny ||= migrated.length > 0;
+      } catch (err) {
+        this.logger.error(
+          { err, fromProviderId: rename.from, toProviderId: rename.to },
+          "Failed to migrate agent records for renamed provider",
+        );
+      }
+    }
+    if (migratedAny) {
+      this.broadcastDaemonConfigChanged(config);
     }
   }
 

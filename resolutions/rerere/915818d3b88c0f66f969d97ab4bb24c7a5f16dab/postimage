@@ -2,11 +2,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { ComponentType, ReactNode } from "react";
 import {
   Alert,
+  Platform,
   Pressable,
   ScrollView,
   Switch as NativeSwitch,
   Text,
   View,
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
   type PressableStateCallbackType,
 } from "react-native";
 import { EditingTextInput as TextInput } from "@/components/ui/text-input";
@@ -28,6 +31,7 @@ import {
   Network,
   Bot,
   Boxes,
+  ChartColumn,
   Gauge,
   Keyboard,
   Stethoscope,
@@ -43,6 +47,7 @@ import {
   Sparkles,
   AudioLines,
   Blocks,
+  ExternalLink,
   PanelsTopLeft,
   ChevronRight,
 } from "lucide-react-native";
@@ -92,6 +97,11 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { CommunityLinks } from "@/components/community-links";
 import { SegmentedControl } from "@/components/ui/segmented-control";
+import {
+  COMPOSER_SIGIL_CHOICES,
+  resolveComposerSigils,
+  type ComposerSigil,
+} from "@/composer/tokens/sigils";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { DesktopPermissionsSection } from "@/desktop/components/desktop-permissions-section";
 import { DesktopNotificationsSection } from "@/desktop/components/desktop-notifications-section";
@@ -101,6 +111,13 @@ import { isElectronRuntime } from "@/desktop/host";
 import { useDesktopAppUpdater } from "@/desktop/updates/use-desktop-app-updater";
 import { formatVersionWithPrefix } from "@/desktop/updates/desktop-updates";
 import { resolveAppVersion } from "@/utils/app-version";
+import {
+  formatCommitDate,
+  resolveBuildInfo,
+  resolveClientBuildInfo,
+  type ResolvedBuildInfo,
+} from "@/utils/build-info";
+import { openExternalUrl } from "@/utils/open-external-url";
 import { openChangelog } from "@/changelog";
 import { useAppDiagnosticStore } from "@/diagnostics/store";
 import {
@@ -111,11 +128,6 @@ import type { LiveVoiceHostAvailability } from "@/live-voice/live-voice-availabi
 import { resolveLiveVoiceUnavailableMessage } from "@/live-voice/live-voice-unavailable-message";
 import { useLiveVoiceVoiceOptions } from "@/hooks/use-live-voice-voice-options";
 import { AssistantsSheet } from "@/assistants/assistants-sheet";
-import { useAssistants } from "@/assistants/assistant-queries";
-import {
-  useAssistantSelectionStore,
-  useSelectedAssistantId,
-} from "@/assistants/assistant-selection-store";
 import { useLiveVoiceBackendModelOptions } from "@/live-voice/live-voice-backend-model-catalog";
 import {
   LIVE_VOICE_OPTIONAL_PROMPT_COMPONENTS,
@@ -145,6 +157,7 @@ import {
   HostWorkspacesPage,
   HostTerminalsPage,
 } from "@/screens/settings/host-page";
+import { ProviderUsageHistorySection } from "@/provider-usage-history/section";
 import { resolvePluginIcon } from "@/plugins/icons";
 import { PluginSettingsContent } from "@/plugins/settings";
 import { useInstalledPlugins } from "@/plugins/registry";
@@ -169,6 +182,11 @@ import { returnFromSettings, type SettingsView } from "@/navigation/settings-nav
 import { isNative, isWeb } from "@/constants/platform";
 import { providerLabel } from "@/wear/wear-snapshot";
 
+const COMPOSER_SIGIL_OPTIONS = COMPOSER_SIGIL_CHOICES.map((choice) => ({
+  value: choice,
+  label: choice,
+}));
+
 // ---------------------------------------------------------------------------
 // View model
 // ---------------------------------------------------------------------------
@@ -179,7 +197,12 @@ interface SidebarSectionItem {
   icon: ComponentType<{ size: number; color: string }>;
   desktopOnly?: boolean;
   webOnly?: boolean;
+  isAvailable?: (isDesktopApp: boolean) => boolean;
 }
+
+// Native shortcuts are delivered by the hardware-keyboard module, so the
+// section is useful there even though it never applies to mobile web.
+const shortcutsSectionAvailable = (isDesktopApp: boolean) => isDesktopApp || isNative;
 
 const SIDEBAR_SECTION_ITEMS: SidebarSectionItem[] = [
   { id: "general", labelKey: "settings.sections.general", icon: Settings },
@@ -192,26 +215,32 @@ const SIDEBAR_SECTION_ITEMS: SidebarSectionItem[] = [
     desktopOnly: true,
   },
   { id: "editor", labelKey: "settings.sections.editor", icon: Code2, webOnly: true },
-  { id: "shortcuts", labelKey: "settings.sections.shortcuts", icon: Keyboard, desktopOnly: true },
+  {
+    id: "shortcuts",
+    labelKey: "settings.sections.shortcuts",
+    icon: Keyboard,
+    isAvailable: shortcutsSectionAvailable,
+  },
   {
     id: "integrations",
     labelKey: "settings.sections.integrations",
     icon: Puzzle,
-    desktopOnly: true,
+    isAvailable: (isDesktopApp) => isDesktopApp,
   },
   {
     id: "notifications",
     labelKey: "settings.sections.notifications",
     icon: Bell,
-    desktopOnly: true,
+    isAvailable: (isDesktopApp) => isDesktopApp,
   },
   {
     id: "permissions",
     labelKey: "settings.sections.permissions",
     icon: Shield,
-    desktopOnly: true,
+    isAvailable: (isDesktopApp) => isDesktopApp,
   },
   { id: "diagnostics", labelKey: "settings.sections.diagnostics", icon: Stethoscope },
+  { id: "usage-history", labelKey: "settings.sections.usageHistory", icon: ChartColumn },
   { id: "about", labelKey: "settings.sections.about", icon: Info },
 ];
 
@@ -316,6 +345,8 @@ function getLiveVoiceVoiceLabel(t: TFunction, voice: string | null): string {
 
 const SERVICE_URL_BEHAVIOR_VALUES: ServiceUrlBehavior[] = ["ask", "in-app", "external"];
 
+let desktopSidebarScrollOffset = { x: 0, y: 0 };
+
 // ---------------------------------------------------------------------------
 // Section components
 // ---------------------------------------------------------------------------
@@ -327,6 +358,9 @@ interface GeneralSectionProps {
   handleServiceUrlBehaviorChange: (behavior: ServiceUrlBehavior) => void;
   handleLanguageChange: (language: AppLanguage) => void;
   handleTerminalScrollbackLinesChange: (lines: number) => void;
+  handleModelPickerStartChange: (enabled: boolean) => void;
+  handleCommandTriggerSigilChange: (sigil: ComposerSigil) => void;
+  handleSkillTriggerSigilChange: (sigil: ComposerSigil) => void;
 }
 
 interface ServiceUrlBehaviorMenuItemProps {
@@ -401,6 +435,9 @@ function GeneralSection({
   handleServiceUrlBehaviorChange,
   handleLanguageChange,
   handleTerminalScrollbackLinesChange,
+  handleModelPickerStartChange,
+  handleCommandTriggerSigilChange,
+  handleSkillTriggerSigilChange,
 }: GeneralSectionProps) {
   const { t, i18n } = useTranslation();
   const activeLocale = getActiveLocale(i18n.language);
@@ -408,6 +445,10 @@ function GeneralSection({
   const selectedSendBehaviorLabel =
     sendBehaviorOptions.find((option) => option.value === settings.sendBehavior)?.label ??
     settings.sendBehavior;
+  const activeSigils = resolveComposerSigils({
+    command: settings.commandTriggerSigil,
+    skill: settings.skillTriggerSigil,
+  });
   const sendBehaviorDescriptionKey = `settings.general.defaultSend.descriptions.${settings.sendBehavior}`;
   const selectedLanguageOption = LANGUAGE_OPTIONS.find(
     (option) => option.value === settings.language,
@@ -472,6 +513,53 @@ function GeneralSection({
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
+        </View>
+        <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
+          <View style={settingsStyles.rowContent}>
+            <Text style={settingsStyles.rowTitle}>
+              {t("settings.general.modelPickerAllModels.label")}
+            </Text>
+            <Text style={settingsStyles.rowHint}>
+              {t("settings.general.modelPickerAllModels.description")}
+            </Text>
+          </View>
+          <Switch
+            value={settings.modelPickerStartsWithAllModels}
+            onValueChange={handleModelPickerStartChange}
+            accessibilityLabel={t("settings.general.modelPickerAllModels.label")}
+          />
+        </View>
+        <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
+          <View style={settingsStyles.rowContent}>
+            <Text style={settingsStyles.rowTitle}>
+              {t("settings.general.commandTrigger.label")}
+            </Text>
+            <Text style={settingsStyles.rowHint}>
+              {t("settings.general.commandTrigger.description")}
+            </Text>
+          </View>
+          <SegmentedControl
+            size="sm"
+            testID="settings-command-trigger"
+            value={activeSigils.command}
+            onValueChange={handleCommandTriggerSigilChange}
+            options={COMPOSER_SIGIL_OPTIONS}
+          />
+        </View>
+        <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
+          <View style={settingsStyles.rowContent}>
+            <Text style={settingsStyles.rowTitle}>{t("settings.general.skillTrigger.label")}</Text>
+            <Text style={settingsStyles.rowHint}>
+              {t("settings.general.skillTrigger.description")}
+            </Text>
+          </View>
+          <SegmentedControl
+            size="sm"
+            testID="settings-skill-trigger"
+            value={activeSigils.skill}
+            onValueChange={handleSkillTriggerSigilChange}
+            options={COMPOSER_SIGIL_OPTIONS}
+          />
         </View>
         <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
           <View style={settingsStyles.rowContent}>
@@ -693,7 +781,7 @@ function LiveVoiceSettingsCard() {
           </DropdownMenuContent>
         </DropdownMenu>
       </View>
-      {isNative ? <ShortcutSettingsRows /> : null}
+      {Platform.OS === "android" ? <DispatchSettingsRows /> : null}
       <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
         <View style={settingsStyles.rowContent}>
           <Text style={settingsStyles.rowTitle}>{t("liveVoice.settings.agentReports.label")}</Text>
@@ -858,146 +946,6 @@ function LiveVoiceSettingsCard() {
   );
 }
 
-/** The two link targets, native only: web has no `paseo://` handler to reach them. */
-function ShortcutSettingsRows() {
-  return (
-    <>
-      <QuickLaunchSettingsRows />
-      <DispatchSettingsRows />
-    </>
-  );
-}
-
-/**
- * Where a `paseo://live-voice` shortcut lands. The assistant row edits the
- * launcher's own selection for that host rather than a second setting, so the
- * shortcut and the menu can never disagree about who answers.
- */
-function QuickLaunchSettingsRows() {
-  const { t } = useTranslation();
-  const hosts = useLiveVoiceHostAvailability().filter(
-    (host) => host.connectionStatus === "online" && host.supportsLiveVoice === true,
-  );
-  const quickLaunchServerId = useLiveVoiceSettingsStore((state) => state.quickLaunchServerId);
-  const setQuickLaunchServerId = useLiveVoiceSettingsStore((state) => state.setQuickLaunchServerId);
-  const selectedHost = hosts.find((host) => host.serverId === quickLaunchServerId) ?? null;
-  const assistantHost = selectedHost ?? (hosts.length === 1 ? hosts[0] : null);
-  const assistantHostId =
-    assistantHost?.supportsAssistants === true ? assistantHost.serverId : null;
-  const { assistants } = useAssistants(assistantHostId);
-  const selectedAssistantId = useSelectedAssistantId(assistantHostId);
-  const select = useAssistantSelectionStore((state) => state.select);
-  const selectedAssistant =
-    assistants.find((assistant) => assistant.id === selectedAssistantId) ?? null;
-  const clearHost = useCallback(() => setQuickLaunchServerId(null), [setQuickLaunchServerId]);
-  const clearAssistant = useCallback(() => {
-    if (assistantHostId) select(assistantHostId, null);
-  }, [assistantHostId, select]);
-
-  return (
-    <>
-      <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
-        <View style={settingsStyles.rowContent}>
-          <Text style={settingsStyles.rowTitle}>
-            {t("liveVoice.settings.quickLaunch.hostLabel")}
-          </Text>
-          <Text style={settingsStyles.rowHint}>
-            {t("liveVoice.settings.quickLaunch.description")}
-          </Text>
-        </View>
-        <DropdownMenu>
-          <DropdownTrigger
-            accessibilityRole="button"
-            accessibilityLabel={t("liveVoice.settings.quickLaunch.hostLabel")}
-            style={themeTriggerStyle}
-            testID="quick-launch-host-picker"
-          >
-            <Text style={styles.themeTriggerText} numberOfLines={1}>
-              {selectedHost?.label ?? t("liveVoice.settings.quickLaunch.auto")}
-            </Text>
-          </DropdownTrigger>
-          <DropdownMenuContent side="bottom" align="end" width={240}>
-            <DropdownMenuItem selected={selectedHost === null} onSelect={clearHost}>
-              {t("liveVoice.settings.quickLaunch.auto")}
-            </DropdownMenuItem>
-            {hosts.map((host) => (
-              <DispatchHostMenuItem
-                key={host.serverId}
-                host={host}
-                selected={host.serverId === quickLaunchServerId}
-                onChange={setQuickLaunchServerId}
-              />
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </View>
-      {assistantHostId ? (
-        <View style={[settingsStyles.row, settingsStyles.rowBorder]}>
-          <View style={settingsStyles.rowContent}>
-            <Text style={settingsStyles.rowTitle}>
-              {t("liveVoice.settings.quickLaunch.assistantLabel")}
-            </Text>
-            <Text style={settingsStyles.rowHint}>
-              {t("liveVoice.settings.quickLaunch.assistantHint")}
-            </Text>
-          </View>
-          <DropdownMenu>
-            <DropdownTrigger
-              accessibilityRole="button"
-              accessibilityLabel={t("liveVoice.settings.quickLaunch.assistantLabel")}
-              style={themeTriggerStyle}
-              testID="quick-launch-assistant-picker"
-            >
-              <Text style={styles.themeTriggerText} numberOfLines={1}>
-                {selectedAssistant?.name ?? t("liveVoice.settings.quickLaunch.none")}
-              </Text>
-            </DropdownTrigger>
-            <DropdownMenuContent side="bottom" align="end" width={280}>
-              <DropdownMenuItem selected={selectedAssistant === null} onSelect={clearAssistant}>
-                {t("liveVoice.settings.quickLaunch.none")}
-              </DropdownMenuItem>
-              {assistants.map((assistant) => (
-                <QuickLaunchAssistantMenuItem
-                  key={assistant.id}
-                  serverId={assistantHostId}
-                  assistantId={assistant.id}
-                  name={assistant.name}
-                  selected={assistant.id === selectedAssistantId}
-                  onChange={select}
-                />
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </View>
-      ) : null}
-    </>
-  );
-}
-
-function QuickLaunchAssistantMenuItem({
-  serverId,
-  assistantId,
-  name,
-  selected,
-  onChange,
-}: {
-  serverId: string;
-  assistantId: string;
-  name: string;
-  selected: boolean;
-  onChange: (serverId: string, assistantId: string | null) => void;
-}) {
-  const handleSelect = useCallback(
-    () => onChange(serverId, assistantId),
-    [assistantId, onChange, serverId],
-  );
-  return (
-    <DropdownMenuItem selected={selected} onSelect={handleSelect}>
-      {name}
-    </DropdownMenuItem>
-  );
-}
-
 function DispatchSettingsRows() {
   const { t } = useTranslation();
   const hosts = useHosts();
@@ -1124,7 +1072,7 @@ function DispatchHostMenuItem({
   selected,
   onChange,
 }: {
-  host: Pick<HostProfile, "serverId" | "label">;
+  host: HostProfile;
   selected: boolean;
   onChange: (serverId: string) => void;
 }) {
@@ -1414,8 +1362,43 @@ interface AboutSectionProps {
   isDesktopApp: boolean;
 }
 
+/**
+ * The exact commit a build came from, as a link to it on the forge. A release
+ * version alone cannot identify a build — several builds share one version —
+ * so this is the only thing that pins down what is actually running.
+ */
+function BuildStampLink({ build, testID }: { build: ResolvedBuildInfo; testID?: string }) {
+  const { t } = useTranslation();
+  const { theme } = useUnistyles();
+  const handlePress = useCallback(() => {
+    void openExternalUrl(build.commitUrl);
+  }, [build.commitUrl]);
+  const commitDate = formatCommitDate(build.commitDate);
+
+  return (
+    <View style={styles.aboutBuild} testID={testID}>
+      <Pressable
+        onPress={handlePress}
+        accessibilityRole="link"
+        accessibilityLabel={t("settings.about.viewCommit")}
+        style={styles.aboutBuildLink}
+      >
+        <Text style={styles.aboutBuildText}>{build.commit}</Text>
+        <ExternalLink size={12} color={theme.colors.foregroundMuted} />
+      </Pressable>
+      {commitDate ? <Text style={styles.aboutBuildDetail}>{commitDate}</Text> : null}
+      {build.commitMessage ? (
+        <Text style={styles.aboutBuildDetail} numberOfLines={3}>
+          {build.commitMessage}
+        </Text>
+      ) : null}
+    </View>
+  );
+}
+
 function AboutSection({ appVersion, appVersionText, isDesktopApp }: AboutSectionProps) {
   const { t } = useTranslation();
+  const build = useMemo(() => resolveClientBuildInfo(), []);
   return (
     <>
       <SettingsSection title={t("settings.about.title")}>
@@ -1424,6 +1407,7 @@ function AboutSection({ appVersion, appVersionText, isDesktopApp }: AboutSection
             <View style={settingsStyles.rowContent}>
               <Text style={settingsStyles.rowTitle}>{t("settings.about.appVersion")}</Text>
               <Text style={settingsStyles.rowHint}>{t("settings.about.thisDevice")}</Text>
+              {build ? <BuildStampLink build={build} testID="about-app-build" /> : null}
             </View>
             <Text style={styles.aboutValue}>{appVersionText}</Text>
           </View>
@@ -1508,6 +1492,10 @@ function HostVersionRow({
   const daemonVersion = useSessionStore(
     (state) => state.sessions[host.serverId]?.serverInfo?.version ?? null,
   );
+  const daemonBuild = useSessionStore(
+    (state) => state.sessions[host.serverId]?.serverInfo?.build ?? null,
+  );
+  const build = useMemo(() => resolveBuildInfo(daemonBuild), [daemonBuild]);
 
   const rowStyle = useMemo(
     () => [settingsStyles.row, showBorder && settingsStyles.rowBorder],
@@ -1541,6 +1529,9 @@ function HostVersionRow({
         </Text>
         {isMismatch ? (
           <Text style={settingsStyles.rowHint}>{t("settings.about.versionDiffers")}</Text>
+        ) : null}
+        {isConnected && build ? (
+          <BuildStampLink build={build} testID={`about-host-build-${host.serverId}`} />
         ) : null}
       </View>
       <Text style={valueStyle}>{valueText}</Text>
@@ -1733,6 +1724,7 @@ function SidebarSectionButton({
       accessibilityRole="button"
       accessibilityState={accessibilityState}
       onPress={handlePress}
+      testID={`settings-section-${itemId}`}
       style={isSelected ? selectedSidebarItemStyle : sidebarItemStyle}
     >
       <IconComponent
@@ -1843,7 +1835,6 @@ function HostPicker({
       includeEnableBuiltInDaemon={enableBuiltInDaemonOption.visible}
       onEnableBuiltInDaemon={enableBuiltInDaemonOption.onPress}
       showActiveConnection
-      searchable={false}
       title={t("settings.hostPicker.switchHost")}
       desktopMinWidth={240}
       addHostTestID="settings-add-host"
@@ -1901,7 +1892,10 @@ function SettingsSidebar({
   const enableBuiltInDaemonOption = useEnableBuiltInDaemonOption();
   const isDesktopApp = isElectronRuntime();
   const items = SIDEBAR_SECTION_ITEMS.filter(
-    (item) => (!item.desktopOnly || isDesktopApp) && (!item.webOnly || isWeb),
+    (item) =>
+      (!item.desktopOnly || isDesktopApp) &&
+      (!item.webOnly || isWeb) &&
+      (item.isAvailable?.(isDesktopApp) ?? true),
   );
   const insets = useSafeAreaInsets();
   const isDesktop = layout === "desktop";
@@ -1913,6 +1907,19 @@ function SettingsSidebar({
     () => [{ flex: 1 }, isDesktop ? { paddingTop: insets.top } : null],
     [insets.top, isDesktop],
   );
+  const desktopSidebarScrollRef = useRef<ScrollView>(null);
+  const handleDesktopSidebarScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      desktopSidebarScrollOffset = { ...event.nativeEvent.contentOffset };
+    },
+    [],
+  );
+  const restoreDesktopSidebarScroll = useCallback(() => {
+    desktopSidebarScrollRef.current?.scrollTo({
+      ...desktopSidebarScrollOffset,
+      animated: false,
+    });
+  }, []);
   const selectedSectionId = view.kind === "section" ? view.section : null;
   let selectedHostSection: HostSectionSlug | null = null;
   if (view.kind === "host") selectedHostSection = view.section;
@@ -2009,9 +2016,14 @@ function SettingsSidebar({
             />
           </View>
           <ScrollView
+            ref={desktopSidebarScrollRef}
             style={sidebarStyles.scrollBody}
             showsVerticalScrollIndicator={false}
             testID="settings-sidebar-scroll-body"
+            contentOffset={desktopSidebarScrollOffset}
+            onContentSizeChange={restoreDesktopSidebarScroll}
+            onScroll={handleDesktopSidebarScroll}
+            scrollEventThrottle={16}
           >
             {sidebarBody}
           </ScrollView>
@@ -2097,6 +2109,36 @@ export default function SettingsScreen({ view, openAddHostIntent = null }: Setti
     [updateSettings],
   );
 
+  const handleCommandTriggerSigilChange = useCallback(
+    (sigil: ComposerSigil) => {
+      const current = resolveComposerSigils({
+        command: settings.commandTriggerSigil,
+        skill: settings.skillTriggerSigil,
+      });
+      void updateSettings(
+        sigil === current.skill
+          ? { commandTriggerSigil: sigil, skillTriggerSigil: current.command }
+          : { commandTriggerSigil: sigil },
+      );
+    },
+    [settings.commandTriggerSigil, settings.skillTriggerSigil, updateSettings],
+  );
+
+  const handleSkillTriggerSigilChange = useCallback(
+    (sigil: ComposerSigil) => {
+      const current = resolveComposerSigils({
+        command: settings.commandTriggerSigil,
+        skill: settings.skillTriggerSigil,
+      });
+      void updateSettings(
+        sigil === current.command
+          ? { skillTriggerSigil: sigil, commandTriggerSigil: current.skill }
+          : { skillTriggerSigil: sigil },
+      );
+    },
+    [settings.commandTriggerSigil, settings.skillTriggerSigil, updateSettings],
+  );
+
   const handleLanguageChange = useCallback(
     (language: AppLanguage) => {
       void updateSettings({ language });
@@ -2107,6 +2149,13 @@ export default function SettingsScreen({ view, openAddHostIntent = null }: Setti
   const handleTerminalScrollbackLinesChange = useCallback(
     (terminalScrollbackLines: number) => {
       void updateSettings({ terminalScrollbackLines });
+    },
+    [updateSettings],
+  );
+
+  const handleModelPickerStartChange = useCallback(
+    (modelPickerStartsWithAllModels: boolean) => {
+      void updateSettings({ modelPickerStartsWithAllModels });
     },
     [updateSettings],
   );
@@ -2313,6 +2362,63 @@ export default function SettingsScreen({ view, openAddHostIntent = null }: Setti
     return null;
   })();
 
+  function renderAppSection(section: SettingsSectionSlug): ReactNode {
+    switch (section) {
+      case "general":
+        return (
+          <>
+            <GeneralSection
+              settings={settings}
+              isDesktopApp={isDesktopApp}
+              handleSendBehaviorChange={handleSendBehaviorChange}
+              handleServiceUrlBehaviorChange={handleServiceUrlBehaviorChange}
+              handleLanguageChange={handleLanguageChange}
+              handleTerminalScrollbackLinesChange={handleTerminalScrollbackLinesChange}
+              handleModelPickerStartChange={handleModelPickerStartChange}
+              handleCommandTriggerSigilChange={handleCommandTriggerSigilChange}
+              handleSkillTriggerSigilChange={handleSkillTriggerSigilChange}
+            />
+            {isDesktopApp ? <BrowserDataSection /> : null}
+          </>
+        );
+      case "voice":
+        return <VoiceSection />;
+      case "appearance":
+        return <AppearanceSection />;
+      case "editor":
+        return isWeb ? <EditorSection /> : null;
+      case "shortcuts":
+        return shortcutsSectionAvailable(isDesktopApp) ? <KeyboardShortcutsSection /> : null;
+      case "integrations":
+        return isDesktopApp ? <IntegrationsSection /> : null;
+      case "notifications":
+        return isDesktopApp ? <DesktopNotificationsSection /> : null;
+      case "permissions":
+        return isDesktopApp ? <DesktopPermissionsSection /> : null;
+      case "diagnostics":
+        return (
+          <DiagnosticsSection
+            useLegacyTerminalRenderer={settings.useLegacyTerminalRenderer}
+            onUseLegacyTerminalRendererChange={handleUseLegacyTerminalRendererChange}
+            voiceAudioEngine={voiceAudioEngine}
+            isPlaybackTestRunning={isPlaybackTestRunning}
+            playbackTestResult={playbackTestResult}
+            handlePlaybackTest={handlePlaybackTest}
+          />
+        );
+      case "usage-history":
+        return <ProviderUsageHistorySection />;
+      case "about":
+        return (
+          <AboutSection
+            appVersion={appVersion}
+            appVersionText={appVersionText}
+            isDesktopApp={isDesktopApp}
+          />
+        );
+    }
+  }
+
   let content: ReactNode;
   if (view.kind === "section" && view.section === "layout") {
     content = isDesktopApp ? <LayoutSection /> : null;
@@ -2340,55 +2446,7 @@ export default function SettingsScreen({ view, openAddHostIntent = null }: Setti
         );
       }
       if (view.kind === "section") {
-        switch (view.section) {
-          case "general":
-            return (
-              <>
-                <GeneralSection
-                  settings={settings}
-                  isDesktopApp={isDesktopApp}
-                  handleSendBehaviorChange={handleSendBehaviorChange}
-                  handleServiceUrlBehaviorChange={handleServiceUrlBehaviorChange}
-                  handleLanguageChange={handleLanguageChange}
-                  handleTerminalScrollbackLinesChange={handleTerminalScrollbackLinesChange}
-                />
-                {isDesktopApp ? <BrowserDataSection /> : null}
-              </>
-            );
-          case "voice":
-            return <VoiceSection />;
-          case "appearance":
-            return <AppearanceSection />;
-          case "editor":
-            return isWeb ? <EditorSection /> : null;
-          case "shortcuts":
-            return isDesktopApp ? <KeyboardShortcutsSection /> : null;
-          case "integrations":
-            return isDesktopApp ? <IntegrationsSection /> : null;
-          case "notifications":
-            return isDesktopApp ? <DesktopNotificationsSection /> : null;
-          case "permissions":
-            return isDesktopApp ? <DesktopPermissionsSection /> : null;
-          case "diagnostics":
-            return (
-              <DiagnosticsSection
-                useLegacyTerminalRenderer={settings.useLegacyTerminalRenderer}
-                onUseLegacyTerminalRendererChange={handleUseLegacyTerminalRendererChange}
-                voiceAudioEngine={voiceAudioEngine}
-                isPlaybackTestRunning={isPlaybackTestRunning}
-                playbackTestResult={playbackTestResult}
-                handlePlaybackTest={handlePlaybackTest}
-              />
-            );
-          case "about":
-            return (
-              <AboutSection
-                appVersion={appVersion}
-                appVersionText={appVersionText}
-                isDesktopApp={isDesktopApp}
-              />
-            );
-        }
+        return renderAppSection(view.section);
       }
       return null;
     })();
@@ -2552,6 +2610,26 @@ const styles = StyleSheet.create((theme) => ({
   aboutValue: {
     color: theme.colors.foregroundMuted,
     fontSize: theme.fontSize.base,
+  },
+  aboutBuild: {
+    gap: theme.spacing[1],
+    marginTop: theme.spacing[1],
+  },
+  aboutBuildLink: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    flexDirection: "row",
+    gap: theme.spacing[1],
+  },
+  aboutBuildText: {
+    color: theme.colors.foregroundMuted,
+    flexShrink: 1,
+    fontFamily: theme.fontFamily.mono,
+    fontSize: theme.fontSize.sm,
+  },
+  aboutBuildDetail: {
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.sm,
   },
   diagnosticsGroupTitle: {
     color: theme.colors.foregroundMuted,

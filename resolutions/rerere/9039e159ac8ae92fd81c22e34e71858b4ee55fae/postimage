@@ -148,6 +148,20 @@ export const fr: TranslationResources = {
       openReview: "Ouvrir la pièce jointe de l'avis",
       removeReview: "Supprimer la pièce jointe de l'avis",
     },
+    stash: {
+      stashed: "Prompt mis de côté",
+      stashedEvicted: "Prompt mis de côté — le plus ancien a été supprimé pour faire de la place",
+      restored: "Prompt restauré",
+      undo: "Annuler",
+      badgeAccessibilityLabel: "Prompts mis de côté : {{count}}. Ouvrir la réserve.",
+      menuTitle: "Prompts mis de côté",
+      menuEmpty: "Rien de mis de côté pour l'instant",
+      attachmentsOnly_one: "{{count}} pièce jointe",
+      attachmentsOnly_other: "{{count}} pièces jointes",
+      deleteEntry: "Supprimer le prompt mis de côté",
+      otherProviders_one: "{{count}} prompt mis de côté sous un autre fournisseur",
+      otherProviders_other: "{{count}} prompts mis de côté sous d'autres fournisseurs",
+    },
     errors: {
       failedToSend: "Échec de l'envoi du message",
       failedToCreateAgent: "Échec de la création de l'agent",
@@ -208,6 +222,13 @@ export const fr: TranslationResources = {
     empty: "Commencez à discuter avec cet agent...",
     scrollToBottom: "Faire défiler vers le bas",
     historyLoadFailed: "Impossible de charger l’historique de l’agent",
+    find: {
+      placeholder: "Rechercher dans la conversation",
+      matchCount: "{{current}}/{{total}}",
+      previous: "Correspondance précédente",
+      next: "Correspondance suivante",
+      close: "Fermer la recherche",
+    },
     messageCapped: "Ce message a été tronqué ({{bytes}} octets).",
     permission: {
       plan: "Plan",
@@ -217,6 +238,12 @@ export const fr: TranslationResources = {
       implement: "Mettre en œuvre",
       question: "Comment souhaitez-vous procéder?",
       proposedPlan: "Plan proposé",
+    },
+    questions: {
+      answerPlaceholder: "Saisissez votre réponse...",
+      submit: "Envoyer la réponse",
+      answered: "Répondu",
+      sendFailed: "Impossible d'envoyer votre réponse",
     },
   },
   agentPanel: {
@@ -304,6 +331,9 @@ export const fr: TranslationResources = {
       forkMenu: "Dupliquer le message",
       forkInNewTab: "Dupliquer dans un nouvel onglet",
       forkInNewWorkspace: "Dupliquer dans un nouvel espace de travail",
+      forkFullHistory: "Historique complet",
+      forkFullHistoryUnavailable: "Ce fournisseur ne peut pas dériver sa session.",
+      forkSummary: "Résumé",
       forkUnavailable: "Mettez l'hôte à jour pour utiliser ceci.",
       forkMissingWorkspace: "Cet agent n'est pas dans un espace de travail.",
       forkFailed: "Impossible de dupliquer le chat",
@@ -599,6 +629,7 @@ export const fr: TranslationResources = {
       },
       menu: {
         openFor: "Ouvrir le menu pour{{label}}",
+        copyConversation: "Copier la conversation",
         copyResumeCommand: "Copier la commande de reprise",
         copyAgentId: "Copier l'identifiant de l'agent",
         copyTerminalId: "Copier l'identifiant du terminal",
@@ -645,6 +676,9 @@ export const fr: TranslationResources = {
       },
       toasts: {
         copyFailed: "Échec de la copie",
+        copyingConversation: "Copie de la conversation...",
+        conversationCopiedLabel: "Conversation",
+        conversationEmpty: "Cette conversation ne contient aucun message à copier",
         agentIdCopiedLabel: "AgentID",
         terminalIdCopiedLabel: "Identifiant du terminal",
         resumeCommandCopiedLabel: "reprendre la commande",
@@ -1099,6 +1133,7 @@ export const fr: TranslationResources = {
         label: "Titre",
         title: "Titre",
         branch: "Nom de branche",
+        worktree: "Suffixe du worktree",
       },
       show: {
         label: "Afficher",
@@ -1163,12 +1198,6 @@ export const fr: TranslationResources = {
       search: "Rechercher",
       schedules: "Planifications",
     },
-    worktreeSetup: {
-      title: "Configurer les scripts d'arbre de travail",
-      description:
-        "Ajoutez des commandes de configuration pour que les nouveaux arbres de travail puissent installer des dépendances et se préparer automatiquement.",
-      openProjectSettings: "Ouvrir les paramètres du projet",
-    },
     project: {
       actions: {
         menu: "Actions du projet",
@@ -1217,16 +1246,33 @@ export const fr: TranslationResources = {
         showMore: "Afficher plus",
         showLess: "Afficher moins",
         createWorkspaceFor: "Créer un nouvel espace de travail pour{{projectName}}",
+        markAsRead: "Marquer comme lu",
+        markAsReadError: "Impossible de marquer l'espace de travail comme lu.",
         copyPath: "Copier le chemin",
         copyBranchName: "Copier le nom de la branche",
         rename: "Renommer l'espace de travail",
         pin: "Épingler en haut",
         unpin: "Désépingler",
+        snooze: "Mettre en veille",
+        snoozeHour: "Reporter d'une heure",
+        snoozeEvening: "Reporter jusqu'à ce soir",
+        snoozeTomorrow: "Reporter jusqu'à demain",
+        snoozeNextWeek: "Reporter jusqu'à la semaine prochaine",
+        snoozeCustom: "Reporter jusqu'à une heure personnalisée…",
+        wake: "Réveiller",
+        snoozedUntil: "Reporté jusqu'à {{time}} ({{duration}})",
+        snoozedChip: "{{time}} · {{duration}}",
         archive: "Archive",
         archiveWorkspace: "Archiver l’espace de travail",
         hideFromSidebar: "Masquer de la barre latérale",
         archiving: "Archivage...",
         hiding: "Dissimulation...",
+      },
+      archived: {
+        groupTitle: "Archivés récemment",
+        unarchive: "Désarchiver",
+        unarchiving: "Désarchivage...",
+        unarchiveFailed: "Échec du désarchivage de l'espace de travail",
       },
       confirmations: {
         hideTitle: "Masquer l'espace de travail?",
@@ -1235,16 +1281,35 @@ export const fr: TranslationResources = {
         hideConfirm: "Cacher",
         cancel: "Annuler",
       },
+      agentTree: {
+        show: "Afficher les agents",
+        hide: "Masquer les agents",
+        swipeAction: "Agents",
+      },
       rename: {
         title: "Renommer l'espace de travail",
         submit: "Rebaptiser",
         invalidBranchName: "Nom de succursale invalide",
+      },
+      customSnooze: {
+        title: "Report personnalisé",
+        until: "Reporter jusqu'au",
+        date: "Date",
+        time: "Heure",
+        pastTime: "Choisissez une heure future.",
+        confirm: "Reporter",
       },
       toasts: {
         workspacePathUnavailable: "CheminWorkspacenon disponible",
         pathCopied: "Chemin copié",
         branchNameCopied: "Nom de la succursale copié",
         hostDisconnected: "Hostn'est pas connecté",
+        snoozingWorkspace: "Mise en veille de l'espace de travail...",
+        snoozedWorkspace: "Espace de travail mis en veille",
+        failedToSnoozeWorkspace: "Échec de la mise en veille de l'espace de travail",
+        wakingWorkspace: "Réveil de l'espace de travail...",
+        wokeWorkspace: "Espace de travail réveillé",
+        failedToWakeWorkspace: "Échec du réveil de l'espace de travail",
         hideFailed: "Échec du masquage de l'espace de travail",
         archiveFailed: "Échec de l'archivage de l'espace de travail",
       },
@@ -1579,6 +1644,7 @@ export const fr: TranslationResources = {
     profiles: "Profils",
     providers: "Fournisseurs",
     model: "Modèle",
+    allModels: "Tous les modèles",
     editProfiles: "Modifier",
     editProfilesLabel: "Modifier les profils d'agent",
     createProfile: "Créer un profil",
@@ -1775,26 +1841,11 @@ export const fr: TranslationResources = {
       unknown: "Le micro est occupé. Arrêtez d'abord l'autre fonction audio.",
     },
   },
-  dispatch: {
-    label: "Dispatch",
-    listening: "Écoute…",
-    sending: "Envoi…",
-    sent: "Envoyé à {{target}}",
-    send: "Envoyer",
-    cancel: "Annuler",
-    dismiss: "Fermer",
-    defaultTarget: "votre agent Dispatch",
-    errors: {
-      noTarget: "Choisissez d’abord un agent Dispatch dans les réglages.",
-      hostOffline: "L’hôte de l’agent Dispatch est hors ligne.",
-      nothingHeard: "Rien n’a été entendu.",
-      sendFailed: "Impossible de joindre votre agent Dispatch.",
-    },
-  },
   liveVoice: {
     label: "Voix en direct",
     menu: {
       hosts: "Hôte",
+      contextProfiles: "Profil de contexte",
     },
     actions: {
       start: "Démarrer la voix en direct",
@@ -1823,25 +1874,13 @@ export const fr: TranslationResources = {
         description: "Utilisée pour les nouveaux appels. Un appel actif conserve sa voix actuelle.",
         default: "Par défaut",
       },
-      quickLaunch: {
-        hostLabel: "Hôte du raccourci",
-        description:
-          "L’hôte appelé par un raccourci paseo://live-voice. Automatique utilise le seul hôte éligible.",
-        auto: "Automatique",
-        assistantLabel: "Assistant du raccourci",
-        assistantHint:
-          "Qui répond à un appel par raccourci sur cet hôte. Même sélection que le menu Voix en direct.",
-        none: "Aucun assistant",
-      },
       dispatch: {
         hostLabel: "Hôte Dispatch",
-        description:
-          "Choisissez l’hôte des requêtes ponctuelles depuis votre montre ou un raccourci paseo://dispatch.",
+        description: "Choisissez l’hôte des requêtes ponctuelles depuis votre montre.",
         chooseHost: "Choisir un hôte",
         noHosts: "Aucun hôte disponible",
         agentLabel: "Agent Dispatch",
-        agentHint:
-          "Les requêtes dictées depuis la montre ou un raccourci sont envoyées à cet agent.",
+        agentHint: "Les requêtes dictées sur la montre sont envoyées à cet agent.",
         notSet: "Non défini",
         clear: "Non défini",
         noAgents: "Aucun agent sur cet hôte",
@@ -2120,6 +2159,11 @@ export const fr: TranslationResources = {
     archiveTooltip: "Sous-agent d'archivage",
     archiveFinishedAction: "Archiver les sous-agents terminés",
     archiveFinishedRetry: "Réessayer ({{failed}}/{{total}})",
+    ownership: {
+      paseo: "Paseo",
+      native: "Natif",
+    },
+    rowAccessibilityLabel: "{{label}}, sous-agent {{ownership}}",
   },
   panels: {
     draft: {
@@ -2228,7 +2272,30 @@ export const fr: TranslationResources = {
     used: "{{percentage}}% utilisé",
     tokens: "Jetons{{used}}/{{max}}",
     sessionCost: "Coût de la séance{{cost}}",
+    model: "Modèle {{model}}",
+    thinking: "Pensée {{thinking}}",
     accessibility: "Fenêtre contextuelle{{percentage}}% utilisé",
+    promptCache: {
+      title: "Cache de prompts",
+      statusWarm: "Chaud",
+      statusExpiring: "Expire bientôt",
+      statusExpired: "Probablement expiré",
+      statusUnknown: "Durée inconnue",
+      warmFor: "chaud pendant ~{{duration}}",
+      expiredAgo: "expiré il y a {{duration}}",
+      lastRequestAgo: "dernière requête il y a {{duration}}",
+      durationSeconds: "{{value}} s",
+      durationMinutes: "{{value}} min",
+      lastRequest: "Dernière requête {{percent}}% en cache · {{split}}",
+      split: "{{cached}} en cache, {{fresh}} nouveaux",
+      splitWithWrite: "{{cached}} en cache, {{fresh}} nouveaux, {{written}} écrits",
+      sessionSingular: "Session {{percent}}% en cache sur {{count}} requête",
+      sessionPlural: "Session {{percent}}% en cache sur {{count}} requêtes",
+      ping: "Réchauffer",
+      pinging: "Réchauffement...",
+      pingHint: "Envoie un court message pour garder le cache chaud",
+      pingError: "Impossible d'envoyer le message",
+    },
   },
   review: {
     comment: {
@@ -2274,6 +2341,7 @@ export const fr: TranslationResources = {
       notifications: "Notifications",
       permissions: "Autorisations",
       diagnostics: "Diagnostic",
+      usageHistory: "Historique d'utilisation",
       about: "À propos",
     },
     layout: en.settings.layout,
@@ -2308,6 +2376,89 @@ export const fr: TranslationResources = {
       terminals: "Terminals",
       plugins: "Plugins",
       host: "Aperçu",
+    },
+    usageHistory: {
+      unpricedNote_one: "L’estimation exclut {{count}} réponse sans prix connu",
+      unpricedNote_other: "L’estimation exclut {{count}} réponses sans prix connu",
+      readFailed: "Vérifiez la connexion à l’hôte et réessayez.",
+      title: "Historique d'utilisation",
+      info: "Totaux de jetons et de coûts lus dans les transcriptions de session des CLI des fournisseurs sur chaque hôte connecté. Les coûts sont des estimations équivalentes à l'API, pas une facture.",
+      refresh: "Actualiser",
+      unsupported: "Mettez l'hôte à jour pour voir l'historique d'utilisation",
+      hostUnavailable: "Connectez-vous à un hôte pour voir l'historique d'utilisation",
+      clientUnavailable: "La connexion à l'hôte n'est pas prête",
+      errorTitle: "Impossible de charger l'historique d'utilisation",
+      empty: "Aucune activité sur cette période",
+      pricingUnavailable:
+        "Les coûts sont indisponibles tant que les tarifs des modèles ne sont pas chargés",
+      addHost: "Ajoutez un hôte pour voir l'historique d'utilisation",
+      hostsUnavailable: "Aucun hôte sélectionné ne peut fournir l'historique d'utilisation",
+      hostFilter: {
+        label: "Hôtes",
+        all: "Tous les hôtes",
+        count_one: "{{count}} hôte",
+        count_other: "{{count}} hôtes",
+      },
+      coverage: {
+        scanning: "Analyse de {{hosts}}…",
+        offline_one: "{{hosts}} est hors ligne",
+        offline_other: "{{hosts}} sont hors ligne",
+        unsupported_one: "{{hosts}} exécute une version plus ancienne de Paseo et est exclu",
+        unsupported_other: "{{hosts}} exécutent une version plus ancienne de Paseo et sont exclus",
+        failed_one: "{{hosts}} n'a pas pu lire les transcriptions",
+        failed_other: "{{hosts}} n'ont pas pu lire les transcriptions",
+        duplicates: "Compté une seule fois : {{groups}}",
+        duplicateGroup_one: "{{hosts}} lit les mêmes transcriptions que {{claimedBy}}",
+        duplicateGroup_other: "{{hosts}} lisent les mêmes transcriptions que {{claimedBy}}",
+      },
+      metric: {
+        cost: "Coût",
+        tokens: "Jetons",
+      },
+      window: {
+        d7: "7 j",
+        d30: "30 j",
+        d90: "90 j",
+      },
+      summary: {
+        sessions_one: "{{count}} session",
+        sessions_other: "{{count}} sessions",
+        costSubline: "{{sessions}} · estimation API",
+        shareOfCost: "{{share}} du coût · {{tokens}} jetons",
+        shareOfTokens: "{{share}} des jetons · {{cost}}",
+        unreadableProviders:
+          "Les totaux sont incomplets : impossible de lire les transcriptions de {{providers}}",
+      },
+      chart: {
+        titleCost: "Coût quotidien",
+        titleTokens: "Jetons traités par jour",
+        total: "Total",
+      },
+      totals: {
+        title: "Totaux",
+        processedTokens: "Jetons traités",
+        cachedInput: "Entrée en cache",
+        uncachedInput: "Entrée hors cache",
+        output: "Sortie",
+        cacheSavings: "Économies de cache",
+      },
+      breakdown: {
+        title: "Répartition",
+        provider: "Fournisseur",
+        host: "Hôte",
+        model: "Modèle",
+        day: "Jour",
+      },
+      table: {
+        provider: "Fournisseur",
+        host: "Hôte",
+        model: "Modèle",
+        cost: "Coût",
+        share: "Part",
+        tokens: "Jetons",
+        day: "Jour",
+        total: "Total",
+      },
     },
     plugins: pluginSettings.fr,
     metadataGeneration: {
@@ -2354,6 +2505,14 @@ export const fr: TranslationResources = {
           queue: "File d'attente",
         },
       },
+      commandTrigger: {
+        label: "Déclencheur de commandes",
+        description: "Ouvre la liste complète des commandes en début de message.",
+      },
+      skillTrigger: {
+        label: "Déclencheur de compétences",
+        description: "Ouvre la liste des compétences n'importe où dans un message.",
+      },
       serviceUrls: {
         label: "URL de services",
         description: "Où ouvrir les URL à partir de scripts en cours d'exécution",
@@ -2371,6 +2530,11 @@ export const fr: TranslationResources = {
       autoExpandReasoning: {
         label: "Toujours afficher le raisonnement",
         description: "Afficher le raisonnement de l'agent entièrement développé par défaut",
+      },
+      modelPickerAllModels: {
+        label: "Ouvrir le sélecteur de modèle sur tous les modèles",
+        description:
+          "Démarrer le sélecteur de modèle sur une liste unique et consultable de tous les modèles de tous les fournisseurs, au lieu de la liste des fournisseurs",
       },
       toolCallDetail: {
         label: "Affichage des appels d’outils",
@@ -2434,6 +2598,7 @@ export const fr: TranslationResources = {
       connectedHosts: "Hôtes connectés",
       offline: "Hors ligne",
       versionDiffers: "La version diffère de cet appareil",
+      viewCommit: "Voir le commit sur GitHub",
       releaseChannel: {
         label: "Canal de sortie",
         description:
@@ -2480,6 +2645,11 @@ export const fr: TranslationResources = {
       },
       sidebar: {
         title: "Barre latérale",
+        alwaysShowHostLabels: {
+          title: "Toujours afficher les étiquettes d’hôte",
+          description:
+            "Affiche les étiquettes d’hôte même lorsque tous les espaces de travail visibles sont sur cet appareil",
+        },
         description: "Choisissez les éléments affichés en haut de la barre latérale et leur ordre",
         moveUp: "Déplacer vers le haut",
         moveDown: "Déplacer vers le bas",
@@ -2516,6 +2686,13 @@ export const fr: TranslationResources = {
       },
     },
     shortcuts: {
+      modKey: {
+        title: "Touche de modification",
+        hint: "Touche utilisée comme modificateur des raccourcis",
+        auto: "Auto",
+        cmd: "Cmd / Super",
+        ctrl: "Ctrl",
+      },
       dialogTitle: "Raccourcis",
       searchPlaceholder: "Rechercher des raccourcis",
       unavailableOnMobile: "Les raccourcis clavier ne sont disponibles que sur le bureau",
@@ -2549,6 +2726,7 @@ export const fr: TranslationResources = {
         jumpToTab: "Aller à l'onglet",
         previousWorkspace: "Espace de travail précédent",
         nextWorkspace: "Espace de travail suivant",
+        nextReadyWaitingWorkspace: "Espace de travail suivant prêt ou en attente",
         previousTab: "Onglet précédent",
         nextTab: "Onglet suivant",
         splitPaneRight: "Volet divisé à droite",
@@ -2576,6 +2754,7 @@ export const fr: TranslationResources = {
         cycleAgentMode: "Parcourir les modes de l'agent",
         toggleVoiceMode: "Changer le mode vocal",
         startStopDictation: "Démarrer la dictée/stop",
+        stashPrompt: "Mettre le prompt de côté",
         interruptAgent: "Agent d'interruption",
         sendMessage: "Envoyer un message",
         queueMessage: "Message de file d'attente",
@@ -2583,6 +2762,11 @@ export const fr: TranslationResources = {
         muteUnmuteLiveVoice: "Couper/réactiver la voix en direct",
         holdInvertLiveVoiceMute: "Maintenir pour inverser la coupure de la voix en direct",
         switchProject: "Changer de projet",
+        toggleWorkspaceIsolation: "Basculer l'isolation de l'espace de travail",
+        selectHost: "Sélectionner l'hôte",
+        toggleFastMode: "Activer/désactiver le mode rapide",
+        togglePlanMode: "Activer/désactiver le mode planification",
+        findInConversation: "Rechercher dans la conversation",
       },
       helpNotes: {
         holdInvertLiveVoiceMute:
@@ -2628,6 +2812,15 @@ export const fr: TranslationResources = {
         color: {
           label: "Couleur",
           accessibilityLabel: "Couleur, {{value}}",
+          custom: {
+            action: "Personnalisée…",
+            title: "Couleur personnalisée",
+            submit: "Appliquer",
+            invalid: "Saisissez une couleur hexadécimale comme #368080.",
+            panelAccessibility: "Saturation et luminosité",
+            hueAccessibility: "Teinte",
+            hexAccessibility: "Couleur hexadécimale",
+          },
           options: {
             none: "Par défaut",
             violet: "Violet",
@@ -2640,6 +2833,14 @@ export const fr: TranslationResources = {
             red: "Rouge",
             amber: "Ambre",
             blue: "Bleu",
+          },
+        },
+        hostColor: {
+          label: "Couleur par défaut",
+          hint: "Enregistrée sur l'hôte. Les appareils l'utilisent sauf s'ils choisissent leur propre couleur.",
+          accessibilityLabel: "Couleur par défaut, {{value}}",
+          options: {
+            auto: "Automatique",
           },
         },
         badge: {
@@ -2745,6 +2946,42 @@ export const fr: TranslationResources = {
       workspaces: {
         unavailable: "Connect to this host to manage workspaces",
       },
+      agentEnvironment: {
+        sectionTitle: "Environnement de l'agent",
+        sectionDescription:
+          "Les commandes s'exécutent dans le répertoire d'un agent avant son démarrage. Leur sortie devient l'environnement de l'agent.",
+        add: "Ajouter une configuration d'environnement",
+        addCustom: "Commande personnalisée…",
+        addCustomTitle: "Ajouter une commande d'environnement",
+        editCommand: "Modifier la commande",
+        editCommandTitle: "Modifier la commande d'environnement",
+        remove: "Supprimer",
+        removeConfirmTitle: "Supprimer la configuration d'environnement ?",
+        removeConfirmMessage: "Supprimer « {{name}} » ?",
+        moveUp: "Déplacer vers le haut",
+        moveDown: "Déplacer vers le bas",
+        emptyState:
+          "Rien ne s'exécute avant le démarrage d'un agent. Ajoutez direnv ou une commande personnalisée.",
+        unknownPreset: "Cet hôte ne reconnaît pas ce préréglage",
+        rowFormat: "Lit la sortie {{format}}",
+        commandLabel: "Commande",
+        commandHint: "Séparée par des espaces. Lancez un shell explicitement si nécessaire.",
+        commandPlaceholder: "direnv export json",
+        commandRequired: "La commande est requise",
+        formatLabel: "Format de sortie",
+        formatJson: "Diff JSON",
+        formatEnv0: "env -0",
+        formatJsonHint: "Un objet de « CLÉ » : « valeur », où null supprime la variable.",
+        formatEnv0Hint:
+          "Enregistrements CLÉ=VALEUR séparés par NUL. Tout ce qui est omis est supprimé.",
+        timeoutLabel: "Délai d'attente",
+        timeoutHint:
+          "Millisecondes avant d'abandonner la commande. Laissez vide pour utiliser la valeur par défaut de l'hôte.",
+        timeoutPlaceholder: "30000",
+        timeoutInvalid: "Le délai doit être un entier positif",
+        saving: "Enregistrement...",
+        save: "Enregistrer",
+      },
       terminalProfiles: {
         unavailable: "Connect to this host to manage terminal profiles",
         sectionTitle: "Terminal profiles",
@@ -2814,6 +3051,26 @@ export const fr: TranslationResources = {
           title: "Renommer l'hôte",
           placeholder: "MonHost",
           submit: "Renommer",
+        },
+        color: {
+          section: "Apparence",
+          title: "Couleur",
+          hint: "Colore l'étiquette de cet hôte dans la barre latérale",
+          options: {
+            none: "Aucune",
+            blue: "Bleu",
+            green: "Vert",
+            amber: "Ambre",
+            orange: "Orange",
+            red: "Rouge",
+            purple: "Violet",
+          },
+          custom: {
+            label: "Personnalisé",
+            title: "Couleur personnalisée",
+            submit: "Appliquer",
+            invalid: "Saisissez une couleur hexadécimale comme #4f46e5",
+          },
         },
         restart: {
           title: "Redémarrer le démon",
@@ -2891,8 +3148,49 @@ export const fr: TranslationResources = {
       updateErrorTitle: "Impossible de mettre à jour le fournisseur",
       actions: {
         menu: "{{name}} actions",
+        addAccount: "Ajouter un compte",
+        editAccount: "Modifier le compte",
         remove: "Remove provider",
         removing: "Removing...",
+      },
+      account: {
+        title: "Ajouter un compte {{provider}}",
+        editTitle: "Modifier le compte {{provider}}",
+        errorTitle: "Impossible d'enregistrer le compte",
+        submit: "Ajouter un compte",
+        save: "Enregistrer",
+        fields: {
+          label: "Nom",
+          providerId: "ID du fournisseur",
+          description: "Description",
+          env: "Variables d'environnement",
+          envKey: "Nom de la variable",
+          envValue: "Valeur de la variable",
+        },
+        placeholders: {
+          label: "{{provider}} (Travail)",
+          providerId: "claude-work",
+          description: "Facultatif",
+          envKey: "NOM",
+          envValue: "Valeur",
+        },
+        actions: {
+          addVariable: "Ajouter une variable",
+          removeVariable: "Supprimer la variable",
+        },
+        warnings: {
+          renameUnsupported:
+            "Cet hôte ne peut pas déplacer les conversations existantes vers le nouvel ID. Les conversations utilisant ce compte seront indisponibles tant que vous n'aurez pas mis à jour l'hôte ou restauré l'ancien ID.",
+        },
+        errors: {
+          labelRequired: "Saisissez un nom.",
+          idRequired: "Saisissez un ID de fournisseur.",
+          idInvalid:
+            "Utilisez des minuscules, des chiffres et des tirets, en commençant par une lettre.",
+          idTaken: "Cet ID de fournisseur est déjà utilisé.",
+          envKeyRequired: "Saisissez le nom de la variable.",
+          envDuplicate: "Cette variable est déjà définie.",
+        },
       },
       remove: {
         confirmTitle: "Remove {{name}}?",
