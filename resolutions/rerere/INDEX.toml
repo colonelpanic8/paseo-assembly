@@ -763,6 +763,12 @@ recorded = "2026-09-10T00:57:24.472330585+00:00"
 
 [[resolution]]
 entry = "fix/workspace-message-timestamps"
+hash = "900cc8b0e2bd3ee5f3be17969511e4b16ffc2652"
+paths = ["packages/app/src/hooks/use-sidebar-workspaces-list.ts"]
+recorded = "2026-09-10T19:31:06.221839523+00:00"
+
+[[resolution]]
+entry = "fix/workspace-message-timestamps"
 hash = "a2bba3060a6e70120049cfebd880e036c55478cb"
 paths = ["packages/app/src/components/sidebar/sidebar-archived-group.test.tsx"]
 recorded = "2026-09-10T00:57:24.472331767+00:00"

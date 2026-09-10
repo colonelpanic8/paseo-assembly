@@ -387,3 +387,48 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
+diff --git a/packages/app/src/components/sidebar-workspace-list.test.tsx b/packages/app/src/components/sidebar-workspace-list.test.tsx
+index 20287f9a6..adea6d5fa 100644
+--- a/packages/app/src/components/sidebar-workspace-list.test.tsx
++++ b/packages/app/src/components/sidebar-workspace-list.test.tsx
+@@ -355,6 +355,23 @@ describe("sidebar workspace render isolation", () => {
+     });
+   });
+ 
++  it("loads the directory when the sidebar is the only mounted consumer", async () => {
++    const acquire = vi.spyOn(getHostRuntimeStore(), "acquireDirectoryDemand");
++    const counts: RenderCounts = {
++      frame: 0,
++      headers: {},
++      rows: {},
++      projectSelection: {},
++      rowSelection: {},
++    };
++    try {
++      ({ root, container } = await renderProbe(counts));
++      expect(acquire).toHaveBeenCalledWith(SERVER_ID);
++    } finally {
++      acquire.mockRestore();
++    }
++  });
++
+   it("re-renders only the changed workspace row for a status update", async () => {
+     const counts: RenderCounts = {
+       frame: 0,
+diff --git a/packages/app/src/hooks/use-sidebar-workspaces-list.ts b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+index 4d465f0f6..487489c08 100644
+--- a/packages/app/src/hooks/use-sidebar-workspaces-list.ts
++++ b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+@@ -123,6 +123,12 @@ export function useSidebarWorkspacesList(options?: {
+     [allServerIds, hostFilters, hostRegistryLoaded],
+   );
+ 
++  useEffect(() => {
++    if (!isActive) return;
++    const releases = serverIds.map((serverId) => runtime.acquireDirectoryDemand(serverId));
++    return () => releases.forEach((release) => release());
++  }, [isActive, runtime, serverIds]);
++
+   useEffect(() => {
+     if (!hostRegistryLoaded) {
+       return;
