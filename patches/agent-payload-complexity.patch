@@ -22,3 +22,28 @@ index c2ea0ca73..4bf6bf117 100644
  export function buildStoredAgentPayload(
    record: StoredAgentRecord,
    validProviders: Iterable<AgentProvider>,
+diff --git a/packages/server/src/server/agent/agent-manager.ts b/packages/server/src/server/agent/agent-manager.ts
+--- a/packages/server/src/server/agent/agent-manager.ts
++++ b/packages/server/src/server/agent/agent-manager.ts
+@@ -82,6 +82,7 @@ import {
+ } from "./agent-run-state.js";
+ import { invokeRewindCapability, type RewindMode } from "./rewind/rewind.js";
+ import { isSystemInjectedEnvelope } from "./agent-prompt.js";
++import { isStaleProviderSessionError } from "./stale-provider-session-error.js";
+ import {
+   PASEO_MCP_SERVER_NAME,
+   stripInternalPaseoMcpServer,
+@@ -2552,6 +2553,13 @@ export class AgentManager {
+       if (pendingRun.settled) {
+         throw error;
+       }
++      if (isStaleProviderSessionError(error)) {
++        pendingRun.start = { status: "failed", error: error.message };
++        agent.pendingReplacement = false;
++        if (!agent.activeForegroundTurnId) agent.lifecycle = "idle";
++        this.runs.settleForegroundRun(agentId, pendingRun.token);
++        throw error;
++      }
+       agent.pendingReplacement = false;
+       const errorMsg = error instanceof Error ? error.message : "Failed to start turn";
+       pendingRun.start = { status: "failed", error: errorMsg };
