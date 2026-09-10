@@ -357,12 +357,13 @@ patch = "patches/assembled-current-coherence.patch"
 [[entry]]
 branch = "mine:voice-actions"
 summary = "Shortcut links: default-assistant Live Voice call and one-shot dispatch"
-# Three clashes with entries already in the stack that a rerere pair cannot hold:
+# Clashes with entries already in the stack that a rerere pair cannot hold:
 # the stack merge re-inserts both the removed worktree-setup callout and a second
 # copy of readLiveVoiceHostAvailability/readLiveVoiceAvailability outside every
-# conflict hunk; live-voice-context-files' start() wrapper swallows the options
-# object, so ?assistant= would reach the runtime as undefined; and the wear
-# snapshot fixtures end up with `assistantId` twice, which does not compile.
+# conflict hunk; it duplicates the keyboard repeat helper; live-voice-context-files'
+# start() wrapper swallows the options object, so ?assistant= would reach the
+# runtime as undefined; and the wear snapshot fixtures end up with `assistantId`
+# twice, which does not compile.
 fixup = "patches/voice-actions-stack-coherence.patch"
 
 [[entry]]

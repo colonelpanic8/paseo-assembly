@@ -36,6 +36,23 @@ index f7c049ed7..9a2c79847 100644
        stop: runtime.stop,
        setMuted: runtime.setMuted,
        toggleMute: runtime.toggleMute,
+diff --git a/packages/app/src/keyboard/keyboard-shortcuts.ts b/packages/app/src/keyboard/keyboard-shortcuts.ts
+--- a/packages/app/src/keyboard/keyboard-shortcuts.ts
++++ b/packages/app/src/keyboard/keyboard-shortcuts.ts
+@@ -1635,12 +1635,6 @@ function ignoresRepeat(binding: ShortcutBinding): boolean {
+   return binding.repeat === false || binding.hold === true;
+ }
+-
+-// A hold binding must ignore auto-repeat: the key going down again while it is
+-// already held is the OS repeating, not a second press.
+-function ignoresRepeat(binding: ShortcutBinding): boolean {
+-  return binding.repeat === false || binding.hold === true;
+-}
+-
++
+ function parseBinding(binding: ShortcutBinding): ParsedShortcutBinding {
+   const parsedChord = parseBindingChord(binding.combo);
+   const lastCombo = parsedChord.at(-1);
 diff --git a/packages/app/src/live-voice/live-voice-availability.ts b/packages/app/src/live-voice/live-voice-availability.ts
 index ea7c8f273..4f3156f11 100644
 --- a/packages/app/src/live-voice/live-voice-availability.ts
