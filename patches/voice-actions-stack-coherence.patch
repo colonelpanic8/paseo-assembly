@@ -1,3 +1,22 @@
+diff --git a/packages/app/src/app/_layout.tsx b/packages/app/src/app/_layout.tsx
+--- a/packages/app/src/app/_layout.tsx
++++ b/packages/app/src/app/_layout.tsx
+@@ -28,7 +28,6 @@ import { CommandCenterProvider } from "@/command-center/provider";
+ import { CommandCenterWorkspaceActions } from "@/command-center/workspace-registration";
+ import { PluginCommandCenterActions } from "@/plugins/command-center/registration";
+ import { AddProjectFlowHost } from "@/components/add-project-flow-host";
+-import { WorktreeSetupCalloutSource } from "@/components/worktree-setup-callout-source";
+ import { DownloadToast } from "@/components/download-toast";
+ import { QuittingOverlay } from "@/components/quitting-overlay";
+ import { KeyboardShortcutsDialog } from "@/components/keyboard-shortcuts-dialog";
+@@ -619,7 +618,6 @@ function AppContainerContent({
+         <RosettaCalloutSource />
+         <UpdateCalloutSource />
+         <LegacyAgentSkillsMigration />
+-        <WorktreeSetupCalloutSource />
+         <CommandCenterRootActions />
+         <CommandCenterWorkspaceActions />
+         <PluginCommandCenterActions />
 diff --git a/packages/app/src/contexts/live-voice-context.tsx b/packages/app/src/contexts/live-voice-context.tsx
 index f7c049ed7..9a2c79847 100644
 --- a/packages/app/src/contexts/live-voice-context.tsx
