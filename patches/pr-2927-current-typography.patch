@@ -1,8 +1,8 @@
 diff --git a/packages/app/src/components/adaptive-modal-sheet.tsx b/packages/app/src/components/adaptive-modal-sheet.tsx
-index adbe3c5fc..6365b66ce 100644
+index 1e8831368..9a8d9f9ef 100644
 --- a/packages/app/src/components/adaptive-modal-sheet.tsx
 +++ b/packages/app/src/components/adaptive-modal-sheet.tsx
-@@ -515,7 +515,6 @@ export interface AdaptiveModalSheetProps {
+@@ -519,7 +519,6 @@ export interface AdaptiveModalSheetProps {
    onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
    /** Re-establishes caller-owned contexts inside the compact bottom-sheet portal. */
    contextBridge?: ContextBridge | null;
@@ -11,7 +11,7 @@ index adbe3c5fc..6365b66ce 100644
  
  export function AdaptiveModalSheet({
 diff --git a/packages/app/src/components/model-browser.tsx b/packages/app/src/components/model-browser.tsx
-index 34cd11a28..c2d37c8ef 100644
+index 952c4c9e5..cc56c1e77 100644
 --- a/packages/app/src/components/model-browser.tsx
 +++ b/packages/app/src/components/model-browser.tsx
 @@ -1,4 +1,13 @@
@@ -92,7 +92,7 @@ index eb3f68be8..248be2405 100644
 -export { EditingTextInput } from "./text-input.native";
 +export { EditingTextInput, hasFocusedTextInput } from "./text-input.native";
 diff --git a/packages/app/src/composer/input/input.tsx b/packages/app/src/composer/input/input.tsx
-index de3ae13b2..f9bb3fb9a 100644
+index ce7806f79..331e81fff 100644
 --- a/packages/app/src/composer/input/input.tsx
 +++ b/packages/app/src/composer/input/input.tsx
 @@ -42,7 +42,7 @@ import { useComposerSigils } from "@/composer/tokens/use-composer-sigils";
@@ -105,7 +105,7 @@ index de3ae13b2..f9bb3fb9a 100644
  import { Shortcut } from "@/components/ui/shortcut";
  import {
 diff --git a/packages/app/src/hooks/use-agent-autocomplete.ts b/packages/app/src/hooks/use-agent-autocomplete.ts
-index a1e15816d..e9bbccae5 100644
+index 988584874..a174eed31 100644
 --- a/packages/app/src/hooks/use-agent-autocomplete.ts
 +++ b/packages/app/src/hooks/use-agent-autocomplete.ts
 @@ -9,7 +9,7 @@ import {
@@ -117,7 +117,7 @@ index a1e15816d..e9bbccae5 100644
  import { useSessionStore } from "@/stores/session-store";
  import { useHostRuntimeClient, useHostRuntimeIsConnected } from "@/runtime/host-runtime";
  import { CLIENT_SLASH_COMMANDS, type ClientSlashCommand } from "@/client-slash-commands";
-@@ -45,7 +45,7 @@ interface UseAgentAutocompleteInput {
+@@ -44,7 +44,7 @@ interface UseAgentAutocompleteInput {
    sigils: ComposerSigils;
  }
  
@@ -126,7 +126,7 @@ index a1e15816d..e9bbccae5 100644
    input: AgentAutocompleteInputSnapshot;
  }
  
-@@ -590,12 +590,15 @@ export function useAgentAutocomplete(input: UseAgentAutocompleteInput): AgentAut
+@@ -585,12 +585,15 @@ export function useAgentAutocomplete(input: UseAgentAutocompleteInput): AgentAut
    );
  
    const selectOptionFromKeyPress = useCallback(
@@ -136,8 +136,8 @@ index a1e15816d..e9bbccae5 100644
      [onSelectOption],
    );
  
--  const { selectedIndex, onKeyPress: onAutocompleteKeyPress } = useAutocomplete({
-+  const { selectedIndex, onKeyPress: onAutocompleteKeyPress } = useAutocomplete<
+-  const { selectedIndex, onKeyPress } = useAutocomplete({
++  const { selectedIndex, onKeyPress } = useAutocomplete<
 +    AgentAutocompleteOption,
 +    AgentAutocompleteKeyPressEvent
 +  >({

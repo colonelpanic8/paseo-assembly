@@ -67,7 +67,7 @@
       "pr-4281": "3df13ba354e16fc203205700004bd4312215b014",
       "pr-4405": "cec6798d01c92bc4b83824a6f0e4150ea9a6c20e",
       "prompt-cache-status": "83b96ba2e078a3bd7ce17a8f3ae6804c195524a5",
-      "skill-pills-config": "65a169cae291293a7ebb786ed9ef1865105b61b9",
+      "skill-pills-config": "e1a22fefa560d6c8f05caedfa2e71e7d70a8a2f6",
       "thinking-control-reachability": "cb75c024d325e97ba107c6275f91248efa543b33",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "unarchive-threads": "2cfa48268ec385d9890c98e56a1861f93a678ac6",
@@ -103,13 +103,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-10T19:41:01.217532462+00:00",
+    "generated": "2026-09-10T21:57:12.327423282+00:00",
     "base": "7bcf167862ce9bb040007d1469c77c00928a84c8",
-    "commit": "4a4d69b85f2f1b28d599c48741af7062919717d9",
-    "pre_provenance_commit": "4a4d69b85f2f1b28d599c48741af7062919717d9",
-    "tree": "949650a757ebda510c4ac65712f2976dedfcc1f9",
-    "built_tree": "949650a757ebda510c4ac65712f2976dedfcc1f9",
-    "previous_tree": "8da62b88f872f4d4e54464da835804f61703aff5",
+    "commit": "f52d65e1e511a8000a964677f7a7b8dcc2427e59",
+    "pre_provenance_commit": "f52d65e1e511a8000a964677f7a7b8dcc2427e59",
+    "tree": "19588d7293e766815e998b9a5cff8c9786127144",
+    "built_tree": "19588d7293e766815e998b9a5cff8c9786127144",
+    "previous_tree": "949650a757ebda510c4ac65712f2976dedfcc1f9",
     "tree_changed": true,
     "conflicts": 44,
     "manifest_entries": [
@@ -155,7 +155,7 @@
         "name": "skill-pills-config",
         "kind": "branch",
         "source": "mine:skill-pills-config",
-        "pin": "65a169cae291293a7ebb786ed9ef1865105b61b9"
+        "pin": "e1a22fefa560d6c8f05caedfa2e71e7d70a8a2f6"
       },
       {
         "name": "pr-2553",
@@ -360,7 +360,7 @@
         "kind": "pr",
         "source": "upstream#2927",
         "pin": "14fa6a8cb726b79a9e48ec93e772b7d0c6f642d7",
-        "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
+        "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
           {
@@ -648,7 +648,7 @@
       },
       {
         "name": "skill-pills-config",
-        "oid": "65a169cae291293a7ebb786ed9ef1865105b61b9",
+        "oid": "e1a22fefa560d6c8f05caedfa2e71e7d70a8a2f6",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -736,8 +736,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "ecc10dc11cea792d13b9553288af0a4ec39d3cb5",
-          "tip": "c45d24b4e192acd3b642782b5e32d2844c1f32bd"
+          "base_tip": "eb0f4da4359328064321efcd7db9dbc477dad27a",
+          "tip": "984026aa399d356c138ab8d405f653beee612ac1"
         }
       },
       {
@@ -870,10 +870,10 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "4b5adb1e35b769fa2989f0e4237394bc7ee9fd06",
+        "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "cf616474ff9327a4fb67debceb4087a91af466cd",
-          "tip": "4ab96a7eacdbf6bd74d1b4e30447ad428aafd940"
+          "base_tip": "31c38ea199c2db5eb0729b298dc136b06a08f58b",
+          "tip": "f9bb93d6d3de99a5886b21eb4be4cc6b66d9061b"
         }
       },
       {
@@ -946,8 +946,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "99885b4c192f346b0ab9b87068c7e9fb585e2faa",
-          "tip": "eac397a81c09d38092a9308afd7415cab792d449"
+          "base_tip": "56b35fce1d2293bce9d63819daa5e6d54e63afa1",
+          "tip": "89e2c2a8d284ac98dfde26220b2874aa008320c0"
         }
       },
       {
@@ -957,8 +957,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "7deb3614e27cd45f4425e1d3896ee45b41539d5c",
-          "tip": "e5c391480ce6fabba912d3717989a038ed6387ae"
+          "base_tip": "8c714a5b4879aba9e501c6e1cbcaa58960db419e",
+          "tip": "9c98dbd6c3d93ee2bc8b7bb1514baabf4ab9b013"
         }
       },
       {
@@ -1111,8 +1111,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "83f9c82bfe9aba4b8efa4911e43a75d43c5f62af",
-          "tip": "d203cd82c1bdefa1748caf2acb7be2f0267af29c"
+          "base_tip": "83798fd553fd9b60d9248c4979ab49edaf4ccb9a",
+          "tip": "c59dd1c6755acca9e061b7f9f21722eb7d3a2834"
         }
       }
     ]
