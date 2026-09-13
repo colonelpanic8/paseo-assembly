@@ -8,7 +8,7 @@
       "assembled-ci-lint-fixes": "b7c3edbb7197c105f647455c8d4276b69ade04ff",
       "assembled-current-coherence": "76f779ef9b4db2eb38b47eccc8bf6b49c7a70a69",
       "assembled-npm-deps-hash": "77b725c8b64c7e30f4abfa6e13940cee9634e014",
-      "assembled-typecheck-coherence": "553eb60fe62cfe334652dffa7432eec8cdff0c99",
+      "assembled-typecheck-coherence": "3d045a9f3cfd674b2bbce2e280be86525d1fbd92",
       "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "fa06376798cb478d5c4d0612ab6714aa3787c45e",
       "assembly-codex-banked-resets": "d034a0de8dc08fb082757ccd98b495f8ae51ddfe",
@@ -100,13 +100,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-13T01:57:33.940177860+00:00",
+    "generated": "2026-09-13T02:33:19.034275919+00:00",
     "base": "d1b705a0cd91617a5707fae25d80cb0be3057950",
-    "commit": "eaad367435788e86ef6f0e5c668cf4c51bfb6bff",
-    "pre_provenance_commit": "eaad367435788e86ef6f0e5c668cf4c51bfb6bff",
-    "tree": "81b15a39a0d8e3977148f059ecd93eed5035b981",
-    "built_tree": "81b15a39a0d8e3977148f059ecd93eed5035b981",
-    "previous_tree": "81b15a39a0d8e3977148f059ecd93eed5035b981",
+    "commit": "1dbad1a9f8b612752ec271eff5e25241736cd061",
+    "pre_provenance_commit": "1dbad1a9f8b612752ec271eff5e25241736cd061",
+    "tree": "a82684af3f4c100322555b3816735db6721d381d",
+    "built_tree": "a82684af3f4c100322555b3816735db6721d381d",
+    "previous_tree": "a82684af3f4c100322555b3816735db6721d381d",
     "tree_changed": false,
     "conflicts": 41,
     "manifest_entries": [
@@ -566,7 +566,7 @@
         "name": "assembled-typecheck-coherence",
         "kind": "patch",
         "source": "patches/assembled-typecheck-coherence.patch",
-        "pin": "553eb60fe62cfe334652dffa7432eec8cdff0c99"
+        "pin": "3d045a9f3cfd674b2bbce2e280be86525d1fbd92"
       },
       {
         "name": "live-voice-start-sound",
@@ -712,8 +712,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "efdcbc4d825dd5b3780bfcb536fde1e5243e8070",
-          "tip": "437e1e251f3389ce2b10c6028c67510b5ad1cdbc"
+          "base_tip": "23b9feeb0e203cd5eaef816c6d9420d4b1c84fd9",
+          "tip": "8a01eff8045d360258e21ab22dd933e76e322865"
         }
       },
       {
@@ -842,8 +842,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "95e8b286ccf91fab55666da651cf7a13e99cea4b",
-          "tip": "08fa7bc3264fb58ae28964077720bd9675645e0a"
+          "base_tip": "98ec7246a7f92dc6e0d3c0120c062b25150a697f",
+          "tip": "f12d2bfe8cef0c01469ff1f2a1d14825bcbbdabc"
         }
       },
       {
@@ -909,8 +909,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "22d9666f941fb09e61d359f8475fa31841d6375a",
-          "tip": "9bfa6fe0979d2b0981441133ca97f3642509e26b"
+          "base_tip": "fdb742fd5f4862bd6b982cb0bca367617492955b",
+          "tip": "3933ef6a151cb0dfa4d4592e0318df0f33a7f787"
         }
       },
       {
@@ -920,8 +920,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "7e988a359e9318954ba450a38623a44e585d7243",
-          "tip": "120967313e139b7ceeb52f33638d27739b10c85a"
+          "base_tip": "f4a043f72e2ae233170c68b8e8c50c84169a154e",
+          "tip": "7325152073cb985356cbc5cc0d2d2b4e98b3d1e0"
         }
       },
       {
@@ -1055,7 +1055,7 @@
       },
       {
         "name": "assembled-typecheck-coherence",
-        "oid": "553eb60fe62cfe334652dffa7432eec8cdff0c99",
+        "oid": "3d045a9f3cfd674b2bbce2e280be86525d1fbd92",
         "status": "applied",
         "conflicted": false
       },
@@ -1065,8 +1065,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "6c22edcf097535954e6f3b74d9dd5540ac9aca93",
-          "tip": "691c0e70c6661941e9f0825976790843eb2a7d44"
+          "base_tip": "7066b0db6c5e88b9e8e0f7f0ac7cb726a37a1f6a",
+          "tip": "e149c4872d829b8f4fb86114ddb71cef03807f23"
         }
       }
     ]

@@ -571,3 +571,35 @@ index 6a4056b76..6b03aae2f 100644
        // Agent directory - derived from agents (computed on-demand)
        getAgentDirectory: (serverId) => {
          const state = get();
+diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
+index e5f3d4500..4d867a21c 100644
+--- a/packages/server/src/server/daemon-config-store.ts
++++ b/packages/server/src/server/daemon-config-store.ts
+@@ -1,6 +1,7 @@
+ import {
+   deepMerge,
+   loadConfigStack,
++  loadPersistedConfig,
+   restoreConfigWriteTarget,
+   saveConfigStack,
+   type ConfigStack,
+diff --git a/packages/server/src/server/session.ts b/packages/server/src/server/session.ts
+index f2980dc6e..c502526b9 100644
+--- a/packages/server/src/server/session.ts
++++ b/packages/server/src/server/session.ts
+@@ -106,6 +106,7 @@ import {
+
+ import { AgentManager, AgentRunCancellationError } from "./agent/agent-manager.js";
+ import { buildTimelinePromptIndex } from "./agent/timeline-prompt-index.js";
++import { collectAgentMessageActivity } from "./agent/message-activity.js";
+ import { ProviderSnapshotManager } from "./agent/provider-snapshot-manager.js";
+ import type {
+   AgentManagerEvent,
+@@ -2756,6 +2757,7 @@ export class Session {
+     );
+   }
+
++  // oxlint-disable-next-line complexity
+   private async handleLiveVoiceStartRequest(
+     msg: Extract<SessionInboundMessage, { type: "voice.live.start.request" }>,
+     source?: object,
