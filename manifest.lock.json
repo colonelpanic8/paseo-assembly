@@ -69,7 +69,7 @@
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "unarchive-threads": "93e2396bbcf8916031de8e9e2d51c2ea16bccc5a",
       "unconditional-host-display": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
-      "usage-history": "e4c4f0d3dabd80606b6d173856c1604401e8ac92",
+      "usage-history": "21cb61f87694eb58f666158001705e485eab3eb4",
       "voice-actions": "50f5ad879b6027cabb3e9a3749a29c6adf9d7fbb",
       "watch-live-voice": "9f855d96cd1f079aaccbe36c6e403f72c5e68d96",
       "xdg-paths": "6b0c1c7bd54d4b68821574e7fc0f4b41fbb32439"
@@ -101,13 +101,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-13T16:53:33.063005739+00:00",
+    "generated": "2026-09-13T23:28:08.770309878+00:00",
     "base": "d1b705a0cd91617a5707fae25d80cb0be3057950",
-    "commit": "e633196f0cc957df0549ee8867104831749ea02a",
-    "pre_provenance_commit": "e633196f0cc957df0549ee8867104831749ea02a",
-    "tree": "192662b9a1f82140016a3224322f94897232e265",
-    "built_tree": "192662b9a1f82140016a3224322f94897232e265",
-    "previous_tree": "1b58f22261691e87224989163191a194c2921f0a",
+    "commit": "9326f0d19bad32640ca2248b39b2f99fbf45dcd3",
+    "pre_provenance_commit": "9326f0d19bad32640ca2248b39b2f99fbf45dcd3",
+    "tree": "bd7f1a21f1f9d241ff34cedabed14c28fc6ecb79",
+    "built_tree": "bd7f1a21f1f9d241ff34cedabed14c28fc6ecb79",
+    "previous_tree": "192662b9a1f82140016a3224322f94897232e265",
     "tree_changed": true,
     "conflicts": 42,
     "manifest_entries": [
@@ -541,7 +541,7 @@
         "name": "usage-history",
         "kind": "branch",
         "source": "mine:usage-history",
-        "pin": "e4c4f0d3dabd80606b6d173856c1604401e8ac92"
+        "pin": "21cb61f87694eb58f666158001705e485eab3eb4"
       },
       {
         "name": "assembled-current-coherence",
@@ -719,8 +719,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "0bb4c88729aea7ad713435e4d9e7ff552a292fe5",
-          "tip": "d6f3bafc481fbb7e752bf844be5a36a378503734"
+          "base_tip": "705be7db12f8aa758e1d575cc78306536303b7f8",
+          "tip": "bc72093aec083f7b79679c37ebd53cd7da37a0ff"
         }
       },
       {
@@ -849,8 +849,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "9f0d2fdb6ce7dd6be438c6373058bac7cf2cf812",
-          "tip": "be90d941c774bba402730bdeee7350f2575b0f14"
+          "base_tip": "372697a9291c66d2bab8fa68025c95023c70c0df",
+          "tip": "5ef838c9819dd2db3381f8530d8c758953e36834"
         }
       },
       {
@@ -916,8 +916,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "459d32c443d707bc56ae88ef07b4ab04c7a69dee",
-          "tip": "2b8afdeb1f663bfdf778a945f4a30a0a5cbb1f31"
+          "base_tip": "11c63b7bc45bb0ff938cca1bd5cb7fa1fed175d5",
+          "tip": "8cf25c47aabe0f2b10be9ac52f12d947feac8346"
         }
       },
       {
@@ -927,8 +927,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "1a3c22bc9adbd6efa7de99da79a1aaf100786ea9",
-          "tip": "037a94a2c9639535dd5a65de2ff436b51d10511e"
+          "base_tip": "4ace82ba6440d4d1742edafd0aafeb2930c829fb",
+          "tip": "161048c1544ffd98784e48b987fbb0a6789a5fbc"
         }
       },
       {
@@ -1034,7 +1034,7 @@
       },
       {
         "name": "usage-history",
-        "oid": "e4c4f0d3dabd80606b6d173856c1604401e8ac92",
+        "oid": "21cb61f87694eb58f666158001705e485eab3eb4",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -1072,8 +1072,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "c7324852ff6d956160207098a5a0763ecb8c2693",
-          "tip": "ba8d64f0f6f65984b14d098a39449a4a3c9652b7"
+          "base_tip": "0e8209a1b3f220ad9a5a4192b402e25ac6765f9a",
+          "tip": "fd2b4b0fe7746e90db19d5e7b02d123d12b489bf"
         }
       },
       {
