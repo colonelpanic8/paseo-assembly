@@ -77,8 +77,8 @@ pr = 2650
 summary = "fix: survive NODE_ENV=production during install"
 
 [[entry]]
-pr = 2658
-summary = "Add rolling agent purpose summaries"
+branch = "mine:agent-purpose-summaries"
+summary = "Add rolling agent purpose summaries; track the live branch because closed PR #2658 has a frozen head"
 
 [[entry]]
 pr = 2659
@@ -145,11 +145,8 @@ summary = "Add host display and custom color preferences (rebased from closed PR
 pr = 2845
 
 [[entry]]
-pr = 2849
-
-[[entry]]
-pr = 2872
-summary = "fix(cli): resolve PASEO_HOME lazily through the canonical resolver"
+branch = "mine:daemon-config-imports"
+summary = "Support layered daemon config; track the live branch because closed PR #2849 has a frozen head"
 
 # Two interactions, neither belonging to a single topic. (1) onboard.ts imports
 # node:path for two call sites: 2849 removes the config.json one and 2873
@@ -166,14 +163,9 @@ summary = "Honor log.file.path everywhere and create daemon logs owner-only"
 fixup = "patches/pr-2873-stack-coherence.patch"
 
 [[entry]]
-pr = 2875
-summary = "Detect Paseo worktrees from daemon data, not the .paseo/worktrees path convention"
+branch = "mine:colonelpanic8/worktree-detection-data"
+summary = "Detect Paseo worktrees from daemon data; track the live branch because closed PR #2875 has a frozen head"
 
-# Stacked directly on 2849: its commits sit on that PR's head, so this must stay
-# ordered after it and cannot become a main-based topic while 2849 is unmerged.
-# Not a derived entry -- it extends 2849 linearly rather than merging parents,
-# so there is no anchor to reconstruct from. When 2849 lands upstream, rebase
-# this branch onto main and it becomes an ordinary topic.
 [[entry]]
 branch = "mine:colonelpanic8/client-settings-file-store"
 summary = "Persist desktop client settings to a writable settings.json instead of localStorage/LevelDB"
@@ -195,8 +187,8 @@ branch = "mine:fork-native-session"
 summary = "Fork the provider session instead of pasting a summary (rebased from closed PR #2898)"
 
 [[entry]]
-pr = 2900
-summary = "Separate config from the rest of PASEO_HOME"
+branch = "mine:xdg-paths"
+summary = "Separate config from mutable Paseo state; track the repaired live branch because closed PR #2900 has a frozen head"
 
 [[entry]]
 pr = 2927
@@ -210,8 +202,8 @@ branch = "mine:touch-sidebar-resize"
 summary = "Make the sidebar resize handle usable by touch"
 
 [[entry]]
-pr = 2954
-fixup = "patches/pr-2954-stack-coherence.patch"
+branch = "mine:agent-environment-setup"
+summary = "Run agents with their working directory environment"
 
 [[entry]]
 patch = "patches/assembled-ci-lint-fixes.patch"
@@ -233,9 +225,6 @@ pr = 3006
 summary = "Fix Android draft composer handoff race"
 
 [[entry]]
-pr = 3087
-
-[[entry]]
 pr = 3475
 summary = "fix(app): stop stale snapshot fetches from clobbering fresher pushes"
 
@@ -255,7 +244,8 @@ branch = "mine:colorblind-status-dots"
 summary = "Encode host status in dot shape, not only color, and brighten the dark success dot"
 
 [[entry]]
-pr = 3662
+branch = "mine:fix/codex-sqlite-init"
+summary = "Serialize and bound Codex SQLite app-server initialization"
 
 [[entry]]
 pr = 3882
@@ -319,18 +309,6 @@ summary = "Keep restores responsive and safe against auto-archive; replayed onto
 branch = "mine:assembly-sidebar-unarchive"
 summary = "Keep optimistic sidebar restores consistent across refetches and failed responses"
 fixup = "patches/sidebar-unarchive-capabilities.patch"
-
-# Stacked directly on 2657's pinned head (23ae875da5b8), like
-# colonelpanic8/client-settings-file-store is on 2849: its one commit sits on
-# that head, so it extends 2657 linearly rather than merging it. Not a derived
-# entry -- there is no merge boundary to anchor on, and declaring 2657 as a
-# parent would repin it to its live head, 21 commits and a main merge past what
-# the rest of the stack carries. The fix is also on the PR itself; when 2657's
-# pin advances past 493157568 this entry becomes redundant and should be pruned.
-[[entry]]
-branch = "mine:live-voice-error-detail"
-summary = "Show the provider's reason when a Live Voice call cannot start"
-fixup = "patches/live-voice-error-detail-shortcut-coherence.patch"
 
 [[entry]]
 pr = 4405
@@ -402,6 +380,18 @@ reason = "superseded by 2845, an independent and fuller take on the same direct 
 [[exclude]]
 pr = 2566
 reason = "its live relative-timestamp ticker is now carried by mine:personal/sidebar-workflow"
+
+[[exclude]]
+pr = 2954
+reason = "carried by mine:agent-environment-setup; the closed PR head is frozen and cannot receive base and provider compatibility fixes"
+
+[[exclude]]
+pr = 3087
+reason = "superseded by merged upstream PR 4758, which fixes the same Android clipboard data URL failure with broader validation and native regression coverage"
+
+[[exclude]]
+pr = 3662
+reason = "carried by mine:fix/codex-sqlite-init; the closed PR head is frozen and cannot receive the refreshed base repair or deterministic timer follow-up"
 
 [[exclude]]
 pr = 2579

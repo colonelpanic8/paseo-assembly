@@ -2,6 +2,18 @@
 # produced which conflict hash. Auditability only, never load-bearing;
 # replay uses the pair directories, verification uses the lock tree.
 [[resolution]]
+entry = "agent-environment-setup"
+hash = "a2d60f99a0df19bff85faee40df6a1fbb8498812"
+paths = ["packages/server/src/server/bootstrap.ts"]
+recorded = "2026-09-13T01:11:25.274054138+00:00"
+
+[[resolution]]
+entry = "agent-environment-setup"
+hash = "eafba69765208b9a6f29bf215e0e0634cfcd39e5"
+paths = ["packages/server/src/server/agent/plugin-provider.ts"]
+recorded = "2026-09-13T01:11:25.274056052+00:00"
+
+[[resolution]]
 entry = "agent-hierarchy-tree"
 hash = "01e0e249e36a8791a98b57a8837d36742a9b6a35"
 paths = ["packages/app/src/hooks/sidebar-status-view-model.test.ts"]
@@ -668,6 +680,12 @@ recorded = "2026-08-05T01:40:57.534339001+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
+hash = "9d1f793528c8b98ce72d75541e578e6a9c78605e"
+paths = ["packages/cli/src/commands/onboard.ts"]
+recorded = "2026-09-13T00:27:33.227621270+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/client-settings-file-store"
 hash = "abfe84829f13b41ef61003eb557527ccd126a0a5"
 paths = ["docs/data-model.md"]
 recorded = "2026-08-05T01:40:57.534339331+00:00"
@@ -730,6 +748,12 @@ entry = "disable-worktree-setup-callout"
 hash = "29d2fd6519fe755737d9dd7b437f6e562d92356f"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-09-03T19:27:45.303422877+00:00"
+
+[[resolution]]
+entry = "fix/codex-sqlite-init"
+hash = "084c137c6c7d4819841a830b232f1c4c3423d1bf"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-13T01:19:30.028213533+00:00"
 
 [[resolution]]
 entry = "fix/model-browser-sheet-scope"
@@ -1060,12 +1084,6 @@ entry = "live-voice-error-detail"
 hash = "7bffe7b875eb254598c1d654a14cd2592ef0f88c"
 paths = ["packages/server/src/server/live-voice/live-voice-context.ts"]
 recorded = "2026-09-07T20:24:05.976599884+00:00"
-
-[[resolution]]
-entry = "live-voice-error-detail"
-hash = "7d446adc7a9c3e8214ea707cfbd1d2b83713701a"
-paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
-recorded = "2026-09-07T20:24:05.976600455+00:00"
 
 [[resolution]]
 entry = "live-voice-error-detail"
@@ -2299,6 +2317,12 @@ recorded = "2026-08-17T07:25:36.532747286+00:00"
 
 [[resolution]]
 entry = "pr-2873"
+hash = "4009f9daca1a90288c10682b31a742953cf4ebc9"
+paths = ["packages/cli/src/commands/onboard.ts"]
+recorded = "2026-09-13T00:14:32.197812362+00:00"
+
+[[resolution]]
+entry = "pr-2873"
 hash = "64aa3df433b9aa3b519f427366231233a2019f8a"
 paths = ["packages/server/src/server/exports.ts"]
 recorded = "2026-08-04T23:53:22.941934068+00:00"
@@ -3127,12 +3151,6 @@ recorded = "2026-08-09T13:25:10.825893356+00:00"
 
 [[resolution]]
 entry = "pr-3662"
-hash = "084c137c6c7d4819841a830b232f1c4c3423d1bf"
-paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
-recorded = "2026-09-07T20:21:33.108533518+00:00"
-
-[[resolution]]
-entry = "pr-3662"
 hash = "217d480d0242b1858396a1ae6e647deceefd56ce"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
 recorded = "2026-08-21T20:38:48.226852512+00:00"
@@ -3358,6 +3376,12 @@ entry = "pr-4405"
 hash = "0d97a0ae17f2f2c978448d78ba6229277194ba2b"
 paths = ["docs/design.md"]
 recorded = "2026-09-07T20:25:53.585460838+00:00"
+
+[[resolution]]
+entry = "pr-4405"
+hash = "1364113b66ad45d230a244baeb18d474ab05c410"
+paths = ["packages/server/src/server/bootstrap.ts"]
+recorded = "2026-09-13T01:38:17.692784010+00:00"
 
 [[resolution]]
 entry = "pr-4405"
@@ -3607,9 +3631,21 @@ recorded = "2026-09-10T06:09:33.401099115+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "7d446adc7a9c3e8214ea707cfbd1d2b83713701a"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-13T01:43:39.476704733+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "80aac18eb05ed185887bf9387b6e71afe0c3e3ff"
 paths = ["packages/app/src/wear/wear-live-voice.test.ts"]
 recorded = "2026-09-10T06:09:33.401099365+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "849736c1053754914caa6009b14ea3da05a1d264"
+paths = ["packages/app/src/runtime/host-runtime.ts"]
+recorded = "2026-09-13T01:43:39.476710153+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -3736,6 +3772,12 @@ entry = "voice-actions"
 hash = "e771c672ac08983a5ad44d6ecfc167c40df739fc"
 paths = ["packages/app/src/live-voice/live-voice-runtime.ts"]
 recorded = "2026-09-10T06:09:33.401103293+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "ec10bebbb83d8e3fd6df3fdf2fbc3abc3267ffdc"
+paths = ["packages/server/src/server/agent/agent-manager.ts"]
+recorded = "2026-09-13T01:43:39.476710574+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -4012,3 +4054,15 @@ entry = "workspace-snooze-mcp"
 hash = "88f4ede347ff95d25818d59a47e8766abc46c817"
 paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
 recorded = "2026-08-05T01:40:02.544281551+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
+hash = "4ccb6aeb81165489d8cdf868497d29c7fa79de27"
+paths = ["packages/desktop/src/daemon/daemon-manager.ts"]
+recorded = "2026-09-13T01:02:53.035731571+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
+hash = "ca1c014683fcfd2192b660286da76b36ceca48fb"
+paths = ["packages/desktop/src/daemon/daemon-manager.test.ts"]
+recorded = "2026-09-13T01:02:53.035739366+00:00"

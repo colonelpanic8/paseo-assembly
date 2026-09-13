@@ -1,14 +1,3 @@
-diff --git a/packages/cli/src/commands/onboard.ts b/packages/cli/src/commands/onboard.ts
-index 03153ee0b..062fce57e 100644
---- a/packages/cli/src/commands/onboard.ts
-+++ b/packages/cli/src/commands/onboard.ts
-@@ -1,6 +1,5 @@
- import { cancel, confirm, intro, isCancel, log, note, outro, spinner } from "@clack/prompts";
- import { Command, Option } from "commander";
--import path from "node:path";
- import { loadPersistedConfig, savePersistedConfig, type PersistedConfig } from "@getpaseo/server";
- import {
-   resolveLocalDaemonLogPath,
 diff --git a/packages/server/src/server/daemon-log-path.ts b/packages/server/src/server/daemon-log-path.ts
 index 9dfa3ef73..d4ac4a6a0 100644
 --- a/packages/server/src/server/daemon-log-path.ts

@@ -462,15 +462,7 @@ diff --git a/packages/server/src/server/bootstrap.ts b/packages/server/src/serve
 index 49698f5ad..c2e9b1fee 100644
 --- a/packages/server/src/server/bootstrap.ts
 +++ b/packages/server/src/server/bootstrap.ts
-@@ -542,6 +542,7 @@ function resolveExpressTrustProxySetting(config: PaseoDaemonConfig): true | stri
-   return config.trustedProxies ?? ["loopback"];
- }
-
-+// oxlint-disable-next-line complexity
- export function createInitialMutableDaemonConfig(config: PaseoDaemonConfig): MutableDaemonConfig {
-   const providers = config.providerOverrides ?? {};
-
-@@ -601,6 +602,7 @@ function startAgentPurposeSummaryService(
+@@ -601,6 +601,7 @@ function startAgentPurposeSummaryService(
    return service;
  }
 
