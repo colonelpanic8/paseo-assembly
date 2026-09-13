@@ -33,6 +33,7 @@
       "model-picker-search": "3a26a4f24194e736271d7335358e1396d3b73f7f",
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
+      "ntfy-push": "4a9de5e98161562f1a7826a23fa182ff300573be",
       "personal/sidebar-workflow": "edf20f88ee9f83b3e288e726c1e12ca14891c32a",
       "pr-2517": "238714e0ad45d4da86b73d890c556ee0d8baf9cb",
       "pr-2520": "bdae463b7dd22ff47f78ecb49fb67979976ac616",
@@ -100,15 +101,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-13T02:33:19.034275919+00:00",
+    "generated": "2026-09-13T04:08:22.356112320+00:00",
     "base": "d1b705a0cd91617a5707fae25d80cb0be3057950",
-    "commit": "1dbad1a9f8b612752ec271eff5e25241736cd061",
-    "pre_provenance_commit": "1dbad1a9f8b612752ec271eff5e25241736cd061",
-    "tree": "a82684af3f4c100322555b3816735db6721d381d",
-    "built_tree": "a82684af3f4c100322555b3816735db6721d381d",
+    "commit": "55c48e3ab186570267766b647d18cb432be69498",
+    "pre_provenance_commit": "55c48e3ab186570267766b647d18cb432be69498",
+    "tree": "1b58f22261691e87224989163191a194c2921f0a",
+    "built_tree": "1b58f22261691e87224989163191a194c2921f0a",
     "previous_tree": "a82684af3f4c100322555b3816735db6721d381d",
-    "tree_changed": false,
-    "conflicts": 41,
+    "tree_changed": true,
+    "conflicts": 1,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -580,6 +581,12 @@
           }
         ],
         "anchor": "9daedcb9f5611bcdd771594cb6bf0ff6e9666da1"
+      },
+      {
+        "name": "ntfy-push",
+        "kind": "branch",
+        "source": "mine:ntfy-push",
+        "pin": "4a9de5e98161562f1a7826a23fa182ff300573be"
       }
     ],
     "results": [
@@ -1068,6 +1075,13 @@
           "base_tip": "7066b0db6c5e88b9e8e0f7f0ac7cb726a37a1f6a",
           "tip": "e149c4872d829b8f4fb86114ddb71cef03807f23"
         }
+      },
+      {
+        "name": "ntfy-push",
+        "oid": "4a9de5e98161562f1a7826a23fa182ff300573be",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:040959e3346de73124d3e6f347eb8b6b97572890,0971acf933c67d044554f31f020f3ae7f51dd0ce,18874f22a7f6242cabd9ce52d20ce88ce03ac034,91cad20866e98bd6f915e318f4f7c2907c9ad3e4,ae84e67d3e059ef6ea269e0c361a2f99bddb0d23,e8dcecc2b522afc58a6731c423fb6e69709c4dd1"
       }
     ]
   }

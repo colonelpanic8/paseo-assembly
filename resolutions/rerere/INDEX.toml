@@ -1326,6 +1326,42 @@ paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
 recorded = "2026-08-11T17:50:33.162761813+00:00"
 
 [[resolution]]
+entry = "ntfy-push"
+hash = "040959e3346de73124d3e6f347eb8b6b97572890"
+paths = ["docs/android.md"]
+recorded = "2026-09-13T04:08:17.209601735+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "0971acf933c67d044554f31f020f3ae7f51dd0ce"
+paths = ["packages/server/src/server/bootstrap.ts"]
+recorded = "2026-09-13T04:08:17.209603679+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "18874f22a7f6242cabd9ce52d20ce88ce03ac034"
+paths = ["packages/server/src/server/daemon-config-store.ts"]
+recorded = "2026-09-13T04:08:17.209604120+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "91cad20866e98bd6f915e318f4f7c2907c9ad3e4"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-13T04:08:17.209604420+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "ae84e67d3e059ef6ea269e0c361a2f99bddb0d23"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-09-13T04:08:17.209604771+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "e8dcecc2b522afc58a6731c423fb6e69709c4dd1"
+paths = ["CLAUDE.md"]
+recorded = "2026-09-13T04:08:17.209606875+00:00"
+
+[[resolution]]
 entry = "personal/sidebar-workflow"
 hash = "8a927a750687d835bb4dcf805f4130efe824877f"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
