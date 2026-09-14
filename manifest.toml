@@ -400,6 +400,10 @@ summary = "Skip workspace agent-set and subagent rebuilds on stream ticks"
 branch = "mine:perf/usage-history-token-fix"
 summary = "Usage history: count subagent output tokens by the last content block, and debounce the scan cache; stacked on mine:usage-history because the feature exists only there"
 
+[[entry]]
+branch = "mine:perf/explorer-sidebar-resize"
+summary = "Explorer sidebar resize runs on the UI thread; tree rows stop re-rendering on hover"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.

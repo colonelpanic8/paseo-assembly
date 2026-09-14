@@ -35,6 +35,7 @@
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
       "ntfy-push": "4b9cc749ea6514e1c852380637861407a6c566b6",
+      "perf/explorer-sidebar-resize": "e33604246f8ed09509cf42dee62e33c78b947b84",
       "perf/usage-history-token-fix": "add118fef4107f97b303bfc250189a3e3e12fc31",
       "personal/sidebar-workflow": "edf20f88ee9f83b3e288e726c1e12ca14891c32a",
       "pr-2517": "238714e0ad45d4da86b73d890c556ee0d8baf9cb",
@@ -111,13 +112,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-14T09:17:25.558710422+00:00",
+    "generated": "2026-09-14T14:49:28.439637276+00:00",
     "base": "d1b705a0cd91617a5707fae25d80cb0be3057950",
-    "commit": "1646462a040e2f2e2d112dd79dd0834eea237d46",
-    "pre_provenance_commit": "1646462a040e2f2e2d112dd79dd0834eea237d46",
-    "tree": "4debe2addc4daf7b1b1005676a1cdfbb67d126ab",
-    "built_tree": "4debe2addc4daf7b1b1005676a1cdfbb67d126ab",
-    "previous_tree": "7cfcbe77aa7e77b39ac795bfe5f899ecd6b56e95",
+    "commit": "83d54be62b8b57d2951618e14b8fcf71d32f2eed",
+    "pre_provenance_commit": "83d54be62b8b57d2951618e14b8fcf71d32f2eed",
+    "tree": "70eae3d5043017b3c15b1b067bfbc1a784a659bd",
+    "built_tree": "70eae3d5043017b3c15b1b067bfbc1a784a659bd",
+    "previous_tree": "4debe2addc4daf7b1b1005676a1cdfbb67d126ab",
     "tree_changed": true,
     "conflicts": 45,
     "manifest_entries": [
@@ -657,6 +658,12 @@
         "kind": "branch",
         "source": "mine:perf/usage-history-token-fix",
         "pin": "add118fef4107f97b303bfc250189a3e3e12fc31"
+      },
+      {
+        "name": "perf/explorer-sidebar-resize",
+        "kind": "branch",
+        "source": "mine:perf/explorer-sidebar-resize",
+        "pin": "e33604246f8ed09509cf42dee62e33c78b947b84"
       }
     ],
     "results": [
@@ -789,8 +796,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "9783c882235dcf21e66fadf2538d5022c115dfff",
-          "tip": "7504b10e091c4aca9ab9c1bb2fa8d457ed66307e"
+          "base_tip": "b0342b5d4d6ff8ffc2f9a732a7293b2c438add8c",
+          "tip": "dab0f05c06d46f3f1e5bd14f7bb4466fe9d2da2d"
         }
       },
       {
@@ -919,8 +926,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "37045c09b398d135edff1a16fc0051a9ca538a26",
-          "tip": "9b2c7f4810630b3b166393d2316ec266a3699df9"
+          "base_tip": "52eeb751c59581a497f767e9cdc5cf72c4b51461",
+          "tip": "085b3640b07000df0d803d7d7d90a2bc87ba841d"
         }
       },
       {
@@ -986,8 +993,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "898df85438f59c6b613ffa77558ffb9f0cbd0237",
-          "tip": "54025f865439133a27d794fdcc038e31cfc20fda"
+          "base_tip": "545973b998c13f32e66daff458ebd2fdbe895136",
+          "tip": "071098b4189fc3783534c21f45f68c88225c8386"
         }
       },
       {
@@ -997,8 +1004,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "749923b3d25432c9c47c3355c25c03b160b22cea",
-          "tip": "e82769dda17dbdf615b360eab025dc0512892ab7"
+          "base_tip": "0ddb89c4fce220349c923dd246c1b7285cce254f",
+          "tip": "5009637a6398991f791fefbab5f4f24e4b134877"
         }
       },
       {
@@ -1142,8 +1149,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "ab3848c5f427c1233342e55c294415f102603060",
-          "tip": "94935993c7c15a15b7e8a4e0f1e0d4ba3779573c"
+          "base_tip": "c75f76921d6f3e0cb28541b460191afa31817a2e",
+          "tip": "c1ad06283a562018115d5d449ad0735a628957f4"
         }
       },
       {
@@ -1183,7 +1190,7 @@
         "oid": "e4394daacd59dec2838709945fd4bf6274351d19",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:2b4cc645b4a42a868da5f615a9a942b92a4b6bd2,4f8899eed2f0de68acc6fe7fbff3ee3c42353d70,9d61909d2b04751389bfb8e501e04cda6e941c8a"
+        "resolution": "rerere"
       },
       {
         "name": "pr-4830",
@@ -1208,11 +1215,17 @@
         "oid": "0f4e81ac17b42635abd6727312e3ecdbf42bd7d8",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:7fd961c0535c0e36f3083d72acffb3606e9be24b,b73dff5dbaea3be2de6d0fab4a52dd7f415ae56d"
+        "resolution": "rerere"
       },
       {
         "name": "perf/usage-history-token-fix",
         "oid": "add118fef4107f97b303bfc250189a3e3e12fc31",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "perf/explorer-sidebar-resize",
+        "oid": "e33604246f8ed09509cf42dee62e33c78b947b84",
         "status": "merged",
         "conflicted": false
       }
