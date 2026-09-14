@@ -750,6 +750,24 @@ paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-09-03T19:27:45.303422877+00:00"
 
 [[resolution]]
+entry = "dismiss-failed-state"
+hash = "26349d7c68c6fa6209adb89e397cd44674f074ca"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-row.tsx"]
+recorded = "2026-09-14T07:49:41.341854274+00:00"
+
+[[resolution]]
+entry = "dismiss-failed-state"
+hash = "7256788f919c74af05f66eb7ecf6c0c32ad60823"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-09-14T07:49:41.341860443+00:00"
+
+[[resolution]]
+entry = "dismiss-failed-state"
+hash = "74f6686f1b8a09cc1d826e8be6776264588f028c"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-09-14T07:49:41.341860907+00:00"
+
+[[resolution]]
 entry = "fix/codex-sqlite-init"
 hash = "084c137c6c7d4819841a830b232f1c4c3423d1bf"
 paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]

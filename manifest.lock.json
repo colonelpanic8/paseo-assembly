@@ -22,6 +22,7 @@
       "colorblind-status-dots": "3f9dbe5c7ca622583ff73b48fee6d9dabc416515",
       "daemon-config-imports": "87ba7e325100a576b651572dd4b2043df3271fa9",
       "disable-worktree-setup-callout": "32ec3263413021b0b43566c2c2128af0983aeb15",
+      "dismiss-failed-state": "b6171bd6e15a720a9f841f94174d567ba6201257",
       "fix/codex-sqlite-init": "0c8ec797a5ec7c8b4133a65897145be86f1feef4",
       "fix/draft-tab-inflight-create": "9352e9dca1cfb38af966b0c086f7d8c316a03826",
       "fix/model-browser-sheet-scope": "36e106f7b5155f8ccbfb3323610acf7366d55f27",
@@ -71,7 +72,7 @@
       "unconditional-host-display": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
       "usage-history": "21cb61f87694eb58f666158001705e485eab3eb4",
       "voice-actions": "50f5ad879b6027cabb3e9a3749a29c6adf9d7fbb",
-      "watch-live-voice": "9f855d96cd1f079aaccbe36c6e403f72c5e68d96",
+      "watch-live-voice": "bc72093aec083f7b79679c37ebd53cd7da37a0ff",
       "xdg-paths": "6b0c1c7bd54d4b68821574e7fc0f4b41fbb32439"
     },
     "parents": {
@@ -97,19 +98,19 @@
       "live-voice-quick-launch": "7e3e520b4384e181ba60ea2b012f0002ff62431d",
       "live-voice-start-sound": "9daedcb9f5611bcdd771594cb6bf0ff6e9666da1",
       "pr-2927": "6828ae790cd0d33cf4639b62fd6e3ee7844e93a3",
-      "watch-live-voice": "02dc1b5097b85b72dd29cb06dfa29b167aaab4fc"
+      "watch-live-voice": "705be7db12f8aa758e1d575cc78306536303b7f8"
     }
   },
   "build": {
-    "generated": "2026-09-13T23:28:08.770309878+00:00",
+    "generated": "2026-09-14T07:49:55.003207214+00:00",
     "base": "d1b705a0cd91617a5707fae25d80cb0be3057950",
-    "commit": "9326f0d19bad32640ca2248b39b2f99fbf45dcd3",
-    "pre_provenance_commit": "9326f0d19bad32640ca2248b39b2f99fbf45dcd3",
-    "tree": "bd7f1a21f1f9d241ff34cedabed14c28fc6ecb79",
-    "built_tree": "bd7f1a21f1f9d241ff34cedabed14c28fc6ecb79",
-    "previous_tree": "192662b9a1f82140016a3224322f94897232e265",
+    "commit": "f7636a9d3f83fae8fcd7b11cb9bbb20779031e59",
+    "pre_provenance_commit": "f7636a9d3f83fae8fcd7b11cb9bbb20779031e59",
+    "tree": "7cfcbe77aa7e77b39ac795bfe5f899ecd6b56e95",
+    "built_tree": "7cfcbe77aa7e77b39ac795bfe5f899ecd6b56e95",
+    "previous_tree": "bd7f1a21f1f9d241ff34cedabed14c28fc6ecb79",
     "tree_changed": true,
-    "conflicts": 42,
+    "conflicts": 43,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -228,7 +229,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "9f855d96cd1f079aaccbe36c6e403f72c5e68d96",
+        "pin": "bc72093aec083f7b79679c37ebd53cd7da37a0ff",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -241,7 +242,7 @@
             "pin": "0c1f810e578e0e5d5c2f908d1a27f2a9a925d86d"
           }
         ],
-        "anchor": "02dc1b5097b85b72dd29cb06dfa29b167aaab4fc"
+        "anchor": "705be7db12f8aa758e1d575cc78306536303b7f8"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -587,6 +588,12 @@
         "kind": "branch",
         "source": "mine:ntfy-push",
         "pin": "4b9cc749ea6514e1c852380637861407a6c566b6"
+      },
+      {
+        "name": "dismiss-failed-state",
+        "kind": "branch",
+        "source": "mine:dismiss-failed-state",
+        "pin": "b6171bd6e15a720a9f841f94174d567ba6201257"
       }
     ],
     "results": [
@@ -713,14 +720,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "9f855d96cd1f079aaccbe36c6e403f72c5e68d96",
+        "oid": "bc72093aec083f7b79679c37ebd53cd7da37a0ff",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "705be7db12f8aa758e1d575cc78306536303b7f8",
-          "tip": "bc72093aec083f7b79679c37ebd53cd7da37a0ff"
+          "base_tip": "978fd227a23d6a3b7b30c8d3b194f63d7d64e055",
+          "tip": "a15eb7f069ede49a22dd5cf7e84dd731014b74a0"
         }
       },
       {
@@ -849,8 +856,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "372697a9291c66d2bab8fa68025c95023c70c0df",
-          "tip": "5ef838c9819dd2db3381f8530d8c758953e36834"
+          "base_tip": "8c4e33aa9f3fd0f99347c09b6c74a85661b03fc1",
+          "tip": "72f9342c268d22ef5caa1b08c099f036978b463d"
         }
       },
       {
@@ -916,8 +923,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "11c63b7bc45bb0ff938cca1bd5cb7fa1fed175d5",
-          "tip": "8cf25c47aabe0f2b10be9ac52f12d947feac8346"
+          "base_tip": "3672f29bbb59617afd342f0071c98fcd758cb0ea",
+          "tip": "74e5d983262a3e1c642328f123b302ddace28c87"
         }
       },
       {
@@ -927,8 +934,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "4ace82ba6440d4d1742edafd0aafeb2930c829fb",
-          "tip": "161048c1544ffd98784e48b987fbb0a6789a5fbc"
+          "base_tip": "dae48c365a47c7cd088220a03312ca52097a18cf",
+          "tip": "76e0d8b0fad9373f965dfbe7460722b05aef2f55"
         }
       },
       {
@@ -1072,8 +1079,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "0e8209a1b3f220ad9a5a4192b402e25ac6765f9a",
-          "tip": "fd2b4b0fe7746e90db19d5e7b02d123d12b489bf"
+          "base_tip": "6e65216b61af88fbb223304a13c864bbff674b33",
+          "tip": "6884655d9dee41a0e570c82e059839607745966c"
         }
       },
       {
@@ -1082,6 +1089,13 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "dismiss-failed-state",
+        "oid": "b6171bd6e15a720a9f841f94174d567ba6201257",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:26349d7c68c6fa6209adb89e397cd44674f074ca,7256788f919c74af05f66eb7ecf6c0c32ad60823,74f6686f1b8a09cc1d826e8be6776264588f028c"
       }
     ]
   }
