@@ -36,7 +36,7 @@
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
       "ntfy-push": "4b9cc749ea6514e1c852380637861407a6c566b6",
       "perf/explorer-sidebar-resize": "e33604246f8ed09509cf42dee62e33c78b947b84",
-      "perf/usage-history-token-fix": "add118fef4107f97b303bfc250189a3e3e12fc31",
+      "perf/usage-history-token-fix": "78a9decd796d2ccfbcb6ba45616e0a95248de91c",
       "personal/sidebar-workflow": "edf20f88ee9f83b3e288e726c1e12ca14891c32a",
       "pr-2517": "238714e0ad45d4da86b73d890c556ee0d8baf9cb",
       "pr-2520": "bdae463b7dd22ff47f78ecb49fb67979976ac616",
@@ -112,13 +112,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-14T14:49:28.439637276+00:00",
+    "generated": "2026-09-14T22:12:17.970746355+00:00",
     "base": "d1b705a0cd91617a5707fae25d80cb0be3057950",
-    "commit": "83d54be62b8b57d2951618e14b8fcf71d32f2eed",
-    "pre_provenance_commit": "83d54be62b8b57d2951618e14b8fcf71d32f2eed",
-    "tree": "70eae3d5043017b3c15b1b067bfbc1a784a659bd",
-    "built_tree": "70eae3d5043017b3c15b1b067bfbc1a784a659bd",
-    "previous_tree": "4debe2addc4daf7b1b1005676a1cdfbb67d126ab",
+    "commit": "dcb096ff96f7219848ed3417390c718910fef1fd",
+    "pre_provenance_commit": "dcb096ff96f7219848ed3417390c718910fef1fd",
+    "tree": "1afed93c1b39b27849c25a08c4a361d7d1018ed5",
+    "built_tree": "1afed93c1b39b27849c25a08c4a361d7d1018ed5",
+    "previous_tree": "70eae3d5043017b3c15b1b067bfbc1a784a659bd",
     "tree_changed": true,
     "conflicts": 45,
     "manifest_entries": [
@@ -657,7 +657,7 @@
         "name": "perf/usage-history-token-fix",
         "kind": "branch",
         "source": "mine:perf/usage-history-token-fix",
-        "pin": "add118fef4107f97b303bfc250189a3e3e12fc31"
+        "pin": "78a9decd796d2ccfbcb6ba45616e0a95248de91c"
       },
       {
         "name": "perf/explorer-sidebar-resize",
@@ -796,8 +796,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "b0342b5d4d6ff8ffc2f9a732a7293b2c438add8c",
-          "tip": "dab0f05c06d46f3f1e5bd14f7bb4466fe9d2da2d"
+          "base_tip": "7df854696b109ab354714a0731340bfa394306ff",
+          "tip": "d3d124258963c5064d5c7279a25a60b8ef78c923"
         }
       },
       {
@@ -926,8 +926,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "52eeb751c59581a497f767e9cdc5cf72c4b51461",
-          "tip": "085b3640b07000df0d803d7d7d90a2bc87ba841d"
+          "base_tip": "4c232cef20c9f5397fed34d99aa51895c886344f",
+          "tip": "e3ade6f2a4d58849be130d20d7b2fa24f54e21c1"
         }
       },
       {
@@ -993,8 +993,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "545973b998c13f32e66daff458ebd2fdbe895136",
-          "tip": "071098b4189fc3783534c21f45f68c88225c8386"
+          "base_tip": "fca3488b2c352d4075368b61ddfd85c699e7355b",
+          "tip": "d9cffe0197a3f1a25fa0fe69060c84aa0c6a00d8"
         }
       },
       {
@@ -1004,8 +1004,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "0ddb89c4fce220349c923dd246c1b7285cce254f",
-          "tip": "5009637a6398991f791fefbab5f4f24e4b134877"
+          "base_tip": "745de57170aa3477105af2915d69b914bdedbadf",
+          "tip": "b9ba33240d223e07ce55a6ce3b65a17432f1e0e3"
         }
       },
       {
@@ -1149,8 +1149,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "c75f76921d6f3e0cb28541b460191afa31817a2e",
-          "tip": "c1ad06283a562018115d5d449ad0735a628957f4"
+          "base_tip": "e4a6b1d49abec075eb1f5076110e042a2f75a17f",
+          "tip": "6c2e20c788d4b4fa63b95cfe736c8786db4c4153"
         }
       },
       {
@@ -1219,7 +1219,7 @@
       },
       {
         "name": "perf/usage-history-token-fix",
-        "oid": "add118fef4107f97b303bfc250189a3e3e12fc31",
+        "oid": "78a9decd796d2ccfbcb6ba45616e0a95248de91c",
         "status": "merged",
         "conflicted": false
       },
