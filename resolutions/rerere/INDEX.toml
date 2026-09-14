@@ -3510,6 +3510,36 @@ paths = ["packages/server/src/server/authorization/operation-permissions.ts"]
 recorded = "2026-09-07T20:26:13.271700804+00:00"
 
 [[resolution]]
+entry = "pr-4829"
+hash = "2b4cc645b4a42a868da5f615a9a942b92a4b6bd2"
+paths = ["packages/app/src/stores/draft-store/index.ts"]
+recorded = "2026-09-14T09:15:42.414732220+00:00"
+
+[[resolution]]
+entry = "pr-4829"
+hash = "4f8899eed2f0de68acc6fe7fbff3ee3c42353d70"
+paths = ["packages/app/src/composer/agent-controls/index.tsx"]
+recorded = "2026-09-14T09:15:42.414741477+00:00"
+
+[[resolution]]
+entry = "pr-4829"
+hash = "9d61909d2b04751389bfb8e501e04cda6e941c8a"
+paths = ["packages/app/src/composer/agent-controls/mode-control.tsx"]
+recorded = "2026-09-14T09:15:42.414742249+00:00"
+
+[[resolution]]
+entry = "pr-4833"
+hash = "7fd961c0535c0e36f3083d72acffb3606e9be24b"
+paths = ["packages/app/src/composer/submission/model.ts"]
+recorded = "2026-09-14T09:17:18.562751503+00:00"
+
+[[resolution]]
+entry = "pr-4833"
+hash = "b73dff5dbaea3be2de6d0fab4a52dd7f415ae56d"
+paths = ["packages/app/src/stores/session-store.ts"]
+recorded = "2026-09-14T09:17:18.562760961+00:00"
+
+[[resolution]]
 entry = "thinking-control-reachability"
 hash = "430d4acd7331ccc082b99d008f86a0b12ef34cef"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]

@@ -364,6 +364,42 @@ branch = "mine:ntfy-push"
 [[entry]]
 branch = "mine:dismiss-failed-state"
 
+[[entry]]
+pr = 4826
+summary = "Stop a host removed during its first probe from reconnecting"
+
+[[entry]]
+pr = 4827
+summary = "Keep per-delta stream work bounded by the head instead of the whole timeline"
+
+[[entry]]
+pr = 4828
+summary = "Refit the terminal once the keyboard settles rather than on every frame"
+
+[[entry]]
+pr = 4829
+summary = "Coalesce native composer keystrokes and narrow attachment garbage collection"
+
+[[entry]]
+pr = 4830
+summary = "Stop forcing a style recalc and layout on every web composer keystroke"
+
+[[entry]]
+pr = 4831
+summary = "Overlay pending replica rows on read instead of forcing a persist per attempt"
+
+[[entry]]
+pr = 4832
+summary = "Throttle workspace layout writes and skip no-op persists"
+
+[[entry]]
+pr = 4833
+summary = "Skip workspace agent-set and subagent rebuilds on stream ticks"
+
+[[entry]]
+branch = "mine:perf/usage-history-token-fix"
+summary = "Usage history: count subagent output tokens by the last content block, and debounce the scan cache; stacked on mine:usage-history because the feature exists only there"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
@@ -414,3 +450,7 @@ reason = "Carried by mine:skill-pills-config; the closed PR head is frozen and m
 [[exclude]]
 pr = 4445
 reason = "carried by mine:usage-history; the closed PR head is frozen and cannot receive follow-up fixes"
+
+[[exclude]]
+pr = 4834
+reason = "open PR #4834; its handler relocation into useStableEvent collides with the assembly's evolved keydown body (isDesktopBindings, prompt-control chords, releaseHeldShortcut). Re-admit once the move is redone on top of those topics."
