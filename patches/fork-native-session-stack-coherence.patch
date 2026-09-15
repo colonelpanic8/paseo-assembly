@@ -1,5 +1,5 @@
 diff --git a/packages/app/src/screens/new-workspace-screen.tsx b/packages/app/src/screens/new-workspace-screen.tsx
-index a0744ce26b..ff794d7f54 100644
+index a0744ce26b..1ead52f384 100644
 --- a/packages/app/src/screens/new-workspace-screen.tsx
 +++ b/packages/app/src/screens/new-workspace-screen.tsx
 @@ -26,7 +26,6 @@ import {
@@ -19,3 +19,11 @@ index a0744ce26b..ff794d7f54 100644
              failureMessage: t("message.actions.forkFailed"),
            });
            useWorkspaceDraftSubmissionStore.getState().clearDraftSetup({ draftId: draftId ?? "" });
+@@ -2384,6 +2383,7 @@ export function NewWorkspaceScreen({
+       creationIdentity,
+       clearChatDraft,
+       draftKey,
++      draftId,
+       ensureWorkspace,
+       forkDraftSetup,
+       isStillOnCreateScreen,
