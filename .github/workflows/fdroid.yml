@@ -152,7 +152,11 @@ jobs:
             fdroid/signing-certificate.sha256 \
             prepare
 
+      # Normally ~5 minutes (Metro bundling prints progress, then Hermes
+      # bytecode compilation is silent for a couple of minutes). Fail fast
+      # instead of hanging to the 120-minute job timeout when stuck.
       - name: Bundle source APK JavaScript
+        timeout-minutes: 30
         env:
           PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}
           PASEO_NATIVE_BUILD_VERSION_CODE: ${{ steps.assembly.outputs.native_version_code }}
@@ -171,7 +175,9 @@ jobs:
             fdroid/signing-certificate.sha256 \
             bundle
 
+      # Normally ~10 minutes of single-worker native compilation.
       - name: Package and sign source APK
+        timeout-minutes: 30
         env:
           PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}
           PASEO_NATIVE_BUILD_VERSION_CODE: ${{ steps.assembly.outputs.native_version_code }}

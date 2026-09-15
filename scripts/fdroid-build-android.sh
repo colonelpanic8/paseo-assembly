@@ -48,20 +48,31 @@ if [[ -n "${PASEO_BUILD_COMMIT:-}" ]]; then
     export EXPO_PUBLIC_PASEO_BUILD_REPO_URL="$PASEO_BUILD_REPO_URL"
   fi
 fi
-export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
+export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx2g -XX:MaxMetaspaceSize=768m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
 
+# Run Gradle in the foreground so its exit status is the step's exit status,
+# with a background heartbeat so long silent stretches (Hermes bytecode
+# compilation after Metro finishes prints nothing for minutes) stay
+# observable. The heartbeat is killed explicitly after Gradle exits: a
+# liveness poll with `kill -0` is racy against SIGCHLD reaping and would
+# either spin or miss the exit.
 run_gradle() {
-  "$@" &
-  local gradle_pid=$!
-
-  while kill -0 "$gradle_pid" 2>/dev/null; do
-    sleep 30
-    if kill -0 "$gradle_pid" 2>/dev/null; then
+  (
+    while true; do
+      sleep 60
       echo "Gradle is still running ($(date -u +%FT%TZ))"
-    fi
-  done
+      free -h
+      df -h "$assembled_root" /tmp
+    done
+  ) &
+  local heartbeat_pid=$!
 
-  wait "$gradle_pid"
+  local status=0
+  "$@" || status=$?
+
+  kill "$heartbeat_pid" 2>/dev/null || true
+  wait "$heartbeat_pid" 2>/dev/null || true
+  return "$status"
 }
 
 if [[ "$mode" == "all" || "$mode" == "prepare" ]]; then
