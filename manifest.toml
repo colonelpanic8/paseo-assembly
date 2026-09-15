@@ -191,8 +191,8 @@ branch = "mine:xdg-paths"
 summary = "Separate config from mutable Paseo state; track the repaired live branch because closed PR #2900 has a frozen head"
 
 [[entry]]
-pr = 2927
-summary = "Hardware keyboard shortcuts on native, mod-key setting, Shift+Enter send"
+branch = "mine:keyboard-shortcuts-mobile"
+summary = "Hardware keyboard shortcuts on native, mod-key setting, and Shift+Enter send; track the reconstructed branch because closed PR #2927 has a frozen head"
 parents = [{ branch = "mine:extend-cn-cp-omni-menu" }]
 reconstruction_publish = "mine:keyboard-shortcuts-mobile"
 fixup = "patches/pr-2927-current-typography.patch"
@@ -221,8 +221,8 @@ fixup = "patches/pr-2957-copy-conversation-dependency.patch"
 branch = "mine:thinking-control-reachability"
 
 [[entry]]
-pr = 3006
-summary = "Fix Android draft composer handoff race"
+branch = "mine:debug-mobile-image-add-error"
+summary = "Fix Android draft composer handoff race (rebased from closed PR #3006; refs/pull/3006/head is frozen)"
 
 [[entry]]
 pr = 3475
@@ -234,10 +234,12 @@ pr = 3506
 [[entry]]
 branch = "mine:live-voice-quick-launch"
 parents = [{ branch = "mine:realtime-voice-actions" }]
+reconstruction_publish = "mine:live-voice-quick-launch"
 
 [[entry]]
 branch = "mine:live-voice-context-files"
 parents = [{ branch = "mine:realtime-voice-actions" }]
+reconstruction_publish = "mine:live-voice-context-files"
 
 [[entry]]
 branch = "mine:colorblind-status-dots"
@@ -357,6 +359,7 @@ patch = "patches/assembled-typecheck-coherence.patch"
 [[entry]]
 branch = "mine:live-voice-start-sound"
 parents = [{ branch = "mine:realtime-voice-actions" }]
+reconstruction_publish = "mine:live-voice-start-sound"
 
 [[entry]]
 branch = "mine:ntfy-push"
@@ -403,6 +406,9 @@ summary = "Usage history: count subagent output tokens by the last content block
 [[entry]]
 branch = "mine:perf/explorer-sidebar-resize"
 summary = "Explorer sidebar resize runs on the UI thread; tree rows stop re-rendering on hover"
+
+[[entry]]
+branch = "mine:android-intents"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow

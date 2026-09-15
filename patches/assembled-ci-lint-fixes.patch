@@ -516,9 +516,9 @@ diff --git a/packages/server/src/server/websocket-server.ts b/packages/server/sr
 index b43b54a76..e56d80ee0 100644
 --- a/packages/server/src/server/websocket-server.ts
 +++ b/packages/server/src/server/websocket-server.ts
-@@ -654,6 +654,7 @@ export class VoiceAssistantWebSocketServer {
-   private readonly pluginRuntime: SessionOptions["pluginRuntime"];
-   private readonly orchestrationSkills: SessionOptions["orchestrationSkills"];
+@@ -676,6 +676,7 @@ export class VoiceAssistantWebSocketServer {
+     }
+   }
 
 +  // oxlint-disable-next-line complexity
    constructor(

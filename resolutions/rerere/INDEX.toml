@@ -404,6 +404,24 @@ paths = ["packages/app/src/utils/agent-snapshots.test.ts"]
 recorded = "2026-07-31T15:29:27.839934802+00:00"
 
 [[resolution]]
+entry = "android-intents"
+hash = "45cc172292f945e70821f5b5a0cf3e390f447d53"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-15T05:18:13.429030851+00:00"
+
+[[resolution]]
+entry = "android-intents"
+hash = "5681e170a9efee6c08183294b36772637800d621"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-15T05:18:13.429039407+00:00"
+
+[[resolution]]
+entry = "android-intents"
+hash = "7aca6a8f1bce91a03a8b117a722e5141ea8fee5f"
+paths = ["packages/app/src/hooks/use-settings/storage.ts"]
+recorded = "2026-09-15T05:18:13.429039868+00:00"
+
+[[resolution]]
 entry = "assembly-agent-env"
 hash = "0c217d7c559e62f81641fd4e4d624374b389ae69"
 paths = ["packages/server/src/server/websocket-server.ts"]
