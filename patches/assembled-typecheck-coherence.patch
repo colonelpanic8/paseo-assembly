@@ -1,25 +1,5 @@
-diff --git a/packages/app/e2e/support/helpers/seed-client.ts b/packages/app/e2e/support/helpers/seed-client.ts
-index d7946f07d..e638d216e 100644
---- a/packages/app/e2e/support/helpers/seed-client.ts
-+++ b/packages/app/e2e/support/helpers/seed-client.ts
-@@ -46,6 +46,7 @@ export interface SeedDaemonClient {
-     entries: SeedWorkspaceDescriptor[];
-   }>;
-   setWorkspacePinned(workspaceId: string, pinned: boolean): Promise<{ pinnedAt: string | null }>;
-+  clearWorkspaceAttention(workspaceId: string): Promise<void>;
-   setWorkspaceLabel(input: {
-     workspaceId: string;
-     label: { name: string; color: "red" };
-@@ -164,6 +165,7 @@ export interface SeedDaemonClient {
-     features?: {
-       projectAdd?: boolean;
-       workspaceRecovery?: boolean;
-+      workspaceMarkUnread?: boolean;
-     } | null;
-   } | null;
-   fetchAgentHistory(options?: {
 diff --git a/packages/app/src/contexts/live-voice-context.tsx b/packages/app/src/contexts/live-voice-context.tsx
-index 3872fead0..486fbf8c0 100644
+index 3872fead0e..486fbf8c0d 100644
 --- a/packages/app/src/contexts/live-voice-context.tsx
 +++ b/packages/app/src/contexts/live-voice-context.tsx
 @@ -17,6 +17,7 @@ import {
@@ -40,10 +20,10 @@ index 3872fead0..486fbf8c0 100644
    setMuted: (muted: boolean) => void;
    toggleMute: () => void;
 diff --git a/packages/app/src/i18n/resources/ru.ts b/packages/app/src/i18n/resources/ru.ts
-index ed6a68097..003323787 100644
+index 33883e1657..f88dcef2da 100644
 --- a/packages/app/src/i18n/resources/ru.ts
 +++ b/packages/app/src/i18n/resources/ru.ts
-@@ -950,11 +950,8 @@ export const ru: TranslationResources = {
+@@ -960,11 +960,8 @@ export const ru: TranslationResources = {
          refresh: "Обновить",
          refreshState: "Обновить состояние Git и {{brand}}",
          failedRefresh: "Не удалось обновить состояние Git.",
@@ -55,7 +35,7 @@ index ed6a68097..003323787 100644
          checkingRepository: "Проверяем репозиторий...",
          notRepository: "Это не репозиторий Git",
          diffMode: "Режим диффа",
-@@ -1125,7 +1122,6 @@ export const ru: TranslationResources = {
+@@ -1135,7 +1132,6 @@ export const ru: TranslationResources = {
          branch: "Ветка",
          project: "Проект",
          host: "Хост",
@@ -63,7 +43,7 @@ index ed6a68097..003323787 100644
          changeRequest: "PR",
          checks: "Проверки",
          services: "Сервисы",
-@@ -2616,14 +2612,6 @@ export const ru: TranslationResources = {
+@@ -2652,14 +2648,6 @@ export const ru: TranslationResources = {
            auto: "Системная",
          },
        },
@@ -78,7 +58,7 @@ index ed6a68097..003323787 100644
        detailLevel: {
          title: "Уровень детализации",
        },
-@@ -2633,6 +2621,11 @@ export const ru: TranslationResources = {
+@@ -2669,6 +2657,11 @@ export const ru: TranslationResources = {
        },
        sidebar: {
          title: "Боковая панель",
@@ -91,7 +71,7 @@ index ed6a68097..003323787 100644
            "Выберите, какие элементы отображаются вверху боковой панели и в каком порядке",
          moveUp: "Переместить вверх",
 diff --git a/packages/app/src/live-voice/live-voice-availability.ts b/packages/app/src/live-voice/live-voice-availability.ts
-index 5f137ba99..56e975bbb 100644
+index 5f137ba998..56e975bbba 100644
 --- a/packages/app/src/live-voice/live-voice-availability.ts
 +++ b/packages/app/src/live-voice/live-voice-availability.ts
 @@ -7,12 +7,40 @@ import {
@@ -136,7 +116,7 @@ index 5f137ba99..56e975bbb 100644
   * Every configured host with the facts live voice availability is decided from,
   * unfiltered. `useLiveVoiceAvailability` narrows this to the hosts that can take
 diff --git a/packages/app/src/live-voice/live-voice-footer-button.tsx b/packages/app/src/live-voice/live-voice-footer-button.tsx
-index 391add8d2..6bb6f18fc 100644
+index 391add8d2d..6bb6f18fc2 100644
 --- a/packages/app/src/live-voice/live-voice-footer-button.tsx
 +++ b/packages/app/src/live-voice/live-voice-footer-button.tsx
 @@ -26,6 +26,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
@@ -170,7 +150,7 @@ index 391add8d2..6bb6f18fc 100644
    const availableHosts = availability.kind === "available" ? availability.hosts : [];
    const selectedHost =
 diff --git a/packages/app/src/live-voice/live-voice-launch.ts b/packages/app/src/live-voice/live-voice-launch.ts
-index 44122ad67..98ebcb317 100644
+index 44122ad67e..98ebcb3170 100644
 --- a/packages/app/src/live-voice/live-voice-launch.ts
 +++ b/packages/app/src/live-voice/live-voice-launch.ts
 @@ -1,5 +1,5 @@
@@ -208,7 +188,7 @@ index 44122ad67..98ebcb317 100644
 +  }
  }
 diff --git a/packages/app/src/live-voice/live-voice-link-listener.tsx b/packages/app/src/live-voice/live-voice-link-listener.tsx
-index 884ab172d..fbb21e457 100644
+index 884ab172d3..fbb21e4573 100644
 --- a/packages/app/src/live-voice/live-voice-link-listener.tsx
 +++ b/packages/app/src/live-voice/live-voice-link-listener.tsx
 @@ -1,5 +1,6 @@
@@ -301,7 +281,7 @@ index 884ab172d..fbb21e457 100644
    return null;
  }
 diff --git a/packages/app/src/live-voice/live-voice-link.test.ts b/packages/app/src/live-voice/live-voice-link.test.ts
-index 56bf28da2..3af0e189c 100644
+index 56bf28da2a..3af0e189ce 100644
 --- a/packages/app/src/live-voice/live-voice-link.test.ts
 +++ b/packages/app/src/live-voice/live-voice-link.test.ts
 @@ -25,13 +25,17 @@ function host(overrides: Partial<LiveVoiceHostAvailability> = {}): LiveVoiceHost
@@ -384,7 +364,7 @@ index 56bf28da2..3af0e189c 100644
    );
  
 diff --git a/packages/app/src/live-voice/live-voice-link.ts b/packages/app/src/live-voice/live-voice-link.ts
-index 069f29764..bdd8dacda 100644
+index 069f297646..bdd8dacda1 100644
 --- a/packages/app/src/live-voice/live-voice-link.ts
 +++ b/packages/app/src/live-voice/live-voice-link.ts
 @@ -5,6 +5,7 @@ import type {
@@ -448,7 +428,7 @@ index 069f29764..bdd8dacda 100644
        return { kind: "wait" };
      }
 diff --git a/packages/app/src/live-voice/live-voice-runtime.ts b/packages/app/src/live-voice/live-voice-runtime.ts
-index f0627c3b6..607fa0918 100644
+index f0627c3b66..607fa09183 100644
 --- a/packages/app/src/live-voice/live-voice-runtime.ts
 +++ b/packages/app/src/live-voice/live-voice-runtime.ts
 @@ -145,14 +145,22 @@ export interface LiveVoiceRuntimeDeps {
@@ -486,7 +466,7 @@ index f0627c3b6..607fa0918 100644
          failStart(serverId, error instanceof LiveVoiceStartError ? error.info : toErrorInfo(error));
        }
 diff --git a/packages/app/src/stores/live-voice-settings-store.ts b/packages/app/src/stores/live-voice-settings-store.ts
-index 0291b2051..407a22344 100644
+index 0291b20519..407a22344f 100644
 --- a/packages/app/src/stores/live-voice-settings-store.ts
 +++ b/packages/app/src/stores/live-voice-settings-store.ts
 @@ -53,6 +53,7 @@ export const MAX_DEFAULT_WORKSPACE_DIRECTORY_LENGTH = 256;
@@ -522,35 +502,10 @@ index 0291b2051..407a22344 100644
        setAmbientAgentGuidance: (guidance) =>
          set({ ambientAgentGuidance: guidance.slice(0, MAX_AMBIENT_AGENT_GUIDANCE_LENGTH) }),
 diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
-index 6a4056b76..6b03aae2f 100644
+index 5920c3afaf..f5b038c46e 100644
 --- a/packages/app/src/stores/session-store.ts
 +++ b/packages/app/src/stores/session-store.ts
-@@ -131,6 +131,7 @@ export interface WorkspaceDescriptor {
-   name: string;
-   title?: string | null;
-   pinnedAt?: string | null;
-+  labels?: string[];
-   snoozeStatus?: { snoozedAt: string; snoozedUntil: string } | null;
-   status: WorkspaceDescriptorPayload["status"];
-   statusEnteredAt: Date | null;
-@@ -174,6 +175,8 @@ export function normalizeWorkspaceDescriptor(
-     name: payload.name,
-     title: payload.title ?? null,
-     pinnedAt: payload.pinnedAt ?? null,
-+    // COMPAT(workspaceLabels): old daemons omit assignments.
-+    labels: payload.labels ?? [],
-     snoozeStatus: payload.snoozeStatus ?? null,
-     status: payload.status,
-     statusEnteredAt,
-@@ -656,6 +659,7 @@ interface SessionStoreActions {
-   // Hydration
-   setHasHydratedAgents: (serverId: string, hydrated: boolean) => void;
-   setHasHydratedWorkspaces: (serverId: string, hydrated: boolean) => void;
-+  setHasWorkspaceDirectorySnapshot: (serverId: string, available: boolean) => void;
- 
-   // Agent directory (derived from agents)
-   getAgentDirectory: (serverId: string) => AgentDirectoryEntry[] | undefined;
-@@ -1944,6 +1948,20 @@ export const useSessionStore = create<SessionStore>()(
+@@ -1962,6 +1962,20 @@ export const useSessionStore = create<SessionStore>()(
          });
        },
  
@@ -571,8 +526,35 @@ index 6a4056b76..6b03aae2f 100644
        // Agent directory - derived from agents (computed on-demand)
        getAgentDirectory: (serverId) => {
          const state = get();
+diff --git a/packages/client/src/daemon-client.ts b/packages/client/src/daemon-client.ts
+index 38e26f99a5..e93c927168 100644
+--- a/packages/client/src/daemon-client.ts
++++ b/packages/client/src/daemon-client.ts
+@@ -42,6 +42,8 @@ import type {
+   FileExplorerResponse,
+   FileVersion,
+   FileWriteResult,
++  FetchAgentsRequestMessage,
++  FetchAgentsResponseMessage,
+   FetchAgentTimelineResponseMessage,
+   AgentForkContextResponseMessage,
+   AgentForkNativeResponseMessage,
+@@ -707,11 +709,8 @@ export interface DaemonPairingOfferOptions {
+   timeout?: number;
+ }
+ type DaemonUpdateResponse = z.infer<typeof DaemonUpdateResponseSchema>;
+-type FetchAgentsPayload = Extract<
+-  SessionOutboundMessage,
+-  { type: "fetch_agents_response" }
+->["payload"];
+-type FetchAgentsRequest = Extract<SessionInboundMessage, { type: "fetch_agents_request" }>;
++type FetchAgentsPayload = FetchAgentsResponseMessage["payload"];
++type FetchAgentsRequest = FetchAgentsRequestMessage;
+ export type FetchAgentsOptions = Omit<FetchAgentsRequest, "type" | "requestId"> & {
+   signal?: AbortSignal;
+   requestId?: string;
 diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
-index e5f3d4500..4d867a21c 100644
+index e5f3d4500d..4d867a21c2 100644
 --- a/packages/server/src/server/daemon-config-store.ts
 +++ b/packages/server/src/server/daemon-config-store.ts
 @@ -1,6 +1,7 @@
@@ -584,10 +566,10 @@ index e5f3d4500..4d867a21c 100644
    saveConfigStack,
    type ConfigStack,
 diff --git a/packages/server/src/server/session.ts b/packages/server/src/server/session.ts
-index f2980dc6e..c502526b9 100644
+index e575a39dee..aa2853f796 100644
 --- a/packages/server/src/server/session.ts
 +++ b/packages/server/src/server/session.ts
-@@ -106,6 +106,7 @@ import {
+@@ -110,6 +110,7 @@ import {
 
  import { AgentManager, AgentRunCancellationError } from "./agent/agent-manager.js";
  import { buildTimelinePromptIndex } from "./agent/timeline-prompt-index.js";
@@ -595,7 +577,7 @@ index f2980dc6e..c502526b9 100644
  import { ProviderSnapshotManager } from "./agent/provider-snapshot-manager.js";
  import type {
    AgentManagerEvent,
-@@ -2756,6 +2757,7 @@ export class Session {
+@@ -2769,6 +2770,7 @@ export class Session {
      );
    }
 

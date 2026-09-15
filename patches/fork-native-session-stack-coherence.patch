@@ -1,0 +1,21 @@
+diff --git a/packages/app/src/screens/new-workspace-screen.tsx b/packages/app/src/screens/new-workspace-screen.tsx
+index a0744ce26b..ff794d7f54 100644
+--- a/packages/app/src/screens/new-workspace-screen.tsx
++++ b/packages/app/src/screens/new-workspace-screen.tsx
+@@ -26,7 +26,6 @@ import {
+ } from "@/composer/attachments/submit";
+ import { dispatchComposerAgentMessage } from "@/composer/actions";
+ import { createMessageSubmissionWriter } from "@/composer/submission/writer";
+-import { encodeImages } from "@/utils/encode-images";
+ import { HostStatusDot } from "@/components/host-status-dot";
+ import { HostPicker } from "@/components/hosts/host-picker";
+ import { ProjectIconView } from "@/components/project-icon-view";
+@@ -2284,7 +2283,7 @@ export function NewWorkspaceScreen({
+             destinationSourceDirectory: selectedSourceDirectory,
+             prompt: payload.text,
+             namingAttachments: getWorkspaceNamingAttachments(forkNamingAttachments),
+-            ensureWorkspace,
++            ensureWorkspace: async (request) => (await ensureWorkspace(request)).workspace,
+             failureMessage: t("message.actions.forkFailed"),
+           });
+           useWorkspaceDraftSubmissionStore.getState().clearDraftSetup({ draftId: draftId ?? "" });

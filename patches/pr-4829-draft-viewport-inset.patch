@@ -1,0 +1,13 @@
+diff --git a/packages/app/src/composer/draft/workspace-tab.tsx b/packages/app/src/composer/draft/workspace-tab.tsx
+index a5db6726e3..bafb2a6e72 100644
+--- a/packages/app/src/composer/draft/workspace-tab.tsx
++++ b/packages/app/src/composer/draft/workspace-tab.tsx
+@@ -656,7 +656,7 @@ export function WorkspaceDraftAgentTab({
+     [composerState.agentControls, handleDropdownCloseFocus, isSubmitting],
+   );
+   return (
+-    <ComposerViewport style={styles.container} bottomInset={insets.bottom}>
++    <ComposerViewport style={styles.container} bottomInset={screenBottomInset}>
+       <FileDropZone style={styles.container}>
+         <View style={styles.contentContainer}>
+           {isSubmitting && draftAgent ? (

@@ -185,6 +185,7 @@ summary = "Stop shipping a hardened runtime on unsigned mac builds"
 [[entry]]
 branch = "mine:fork-native-session"
 summary = "Fork the provider session instead of pasting a summary (rebased from closed PR #2898)"
+fixup = "patches/fork-native-session-stack-coherence.patch"
 
 [[entry]]
 branch = "mine:xdg-paths"
@@ -374,6 +375,7 @@ summary = "Stop a host removed during its first probe from reconnecting"
 [[entry]]
 pr = 4827
 summary = "Keep per-delta stream work bounded by the head instead of the whole timeline"
+fixup = "patches/pr-4827-stream-find-presentation.patch"
 
 [[entry]]
 pr = 4828
@@ -382,6 +384,7 @@ summary = "Refit the terminal once the keyboard settles rather than on every fra
 [[entry]]
 pr = 4829
 summary = "Coalesce native composer keystrokes and narrow attachment garbage collection"
+fixup = "patches/pr-4829-draft-viewport-inset.patch"
 
 [[entry]]
 pr = 4830
@@ -394,6 +397,7 @@ summary = "Overlay pending replica rows on read instead of forcing a persist per
 [[entry]]
 pr = 4832
 summary = "Throttle workspace layout writes and skip no-op persists"
+fixup = "patches/pr-4832-layout-store-test-options.patch"
 
 [[entry]]
 pr = 4833

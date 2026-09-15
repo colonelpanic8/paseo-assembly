@@ -1,0 +1,35 @@
+diff --git a/packages/app/src/stores/workspace-layout-store.test.ts b/packages/app/src/stores/workspace-layout-store.test.ts
+index 909a946531..2c1b7d1d83 100644
+--- a/packages/app/src/stores/workspace-layout-store.test.ts
++++ b/packages/app/src/stores/workspace-layout-store.test.ts
+@@ -78,7 +78,7 @@ const workspaceLayoutIds = createDeterministicWorkspaceLayoutIds();
+ const workspaceLayoutStore = createWorkspaceLayoutStore({ ids: workspaceLayoutIds });
+ 
+ it("observes open chats across unmounted workspaces until their tabs close", () => {
+-  const store = createWorkspaceLayoutStore(workspaceLayoutIds);
++  const store = createWorkspaceLayoutStore({ ids: workspaceLayoutIds });
+   store.setState({ layoutByWorkspace: {} });
+   const received: string[][] = [];
+   const stop = observeOpenWorkspaceAgentIds("server-1", (ids) => received.push(ids), store);
+@@ -1218,7 +1218,9 @@ describe("workspace-layout-store actions", () => {
+           },
+         }),
+       );
+-      const restored = createWorkspaceLayoutStore(createDeterministicWorkspaceLayoutIds());
++      const restored = createWorkspaceLayoutStore({
++        ids: createDeterministicWorkspaceLayoutIds(),
++      });
+       await restored.persist.rehydrate();
+       const state = restored.getState();
+       const layout = state.layoutByWorkspace[workspaceKey];
+@@ -1265,7 +1267,9 @@ describe("workspace-layout-store actions", () => {
+         },
+       }),
+     );
+-    const restored = createWorkspaceLayoutStore(createDeterministicWorkspaceLayoutIds());
++    const restored = createWorkspaceLayoutStore({
++      ids: createDeterministicWorkspaceLayoutIds(),
++    });
+     await restored.persist.rehydrate();
+     const layout = restored.getState().layoutByWorkspace[workspaceKey];
+     expect(collectAllPanes(layout.root).map((pane) => pane.id)).toEqual(["pane_saved_ordinary"]);
