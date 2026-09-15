@@ -48,7 +48,7 @@ if [[ -n "${PASEO_BUILD_COMMIT:-}" ]]; then
     export EXPO_PUBLIC_PASEO_BUILD_REPO_URL="$PASEO_BUILD_REPO_URL"
   fi
 fi
-export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
+export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx2g -XX:MaxMetaspaceSize=768m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
 
 if [[ "$mode" == "all" || "$mode" == "prepare" ]]; then
   cd "$assembled_root"
