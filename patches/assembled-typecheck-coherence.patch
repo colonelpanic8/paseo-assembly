@@ -501,31 +501,6 @@ index 0291b20519..407a22344f 100644
        setAmbientAgentReports: (enabled) => set({ ambientAgentReports: enabled }),
        setAmbientAgentGuidance: (guidance) =>
          set({ ambientAgentGuidance: guidance.slice(0, MAX_AMBIENT_AGENT_GUIDANCE_LENGTH) }),
-diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
-index 5920c3afaf..f5b038c46e 100644
---- a/packages/app/src/stores/session-store.ts
-+++ b/packages/app/src/stores/session-store.ts
-@@ -1962,6 +1962,20 @@ export const useSessionStore = create<SessionStore>()(
-         });
-       },
- 
-+      setHasWorkspaceDirectorySnapshot: (serverId, available) => {
-+        set((prev) => {
-+          const session = prev.sessions[serverId];
-+          if (!session || session.hasWorkspaceDirectorySnapshot === available) return prev;
-+          return {
-+            ...prev,
-+            sessions: {
-+              ...prev.sessions,
-+              [serverId]: { ...session, hasWorkspaceDirectorySnapshot: available },
-+            },
-+          };
-+        });
-+      },
-+
-       // Agent directory - derived from agents (computed on-demand)
-       getAgentDirectory: (serverId) => {
-         const state = get();
 diff --git a/packages/client/src/daemon-client.ts b/packages/client/src/daemon-client.ts
 index 38e26f99a5..e93c927168 100644
 --- a/packages/client/src/daemon-client.ts
