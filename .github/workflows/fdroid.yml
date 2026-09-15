@@ -133,18 +133,6 @@ jobs:
           tar -xf "$RUNNER_TEMP/fdroid-signing.tar" -C "$secret_root"
           chmod 600 "$secret_root/signing.p12" "$secret_root/deploy_ed25519"
 
-      - name: Add Android build swap
-        shell: bash
-        run: |
-          set -euo pipefail
-          swap_file="$RUNNER_TEMP/android-build.swap"
-          sudo fallocate -l 4G "$swap_file"
-          sudo chmod 600 "$swap_file"
-          sudo mkswap "$swap_file"
-          sudo swapon "$swap_file"
-          swapon --show
-          free -h
-
       - name: Prepare source APK build
         env:
           PASEO_APP_VERSION: ${{ steps.assembly.outputs.version_name }}

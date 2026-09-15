@@ -48,7 +48,21 @@ if [[ -n "${PASEO_BUILD_COMMIT:-}" ]]; then
     export EXPO_PUBLIC_PASEO_BUILD_REPO_URL="$PASEO_BUILD_REPO_URL"
   fi
 fi
-export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx2g -XX:MaxMetaspaceSize=768m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
+export GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false'
+
+run_gradle() {
+  "$@" &
+  local gradle_pid=$!
+
+  while kill -0 "$gradle_pid" 2>/dev/null; do
+    sleep 30
+    if kill -0 "$gradle_pid" 2>/dev/null; then
+      echo "Gradle is still running ($(date -u +%FT%TZ))"
+    fi
+  done
+
+  wait "$gradle_pid"
+}
 
 if [[ "$mode" == "all" || "$mode" == "prepare" ]]; then
   cd "$assembled_root"
@@ -74,14 +88,14 @@ gradle_args=(
 )
 
 if [[ "$mode" == "all" || "$mode" == "bundle" ]]; then
-  ./gradlew :app:createBundleReleaseJsAndAssets "${gradle_args[@]}"
+  run_gradle ./gradlew :app:createBundleReleaseJsAndAssets "${gradle_args[@]}"
 fi
 
 if [[ "$mode" == "bundle" ]]; then
   exit 0
 fi
 
-./gradlew :app:assembleRelease "${gradle_args[@]}"
+run_gradle ./gradlew :app:assembleRelease "${gradle_args[@]}"
 
 mapfile -t unsigned_apks < <(
   find app/build/outputs/apk/release -maxdepth 1 -type f -name '*.apk' -print
