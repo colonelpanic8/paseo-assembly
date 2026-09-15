@@ -13,7 +13,7 @@
       "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "fa06376798cb478d5c4d0612ab6714aa3787c45e",
       "assembly-codex-banked-resets": "83dc5f1b84e0072a039c527b032cca124c55d79e",
-      "assembly-fdroid-variant": "0c6aa69204fa63bd20876b2255b139671a575096",
+      "assembly-fdroid-variant": "2b117518d132c290a2989798608d991b5259e5ae",
       "assembly-sidebar-unarchive": "cd835ee9e34ecfc372d6dcf991058c1b6fbfaf65",
       "assembly-workspace-restore": "f1e221af05ddc8c53a1f05ad8a161cdc065b7b85",
       "claude-fable-5-1": "8d52677190d78a2b356d13936d06372302985167",
@@ -30,10 +30,10 @@
       "fix/model-browser-sheet-scope": "9a026d0e97b18eeb17615cd300518fba795d7495",
       "fix/workspace-message-timestamps": "839c00e4c14d9b967889c07f06a4d2f49f22a02a",
       "fork-native-session": "e1fb07cf32458ed11ff316651f4e53d6a81fb1fd",
-      "keyboard-shortcuts-mobile": "8f778f4fad372f16723aaa0597ab7cb48317b78f",
-      "live-voice-context-files": "fddfd3564b2fc8a597e3e7043eb5b89b7e5803d5",
-      "live-voice-quick-launch": "e8935a28d771f4ad0c92b789c7a808f060954d3f",
-      "live-voice-start-sound": "0508e962180c5e4bab647802885e407800a2e473",
+      "keyboard-shortcuts-mobile": "9a3c2b09f1be32dcf011a264ae9c48acb199c525",
+      "live-voice-context-files": "9c7c1e127849929825baa51553934aa44c5fba4f",
+      "live-voice-quick-launch": "3f545a775971fd3c65bbec6ebdf52c123026c547",
+      "live-voice-start-sound": "14e8b410147e0f060678d165414d09a731e65eea",
       "model-picker-search": "6cb82967d6233c3fbb236ea9eb43637f0ff88eb1",
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
@@ -83,7 +83,7 @@
       "unconditional-host-display": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
       "usage-history": "21cb61f87694eb58f666158001705e485eab3eb4",
       "voice-actions": "6c18dcc7f31e2eeaefc1676ca8826415b0de61d0",
-      "watch-live-voice": "b89f71cb573ed85d26df2e5e10eca6633382985b",
+      "watch-live-voice": "008a6d1367e796edd9785b6436648e4b6bb44b80",
       "xdg-paths": "6b0c1c7bd54d4b68821574e7fc0f4b41fbb32439"
     },
     "parents": {
@@ -105,21 +105,21 @@
       }
     },
     "anchors": {
-      "keyboard-shortcuts-mobile": "39ed0e431a93d03a14ec94c4aea0ac8e3e106081",
-      "live-voice-context-files": "fdbf3f3af782032e11cc9f5be7046a2ea41088fd",
-      "live-voice-quick-launch": "66e02628c326e81c32fbc3b7b95e408da9f7931a",
-      "live-voice-start-sound": "bb6b6cb0417c96a6e257642a9c41c518f5be2129",
-      "watch-live-voice": "4ebce00fdd48d298e2039352e0ab42a93c38c14d"
+      "keyboard-shortcuts-mobile": "2c15531ef633eb9e533a73b3d8d4404471bf00b0",
+      "live-voice-context-files": "4c752c28884242a28556aed480b13d80eb17cf0e",
+      "live-voice-quick-launch": "f10887376aae9015fb614ebc5ed4a116669f94fb",
+      "live-voice-start-sound": "e41bfca062280cad921fa11744cfb4c6890047d3",
+      "watch-live-voice": "e289d3bf6d44a0a28f0561ab64ce557197c630d3"
     }
   },
   "build": {
-    "generated": "2026-09-15T06:02:51.732619074+00:00",
+    "generated": "2026-09-15T18:43:36.946026568+00:00",
     "base": "0474c3e0aff0c6116d3d444dcf51e457b8036ba2",
-    "commit": "80852aab85b691158f69f29d77d82c61f511cb0e",
-    "pre_provenance_commit": "80852aab85b691158f69f29d77d82c61f511cb0e",
-    "tree": "017fd70b49a2c2e32beda894a38c5189b8c39fec",
-    "built_tree": "017fd70b49a2c2e32beda894a38c5189b8c39fec",
-    "previous_tree": "0a3c3eed90d9519550a3c9be2a310a19ebe2a90e",
+    "commit": "bdc4d0a85c24adec79b0ab8f00d17fdd21983781",
+    "pre_provenance_commit": "bdc4d0a85c24adec79b0ab8f00d17fdd21983781",
+    "tree": "90ce91c2e538b2f8d833200478db9c30853470e3",
+    "built_tree": "90ce91c2e538b2f8d833200478db9c30853470e3",
+    "previous_tree": "017fd70b49a2c2e32beda894a38c5189b8c39fec",
     "tree_changed": true,
     "conflicts": 40,
     "manifest_entries": [
@@ -146,7 +146,7 @@
         "name": "assembly-fdroid-variant",
         "kind": "branch",
         "source": "mine:assembly-fdroid-variant",
-        "pin": "0c6aa69204fa63bd20876b2255b139671a575096"
+        "pin": "2b117518d132c290a2989798608d991b5259e5ae"
       },
       {
         "name": "personal/sidebar-workflow",
@@ -240,7 +240,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "b89f71cb573ed85d26df2e5e10eca6633382985b",
+        "pin": "008a6d1367e796edd9785b6436648e4b6bb44b80",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -253,7 +253,7 @@
             "pin": "1141022f2bc69775b9be39661fc611535c92babb"
           }
         ],
-        "anchor": "4ebce00fdd48d298e2039352e0ab42a93c38c14d"
+        "anchor": "e289d3bf6d44a0a28f0561ab64ce557197c630d3"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -364,7 +364,7 @@
         "name": "keyboard-shortcuts-mobile",
         "kind": "branch",
         "source": "mine:keyboard-shortcuts-mobile",
-        "pin": "8f778f4fad372f16723aaa0597ab7cb48317b78f",
+        "pin": "9a3c2b09f1be32dcf011a264ae9c48acb199c525",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -373,7 +373,7 @@
             "pin": "0c59bea9c22590bc6032528f3eac4b4270413a75"
           }
         ],
-        "anchor": "39ed0e431a93d03a14ec94c4aea0ac8e3e106081"
+        "anchor": "2c15531ef633eb9e533a73b3d8d4404471bf00b0"
       },
       {
         "name": "touch-sidebar-resize",
@@ -434,7 +434,7 @@
         "name": "live-voice-quick-launch",
         "kind": "branch",
         "source": "mine:live-voice-quick-launch",
-        "pin": "e8935a28d771f4ad0c92b789c7a808f060954d3f",
+        "pin": "3f545a775971fd3c65bbec6ebdf52c123026c547",
         "reconstruction_publish": "mine:live-voice-quick-launch",
         "parents": [
           {
@@ -442,13 +442,13 @@
             "pin": "1141022f2bc69775b9be39661fc611535c92babb"
           }
         ],
-        "anchor": "66e02628c326e81c32fbc3b7b95e408da9f7931a"
+        "anchor": "f10887376aae9015fb614ebc5ed4a116669f94fb"
       },
       {
         "name": "live-voice-context-files",
         "kind": "branch",
         "source": "mine:live-voice-context-files",
-        "pin": "fddfd3564b2fc8a597e3e7043eb5b89b7e5803d5",
+        "pin": "9c7c1e127849929825baa51553934aa44c5fba4f",
         "reconstruction_publish": "mine:live-voice-context-files",
         "parents": [
           {
@@ -456,7 +456,7 @@
             "pin": "1141022f2bc69775b9be39661fc611535c92babb"
           }
         ],
-        "anchor": "fdbf3f3af782032e11cc9f5be7046a2ea41088fd"
+        "anchor": "4c752c28884242a28556aed480b13d80eb17cf0e"
       },
       {
         "name": "colorblind-status-dots",
@@ -588,7 +588,7 @@
         "name": "live-voice-start-sound",
         "kind": "branch",
         "source": "mine:live-voice-start-sound",
-        "pin": "0508e962180c5e4bab647802885e407800a2e473",
+        "pin": "14e8b410147e0f060678d165414d09a731e65eea",
         "reconstruction_publish": "mine:live-voice-start-sound",
         "parents": [
           {
@@ -596,7 +596,7 @@
             "pin": "1141022f2bc69775b9be39661fc611535c92babb"
           }
         ],
-        "anchor": "bb6b6cb0417c96a6e257642a9c41c518f5be2129"
+        "anchor": "e41bfca062280cad921fa11744cfb4c6890047d3"
       },
       {
         "name": "ntfy-push",
@@ -703,7 +703,7 @@
       },
       {
         "name": "assembly-fdroid-variant",
-        "oid": "0c6aa69204fa63bd20876b2255b139671a575096",
+        "oid": "2b117518d132c290a2989798608d991b5259e5ae",
         "status": "merged",
         "conflicted": false
       },
@@ -804,14 +804,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "b89f71cb573ed85d26df2e5e10eca6633382985b",
+        "oid": "008a6d1367e796edd9785b6436648e4b6bb44b80",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "e289d3bf6d44a0a28f0561ab64ce557197c630d3",
-          "tip": "008a6d1367e796edd9785b6436648e4b6bb44b80"
+          "base_tip": "1a661c5184c53ecff8b6f2757d740c36a33a202f",
+          "tip": "715526f2627b953badefe7af92b57a89cd134ebd"
         }
       },
       {
@@ -935,14 +935,14 @@
       },
       {
         "name": "keyboard-shortcuts-mobile",
-        "oid": "8f778f4fad372f16723aaa0597ab7cb48317b78f",
+        "oid": "9a3c2b09f1be32dcf011a264ae9c48acb199c525",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "2c15531ef633eb9e533a73b3d8d4404471bf00b0",
-          "tip": "9a3c2b09f1be32dcf011a264ae9c48acb199c525"
+          "base_tip": "ac92d463942df1f1f15ec68c8565ae84468aaec2",
+          "tip": "8ddd46a24e4546af9895ad6df52308be8816f882"
         }
       },
       {
@@ -1003,23 +1003,23 @@
       },
       {
         "name": "live-voice-quick-launch",
-        "oid": "e8935a28d771f4ad0c92b789c7a808f060954d3f",
+        "oid": "3f545a775971fd3c65bbec6ebdf52c123026c547",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "f10887376aae9015fb614ebc5ed4a116669f94fb",
-          "tip": "3f545a775971fd3c65bbec6ebdf52c123026c547"
+          "base_tip": "7e71f85163e73c217090d74f222a3f1bd8a970e7",
+          "tip": "48dc2793727c9f21b857deefba571365f9dbcca9"
         }
       },
       {
         "name": "live-voice-context-files",
-        "oid": "fddfd3564b2fc8a597e3e7043eb5b89b7e5803d5",
+        "oid": "9c7c1e127849929825baa51553934aa44c5fba4f",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "4c752c28884242a28556aed480b13d80eb17cf0e",
-          "tip": "9c7c1e127849929825baa51553934aa44c5fba4f"
+          "base_tip": "86fefb23fe2c84d518a0590beb2f809dcce3867d",
+          "tip": "e2f280cb9d8957a0a21fb523170374492025cce5"
         }
       },
       {
@@ -1159,12 +1159,12 @@
       },
       {
         "name": "live-voice-start-sound",
-        "oid": "0508e962180c5e4bab647802885e407800a2e473",
+        "oid": "14e8b410147e0f060678d165414d09a731e65eea",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "e41bfca062280cad921fa11744cfb4c6890047d3",
-          "tip": "14e8b410147e0f060678d165414d09a731e65eea"
+          "base_tip": "9128f16b443b4d6072d6164ece11d18160a8a20f",
+          "tip": "741588928a3f555bb2a272e9112182e8a7a08b00"
         }
       },
       {
