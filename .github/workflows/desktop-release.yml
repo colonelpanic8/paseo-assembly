@@ -205,6 +205,9 @@ jobs:
           # electron-builder auto-discover a keychain identity on the runner
           # would only produce an unverifiable signature.
           CSC_IDENTITY_AUTO_DISCOVERY: "false"
+          # Metro's combined desktop bundle now exceeds Node's default 2 GiB
+          # heap on the macOS arm64 runner.
+          NODE_OPTIONS: "--max-old-space-size=6144"
         shell: bash
         run: |
           set -euo pipefail
