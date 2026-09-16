@@ -38,6 +38,7 @@
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
       "ntfy-push": "4b9cc749ea6514e1c852380637861407a6c566b6",
+      "opencode-catalog-revalidate": "569b3c94bfd51206c5093d6241e3b21a619b71cf",
       "perf/explorer-sidebar-resize": "e33604246f8ed09509cf42dee62e33c78b947b84",
       "perf/usage-history-token-fix": "78a9decd796d2ccfbcb6ba45616e0a95248de91c",
       "personal/sidebar-workflow": "da8920502cf4aa1e7b60a6a2f3374c95da4fec34",
@@ -113,13 +114,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-15T18:43:36.946026568+00:00",
+    "generated": "2026-09-16T18:47:26.548098641+00:00",
     "base": "0474c3e0aff0c6116d3d444dcf51e457b8036ba2",
-    "commit": "bdc4d0a85c24adec79b0ab8f00d17fdd21983781",
-    "pre_provenance_commit": "bdc4d0a85c24adec79b0ab8f00d17fdd21983781",
-    "tree": "90ce91c2e538b2f8d833200478db9c30853470e3",
-    "built_tree": "90ce91c2e538b2f8d833200478db9c30853470e3",
-    "previous_tree": "017fd70b49a2c2e32beda894a38c5189b8c39fec",
+    "commit": "41bcefdb7897227f6d119dbf696fa0b71fde2e9f",
+    "pre_provenance_commit": "41bcefdb7897227f6d119dbf696fa0b71fde2e9f",
+    "tree": "923a59e19d31de01b26b3fa2dd10a229515ce360",
+    "built_tree": "923a59e19d31de01b26b3fa2dd10a229515ce360",
+    "previous_tree": "a497762fcd60e2da723195fb4caed69adfac67ba",
     "tree_changed": true,
     "conflicts": 40,
     "manifest_entries": [
@@ -678,6 +679,12 @@
         "kind": "branch",
         "source": "mine:android-intents",
         "pin": "f75ad1de7fbaa49c6c8560a17bb212d2f816fec3"
+      },
+      {
+        "name": "opencode-catalog-revalidate",
+        "kind": "branch",
+        "source": "mine:opencode-catalog-revalidate",
+        "pin": "569b3c94bfd51206c5093d6241e3b21a619b71cf"
       }
     ],
     "results": [
@@ -810,8 +817,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "1a661c5184c53ecff8b6f2757d740c36a33a202f",
-          "tip": "715526f2627b953badefe7af92b57a89cd134ebd"
+          "base_tip": "ea99c57d854ce5519df78f7c93012a3d433b4526",
+          "tip": "5687c0da4170923b13f9e2550378b95906b5157f"
         }
       },
       {
@@ -941,8 +948,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "ac92d463942df1f1f15ec68c8565ae84468aaec2",
-          "tip": "8ddd46a24e4546af9895ad6df52308be8816f882"
+          "base_tip": "de6b8373e6c2ed5da85d2d28d50abaf8f0932f85",
+          "tip": "1ffec56a48b664bd36a4d38b67e861e93a7a0800"
         }
       },
       {
@@ -1007,8 +1014,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "7e71f85163e73c217090d74f222a3f1bd8a970e7",
-          "tip": "48dc2793727c9f21b857deefba571365f9dbcca9"
+          "base_tip": "622965c1e23881860e0bab2862c8bccdae158959",
+          "tip": "0815eee434a6f6ccdc0ee78e2721b2d366457c65"
         }
       },
       {
@@ -1018,8 +1025,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "86fefb23fe2c84d518a0590beb2f809dcce3867d",
-          "tip": "e2f280cb9d8957a0a21fb523170374492025cce5"
+          "base_tip": "ef8ad1537d687e95da5de14ca5667c1441b2e02e",
+          "tip": "97eaed46a3a52bfed1e8a0abfe30073e42514702"
         }
       },
       {
@@ -1163,8 +1170,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "9128f16b443b4d6072d6164ece11d18160a8a20f",
-          "tip": "741588928a3f555bb2a272e9112182e8a7a08b00"
+          "base_tip": "5fbf791984d233da0b363c23b19f1c38e38ed187",
+          "tip": "23de67b2160ae0eeac7c5423e58bbe3b16c423df"
         }
       },
       {
@@ -1252,6 +1259,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "opencode-catalog-revalidate",
+        "oid": "569b3c94bfd51206c5093d6241e3b21a619b71cf",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

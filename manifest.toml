@@ -414,6 +414,9 @@ summary = "Explorer sidebar resize runs on the UI thread; tree rows stop re-rend
 [[entry]]
 branch = "mine:android-intents"
 
+[[entry]]
+branch = "mine:opencode-catalog-revalidate"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
