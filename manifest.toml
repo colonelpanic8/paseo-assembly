@@ -343,8 +343,10 @@ summary = "Shortcut links: default-assistant Live Voice call and one-shot dispat
 # copy of readLiveVoiceHostAvailability/readLiveVoiceAvailability outside every
 # conflict hunk; it duplicates the keyboard repeat helper; live-voice-context-files'
 # start() wrapper swallows the options object, so ?assistant= would reach the
-# runtime as undefined; and the wear snapshot fixtures end up with `assistantId`
-# twice, which does not compile.
+# runtime as undefined; the wear snapshot fixtures end up with `assistantId`
+# twice, which does not compile; and websocket-server.ts constructs the Live
+# Voice coordinator twice, the second time without the configured context
+# profiles, so every profile id the app sent was "unknown".
 fixup = "patches/voice-actions-stack-coherence.patch"
 
 [[entry]]

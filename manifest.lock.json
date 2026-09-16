@@ -114,13 +114,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-16T19:30:57.402831435+00:00",
+    "generated": "2026-09-16T20:24:37.418312924+00:00",
     "base": "0474c3e0aff0c6116d3d444dcf51e457b8036ba2",
-    "commit": "cd3af06f406469220a6f94f8bd6ea0abc2228566",
-    "pre_provenance_commit": "cd3af06f406469220a6f94f8bd6ea0abc2228566",
-    "tree": "5509ea0e3df1b941125e0930c6151d674474f13c",
-    "built_tree": "5509ea0e3df1b941125e0930c6151d674474f13c",
-    "previous_tree": "923a59e19d31de01b26b3fa2dd10a229515ce360",
+    "commit": "cb34334eb4b35681ee08e22764de75024e41afbc",
+    "pre_provenance_commit": "cb34334eb4b35681ee08e22764de75024e41afbc",
+    "tree": "ad54e40ab7961af75020f58ba9cc597f61958f43",
+    "built_tree": "ad54e40ab7961af75020f58ba9cc597f61958f43",
+    "previous_tree": "5509ea0e3df1b941125e0930c6151d674474f13c",
     "tree_changed": true,
     "conflicts": 40,
     "manifest_entries": [
@@ -570,7 +570,7 @@
         "kind": "branch",
         "source": "mine:voice-actions",
         "pin": "6c18dcc7f31e2eeaefc1676ca8826415b0de61d0",
-        "fixup": "4124e58d5b997ddd2806c615c940c37b0ae9de80"
+        "fixup": "9b2341317d1453c9d41fffa29c4304e93576a397"
       },
       {
         "name": "fix/workspace-message-timestamps",
@@ -817,8 +817,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "0a7c8381468171e56d58d73c82c107641369819e",
-          "tip": "8d9d73c79ee4d437bb971658a6277008d3b62299"
+          "base_tip": "78db29e86ddaf39b7a8a1e747140853cac805434",
+          "tip": "14fa4966151967834772d1197e4c1b3cdba4de83"
         }
       },
       {
@@ -948,8 +948,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "08c53885b6281687bfdacf6299f6fec92bc43e70",
-          "tip": "ce8b2125843be3b0d1e8c5e6e6c0d254e7650e19"
+          "base_tip": "5331400dfc6cec6f8ebf2f5f2fcb21277d98e74c",
+          "tip": "9876c5bac5d975ca8b113afb113fe6c3ef8261b1"
         }
       },
       {
@@ -1014,8 +1014,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "5fc510eb9af4c35d6ac7e5728a1f005cbd96fbe4",
-          "tip": "9507459fa519ae83d49846ff97965e76f10ee449"
+          "base_tip": "f850cdfd7c9083998692b346dcf4d7bc229b3ae5",
+          "tip": "120994148dcaaba16e77168b974076412e8d64f3"
         }
       },
       {
@@ -1025,8 +1025,8 @@
         "conflicted": true,
         "resolution": "rerere",
         "derived": {
-          "base_tip": "c806a2f68e938c64cd95205eb9d5f635842c6a90",
-          "tip": "9fc40b57d962089928226287d35bf97da0e770e7"
+          "base_tip": "1f361823715b6d236f7551c8125172172c10d9dc",
+          "tip": "d0b3e723650556713efaf630bd53c69e06a2694f"
         }
       },
       {
@@ -1149,7 +1149,7 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "4124e58d5b997ddd2806c615c940c37b0ae9de80"
+        "fixup": "9b2341317d1453c9d41fffa29c4304e93576a397"
       },
       {
         "name": "fix/workspace-message-timestamps",
@@ -1170,8 +1170,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "6454ddd74733e6e5bf0fed3783cf9a19155308b9",
-          "tip": "67ae23673abfbbfae363ba9058ef5da1eab5b7b2"
+          "base_tip": "b47da053b3e002fb3b81d5ad4dce4bc6d6d7b6d1",
+          "tip": "327920b4a433868ebf8a585417e7fb88ff871ca9"
         }
       },
       {
