@@ -238,11 +238,6 @@ parents = [{ branch = "mine:realtime-voice-actions" }]
 reconstruction_publish = "mine:live-voice-quick-launch"
 
 [[entry]]
-branch = "mine:live-voice-context-files"
-parents = [{ branch = "mine:realtime-voice-actions" }]
-reconstruction_publish = "mine:live-voice-context-files"
-
-[[entry]]
 branch = "mine:colorblind-status-dots"
 summary = "Encode host status in dot shape, not only color, and brighten the dark success dot"
 
@@ -338,15 +333,14 @@ patch = "patches/assembled-current-coherence.patch"
 [[entry]]
 branch = "mine:voice-actions"
 summary = "Shortcut links: default-assistant Live Voice call and one-shot dispatch"
-# Clashes with entries already in the stack that a rerere pair cannot hold:
-# the stack merge re-inserts both the removed worktree-setup callout and a second
-# copy of readLiveVoiceHostAvailability/readLiveVoiceAvailability outside every
-# conflict hunk; it duplicates the keyboard repeat helper; live-voice-context-files'
-# start() wrapper swallows the options object, so ?assistant= would reach the
-# runtime as undefined; the wear snapshot fixtures end up with `assistantId`
-# twice, which does not compile; and websocket-server.ts constructs the Live
-# Voice coordinator twice, the second time without the configured context
-# profiles, so every profile id the app sent was "unknown".
+# Written against the pre-profiles Live Voice API and linear on an old
+# watch-live-voice reconstruction tip, so its stack merge resurrects the
+# deleted assistants/templates modules and none of its own edits to files the
+# profiles rewrite (context, runtime, links, settings, i18n) land. The fixup
+# deletes the resurrected modules, re-applies the shortcut-link and settings
+# work adapted to profiles (`?profile=` instead of `?assistant=`), keeps the
+# wear fixtures on the new snapshot shape, and dedupes the keyboard repeat
+# helper the merge re-inserts outside every conflict hunk.
 fixup = "patches/voice-actions-stack-coherence.patch"
 
 [[entry]]

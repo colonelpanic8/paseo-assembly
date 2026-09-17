@@ -9,7 +9,7 @@
       "assembled-ci-lint-fixes": "e4bed36319e27721adde9a884ad471c9e892afbc",
       "assembled-current-coherence": "76f779ef9b4db2eb38b47eccc8bf6b49c7a70a69",
       "assembled-npm-deps-hash": "e01e7196b66f83ad8ad6f37a75719741640f5b70",
-      "assembled-typecheck-coherence": "f9fcd31178f9656f831a29bbd4a1f2dffa31134f",
+      "assembled-typecheck-coherence": "44d85c50ad8aa39d1f7b91555574ad274a3f9e7c",
       "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "fa06376798cb478d5c4d0612ab6714aa3787c45e",
       "assembly-codex-banked-resets": "83dc5f1b84e0072a039c527b032cca124c55d79e",
@@ -31,9 +31,8 @@
       "fix/workspace-message-timestamps": "839c00e4c14d9b967889c07f06a4d2f49f22a02a",
       "fork-native-session": "e1fb07cf32458ed11ff316651f4e53d6a81fb1fd",
       "keyboard-shortcuts-mobile": "9a3c2b09f1be32dcf011a264ae9c48acb199c525",
-      "live-voice-context-files": "9c7c1e127849929825baa51553934aa44c5fba4f",
-      "live-voice-quick-launch": "3f545a775971fd3c65bbec6ebdf52c123026c547",
-      "live-voice-start-sound": "14e8b410147e0f060678d165414d09a731e65eea",
+      "live-voice-quick-launch": "120994148dcaaba16e77168b974076412e8d64f3",
+      "live-voice-start-sound": "327920b4a433868ebf8a585417e7fb88ff871ca9",
       "model-picker-search": "6cb82967d6233c3fbb236ea9eb43637f0ff88eb1",
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
@@ -84,44 +83,40 @@
       "unconditional-host-display": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
       "usage-history": "92eabc80882556c3cc45b845f03f303040f068a3",
       "voice-actions": "6c18dcc7f31e2eeaefc1676ca8826415b0de61d0",
-      "watch-live-voice": "008a6d1367e796edd9785b6436648e4b6bb44b80",
+      "watch-live-voice": "14fa4966151967834772d1197e4c1b3cdba4de83",
       "xdg-paths": "6b0c1c7bd54d4b68821574e7fc0f4b41fbb32439"
     },
     "parents": {
       "keyboard-shortcuts-mobile": {
         "extend-cn-cp-omni-menu": "0c59bea9c22590bc6032528f3eac4b4270413a75"
       },
-      "live-voice-context-files": {
-        "realtime-voice-actions": "1141022f2bc69775b9be39661fc611535c92babb"
-      },
       "live-voice-quick-launch": {
-        "realtime-voice-actions": "1141022f2bc69775b9be39661fc611535c92babb"
+        "realtime-voice-actions": "67ad3851036c1ba696c99dc009227165b34431de"
       },
       "live-voice-start-sound": {
-        "realtime-voice-actions": "1141022f2bc69775b9be39661fc611535c92babb"
+        "realtime-voice-actions": "67ad3851036c1ba696c99dc009227165b34431de"
       },
       "watch-live-voice": {
         "pr-2655": "5d517c8ed9239088cb4153ff299e2e651a0334bf",
-        "realtime-voice-actions": "1141022f2bc69775b9be39661fc611535c92babb"
+        "realtime-voice-actions": "67ad3851036c1ba696c99dc009227165b34431de"
       }
     },
     "anchors": {
       "keyboard-shortcuts-mobile": "2c15531ef633eb9e533a73b3d8d4404471bf00b0",
-      "live-voice-context-files": "4c752c28884242a28556aed480b13d80eb17cf0e",
-      "live-voice-quick-launch": "f10887376aae9015fb614ebc5ed4a116669f94fb",
-      "live-voice-start-sound": "e41bfca062280cad921fa11744cfb4c6890047d3",
-      "watch-live-voice": "e289d3bf6d44a0a28f0561ab64ce557197c630d3"
+      "live-voice-quick-launch": "f850cdfd7c9083998692b346dcf4d7bc229b3ae5",
+      "live-voice-start-sound": "b47da053b3e002fb3b81d5ad4dce4bc6d6d7b6d1",
+      "watch-live-voice": "78db29e86ddaf39b7a8a1e747140853cac805434"
     }
   },
   "build": {
-    "generated": "2026-09-16T20:24:37.418312924+00:00",
+    "generated": "2026-09-17T00:32:42.898603085+00:00",
     "base": "0474c3e0aff0c6116d3d444dcf51e457b8036ba2",
-    "commit": "cb34334eb4b35681ee08e22764de75024e41afbc",
-    "pre_provenance_commit": "cb34334eb4b35681ee08e22764de75024e41afbc",
-    "tree": "ad54e40ab7961af75020f58ba9cc597f61958f43",
-    "built_tree": "ad54e40ab7961af75020f58ba9cc597f61958f43",
-    "previous_tree": "5509ea0e3df1b941125e0930c6151d674474f13c",
-    "tree_changed": true,
+    "commit": "08e6a7341110cc4c055dcf8b74bb7ddf2250791f",
+    "pre_provenance_commit": "08e6a7341110cc4c055dcf8b74bb7ddf2250791f",
+    "tree": "aa6faf8d001ac29f520b481e0f23a5c978c61c01",
+    "built_tree": "aa6faf8d001ac29f520b481e0f23a5c978c61c01",
+    "previous_tree": "aa6faf8d001ac29f520b481e0f23a5c978c61c01",
+    "tree_changed": false,
     "conflicts": 40,
     "manifest_entries": [
       {
@@ -241,7 +236,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "008a6d1367e796edd9785b6436648e4b6bb44b80",
+        "pin": "14fa4966151967834772d1197e4c1b3cdba4de83",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -251,10 +246,10 @@
           },
           {
             "source": "mine:realtime-voice-actions",
-            "pin": "1141022f2bc69775b9be39661fc611535c92babb"
+            "pin": "67ad3851036c1ba696c99dc009227165b34431de"
           }
         ],
-        "anchor": "e289d3bf6d44a0a28f0561ab64ce557197c630d3"
+        "anchor": "78db29e86ddaf39b7a8a1e747140853cac805434"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -435,29 +430,15 @@
         "name": "live-voice-quick-launch",
         "kind": "branch",
         "source": "mine:live-voice-quick-launch",
-        "pin": "3f545a775971fd3c65bbec6ebdf52c123026c547",
+        "pin": "120994148dcaaba16e77168b974076412e8d64f3",
         "reconstruction_publish": "mine:live-voice-quick-launch",
         "parents": [
           {
             "source": "mine:realtime-voice-actions",
-            "pin": "1141022f2bc69775b9be39661fc611535c92babb"
+            "pin": "67ad3851036c1ba696c99dc009227165b34431de"
           }
         ],
-        "anchor": "f10887376aae9015fb614ebc5ed4a116669f94fb"
-      },
-      {
-        "name": "live-voice-context-files",
-        "kind": "branch",
-        "source": "mine:live-voice-context-files",
-        "pin": "9c7c1e127849929825baa51553934aa44c5fba4f",
-        "reconstruction_publish": "mine:live-voice-context-files",
-        "parents": [
-          {
-            "source": "mine:realtime-voice-actions",
-            "pin": "1141022f2bc69775b9be39661fc611535c92babb"
-          }
-        ],
-        "anchor": "4c752c28884242a28556aed480b13d80eb17cf0e"
+        "anchor": "f850cdfd7c9083998692b346dcf4d7bc229b3ae5"
       },
       {
         "name": "colorblind-status-dots",
@@ -570,7 +551,7 @@
         "kind": "branch",
         "source": "mine:voice-actions",
         "pin": "6c18dcc7f31e2eeaefc1676ca8826415b0de61d0",
-        "fixup": "9b2341317d1453c9d41fffa29c4304e93576a397"
+        "fixup": "8ca2ccf4f4d7872fb358791503e1154d257198fd"
       },
       {
         "name": "fix/workspace-message-timestamps",
@@ -583,21 +564,21 @@
         "name": "assembled-typecheck-coherence",
         "kind": "patch",
         "source": "patches/assembled-typecheck-coherence.patch",
-        "pin": "f9fcd31178f9656f831a29bbd4a1f2dffa31134f"
+        "pin": "44d85c50ad8aa39d1f7b91555574ad274a3f9e7c"
       },
       {
         "name": "live-voice-start-sound",
         "kind": "branch",
         "source": "mine:live-voice-start-sound",
-        "pin": "14e8b410147e0f060678d165414d09a731e65eea",
+        "pin": "327920b4a433868ebf8a585417e7fb88ff871ca9",
         "reconstruction_publish": "mine:live-voice-start-sound",
         "parents": [
           {
             "source": "mine:realtime-voice-actions",
-            "pin": "1141022f2bc69775b9be39661fc611535c92babb"
+            "pin": "67ad3851036c1ba696c99dc009227165b34431de"
           }
         ],
-        "anchor": "e41bfca062280cad921fa11744cfb4c6890047d3"
+        "anchor": "b47da053b3e002fb3b81d5ad4dce4bc6d6d7b6d1"
       },
       {
         "name": "ntfy-push",
@@ -811,14 +792,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "008a6d1367e796edd9785b6436648e4b6bb44b80",
+        "oid": "14fa4966151967834772d1197e4c1b3cdba4de83",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "78db29e86ddaf39b7a8a1e747140853cac805434",
-          "tip": "14fa4966151967834772d1197e4c1b3cdba4de83"
+          "base_tip": "def50988ea6ad35e458af88727dadf39384ca3a3",
+          "tip": "41e56de53ebfe86ad5f5e11f24bad031b441047b"
         }
       },
       {
@@ -948,8 +929,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "5331400dfc6cec6f8ebf2f5f2fcb21277d98e74c",
-          "tip": "9876c5bac5d975ca8b113afb113fe6c3ef8261b1"
+          "base_tip": "73ec9a61e70e0f030eecb1a0640253dc27bd345d",
+          "tip": "14b56a10172161a84523122db2e9d666ee3e189a"
         }
       },
       {
@@ -1010,23 +991,12 @@
       },
       {
         "name": "live-voice-quick-launch",
-        "oid": "3f545a775971fd3c65bbec6ebdf52c123026c547",
+        "oid": "120994148dcaaba16e77168b974076412e8d64f3",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "f850cdfd7c9083998692b346dcf4d7bc229b3ae5",
-          "tip": "120994148dcaaba16e77168b974076412e8d64f3"
-        }
-      },
-      {
-        "name": "live-voice-context-files",
-        "oid": "9c7c1e127849929825baa51553934aa44c5fba4f",
-        "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere",
-        "derived": {
-          "base_tip": "1f361823715b6d236f7551c8125172172c10d9dc",
-          "tip": "d0b3e723650556713efaf630bd53c69e06a2694f"
+          "base_tip": "efcdea50ecc659f79969f2918a334cb1a685ee65",
+          "tip": "135dbe780ab51ef208f72e03a3aff93dea8b49fd"
         }
       },
       {
@@ -1149,7 +1119,7 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "9b2341317d1453c9d41fffa29c4304e93576a397"
+        "fixup": "8ca2ccf4f4d7872fb358791503e1154d257198fd"
       },
       {
         "name": "fix/workspace-message-timestamps",
@@ -1160,18 +1130,18 @@
       },
       {
         "name": "assembled-typecheck-coherence",
-        "oid": "f9fcd31178f9656f831a29bbd4a1f2dffa31134f",
+        "oid": "44d85c50ad8aa39d1f7b91555574ad274a3f9e7c",
         "status": "applied",
         "conflicted": false
       },
       {
         "name": "live-voice-start-sound",
-        "oid": "14e8b410147e0f060678d165414d09a731e65eea",
+        "oid": "327920b4a433868ebf8a585417e7fb88ff871ca9",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "b47da053b3e002fb3b81d5ad4dce4bc6d6d7b6d1",
-          "tip": "327920b4a433868ebf8a585417e7fb88ff871ca9"
+          "base_tip": "576bd38972453620a5e3a939d18f9596a441ad3a",
+          "tip": "36e74d1de9efed92c820a7cb663eafa32d34293d"
         }
       },
       {
