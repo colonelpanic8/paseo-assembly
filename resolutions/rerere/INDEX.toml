@@ -3895,6 +3895,12 @@ recorded = "2026-09-10T06:09:33.401099365+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "83d770cb122c3620aa927b71e3e69b8fed083bc2"
+paths = ["packages/app/src/live-voice/live-voice-surfaces.test.tsx"]
+recorded = "2026-09-18T11:47:28.792301314+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "849736c1053754914caa6009b14ea3da05a1d264"
 paths = ["packages/app/src/runtime/host-runtime.ts"]
 recorded = "2026-09-13T01:43:39.476710153+00:00"
@@ -3988,6 +3994,12 @@ entry = "voice-actions"
 hash = "a14d78c8d0964fdae2d2ade95a8d641d088d5976"
 paths = ["packages/server/src/server/authorization/operation-permissions.ts"]
 recorded = "2026-09-16T22:13:50.076898550+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "a48f3988b0527599c58e2912719749760731a98e"
+paths = ["packages/app/src/live-voice/live-voice-strip.tsx"]
+recorded = "2026-09-18T11:47:28.792307432+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -4474,3 +4486,9 @@ entry = "xdg-paths"
 hash = "ca1c014683fcfd2192b660286da76b36ceca48fb"
 paths = ["packages/desktop/src/daemon/daemon-manager.test.ts"]
 recorded = "2026-09-13T01:02:53.035739366+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
+hash = "d5b77c77aa830bae92cd5e28e7a162d57d2d9f72"
+paths = ["packages/cli/src/commands/onboard.ts"]
+recorded = "2026-09-18T11:41:34.354711553+00:00"
