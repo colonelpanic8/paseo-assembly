@@ -11,9 +11,9 @@ index 6ea3847a1..811842a1d 100644
    python3,
    makeWrapper,
 @@ -81,6 +82,17 @@ buildNpmPackage rec {
-
+ 
    nodejs = nodejs_22;
-
+ 
 +  # Keep the fixed-output npm cache reproducible: the pinned fetcher writes
 +  # duplicate package entries in parallel when this lockfile is expanded.
 +  npmDeps = fetchNpmDeps {
@@ -28,57 +28,18 @@ index 6ea3847a1..811842a1d 100644
    # Default hash lives in nix/npm-deps.hash (see arg default above).
    # CI auto-updates that file when package-lock.json changes (see .github/workflows/).
    inherit npmDepsHash;
-diff --git a/packages/app/src/agent-stream/find-bar.tsx b/packages/app/src/agent-stream/find-bar.tsx
-index 3e7733d61..ebd1f7999 100644
---- a/packages/app/src/agent-stream/find-bar.tsx
-+++ b/packages/app/src/agent-stream/find-bar.tsx
-@@ -1,6 +1,7 @@
- import { ChevronDown, ChevronUp, X } from "lucide-react-native";
- import { useCallback, useEffect, useRef } from "react";
- import { useTranslation } from "react-i18next";
-+/* oxlint-disable no-restricted-imports */
- import {
-   Pressable,
-   Text,
-@@ -10,6 +11,7 @@ import {
-   type PressableStateCallbackType,
-   type TextInputKeyPressEventData,
- } from "react-native";
-+/* oxlint-enable no-restricted-imports */
- import { StyleSheet, withUnistyles } from "react-native-unistyles";
- import { isWeb } from "@/constants/platform";
- import type { Theme } from "@/styles/theme";
 diff --git a/packages/app/src/components/combined-model-selector.tsx b/packages/app/src/components/combined-model-selector.tsx
-index 7aa992f21..fa66c69ca 100644
+index 2e8087a2e..883716ab4 100644
 --- a/packages/app/src/components/combined-model-selector.tsx
 +++ b/packages/app/src/components/combined-model-selector.tsx
-@@ -68,6 +68,7 @@ interface CombinedModelSelectorProps {
+@@ -70,6 +70,7 @@ interface CombinedModelSelectorProps {
    onOpenChange?: (open: boolean) => void;
  }
-
+ 
 +// oxlint-disable-next-line complexity
  export function CombinedModelSelector({
    providers,
    selectedProvider,
-diff --git a/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx b/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx
-index c0ba41ede..4982516f7 100644
---- a/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx
-+++ b/packages/app/src/components/sidebar/sidebar-workspace-inline-title.tsx
-@@ -1,5 +1,6 @@
- import { useCallback, useEffect, useRef, useState } from "react";
- import { useTranslation } from "react-i18next";
-+/* oxlint-disable no-restricted-imports */
- import {
-   Text,
-   TextInput,
-@@ -10,6 +11,7 @@ import {
-   type TextInputKeyPressEventData,
-   type TextStyle,
- } from "react-native";
-+/* oxlint-enable no-restricted-imports */
- import { StyleSheet } from "react-native-unistyles";
- import { isWeb } from "@/constants/platform";
- import { useToast } from "@/contexts/toast-context";
 diff --git a/packages/app/src/composer/agent-controls/index.tsx b/packages/app/src/composer/agent-controls/index.tsx
 index c16043547..7129836ae 100644
 --- a/packages/app/src/composer/agent-controls/index.tsx
@@ -86,7 +47,7 @@ index c16043547..7129836ae 100644
 @@ -519,6 +519,58 @@ function buildOpenChangeHandler(
    };
  }
-
+ 
 +function handleComposerKeyboardAction(
 +  action: KeyboardActionDefinition,
 +  options: {
@@ -144,7 +105,7 @@ index c16043547..7129836ae 100644
    providerOptions,
 @@ -778,30 +830,19 @@ function ControlledAgentControls({
    );
-
+ 
    const handleKeyboardAction = useCallback(
 -    (action: KeyboardActionDefinition): boolean => {
 -      if (disabled || !isActiveComposer) return false;
@@ -186,31 +147,8 @@ index c16043547..7129836ae 100644
      [
        canSelectModel,
        canSelectThinking,
-diff --git a/packages/app/src/create-agent-preferences/storage.ts b/packages/app/src/create-agent-preferences/storage.ts
-index 40857bc26..ea74d5476 100644
---- a/packages/app/src/create-agent-preferences/storage.ts
-+++ b/packages/app/src/create-agent-preferences/storage.ts
-@@ -1,6 +1,5 @@
- import { layeredSettingsStorage } from "@/storage/settings-seed";
- import { readValidatedJson } from "@/storage/validated-storage";
--import { layeredSettingsStorage } from "@/storage/settings-seed";
- import {
-   FormPreferencesSchema,
-   StoredFormPreferencesSchema,
-diff --git a/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts b/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts
-index 4d3a51138..c5ecf39dd 100644
---- a/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts
-+++ b/packages/app/src/hooks/use-keyboard-shortcut-overrides.ts
-@@ -6,7 +6,6 @@ import {
-   createShortcutOverrideStore,
-   type ShortcutOverrideStore,
- } from "@/keyboard/shortcut-override-store";
--import { layeredSettingsStorage } from "@/storage/settings-seed";
- import { readValidatedJson } from "@/storage/validated-storage";
-
- const STORAGE_KEY = "@paseo:keyboard-shortcut-overrides";
 diff --git a/packages/app/src/keyboard/keyboard-shortcuts.ts b/packages/app/src/keyboard/keyboard-shortcuts.ts
-index 77482b15e..3c2a18993 100644
+index 0f1be320a..93fa80737 100644
 --- a/packages/app/src/keyboard/keyboard-shortcuts.ts
 +++ b/packages/app/src/keyboard/keyboard-shortcuts.ts
 @@ -169,6 +169,7 @@ export const SHORTCUT_HELP_ROW_ORDER: Record<ShortcutSectionId, readonly string[
@@ -221,7 +159,7 @@ index 77482b15e..3c2a18993 100644
      "pin-workspace",
      "archive-workspace",
    ],
-@@ -383,6 +383,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -379,6 +380,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "toggle-workspace-isolation",
        section: "workspaces",
        label: "Toggle workspace isolation",
@@ -229,7 +167,7 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -394,6 +395,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -390,6 +392,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "select-starting-ref",
        section: "workspaces",
        label: "Select starting ref",
@@ -237,15 +175,15 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -405,6 +407,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -401,6 +404,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "select-host",
        section: "workspaces",
        label: "Select host",
 +      keys: ["alt", "H"],
      },
    },
-
-@@ -418,6 +421,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+ 
+@@ -414,6 +418,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "select-model",
        section: "agent-input",
        label: "Select model",
@@ -253,7 +191,7 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -429,6 +433,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -425,6 +430,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "select-thinking",
        section: "agent-input",
        label: "Select thinking effort",
@@ -261,7 +199,7 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -440,6 +445,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -436,6 +442,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "select-agent-mode",
        section: "agent-input",
        label: "Select agent mode",
@@ -269,7 +207,7 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -452,6 +458,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -448,6 +455,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "toggle-fast-mode",
        section: "agent-input",
        label: "Toggle fast mode",
@@ -277,15 +215,15 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -464,6 +471,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -460,6 +468,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "toggle-plan-mode",
        section: "agent-input",
        label: "Toggle plan mode",
 +      keys: ["alt", "P"],
      },
    },
-
-@@ -852,7 +860,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+ 
+@@ -850,7 +859,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
      when: { commandCenter: false, editable: false, terminal: false },
      help: {
        id: "workspace-next-ready-waiting",
@@ -294,7 +232,7 @@ index 77482b15e..3c2a18993 100644
        label: "Next ready/waiting workspace",
        keys: ["alt", "R"],
      },
-@@ -1465,6 +1473,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -1417,6 +1426,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "live-voice-mute-toggle",
        section: "agent-input",
        label: "Mute/unmute live voice",
@@ -302,15 +240,15 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -1477,6 +1486,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -1429,6 +1439,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        id: "live-voice-mute-toggle",
        section: "agent-input",
        label: "Mute/unmute live voice",
 +      keys: ["mod", "shift", "M"],
      },
    },
-
-@@ -1495,6 +1505,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+ 
+@@ -1447,6 +1458,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        section: "agent-input",
        label: "Hold to invert live voice mute",
        note: "Push-to-talk while muted, push-to-mute while live.",
@@ -318,7 +256,7 @@ index 77482b15e..3c2a18993 100644
      },
    },
    {
-@@ -1508,6 +1519,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
+@@ -1460,6 +1472,7 @@ const SHORTCUT_BINDINGS: readonly ShortcutBinding[] = [
        section: "agent-input",
        label: "Hold to invert live voice mute",
        note: "Push-to-talk while muted, push-to-mute while live.",
@@ -327,10 +265,10 @@ index 77482b15e..3c2a18993 100644
    },
  ];
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
-index 37a06b410..4473c903a 100644
+index 9b2e785e8..cf7e2dd92 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
 +++ b/packages/app/src/runtime/host-runtime.test.ts
-@@ -3939,7 +3939,9 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -4191,7 +4191,9 @@ describe("HostRuntimeStore managed host bootstrap", () => {
          .map((host) => host.label)
          .sort(),
      ).toEqual(["Mac mini", "Ryzen"]);
@@ -342,25 +280,25 @@ index 37a06b410..4473c903a 100644
        Ryzen: "blue",
      });
 diff --git a/packages/app/src/runtime/replica-cache/index.ts b/packages/app/src/runtime/replica-cache/index.ts
-index 1da5b8561..60f34d9c0 100644
+index 0489e9e74..2d50b62f3 100644
 --- a/packages/app/src/runtime/replica-cache/index.ts
 +++ b/packages/app/src/runtime/replica-cache/index.ts
-@@ -496,6 +496,7 @@ function serializeLastFailure(agent: Agent) {
+@@ -606,6 +606,7 @@ function serializeAgentFailure(agent: Agent) {
    return agent.lastFailure ? { lastFailure: agent.lastFailure } : {};
  }
-
+ 
 +// oxlint-disable-next-line complexity
  function serializeAgent(agent: Agent): StoredAgent {
    const snapshot = {
      id: agent.id,
 diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
-index 6f0c60c1e..da6461d34 100644
+index 7791cf3d6..9e642a908 100644
 --- a/packages/app/src/stores/session-store.ts
 +++ b/packages/app/src/stores/session-store.ts
-@@ -718,25 +718,8 @@ function createInitialSessionState(
+@@ -709,25 +709,8 @@ function createInitialSessionState(
    };
  }
-
+ 
 -function areServerCapabilitiesEqual(
 -  current: ServerCapabilities | undefined,
 -  next: ServerCapabilities | undefined,
@@ -383,9 +321,9 @@ index 6f0c60c1e..da6461d34 100644
 +function normalizeServerInfoString(value: string | null | undefined): string | null {
 +  return value?.trim() || null;
  }
-
+ 
  function isSessionServerInfoUnchanged(input: {
-@@ -760,18 +743,27 @@ function isSessionServerInfoUnchanged(input: {
+@@ -751,18 +734,27 @@ function isSessionServerInfoUnchanged(input: {
      nextCapabilities,
      nextFeatures,
    } = input;
@@ -423,17 +361,17 @@ index 6f0c60c1e..da6461d34 100644
 +    })
    );
  }
-
+ 
 diff --git a/packages/server/src/server/bootstrap-auth.test.ts b/packages/server/src/server/bootstrap-auth.test.ts
 index 8c5b4eb83..20884bdca 100644
 --- a/packages/server/src/server/bootstrap-auth.test.ts
 +++ b/packages/server/src/server/bootstrap-auth.test.ts
 @@ -3,7 +3,6 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
-
+ 
  import { hashDaemonPassword } from "./auth.js";
  import { createTestPaseoDaemon } from "./test-utils/paseo-daemon.js";
 -import { hashDaemonPassword } from "./auth.js";
-
+ 
  const originalEnv = { ...process.env };
  const CORRECT_PASSWORD_HASH = "$2b$12$OLxyuuP9uLK30Uzc4wQX0O6liuU/Q1t5P2b0Ebf36mULvpVK3DRZW";
 diff --git a/packages/server/src/server/bootstrap-provider-availability.test.ts b/packages/server/src/server/bootstrap-provider-availability.test.ts
@@ -459,19 +397,19 @@ index be431e0dc..850fe2ece 100644
      const paseoHome = path.join(root, ".paseo");
      const staticDir = path.join(root, "static");
 diff --git a/packages/server/src/server/bootstrap.ts b/packages/server/src/server/bootstrap.ts
-index 49698f5ad..c2e9b1fee 100644
+index fa5cbc43d..d92f4e4f1 100644
 --- a/packages/server/src/server/bootstrap.ts
 +++ b/packages/server/src/server/bootstrap.ts
-@@ -601,6 +601,7 @@ function startAgentPurposeSummaryService(
+@@ -611,6 +611,7 @@ function startAgentPurposeSummaryService(
    return service;
  }
-
+ 
 +// oxlint-disable-next-line complexity
  export async function createPaseoDaemon(
    config: PaseoDaemonConfig,
    rootLogger: Logger,
 diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
-index 7aaf186b9..7551d7f4e 100644
+index 01450ef10..2a7f29e5e 100644
 --- a/packages/server/src/server/daemon-config-store.ts
 +++ b/packages/server/src/server/daemon-config-store.ts
 @@ -1,7 +1,6 @@
@@ -485,7 +423,7 @@ index 7aaf186b9..7551d7f4e 100644
 @@ -242,6 +241,7 @@ function compactOwnedPaths(paths: readonly string[], owners: readonly string[]):
    return Array.from(compacted).sort();
  }
-
+ 
 +// oxlint-disable-next-line complexity
  function pickSupportedPatchFields(patch: MutableDaemonConfigPatch): SupportedMutableConfigPatch {
    return {
@@ -513,13 +451,13 @@ index 84f6cc767..09716d60e 100644
    );
  }
 diff --git a/packages/server/src/server/websocket-server.ts b/packages/server/src/server/websocket-server.ts
-index b43b54a76..e56d80ee0 100644
+index d6e350030..f7bc3b72a 100644
 --- a/packages/server/src/server/websocket-server.ts
 +++ b/packages/server/src/server/websocket-server.ts
-@@ -676,6 +676,7 @@ export class VoiceAssistantWebSocketServer {
+@@ -652,6 +652,7 @@ export class VoiceAssistantWebSocketServer {
      }
    }
-
+ 
 +  // oxlint-disable-next-line complexity
    constructor(
      server: HTTPServer,

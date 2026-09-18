@@ -392,6 +392,12 @@ paths = ["packages/server/src/server/agent/agent-manager.ts"]
 recorded = "2026-08-03T20:23:05.555569029+00:00"
 
 [[resolution]]
+entry = "agent-purpose-summaries"
+hash = "7a37ab9d047a4dfd5e9846509b2aa8dbe28844cf"
+paths = ["packages/app/src/components/agent-list.tsx"]
+recorded = "2026-09-18T10:58:06.462876304+00:00"
+
+[[resolution]]
 entry = "agent/live-voice-completion-notifications"
 hash = "cc7235a7d0416b7988c3b16772a1f39d4f025742"
 paths = ["packages/server/src/server/agent/agent-projections.ts"]
@@ -533,7 +539,7 @@ recorded = "2026-09-07T20:23:44.925421834+00:00"
 entry = "assembly-sidebar-unarchive"
 hash = "1947f57d3f724f877ff4971e902361958e04dab0"
 paths = ["packages/app/src/components/agent-list.tsx"]
-recorded = "2026-09-07T20:23:44.925422676+00:00"
+recorded = "2026-09-18T11:08:54.945239580+00:00"
 
 [[resolution]]
 entry = "assembly-sidebar-unarchive"
@@ -844,6 +850,24 @@ entry = "fix/workspace-message-timestamps"
 hash = "d337c5cbaa5c0876c67ccea1b7b91297417ff938"
 paths = ["packages/server/src/server/agent/agent-manager.ts"]
 recorded = "2026-09-10T00:57:24.472332819+00:00"
+
+[[resolution]]
+entry = "host/default-color"
+hash = "7c647a6de224eb025eca16fb230cdb02d48e2f48"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-09-18T11:09:05.104453566+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
+hash = "0328b27e05c8504f1c372050c1024270f07cc0fc"
+paths = ["packages/app/app.config.js"]
+recorded = "2026-09-18T11:06:03.063104141+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
+hash = "c28cb7787845bd78d93ecb2129269f28967b0c7a"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-18T11:06:18.160954547+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
@@ -1396,6 +1420,12 @@ entry = "ntfy-push"
 hash = "18874f22a7f6242cabd9ce52d20ce88ce03ac034"
 paths = ["packages/server/src/server/daemon-config-store.ts"]
 recorded = "2026-09-13T04:08:17.209604120+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "39d359d3d681df76907f09483d5438c61df6d481"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-09-18T11:09:40.216226473+00:00"
 
 [[resolution]]
 entry = "ntfy-push"
@@ -2032,12 +2062,6 @@ entry = "pr-2658"
 hash = "7a34963b4677e65eff72a55b4a82fe998cf00433"
 paths = ["docs/data-model.md"]
 recorded = "2026-08-02T18:48:38.010432848+00:00"
-
-[[resolution]]
-entry = "pr-2658"
-hash = "7a37ab9d047a4dfd5e9846509b2aa8dbe28844cf"
-paths = ["packages/app/src/components/agent-list.tsx"]
-recorded = "2026-08-09T01:22:19.124057400+00:00"
 
 [[resolution]]
 entry = "pr-2658"
@@ -3588,6 +3612,12 @@ paths = ["packages/app/src/stores/session-store.ts"]
 recorded = "2026-09-14T09:17:18.562760961+00:00"
 
 [[resolution]]
+entry = "t3code-4453"
+hash = "21519d71bfd6e2e7dbe749fa107e2c44048c97c7"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-18T10:57:56.291000856+00:00"
+
+[[resolution]]
 entry = "thinking-control-reachability"
 hash = "430d4acd7331ccc082b99d008f86a0b12ef34cef"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
@@ -4423,9 +4453,21 @@ recorded = "2026-08-05T01:40:02.544281551+00:00"
 
 [[resolution]]
 entry = "xdg-paths"
+hash = "37580e191dbc63245e89b2b2c085ac76d1fd7b4e"
+paths = ["packages/server/src/server/daemon-instance.ts"]
+recorded = "2026-09-18T11:02:56.223474188+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
 hash = "4ccb6aeb81165489d8cdf868497d29c7fa79de27"
 paths = ["packages/desktop/src/daemon/daemon-manager.ts"]
 recorded = "2026-09-13T01:02:53.035731571+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
+hash = "acc11836b7ffd0ae209d2af812d6e540e1920296"
+paths = ["packages/desktop/src/daemon/daemon-manager.test.ts"]
+recorded = "2026-09-18T11:02:56.223481857+00:00"
 
 [[resolution]]
 entry = "xdg-paths"
