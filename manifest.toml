@@ -413,6 +413,13 @@ branch = "mine:android-intents"
 [[entry]]
 branch = "mine:opencode-catalog-revalidate"
 
+# Upstream PR 5046, replayed onto the pinned base. The PR head is cut from
+# 0.9.0-beta.2 main, so a pr entry would advance the base 35 commits inside one
+# step; the branch carries the same single commit on this base instead.
+[[entry]]
+branch = "mine:fix/sidebar-mouse-click-arm"
+summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on Android (upstream PR 5046)"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
@@ -467,3 +474,7 @@ reason = "carried by mine:usage-history; the closed PR head is frozen and cannot
 [[exclude]]
 pr = 4834
 reason = "open PR #4834; its handler relocation into useStableEvent collides with the assembly's evolved keydown body (isDesktopBindings, prompt-control chords, releaseHeldShortcut). Re-admit once the move is redone on top of those topics."
+
+[[exclude]]
+pr = 5046
+reason = "carried as mine:fix/sidebar-mouse-click-arm: the same commit replayed onto the pinned base, because the PR head is cut from 0.9.0-beta.2 main and a pr entry would advance the base 35 commits inside one step; switch back to the PR once the base catches up"

@@ -28,11 +28,12 @@
       "fix/codex-sqlite-init": "0c8ec797a5ec7c8b4133a65897145be86f1feef4",
       "fix/draft-tab-inflight-create": "d660233439171fb913b4f82ef9941628c711b585",
       "fix/model-browser-sheet-scope": "9a026d0e97b18eeb17615cd300518fba795d7495",
+      "fix/sidebar-mouse-click-arm": "dec43a485f1566fbc26b0968130b39e18c2890e1",
       "fix/workspace-message-timestamps": "839c00e4c14d9b967889c07f06a4d2f49f22a02a",
       "fork-native-session": "e1fb07cf32458ed11ff316651f4e53d6a81fb1fd",
-      "keyboard-shortcuts-mobile": "9a3c2b09f1be32dcf011a264ae9c48acb199c525",
-      "live-voice-quick-launch": "120994148dcaaba16e77168b974076412e8d64f3",
-      "live-voice-start-sound": "327920b4a433868ebf8a585417e7fb88ff871ca9",
+      "keyboard-shortcuts-mobile": "25ac7175e008f1150fe8d64ec7c57443e18e0d8c",
+      "live-voice-quick-launch": "8bfa37e128da75ebf0b868c2385801a9f95f2c02",
+      "live-voice-start-sound": "fa5c940e631c17dc66db85e705e8314da3d9a1ce",
       "model-picker-search": "6cb82967d6233c3fbb236ea9eb43637f0ff88eb1",
       "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
@@ -83,7 +84,7 @@
       "unconditional-host-display": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
       "usage-history": "92eabc80882556c3cc45b845f03f303040f068a3",
       "voice-actions": "6c18dcc7f31e2eeaefc1676ca8826415b0de61d0",
-      "watch-live-voice": "14fa4966151967834772d1197e4c1b3cdba4de83",
+      "watch-live-voice": "fe77c0d3920a5bea50d94862a05d361c56ca1d91",
       "xdg-paths": "6b0c1c7bd54d4b68821574e7fc0f4b41fbb32439"
     },
     "parents": {
@@ -102,22 +103,22 @@
       }
     },
     "anchors": {
-      "keyboard-shortcuts-mobile": "2c15531ef633eb9e533a73b3d8d4404471bf00b0",
-      "live-voice-quick-launch": "f850cdfd7c9083998692b346dcf4d7bc229b3ae5",
-      "live-voice-start-sound": "b47da053b3e002fb3b81d5ad4dce4bc6d6d7b6d1",
-      "watch-live-voice": "78db29e86ddaf39b7a8a1e747140853cac805434"
+      "keyboard-shortcuts-mobile": "acd8b7b046ba2a75390a1bb1ebe7c0e3692f854f",
+      "live-voice-quick-launch": "4c2e9b767c9c709c41addd9d43882522ffd35fbd",
+      "live-voice-start-sound": "673af4c39518b3630b67ed0d5f3c8515bfde96d2",
+      "watch-live-voice": "c404574d20c0f0f15cdfa04d32bafd18bc06472e"
     }
   },
   "build": {
-    "generated": "2026-09-17T06:41:08.881998988+00:00",
+    "generated": "2026-09-18T10:07:44.016083839+00:00",
     "base": "0474c3e0aff0c6116d3d444dcf51e457b8036ba2",
-    "commit": "584d1f8a2e7da7a0324573474e5408e117ca24fc",
-    "pre_provenance_commit": "584d1f8a2e7da7a0324573474e5408e117ca24fc",
-    "tree": "11e395b489135e25744ae8a00ae6eef0d04dfc1a",
-    "built_tree": "11e395b489135e25744ae8a00ae6eef0d04dfc1a",
-    "previous_tree": "aa6faf8d001ac29f520b481e0f23a5c978c61c01",
+    "commit": "b619715b9bfe84e79cb88142b994bd9410b73b1c",
+    "pre_provenance_commit": "b619715b9bfe84e79cb88142b994bd9410b73b1c",
+    "tree": "af7135d698179f81c16f3a1156f8f9a1bbcfb020",
+    "built_tree": "af7135d698179f81c16f3a1156f8f9a1bbcfb020",
+    "previous_tree": "11e395b489135e25744ae8a00ae6eef0d04dfc1a",
     "tree_changed": true,
-    "conflicts": 40,
+    "conflicts": 39,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -236,7 +237,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "14fa4966151967834772d1197e4c1b3cdba4de83",
+        "pin": "fe77c0d3920a5bea50d94862a05d361c56ca1d91",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -249,7 +250,7 @@
             "pin": "67ad3851036c1ba696c99dc009227165b34431de"
           }
         ],
-        "anchor": "78db29e86ddaf39b7a8a1e747140853cac805434"
+        "anchor": "c404574d20c0f0f15cdfa04d32bafd18bc06472e"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -360,7 +361,7 @@
         "name": "keyboard-shortcuts-mobile",
         "kind": "branch",
         "source": "mine:keyboard-shortcuts-mobile",
-        "pin": "9a3c2b09f1be32dcf011a264ae9c48acb199c525",
+        "pin": "25ac7175e008f1150fe8d64ec7c57443e18e0d8c",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -369,7 +370,7 @@
             "pin": "0c59bea9c22590bc6032528f3eac4b4270413a75"
           }
         ],
-        "anchor": "2c15531ef633eb9e533a73b3d8d4404471bf00b0"
+        "anchor": "acd8b7b046ba2a75390a1bb1ebe7c0e3692f854f"
       },
       {
         "name": "touch-sidebar-resize",
@@ -430,7 +431,7 @@
         "name": "live-voice-quick-launch",
         "kind": "branch",
         "source": "mine:live-voice-quick-launch",
-        "pin": "120994148dcaaba16e77168b974076412e8d64f3",
+        "pin": "8bfa37e128da75ebf0b868c2385801a9f95f2c02",
         "reconstruction_publish": "mine:live-voice-quick-launch",
         "parents": [
           {
@@ -438,7 +439,7 @@
             "pin": "67ad3851036c1ba696c99dc009227165b34431de"
           }
         ],
-        "anchor": "f850cdfd7c9083998692b346dcf4d7bc229b3ae5"
+        "anchor": "4c2e9b767c9c709c41addd9d43882522ffd35fbd"
       },
       {
         "name": "colorblind-status-dots",
@@ -570,7 +571,7 @@
         "name": "live-voice-start-sound",
         "kind": "branch",
         "source": "mine:live-voice-start-sound",
-        "pin": "327920b4a433868ebf8a585417e7fb88ff871ca9",
+        "pin": "fa5c940e631c17dc66db85e705e8314da3d9a1ce",
         "reconstruction_publish": "mine:live-voice-start-sound",
         "parents": [
           {
@@ -578,7 +579,7 @@
             "pin": "67ad3851036c1ba696c99dc009227165b34431de"
           }
         ],
-        "anchor": "b47da053b3e002fb3b81d5ad4dce4bc6d6d7b6d1"
+        "anchor": "673af4c39518b3630b67ed0d5f3c8515bfde96d2"
       },
       {
         "name": "ntfy-push",
@@ -666,6 +667,12 @@
         "kind": "branch",
         "source": "mine:opencode-catalog-revalidate",
         "pin": "569b3c94bfd51206c5093d6241e3b21a619b71cf"
+      },
+      {
+        "name": "fix/sidebar-mouse-click-arm",
+        "kind": "branch",
+        "source": "mine:fix/sidebar-mouse-click-arm",
+        "pin": "dec43a485f1566fbc26b0968130b39e18c2890e1"
       }
     ],
     "results": [
@@ -792,14 +799,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "14fa4966151967834772d1197e4c1b3cdba4de83",
+        "oid": "fe77c0d3920a5bea50d94862a05d361c56ca1d91",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "c404574d20c0f0f15cdfa04d32bafd18bc06472e",
-          "tip": "fe77c0d3920a5bea50d94862a05d361c56ca1d91"
+          "base_tip": "17a6d5db456c0a94c28a30b36798d74cd53b5490",
+          "tip": "252843b5900e0a5d9cbac67da4e8c8da07993021"
         }
       },
       {
@@ -923,14 +930,14 @@
       },
       {
         "name": "keyboard-shortcuts-mobile",
-        "oid": "9a3c2b09f1be32dcf011a264ae9c48acb199c525",
+        "oid": "25ac7175e008f1150fe8d64ec7c57443e18e0d8c",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "acd8b7b046ba2a75390a1bb1ebe7c0e3692f854f",
-          "tip": "25ac7175e008f1150fe8d64ec7c57443e18e0d8c"
+          "base_tip": "48691b5da2268155f717b0f7cb15653fb894d0ad",
+          "tip": "5745f268e60d7cdcf10d960bab36926bd3e50301"
         }
       },
       {
@@ -991,12 +998,12 @@
       },
       {
         "name": "live-voice-quick-launch",
-        "oid": "120994148dcaaba16e77168b974076412e8d64f3",
+        "oid": "8bfa37e128da75ebf0b868c2385801a9f95f2c02",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "4c2e9b767c9c709c41addd9d43882522ffd35fbd",
-          "tip": "8bfa37e128da75ebf0b868c2385801a9f95f2c02"
+          "base_tip": "6d4e74922e7792ae57383d78358762e025e1eb81",
+          "tip": "3ce389f10444271a7481ea33b4babc7f9a6869e1"
         }
       },
       {
@@ -1136,12 +1143,12 @@
       },
       {
         "name": "live-voice-start-sound",
-        "oid": "327920b4a433868ebf8a585417e7fb88ff871ca9",
+        "oid": "fa5c940e631c17dc66db85e705e8314da3d9a1ce",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "673af4c39518b3630b67ed0d5f3c8515bfde96d2",
-          "tip": "fa5c940e631c17dc66db85e705e8314da3d9a1ce"
+          "base_tip": "e42856682a581b10402eb59e54541402434a2954",
+          "tip": "b182cbbe3e4de26a4b29c2a111ec3563fb8489ef"
         }
       },
       {
@@ -1233,6 +1240,12 @@
       {
         "name": "opencode-catalog-revalidate",
         "oid": "569b3c94bfd51206c5093d6241e3b21a619b71cf",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "fix/sidebar-mouse-click-arm",
+        "oid": "dec43a485f1566fbc26b0968130b39e18c2890e1",
         "status": "merged",
         "conflicted": false
       }
