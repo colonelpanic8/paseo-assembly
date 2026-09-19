@@ -386,7 +386,6 @@ summary = "Overlay pending replica rows on read instead of forcing a persist per
 [[entry]]
 pr = 4832
 summary = "Throttle workspace layout writes and skip no-op persists"
-fixup = "patches/pr-4832-layout-store-test-options.patch"
 
 [[entry]]
 pr = 4833

@@ -69,10 +69,10 @@
       "pr-4826": "124f64fb0134bc3306e118282463a41db2e8f568",
       "pr-4827": "677026bd3a99b5b6fcab2aca7c106fd4d7a2f66d",
       "pr-4828": "79c46b41148136e19e21698bc9a40f60141894e8",
-      "pr-4829": "028bd4182c4fa5393e40c7649a520980439d91f6",
-      "pr-4830": "38b5abe8cd970977670d2f6a4faa63650afee1ab",
+      "pr-4829": "46a2967f8db13fc5988dc2a15995a1d6d3f13846",
+      "pr-4830": "6dbc0695a9b596d737ef26285d6227008e8c20fa",
       "pr-4831": "067669abdc896501dc27ede65fe7e21e85e69caf",
-      "pr-4832": "9cc7a19b5f03204379cea3513702de3d070b8ccb",
+      "pr-4832": "ae02936cb27255872b9b09acc976dc130082625e",
       "pr-4833": "0f4e81ac17b42635abd6727312e3ecdbf42bd7d8",
       "prompt-cache-status": "83b96ba2e078a3bd7ce17a8f3ae6804c195524a5",
       "skill-pills-config": "99f3a1d6f2cf30af65778562a98e398f883f113f",
@@ -109,13 +109,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-18T22:48:57.539442669+00:00",
+    "generated": "2026-09-19T01:16:03.988025812+00:00",
     "base": "d636abd7a4ce302e7ccb9eb6074f637c6dd4d83b",
-    "commit": "e7ecaea203ac414b0821cd6b075eb28c87850e25",
-    "pre_provenance_commit": "e7ecaea203ac414b0821cd6b075eb28c87850e25",
-    "tree": "fd2478b7bec44e96392c1d101a12df925cde21c8",
-    "built_tree": "fd2478b7bec44e96392c1d101a12df925cde21c8",
-    "previous_tree": "e4ae2f33e8da571f6e7309676f6f8d2e9719f88a",
+    "commit": "2f654c7b047e8f345f1db277adbb677077569edb",
+    "pre_provenance_commit": "2f654c7b047e8f345f1db277adbb677077569edb",
+    "tree": "0209f722fb4b2ccf95c5c3e5d91209715f96f6a6",
+    "built_tree": "0209f722fb4b2ccf95c5c3e5d91209715f96f6a6",
+    "previous_tree": "fd2478b7bec44e96392c1d101a12df925cde21c8",
     "tree_changed": true,
     "conflicts": 41,
     "manifest_entries": [
@@ -607,13 +607,13 @@
         "name": "pr-4829",
         "kind": "pr",
         "source": "upstream#4829",
-        "pin": "028bd4182c4fa5393e40c7649a520980439d91f6"
+        "pin": "46a2967f8db13fc5988dc2a15995a1d6d3f13846"
       },
       {
         "name": "pr-4830",
         "kind": "pr",
         "source": "upstream#4830",
-        "pin": "38b5abe8cd970977670d2f6a4faa63650afee1ab"
+        "pin": "6dbc0695a9b596d737ef26285d6227008e8c20fa"
       },
       {
         "name": "pr-4831",
@@ -625,8 +625,7 @@
         "name": "pr-4832",
         "kind": "pr",
         "source": "upstream#4832",
-        "pin": "9cc7a19b5f03204379cea3513702de3d070b8ccb",
-        "fixup": "602d2945e65fae5328a4a7cb3c010b0c4bfc5088"
+        "pin": "ae02936cb27255872b9b09acc976dc130082625e"
       },
       {
         "name": "pr-4833",
@@ -787,8 +786,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "cbdd24248c5c19087ed416f6fabe96a8335d78d6",
-          "tip": "9cc0ee6f85caceb489ce2112f5354e81d671e1df"
+          "base_tip": "13dbff5b07e6ff411b3b5122fd8066dffdb3087e",
+          "tip": "d7d9143846bd2743a4edf2f4e9d56adc6283358a"
         }
       },
       {
@@ -918,8 +917,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "23477e35ccca5a25aa1dc94fdcb495a957e1bb30",
-          "tip": "dfc64aace79b877369db8cff7c6590f2a8681420"
+          "base_tip": "e96fc7bfb12718f39eadfa5ba3eb3303618ae3e4",
+          "tip": "9bdc0980d1b52168983a7fbaa04f3233836fc29c"
         }
       },
       {
@@ -984,8 +983,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "f6e89c4f53a52cedfa5aa99a02ccc9bbff4ae1e1",
-          "tip": "03fd2956382c623bb93cb873ef824e2c5b74ccab"
+          "base_tip": "12e850201d8b101871542adfcc01f0b4ebe4e5f7",
+          "tip": "c6630f11a60219c611b61c2a67ce372b1b9fd39e"
         }
       },
       {
@@ -1131,8 +1130,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "7ba52bd9a8b346e0a7758a6f2e81fa77ef98a60a",
-          "tip": "664311a1fc6037b45c11d9d5ab1c793f6c6d6007"
+          "base_tip": "ce5fcb7c173f98243e9e64df473af58bf178d653",
+          "tip": "8726937eb8999e85f2e9996fbaa2bf3c90e77ab8"
         }
       },
       {
@@ -1169,14 +1168,14 @@
       },
       {
         "name": "pr-4829",
-        "oid": "028bd4182c4fa5393e40c7649a520980439d91f6",
+        "oid": "46a2967f8db13fc5988dc2a15995a1d6d3f13846",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "pr-4830",
-        "oid": "38b5abe8cd970977670d2f6a4faa63650afee1ab",
+        "oid": "6dbc0695a9b596d737ef26285d6227008e8c20fa",
         "status": "merged",
         "conflicted": false
       },
@@ -1188,10 +1187,9 @@
       },
       {
         "name": "pr-4832",
-        "oid": "9cc7a19b5f03204379cea3513702de3d070b8ccb",
+        "oid": "ae02936cb27255872b9b09acc976dc130082625e",
         "status": "merged",
-        "conflicted": false,
-        "fixup": "602d2945e65fae5328a4a7cb3c010b0c4bfc5088"
+        "conflicted": false
       },
       {
         "name": "pr-4833",
