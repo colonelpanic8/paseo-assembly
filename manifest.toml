@@ -22,8 +22,8 @@ pr = 2520
 summary = "Add managed desktop host enrollment"
 
 [[entry]]
-pr = 2521
-summary = "Add shortcut for next workspace needing attention"
+branch = "mine:next-ready-thread"
+summary = "Add shortcut for next workspace needing attention; track the live branch because closed PR #2521 has a frozen head"
 fixup = "patches/sidebar-project-view-shortcut-targets.patch"
 
 [[entry]]
@@ -137,7 +137,8 @@ branch = "mine:unconditional-host-display"
 summary = "Add host display and custom color preferences (rebased from closed PR #2843)"
 
 [[entry]]
-pr = 2845
+branch = "mine:agent/configurable-direct-model-shortcuts"
+summary = "Add configurable direct model shortcuts; track the live branch because closed PR #2845 has a frozen head"
 
 [[entry]]
 branch = "mine:daemon-config-imports"
@@ -486,3 +487,11 @@ reason = "carried by mine:host/default-color; the closed PR head is frozen and c
 [[exclude]]
 pr = 2629
 reason = "superseded by upstream ChatFind (merged PRs 4765 and 4991), which searches the whole chat history rather than the loaded session; carrying both would put two find bars in one build"
+
+[[exclude]]
+pr = 2521
+reason = "carried by mine:next-ready-thread; the closed PR head is frozen at 643d03bc0b1e and cannot receive the fixture repair its own test needs against the current base"
+
+[[exclude]]
+pr = 2845
+reason = "carried by mine:agent/configurable-direct-model-shortcuts; the closed PR head is frozen at 220765d52b84 and cannot receive the browser-capture test repair the Live Voice bindings require"

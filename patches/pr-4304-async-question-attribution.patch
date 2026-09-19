@@ -20,3 +20,25 @@ index cc8aea645..44370e953 100644
        this.stampActiveTurnAttribution(timelineItem);
        this.emitEvent({
          type: "timeline",
+diff --git a/packages/app/src/types/stream.ts b/packages/app/src/types/stream.ts
+--- a/packages/app/src/types/stream.ts
++++ b/packages/app/src/types/stream.ts
+@@ -1053,7 +1053,17 @@
+   }
+ 
+   if (chunk === "" && messageId !== undefined) {
+-    return applyAssistantAttribution(state, messageId, attributionFields, questionsPatch);
++    const attributed = applyAssistantAttribution(
++      state,
++      messageId,
++      attributionFields,
++      questionsPatch,
++    );
++    // An empty frame that only carries questions has no row to attribute yet, and the
++    // questions still have to appear.
++    if (attributed !== state || !hasQuestions) {
++      return attributed;
++    }
+   }
+ 
+   if (!hasAssistantDisplayContent(hasContent, hasQuestions)) {

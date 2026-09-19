@@ -5,6 +5,7 @@
     "entries": {
       "agent-environment-setup": "308b867698478e21e8567cdda62f8fcbbdd34f8e",
       "agent-purpose-summaries": "2dbfdc00180216016b1bd694d8692991f529a54a",
+      "agent/configurable-direct-model-shortcuts": "d007525e12fd74f7338be92904cdb962e0638b86",
       "agent/nix-android": "878fdab6dc5e03427af624c83ed8d8a0eab7e670",
       "android-intents": "0382785d8cb44fd131d7482c6d6c188d72a3512c",
       "assembled-ci-lint-fixes": "dca6be753358923871420876b8ba7a50de84b4e0",
@@ -27,7 +28,7 @@
       "disable-worktree-setup-callout": "32ec3263413021b0b43566c2c2128af0983aeb15",
       "dismiss-failed-state": "4ec41acece691b4117670181bbf4a570890a763c",
       "fix/codex-sqlite-init": "0c8ec797a5ec7c8b4133a65897145be86f1feef4",
-      "fix/draft-tab-inflight-create": "d660233439171fb913b4f82ef9941628c711b585",
+      "fix/draft-tab-inflight-create": "3285e695aaca8c681ba3b9bfc4602f01c247f9f5",
       "fix/model-browser-sheet-scope": "9a026d0e97b18eeb17615cd300518fba795d7495",
       "fix/sidebar-mouse-click-arm": "dec43a485f1566fbc26b0968130b39e18c2890e1",
       "fix/workspace-message-timestamps": "8d6c9c3c5fdcd3e3b13c2adf6d4278d344f12892",
@@ -37,23 +38,22 @@
       "live-voice-quick-launch": "7301bf8cbc01277e8ae7c601ce4583722fc63c32",
       "live-voice-start-sound": "e50981d7ee96a9ef8fd71ce8c428ab085812496e",
       "model-picker-search": "6cb82967d6233c3fbb236ea9eb43637f0ff88eb1",
-      "monospaced-mobile-styling": "464a20e65a88da371df62e7602911c1933190a7a",
+      "monospaced-mobile-styling": "10b48108c700fc1f4965b1aa355c4ee796e0ff41",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
+      "next-ready-thread": "ae7d3641f6656428622b765cc3b0002695cc5662",
       "ntfy-push": "922471cd9c282cdf6a992424885714efc8639993",
       "opencode-catalog-revalidate": "569b3c94bfd51206c5093d6241e3b21a619b71cf",
       "perf/explorer-sidebar-resize": "e33604246f8ed09509cf42dee62e33c78b947b84",
       "perf/usage-history-token-fix": "24bf97e19e7c848fc1f5442e295e0d258b02bdb4",
-      "personal/sidebar-workflow": "b34783458303f18757856899c44da9fb532bd60e",
+      "personal/sidebar-workflow": "affe9dab4fda815302d1362061fcf8da48838c11",
       "pr-2517": "238714e0ad45d4da86b73d890c556ee0d8baf9cb",
       "pr-2520": "bdae463b7dd22ff47f78ecb49fb67979976ac616",
-      "pr-2521": "643d03bc0b1e00d3afa03691a81d68c293d167cf",
       "pr-2650": "c22fde493d28ec2c9e2e5a924e8aef989f3415c5",
       "pr-2659": "396b5b776eda51ee4d8e4bdd6052eaecd57389fa",
       "pr-2730": "3373afdc8e9b164ef507f6ad61ade709c4126dd9",
       "pr-2772": "de4a2323e86e58a4e8f6373673f35d91102c5c9b",
       "pr-2784": "04f24b57577e9dcb7b329650f02158d365abc851",
       "pr-2820": "723487feab36f3eaf4011e2939e8c5f319b04039",
-      "pr-2845": "220765d52b840d3243eb93b29cdb900abec35721",
       "pr-2873": "60cc6407cd36a8089c2d2180763dc515db10a591",
       "pr-2883": "b91952bbe8f888bf5e9144074604c896b29f3856",
       "pr-2884": "479951217face4d3b7624dda9ab62d3ac1907104",
@@ -80,7 +80,7 @@
       "thinking-control-reachability": "6bd82b6bf49782da6772468ed74a8f2643d28e09",
       "touch-sidebar-resize": "92ca57c478a88d1fb4906877c050caa43e10d6b1",
       "unarchive-threads": "93e2396bbcf8916031de8e9e2d51c2ea16bccc5a",
-      "unconditional-host-display": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
+      "unconditional-host-display": "989747dc66cee184e76e2b03477a87ab1f2e4a55",
       "usage-history": "92eabc80882556c3cc45b845f03f303040f068a3",
       "voice-actions": "8c70d8326ede80784bf39556c44cdfe5d141405c",
       "watch-live-voice": "920d1b30ce263892833e37c60caa38e7067e63ae",
@@ -109,13 +109,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-19T01:16:03.988025812+00:00",
+    "generated": "2026-09-19T01:46:12.254864215+00:00",
     "base": "d636abd7a4ce302e7ccb9eb6074f637c6dd4d83b",
-    "commit": "2f654c7b047e8f345f1db277adbb677077569edb",
-    "pre_provenance_commit": "2f654c7b047e8f345f1db277adbb677077569edb",
-    "tree": "0209f722fb4b2ccf95c5c3e5d91209715f96f6a6",
-    "built_tree": "0209f722fb4b2ccf95c5c3e5d91209715f96f6a6",
-    "previous_tree": "fd2478b7bec44e96392c1d101a12df925cde21c8",
+    "commit": "768505ca557787a7395f49628a2123505b9acdfd",
+    "pre_provenance_commit": "768505ca557787a7395f49628a2123505b9acdfd",
+    "tree": "9f37ada13ec159929b5587cf68152a6f98f93cb1",
+    "built_tree": "9f37ada13ec159929b5587cf68152a6f98f93cb1",
+    "previous_tree": "0209f722fb4b2ccf95c5c3e5d91209715f96f6a6",
     "tree_changed": true,
     "conflicts": 41,
     "manifest_entries": [
@@ -132,10 +132,10 @@
         "pin": "bdae463b7dd22ff47f78ecb49fb67979976ac616"
       },
       {
-        "name": "pr-2521",
-        "kind": "pr",
-        "source": "upstream#2521",
-        "pin": "643d03bc0b1e00d3afa03691a81d68c293d167cf",
+        "name": "next-ready-thread",
+        "kind": "branch",
+        "source": "mine:next-ready-thread",
+        "pin": "ae7d3641f6656428622b765cc3b0002695cc5662",
         "fixup": "587cc52150cc8eecf4eca297523dbe146619b85c"
       },
       {
@@ -148,7 +148,7 @@
         "name": "personal/sidebar-workflow",
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
-        "pin": "b34783458303f18757856899c44da9fb532bd60e",
+        "pin": "affe9dab4fda815302d1362061fcf8da48838c11",
         "fixup": "4cf329590985982d8256fadec84162c121bcf7ad"
       },
       {
@@ -180,7 +180,7 @@
         "name": "monospaced-mobile-styling",
         "kind": "branch",
         "source": "mine:monospaced-mobile-styling",
-        "pin": "464a20e65a88da371df62e7602911c1933190a7a"
+        "pin": "10b48108c700fc1f4965b1aa355c4ee796e0ff41"
       },
       {
         "name": "t3code-4453",
@@ -285,13 +285,13 @@
         "name": "unconditional-host-display",
         "kind": "branch",
         "source": "mine:unconditional-host-display",
-        "pin": "7d2375b7efe46b1ab72d3a6688fea9f08692d443"
+        "pin": "989747dc66cee184e76e2b03477a87ab1f2e4a55"
       },
       {
-        "name": "pr-2845",
-        "kind": "pr",
-        "source": "upstream#2845",
-        "pin": "220765d52b840d3243eb93b29cdb900abec35721"
+        "name": "agent/configurable-direct-model-shortcuts",
+        "kind": "branch",
+        "source": "mine:agent/configurable-direct-model-shortcuts",
+        "pin": "d007525e12fd74f7338be92904cdb962e0638b86"
       },
       {
         "name": "daemon-config-imports",
@@ -479,7 +479,7 @@
         "name": "fix/draft-tab-inflight-create",
         "kind": "branch",
         "source": "mine:fix/draft-tab-inflight-create",
-        "pin": "d660233439171fb913b4f82ef9941628c711b585"
+        "pin": "3285e695aaca8c681ba3b9bfc4602f01c247f9f5"
       },
       {
         "name": "pr-4281",
@@ -492,7 +492,7 @@
         "kind": "branch",
         "source": "mine:codex-astra-support",
         "pin": "d5082b51544c66054fcdc83b717b1aeb62517e9c",
-        "fixup": "c2b2d99b24928f38eb3dc82ac93089f6e55c5cb0"
+        "fixup": "f5cda90bdda3ba377d098d8f5f2f54a413d30761"
       },
       {
         "name": "prompt-cache-status",
@@ -678,8 +678,8 @@
         "conflicted": false
       },
       {
-        "name": "pr-2521",
-        "oid": "643d03bc0b1e00d3afa03691a81d68c293d167cf",
+        "name": "next-ready-thread",
+        "oid": "ae7d3641f6656428622b765cc3b0002695cc5662",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -693,7 +693,7 @@
       },
       {
         "name": "personal/sidebar-workflow",
-        "oid": "b34783458303f18757856899c44da9fb532bd60e",
+        "oid": "affe9dab4fda815302d1362061fcf8da48838c11",
         "status": "merged",
         "conflicted": false,
         "fixup": "4cf329590985982d8256fadec84162c121bcf7ad"
@@ -728,7 +728,7 @@
       },
       {
         "name": "monospaced-mobile-styling",
-        "oid": "464a20e65a88da371df62e7602911c1933190a7a",
+        "oid": "10b48108c700fc1f4965b1aa355c4ee796e0ff41",
         "status": "merged",
         "conflicted": false
       },
@@ -786,8 +786,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "13dbff5b07e6ff411b3b5122fd8066dffdb3087e",
-          "tip": "d7d9143846bd2743a4edf2f4e9d56adc6283358a"
+          "base_tip": "430136807f18cd202722654e04f0164dd26bc14b",
+          "tip": "36faaee788f6b43eff322d81eb7c1727381b2ee4"
         }
       },
       {
@@ -833,14 +833,14 @@
       },
       {
         "name": "unconditional-host-display",
-        "oid": "7d2375b7efe46b1ab72d3a6688fea9f08692d443",
+        "oid": "989747dc66cee184e76e2b03477a87ab1f2e4a55",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
-        "name": "pr-2845",
-        "oid": "220765d52b840d3243eb93b29cdb900abec35721",
+        "name": "agent/configurable-direct-model-shortcuts",
+        "oid": "d007525e12fd74f7338be92904cdb962e0638b86",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -917,8 +917,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "e96fc7bfb12718f39eadfa5ba3eb3303618ae3e4",
-          "tip": "9bdc0980d1b52168983a7fbaa04f3233836fc29c"
+          "base_tip": "bc74801f364f0e9d4fc3ba011511a79ed3f1ffe8",
+          "tip": "0ba3e14b42e9d5fac7f56a1290e71b464f1292ae"
         }
       },
       {
@@ -983,8 +983,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "12e850201d8b101871542adfcc01f0b4ebe4e5f7",
-          "tip": "c6630f11a60219c611b61c2a67ce372b1b9fd39e"
+          "base_tip": "6bd5279d946780c833c4ea8392a9729599b80b56",
+          "tip": "f3fe643fba59eca4be49c25a71c6d49fd0d4fce3"
         }
       },
       {
@@ -1033,7 +1033,7 @@
       },
       {
         "name": "fix/draft-tab-inflight-create",
-        "oid": "d660233439171fb913b4f82ef9941628c711b585",
+        "oid": "3285e695aaca8c681ba3b9bfc4602f01c247f9f5",
         "status": "merged",
         "conflicted": false
       },
@@ -1049,7 +1049,7 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "c2b2d99b24928f38eb3dc82ac93089f6e55c5cb0"
+        "fixup": "f5cda90bdda3ba377d098d8f5f2f54a413d30761"
       },
       {
         "name": "prompt-cache-status",
@@ -1130,8 +1130,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "ce5fcb7c173f98243e9e64df473af58bf178d653",
-          "tip": "8726937eb8999e85f2e9996fbaa2bf3c90e77ab8"
+          "base_tip": "fd3af1df8552a68a1029bd22e7a17b3709ebfc92",
+          "tip": "90ae39e4f99ff4cf376924dd6f9760bbb9a40bdd"
         }
       },
       {
