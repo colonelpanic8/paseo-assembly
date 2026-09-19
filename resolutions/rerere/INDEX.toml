@@ -429,6 +429,18 @@ recorded = "2026-09-15T05:18:13.429039868+00:00"
 
 [[resolution]]
 entry = "android-intents"
+hash = "a76663f84e07b3f03d5d6fe468d7aba427fdb18e"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-19T23:52:15.925865188+00:00"
+
+[[resolution]]
+entry = "android-intents"
+hash = "f219c7e01608d5ce1aa9bbaa107bfd0315acfb1e"
+paths = ["CLAUDE.md"]
+recorded = "2026-09-19T23:52:15.925872401+00:00"
+
+[[resolution]]
+entry = "android-intents"
 hash = "fc4a48c4d27e4c088052d3709de530edccf18d9c"
 paths = ["packages/app/src/app/_layout.tsx"]
 recorded = "2026-09-17T00:30:18.319076777+00:00"
