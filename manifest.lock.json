@@ -15,6 +15,7 @@
       "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "fa06376798cb478d5c4d0612ab6714aa3787c45e",
       "assembly-codex-banked-resets": "20ff5f326be6500715e8a7151222b759299891c5",
+      "assembly-codex-fast-gpt6": "d0bcdf202e6cc266c121d9fe2b8165c8b867313f",
       "assembly-fdroid-variant": "2b117518d132c290a2989798608d991b5259e5ae",
       "assembly-sidebar-unarchive": "a5885e424c10c1a6ad6b73ba8e39c84dc255638c",
       "assembly-workspace-restore": "2061518ce71cdba8b9715c9525273b7ee1aa1d8d",
@@ -109,15 +110,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-19T23:52:30.916416389+00:00",
+    "generated": "2026-09-22T20:58:57.851085238+00:00",
     "base": "d636abd7a4ce302e7ccb9eb6074f637c6dd4d83b",
-    "commit": "11e118418bd2460230e33beb5751c1c8312ad9b2",
-    "pre_provenance_commit": "11e118418bd2460230e33beb5751c1c8312ad9b2",
-    "tree": "4ecd1d83cc08d15bb2a6fa298b29353941ec7119",
-    "built_tree": "4ecd1d83cc08d15bb2a6fa298b29353941ec7119",
-    "previous_tree": "2c8c3f957127ef170e26ddbdb120811f3aaf29cd",
+    "commit": "1e8a05792be487b8f8c1e66841e969d49da4a9a5",
+    "pre_provenance_commit": "1e8a05792be487b8f8c1e66841e969d49da4a9a5",
+    "tree": "ceefc0ffee74da23610f375fd424490e1cc115f3",
+    "built_tree": "ceefc0ffee74da23610f375fd424490e1cc115f3",
+    "previous_tree": "4ecd1d83cc08d15bb2a6fa298b29353941ec7119",
     "tree_changed": true,
-    "conflicts": 40,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -662,6 +663,12 @@
         "kind": "branch",
         "source": "mine:fix/sidebar-mouse-click-arm",
         "pin": "dec43a485f1566fbc26b0968130b39e18c2890e1"
+      },
+      {
+        "name": "assembly-codex-fast-gpt6",
+        "kind": "branch",
+        "source": "mine:assembly-codex-fast-gpt6",
+        "pin": "d0bcdf202e6cc266c121d9fe2b8165c8b867313f"
       }
     ],
     "results": [
@@ -1226,6 +1233,12 @@
       {
         "name": "fix/sidebar-mouse-click-arm",
         "oid": "dec43a485f1566fbc26b0968130b39e18c2890e1",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "assembly-codex-fast-gpt6",
+        "oid": "d0bcdf202e6cc266c121d9fe2b8165c8b867313f",
         "status": "merged",
         "conflicted": false
       }
