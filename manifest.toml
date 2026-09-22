@@ -416,6 +416,9 @@ summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on 
 [[entry]]
 branch = "mine:assembly-codex-fast-gpt6"
 
+[[entry]]
+branch = "mine:assembly-claude-opus-5-5"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
@@ -502,3 +505,7 @@ reason = "carried by mine:agent/configurable-direct-model-shortcuts; the closed 
 [[exclude]]
 pr = 5220
 reason = "carried as mine:assembly-codex-fast-gpt6: the same commit replayed onto the pinned base, because the PR head is cut from upstream main 16 commits ahead of the base and a pr entry would advance the base inside one step; switch back to the PR once the base catches up"
+
+[[exclude]]
+pr = 5200
+reason = "merged upstream as getpaseo/paseo#5200; carried on pinned base by mine:assembly-claude-opus-5-5 until the base catches up"

@@ -512,6 +512,18 @@ paths = ["flake.nix"]
 recorded = "2026-08-01T22:53:56.143184148+00:00"
 
 [[resolution]]
+entry = "assembly-claude-opus-5-5"
+hash = "53b131a9da4b0bd3c03fbad4cf53953434ecd477"
+paths = ["packages/server/src/server/agent/providers/claude/models.test.ts"]
+recorded = "2026-09-22T21:53:34.847332939+00:00"
+
+[[resolution]]
+entry = "assembly-claude-opus-5-5"
+hash = "592c2b7c75c70f5bff401551df3f28bea7abbc88"
+paths = ["packages/server/src/server/agent/providers/claude/model-manifest.ts"]
+recorded = "2026-09-22T21:53:34.847340474+00:00"
+
+[[resolution]]
 entry = "assembly-codex-banked-resets"
 hash = "763054635229403a51f1754384e02e9f119ac0b5"
 paths = ["packages/app/src/provider-usage/settings-section.tsx"]

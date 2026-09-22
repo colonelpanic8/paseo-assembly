@@ -14,12 +14,13 @@
       "assembled-typecheck-coherence": "44d85c50ad8aa39d1f7b91555574ad274a3f9e7c",
       "assembly-agent-env": "a121c6b440a2785a43fc5ce11958944ae0fd4332",
       "assembly-build-provenance": "fa06376798cb478d5c4d0612ab6714aa3787c45e",
+      "assembly-claude-opus-5-5": "e9f80e2b3333b0fd1f0d97fbd3bac3e41b212aca",
       "assembly-codex-banked-resets": "20ff5f326be6500715e8a7151222b759299891c5",
       "assembly-codex-fast-gpt6": "d0bcdf202e6cc266c121d9fe2b8165c8b867313f",
       "assembly-fdroid-variant": "2b117518d132c290a2989798608d991b5259e5ae",
       "assembly-sidebar-unarchive": "a5885e424c10c1a6ad6b73ba8e39c84dc255638c",
       "assembly-workspace-restore": "2061518ce71cdba8b9715c9525273b7ee1aa1d8d",
-      "claude-fable-5-1": "8d52677190d78a2b356d13936d06372302985167",
+      "claude-fable-5-1": "e2e94a0f8985232c79efa3156a6800ccfde871b4",
       "codex-astra-support": "d5082b51544c66054fcdc83b717b1aeb62517e9c",
       "colonelpanic8/client-settings-file-store": "c165088f4a8f98ab02eacb9a884542bc2af59fb3",
       "colonelpanic8/worktree-detection-data": "1a097b4dcdcbbcc73d923607299d7cf4445c1eef",
@@ -110,15 +111,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-22T20:58:57.851085238+00:00",
+    "generated": "2026-09-22T21:58:21.473688627+00:00",
     "base": "d636abd7a4ce302e7ccb9eb6074f637c6dd4d83b",
-    "commit": "1e8a05792be487b8f8c1e66841e969d49da4a9a5",
-    "pre_provenance_commit": "1e8a05792be487b8f8c1e66841e969d49da4a9a5",
-    "tree": "ceefc0ffee74da23610f375fd424490e1cc115f3",
-    "built_tree": "ceefc0ffee74da23610f375fd424490e1cc115f3",
-    "previous_tree": "4ecd1d83cc08d15bb2a6fa298b29353941ec7119",
+    "commit": "c2c697479d862a1c65215955cfc4c88f2778b714",
+    "pre_provenance_commit": "c2c697479d862a1c65215955cfc4c88f2778b714",
+    "tree": "1e16c23e59fb5b34493fa6eeb68fe65d30c11387",
+    "built_tree": "1e16c23e59fb5b34493fa6eeb68fe65d30c11387",
+    "previous_tree": "e03d36c9413c6859077b76b2259297040e45bac0",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 41,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -462,7 +463,7 @@
         "name": "claude-fable-5-1",
         "kind": "branch",
         "source": "mine:claude-fable-5-1",
-        "pin": "8d52677190d78a2b356d13936d06372302985167"
+        "pin": "e2e94a0f8985232c79efa3156a6800ccfde871b4"
       },
       {
         "name": "pr-4256",
@@ -669,6 +670,12 @@
         "kind": "branch",
         "source": "mine:assembly-codex-fast-gpt6",
         "pin": "d0bcdf202e6cc266c121d9fe2b8165c8b867313f"
+      },
+      {
+        "name": "assembly-claude-opus-5-5",
+        "kind": "branch",
+        "source": "mine:assembly-claude-opus-5-5",
+        "pin": "e9f80e2b3333b0fd1f0d97fbd3bac3e41b212aca"
       }
     ],
     "results": [
@@ -793,8 +800,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "dce16c0d150c627a4c388d732c5e3fac9451f65c",
-          "tip": "91d8d3d2c4432ec13440df35b18277a7b293e1b9"
+          "base_tip": "689ad3318798a73bda1f11ee664aee793a3ca44a",
+          "tip": "bd4c65de98061c7a52dc0369c43b2333a8c7d505"
         }
       },
       {
@@ -924,8 +931,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "89894dd3a9a835c630fc9932b2a5f374c8107277",
-          "tip": "50ddcedd38408a514d6a8a748f866cd5c60fc9b0"
+          "base_tip": "665435a3504d59fa78ff8fe066a18efdfec6f357",
+          "tip": "f2bb4facb61a78a4bb466cfabcebc5fed0c9f8fa"
         }
       },
       {
@@ -990,8 +997,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "5cff823595bb0105eb1d7fed6cb33cc735013520",
-          "tip": "8d7815fe3d5b62dbc99f476d5c1a8bf5a9cdf1ba"
+          "base_tip": "201aeddc7e7a411f7379a70403a76f83226900b8",
+          "tip": "2276e3d3d9cc26ba2342ad01525eba37e5dc4464"
         }
       },
       {
@@ -1022,7 +1029,7 @@
       },
       {
         "name": "claude-fable-5-1",
-        "oid": "8d52677190d78a2b356d13936d06372302985167",
+        "oid": "e2e94a0f8985232c79efa3156a6800ccfde871b4",
         "status": "merged",
         "conflicted": false
       },
@@ -1137,8 +1144,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "9fcf47c0fab6b8c89c8ecad06229ce3c41ffdcb9",
-          "tip": "4ca989967e527c3249eed77d3a04ad4ede70b462"
+          "base_tip": "dcef52e6ba7409ef831d520b431d8e12760c817e",
+          "tip": "4926b24bd1fd631b5d0404c01739ecb23c5b7d80"
         }
       },
       {
@@ -1222,7 +1229,7 @@
         "oid": "96f4a717befa1de37f9851a29c7449da205aa32f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:a76663f84e07b3f03d5d6fe468d7aba427fdb18e,f219c7e01608d5ce1aa9bbaa107bfd0315acfb1e"
+        "resolution": "rerere"
       },
       {
         "name": "opencode-catalog-revalidate",
@@ -1241,6 +1248,13 @@
         "oid": "d0bcdf202e6cc266c121d9fe2b8165c8b867313f",
         "status": "merged",
         "conflicted": false
+      },
+      {
+        "name": "assembly-claude-opus-5-5",
+        "oid": "e9f80e2b3333b0fd1f0d97fbd3bac3e41b212aca",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere"
       }
     ]
   }
