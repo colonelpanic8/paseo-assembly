@@ -36,6 +36,7 @@
       "keyboard-shortcuts-mobile": "f2bb4facb61a78a4bb466cfabcebc5fed0c9f8fa",
       "live-voice-quick-launch": "2276e3d3d9cc26ba2342ad01525eba37e5dc4464",
       "live-voice-start-sound": "4926b24bd1fd631b5d0404c01739ecb23c5b7d80",
+      "locked-extension-paseo": "1aef29072b72cffd4d92db64e7aad0f45e044b85",
       "model-picker-search": "6cb82967d6233c3fbb236ea9eb43637f0ff88eb1",
       "monospaced-mobile-styling": "10b48108c700fc1f4965b1aa355c4ee796e0ff41",
       "multi-account-provider": "e2103c1afa219fa1ce0f0de15a2babdef10e6d5d",
@@ -110,15 +111,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-23T06:14:30.569117417+00:00",
+    "generated": "2026-09-23T22:21:44.339354373+00:00",
     "base": "81ad00790fdade049f12daf9d82f4df282559875",
-    "commit": "5d8732e68c33e17a0a6706aaafc3e3a74c3d037e",
-    "pre_provenance_commit": "5d8732e68c33e17a0a6706aaafc3e3a74c3d037e",
-    "tree": "79b2b93f560bf3cda09f2ec3527674288470d6fd",
-    "built_tree": "79b2b93f560bf3cda09f2ec3527674288470d6fd",
-    "previous_tree": "4bcbc82443cc7dde69c9578f77a08676e5f4cd9b",
+    "commit": "f6693de92935f889844b0f18eb8ffd2ad812fed8",
+    "pre_provenance_commit": "f6693de92935f889844b0f18eb8ffd2ad812fed8",
+    "tree": "5c2481cad95b310b15c3077d34af5ea52a86bade",
+    "built_tree": "5c2481cad95b310b15c3077d34af5ea52a86bade",
+    "previous_tree": "79b2b93f560bf3cda09f2ec3527674288470d6fd",
     "tree_changed": true,
-    "conflicts": 41,
+    "conflicts": 1,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -668,6 +669,12 @@
         "kind": "pr",
         "source": "upstream#5220",
         "pin": "ef5ce98e19ba7758ac8778c800d5c3514796402c"
+      },
+      {
+        "name": "locked-extension-paseo",
+        "kind": "branch",
+        "source": "mine:locked-extension-paseo",
+        "pin": "1aef29072b72cffd4d92db64e7aad0f45e044b85"
       }
     ],
     "results": [
@@ -1239,6 +1246,13 @@
         "oid": "ef5ce98e19ba7758ac8778c800d5c3514796402c",
         "status": "merged",
         "conflicted": false
+      },
+      {
+        "name": "locked-extension-paseo",
+        "oid": "1aef29072b72cffd4d92db64e7aad0f45e044b85",
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere:2d85132adf29bff73a796b64c5efc1eafa73a64e"
       }
     ]
   }

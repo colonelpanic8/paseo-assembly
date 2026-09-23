@@ -1428,6 +1428,12 @@ paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
 recorded = "2026-09-07T20:14:40.926763693+00:00"
 
 [[resolution]]
+entry = "locked-extension-paseo"
+hash = "2d85132adf29bff73a796b64c5efc1eafa73a64e"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-23T22:21:31.528705211+00:00"
+
+[[resolution]]
 entry = "model-picker-search"
 hash = "3265fcb70122d9e3bb8f44ffa011fcf4b3c60f12"
 paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]

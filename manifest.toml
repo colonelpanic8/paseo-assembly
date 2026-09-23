@@ -406,6 +406,9 @@ summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on 
 pr = 5220
 summary = "Expose Codex Fast for GPT-6 Sol and Luna"
 
+[[entry]]
+branch = "mine:locked-extension-paseo"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
