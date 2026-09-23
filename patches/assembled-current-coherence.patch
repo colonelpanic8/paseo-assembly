@@ -1,8 +1,8 @@
 diff --git a/packages/app/src/agent-stream/view.tsx b/packages/app/src/agent-stream/view.tsx
-index c666caf80..72451288f 100644
+index 126027cfb9..3dff427750 100644
 --- a/packages/app/src/agent-stream/view.tsx
 +++ b/packages/app/src/agent-stream/view.tsx
-@@ -809,6 +809,7 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
+@@ -776,6 +776,7 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
          throw new Error(t("workspace.terminal.hostDisconnected"));
        }
        const session = useSessionStore.getState().sessions[resolvedServerId];
@@ -10,7 +10,7 @@ index c666caf80..72451288f 100644
        await dispatchComposerAgentMessage({
          client,
          agentId,
-@@ -817,7 +818,7 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
+@@ -784,7 +785,7 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
          encodeImages,
          submission: createMessageSubmissionWriter(resolvedServerId),
          activeTurnBehavior: "steer",
@@ -20,7 +20,7 @@ index c666caf80..72451288f 100644
      });
  
 diff --git a/packages/app/src/components/model-browser-view.test.ts b/packages/app/src/components/model-browser-view.test.ts
-index 21118c4da..497352d6a 100644
+index 21118c4da5..497352d6a3 100644
 --- a/packages/app/src/components/model-browser-view.test.ts
 +++ b/packages/app/src/components/model-browser-view.test.ts
 @@ -8,7 +8,7 @@ import {
@@ -54,7 +54,7 @@ index 21118c4da..497352d6a 100644
    });
  });
 diff --git a/packages/app/src/components/model-browser-view.ts b/packages/app/src/components/model-browser-view.ts
-index 9ed594c92..f145e61f8 100644
+index 9ed594c92a..f145e61f8a 100644
 --- a/packages/app/src/components/model-browser-view.ts
 +++ b/packages/app/src/components/model-browser-view.ts
 @@ -128,7 +128,7 @@ export type ModelBrowserScrolling = "sheet" | "independent";
@@ -67,7 +67,7 @@ index 9ed594c92..f145e61f8 100644
    insideBottomSheet: boolean,
  ): ModelBrowserScrolling {
 diff --git a/packages/app/src/components/model-browser.tsx b/packages/app/src/components/model-browser.tsx
-index 0a6980097..bd219b544 100644
+index 6c68feddf3..e0815f8179 100644
 --- a/packages/app/src/components/model-browser.tsx
 +++ b/packages/app/src/components/model-browser.tsx
 @@ -79,7 +79,7 @@ import {
@@ -79,48 +79,7 @@ index 0a6980097..bd219b544 100644
    type ModelBrowserView,
  } from "@/components/model-browser-view";
  import {
-@@ -1512,6 +1512,7 @@ function ModelRowList({
- 
- function AllModelsList({
-   items,
-+  serverId,
-   selectedProvider,
-   selectedModel,
-   highlightedKey,
-@@ -1524,6 +1525,7 @@ function AllModelsList({
-   scrolling,
- }: {
-   items: ModelBrowserListItem[];
-+  serverId: string | null;
-   selectedProvider: string;
-   selectedModel: string;
-   highlightedKey: string | null;
-@@ -1551,6 +1553,7 @@ function AllModelsList({
-       return (
-         <SelectableModelRow
-           row={item.row}
-+          serverId={serverId}
-           isSelected={item.row.provider === selectedProvider && item.row.modelId === selectedModel}
-           isHighlighted={item.row.favoriteKey === highlightedKey}
-           showProviderLabel={item.showProvider}
-@@ -1596,7 +1599,7 @@ function AllModelsList({
- 
-   if (isCompact && isNative) {
-     return (
--      <BottomSheetFlatList
-+      <SheetFlatList
-         data={items}
-         renderItem={renderItem}
-         keyExtractor={keyExtractor}
-@@ -1819,6 +1822,7 @@ function ModelBrowserContent({
-     return (
-       <AllModelsList
-         items={items}
-+        serverId={serverId}
-         selectedProvider={selectedProvider}
-         selectedModel={selectedModel}
-         highlightedKey={highlightedKey}
-@@ -1982,7 +1986,7 @@ export function ModelBrowser({
+@@ -1987,7 +1987,7 @@ export function ModelBrowser({
        onShowAllModels={state.showAllModels}
        onRetryProvider={onRetryProvider}
        isRetryingProvider={isRetryingProvider}
@@ -130,7 +89,7 @@ index 0a6980097..bd219b544 100644
        rootBrowseContent={rootBrowseContent}
        showProfilesSection={showProfilesSection}
 diff --git a/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx b/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx
-index 8e6ce060c..5cdabb71b 100644
+index 8e6ce060c7..5cdabb71b6 100644
 --- a/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx
 +++ b/packages/app/src/components/sidebar/sidebar-archived-group.test.tsx
 @@ -227,7 +227,7 @@ describe("SidebarArchivedGroup", () => {
@@ -152,10 +111,10 @@ index 8e6ce060c..5cdabb71b 100644
              ])
            }
 diff --git a/packages/app/src/i18n/resources/ru.ts b/packages/app/src/i18n/resources/ru.ts
-index 4128b90f3..ed6a68097 100644
+index 8e2c76d7f2..8f81da97de 100644
 --- a/packages/app/src/i18n/resources/ru.ts
 +++ b/packages/app/src/i18n/resources/ru.ts
-@@ -1289,13 +1289,13 @@ export const ru: TranslationResources = {
+@@ -1317,13 +1317,13 @@ export const ru: TranslationResources = {
          workspacePathUnavailable: "Путь к рабочему пространству недоступен",
          pathCopied: "Путь скопирован",
          branchNameCopied: "Имя ветки скопировано",
@@ -170,11 +129,11 @@ index 4128b90f3..ed6a68097 100644
 +        wokeWorkspace: "Рабочее пространство возобновлено",
 +        failedToWakeWorkspace: "Не удалось возобновить рабочее пространство",
 +        hostDisconnected: "Хост не подключён",
-         hideFailed: "Не удалось скрыть рабочее пространство",
-         archiveFailed: "Не удалось архивировать рабочее пространство",
-       },
+         retitlingWorkspace: "Создаётся новое название…",
+         retitledWorkspace: "Рабочее пространство переименовано",
+         failedToRetitleWorkspace: "Не удалось переименовать рабочее пространство",
 diff --git a/packages/app/src/screens/settings/appearance/appearance-section.tsx b/packages/app/src/screens/settings/appearance/appearance-section.tsx
-index 64b85e362..87f070af6 100644
+index 64b85e362e..87f070af69 100644
 --- a/packages/app/src/screens/settings/appearance/appearance-section.tsx
 +++ b/packages/app/src/screens/settings/appearance/appearance-section.tsx
 @@ -1,7 +1,7 @@
@@ -187,7 +146,7 @@ index 64b85e362..87f070af6 100644
  import { ChevronDown, Monitor, Moon, Sun } from "lucide-react-native";
  import {
 diff --git a/packages/app/src/screens/settings/host-appearance-section.tsx b/packages/app/src/screens/settings/host-appearance-section.tsx
-index 6eaac42bd..1b81e17bc 100644
+index 6eaac42bdc..1b81e17bc4 100644
 --- a/packages/app/src/screens/settings/host-appearance-section.tsx
 +++ b/packages/app/src/screens/settings/host-appearance-section.tsx
 @@ -20,6 +20,7 @@ import {
@@ -208,7 +167,7 @@ index 6eaac42bd..1b81e17bc 100644
            },
      [badgeDisplay, host.serverId, host.label, host.appearance.color],
 diff --git a/packages/app/src/test/seed-session.ts b/packages/app/src/test/seed-session.ts
-index d483e01c5..a7eb42bf6 100644
+index d483e01c5d..a7eb42bf6d 100644
 --- a/packages/app/src/test/seed-session.ts
 +++ b/packages/app/src/test/seed-session.ts
 @@ -47,6 +47,7 @@ export function seedSessionHosts(serverIds: readonly string[]): void {
@@ -220,7 +179,7 @@ index d483e01c5..a7eb42bf6 100644
        lifecycle: {},
        connections: [],
 diff --git a/packages/app/src/utils/agent-directory-reconciliation.test.ts b/packages/app/src/utils/agent-directory-reconciliation.test.ts
-index e95a34b84..cda9cc6d3 100644
+index e95a34b84c..cda9cc6d32 100644
 --- a/packages/app/src/utils/agent-directory-reconciliation.test.ts
 +++ b/packages/app/src/utils/agent-directory-reconciliation.test.ts
 @@ -211,7 +211,6 @@ describe("agent directory reconciliation", () => {
@@ -262,7 +221,7 @@ index e95a34b84..cda9cc6d3 100644
        ttlSeconds: 300,
        lastRequest: { inputTokens: 10, cachedInputTokens: 90 },
 diff --git a/packages/app/src/wear/wear-bridge.test.ts b/packages/app/src/wear/wear-bridge.test.ts
-index 75a4370c0..c1f85b296 100644
+index 75a4370c01..c1f85b2963 100644
 --- a/packages/app/src/wear/wear-bridge.test.ts
 +++ b/packages/app/src/wear/wear-bridge.test.ts
 @@ -1631,6 +1631,7 @@ describe("WearBridge live voice", () => {
@@ -282,7 +241,7 @@ index 75a4370c0..c1f85b296 100644
      liveSessionId: null,
      isMuted: false,
 diff --git a/packages/app/src/wear/wear-live-voice.test.ts b/packages/app/src/wear/wear-live-voice.test.ts
-index 5b92623af..52198bc88 100644
+index 5b92623af2..52198bc88c 100644
 --- a/packages/app/src/wear/wear-live-voice.test.ts
 +++ b/packages/app/src/wear/wear-live-voice.test.ts
 @@ -13,6 +13,7 @@ const NOW = 1_750_000_000_000;
@@ -293,4 +252,3 @@ index 5b92623af..52198bc88 100644
    serverId: null,
    liveSessionId: null,
    isMuted: false,
-

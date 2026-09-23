@@ -76,8 +76,8 @@ branch = "mine:agent-purpose-summaries"
 summary = "Add rolling agent purpose summaries; track the live branch because closed PR #2658 has a frozen head"
 
 [[entry]]
-pr = 2659
-summary = "Surface the model and thinking level agents actually use"
+branch = "mine:subagent-param-visibility"
+summary = "Surface the model and thinking level agents actually use; track the live branch because closed PR #2659 has a frozen head"
 
 [[entry]]
 branch = "mine:unarchive-threads"
@@ -248,20 +248,13 @@ pr = 3882
 branch = "mine:fix/model-browser-sheet-scope"
 summary = "Stop model browser sheet scrollables outside sheets (was PR 3972, closed upstream; refs/pull/3972/head is frozen at the pre-rebase commit, so the branch is the only live source)"
 
-# Carries only the model-catalog half of upstream#4179. That PR also cuts
-# release 0.7.1 -- every package.json version, package-lock.json, CHANGELOG,
-# the fastlane changelogs and nix/npm-deps.hash -- which collides directly
-# with the assembled-npm-deps-hash patch entry and assembly-build-provenance,
-# and its head is based 20 commits ahead of this base, so a pr entry would
-# advance the base inside one step. The branch is cut from this base instead.
-# It also adds what 4179 lacks: the minimumClaudeCodeVersion gate (2.1.257,
-# the Claude Code release that added Fable 5.1) so the picker does not offer a
-# model the installed CLI cannot run, and an ordering fix in the runtime
-# model-ID normalizer, whose unanchored patterns collapsed the gateway-prefixed
-# anthropic.claude-fable-5-1 onto Fable 5.
+# Upstream now lists Fable 5.1 (merged #4179) and carries the normalizer
+# ordering fix (#5200), but without a minimum Claude Code version. This branch
+# adds only that gate (2.1.257, the release that added Fable 5.1) so the picker
+# does not offer a model the installed CLI cannot run.
 [[entry]]
 branch = "mine:claude-fable-5-1"
-summary = "Add Claude Fable 5.1 to the model catalog, gated on Claude Code 2.1.257"
+summary = "Gate Claude Fable 5.1 on Claude Code 2.1.257"
 
 [[entry]]
 pr = 4256
@@ -302,7 +295,6 @@ summary = "Keep restores responsive and safe against auto-archive; replayed onto
 [[entry]]
 branch = "mine:assembly-sidebar-unarchive"
 summary = "Keep optimistic sidebar restores consistent across refetches and failed responses"
-fixup = "patches/sidebar-unarchive-capabilities.patch"
 
 [[entry]]
 branch = "mine:host/default-color"
@@ -406,26 +398,13 @@ branch = "mine:android-intents"
 [[entry]]
 branch = "mine:opencode-catalog-revalidate"
 
-# Upstream PR 5046, replayed onto the pinned base. The PR head is cut from
-# 0.9.0-beta.2 main, so a pr entry would advance the base 35 commits inside one
-# step; the branch carries the same single commit on this base instead.
 [[entry]]
-branch = "mine:fix/sidebar-mouse-click-arm"
-summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on Android (upstream PR 5046)"
+pr = 5046
+summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on Android"
 
 [[entry]]
-branch = "mine:assembly-codex-fast-gpt6"
-
-[[entry]]
-branch = "mine:assembly-claude-opus-5-5"
-
-# Linear follow-up to the pinned sidebar topic (affe9dab4f), so it lands
-# without advancing personal/sidebar-workflow and rebuilding the tail. The
-# same commit is also on personal/sidebar-workflow; once that pin advances,
-# this entry merges as a no-op and can be removed.
-[[entry]]
-branch = "mine:fix/status-row-mouse-click"
-summary = "Let Android mouse clicks select swipeable status rows: the swipeable's close-on-tap gesture no longer activates on closed rows"
+pr = 5220
+summary = "Expose Codex Fast for GPT-6 Sol and Luna"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
@@ -483,10 +462,6 @@ pr = 4834
 reason = "open PR #4834; its handler relocation into useStableEvent collides with the assembly's evolved keydown body (isDesktopBindings, prompt-control chords, releaseHeldShortcut). Re-admit once the move is redone on top of those topics."
 
 [[exclude]]
-pr = 5046
-reason = "carried as mine:fix/sidebar-mouse-click-arm: the same commit replayed onto the pinned base, because the PR head is cut from 0.9.0-beta.2 main and a pr entry would advance the base 35 commits inside one step; switch back to the PR once the base catches up"
-
-[[exclude]]
 pr = 2553
 reason = "carried by mine:agent/nix-android; the closed PR head is frozen and cannot receive base repairs"
 
@@ -511,9 +486,5 @@ pr = 2845
 reason = "carried by mine:agent/configurable-direct-model-shortcuts; the closed PR head is frozen at 220765d52b84 and cannot receive the browser-capture test repair the Live Voice bindings require"
 
 [[exclude]]
-pr = 5220
-reason = "carried as mine:assembly-codex-fast-gpt6: the same commit replayed onto the pinned base, because the PR head is cut from upstream main 16 commits ahead of the base and a pr entry would advance the base inside one step; switch back to the PR once the base catches up"
-
-[[exclude]]
-pr = 5200
-reason = "merged upstream as getpaseo/paseo#5200; carried on pinned base by mine:assembly-claude-opus-5-5 until the base catches up"
+pr = 2659
+reason = "carried by mine:subagent-param-visibility; the closed PR head is frozen at 396b5b776eda and cannot receive the base repair for upstream #4413's effective thinking option"

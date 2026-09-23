@@ -662,6 +662,12 @@ paths = ["docs/data-model.md"]
 recorded = "2026-09-06T19:58:28+00:00"
 
 [[resolution]]
+entry = "codex-astra-support"
+hash = "d625bfb718ef0a1ee6242e64bfd5cbe0e71ef5b0"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-23T02:51:56.456760488+00:00"
+
+[[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
 hash = "234642546ba32579213293f38de22692e70fae57"
 paths = ["packages/app/src/storage/settings-seed/index.ts"]
@@ -805,9 +811,21 @@ recorded = "2026-09-03T19:27:45.303422877+00:00"
 
 [[resolution]]
 entry = "dismiss-failed-state"
+hash = "21c6e3ae3865ed5f922640cbef6927bf56c32776"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-09-23T02:54:05.459382838+00:00"
+
+[[resolution]]
+entry = "dismiss-failed-state"
 hash = "26349d7c68c6fa6209adb89e397cd44674f074ca"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row.tsx"]
 recorded = "2026-09-14T07:49:41.341854274+00:00"
+
+[[resolution]]
+entry = "dismiss-failed-state"
+hash = "68d05cf79328316761a06e6c787e35d3bd05a74c"
+paths = ["packages/app/src/components/sidebar/sidebar-workspace-menu.tsx"]
+recorded = "2026-09-23T02:54:05.459384591+00:00"
 
 [[resolution]]
 entry = "dismiss-failed-state"
@@ -886,6 +904,12 @@ entry = "keyboard-shortcuts-mobile"
 hash = "0328b27e05c8504f1c372050c1024270f07cc0fc"
 paths = ["packages/app/app.config.js"]
 recorded = "2026-09-18T11:06:03.063104141+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
+hash = "1432e217c475b07107d0eb015bdd2c7352a71c5f"
+paths = ["packages/app/src/utils/shortcut-platform.ts"]
+recorded = "2026-09-23T02:51:24.520631653+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
@@ -3463,12 +3487,6 @@ recorded = "2026-09-04T06:38:09.620464404+00:00"
 
 [[resolution]]
 entry = "pr-4304"
-hash = "d625bfb718ef0a1ee6242e64bfd5cbe0e71ef5b0"
-paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
-recorded = "2026-09-04T06:38:09.620464725+00:00"
-
-[[resolution]]
-entry = "pr-4304"
 hash = "fa0ca97cf13129e8bbd4395e4db59bbf146ae13f"
 paths = ["packages/app/src/types/stream.ts"]
 recorded = "2026-09-07T20:22:11.569829180+00:00"
@@ -3903,7 +3921,7 @@ recorded = "2026-09-16T22:13:50.076826103+00:00"
 entry = "voice-actions"
 hash = "7d446adc7a9c3e8214ea707cfbd1d2b83713701a"
 paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
-recorded = "2026-09-13T01:43:39.476704733+00:00"
+recorded = "2026-09-23T02:53:34.164741874+00:00"
 
 [[resolution]]
 entry = "voice-actions"
