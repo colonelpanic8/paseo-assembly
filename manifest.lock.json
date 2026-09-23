@@ -33,6 +33,7 @@
       "fix/draft-tab-inflight-create": "3285e695aaca8c681ba3b9bfc4602f01c247f9f5",
       "fix/model-browser-sheet-scope": "9a026d0e97b18eeb17615cd300518fba795d7495",
       "fix/sidebar-mouse-click-arm": "dec43a485f1566fbc26b0968130b39e18c2890e1",
+      "fix/status-row-mouse-click": "2d8bd9da6dfb112680a2c8f62ff4775930336cd4",
       "fix/workspace-message-timestamps": "8d6c9c3c5fdcd3e3b13c2adf6d4278d344f12892",
       "fork-native-session": "e1fb07cf32458ed11ff316651f4e53d6a81fb1fd",
       "host/default-color": "db6a69e6398c5926656e491360d820c72162e2c4",
@@ -111,15 +112,15 @@
     }
   },
   "build": {
-    "generated": "2026-09-22T21:58:21.473688627+00:00",
+    "generated": "2026-09-23T01:38:01.833204688+00:00",
     "base": "d636abd7a4ce302e7ccb9eb6074f637c6dd4d83b",
-    "commit": "c2c697479d862a1c65215955cfc4c88f2778b714",
-    "pre_provenance_commit": "c2c697479d862a1c65215955cfc4c88f2778b714",
-    "tree": "1e16c23e59fb5b34493fa6eeb68fe65d30c11387",
-    "built_tree": "1e16c23e59fb5b34493fa6eeb68fe65d30c11387",
-    "previous_tree": "e03d36c9413c6859077b76b2259297040e45bac0",
+    "commit": "6f5458187d44b5cebb9a432bd8d6f97eca68f4de",
+    "pre_provenance_commit": "6f5458187d44b5cebb9a432bd8d6f97eca68f4de",
+    "tree": "2d5c1e2b500e7a846cb78de2a4469ec431d3acad",
+    "built_tree": "2d5c1e2b500e7a846cb78de2a4469ec431d3acad",
+    "previous_tree": "1e16c23e59fb5b34493fa6eeb68fe65d30c11387",
     "tree_changed": true,
-    "conflicts": 41,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -676,6 +677,12 @@
         "kind": "branch",
         "source": "mine:assembly-claude-opus-5-5",
         "pin": "e9f80e2b3333b0fd1f0d97fbd3bac3e41b212aca"
+      },
+      {
+        "name": "fix/status-row-mouse-click",
+        "kind": "branch",
+        "source": "mine:fix/status-row-mouse-click",
+        "pin": "2d8bd9da6dfb112680a2c8f62ff4775930336cd4"
       }
     ],
     "results": [
@@ -1255,6 +1262,12 @@
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
+      },
+      {
+        "name": "fix/status-row-mouse-click",
+        "oid": "2d8bd9da6dfb112680a2c8f62ff4775930336cd4",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }

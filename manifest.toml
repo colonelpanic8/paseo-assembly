@@ -419,6 +419,14 @@ branch = "mine:assembly-codex-fast-gpt6"
 [[entry]]
 branch = "mine:assembly-claude-opus-5-5"
 
+# Linear follow-up to the pinned sidebar topic (affe9dab4f), so it lands
+# without advancing personal/sidebar-workflow and rebuilding the tail. The
+# same commit is also on personal/sidebar-workflow; once that pin advances,
+# this entry merges as a no-op and can be removed.
+[[entry]]
+branch = "mine:fix/status-row-mouse-click"
+summary = "Let Android mouse clicks select swipeable status rows: the swipeable's close-on-tap gesture no longer activates on closed rows"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
