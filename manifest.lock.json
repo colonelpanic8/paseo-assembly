@@ -7,7 +7,7 @@
       "agent-purpose-summaries": "2dbfdc00180216016b1bd694d8692991f529a54a",
       "agent/configurable-direct-model-shortcuts": "d007525e12fd74f7338be92904cdb962e0638b86",
       "agent/nix-android": "878fdab6dc5e03427af624c83ed8d8a0eab7e670",
-      "android-intents": "96f4a717befa1de37f9851a29c7449da205aa32f",
+      "android-intents": "ba3371f7f6bc757239a9576ad4b9adcef27ff642",
       "assembled-ci-lint-fixes": "dca6be753358923871420876b8ba7a50de84b4e0",
       "assembled-current-coherence": "70b8adb5bc450f66b9e44a6968e838469a580d45",
       "assembled-npm-deps-hash": "4943b99a9590974099a192bdee37ab9fd15e8114",
@@ -110,14 +110,14 @@
     }
   },
   "build": {
-    "generated": "2026-09-23T03:01:36.966718956+00:00",
+    "generated": "2026-09-23T06:14:30.569117417+00:00",
     "base": "81ad00790fdade049f12daf9d82f4df282559875",
-    "commit": "7d366983db494e7008e211ac3caec785a4a772aa",
-    "pre_provenance_commit": "7d366983db494e7008e211ac3caec785a4a772aa",
-    "tree": "4bcbc82443cc7dde69c9578f77a08676e5f4cd9b",
-    "built_tree": "4bcbc82443cc7dde69c9578f77a08676e5f4cd9b",
+    "commit": "5d8732e68c33e17a0a6706aaafc3e3a74c3d037e",
+    "pre_provenance_commit": "5d8732e68c33e17a0a6706aaafc3e3a74c3d037e",
+    "tree": "79b2b93f560bf3cda09f2ec3527674288470d6fd",
+    "built_tree": "79b2b93f560bf3cda09f2ec3527674288470d6fd",
     "previous_tree": "4bcbc82443cc7dde69c9578f77a08676e5f4cd9b",
-    "tree_changed": false,
+    "tree_changed": true,
     "conflicts": 41,
     "manifest_entries": [
       {
@@ -649,7 +649,7 @@
         "name": "android-intents",
         "kind": "branch",
         "source": "mine:android-intents",
-        "pin": "96f4a717befa1de37f9851a29c7449da205aa32f"
+        "pin": "ba3371f7f6bc757239a9576ad4b9adcef27ff642"
       },
       {
         "name": "opencode-catalog-revalidate",
@@ -792,8 +792,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "6772fde57662cd7a28899e7cfc8c665767342715",
-          "tip": "5e097a3b2653ea3b6050e64bd1f669e78c35353b"
+          "base_tip": "b1f7da63fde31a1d998cf25ee63b0d31730181d3",
+          "tip": "dc8497bba22e9a529c815c9cc09093c3d7ec1d45"
         }
       },
       {
@@ -923,8 +923,8 @@
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "5bf00144957b11c43cba10e5ab5f5a5eddfb1a06",
-          "tip": "f2dcd7f250b866efd3e5591b0df8c45504165ba5"
+          "base_tip": "f2d9a94f612db67691460b3f95ef92ab8252fc5e",
+          "tip": "39d726ed2373cd90455e49960374a6201810523c"
         }
       },
       {
@@ -989,8 +989,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "2b6cc51bb52ef318bf6126bb77d2f8b51555284a",
-          "tip": "80f69f2766009e55bc1ae74fcc9017fa8b9a8c78"
+          "base_tip": "76eb6476e70c06f926682f894a016c14d12a92bc",
+          "tip": "5ed196fbc71cab959803c372e98432765715be73"
         }
       },
       {
@@ -1135,8 +1135,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "4c80a270565b959376fc18641ab0df48c160a3e1",
-          "tip": "003cd592b6c55f8388444b04c5e717090aafd3e9"
+          "base_tip": "2d4652d967292b40c1d375336ea47548d9113b6b",
+          "tip": "ea728b5e5b3fb2e125576f77ea6c7de4dc8c7450"
         }
       },
       {
@@ -1217,7 +1217,7 @@
       },
       {
         "name": "android-intents",
-        "oid": "96f4a717befa1de37f9851a29c7449da205aa32f",
+        "oid": "ba3371f7f6bc757239a9576ad4b9adcef27ff642",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
