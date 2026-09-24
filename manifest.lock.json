@@ -33,7 +33,7 @@
       "fix/workspace-message-timestamps": "8d6c9c3c5fdcd3e3b13c2adf6d4278d344f12892",
       "fork-native-session": "e1fb07cf32458ed11ff316651f4e53d6a81fb1fd",
       "host/default-color": "db6a69e6398c5926656e491360d820c72162e2c4",
-      "keyboard-shortcuts-mobile": "f2bb4facb61a78a4bb466cfabcebc5fed0c9f8fa",
+      "keyboard-shortcuts-mobile": "c5952c394d90f762765230a92bebfe5e7e9860ac",
       "live-voice-quick-launch": "2276e3d3d9cc26ba2342ad01525eba37e5dc4464",
       "live-voice-start-sound": "4926b24bd1fd631b5d0404c01739ecb23c5b7d80",
       "locked-extension-paseo": "298f5cfcdf26570b359dfb242493b1df8d9ceae1",
@@ -104,22 +104,22 @@
       }
     },
     "anchors": {
-      "keyboard-shortcuts-mobile": "665435a3504d59fa78ff8fe066a18efdfec6f357",
+      "keyboard-shortcuts-mobile": "9534e3829224d8fd28ea6468418ca59c35edd69c",
       "live-voice-quick-launch": "201aeddc7e7a411f7379a70403a76f83226900b8",
       "live-voice-start-sound": "dcef52e6ba7409ef831d520b431d8e12760c817e",
       "watch-live-voice": "689ad3318798a73bda1f11ee664aee793a3ca44a"
     }
   },
   "build": {
-    "generated": "2026-09-23T22:38:11.282098027+00:00",
+    "generated": "2026-09-24T06:10:15.747353671+00:00",
     "base": "81ad00790fdade049f12daf9d82f4df282559875",
-    "commit": "725acc499347e143f1d025b5a0c4e66cc2c7342e",
-    "pre_provenance_commit": "725acc499347e143f1d025b5a0c4e66cc2c7342e",
-    "tree": "ad039ef56f7e3c2e26a15a1fb8b2900e7257e99b",
-    "built_tree": "ad039ef56f7e3c2e26a15a1fb8b2900e7257e99b",
-    "previous_tree": "5c2481cad95b310b15c3077d34af5ea52a86bade",
+    "commit": "17c2eccfa6f2c72d883223d07da738746b837b41",
+    "pre_provenance_commit": "17c2eccfa6f2c72d883223d07da738746b837b41",
+    "tree": "fd545bb25f8f8ebe496b262de6613b24fd92b097",
+    "built_tree": "fd545bb25f8f8ebe496b262de6613b24fd92b097",
+    "previous_tree": "ad039ef56f7e3c2e26a15a1fb8b2900e7257e99b",
     "tree_changed": true,
-    "conflicts": 42,
+    "conflicts": 41,
     "manifest_entries": [
       {
         "name": "pr-2517",
@@ -355,7 +355,7 @@
         "name": "keyboard-shortcuts-mobile",
         "kind": "branch",
         "source": "mine:keyboard-shortcuts-mobile",
-        "pin": "f2bb4facb61a78a4bb466cfabcebc5fed0c9f8fa",
+        "pin": "c5952c394d90f762765230a92bebfe5e7e9860ac",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -364,7 +364,7 @@
             "pin": "0a1493bcb6120af1fa5ca3a03355f89e0057d150"
           }
         ],
-        "anchor": "665435a3504d59fa78ff8fe066a18efdfec6f357"
+        "anchor": "9534e3829224d8fd28ea6468418ca59c35edd69c"
       },
       {
         "name": "touch-sidebar-resize",
@@ -799,8 +799,8 @@
         "resolution": "rerere",
         "fixup": "a29088eb14b44f8c3897ab9c4e0a567bc3bbf9a0",
         "derived": {
-          "base_tip": "1f6b09ae25aa52eab11440c9568db0b13fc123a6",
-          "tip": "f24b51076191947fd06a26a19b44bc3d99c57f29"
+          "base_tip": "019200e27a5fc9ed95e327ff587bfc560b52c59b",
+          "tip": "e00dffd6070ff52d40114b17aa04c75cf643850d"
         }
       },
       {
@@ -924,14 +924,14 @@
       },
       {
         "name": "keyboard-shortcuts-mobile",
-        "oid": "f2bb4facb61a78a4bb466cfabcebc5fed0c9f8fa",
+        "oid": "c5952c394d90f762765230a92bebfe5e7e9860ac",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a97d65d10a81cae4d3d0e0e011b21b933f7eefb3",
         "derived": {
-          "base_tip": "9534e3829224d8fd28ea6468418ca59c35edd69c",
-          "tip": "e3d6eb5305184176b60edb873cac515bf866f614"
+          "base_tip": "492b9c67ded64bc1ce73ea40dbe75c18c98c3d3b",
+          "tip": "350bb3c651bacb505909a88b0a46e7b4204ff31a"
         }
       },
       {
@@ -996,8 +996,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "e0184538a5a108aea93a65bb250c27f5b56498af",
-          "tip": "8a1f94d167fbcb9c57d6219c797f596d03d71946"
+          "base_tip": "352827d1804969bc25dc2d9182b6edf9c0f4275e",
+          "tip": "1f794a9a79b6907df399928bd43c42cc52aaff50"
         }
       },
       {
@@ -1142,8 +1142,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "fdb77f006791fe9b00bf241c2f9eb8bc39b2ec91",
-          "tip": "9e0d2c636e122830d84517959ce537f4f73f6e7a"
+          "base_tip": "ff67baefedc8ecda0bba3254f3173599ae257c8e",
+          "tip": "17ff130a07057f52b859eac81fbc2a62b839942f"
         }
       },
       {
