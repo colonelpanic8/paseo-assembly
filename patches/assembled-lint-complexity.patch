@@ -1,0 +1,189 @@
+diff --git a/packages/app/src/composer/agent-controls/index.tsx b/packages/app/src/composer/agent-controls/index.tsx
+index 1a30de8951..a3cc47d0aa 100644
+--- a/packages/app/src/composer/agent-controls/index.tsx
++++ b/packages/app/src/composer/agent-controls/index.tsx
+@@ -529,4 +529,5 @@ function buildOpenChangeHandler(
+ }
+ 
++// oxlint-disable-next-line complexity
+ function ControlledAgentControls({
+   provider,
+diff --git a/packages/app/src/hooks/use-keyboard-shortcuts.ts b/packages/app/src/hooks/use-keyboard-shortcuts.ts
+index 84d66ada2d..fbc8f4f4df 100644
+--- a/packages/app/src/hooks/use-keyboard-shortcuts.ts
++++ b/packages/app/src/hooks/use-keyboard-shortcuts.ts
+@@ -328,4 +328,5 @@ export function useKeyboardShortcuts({
+   };
+ 
++  // oxlint-disable-next-line complexity
+   const resolveAndPerformShortcut = (input: {
+     event: KeyboardShortcutInput;
+@@ -419,4 +420,5 @@ export function useKeyboardShortcuts({
+   // any in-progress chord. Stable events let them read the latest render instead
+   // of being re-registered whenever a route, callback, or selection changes.
++  // oxlint-disable-next-line complexity
+   const handleKeyDown = useStableEvent((event: KeyboardEvent) => {
+     if (!shouldHandle()) {
+diff --git a/packages/app/src/stores/session-store.ts b/packages/app/src/stores/session-store.ts
+index 0d9f9a1b27..992936c54f 100644
+--- a/packages/app/src/stores/session-store.ts
++++ b/packages/app/src/stores/session-store.ts
+@@ -746,4 +746,5 @@ function areServerInfoBuildsEqual(
+ }
+ 
++// oxlint-disable-next-line complexity
+ function isSessionServerInfoUnchanged(input: {
+   currentServerInfo: SessionState["serverInfo"] | undefined;
+diff --git a/packages/server/src/server/agent/agent-manager.ts b/packages/server/src/server/agent/agent-manager.ts
+index 589ca5bac0..6ddb36500d 100644
+--- a/packages/server/src/server/agent/agent-manager.ts
++++ b/packages/server/src/server/agent/agent-manager.ts
+@@ -3936,4 +3936,5 @@ export class AgentManager {
+   }
+ 
++  // oxlint-disable-next-line complexity
+   private async registerSession(
+     session: AgentSession,
+diff --git a/packages/server/src/server/config.ts b/packages/server/src/server/config.ts
+index acf6512f47..55adf512c6 100644
+--- a/packages/server/src/server/config.ts
++++ b/packages/server/src/server/config.ts
+@@ -627,4 +627,5 @@ interface LoadConfigOptions extends Omit<
+ }
+ 
++// oxlint-disable-next-line complexity
+ export function resolveConfigFromPersisted(
+   paseoHome: string,
+diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
+index eabbedc5fa..ab24119660 100644
+--- a/packages/server/src/server/daemon-config-store.ts
++++ b/packages/server/src/server/daemon-config-store.ts
+@@ -248,4 +248,5 @@ function compactOwnedPaths(paths: readonly string[], owners: readonly string[]):
+ }
+ 
++// oxlint-disable-next-line complexity
+ function pickSupportedPatchFields(patch: MutableDaemonConfigPatch): SupportedMutableConfigPatch {
+   return {
+diff --git a/docs/data-model.md b/docs/data-model.md
+index 6e5c8d1034..e24e350088 100644
+--- a/docs/data-model.md
++++ b/docs/data-model.md
+@@ -617,27 +617,27 @@ workspace together with its owning project.
+ 
+ Array of workspace records. A workspace is a specific working directory within a project.
+ 
+-| Field                          | Type                                                         | Description                                                                                                                                                                                   |
+-| ------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+-| `workspaceId`                  | `string`                                                     | Opaque stable identifier (`wks_<hex>`), generated independently of the directory. MUST NOT be treated as a path; compare by exact equality. Use the `cwd` field for directory access.         |
+-| `projectId`                    | `string`                                                     | FK to Project.projectId; the workspace's stable project membership                                                                                                                            |
+-| `cwd`                          | `string`                                                     | Exact execution directory selected for agents, files, scripts, and setup                                                                                                                      |
+-| `kind`                         | `"local_checkout" \| "worktree" \| "directory"`              | Mutable checkout classification                                                                                                                                                               |
+-| `displayName`                  | `string`                                                     | The human name (the generated/derived title). Decoupled from `branch` by construction.                                                                                                        |
+-| `title`                        | `string \| null`                                             | User-set name override layered over `displayName`. Null means "use `displayName`".                                                                                                            |
+-| `branch`                       | `string \| null`                                             | The current Git branch for git-backed workspaces. Separate from `displayName`/`title`; a background branch refresh never rewrites the name.                                                   |
+-| `worktreeRoot`                 | `string \| null`                                             | Backing checkout/worktree root. May differ from `cwd` for exact subprojects and remains persisted after the worktree is deleted so restore can reproduce the placement.                       |
+-| `baseBranch`                   | `string \| null`                                             | Comparison base retained across archive and restore. Branch-off creation stores the resolved ref; legacy and PR-checkout records hold a bare name. Null means no recorded base.               |
+-| `isPaseoOwnedWorktree`         | `boolean`                                                    | Whether Paseo owns and may remove/recreate the backing `worktreeRoot`                                                                                                                         |
+-| `mainRepoRoot`                 | `string \| null`                                             | Main repository root for worktree checkouts, independent of both exact `cwd` and backing `worktreeRoot`                                                                                       |
+-| `createdAt`                    | `string` (ISO 8601)                                          |                                                                                                                                                                                               |
+-| `updatedAt`                    | `string` (ISO 8601)                                          |                                                                                                                                                                                               |
+-| `archivedAt`                   | `string \| null` (ISO 8601)                                  | Soft-delete; required nullable                                                                                                                                                                |
++| Field                          | Type                                                         | Description                                                                                                                                                                                                    |
++| ------------------------------ | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
++| `workspaceId`                  | `string`                                                     | Opaque stable identifier (`wks_<hex>`), generated independently of the directory. MUST NOT be treated as a path; compare by exact equality. Use the `cwd` field for directory access.                          |
++| `projectId`                    | `string`                                                     | FK to Project.projectId; the workspace's stable project membership                                                                                                                                             |
++| `cwd`                          | `string`                                                     | Exact execution directory selected for agents, files, scripts, and setup                                                                                                                                       |
++| `kind`                         | `"local_checkout" \| "worktree" \| "directory"`              | Mutable checkout classification                                                                                                                                                                                |
++| `displayName`                  | `string`                                                     | The human name (the generated/derived title). Decoupled from `branch` by construction.                                                                                                                         |
++| `title`                        | `string \| null`                                             | User-set name override layered over `displayName`. Null means "use `displayName`".                                                                                                                             |
++| `branch`                       | `string \| null`                                             | The current Git branch for git-backed workspaces. Separate from `displayName`/`title`; a background branch refresh never rewrites the name.                                                                    |
++| `worktreeRoot`                 | `string \| null`                                             | Backing checkout/worktree root. May differ from `cwd` for exact subprojects and remains persisted after the worktree is deleted so restore can reproduce the placement.                                        |
++| `baseBranch`                   | `string \| null`                                             | Comparison base retained across archive and restore. Branch-off creation stores the resolved ref; legacy and PR-checkout records hold a bare name. Null means no recorded base.                                |
++| `isPaseoOwnedWorktree`         | `boolean`                                                    | Whether Paseo owns and may remove/recreate the backing `worktreeRoot`                                                                                                                                          |
++| `mainRepoRoot`                 | `string \| null`                                             | Main repository root for worktree checkouts, independent of both exact `cwd` and backing `worktreeRoot`                                                                                                        |
++| `createdAt`                    | `string` (ISO 8601)                                          |                                                                                                                                                                                                                |
++| `updatedAt`                    | `string` (ISO 8601)                                          |                                                                                                                                                                                                                |
++| `archivedAt`                   | `string \| null` (ISO 8601)                                  | Soft-delete; required nullable                                                                                                                                                                                 |
+ | `autoArchivedChangeRequestUrl` | `string \| null`                                             | Merged change request already acknowledged by auto-archive or manual restore. Restore records its fresh forge baseline in the background; only the restored workspace is protected while that read is pending. |
+-| `labels`                       | `string[]?`                                                  | Normalized display names assigned from this host's shared label catalog. Missing means unlabelled.                                                                                            |
+-| `pinnedAt`                     | `string \| null` (ISO 8601)                                  | Pinned-to-top-of-sidebar timestamp; null means "not pinned"                                                                                                                                   |
+-| `snoozeStatus`                 | `{ snoozedAt, snoozedUntil } \| null` (ISO 8601)             | User-set quiet period. Never auto-cleared: "is it snoozed now" is this pair resolved against the clock. Null means "not snoozed". See **Snoozed** in [glossary.md](glossary.md).              |
+-| `untrustedSource`              | `{ kind: "change_request", forge, number, headRepository }?` | Provenance captured when a cross-repository change request creates the workspace. Missing means repository automation is allowed; explicit setup removes the field.                           |
++| `labels`                       | `string[]?`                                                  | Normalized display names assigned from this host's shared label catalog. Missing means unlabelled.                                                                                                             |
++| `pinnedAt`                     | `string \| null` (ISO 8601)                                  | Pinned-to-top-of-sidebar timestamp; null means "not pinned"                                                                                                                                                    |
++| `snoozeStatus`                 | `{ snoozedAt, snoozedUntil } \| null` (ISO 8601)             | User-set quiet period. Never auto-cleared: "is it snoozed now" is this pair resolved against the clock. Null means "not snoozed". See **Snoozed** in [glossary.md](glossary.md).                               |
++| `untrustedSource`              | `{ kind: "change_request", forge, number, headRepository }?` | Provenance captured when a cross-repository change request creates the workspace. Missing means repository automation is allowed; explicit setup removes the field.                                            |
+ 
+ > **Opaque-ID invariant:** `workspaceId` is opaque identity, never a filesystem path. Filesystem and git operations take `cwd`/`workspaceDirectory` only — never the id. A compatibility-only first-materialization bootstrap still groups pre-registry agent records by path and Git remote so existing installs retain their legacy records. That grouping never runs against a live registry, and its keys are not runtime project or workspace identity.
+ 
+diff --git a/docs/providers.md b/docs/providers.md
+index 8d111ad410..282c2e294c 100644
+--- a/docs/providers.md
++++ b/docs/providers.md
+@@ -110,7 +110,6 @@ V2.0.4 also removed the activation endpoint that gated a cold location, and a co
+ 
+ Paseo installs its OpenCode tool bridge through `OPENCODE_CONFIG_CONTENT`. V1 accepts a plugin file; v2 silently skips configured files and requires a package directory with a server entry point. Both versions use the daemon's private loopback bridge for caller-scoped tools. Bridge context lives only in daemon memory and is removed when the Paseo session closes. The content-addressed plugin artifacts contain no session data or secrets. V2 also needs this plugin when native Paseo tools are disabled: its prompt API has no structured-output format, so the plugin supplies a schema-validated final-answer tool.
+ 
+-
+ OpenCode reads its model catalogue once per process from a cache file it refreshes in the
+ background, so a running server keeps answering with the catalogue it booted with and asking it
+ again can never reveal a newly published model. The OpenCode catalogue key is a fingerprint of the
+diff --git a/packages/app/src/components/sidebar/sidebar-workspace-menu.tsx b/packages/app/src/components/sidebar/sidebar-workspace-menu.tsx
+index 8a5dc98038..b05c898dc4 100644
+--- a/packages/app/src/components/sidebar/sidebar-workspace-menu.tsx
++++ b/packages/app/src/components/sidebar/sidebar-workspace-menu.tsx
+@@ -242,9 +242,7 @@ function SidebarWorkspaceMenuItems({
+           leading={markAsReadLeadingIcon}
+           onSelect={onMarkAsRead}
+         >
+-          {statusBucket === "failed"
+-            ? "Dismiss error"
+-            : t("sidebar.workspace.actions.markAsRead")}
++          {statusBucket === "failed" ? "Dismiss error" : t("sidebar.workspace.actions.markAsRead")}
+         </WorkspaceMenuItem>
+       ) : null}
+       {onMarkAsUnread ? (
+diff --git a/packages/app/src/hooks/use-keyboard-shortcuts.ts b/packages/app/src/hooks/use-keyboard-shortcuts.ts
+index fbc8f4f4df..2e75a5c9c3 100644
+--- a/packages/app/src/hooks/use-keyboard-shortcuts.ts
++++ b/packages/app/src/hooks/use-keyboard-shortcuts.ts
+@@ -294,7 +294,7 @@ export function useKeyboardShortcuts({
+         pathname,
+         isMobile,
+         sidebarShortcutTargets: store.sidebarShortcutWorkspaceTargets,
+-          readyWaitingWorkspaceTargets: store.readyWaitingWorkspaceTargets,
++        readyWaitingWorkspaceTargets: store.readyWaitingWorkspaceTargets,
+         navigationActiveWorkspace:
+           keyboardWorkspaceSelectionRef.current ?? activeWorkspaceSelection,
+         commandCenterOpen: store.commandCenterOpen,
+diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
+index 5d794e8309..3160cbfcb0 100644
+--- a/packages/app/src/runtime/host-runtime.test.ts
++++ b/packages/app/src/runtime/host-runtime.test.ts
+@@ -4759,7 +4759,9 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+         .map((host) => host.label)
+         .sort(),
+     ).toEqual(["Mac mini", "Ryzen"]);
+-    expect(Object.fromEntries(store.getHosts().map((host) => [host.label, host.appearance.color]))).toEqual({
++    expect(
++      Object.fromEntries(store.getHosts().map((host) => [host.label, host.appearance.color])),
++    ).toEqual({
+       "Mac mini": "violet",
+       Ryzen: "blue",
+     });
+diff --git a/packages/desktop/src/daemon/daemon-manager.ts b/packages/desktop/src/daemon/daemon-manager.ts
+index 79ed2a3fa4..3e46b8ba71 100644
+--- a/packages/desktop/src/daemon/daemon-manager.ts
++++ b/packages/desktop/src/daemon/daemon-manager.ts
+@@ -11,7 +11,10 @@ import {
+   readLocalCredentialForTarget,
+   type DaemonInstance,
+ } from "@getpaseo/server/daemon-control";
+-import { DEFAULT_DAEMON_LOG_FILENAME, resolveDaemonLogPath } from "@getpaseo/server/daemon-log-path";
++import {
++  DEFAULT_DAEMON_LOG_FILENAME,
++  resolveDaemonLogPath,
++} from "@getpaseo/server/daemon-log-path";
+ import { loadPersistedConfig } from "@getpaseo/server/configuration";
+ import { resolvePaseoPaths, type PaseoPaths } from "@getpaseo/server/paths";
+ import {

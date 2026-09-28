@@ -144,3 +144,15 @@ index 988584874..a174eed31 100644
      isVisible,
      options,
      query: mode === "command" ? commandFilterQuery : fileFilterQuery,
+diff --git a/packages/app/src/composer/input/input.tsx b/packages/app/src/composer/input/input.tsx
+index e0ddf7ec96..6d5a68c9af 100644
+--- a/packages/app/src/composer/input/input.tsx
++++ b/packages/app/src/composer/input/input.tsx
+@@ -1866,7 +1866,6 @@ export const MessageInput = forwardRef<MessageInputRef, MessageInputProps>(
+         testID="message-input-root"
+         dataSet={listNavigationDataSet(ownsListNavigation)}
+         onLayout={handleComposerLayout}
+-        dataSet={listNavigationDataSet(ownsListNavigation)}
+       >
+         <MessageInputAutoFocus
+           enabled={autoFocus}

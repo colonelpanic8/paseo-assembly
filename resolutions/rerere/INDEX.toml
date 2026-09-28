@@ -398,6 +398,12 @@ paths = ["packages/app/src/components/agent-list.tsx"]
 recorded = "2026-09-18T10:58:06.462876304+00:00"
 
 [[resolution]]
+entry = "agent/configurable-direct-model-shortcuts"
+hash = "ce17f9d7ca44c981455a0e24292b39af8b924b72"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-09-28T05:20:26.154401753+00:00"
+
+[[resolution]]
 entry = "agent/live-voice-completion-notifications"
 hash = "cc7235a7d0416b7988c3b16772a1f39d4f025742"
 paths = ["packages/server/src/server/agent/agent-projections.ts"]
@@ -408,6 +414,24 @@ entry = "agent/live-voice-completion-notifications"
 hash = "f10b3141c418308cc91ba66e379ab7d78197d84e"
 paths = ["packages/app/src/utils/agent-snapshots.test.ts"]
 recorded = "2026-07-31T15:29:27.839934802+00:00"
+
+[[resolution]]
+entry = "android-intents"
+hash = "0c0e8ff78a89cf50c56079a8f8a2cc36be867d83"
+paths = ["CLAUDE.md"]
+recorded = "2026-09-28T05:51:32.423623862+00:00"
+
+[[resolution]]
+entry = "android-intents"
+hash = "1658e6fa80a10a4af8eaae21a679e8497d320b55"
+paths = ["CLAUDE.md"]
+recorded = "2026-09-28T05:28:32.206901073+00:00"
+
+[[resolution]]
+entry = "android-intents"
+hash = "3dc789e9868c7952ea15567ffd9f2febd8bfd11c"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-28T05:28:32.206912174+00:00"
 
 [[resolution]]
 entry = "android-intents"
@@ -429,9 +453,21 @@ recorded = "2026-09-15T05:18:13.429039868+00:00"
 
 [[resolution]]
 entry = "android-intents"
+hash = "a377e2a99c57e32ae490676bdcd68292cc5bc8af"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-28T05:51:32.423627388+00:00"
+
+[[resolution]]
+entry = "android-intents"
 hash = "a76663f84e07b3f03d5d6fe468d7aba427fdb18e"
 paths = ["packages/app/src/app/_layout.tsx"]
 recorded = "2026-09-19T23:52:15.925865188+00:00"
+
+[[resolution]]
+entry = "android-intents"
+hash = "e7d20ca619b30ce254555893f147de6cb97976ac"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-28T05:28:32.206912525+00:00"
 
 [[resolution]]
 entry = "android-intents"
@@ -663,9 +699,27 @@ recorded = "2026-09-06T19:58:28+00:00"
 
 [[resolution]]
 entry = "codex-astra-support"
+hash = "18df08296c347c2e93864c48b82744c1c99fcea0"
+paths = ["packages/app/src/agent-stream/view.tsx"]
+recorded = "2026-09-28T05:25:17.173718731+00:00"
+
+[[resolution]]
+entry = "codex-astra-support"
+hash = "78284cf832b7a0b626e6d9f283c46f6904217ad1"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.test.ts"]
+recorded = "2026-09-28T05:25:17.173722679+00:00"
+
+[[resolution]]
+entry = "codex-astra-support"
 hash = "d625bfb718ef0a1ee6242e64bfd5cbe0e71ef5b0"
 paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
 recorded = "2026-09-23T02:51:56.456760488+00:00"
+
+[[resolution]]
+entry = "codex-astra-support"
+hash = "fffa96d953ce03784d8793a71e35eff8cc9a708d"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-28T05:25:17.173723340+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/client-settings-file-store"
@@ -804,10 +858,22 @@ hash = "f9830d618b8b2e92988faea8a0ca684006b05d3b"
 recorded = "2026-08-20T06:58:56.641133739+00:00"
 
 [[resolution]]
+entry = "colonelpanic8/require-real-workspace-directory"
+hash = "159babbe1fc7baee46d8e2f2bdfb7f468e1621a9"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-09-28T05:21:21.350939579+00:00"
+
+[[resolution]]
 entry = "disable-worktree-setup-callout"
 hash = "29d2fd6519fe755737d9dd7b437f6e562d92356f"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-09-03T19:27:45.303422877+00:00"
+
+[[resolution]]
+entry = "dismiss-failed-state"
+hash = "0fa73491d562724a218e2512553e9257105b4072"
+paths = ["docs/agent-lifecycle.md"]
+recorded = "2026-09-28T05:28:09.089909363+00:00"
 
 [[resolution]]
 entry = "dismiss-failed-state"
@@ -820,6 +886,12 @@ entry = "dismiss-failed-state"
 hash = "26349d7c68c6fa6209adb89e397cd44674f074ca"
 paths = ["packages/app/src/components/sidebar/sidebar-workspace-row.tsx"]
 recorded = "2026-09-14T07:49:41.341854274+00:00"
+
+[[resolution]]
+entry = "dismiss-failed-state"
+hash = "3183d5e9d7bc400d92e24c5b19b62ee0d714b098"
+paths = ["packages/app/src/components/sidebar/sidebar-status-list.tsx"]
+recorded = "2026-09-28T05:28:09.089920845+00:00"
 
 [[resolution]]
 entry = "dismiss-failed-state"
@@ -846,10 +918,28 @@ paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
 recorded = "2026-09-13T01:19:30.028213533+00:00"
 
 [[resolution]]
+entry = "fix/draft-commands-without-project"
+hash = "7ce411253bf1c3f9d0042bf631dd6ff99188a4a4"
+paths = ["packages/app/src/hooks/use-agent-autocomplete.test.ts"]
+recorded = "2026-09-28T05:29:06.490685531+00:00"
+
+[[resolution]]
+entry = "fix/draft-commands-without-project"
+hash = "eaedbfbf512ed384ab391e1ff76861e08d51bee5"
+paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
+recorded = "2026-09-28T05:29:06.490690050+00:00"
+
+[[resolution]]
 entry = "fix/model-browser-sheet-scope"
 hash = "f25c74fbb1614380bf842019c415fa9100e04015"
 paths = ["packages/app/src/components/model-browser.tsx"]
 recorded = "2026-09-07T21:32:40.386523001+00:00"
+
+[[resolution]]
+entry = "fix/settings-sidebar-scroll-preservation"
+hash = "ce35590ded7c1adc64c4740b172c3aa7287c4b8e"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-28T05:24:55.340039368+00:00"
 
 [[resolution]]
 entry = "fix/workspace-message-timestamps"
@@ -895,9 +985,27 @@ recorded = "2026-09-10T00:57:24.472332819+00:00"
 
 [[resolution]]
 entry = "host/default-color"
+hash = "119b1e05d0dfed0da354467fd8869bc381133002"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-28T05:27:30.914254863+00:00"
+
+[[resolution]]
+entry = "host/default-color"
+hash = "58730f1a37009754ac1946868cb371fce7996ff6"
+paths = ["packages/app/src/screens/settings/host-appearance-section.tsx"]
+recorded = "2026-09-28T05:27:30.914269440+00:00"
+
+[[resolution]]
+entry = "host/default-color"
 hash = "7c647a6de224eb025eca16fb230cdb02d48e2f48"
 paths = ["packages/server/src/server/persisted-config.ts"]
-recorded = "2026-09-18T11:09:05.104453566+00:00"
+recorded = "2026-09-28T05:27:30.914270061+00:00"
+
+[[resolution]]
+entry = "host/default-color"
+hash = "9d3c2de762c18beddaaabb6cc184f1535fbc8d31"
+paths = ["packages/server/src/server/persisted-config.ts"]
+recorded = "2026-09-28T07:30:50.811309898+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
@@ -907,9 +1015,21 @@ recorded = "2026-09-18T11:06:03.063104141+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
+hash = "133e002aa9a61e0c5e436f65366428951cd6cc61"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-28T05:24:09.163970406+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
 hash = "1432e217c475b07107d0eb015bdd2c7352a71c5f"
 paths = ["packages/app/src/utils/shortcut-platform.ts"]
 recorded = "2026-09-23T02:51:24.520631653+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
+hash = "85abb40fcbaf88a9b5f1529f428b24cfbe65263f"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-09-28T05:24:09.164031883+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
@@ -1429,9 +1549,21 @@ recorded = "2026-09-07T20:14:40.926763693+00:00"
 
 [[resolution]]
 entry = "locked-extension-paseo"
+hash = "231d06315a933d315528f4a34ff602a8379e4ad7"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-28T05:51:38.421125543+00:00"
+
+[[resolution]]
+entry = "locked-extension-paseo"
 hash = "2d85132adf29bff73a796b64c5efc1eafa73a64e"
 paths = ["packages/app/src/app/_layout.tsx"]
 recorded = "2026-09-23T22:21:31.528705211+00:00"
+
+[[resolution]]
+entry = "locked-extension-paseo"
+hash = "c01842de083daac02199a70ba935ec7d2ebc12d8"
+paths = ["packages/app/src/app/_layout.tsx"]
+recorded = "2026-09-28T05:28:39.973185930+00:00"
 
 [[resolution]]
 entry = "model-picker-search"
@@ -1480,6 +1612,18 @@ entry = "ntfy-push"
 hash = "39d359d3d681df76907f09483d5438c61df6d481"
 paths = ["packages/server/src/server/persisted-config.ts"]
 recorded = "2026-09-18T11:09:40.216226473+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "5ccf782905e57819282ff2d88ff77036f0dab8f6"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-28T07:31:00.313851145+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "6e3b75dc39b97ab2e45b1134669411a3e6569f9c"
+paths = ["CLAUDE.md"]
+recorded = "2026-09-28T05:51:11.476890646+00:00"
 
 [[resolution]]
 entry = "ntfy-push"
@@ -3660,6 +3804,18 @@ paths = ["packages/app/src/stores/session-store.ts"]
 recorded = "2026-09-14T09:17:18.562760961+00:00"
 
 [[resolution]]
+entry = "skill-pills-config"
+hash = "b5f59cfced311800dc21f4aebfc50ed12c6a87c0"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-28T05:18:08.767585320+00:00"
+
+[[resolution]]
+entry = "subagent-param-visibility"
+hash = "10a4591016ab539461843c046bcd9f46d2083809"
+paths = ["packages/app/src/panels/agent-panel.tsx"]
+recorded = "2026-09-28T05:19:15.413256310+00:00"
+
+[[resolution]]
 entry = "t3code-4453"
 hash = "21519d71bfd6e2e7dbe749fa107e2c44048c97c7"
 paths = ["packages/app/src/composer/index.tsx"]
@@ -3670,6 +3826,12 @@ entry = "thinking-control-reachability"
 hash = "430d4acd7331ccc082b99d008f86a0b12ef34cef"
 paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
 recorded = "2026-09-07T20:13:56.111057601+00:00"
+
+[[resolution]]
+entry = "unarchive-threads"
+hash = "c6a815c622615152c661d3a26f583215b0d7e007"
+paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
+recorded = "2026-09-28T05:19:27.145280834+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -3706,6 +3868,12 @@ entry = "voice-actions"
 hash = "0c8f6dbb98a30721129779c2fb3812a843739586"
 paths = ["packages/app/src/stores/live-voice-settings-store.ts"]
 recorded = "2026-09-16T22:13:50.076808720+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "0d7f614b4c68216436a6c232d54446dc3a5dd0eb"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-09-28T05:49:46.833204650+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -3757,9 +3925,27 @@ recorded = "2026-09-10T06:09:33.401094987+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "22d9f75eccea363552025ecedb9d844326430600"
+paths = ["packages/app/src/i18n/resources/ar.ts"]
+recorded = "2026-09-28T05:49:46.833208778+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "27e919ddf6fc9f835d6053ea9aca622570193e6f"
 paths = ["packages/app/src/i18n/resources/es.ts"]
 recorded = "2026-09-10T06:09:33.401095237+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "29b0de577e33ec755b818033f2c4c5978138759b"
+paths = ["packages/app/src/live-voice/live-voice-link-listener.tsx"]
+recorded = "2026-09-28T05:49:46.833223396+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "29f092c52ccf60ca7e71182ab3e255281c6178cc"
+paths = ["packages/app/src/i18n/resources/ko.ts"]
+recorded = "2026-09-28T05:49:46.833224107+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -3769,9 +3955,21 @@ recorded = "2026-09-16T22:13:50.076813870+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "2e4c3f6905b2f69f286348587bd78f73dfeaa39b"
+paths = ["packages/app/src/live-voice/live-voice-link.ts"]
+recorded = "2026-09-28T05:49:46.833224788+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "30c343f42ebf615e73617d2c8960c65ec616f6f2"
 paths = ["packages/server/src/server/session.ts"]
 recorded = "2026-09-10T06:09:33.401095578+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "321021cbbe57749909ba7a76fc88fea8931c5680"
+paths = ["packages/app/src/i18n/resources/ja.ts"]
+recorded = "2026-09-28T05:49:46.833225730+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -3937,6 +4135,12 @@ recorded = "2026-09-16T22:13:50.076826864+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "7e93f3b1658b450b7a63b9c0df778b1169b93772"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-09-28T05:49:46.833226151+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "80aac18eb05ed185887bf9387b6e71afe0c3e3ff"
 paths = ["packages/app/src/wear/wear-live-voice.test.ts"]
 recorded = "2026-09-10T06:09:33.401099365+00:00"
@@ -3997,6 +4201,12 @@ recorded = "2026-09-10T06:09:33.401100197+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "9043b419482d0096d46d1010a6ae56b88ef820c1"
+paths = ["packages/app/src/i18n/resources/zh-CN.ts"]
+recorded = "2026-09-28T05:49:46.833226682+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "91144b0d6eb417a6eafa7e80a5e87a32da872309"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
 recorded = "2026-09-08T09:05:47.963824713+00:00"
@@ -4012,6 +4222,12 @@ entry = "voice-actions"
 hash = "94eebb60701f47e22d86d1b2f77382751380bd53"
 paths = ["packages/app/src/i18n/resources/fr.ts"]
 recorded = "2026-09-08T09:05:47.963825043+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "97d03d0f3f5097f67054387fa832ead171a76d20"
+paths = ["packages/app/src/i18n/resources/en.ts"]
+recorded = "2026-09-28T05:49:46.833227784+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -4057,9 +4273,15 @@ recorded = "2026-09-16T22:13:50.076899091+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "a53834b4065315640f2a7b41618c96df54b1279a"
+paths = ["packages/app/src/i18n/resources/pt-BR.ts"]
+recorded = "2026-09-28T05:49:46.833228215+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "a7e7ef32c8c93d9ee79fa2adac0159316e17817f"
 paths = ["packages/app/src/app/_layout.tsx"]
-recorded = "2026-09-08T09:05:47.963825625+00:00"
+recorded = "2026-09-28T05:49:46.833245698+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -4096,6 +4318,12 @@ entry = "voice-actions"
 hash = "bcd18f1ae1008b4f3e9beb52dfbceb96dc9c1b2f"
 paths = ["packages/server/src/server/live-voice/live-voice-context.ts"]
 recorded = "2026-09-16T22:13:50.076906054+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "bd1bc5d125692db1870ed0d1ad47813bb962912f"
+paths = ["packages/app/src/live-voice/live-voice-link.test.ts"]
+recorded = "2026-09-28T05:49:46.833246549+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -4141,6 +4369,12 @@ recorded = "2026-09-16T22:13:50.076907717+00:00"
 
 [[resolution]]
 entry = "voice-actions"
+hash = "d61a49c33fd252d8688583e9d27c38a7552d5c65"
+paths = ["packages/app/src/screens/settings-screen.tsx"]
+recorded = "2026-09-28T05:49:46.833247351+00:00"
+
+[[resolution]]
+entry = "voice-actions"
 hash = "d6291b496228d774d874efcd17c304ebf7200e2c"
 paths = ["docs/data-model.md"]
 recorded = "2026-09-16T22:13:50.076908348+00:00"
@@ -4180,6 +4414,12 @@ entry = "voice-actions"
 hash = "e771c672ac08983a5ad44d6ecfc167c40df739fc"
 paths = ["packages/app/src/live-voice/live-voice-runtime.ts"]
 recorded = "2026-09-10T06:09:33.401103293+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "ea135bf7110de460d3480914c7673f662417828d"
+paths = ["packages/app/src/i18n/resources/ru.ts"]
+recorded = "2026-09-28T05:49:46.833248162+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -4228,6 +4468,12 @@ entry = "voice-actions"
 hash = "f8f00bff2d5cd190db04bf0ae068b1a3a13583dd"
 paths = ["packages/client/src/daemon-client.live-voice-routing.test.ts"]
 recorded = "2026-09-16T22:13:50.076915502+00:00"
+
+[[resolution]]
+entry = "voice-actions"
+hash = "fbe3ec8508b57243ec75806337fa3c739d3e402b"
+paths = ["packages/app/src/i18n/resources/es.ts"]
+recorded = "2026-09-28T05:49:46.833249305+00:00"
 
 [[resolution]]
 entry = "voice-actions"
@@ -4495,6 +4741,12 @@ recorded = "2026-08-04T20:32:48.987822383+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "f407ba71bd05d4b7f56da2c9a81801471e55477d"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-09-28T05:19:39.223307093+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "f56ccbe32c2931c5cca406ca32f1992700374d11"
 paths = ["packages/protocol/src/messages.ts"]
 recorded = "2026-08-03T07:52:21.803093076+00:00"
@@ -4519,9 +4771,27 @@ recorded = "2026-09-18T11:02:56.223474188+00:00"
 
 [[resolution]]
 entry = "xdg-paths"
+hash = "45a5c182f43bdccc2d3b9ff27b00b69d9d35715e"
+paths = ["packages/cli/src/commands/onboard.ts"]
+recorded = "2026-09-28T07:30:38.085285549+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
 hash = "4ccb6aeb81165489d8cdf868497d29c7fa79de27"
 paths = ["packages/desktop/src/daemon/daemon-manager.ts"]
 recorded = "2026-09-13T01:02:53.035731571+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
+hash = "7637357395d78045cafc4c45fa57ace219d8d0b8"
+paths = ["packages/desktop/src/daemon/daemon-manager.ts"]
+recorded = "2026-09-28T05:48:54.241369966+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
+hash = "a864bd029fb30875fcab226ba63e67a516bc5b5b"
+paths = ["packages/desktop/src/daemon/daemon-manager.ts"]
+recorded = "2026-09-28T07:30:38.085287824+00:00"
 
 [[resolution]]
 entry = "xdg-paths"
@@ -4540,3 +4810,9 @@ entry = "xdg-paths"
 hash = "d5b77c77aa830bae92cd5e28e7a162d57d2d9f72"
 paths = ["packages/cli/src/commands/onboard.ts"]
 recorded = "2026-09-18T11:41:34.354711553+00:00"
+
+[[resolution]]
+entry = "xdg-paths"
+hash = "ddf431376ffe2f45efb02b6af6ab6e0d75a4f88f"
+paths = ["packages/cli/src/commands/onboard.ts"]
+recorded = "2026-09-28T05:48:54.241372180+00:00"

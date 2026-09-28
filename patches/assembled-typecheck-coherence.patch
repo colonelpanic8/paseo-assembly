@@ -1,81 +1,3 @@
-diff --git a/packages/app/src/i18n/resources/ru.ts b/packages/app/src/i18n/resources/ru.ts
-index 24d3061436..849a3218b6 100644
---- a/packages/app/src/i18n/resources/ru.ts
-+++ b/packages/app/src/i18n/resources/ru.ts
-@@ -960,11 +960,8 @@ export const ru: TranslationResources = {
-         refresh: "Обновить",
-         refreshState: "Обновить состояние Git и {{brand}}",
-         failedRefresh: "Не удалось обновить состояние Git.",
--        emptyHiddenWhitespace: "После скрытия пробельных изменений видимых изменений нет",
--        emptyUncommitted: "Нет незафиксированных изменений",
-         seeUncommittedChanges: "Показать незафиксированные изменения",
-         seeCommittedChanges: "Показать зафиксированные изменения",
--        emptyAgainstBase: "Нет изменений относительно {{baseRef}}",
-         checkingRepository: "Проверяем репозиторий...",
-         notRepository: "Это не репозиторий Git",
-         diffMode: "Режим диффа",
-@@ -1135,7 +1132,6 @@ export const ru: TranslationResources = {
-         branch: "Ветка",
-         project: "Проект",
-         host: "Хост",
--        alwaysShowHost: "Всегда показывать хост",
-         changeRequest: "PR",
-         checks: "Проверки",
-         services: "Сервисы",
-@@ -2682,14 +2678,6 @@ export const ru: TranslationResources = {
-           auto: "Системная",
-         },
-       },
--      sidebar: {
--        title: "Боковая панель",
--        alwaysShowHostLabels: {
--          title: "Всегда показывать метки хоста",
--          description:
--            "Показывает метки хоста, даже когда все видимые рабочие области находятся на этом устройстве",
--        },
--      },
-       detailLevel: {
-         title: "Уровень детализации",
-       },
-@@ -2699,6 +2687,11 @@ export const ru: TranslationResources = {
-       },
-       sidebar: {
-         title: "Боковая панель",
-+        alwaysShowHostLabels: {
-+          title: "Всегда показывать метки хоста",
-+          description:
-+            "Показывает метки хоста, даже когда все видимые рабочие области находятся на этом устройстве",
-+        },
-         description:
-           "Выберите, какие элементы отображаются вверху боковой панели и в каком порядке",
-         moveUp: "Переместить вверх",
-diff --git a/packages/client/src/daemon-client.ts b/packages/client/src/daemon-client.ts
-index 34829c6011..0fd26f00dd 100644
---- a/packages/client/src/daemon-client.ts
-+++ b/packages/client/src/daemon-client.ts
-@@ -42,6 +42,8 @@ import type {
-   FileExplorerResponse,
-   FileVersion,
-   FileWriteResult,
-+  FetchAgentsRequestMessage,
-+  FetchAgentsResponseMessage,
-   FetchAgentTimelineResponseMessage,
-   AgentForkContextResponseMessage,
-   AgentForkNativeResponseMessage,
-@@ -709,11 +711,8 @@ export interface DaemonPairingOfferOptions {
-   timeout?: number;
- }
- type DaemonUpdateResponse = z.infer<typeof DaemonUpdateResponseSchema>;
--type FetchAgentsPayload = Extract<
--  SessionOutboundMessage,
--  { type: "fetch_agents_response" }
-->["payload"];
--type FetchAgentsRequest = Extract<SessionInboundMessage, { type: "fetch_agents_request" }>;
-+type FetchAgentsPayload = FetchAgentsResponseMessage["payload"];
-+type FetchAgentsRequest = FetchAgentsRequestMessage;
- export type FetchAgentsOptions = Omit<FetchAgentsRequest, "type" | "requestId"> & {
-   signal?: AbortSignal;
-   requestId?: string;
 diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
 index e5f3d4500d..4d867a21c2 100644
 --- a/packages/server/src/server/daemon-config-store.ts
@@ -89,10 +11,10 @@ index e5f3d4500d..4d867a21c2 100644
    saveConfigStack,
    type ConfigStack,
 diff --git a/packages/server/src/server/session.ts b/packages/server/src/server/session.ts
-index fa420cafc1..7e93cf0443 100644
+index eebadd2e87..ae96a602d7 100644
 --- a/packages/server/src/server/session.ts
 +++ b/packages/server/src/server/session.ts
-@@ -111,6 +111,7 @@ import {
+@@ -114,6 +114,7 @@ import {
  
  import { AgentManager, AgentRunCancellationError } from "./agent/agent-manager.js";
  import { buildTimelinePromptIndex } from "./agent/timeline-prompt-index.js";
@@ -100,11 +22,3 @@ index fa420cafc1..7e93cf0443 100644
  import { ProviderSnapshotManager } from "./agent/provider-snapshot-manager.js";
  import type {
    AgentManagerEvent,
-@@ -2791,6 +2792,7 @@ export class Session {
-     );
-   }
- 
-+  // oxlint-disable-next-line complexity
-   private async handleLiveVoiceStartRequest(
-     msg: Extract<SessionInboundMessage, { type: "voice.live.start.request" }>,
-     source?: object,

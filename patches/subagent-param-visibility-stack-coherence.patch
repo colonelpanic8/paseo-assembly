@@ -1,0 +1,110 @@
+diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
+index a1c67bf8ef..10dd450fdb 100644
+--- a/packages/app/src/panels/agent-panel.tsx
++++ b/packages/app/src/panels/agent-panel.tsx
+@@ -344,15 +344,10 @@ function selectAgentPanelDescriptorState(
+   agentId: string,
+ ) {
+   const session = state.sessions[serverId];
+-  const agent = session?.agents?.get(agentId) ?? session?.agentDetails?.get(agentId) ?? null;
++  const agent = resolveChatAgentFromSession(state, serverId, agentId);
+   return {
+-    provider: agent?.provider ?? "codex",
+-    title: agent?.title ?? null,
++    agent,
+     summary: resolveAgentPanelPurposeSummary(agent, session),
+-    status: agent?.status ?? null,
+-    pendingPermissionCount: agent?.pendingPermissions.length ?? 0,
+-    requiresAttention: agent?.requiresAttention ?? false,
+-    attentionReason: agent?.attentionReason ?? null,
+     isTurnActive: selectAgentTurnPresentation(session, agentId).isActive,
+   };
+ }
+diff --git a/packages/app/src/panels/agent-purpose-presentation.ts b/packages/app/src/panels/agent-purpose-presentation.ts
+index 9124e69..6d8ff66 100644
+--- a/packages/app/src/panels/agent-purpose-presentation.ts
++++ b/packages/app/src/panels/agent-purpose-presentation.ts
+@@ -1,15 +1,21 @@
++/**
++ * `fallback` is the runtime subtitle ("Claude · Opus 4.5 · High", or "Claude agent" while the
++ * model is unknown). The purpose summary takes the subtitle slot when there is one, so the
++ * tooltip keeps any model detail the subtitle would otherwise have shown.
++ */
+ export function buildAgentPurposePresentation(input: {
+   label: string | null;
+   summary: string | null;
+-  providerLabel: string;
++  fallback: string;
+ }): { subtitle: string; tooltip: string } {
+-  const fallback = `${input.providerLabel} agent`;
+-  const tooltipTitle = input.label ?? fallback;
+-  if (!input.summary) {
+-    return { subtitle: fallback, tooltip: tooltipTitle };
+-  }
++  const hasRuntimeDetail = !input.fallback.endsWith(" agent");
++  const lines = [
++    input.label ?? input.fallback,
++    input.summary,
++    input.label && hasRuntimeDetail ? input.fallback : null,
++  ].filter((line): line is string => Boolean(line));
+   return {
+-    subtitle: input.summary,
+-    tooltip: `${tooltipTitle}\n${input.summary}`,
++    subtitle: input.summary ?? input.fallback,
++    tooltip: lines.join("\n"),
+   };
+ }
+diff --git a/packages/app/src/panels/agent-purpose-presentation.test.ts b/packages/app/src/panels/agent-purpose-presentation.test.ts
+index fd09969..f2658bb 100644
+--- a/packages/app/src/panels/agent-purpose-presentation.test.ts
++++ b/packages/app/src/panels/agent-purpose-presentation.test.ts
+@@ -2,29 +2,42 @@ import { describe, expect, it } from "vitest";
+ import { buildAgentPurposePresentation } from "./agent-purpose-presentation";
+ 
+ describe("buildAgentPurposePresentation", () => {
+-  it("uses the summary in pane chrome and includes the title in the tooltip", () => {
++  it("uses the summary in pane chrome and keeps the model detail in the tooltip", () => {
+     expect(
+       buildAgentPurposePresentation({
+         label: "Agent summaries",
+         summary: "Propagating summaries through app state",
+-        providerLabel: "Codex",
++        fallback: "Codex · GPT-6 Sol · High",
+       }),
+     ).toEqual({
+       subtitle: "Propagating summaries through app state",
+-      tooltip: "Agent summaries\nPropagating summaries through app state",
++      tooltip: "Agent summaries\nPropagating summaries through app state\nCodex · GPT-6 Sol · High",
+     });
+   });
+ 
+-  it("keeps the provider fallback when no summary is available", () => {
++  it("falls back to the model subtitle when no summary is available", () => {
+     expect(
+       buildAgentPurposePresentation({
+         label: "Agent summaries",
+         summary: null,
+-        providerLabel: "Codex",
++        fallback: "Codex · GPT-6 Sol · High",
++      }),
++    ).toEqual({
++      subtitle: "Codex · GPT-6 Sol · High",
++      tooltip: "Agent summaries\nCodex · GPT-6 Sol · High",
++    });
++  });
++
++  it("omits a generic provider subtitle from the tooltip", () => {
++    expect(
++      buildAgentPurposePresentation({
++        label: "Agent summaries",
++        summary: "Propagating summaries through app state",
++        fallback: "Codex agent",
+       }),
+     ).toEqual({
+-      subtitle: "Codex agent",
+-      tooltip: "Agent summaries",
++      subtitle: "Propagating summaries through app state",
++      tooltip: "Agent summaries\nPropagating summaries through app state",
+     });
+   });
+ });

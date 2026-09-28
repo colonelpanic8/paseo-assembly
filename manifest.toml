@@ -13,17 +13,20 @@ remote = "mine"
 branch = "assembled"
 tag_prefix = "paseo-assembled"
 
+# Was getpaseo/paseo#2517, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2517
+branch = "mine:prompt-mod-shortcuts"
 summary = "Reveal composer control shortcuts while holding Mod"
 
+# Was getpaseo/paseo#2520, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2520
+branch = "mine:relay-tailscale"
 summary = "Add managed desktop host enrollment"
 
+# Was getpaseo/paseo#2521, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:next-ready-thread"
-summary = "Add shortcut for next workspace needing attention; track the live branch because closed PR #2521 has a frozen head"
+summary = "Add shortcut for next workspace needing attention"
 fixup = "patches/sidebar-project-view-shortcut-targets.patch"
 
 [[entry]]
@@ -38,13 +41,15 @@ fixup = "patches/pr-2564-stack-coherence.patch"
 branch = "mine:model-picker-search"
 summary = "Keep grouped all-model browsing and keyboard navigation beyond upstream model profiles"
 
+# Was getpaseo/paseo#2532, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:skill-pills-config"
-summary = "Configurable composer command and skill triggers; track the live branch because closed PR #2532 has a frozen head"
+summary = "Configurable composer command and skill triggers"
 
+# Was getpaseo/paseo#2553, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:agent/nix-android"
-summary = "Add Nix Android toolchain and release runner; track the live branch because closed PR #2553 has a frozen head"
+summary = "Add Nix Android toolchain and release runner"
 
 [[entry]]
 branch = "mine:assembly-build-provenance"
@@ -54,9 +59,10 @@ fixup = "patches/desktop-package-version-rec.patch"
 branch = "mine:monospaced-mobile-styling"
 summary = "Align inline code chips with the prose line on native"
 
+# Was getpaseo/paseo#2628, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:t3code-4453"
-summary = "Prompt stash: cmd+S saves the draft to a per-provider queue; track the live branch because closed PR #2628 has a frozen head"
+summary = "Prompt stash: cmd+S saves the draft to a per-provider queue"
 
 [[entry]]
 branch = "mine:assembly-agent-env"
@@ -71,20 +77,27 @@ summary = "Remove the setup-worktree-scripts reminder"
 pr = 2650
 summary = "fix: survive NODE_ENV=production during install"
 
+# Was getpaseo/paseo#2658, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:agent-purpose-summaries"
-summary = "Add rolling agent purpose summaries; track the live branch because closed PR #2658 has a frozen head"
+summary = "Add rolling agent purpose summaries"
 
+# Was getpaseo/paseo#2659, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:subagent-param-visibility"
-summary = "Surface the model and thinking level agents actually use; track the live branch because closed PR #2659 has a frozen head"
+summary = "Surface the model and thinking level agents actually use"
+# The tab subtitle shows agent-purpose-summaries' purpose summary when there is
+# one and otherwise this topic's model/thinking subtitle, so the purpose
+# presentation takes the model subtitle as its fallback.
+fixup = "patches/subagent-param-visibility-stack-coherence.patch"
 
+# Was getpaseo/paseo#2660, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:unarchive-threads"
-summary = "Restore a workspace's agents when the workspace is unarchived (was PR 2660, closed upstream; refs/pull/2660/head is frozen at the pre-rebase commit, so the branch is the only live source)"
+summary = "Restore a workspace's agents when the workspace is unarchived"
 
-# Merges 2655 (Wear OS companion) and 2657 (Live Voice) and adds what needs
-# both: watch-side start/end/mute and transcript, the Android AudioManager
+# Merges mine:assembly-wear-os (the Wear OS companion; was getpaseo/paseo#2655,
+# closed upstream) and 2657 (Live Voice) and adds what needs both: watch-side start/end/mute and transcript, the Android AudioManager
 # fix that routes call audio to a Bluetooth headset, pocket starts (nonce-staged
 # trampoline that begins a call with the phone locked), earbuds-over-watch audio
 # route arbitration with watch-side route display/selection, and one-shot
@@ -96,7 +109,7 @@ summary = "Restore a workspace's agents when the workspace is unarchived (was PR
 [[entry]]
 branch = "mine:watch-live-voice"
 summary = "Drive Live Voice from the watch; route call audio to a Bluetooth headset"
-parents = [{ pr = 2655 }, { branch = "mine:realtime-voice-actions" }]
+parents = [{ branch = "mine:assembly-wear-os" }, { branch = "mine:realtime-voice-actions" }]
 reconstruction_publish = "mine:watch-live-voice"
 # The agent payload builders only trip oxlint's complexity rule once 2657,
 # 2658 and 2659 stack, so this belongs to no single topic branch.
@@ -111,38 +124,47 @@ fixup = "patches/agent-payload-complexity.patch"
 [[entry]]
 patch = "patches/assembled-npm-deps-hash.patch"
 
+# Was getpaseo/paseo#2730, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2730
+branch = "mine:host-selection-search"
 summary = "fix(app): make host pickers searchable"
 
 [[entry]]
 pr = 2772
 summary = "Show agent turn completion times"
 
+# Was getpaseo/paseo#2784, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2784
+branch = "mine:fix/postinstall-patch-package-enoent"
 summary = "Fix worktree setup with production npm environments"
 
+# Was getpaseo/paseo#2785, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:multi-account-provider"
-summary = "Add UI and CLI for creating provider accounts (rebased from closed PR #2785)"
+summary = "Add UI and CLI for creating provider accounts"
+# Its provider-rename websocket test fixture predates the constructor
+# parameters and onAgentClosing hook earlier entries add to the server.
+fixup = "patches/multi-account-provider-stack-coherence.patch"
 
 [[entry]]
 pr = 2820
 summary = "Serialize draft provider introspection sessions"
 fixup = "patches/command-loading-session-errors.patch"
 
+# Was getpaseo/paseo#2843, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:unconditional-host-display"
-summary = "Add host display and custom color preferences (rebased from closed PR #2843)"
+summary = "Add host display and custom color preferences"
 
+# Was getpaseo/paseo#2845, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:agent/configurable-direct-model-shortcuts"
-summary = "Add configurable direct model shortcuts; track the live branch because closed PR #2845 has a frozen head"
+summary = "Add configurable direct model shortcuts"
 
+# Was getpaseo/paseo#2849, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:daemon-config-imports"
-summary = "Support layered daemon config; track the live branch because closed PR #2849 has a frozen head"
+summary = "Support layered daemon config"
 
 # Two interactions, neither belonging to a single topic. (1) onboard.ts imports
 # node:path for two call sites: 2849 removes the config.json one and 2873
@@ -158,10 +180,12 @@ pr = 2873
 summary = "Honor log.file.path everywhere and create daemon logs owner-only"
 fixup = "patches/pr-2873-stack-coherence.patch"
 
+# Was getpaseo/paseo#2875, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:colonelpanic8/worktree-detection-data"
-summary = "Detect Paseo worktrees from daemon data; track the live branch because closed PR #2875 has a frozen head"
+summary = "Detect Paseo worktrees from daemon data"
 
+# Linear on mine:daemon-config-imports (shares its commits).
 [[entry]]
 branch = "mine:colonelpanic8/client-settings-file-store"
 summary = "Persist desktop client settings to a writable settings.json instead of localStorage/LevelDB"
@@ -170,26 +194,35 @@ summary = "Persist desktop client settings to a writable settings.json instead o
 pr = 2883
 summary = "Expand ~ in every configured filesystem path"
 
+# Was getpaseo/paseo#2884, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2884
+branch = "mine:colonelpanic8/require-real-workspace-directory"
 summary = "Require a real directory to create a local workspace"
 
+# Was getpaseo/paseo#2885, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2885
+branch = "mine:colonelpanic8/desktop-adhoc-hardened-runtime"
 summary = "Stop shipping a hardened runtime on unsigned mac builds"
 
+# Was getpaseo/paseo#2898, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:fork-native-session"
-summary = "Fork the provider session instead of pasting a summary (rebased from closed PR #2898)"
-fixup = "patches/fork-native-session-stack-coherence.patch"
+summary = "Fork the provider session instead of pasting a summary"
 
+# Was getpaseo/paseo#2900, closed upstream; its PR head is frozen, so this tracks the live branch.
+# Linear on mine:colonelpanic8/client-settings-file-store (shares its commits).
 [[entry]]
 branch = "mine:xdg-paths"
-summary = "Separate config from mutable Paseo state; track the repaired live branch because closed PR #2900 has a frozen head"
+summary = "Separate config from mutable Paseo state"
+# The desktop daemon manager takes pr-2873's log-path resolver from its own
+# server subpath rather than the root export, which would pull the daemon
+# runtime into the desktop main bundle.
+fixup = "patches/xdg-paths-stack-coherence.patch"
 
+# Was getpaseo/paseo#2927, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:keyboard-shortcuts-mobile"
-summary = "Hardware keyboard shortcuts on native, mod-key setting, and Shift+Enter send; track the reconstructed branch because closed PR #2927 has a frozen head"
+summary = "Hardware keyboard shortcuts on native, mod-key setting, and Shift+Enter send"
 parents = [{ branch = "mine:extend-cn-cp-omni-menu" }]
 reconstruction_publish = "mine:keyboard-shortcuts-mobile"
 fixup = "patches/pr-2927-current-typography.patch"
@@ -205,28 +238,33 @@ summary = "Run agents with their working directory environment"
 [[entry]]
 patch = "patches/assembled-ci-lint-fixes.patch"
 
+# Was getpaseo/paseo#2956, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2956
+branch = "mine:configurable-usage-display"
 summary = "Configure usage percentages as used or remaining"
 
+# Was getpaseo/paseo#2957, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 2957
+branch = "mine:add-copy-conversation"
 summary = "Add conversation copy tab action"
 fixup = "patches/pr-2957-copy-conversation-dependency.patch"
 
 [[entry]]
 branch = "mine:thinking-control-reachability"
 
+# Was getpaseo/paseo#3006, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:debug-mobile-image-add-error"
-summary = "Fix Android draft composer handoff race (rebased from closed PR #3006; refs/pull/3006/head is frozen)"
+summary = "Fix Android draft composer handoff race"
 
+# Was getpaseo/paseo#3475, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 3475
+branch = "mine:fix/model-lists-host-switch"
 summary = "fix(app): stop stale snapshot fetches from clobbering fresher pushes"
 
+# Was getpaseo/paseo#3506, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 3506
+branch = "mine:fix/settings-sidebar-scroll-preservation"
 
 [[entry]]
 branch = "mine:live-voice-quick-launch"
@@ -241,12 +279,14 @@ summary = "Encode host status in dot shape, not only color, and brighten the dar
 branch = "mine:fix/codex-sqlite-init"
 summary = "Serialize and bound Codex SQLite app-server initialization"
 
+# Was getpaseo/paseo#3882, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 3882
+branch = "mine:fix/android-mouse-sidebar-selection"
 
+# Was getpaseo/paseo#3972, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:fix/model-browser-sheet-scope"
-summary = "Stop model browser sheet scrollables outside sheets (was PR 3972, closed upstream; refs/pull/3972/head is frozen at the pre-rebase commit, so the branch is the only live source)"
+summary = "Stop model browser sheet scrollables outside sheets"
 
 # Upstream now lists Fable 5.1 (merged #4179) and carries the normalizer
 # ordering fix (#5200), but without a minimum Claude Code version. This branch
@@ -260,21 +300,25 @@ summary = "Gate Claude Fable 5.1 on Claude Code 2.1.257"
 pr = 4256
 summary = "fix(app): replace painted timeline rows on cursorless tail pages"
 
+# Was getpaseo/paseo#4261, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 4261
+branch = "mine:downed-host-model-selection"
 summary = "Handle draft tabs on an offline host"
 
+# Was getpaseo/paseo#4280, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:fix/draft-tab-inflight-create"
-summary = "Keep the draft tab locked while its create request is in flight (was PR 4280, closed upstream; refs/pull/4280/head is frozen at the pre-rebase commit, so the branch is the only live source)"
+summary = "Keep the draft tab locked while its create request is in flight"
 
+# Was getpaseo/paseo#4281, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
-pr = 4281
+branch = "mine:fix/shared-provider-catalog"
 summary = "Mirror global provider catalogs into workspace snapshots"
 
+# Was getpaseo/paseo#4304, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:codex-astra-support"
-summary = "Drive Codex features from the catalog and surface async questions (rebased from closed PR #4304)"
+summary = "Drive Codex features from the catalog and surface async questions"
 fixup = "patches/pr-4304-async-question-attribution.patch"
 
 [[entry]]
@@ -296,13 +340,19 @@ summary = "Keep restores responsive and safe against auto-archive; replayed onto
 branch = "mine:assembly-sidebar-unarchive"
 summary = "Keep optimistic sidebar restores consistent across refetches and failed responses"
 
+# Was getpaseo/paseo#4405, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:host/default-color"
-summary = "Let hosts declare a default color so devices agree; track the live branch because closed PR #4405 has a frozen head"
+summary = "Let hosts declare a default color so devices agree"
+# Its daemon-config subscription helper has to keep the provider-rename,
+# usage-config, and capability-broadcast handling the earlier stack added to
+# the same inline handler.
+fixup = "patches/host-default-color-stack-coherence.patch"
 
+# Was getpaseo/paseo#4445, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:usage-history"
-summary = "Add a Usage history page; track the live branch because closed PR #4445 has a frozen head"
+summary = "Add a Usage history page"
 
 # These are assembly-wide API and type-shape interactions spanning the refreshed
 # sidebar, model-browser, live-voice, host-color, and directory-cache topics.
@@ -310,25 +360,16 @@ summary = "Add a Usage history page; track the live branch because closed PR #44
 [[entry]]
 patch = "patches/assembled-current-coherence.patch"
 
-# Linear on mine:watch-live-voice's published reconstruction tip 5c383ec180, the
-# way mine:live-voice-error-detail is linear on 2657's pinned head: its commits
-# sit directly on that tip, so it extends watch-live-voice rather than merging
-# it. Not a derived entry -- there is no merge boundary to anchor on, and
-# declaring watch-live-voice (or 2657) as a parent would repin it and rebuild a
-# large tail. It also duplicates mine:live-voice-quick-launch's two commits
-# (6cbe0daaec, 373c876dae -- identical patches to what that entry carries at
-# 7e6db98790) so that it compiles on its own.
+# Linear on a mine:watch-live-voice reconstruction and ported to the voice
+# profiles API. It carries live-voice-quick-launch's two commits so that it
+# compiles on its own; they merge cleanly into the stack as identical changes.
 [[entry]]
 branch = "mine:voice-actions"
 summary = "Shortcut links: default-assistant Live Voice call and one-shot dispatch"
-# Written against the pre-profiles Live Voice API and linear on an old
-# watch-live-voice reconstruction tip, so its stack merge resurrects the
-# deleted assistants/templates modules and none of its own edits to files the
-# profiles rewrite (context, runtime, links, settings, i18n) land. The fixup
-# deletes the resurrected modules, re-applies the shortcut-link and settings
-# work adapted to profiles (`?profile=` instead of `?assistant=`), keeps the
-# wear fixtures on the new snapshot shape, and dedupes the keyboard repeat
-# helper the merge re-inserts outside every conflict hunk.
+# The stack merge keeps live-voice-quick-launch's older positional
+# startLiveVoiceCall and native-intent redirect, which this branch replaced, and
+# leaves watch-live-voice's Platform import unused once these shortcut rows
+# replace the Android-only dispatch rows.
 fixup = "patches/voice-actions-stack-coherence.patch"
 
 [[entry]]
@@ -403,11 +444,20 @@ pr = 5046
 summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on Android"
 
 [[entry]]
-pr = 5220
-summary = "Expose Codex Fast for GPT-6 Sol and Luna"
-
-[[entry]]
 branch = "mine:locked-extension-paseo"
+
+# getpaseo/paseo#5524 (fixes issue #5516). Tracks the live branch rather than
+# refs/pull/5524/head so follow-up commits land and a closed PR cannot freeze it.
+[[entry]]
+branch = "mine:fix/draft-commands-without-project"
+summary = "Stop draft composers without a project or provider asking for commands by draft key"
+
+# Assembly-wide lint/format coherence: functions that only exceed oxlint's
+# complexity limit once several topics stack (session-store,
+# daemon-config-store, agent-manager, config, agent-controls, keyboard
+# shortcuts), and oxfmt reflow at merge seams. No single entry owns either.
+[[entry]]
+patch = "patches/assembled-lint-complexity.patch"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
@@ -491,3 +541,63 @@ reason = "carried by mine:agent/configurable-direct-model-shortcuts; the closed 
 [[exclude]]
 pr = 2659
 reason = "carried by mine:subagent-param-visibility; the closed PR head is frozen at 396b5b776eda and cannot receive the base repair for upstream #4413's effective thinking option"
+
+[[exclude]]
+pr = 2517
+reason = "carried by mine:prompt-mod-shortcuts; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 2520
+reason = "carried by mine:relay-tailscale; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 2730
+reason = "carried by mine:host-selection-search; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 2784
+reason = "carried by mine:fix/postinstall-patch-package-enoent; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 2884
+reason = "carried by mine:colonelpanic8/require-real-workspace-directory; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 2885
+reason = "carried by mine:colonelpanic8/desktop-adhoc-hardened-runtime; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 2956
+reason = "carried by mine:configurable-usage-display; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 2957
+reason = "carried by mine:add-copy-conversation; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 3475
+reason = "carried by mine:fix/model-lists-host-switch; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 3506
+reason = "carried by mine:fix/settings-sidebar-scroll-preservation; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 3882
+reason = "carried by mine:fix/android-mouse-sidebar-selection; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 4261
+reason = "carried by mine:downed-host-model-selection; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 4281
+reason = "carried by mine:fix/shared-provider-catalog; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 5220
+reason = "superseded by merged upstream PR 5273 (34c9fd03c9), which exposes Codex Fast for GPT-6 Sol and Luna"
+
+[[exclude]]
+pr = 2655
+reason = "carried as mine:assembly-wear-os, a parent of mine:watch-live-voice; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"

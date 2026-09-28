@@ -1,0 +1,16 @@
+diff --git a/packages/server/package.json b/packages/server/package.json
+index 17a0031626..87a4aa3602 100644
+--- a/packages/server/package.json
++++ b/packages/server/package.json
+@@ -38,6 +38,11 @@
+       "source": "./src/server/paseo-paths.ts",
+       "default": "./dist/server/server/paseo-paths.js"
+     },
++    "./daemon-log-path": {
++      "types": "./dist/server/server/daemon-log-path.d.ts",
++      "source": "./src/server/daemon-log-path.ts",
++      "default": "./dist/server/server/daemon-log-path.js"
++    },
+     "./configuration": {
+       "types": "./dist/server/server/config.d.ts",
+       "source": "./src/server/config.ts",
