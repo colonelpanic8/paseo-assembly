@@ -98,6 +98,24 @@ When a build stops on a conflict:
    tracked pairs reproduce the lock's tree.
 5. Commit the manifest, lock, and tracked pairs together.
 
+## Rebasing the topic branches themselves
+
+A refresh may rebase the carried branches onto a new base. That force-pushes
+many branches (including open PR heads), so:
+
+- Before force-pushing, pin every pre-rebase tip as a tag on the fork, e.g.
+  `backup/pre-refresh-<date>/<branch>`, plus the previously published
+  `[publish]` tip.
+- Preserve existing commit hashes wherever possible. Once a branch has been
+  pushed, fix follow-up problems with new commits on top (fast-forward
+  pushes); do not amend, squash, or re-rebase commits that are already out.
+- Branches that build on another carried branch share its exact commits: a
+  stacked branch is rebased with `--onto` its parent's new tip, and a derived
+  entry merges its parents' pinned commits. Never carry independently rebased
+  copies of another entry's commits; they conflict throughout the stack.
+- A closed PR's head is frozen, so a rebased closed PR is carried as its
+  `mine:` branch, with a comment naming the PR and an `[[exclude]]` for it.
+
 ## Publishing — a build is not done until it is pushed
 
 Committing the recipe changes nothing on its own. Nothing here builds this
