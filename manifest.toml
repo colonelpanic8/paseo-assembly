@@ -67,7 +67,6 @@ summary = "Prompt stash: cmd+S saves the draft to a per-provider queue"
 [[entry]]
 branch = "mine:assembly-agent-env"
 summary = "Add agentEnv: capture project environment (direnv/mise) before agent launch"
-fixup = "patches/assembly-agent-env-plugin-provider.patch"
 
 [[entry]]
 branch = "mine:disable-worktree-setup-callout"
@@ -241,7 +240,7 @@ patch = "patches/assembled-ci-lint-fixes.patch"
 # Was getpaseo/paseo#2956, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:configurable-usage-display"
-summary = "Configure usage percentages as used or remaining"
+summary = "Preserve saved usage-display preferences and green remaining bars"
 
 # Was getpaseo/paseo#2957, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
@@ -328,7 +327,7 @@ fixup = "patches/pr-4305-register-agent-complexity.patch"
 
 [[entry]]
 branch = "mine:assembly-codex-banked-resets"
-fixup = "patches/codex-banked-resets-usage-preferences.patch"
+fixup = "patches/banked-resets-account-coherence.patch"
 
 [[entry]]
 branch = "mine:assembly-workspace-restore"
@@ -344,9 +343,8 @@ summary = "Keep optimistic sidebar restores consistent across refetches and fail
 [[entry]]
 branch = "mine:host/default-color"
 summary = "Let hosts declare a default color so devices agree"
-# Its daemon-config subscription helper has to keep the provider-rename,
-# usage-config, and capability-broadcast handling the earlier stack added to
-# the same inline handler.
+# Its daemon-config subscription helper retains provider rename migration
+# and capability broadcasts added by earlier entries.
 fixup = "patches/host-default-color-stack-coherence.patch"
 
 # Was getpaseo/paseo#4445, closed upstream; its PR head is frozen, so this tracks the live branch.
@@ -393,9 +391,11 @@ branch = "mine:ntfy-push"
 [[entry]]
 branch = "mine:dismiss-failed-state"
 
+# Was getpaseo/paseo#4826, closed after upstream #5722 took the startup guard.
+# The live branch retains the stopped-probe guard and removal subscription cleanup.
 [[entry]]
-pr = 4826
-summary = "Stop a host removed during its first probe from reconnecting"
+branch = "mine:fix/host-runtime-stop-during-start"
+summary = "Keep stopped host updates from probing and unsubscribe removed controllers"
 
 [[entry]]
 pr = 4827
@@ -500,7 +500,7 @@ reason = "merged upstream as getpaseo/paseo#2579 (merge commit b7f137c2a000); it
 
 [[exclude]]
 pr = 4386
-reason = "carried by mine:assembly-codex-banked-resets: identical PR commits replayed onto pinned base 92442e743517 to avoid importing unrelated upstream changes; switch back to the PR when the base catches up"
+reason = "carried by mine:assembly-codex-banked-resets, adapted to upstream plugin usage sources; the frozen PR head cannot receive these compatibility repairs"
 
 [[exclude]]
 pr = 2532
@@ -601,3 +601,7 @@ reason = "superseded by merged upstream PR 5273 (34c9fd03c9), which exposes Code
 [[exclude]]
 pr = 2655
 reason = "carried as mine:assembly-wear-os, a parent of mine:watch-live-voice; the closed PR head is frozen and cannot receive the rebase onto 30178c4f58b6"
+
+[[exclude]]
+pr = 4826
+reason = "Upstream #5722 (4e9a4582b7f6) supplies startup guards; mine:fix/host-runtime-stop-during-start carries the remaining stopped-probe guard and removal subscription cleanup"

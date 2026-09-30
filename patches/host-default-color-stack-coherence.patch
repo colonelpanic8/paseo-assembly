@@ -15,7 +15,7 @@ index 5dc88b57a1..f1bad97c25 100644
  import type { BrowserToolsBroker } from "./browser-tools/broker.js";
  import { LiveVoiceRouteBroker } from "./live-voice/live-voice-route-broker.js";
  import { LiveVoiceToolExecutor } from "./live-voice/live-voice-tool-executor.js";
-@@ -869,12 +863,16 @@ export class VoiceAssistantWebSocketServer {
+@@ -869,12 +863,15 @@ export class VoiceAssistantWebSocketServer {
        providerSnapshotManager: this.providerSnapshotManager,
        updateProviderRegistry: (state) => this.agentManager.updateProviderRegistry(state),
      });
@@ -27,7 +27,6 @@ index 5dc88b57a1..f1bad97c25 100644
 +      for (const rename of details.renamedProviders) {
 +        this.agentManager.renameProviderOnLiveAgents(rename.from, rename.to);
 +      }
-+      this.providerUsageService.updateProviderConfigs(config.providers);
        this.broadcastDaemonConfigChanged(config);
 -      updateIfChanged(advertisedHostColor, config.appearance?.color, () =>
 -        this.broadcastCapabilitiesUpdate(),

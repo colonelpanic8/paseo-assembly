@@ -39,3 +39,14 @@ index 6f1e50ab2..babf79c13 100644
        attention: resolveInitialAttention(options?.attention),
        internal: config.internal ?? false,
        labels: options?.labels ?? {},
+diff --git a/packages/app/src/composer/index.tsx b/packages/app/src/composer/index.tsx
+--- a/packages/app/src/composer/index.tsx
++++ b/packages/app/src/composer/index.tsx
+@@ -288,7 +288,6 @@
+ function buildAgentStateSelector(serverId: string, agentId: string) {
+   return (state: ReturnType<typeof useSessionStore.getState>) => {
+     const agent = state.sessions[serverId]?.agents?.get(agentId) ?? null;
+-    const usage = agent?.lastUsage;
+     return {
+       status: agent?.status ?? null,
+       contextWindowMaxTokens: agent?.lastUsage?.contextWindowMaxTokens ?? null,

@@ -1,0 +1,52 @@
+diff --git a/plugins/codex-usage-source/server/banked-resets.test.ts b/plugins/codex-usage-source/server/banked-resets.test.ts
+index 80c9efc09c..e20a777b8c 100644
+--- a/plugins/codex-usage-source/server/banked-resets.test.ts
++++ b/plugins/codex-usage-source/server/banked-resets.test.ts
+@@ -153,3 +153,47 @@ test.each([
+     error: "Could not load banked reset details. Refresh usage to try again.",
+   });
+ });
++
++test("redemption uses the selected account and never falls back to default credentials", async () => {
++  const accountHome = await mkdtemp(join(tmpdir(), "codex-reset-account-"));
++  try {
++    await writeFile(
++      join(accountHome, "auth.json"),
++      JSON.stringify({ tokens: { access_token: "work-token", account_id: "work-account" } }),
++    );
++    const fetchApi = vi.fn<typeof fetch>(async () => Response.json({ code: "reset" }));
++    await expect(
++      consumeBankedReset(
++        {
++          usageInput: { providerId: "codex-work", label: "Work", codexHome: accountHome },
++          creditId: "work-reset",
++          idempotencyKey: "work-attempt",
++        },
++        fetchApi,
++      ),
++    ).resolves.toBe("reset");
++    expect(fetchApi).toHaveBeenCalledWith(
++      expect.stringContaining("/consume"),
++      expect.objectContaining({
++        headers: expect.objectContaining({
++          Authorization: "Bearer work-token",
++          "ChatGPT-Account-Id": "work-account",
++        }),
++      }),
++    );
++    fetchApi.mockClear();
++    await expect(
++      consumeBankedReset(
++        {
++          usageInput: { providerId: "codex-unavailable", label: "Unavailable" },
++          creditId: "unavailable-reset",
++          idempotencyKey: "unavailable-attempt",
++        },
++        fetchApi,
++      ),
++    ).rejects.toThrow("Sign in to Codex");
++    expect(fetchApi).not.toHaveBeenCalled();
++  } finally {
++    await rm(accountHome, { recursive: true, force: true });
++  }
++});

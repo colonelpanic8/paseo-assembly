@@ -1,8 +1,8 @@
 diff --git a/packages/app/src/panels/agent-panel.tsx b/packages/app/src/panels/agent-panel.tsx
-index a1c67bf8ef..10dd450fdb 100644
+index 61f6a74d44..0b2120eab3 100644
 --- a/packages/app/src/panels/agent-panel.tsx
 +++ b/packages/app/src/panels/agent-panel.tsx
-@@ -344,15 +344,10 @@ function selectAgentPanelDescriptorState(
+@@ -340,15 +340,10 @@ function selectAgentPanelDescriptorState(
    agentId: string,
  ) {
    const session = state.sessions[serverId];
@@ -20,42 +20,27 @@ index a1c67bf8ef..10dd450fdb 100644
      isTurnActive: selectAgentTurnPresentation(session, agentId).isActive,
    };
  }
-diff --git a/packages/app/src/panels/agent-purpose-presentation.ts b/packages/app/src/panels/agent-purpose-presentation.ts
-index 9124e69..6d8ff66 100644
---- a/packages/app/src/panels/agent-purpose-presentation.ts
-+++ b/packages/app/src/panels/agent-purpose-presentation.ts
-@@ -1,15 +1,21 @@
-+/**
-+ * `fallback` is the runtime subtitle ("Claude · Opus 4.5 · High", or "Claude agent" while the
-+ * model is unknown). The purpose summary takes the subtitle slot when there is one, so the
-+ * tooltip keeps any model detail the subtitle would otherwise have shown.
-+ */
- export function buildAgentPurposePresentation(input: {
-   label: string | null;
-   summary: string | null;
--  providerLabel: string;
-+  fallback: string;
- }): { subtitle: string; tooltip: string } {
--  const fallback = `${input.providerLabel} agent`;
--  const tooltipTitle = input.label ?? fallback;
--  if (!input.summary) {
--    return { subtitle: fallback, tooltip: tooltipTitle };
--  }
-+  const hasRuntimeDetail = !input.fallback.endsWith(" agent");
-+  const lines = [
-+    input.label ?? input.fallback,
-+    input.summary,
-+    input.label && hasRuntimeDetail ? input.fallback : null,
-+  ].filter((line): line is string => Boolean(line));
+@@ -372,11 +367,16 @@ function useAgentPanelDescriptor(
+     ...modelSource,
+   });
+   const subtitle = buildAgentPanelSubtitle(provider, modelDisplay);
++  const purposePresentation = buildAgentPurposePresentation({
++    label,
++    summary: descriptorState.summary,
++    fallback: subtitle,
++  });
+ 
    return {
--    subtitle: input.summary,
--    tooltip: `${tooltipTitle}\n${input.summary}`,
-+    subtitle: input.summary ?? input.fallback,
-+    tooltip: lines.join("\n"),
-   };
- }
+     label: label ?? "",
+-    subtitle,
+-    tooltip: label ?? subtitle,
++    subtitle: purposePresentation.subtitle,
++    tooltip: purposePresentation.tooltip,
+     titleState: label ? "ready" : "loading",
+     icon,
+     statusBucket: agent?.status
 diff --git a/packages/app/src/panels/agent-purpose-presentation.test.ts b/packages/app/src/panels/agent-purpose-presentation.test.ts
-index fd09969..f2658bb 100644
+index fd09969aa1..f2658bb190 100644
 --- a/packages/app/src/panels/agent-purpose-presentation.test.ts
 +++ b/packages/app/src/panels/agent-purpose-presentation.test.ts
 @@ -2,29 +2,42 @@ import { describe, expect, it } from "vitest";
@@ -108,3 +93,37 @@ index fd09969..f2658bb 100644
      });
    });
  });
+diff --git a/packages/app/src/panels/agent-purpose-presentation.ts b/packages/app/src/panels/agent-purpose-presentation.ts
+index 9124e691a5..6d8ff6691e 100644
+--- a/packages/app/src/panels/agent-purpose-presentation.ts
++++ b/packages/app/src/panels/agent-purpose-presentation.ts
+@@ -1,15 +1,21 @@
++/**
++ * `fallback` is the runtime subtitle ("Claude · Opus 4.5 · High", or "Claude agent" while the
++ * model is unknown). The purpose summary takes the subtitle slot when there is one, so the
++ * tooltip keeps any model detail the subtitle would otherwise have shown.
++ */
+ export function buildAgentPurposePresentation(input: {
+   label: string | null;
+   summary: string | null;
+-  providerLabel: string;
++  fallback: string;
+ }): { subtitle: string; tooltip: string } {
+-  const fallback = `${input.providerLabel} agent`;
+-  const tooltipTitle = input.label ?? fallback;
+-  if (!input.summary) {
+-    return { subtitle: fallback, tooltip: tooltipTitle };
+-  }
++  const hasRuntimeDetail = !input.fallback.endsWith(" agent");
++  const lines = [
++    input.label ?? input.fallback,
++    input.summary,
++    input.label && hasRuntimeDetail ? input.fallback : null,
++  ].filter((line): line is string => Boolean(line));
+   return {
+-    subtitle: input.summary,
+-    tooltip: `${tooltipTitle}\n${input.summary}`,
++    subtitle: input.summary ?? input.fallback,
++    tooltip: lines.join("\n"),
+   };
+ }

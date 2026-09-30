@@ -561,6 +561,18 @@ recorded = "2026-09-22T21:53:34.847340474+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
+hash = "1984d6ed52baee83b34c8edbca3ebe4e169fe41d"
+paths = ["packages/server/src/server/plugins/usage-sources/index.ts"]
+recorded = "2026-09-30T23:23:45.383681642+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
+hash = "1ef0c3d111d45da49865b90aa997195c171107ca"
+paths = ["packages/server/src/server/plugins/index.ts"]
+recorded = "2026-09-30T23:23:45.383685239+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
 hash = "763054635229403a51f1754384e02e9f119ac0b5"
 paths = ["packages/app/src/provider-usage/settings-section.tsx"]
 recorded = "2026-09-06T17:57:29.615087024+00:00"
@@ -570,6 +582,12 @@ entry = "assembly-codex-banked-resets"
 hash = "7e14e1cae3f7704240fb8efcf558ea869474599c"
 paths = ["packages/server/src/services/quota-fetcher/service.ts"]
 recorded = "2026-09-06T17:55:30+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
+hash = "a562af353f33f985293af84ecafd16b34f04eec1"
+paths = ["packages/server/src/server/plugins/usage-sources/index.test.ts"]
+recorded = "2026-09-30T23:23:45.383685700+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
@@ -702,6 +720,12 @@ entry = "codex-astra-support"
 hash = "18df08296c347c2e93864c48b82744c1c99fcea0"
 paths = ["packages/app/src/agent-stream/view.tsx"]
 recorded = "2026-09-28T05:25:17.173718731+00:00"
+
+[[resolution]]
+entry = "codex-astra-support"
+hash = "2a7408656a1b8b3d4c605c447bd66a6044fa0ec3"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-09-30T23:23:09.606171911+00:00"
 
 [[resolution]]
 entry = "codex-astra-support"
@@ -864,6 +888,12 @@ paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
 recorded = "2026-09-28T05:21:21.350939579+00:00"
 
 [[resolution]]
+entry = "colonelpanic8/worktree-detection-data"
+hash = "6ead06f01ce1bb5c20d2fed0d5935cee28eef2fa"
+paths = ["packages/app/src/stores/session-store.ts"]
+recorded = "2026-09-30T23:21:24.174832780+00:00"
+
+[[resolution]]
 entry = "disable-worktree-setup-callout"
 hash = "29d2fd6519fe755737d9dd7b437f6e562d92356f"
 paths = ["packages/app/src/i18n/resources/ru.ts"]
@@ -928,6 +958,12 @@ entry = "fix/draft-commands-without-project"
 hash = "eaedbfbf512ed384ab391e1ff76861e08d51bee5"
 paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
 recorded = "2026-09-28T05:29:06.490690050+00:00"
+
+[[resolution]]
+entry = "fix/draft-commands-without-project"
+hash = "fb4573e9cae59e258367f3cd2fe31a482f86b6d0"
+paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
+recorded = "2026-09-30T23:25:07.268788158+00:00"
 
 [[resolution]]
 entry = "fix/model-browser-sheet-scope"
@@ -1000,6 +1036,12 @@ entry = "host/default-color"
 hash = "7c647a6de224eb025eca16fb230cdb02d48e2f48"
 paths = ["packages/server/src/server/persisted-config.ts"]
 recorded = "2026-09-28T05:27:30.914270061+00:00"
+
+[[resolution]]
+entry = "host/default-color"
+hash = "9c843212423febc94a572c4960247edb6edccc78"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-30T23:24:11.196116729+00:00"
 
 [[resolution]]
 entry = "host/default-color"
@@ -1531,6 +1573,12 @@ recorded = "2026-09-16T22:11:12.907564659+00:00"
 
 [[resolution]]
 entry = "live-voice-quick-launch"
+hash = "108f22baf7aa38dad8737a25049a2df04cd1d19c"
+paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
+recorded = "2026-09-30T23:22:51.634308618+00:00"
+
+[[resolution]]
+entry = "live-voice-quick-launch"
 hash = "cd1cb78a53b794ad8acbe2668c4061f43ec86018"
 paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
 recorded = "2026-08-18T08:08:43.134944261+00:00"
@@ -1546,6 +1594,12 @@ entry = "live-voice-quick-launch"
 hash = "e166cd9b96b2303dca398f8e57f96398efa8fe56"
 paths = ["packages/app/src/live-voice/live-voice-footer-button.tsx"]
 recorded = "2026-09-07T20:14:40.926763693+00:00"
+
+[[resolution]]
+entry = "live-voice-quick-launch"
+hash = "ecd77df84d61c35dbc89aa75f6008c1c4aba4e99"
+paths = ["packages/app/src/components/left-sidebar.tsx"]
+recorded = "2026-09-30T23:22:51.634314369+00:00"
 
 [[resolution]]
 entry = "locked-extension-paseo"
@@ -1588,6 +1642,18 @@ entry = "multi-account-provider"
 hash = "81c3349157491018340cb0d0e04a342e7dd453c5"
 paths = ["packages/server/src/server/websocket-server.ts"]
 recorded = "2026-09-16T21:38:22.310682554+00:00"
+
+[[resolution]]
+entry = "multi-account-provider"
+hash = "8df18fe5993fadac03e361d1474a2853846a4d50"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-30T23:19:58.914429836+00:00"
+
+[[resolution]]
+entry = "multi-account-provider"
+hash = "b4619e18a924518d08dab27436963757f5c2592f"
+paths = ["packages/app/src/composer/agent-controls/model-sheet.tsx"]
+recorded = "2026-09-30T23:19:58.914431620+00:00"
 
 [[resolution]]
 entry = "ntfy-push"
@@ -1642,6 +1708,12 @@ entry = "ntfy-push"
 hash = "e8dcecc2b522afc58a6731c423fb6e69709c4dd1"
 paths = ["CLAUDE.md"]
 recorded = "2026-09-13T04:08:17.209606875+00:00"
+
+[[resolution]]
+entry = "opencode-catalog-revalidate"
+hash = "3b644f615daae7880e9fadf8ad72e2a38b95354c"
+paths = ["packages/server/src/server/agent/provider-snapshot-manager.ts"]
+recorded = "2026-09-30T23:24:55.069537094+00:00"
 
 [[resolution]]
 entry = "personal/sidebar-workflow"
@@ -2485,15 +2557,33 @@ recorded = "2026-09-08T08:49:03.172551760+00:00"
 
 [[resolution]]
 entry = "pr-2820"
+hash = "11d336704804da475b331bc2ecc4f187e216713e"
+paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
+recorded = "2026-09-30T23:20:54.810777173+00:00"
+
+[[resolution]]
+entry = "pr-2820"
 hash = "3e0314f7cbe250e99b2603e14150cb16ea1eb8a3"
 paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
 recorded = "2026-08-03T20:19:52.564337781+00:00"
 
 [[resolution]]
 entry = "pr-2820"
+hash = "465ae81db433616414026a973109f19039940503"
+paths = ["packages/app/src/hooks/use-agent-commands-query.test.ts"]
+recorded = "2026-09-30T23:20:54.810779157+00:00"
+
+[[resolution]]
+entry = "pr-2820"
 hash = "7388bfafd965a7ae8c766132703707480cf24379"
 paths = ["packages/app/src/hooks/use-agent-autocomplete.ts"]
 recorded = "2026-09-03T19:46:02.802211686+00:00"
+
+[[resolution]]
+entry = "pr-2820"
+hash = "7fe8b394d9dae75a0d8af4789cbd4d5bba7afea8"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.test.ts"]
+recorded = "2026-09-30T23:20:54.810779518+00:00"
 
 [[resolution]]
 entry = "pr-2820"
@@ -3678,12 +3768,6 @@ paths = ["packages/app/src/components/ui/tooltip.tsx"]
 recorded = "2026-09-04T06:39:46.712691723+00:00"
 
 [[resolution]]
-entry = "pr-4305"
-hash = "a63d737fcfeea895565906162f3f583afadc25cc"
-paths = ["packages/app/src/components/context-window-meter.tsx"]
-recorded = "2026-09-04T06:39:46.712691933+00:00"
-
-[[resolution]]
 entry = "pr-4405"
 hash = "0d97a0ae17f2f2c978448d78ba6229277194ba2b"
 paths = ["docs/design.md"]
@@ -3762,18 +3846,6 @@ paths = ["packages/app/src/runtime/host-runtime.ts"]
 recorded = "2026-09-08T09:19:08.016598186+00:00"
 
 [[resolution]]
-entry = "pr-4445"
-hash = "bc27bbfdd4926d7bd61c2bab2696b23b6730aa3a"
-paths = ["packages/protocol/src/messages.ts"]
-recorded = "2026-09-07T20:26:13.271699882+00:00"
-
-[[resolution]]
-entry = "pr-4445"
-hash = "ff69408d167e0a4915ee99826b8e5daef0560594"
-paths = ["packages/server/src/server/authorization/operation-permissions.ts"]
-recorded = "2026-09-07T20:26:13.271700804+00:00"
-
-[[resolution]]
 entry = "pr-4829"
 hash = "2b4cc645b4a42a868da5f615a9a942b92a4b6bd2"
 paths = ["packages/app/src/stores/draft-store/index.ts"]
@@ -3804,6 +3876,18 @@ paths = ["packages/app/src/stores/session-store.ts"]
 recorded = "2026-09-14T09:17:18.562760961+00:00"
 
 [[resolution]]
+entry = "prompt-cache-status"
+hash = "a63d737fcfeea895565906162f3f583afadc25cc"
+paths = ["packages/app/src/components/context-window-meter.tsx"]
+recorded = "2026-09-30T23:23:32.154118038+00:00"
+
+[[resolution]]
+entry = "prompt-cache-status"
+hash = "aa42783affcdd983ae092a2b52d1824f4c731edc"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-09-30T23:23:32.154128819+00:00"
+
+[[resolution]]
 entry = "skill-pills-config"
 hash = "b5f59cfced311800dc21f4aebfc50ed12c6a87c0"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
@@ -3813,7 +3897,7 @@ recorded = "2026-09-28T05:18:08.767585320+00:00"
 entry = "subagent-param-visibility"
 hash = "10a4591016ab539461843c046bcd9f46d2083809"
 paths = ["packages/app/src/panels/agent-panel.tsx"]
-recorded = "2026-09-28T05:19:15.413256310+00:00"
+recorded = "2026-09-30T23:18:43.568456503+00:00"
 
 [[resolution]]
 entry = "t3code-4453"
@@ -3832,6 +3916,36 @@ entry = "unarchive-threads"
 hash = "c6a815c622615152c661d3a26f583215b0d7e007"
 paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
 recorded = "2026-09-28T05:19:27.145280834+00:00"
+
+[[resolution]]
+entry = "usage-history"
+hash = "26a86acbe1b541beeb11febc63982617d36b31c1"
+paths = ["packages/server/src/server/session/usage/usage-session.test.ts"]
+recorded = "2026-09-30T23:24:36.861843718+00:00"
+
+[[resolution]]
+entry = "usage-history"
+hash = "a6cc9cbf2ee49501f29369ae1603e2351e4bd91c"
+paths = ["packages/server/src/server/websocket-server.ts"]
+recorded = "2026-09-30T23:24:36.861845461+00:00"
+
+[[resolution]]
+entry = "usage-history"
+hash = "bc27bbfdd4926d7bd61c2bab2696b23b6730aa3a"
+paths = ["packages/protocol/src/messages.ts"]
+recorded = "2026-09-30T23:24:36.861858977+00:00"
+
+[[resolution]]
+entry = "usage-history"
+hash = "bda5172726c8252de0da76fec63cbc6a465207c1"
+paths = ["packages/server/src/server/session/usage/usage-session.ts"]
+recorded = "2026-09-30T23:24:36.861859698+00:00"
+
+[[resolution]]
+entry = "usage-history"
+hash = "ff69408d167e0a4915ee99826b8e5daef0560594"
+paths = ["packages/server/src/server/authorization/operation-permissions.ts"]
+recorded = "2026-09-30T23:24:36.861860109+00:00"
 
 [[resolution]]
 entry = "voice-actions"
