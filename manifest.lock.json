@@ -16,7 +16,7 @@
       "assembled-typecheck-coherence": "eedf2f124e711ead3a6825f1bc961599cf2d6500",
       "assembly-agent-env": "c4ca88bb96d0709bad58840a260b2a8b926fbd78",
       "assembly-build-provenance": "b3be8a2ed910d7e15d89df9f9a38468e46f94f61",
-      "assembly-codex-banked-resets": "d1da786918d93ac85185d0c5b02430c5aeae4872",
+      "assembly-codex-banked-resets": "79d4e2d08215665a7acce02e3a85ab4bab5cb7dc",
       "assembly-fdroid-variant": "8da282b4dac62110646a03ca449e2d6b82748046",
       "assembly-sidebar-unarchive": "5e1bdc39bf2a252ede61f16812f4f217e44f1df1",
       "assembly-workspace-restore": "eff888c5bf54dc3a41ec0ceaf84eebb45b6c9013",
@@ -112,13 +112,13 @@
     }
   },
   "build": {
-    "generated": "2026-09-30T23:32:32.070520997+00:00",
+    "generated": "2026-09-30T23:47:05.736655487+00:00",
     "base": "20a887f4cc80db25a3027e50a576d45216f52b10",
-    "commit": "e83f18abe83a09acdfb08c6057ed502252441d65",
-    "pre_provenance_commit": "e83f18abe83a09acdfb08c6057ed502252441d65",
-    "tree": "e7da599aed6b512a1e6c91d97c20a43c2b8b8cdc",
-    "built_tree": "e7da599aed6b512a1e6c91d97c20a43c2b8b8cdc",
-    "previous_tree": "f3a34afac780e7129f525f6ae38c64eb4edbe55e",
+    "commit": "40fc86995ea28b17ced49d16d449d35bc16d5a76",
+    "pre_provenance_commit": "40fc86995ea28b17ced49d16d449d35bc16d5a76",
+    "tree": "f076a1309ded8ccc363a0b17b0dd875e7c875e29",
+    "built_tree": "f076a1309ded8ccc363a0b17b0dd875e7c875e29",
+    "previous_tree": "e7da599aed6b512a1e6c91d97c20a43c2b8b8cdc",
     "tree_changed": true,
     "conflicts": 42,
     "manifest_entries": [
@@ -509,7 +509,7 @@
         "name": "assembly-codex-banked-resets",
         "kind": "branch",
         "source": "mine:assembly-codex-banked-resets",
-        "pin": "d1da786918d93ac85185d0c5b02430c5aeae4872",
+        "pin": "79d4e2d08215665a7acce02e3a85ab4bab5cb7dc",
         "fixup": "96d3916b4d35ed21fb5ea5bfe18e9defd59418e7"
       },
       {
@@ -809,8 +809,8 @@
         "resolution": "rerere",
         "fixup": "2e1a4b4cc61973e4fa031be52bdc9aaa3263ce1a",
         "derived": {
-          "base_tip": "5449e84d771d5a038425e2c85f2d4c408551ca6a",
-          "tip": "7054cd5cb0d60244d8a17a731522247fd5cad6f5"
+          "base_tip": "182c238d093a81f18b17e8c45ac25dcbf360e4f2",
+          "tip": "fcef573c24cf2b911378e27690732b8acc6b3a1f"
         }
       },
       {
@@ -940,8 +940,8 @@
         "resolution": "rerere",
         "fixup": "d014d0feaa1ff706cd8c04f72c828a3b4c360033",
         "derived": {
-          "base_tip": "18d0e4fdb3343053296db35d379e1219e537b228",
-          "tip": "01c1100ee0acfefdbe9c9ff9c75256b4bb018a86"
+          "base_tip": "5b2675f7826063331eac5b586aa88365437e6bbd",
+          "tip": "22bd78e182b8855819c57f8fb0839555dd57d09a"
         }
       },
       {
@@ -1007,8 +1007,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "bb9ab9e70f62f58c02322b710300a391e0db61eb",
-          "tip": "d27d3ad24289b9d13996355c0d9dfa2a644ff902"
+          "base_tip": "436f90de7db2d8e2484990da6fad1644d1174eb7",
+          "tip": "87835362946386f5e533fdf3eea8dd899b6d023b"
         }
       },
       {
@@ -1085,7 +1085,7 @@
       },
       {
         "name": "assembly-codex-banked-resets",
-        "oid": "d1da786918d93ac85185d0c5b02430c5aeae4872",
+        "oid": "79d4e2d08215665a7acce02e3a85ab4bab5cb7dc",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -1152,8 +1152,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "50a637b1bf89b54743f757a1c77e5f32200f5915",
-          "tip": "0fbfacd6c1752f8ccf50461728a40cf92cffba17"
+          "base_tip": "d5a014acbfea147d4afd09c6b3ab465425f50f11",
+          "tip": "346f73dadd757652ed8b47375a4e42f3a0e54a87"
         }
       },
       {
