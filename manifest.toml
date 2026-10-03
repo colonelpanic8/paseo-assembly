@@ -327,7 +327,6 @@ fixup = "patches/pr-4305-register-agent-complexity.patch"
 
 [[entry]]
 branch = "mine:assembly-codex-banked-resets"
-fixup = "patches/banked-resets-account-coherence.patch"
 
 [[entry]]
 branch = "mine:assembly-workspace-restore"
@@ -445,12 +444,6 @@ summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on 
 
 [[entry]]
 branch = "mine:locked-extension-paseo"
-
-# getpaseo/paseo#5524 (fixes issue #5516). Tracks the live branch rather than
-# refs/pull/5524/head so follow-up commits land and a closed PR cannot freeze it.
-[[entry]]
-branch = "mine:fix/draft-commands-without-project"
-summary = "Stop draft composers without a project or provider asking for commands by draft key"
 
 # Assembly-wide lint/format coherence: functions that only exceed oxlint's
 # complexity limit once several topics stack (session-store,
@@ -605,3 +598,7 @@ reason = "carried as mine:assembly-wear-os, a parent of mine:watch-live-voice; t
 [[exclude]]
 pr = 4826
 reason = "Upstream #5722 (4e9a4582b7f6) supplies startup guards; mine:fix/host-runtime-stop-during-start carries the remaining stopped-probe guard and removal subscription cleanup"
+
+[[exclude]]
+pr = 5524
+reason = "closed unmerged; superseded by upstream #5594 (690f5298c), which keeps draft composers off the agent command list before a project and model are chosen; the rebase left only tests for a helper upstream does not have"
