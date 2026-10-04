@@ -3,6 +3,12 @@
 # replay uses the pair directories, verification uses the lock tree.
 [[resolution]]
 entry = "agent-environment-setup"
+hash = "629aa01f5a45a7869b8372a8cd9dc7eda901f578"
+paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
+recorded = "2026-10-04T00:02:18.456410586+00:00"
+
+[[resolution]]
+entry = "agent-environment-setup"
 hash = "a2d60f99a0df19bff85faee40df6a1fbb8498812"
 paths = ["packages/server/src/server/bootstrap.ts"]
 recorded = "2026-09-13T01:11:25.274054138+00:00"
@@ -579,6 +585,12 @@ recorded = "2026-09-30T23:23:45.383685239+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
+hash = "29e21d19e5db0c5b85844d49425fbb6fb64e7d8f"
+paths = ["packages/server/src/server/plugins/usage-sources/index.ts"]
+recorded = "2026-10-04T00:04:09.415624318+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
 hash = "763054635229403a51f1754384e02e9f119ac0b5"
 paths = ["packages/app/src/provider-usage/settings-section.tsx"]
 recorded = "2026-09-06T17:57:29.615087024+00:00"
@@ -605,7 +617,7 @@ recorded = "2026-10-03T03:34:37.951331947+00:00"
 entry = "assembly-codex-banked-resets"
 hash = "b7ca869a67aff58c3d91a3269cc6811bf319b468"
 paths = ["packages/server/src/server/plugins/usage-sources/index.test.ts"]
-recorded = "2026-10-03T03:34:37.951336785+00:00"
+recorded = "2026-10-04T00:04:09.415629668+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
@@ -3930,6 +3942,18 @@ paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-09-30T23:23:32.154128819+00:00"
 
 [[resolution]]
+entry = "prompt-cache-status"
+hash = "cc1d3d9995d6acc06563c958000662f5886eb0fa"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-10-04T00:02:50.856949962+00:00"
+
+[[resolution]]
+entry = "prompt-cache-status"
+hash = "d40570c94dc5549846c1d22f1093615266857b97"
+paths = ["packages/app/src/components/context-window-meter.tsx"]
+recorded = "2026-10-04T00:02:50.856951976+00:00"
+
+[[resolution]]
 entry = "skill-pills-config"
 hash = "b5f59cfced311800dc21f4aebfc50ed12c6a87c0"
 paths = ["packages/app/src/screens/settings-screen.tsx"]
@@ -3957,7 +3981,13 @@ recorded = "2026-09-07T20:13:56.111057601+00:00"
 entry = "unarchive-threads"
 hash = "c6a815c622615152c661d3a26f583215b0d7e007"
 paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
-recorded = "2026-09-28T05:19:27.145280834+00:00"
+recorded = "2026-10-04T00:01:10.553573137+00:00"
+
+[[resolution]]
+entry = "usage-history"
+hash = "0436e4b3867009adbf79696eb197e29399858b48"
+paths = ["packages/server/src/server/session/usage/usage-session.ts"]
+recorded = "2026-10-04T00:04:32.479552270+00:00"
 
 [[resolution]]
 entry = "usage-history"
@@ -3975,7 +4005,7 @@ recorded = "2026-10-03T03:35:33.356732277+00:00"
 entry = "usage-history"
 hash = "752c6871e5bf15a98c2d8d3449939f4ee02cd9af"
 paths = ["packages/server/src/server/session/usage/usage-session.test.ts"]
-recorded = "2026-10-03T03:35:33.356736779+00:00"
+recorded = "2026-10-04T00:04:32.479557880+00:00"
 
 [[resolution]]
 entry = "usage-history"

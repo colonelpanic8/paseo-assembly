@@ -42,3 +42,27 @@ diff --git a/packages/app/src/types/stream.ts b/packages/app/src/types/stream.ts
    }
  
    if (!hasAssistantDisplayContent(hasContent, hasQuestions)) {
+diff --git a/packages/server/src/server/agent/providers/codex-app-server-agent.ts b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
+index 16817f6006..829c2cab84 100644
+--- a/packages/server/src/server/agent/providers/codex-app-server-agent.ts
++++ b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
+@@ -3729,6 +3729,10 @@ function toCodexTextInput(text: string): Extract<CodexAppServerUserInput, { type
+   };
+ }
+ 
++function restoredAsyncQuestions(handle: { metadata?: Record<string, unknown> } | null) {
++  return new CodexAsyncQuestions(handle?.metadata?.asyncQuestions);
++}
++
+ export function buildCodexAppServerEnv(
+   runtimeSettings?: ProviderRuntimeSettings,
+   launchEnv?: ProcessEnvRecord,
+@@ -4008,7 +4012,7 @@ export class CodexAppServerAgentSession implements AgentSession, AgentRealtimeVo
+       validateProviderOptions("codex", CodexProviderOptionsSchema, config.providerOptions) ?? {};
+     this.config = config;
+     this.harnessEnvironment = deps.environment ?? buildCodexAppServerEnv();
+-    this.asyncQuestions = new CodexAsyncQuestions(resumeHandle?.metadata?.asyncQuestions);
++    this.asyncQuestions = restoredAsyncQuestions(resumeHandle);
+     this.codexHome = deps.codexHome ?? resolveCodexHomeDir(process.env);
+     this.config.thinkingOptionId = normalizeCodexThinkingOptionId(this.config.thinkingOptionId);
+     this.serviceTier = readCodexServiceTier(this.config.featureValues);

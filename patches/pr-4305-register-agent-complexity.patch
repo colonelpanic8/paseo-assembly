@@ -1,8 +1,89 @@
+diff --git a/packages/app/src/components/context-window-meter.tsx b/packages/app/src/components/context-window-meter.tsx
+index f5eebf5e3f..0a8bf2d957 100644
+--- a/packages/app/src/components/context-window-meter.tsx
++++ b/packages/app/src/components/context-window-meter.tsx
+@@ -248,6 +248,27 @@ function PromptCacheTooltipSection({
+   );
+ }
+ 
++function RuntimeDetails({
++  modelLabel,
++  thinkingLabel,
++}: Pick<ContextWindowMeterProps, "modelLabel" | "thinkingLabel">) {
++  const { t } = useTranslation();
++  return (
++    <>
++      {modelLabel ? (
++        <Text style={styles.runtimeDetail} testID="context-window-meter-model">
++          {t("contextWindow.model", { model: modelLabel })}
++        </Text>
++      ) : null}
++      {thinkingLabel ? (
++        <Text style={styles.runtimeDetail} testID="context-window-meter-thinking">
++          {t("contextWindow.thinking", { thinking: thinkingLabel })}
++        </Text>
++      ) : null}
++    </>
++  );
++}
++
+ export function ContextWindowMeter({
+   serverId,
+   agentId,
+@@ -397,16 +418,7 @@ export function ContextWindowMeter({
+             showTitle={false}
+             refreshable
+           />
+-          {modelLabel ? (
+-            <Text style={styles.runtimeDetail} testID="context-window-meter-model">
+-              {t("contextWindow.model", { model: modelLabel })}
+-            </Text>
+-          ) : null}
+-          {thinkingLabel ? (
+-            <Text style={styles.runtimeDetail} testID="context-window-meter-thinking">
+-              {t("contextWindow.thinking", { thinking: thinkingLabel })}
+-            </Text>
+-          ) : null}
++          <RuntimeDetails modelLabel={modelLabel} thinkingLabel={thinkingLabel} />
+           {cacheDetails}
+         </ContextWindowSheet>
+       </>
+@@ -449,16 +461,7 @@ export function ContextWindowMeter({
+           showTitle
+           refreshable={false}
+         />
+-        {modelLabel ? (
+-          <Text style={styles.runtimeDetail} testID="context-window-meter-model">
+-            {t("contextWindow.model", { model: modelLabel })}
+-          </Text>
+-        ) : null}
+-        {thinkingLabel ? (
+-          <Text style={styles.runtimeDetail} testID="context-window-meter-thinking">
+-            {t("contextWindow.thinking", { thinking: thinkingLabel })}
+-          </Text>
+-        ) : null}
++        <RuntimeDetails modelLabel={modelLabel} thinkingLabel={thinkingLabel} />
+         {cacheDetails}
+       </TooltipContent>
+     </Tooltip>
+diff --git a/packages/app/src/composer/index.tsx b/packages/app/src/composer/index.tsx
+index 0d74820d0d..153e15c6e0 100644
+--- a/packages/app/src/composer/index.tsx
++++ b/packages/app/src/composer/index.tsx
+@@ -2183,7 +2183,7 @@ function ComposerContentImpl({
+ 
+   const contextWindowMeter = useMemo(
+     () =>
+-      renderContextWindowMeter({
++      renderContextWindowMeter(
+         serverId,
+         agentId,
+         contextWindowMaxTokens,
 diff --git a/packages/server/src/server/agent/agent-manager.ts b/packages/server/src/server/agent/agent-manager.ts
-index 6f1e50ab2..babf79c13 100644
+index 359e04c817..4279af7515 100644
 --- a/packages/server/src/server/agent/agent-manager.ts
 +++ b/packages/server/src/server/agent/agent-manager.ts
-@@ -418,6 +418,24 @@ function resolveInitialLastMessageAt(
+@@ -427,6 +427,24 @@ function resolveInitialLastMessageAt(
    return options?.lastMessageAt ?? options?.lastUserMessageAt ?? null;
  }
  
@@ -27,7 +108,7 @@ index 6f1e50ab2..babf79c13 100644
  interface ManagedAgentBase {
    id: string;
    provider: AgentProvider;
-@@ -3901,10 +3919,7 @@ export class AgentManager {
+@@ -4054,10 +4072,7 @@ export class AgentManager {
        summaryUpdatedAt,
        summaryCursor,
        summaryTurnsSinceUpdate,
@@ -39,14 +120,3 @@ index 6f1e50ab2..babf79c13 100644
        attention: resolveInitialAttention(options?.attention),
        internal: config.internal ?? false,
        labels: options?.labels ?? {},
-diff --git a/packages/app/src/composer/index.tsx b/packages/app/src/composer/index.tsx
---- a/packages/app/src/composer/index.tsx
-+++ b/packages/app/src/composer/index.tsx
-@@ -288,7 +288,6 @@
- function buildAgentStateSelector(serverId: string, agentId: string) {
-   return (state: ReturnType<typeof useSessionStore.getState>) => {
-     const agent = state.sessions[serverId]?.agents?.get(agentId) ?? null;
--    const usage = agent?.lastUsage;
-     return {
-       status: agent?.status ?? null,
-       contextWindowMaxTokens: agent?.lastUsage?.contextWindowMaxTokens ?? null,
