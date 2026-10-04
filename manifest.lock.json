@@ -1,10 +1,10 @@
 {
   "version": 1,
   "pins": {
-    "base": "4869214bcb42abd16add6fae00bdbda99c7a1e9b",
+    "base": "ed48655a777577a8ab3dd4e6f61a6cec64555413",
     "entries": {
-      "add-copy-conversation": "0cf0c71b5bfb904f7373c75fd509aa8126ebb793",
-      "agent-environment-setup": "db313d85ae4a36b2cb626c0ff889d0ef090a438d",
+      "add-copy-conversation": "0de3e49353d4fd63825f089a53b66c9b3bffe467",
+      "agent-environment-setup": "a7cb0895940cfd685556ecb9c968f1224b35c180",
       "agent-purpose-summaries": "5cae32c6daf7517f7b780bd222ac35b28625b39a",
       "agent/configurable-direct-model-shortcuts": "fec98ba1458f49662d57c4325afbed6341af70b4",
       "agent/nix-android": "d28f3b7ee5f0f9ec723fa06d481554452730de1c",
@@ -46,9 +46,9 @@
       "fork-native-session": "d323fb8104fb865a4487f5d4eff52daac773d003",
       "host-selection-search": "49f48d7c07b47df81371fddaa7b66359147efc42",
       "host/default-color": "a15b3606fe4407da08e4e936cbb91ced74cfe70e",
-      "keyboard-shortcuts-mobile": "145f60d59642acbad66beecd729eea0eb7f4f97e",
-      "live-voice-quick-launch": "80280c345f44dc7f1e26411351b1c7344bb1ef50",
-      "live-voice-start-sound": "1f22bab30fd46f3a32cdf40a34b73ca802581c20",
+      "keyboard-shortcuts-mobile": "78ab7349dffd78b93f1fe2ee01a81d7c075d1005",
+      "live-voice-quick-launch": "b7d102fdc5f1d6fc482ee5f426917597c9ed9577",
+      "live-voice-start-sound": "73a9d27a8e89d4a26bc9efe9069d0434a0bc761f",
       "locked-extension-paseo": "cd9f20c10636417748528d97263422fa3c671244",
       "model-picker-search": "373dd1d5855a26706c7596237942db1ae1ede0ae",
       "monospaced-mobile-styling": "c528309887001d4d90e68ad444e07948c72802ea",
@@ -86,7 +86,7 @@
       "unconditional-host-display": "3b4882cae516c11fd491b76b7a04a4609f400640",
       "usage-history": "cff58248e3ddd083a3369d3cc4bf9399fd2bc958",
       "voice-actions": "66308d4b1197c9f97be557bb288820db23104499",
-      "watch-live-voice": "9c13166db0193ae8d376bdee01a52c0bfb3d115f",
+      "watch-live-voice": "3d458333aeec0aa04c912d5313aa3944b45ee52d",
       "xdg-paths": "a058d6d6a23e710c263e19fa79ce496003237b7d"
     },
     "parents": {
@@ -105,20 +105,20 @@
       }
     },
     "anchors": {
-      "keyboard-shortcuts-mobile": "084067c4d3a545e7b70653d6439af1b19cb7b51f",
-      "live-voice-quick-launch": "710b838a19f53f691fb067cecad35a50a07724aa",
-      "live-voice-start-sound": "6bab95058db95e84b1c4c92ae6f6069a95c822f6",
-      "watch-live-voice": "0e2750bb6cb4061f5fc2ed8ddbc1150a1a572cba"
+      "keyboard-shortcuts-mobile": "309cb02623e52c6df0eed386a696e25b6323336c",
+      "live-voice-quick-launch": "d9d9d1a482cf2667faeb32cc3a6a42f5df0e01c3",
+      "live-voice-start-sound": "6cf72600a57ca4554961dd10f8d0344cc14bb661",
+      "watch-live-voice": "12e9b0d95e2f57a50d517cb04de3edfb00d0ebe2"
     }
   },
   "build": {
-    "generated": "2026-10-04T09:15:44.024658368+00:00",
-    "base": "4869214bcb42abd16add6fae00bdbda99c7a1e9b",
-    "commit": "d579be7370e2ed3220dfd0bfdf2c4e362546bd54",
-    "pre_provenance_commit": "d579be7370e2ed3220dfd0bfdf2c4e362546bd54",
-    "tree": "590eec326d6357b0accef13e6e2437d4b423469b",
-    "built_tree": "590eec326d6357b0accef13e6e2437d4b423469b",
-    "previous_tree": "e6664910586da138b643bc1d63f837fb24b16f9f",
+    "generated": "2026-10-04T09:36:09.786070675+00:00",
+    "base": "ed48655a777577a8ab3dd4e6f61a6cec64555413",
+    "commit": "713300714519e0c0757c0e5491c98ee5a741dde1",
+    "pre_provenance_commit": "713300714519e0c0757c0e5491c98ee5a741dde1",
+    "tree": "5c10c287cdb198e732dc09b1e133fb00ca0f5382",
+    "built_tree": "5c10c287cdb198e732dc09b1e133fb00ca0f5382",
+    "previous_tree": "9f8da5d85ba3e3111d0a85df847f0569c3db7dbf",
     "tree_changed": true,
     "conflicts": 41,
     "manifest_entries": [
@@ -232,7 +232,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "9c13166db0193ae8d376bdee01a52c0bfb3d115f",
+        "pin": "3d458333aeec0aa04c912d5313aa3944b45ee52d",
         "fixup": "2e1a4b4cc61973e4fa031be52bdc9aaa3263ce1a",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -245,7 +245,7 @@
             "pin": "e6019dd873e0168b32be938733808f89b90bc203"
           }
         ],
-        "anchor": "0e2750bb6cb4061f5fc2ed8ddbc1150a1a572cba"
+        "anchor": "12e9b0d95e2f57a50d517cb04de3edfb00d0ebe2"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -357,7 +357,7 @@
         "name": "keyboard-shortcuts-mobile",
         "kind": "branch",
         "source": "mine:keyboard-shortcuts-mobile",
-        "pin": "145f60d59642acbad66beecd729eea0eb7f4f97e",
+        "pin": "78ab7349dffd78b93f1fe2ee01a81d7c075d1005",
         "fixup": "d014d0feaa1ff706cd8c04f72c828a3b4c360033",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -366,7 +366,7 @@
             "pin": "6eb42f9930e7c0860073b3d738d4fd630d24363a"
           }
         ],
-        "anchor": "084067c4d3a545e7b70653d6439af1b19cb7b51f"
+        "anchor": "309cb02623e52c6df0eed386a696e25b6323336c"
       },
       {
         "name": "touch-sidebar-resize",
@@ -378,7 +378,7 @@
         "name": "agent-environment-setup",
         "kind": "branch",
         "source": "mine:agent-environment-setup",
-        "pin": "db313d85ae4a36b2cb626c0ff889d0ef090a438d"
+        "pin": "a7cb0895940cfd685556ecb9c968f1224b35c180"
       },
       {
         "name": "assembled-ci-lint-fixes",
@@ -396,7 +396,7 @@
         "name": "add-copy-conversation",
         "kind": "branch",
         "source": "mine:add-copy-conversation",
-        "pin": "0cf0c71b5bfb904f7373c75fd509aa8126ebb793",
+        "pin": "0de3e49353d4fd63825f089a53b66c9b3bffe467",
         "fixup": "d407cb653441063a38051fe0255d44259dbd1ba2"
       },
       {
@@ -427,7 +427,7 @@
         "name": "live-voice-quick-launch",
         "kind": "branch",
         "source": "mine:live-voice-quick-launch",
-        "pin": "80280c345f44dc7f1e26411351b1c7344bb1ef50",
+        "pin": "b7d102fdc5f1d6fc482ee5f426917597c9ed9577",
         "reconstruction_publish": "mine:live-voice-quick-launch",
         "parents": [
           {
@@ -435,7 +435,7 @@
             "pin": "e6019dd873e0168b32be938733808f89b90bc203"
           }
         ],
-        "anchor": "710b838a19f53f691fb067cecad35a50a07724aa"
+        "anchor": "d9d9d1a482cf2667faeb32cc3a6a42f5df0e01c3"
       },
       {
         "name": "colorblind-status-dots",
@@ -566,7 +566,7 @@
         "name": "live-voice-start-sound",
         "kind": "branch",
         "source": "mine:live-voice-start-sound",
-        "pin": "1f22bab30fd46f3a32cdf40a34b73ca802581c20",
+        "pin": "73a9d27a8e89d4a26bc9efe9069d0434a0bc761f",
         "reconstruction_publish": "mine:live-voice-start-sound",
         "parents": [
           {
@@ -574,7 +574,7 @@
             "pin": "e6019dd873e0168b32be938733808f89b90bc203"
           }
         ],
-        "anchor": "6bab95058db95e84b1c4c92ae6f6069a95c822f6"
+        "anchor": "6cf72600a57ca4554961dd10f8d0344cc14bb661"
       },
       {
         "name": "ntfy-push",
@@ -802,14 +802,14 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "9c13166db0193ae8d376bdee01a52c0bfb3d115f",
+        "oid": "3d458333aeec0aa04c912d5313aa3944b45ee52d",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "2e1a4b4cc61973e4fa031be52bdc9aaa3263ce1a",
         "derived": {
-          "base_tip": "12e9b0d95e2f57a50d517cb04de3edfb00d0ebe2",
-          "tip": "3d458333aeec0aa04c912d5313aa3944b45ee52d"
+          "base_tip": "53125b96c272d1b1ef470370540d0f0c66f037f2",
+          "tip": "42d00824013afbb35b27fffc738eb0b7a58bae66"
         }
       },
       {
@@ -933,14 +933,14 @@
       },
       {
         "name": "keyboard-shortcuts-mobile",
-        "oid": "145f60d59642acbad66beecd729eea0eb7f4f97e",
+        "oid": "78ab7349dffd78b93f1fe2ee01a81d7c075d1005",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "d014d0feaa1ff706cd8c04f72c828a3b4c360033",
         "derived": {
-          "base_tip": "309cb02623e52c6df0eed386a696e25b6323336c",
-          "tip": "78ab7349dffd78b93f1fe2ee01a81d7c075d1005"
+          "base_tip": "87be4faa9ce590d91819521bb4e74840f788da6e",
+          "tip": "51ad2ec38dd3fa3f2180ba808e3d7fb50b6e4db9"
         }
       },
       {
@@ -951,7 +951,7 @@
       },
       {
         "name": "agent-environment-setup",
-        "oid": "db313d85ae4a36b2cb626c0ff889d0ef090a438d",
+        "oid": "a7cb0895940cfd685556ecb9c968f1224b35c180",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -970,7 +970,7 @@
       },
       {
         "name": "add-copy-conversation",
-        "oid": "0cf0c71b5bfb904f7373c75fd509aa8126ebb793",
+        "oid": "0de3e49353d4fd63825f089a53b66c9b3bffe467",
         "status": "merged",
         "conflicted": false,
         "fixup": "d407cb653441063a38051fe0255d44259dbd1ba2"
@@ -1002,12 +1002,12 @@
       },
       {
         "name": "live-voice-quick-launch",
-        "oid": "80280c345f44dc7f1e26411351b1c7344bb1ef50",
+        "oid": "b7d102fdc5f1d6fc482ee5f426917597c9ed9577",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "d9d9d1a482cf2667faeb32cc3a6a42f5df0e01c3",
-          "tip": "b7d102fdc5f1d6fc482ee5f426917597c9ed9577"
+          "base_tip": "af6ea69c39d1726f2c4060b493e829366c6d8fe6",
+          "tip": "9d73900feb482c9ca5ccdb7be46b8f450788eee4"
         }
       },
       {
@@ -1146,12 +1146,12 @@
       },
       {
         "name": "live-voice-start-sound",
-        "oid": "1f22bab30fd46f3a32cdf40a34b73ca802581c20",
+        "oid": "73a9d27a8e89d4a26bc9efe9069d0434a0bc761f",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "6cf72600a57ca4554961dd10f8d0344cc14bb661",
-          "tip": "73a9d27a8e89d4a26bc9efe9069d0434a0bc761f"
+          "base_tip": "16981e618ea88b716f18d6aff3d15b901c91ec15",
+          "tip": "805e9ab6f563969a73fce434ab6bfb27e0fe199a"
         }
       },
       {
