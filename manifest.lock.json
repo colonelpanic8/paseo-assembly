@@ -4,7 +4,7 @@
     "base": "4869214bcb42abd16add6fae00bdbda99c7a1e9b",
     "entries": {
       "add-copy-conversation": "0cf0c71b5bfb904f7373c75fd509aa8126ebb793",
-      "agent-environment-setup": "287d6ae853b77ca837e8187fcc7869085ba38273",
+      "agent-environment-setup": "db313d85ae4a36b2cb626c0ff889d0ef090a438d",
       "agent-purpose-summaries": "5cae32c6daf7517f7b780bd222ac35b28625b39a",
       "agent/configurable-direct-model-shortcuts": "fec98ba1458f49662d57c4325afbed6341af70b4",
       "agent/nix-android": "d28f3b7ee5f0f9ec723fa06d481554452730de1c",
@@ -12,7 +12,7 @@
       "assembled-ci-lint-fixes": "8f8d8c57300eca040a7b7c8e9c14a1a29679d407",
       "assembled-current-coherence": "5bd1a2f85d8c580aa5e57269679232638096b730",
       "assembled-lint-complexity": "b3ac376f8503efd28ed19994b1f3debe335c7634",
-      "assembled-npm-deps-hash": "90249568c4aa726620eb53bcd22b03799fce9935",
+      "assembled-npm-deps-hash": "99b880b10f444a732d8182236ebe428f43d21306",
       "assembled-typecheck-coherence": "eedf2f124e711ead3a6825f1bc961599cf2d6500",
       "assembly-agent-env": "9bea934821b603b9129fbe17db297063c87aa0e9",
       "assembly-build-provenance": "742cbf4bffa0a6b3cfc8c524c35764830148f64b",
@@ -112,13 +112,13 @@
     }
   },
   "build": {
-    "generated": "2026-10-04T00:11:24.447771302+00:00",
+    "generated": "2026-10-04T00:21:39.635118862+00:00",
     "base": "4869214bcb42abd16add6fae00bdbda99c7a1e9b",
-    "commit": "f9b939f9feb56e96985896b132b6ebe1d3c9481e",
-    "pre_provenance_commit": "f9b939f9feb56e96985896b132b6ebe1d3c9481e",
-    "tree": "c320dfdf4e2f7f0cd402c1727b5f8dfbbd48b92e",
-    "built_tree": "c320dfdf4e2f7f0cd402c1727b5f8dfbbd48b92e",
-    "previous_tree": "312cfb0e78870fe239314d0925643c4ee8d2bcba",
+    "commit": "8147879be131730cdffab43717d7053911b87a7e",
+    "pre_provenance_commit": "8147879be131730cdffab43717d7053911b87a7e",
+    "tree": "e6664910586da138b643bc1d63f837fb24b16f9f",
+    "built_tree": "e6664910586da138b643bc1d63f837fb24b16f9f",
+    "previous_tree": "83ef790b23c309281818ce54e66068948e6e936b",
     "tree_changed": true,
     "conflicts": 41,
     "manifest_entries": [
@@ -251,7 +251,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "90249568c4aa726620eb53bcd22b03799fce9935"
+        "pin": "99b880b10f444a732d8182236ebe428f43d21306"
       },
       {
         "name": "host-selection-search",
@@ -378,7 +378,7 @@
         "name": "agent-environment-setup",
         "kind": "branch",
         "source": "mine:agent-environment-setup",
-        "pin": "287d6ae853b77ca837e8187fcc7869085ba38273"
+        "pin": "db313d85ae4a36b2cb626c0ff889d0ef090a438d"
       },
       {
         "name": "assembled-ci-lint-fixes",
@@ -808,13 +808,13 @@
         "resolution": "rerere",
         "fixup": "2e1a4b4cc61973e4fa031be52bdc9aaa3263ce1a",
         "derived": {
-          "base_tip": "065b3af01124b231b5b47056377a0d3601597e74",
-          "tip": "5807edb68462fdd506ea8ae62b6b32658f8dd44b"
+          "base_tip": "29b358795e012642544b6de68d75186a0c0619da",
+          "tip": "ac368e139c654513f75e81940a1cfc33ee14e65a"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "90249568c4aa726620eb53bcd22b03799fce9935",
+        "oid": "99b880b10f444a732d8182236ebe428f43d21306",
         "status": "applied",
         "conflicted": false
       },
@@ -939,8 +939,8 @@
         "resolution": "rerere",
         "fixup": "d014d0feaa1ff706cd8c04f72c828a3b4c360033",
         "derived": {
-          "base_tip": "7fe77df6ddbda96dcadf7dbd853747e5462a7948",
-          "tip": "f5b2725f12e262fe8ff6d1eac20e18d3544961bf"
+          "base_tip": "325e940cc719fce77a7a9cc6f5f3a423c6ece18f",
+          "tip": "327b838cf56fde13e02d2db44bdcc9714dbd617e"
         }
       },
       {
@@ -951,7 +951,7 @@
       },
       {
         "name": "agent-environment-setup",
-        "oid": "287d6ae853b77ca837e8187fcc7869085ba38273",
+        "oid": "db313d85ae4a36b2cb626c0ff889d0ef090a438d",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -1006,8 +1006,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "66e7e0ca619de94cc370d27e31452e427d6f29c7",
-          "tip": "a02151b152f4d6c9138098dd31324600ff146303"
+          "base_tip": "d8f578743b7cee09a5adb54f12fba9af9bd9c619",
+          "tip": "eb647c47faf044d4356b4f9db3e0a03d71e013d3"
         }
       },
       {
@@ -1150,8 +1150,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "1db660d372c99568ea174ef680bd14ed7d532a7c",
-          "tip": "c7d30849b0c419e58c3ed54842d7af6c7491422e"
+          "base_tip": "ebc3970e94ed85922e0aed1552e64621097cbe7a",
+          "tip": "27be3af781f85a8041b8f8aaee2a3b2b73519cc0"
         }
       },
       {
