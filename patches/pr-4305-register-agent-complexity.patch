@@ -1,8 +1,8 @@
 diff --git a/packages/app/src/components/context-window-meter.tsx b/packages/app/src/components/context-window-meter.tsx
-index f5eebf5e3f..0a8bf2d957 100644
+index 555358942..7c807cc1e 100644
 --- a/packages/app/src/components/context-window-meter.tsx
 +++ b/packages/app/src/components/context-window-meter.tsx
-@@ -248,6 +248,27 @@ function PromptCacheTooltipSection({
+@@ -293,6 +293,27 @@ function PromptCacheTooltipSection({
    );
  }
  
@@ -30,60 +30,33 @@ index f5eebf5e3f..0a8bf2d957 100644
  export function ContextWindowMeter({
    serverId,
    agentId,
-@@ -397,16 +418,7 @@ export function ContextWindowMeter({
-             showTitle={false}
-             refreshable
-           />
--          {modelLabel ? (
--            <Text style={styles.runtimeDetail} testID="context-window-meter-model">
--              {t("contextWindow.model", { model: modelLabel })}
--            </Text>
--          ) : null}
--          {thinkingLabel ? (
--            <Text style={styles.runtimeDetail} testID="context-window-meter-thinking">
--              {t("contextWindow.thinking", { thinking: thinkingLabel })}
--            </Text>
--          ) : null}
-+          <RuntimeDetails modelLabel={modelLabel} thinkingLabel={thinkingLabel} />
-           {cacheDetails}
-         </ContextWindowSheet>
-       </>
-@@ -449,16 +461,7 @@ export function ContextWindowMeter({
-           showTitle
-           refreshable={false}
-         />
--        {modelLabel ? (
--          <Text style={styles.runtimeDetail} testID="context-window-meter-model">
--            {t("contextWindow.model", { model: modelLabel })}
--          </Text>
--        ) : null}
--        {thinkingLabel ? (
--          <Text style={styles.runtimeDetail} testID="context-window-meter-thinking">
--            {t("contextWindow.thinking", { thinking: thinkingLabel })}
--          </Text>
--        ) : null}
-+        <RuntimeDetails modelLabel={modelLabel} thinkingLabel={thinkingLabel} />
-         {cacheDetails}
-       </TooltipContent>
-     </Tooltip>
-diff --git a/packages/app/src/composer/index.tsx b/packages/app/src/composer/index.tsx
-index 0d74820d0d..153e15c6e0 100644
---- a/packages/app/src/composer/index.tsx
-+++ b/packages/app/src/composer/index.tsx
-@@ -2183,7 +2183,7 @@ function ComposerContentImpl({
+@@ -366,20 +387,7 @@ export function ContextWindowMeter({
+   const accessibilityLabel = context
+     ? t("contextWindow.accessibility", { percentage: context.percentage })
+     : t("contextWindow.accessibilityNoData");
+-  const runtimeDetails = (
+-    <>
+-      {modelLabel ? (
+-        <Text style={styles.runtimeDetail} testID="context-window-meter-model">
+-          {t("contextWindow.model", { model: modelLabel })}
+-        </Text>
+-      ) : null}
+-      {thinkingLabel ? (
+-        <Text style={styles.runtimeDetail} testID="context-window-meter-thinking">
+-          {t("contextWindow.thinking", { thinking: thinkingLabel })}
+-        </Text>
+-      ) : null}
+-    </>
+-  );
++  const runtimeDetails = <RuntimeDetails modelLabel={modelLabel} thinkingLabel={thinkingLabel} />;
  
-   const contextWindowMeter = useMemo(
-     () =>
--      renderContextWindowMeter({
-+      renderContextWindowMeter(
-         serverId,
-         agentId,
-         contextWindowMaxTokens,
+   const cacheDetails = promptCache ? (
+     <PromptCacheTooltipSection
 diff --git a/packages/server/src/server/agent/agent-manager.ts b/packages/server/src/server/agent/agent-manager.ts
-index 359e04c817..4279af7515 100644
+index 9fe11bd50..1641487db 100644
 --- a/packages/server/src/server/agent/agent-manager.ts
 +++ b/packages/server/src/server/agent/agent-manager.ts
-@@ -427,6 +427,24 @@ function resolveInitialLastMessageAt(
+@@ -430,6 +430,24 @@ function resolveInitialLastMessageAt(
    return options?.lastMessageAt ?? options?.lastUserMessageAt ?? null;
  }
  
@@ -108,7 +81,7 @@ index 359e04c817..4279af7515 100644
  interface ManagedAgentBase {
    id: string;
    provider: AgentProvider;
-@@ -4054,10 +4072,7 @@ export class AgentManager {
+@@ -4057,10 +4075,7 @@ export class AgentManager {
        summaryUpdatedAt,
        summaryCursor,
        summaryTurnsSinceUpdate,

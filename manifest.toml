@@ -452,9 +452,6 @@ branch = "mine:locked-extension-paseo"
 [[entry]]
 patch = "patches/assembled-lint-complexity.patch"
 
-[[entry]]
-pr = 6013
-
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
@@ -605,3 +602,7 @@ reason = "Upstream #5722 (4e9a4582b7f6) supplies startup guards; mine:fix/host-r
 [[exclude]]
 pr = 5524
 reason = "closed unmerged; superseded by upstream #5594 (690f5298c), which keeps draft composers off the agent command list before a project and model are chosen; the rebase left only tests for a helper upstream does not have"
+
+[[exclude]]
+pr = 6013
+reason = "closed unmerged; superseded by upstream #6093 (a50e14b69), which carries its commit 46faa88 unchanged plus a safe-area correction"
