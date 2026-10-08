@@ -62,4 +62,5 @@ jobs:
             exit 1
           fi
           echo "NPM_DEPS_HASH=${got}"
+          echo "::notice title=npm-deps-hash::${got}"
           echo "### npm deps hash for \`${REV}\`: \`${got}\`" >> "$GITHUB_STEP_SUMMARY"

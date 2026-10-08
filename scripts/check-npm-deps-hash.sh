@@ -96,8 +96,27 @@ fetch_hash_in_ci() {
     gh run view "$run_id" --log-failed 2>&1 | tail -30 >&2
     return 1
   fi
-  gh run view "$run_id" --log \
-    | grep -oE 'NPM_DEPS_HASH=sha256-[A-Za-z0-9+/=]+' | head -1 | cut -d= -f2-
+  # The run's annotation carries the hash; the log is a fallback because its
+  # storage host is the flakier of the two.
+  local job got=""
+  for ((attempt = 1; attempt <= 5; attempt++)); do
+    job="$(gh run view "$run_id" --json jobs -q '.jobs[0].databaseId' 2>/dev/null || true)"
+    if [[ -n "$job" ]]; then
+      got="$(gh api "repos/{owner}/{repo}/check-runs/$job/annotations" \
+        -q '.[] | select(.title == "npm-deps-hash") | .message' 2>/dev/null | head -1 || true)"
+    fi
+    if [[ -z "$got" ]]; then
+      got="$( (gh run view "$run_id" --log 2>/dev/null || true) \
+        | grep -oE 'NPM_DEPS_HASH=sha256-[A-Za-z0-9+/=]+' | head -1 | cut -d= -f2- || true)"
+    fi
+    [[ -n "$got" ]] && break
+    sleep 10
+  done
+  if [[ -z "$got" ]]; then
+    echo "error: CI run $run_id succeeded but its hash could not be read" >&2
+    return 1
+  fi
+  echo "$got"
 }
 
 # Local mode. --rebuild is what defeats the cached-path illusion above, but it
@@ -137,9 +156,9 @@ fetch_hash_locally() {
 
 if [[ "$local_fetch" -eq 1 ]]; then
   echo "  (re-fetching the dependency tree locally; a cached store path proves nothing here)"
-  got="$(fetch_hash_locally)"
+  got="$(fetch_hash_locally)" || { echo "error: the local hash check failed" >&2; exit 1; }
 else
-  got="$(fetch_hash_in_ci)"
+  got="$(fetch_hash_in_ci)" || { echo "error: the CI hash check failed" >&2; exit 1; }
 fi
 if [[ -z "$got" ]]; then
   echo "error: no npm deps hash was reported" >&2
