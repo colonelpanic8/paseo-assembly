@@ -591,6 +591,12 @@ recorded = "2026-10-04T00:04:09.415624318+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
+hash = "49f1fb30767712a50a0ec1e87bbdc04369ea1134"
+paths = ["packages/server/src/server/plugins/usage-sources/index.ts"]
+recorded = "2026-10-08T04:35:48.094637119+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
 hash = "763054635229403a51f1754384e02e9f119ac0b5"
 paths = ["packages/app/src/provider-usage/settings-section.tsx"]
 recorded = "2026-09-06T17:57:29.615087024+00:00"
@@ -617,7 +623,7 @@ recorded = "2026-10-03T03:34:37.951331947+00:00"
 entry = "assembly-codex-banked-resets"
 hash = "b7ca869a67aff58c3d91a3269cc6811bf319b468"
 paths = ["packages/server/src/server/plugins/usage-sources/index.test.ts"]
-recorded = "2026-10-04T00:04:09.415629668+00:00"
+recorded = "2026-10-08T04:35:48.094644069+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
@@ -1093,6 +1099,12 @@ recorded = "2026-09-18T11:06:03.063104141+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
+hash = "03a113834e81f320071603c1b19798637c2eab15"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-10-08T04:35:27.672046953+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
 hash = "133e002aa9a61e0c5e436f65366428951cd6cc61"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-09-28T05:24:09.163970406+00:00"
@@ -1111,6 +1123,12 @@ recorded = "2026-10-03T03:34:01.288333449+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
+hash = "5bee52aaa46f777ad8467d1e2bfad2fbca6b6f98"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-10-08T04:35:18.960225270+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
 hash = "72d9682d7c7ade3179006dde491ed126d74a0cbb"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-10-03T03:34:14.227463025+00:00"
@@ -1126,6 +1144,12 @@ entry = "keyboard-shortcuts-mobile"
 hash = "c28cb7787845bd78d93ecb2129269f28967b0c7a"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-09-18T11:06:18.160954547+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
+hash = "e694d5276cc571170d17152c47e1497e3aa50cc1"
+paths = ["packages/app/src/i18n/resources/fr.ts"]
+recorded = "2026-10-08T04:35:10.991787337+00:00"
 
 [[resolution]]
 entry = "live-voice-context-files"
