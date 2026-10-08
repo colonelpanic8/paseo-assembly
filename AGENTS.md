@@ -131,19 +131,21 @@ So whenever a build reports `tree CHANGED`, finish the cycle:
 ```sh
 fork-assembler build --locked         # prove the tracked inputs reproduce the tree
 git commit                             # record the recipe (do not push yet)
-just publish                           # verify the npm deps hash in CI, then push the tree
+just publish                           # check the candidate in CI, then push the tree
 git push origin main                   # publish the recipe once its tree is live
 ```
 
-**Verify the hash, then push the tree, then push the recipe.** `just publish`
-first runs `scripts/check-npm-deps-hash.sh --write`, which pushes the candidate
-commit to the scratch branch `mine:npm-deps-hash-candidate` and has the
-`Compute Assembly npm Deps Hash` workflow fetch the dependency tree (minutes on
-a runner; hours on this machine, which is why `--local` is not the default).
-Only a verified tree is pushed to `[publish]`. Push `main` after that: CI
-triggered by the recipe waits only a few minutes for the published tree, so
-pushing the recipe first can fail it on the check's latency. Use
-`just publish-fast` only when explicitly skipping the check.
+**Check the candidate, then push the tree, then push the recipe.** `just publish`
+first runs two CI checks in parallel against the build worktree's commit,
+pushed to the scratch branch `mine:assembly-candidate`:
+`scripts/check-npm-deps-hash.sh --write` (the `Compute Assembly npm Deps Hash`
+workflow fetches the dependency tree -- minutes on a runner, hours on this
+machine, which is why `--local` is not the default) and
+`scripts/check-candidate-typecheck.sh` (`Typecheck Assembly` on the candidate).
+Only a tree that passes both is pushed to `[publish]`. Push `main` after that:
+CI triggered by the recipe waits only a few minutes for the published tree, so
+pushing the recipe first can fail it on the checks' latency. Use
+`just publish-fast` only when explicitly skipping the checks.
 
 `just publish` refuses to push a dirty or stale build worktree, so it is safe
 to run when unsure; if the tree is already published it says so and exits. The

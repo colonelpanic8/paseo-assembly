@@ -13,14 +13,19 @@ continue:
 check-npm-deps-hash *ARGS:
     scripts/check-npm-deps-hash.sh {{ARGS}}
 
-# Verify the npm deps hash in CI, then push the assembled tree to the [publish]
-# branch. Ordinary update/build operations do not run the check.
+# Typecheck the build worktree's commit in CI without publishing it.
+typecheck-candidate:
+    scripts/check-candidate-typecheck.sh
+
+# Verify the npm deps hash and typecheck the candidate in CI, then push the
+# assembled tree to the [publish] branch. Ordinary update/build operations do
+# not run these checks.
 publish:
     scripts/publish-assembly.sh
 
-# Publish without the final npm deps hash check.
+# Publish without the pre-publish CI checks.
 publish-fast:
-    scripts/publish-assembly.sh --skip-hash-check
+    scripts/publish-assembly.sh --skip-checks
 
 # Build the desktop package from the published assembly, exactly as CI does.
 desktop:

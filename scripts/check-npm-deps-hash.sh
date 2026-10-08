@@ -22,7 +22,7 @@
 # the dependency tree is ~2.6 GB of npm tarballs. Locally that fetch is
 # bandwidth-bound and takes hours; a GitHub runner does it in minutes. So by
 # default this pushes the build worktree's commit to the scratch branch
-# [publish] remote:npm-deps-hash-candidate and dispatches
+# [publish] remote:assembly-candidate and dispatches
 # .github/workflows/npm-deps-hash.yml, which fetches with a fake hash so it
 # always reports the real one. --local runs the old local --rebuild check.
 #
@@ -64,43 +64,12 @@ echo "checking assembled npm deps hash: $declared"
 
 # Prints the hash the assembled tree actually produces, or fails.
 fetch_hash_in_ci() {
-  local remote remote_url commit candidate run_id attempt
-  remote="$(awk '/^\[publish\]/{p=1;next} /^\[/{p=0} p && /^[[:space:]]*remote[[:space:]]*=/{sub(/^[^=]*=[[:space:]]*/,"");gsub(/"/,"");print;exit}' manifest.toml)"
-  remote_url="$(awk -v r="$remote" '/^\[remotes\]/{p=1;next} /^\[/{p=0} p && $1==r {sub(/^[^=]*=[[:space:]]*/,"");gsub(/"/,"");print;exit}' manifest.toml)"
-  if [[ -z "$remote_url" ]]; then
-    echo "error: manifest.toml names no URL for the [publish] remote '$remote'" >&2
-    return 1
-  fi
-  commit="$(git -C "$worktree" rev-parse HEAD)"
-  candidate="npm-deps-hash-candidate"
+  local commit run_id attempt
+  # shellcheck source=scripts/lib/candidate-ci.sh
+  source "$repo_root/scripts/lib/candidate-ci.sh"
+  commit="$(push_candidate "$worktree")" || return 1
+  run_id="$(run_candidate_workflow npm-deps-hash.yml "npm deps hash $commit" "$commit")" || return 1
 
-  echo "  pushing $commit to $remote:$candidate for the CI fetch" >&2
-  git -C "$worktree" push --force --quiet "$remote_url" "$commit:refs/heads/$candidate" >&2
-
-  # Earlier runs can carry the same title, so only a run newer than every run
-  # that existed before the dispatch is ours.
-  local newest_before
-  newest_before="$(gh run list --workflow npm-deps-hash.yml --limit 1 \
-    --json databaseId -q '.[0].databaseId // 0')"
-  gh workflow run npm-deps-hash.yml --ref main -f ref="$candidate" -f rev="$commit" >&2
-  run_id=""
-  for ((attempt = 1; attempt <= 30; attempt++)); do
-    run_id="$(gh run list --workflow npm-deps-hash.yml --limit 20 \
-      --json databaseId,displayTitle \
-      -q "map(select(.displayTitle == \"npm deps hash $commit\" and .databaseId > $newest_before)) | .[0].databaseId // empty")"
-    [[ -n "$run_id" ]] && break
-    sleep 5
-  done
-  if [[ -z "$run_id" ]]; then
-    echo "error: the npm-deps-hash workflow run for $commit never appeared" >&2
-    return 1
-  fi
-  echo "  waiting on CI run $run_id" >&2
-  if ! gh run watch "$run_id" --exit-status >/dev/null 2>&1; then
-    echo "error: CI run $run_id failed:" >&2
-    gh run view "$run_id" --log-failed 2>&1 | tail -30 >&2
-    return 1
-  fi
   # The run's annotation carries the hash; the log is a fallback because its
   # storage host is the flakier of the two.
   local job got=""

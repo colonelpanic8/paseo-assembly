@@ -1,6 +1,8 @@
 name: Typecheck Assembly
 
-# Typechecks the published `assembled` tree.
+# Typechecks the published `assembled` tree, or -- dispatched with `rev` by
+# scripts/check-candidate-typecheck.sh -- a candidate commit before it is
+# published.
 #
 # The assembler merges; it never compiles. Every entry typechecks against its
 # own base, so a topic can be internally sound and still break the stack: a
@@ -12,6 +14,8 @@ name: Typecheck Assembly
 # Cheap, and it fails on the assembly rather than on the machine that installs
 # it. Cross-entry breakage belongs in a coherence fixup on the entry that made
 # it necessary -- see AGENTS.md.
+
+run-name: ${{ inputs.rev && format('typecheck {0}', inputs.rev) || github.event.head_commit.message || github.workflow }}
 
 on:
   push:
@@ -25,9 +29,16 @@ on:
       - "resolutions/**"
       - "scripts/await-published-assembly.sh"
   workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch on colonelpanic8/paseo carrying a candidate commit (blank for the published tree)
+        required: false
+      rev:
+        description: Candidate assembly commit (blank for the published tree)
+        required: false
 
 concurrency:
-  group: assembly-typecheck
+  group: assembly-typecheck-${{ inputs.rev || 'published' }}
   cancel-in-progress: true
 
 permissions:
@@ -49,8 +60,14 @@ jobs:
 
       - name: Locate the published assembly
         id: assembly
+        env:
+          CANDIDATE_REV: ${{ inputs.rev }}
         shell: bash
         run: |
+          if [[ -n "$CANDIDATE_REV" ]]; then
+            echo "commit=$CANDIDATE_REV" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           scripts/await-published-assembly.sh \
             manifest.lock.json \
             "https://github.com/${ASSEMBLY_SOURCE_REPO}" \
