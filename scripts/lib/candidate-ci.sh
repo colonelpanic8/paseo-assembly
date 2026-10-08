@@ -25,7 +25,13 @@ push_candidate() {
   fi
   commit="$(git -C "$worktree" rev-parse HEAD)"
   echo "  pushing $commit to $candidate_branch for CI" >&2
-  git -C "$worktree" push --force --quiet "$url" "$commit:refs/heads/$candidate_branch" >&2
+  if ! git -C "$worktree" push --force --quiet "$url" "$commit:refs/heads/$candidate_branch" 2>/dev/null; then
+    # A parallel check may have pushed the same commit first.
+    if [[ "$(git ls-remote "$url" "refs/heads/$candidate_branch" | cut -f1)" != "$commit" ]]; then
+      echo "error: could not push $commit to $candidate_branch" >&2
+      return 1
+    fi
+  fi
   echo "$commit"
 }
 
