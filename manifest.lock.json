@@ -12,7 +12,7 @@
       "assembled-ci-lint-fixes": "8f8d8c57300eca040a7b7c8e9c14a1a29679d407",
       "assembled-current-coherence": "5bd1a2f85d8c580aa5e57269679232638096b730",
       "assembled-lint-complexity": "b3ac376f8503efd28ed19994b1f3debe335c7634",
-      "assembled-npm-deps-hash": "1fc620a51883ebe00bcb20cf0f1bc01f5c6f1467",
+      "assembled-npm-deps-hash": "cd5c30c4d59f7863ec78ac37b5ddafd332f054c7",
       "assembled-typecheck-coherence": "eedf2f124e711ead3a6825f1bc961599cf2d6500",
       "assembly-agent-env": "9bea934821b603b9129fbe17db297063c87aa0e9",
       "assembly-build-provenance": "4cbae64895fa49900a04f9f1aef75a45b84c043f",
@@ -111,15 +111,15 @@
     }
   },
   "build": {
-    "generated": "2026-10-08T04:37:22.317174943+00:00",
+    "generated": "2026-10-08T04:40:53.720363156+00:00",
     "base": "99fc204c55c8c1666477282eeba562ba87a3135f",
-    "commit": "76137fc523a68a7ef3e0a9469958456f2ff3bde9",
-    "pre_provenance_commit": "76137fc523a68a7ef3e0a9469958456f2ff3bde9",
-    "tree": "bb6d9c2915bea94a94122071d70cc362324a7b8c",
-    "built_tree": "bb6d9c2915bea94a94122071d70cc362324a7b8c",
+    "commit": "29016d1ad10a8e7d5fc22ed681f51e95339576a4",
+    "pre_provenance_commit": "29016d1ad10a8e7d5fc22ed681f51e95339576a4",
+    "tree": "f4110c6be538dfc03a18f5227d569426f17272b0",
+    "built_tree": "f4110c6be538dfc03a18f5227d569426f17272b0",
     "previous_tree": "bb6d9c2915bea94a94122071d70cc362324a7b8c",
-    "tree_changed": false,
-    "conflicts": 43,
+    "tree_changed": true,
+    "conflicts": 44,
     "manifest_entries": [
       {
         "name": "prompt-mod-shortcuts",
@@ -250,7 +250,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "1fc620a51883ebe00bcb20cf0f1bc01f5c6f1467"
+        "pin": "cd5c30c4d59f7863ec78ac37b5ddafd332f054c7"
       },
       {
         "name": "host-selection-search",
@@ -801,21 +801,22 @@
         "resolution": "rerere",
         "fixup": "2e1a4b4cc61973e4fa031be52bdc9aaa3263ce1a",
         "derived": {
-          "base_tip": "9410ffe3cc51feaf67ac648d0f0be02b51273dcb",
-          "tip": "f032fc78e0ad443b2fd05ec3b7301c5b1c508e2f"
+          "base_tip": "6f694d49f62123fcbebaa34dcf82847eb06a84f9",
+          "tip": "cb6c363e91d50778a1836cdfd2e36dab00ed58b2"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "1fc620a51883ebe00bcb20cf0f1bc01f5c6f1467",
+        "oid": "cd5c30c4d59f7863ec78ac37b5ddafd332f054c7",
         "status": "applied",
         "conflicted": false
       },
       {
         "name": "host-selection-search",
         "oid": "49f48d7c07b47df81371fddaa7b66359147efc42",
-        "status": "empty",
-        "conflicted": false
+        "status": "merged",
+        "conflicted": true,
+        "resolution": "rerere"
       },
       {
         "name": "pr-2772",
@@ -931,8 +932,8 @@
         "resolution": "rerere",
         "fixup": "d014d0feaa1ff706cd8c04f72c828a3b4c360033",
         "derived": {
-          "base_tip": "7f4fc16e9eabe9e34f9920318ee3c8bb383f58f7",
-          "tip": "14a7338287376a6669950eedde9504e5923093d0"
+          "base_tip": "b0d60fd3993c7250572fb51b979b3814deb27611",
+          "tip": "c0d28ce0aa95597e2afa92c31482e15aa0dd53c5"
         }
       },
       {
@@ -998,8 +999,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "b03d0246ea43a86f773dc6e3ebb420e1e45ebdcf",
-          "tip": "29f38e395887d5b156c8ccd8c694464527749f57"
+          "base_tip": "25c9ff164f75e6b78dde6237f157171ba1a3ec57",
+          "tip": "eacb0f958eb91cade9f4cbf60f30f5fe48185a53"
         }
       },
       {
@@ -1142,8 +1143,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "3794231f32065ef1674d9fa0262f8f4258e56140",
-          "tip": "eb0b3ef117aaaffb7cf82093bf8d575c1b7d5368"
+          "base_tip": "6c1cbc2a184895cde8d6932212ebd46111dae7c9",
+          "tip": "ab1d27b24fbc39ceff148221abdec9bd4be71507"
         }
       },
       {
