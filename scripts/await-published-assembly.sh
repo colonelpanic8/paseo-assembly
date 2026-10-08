@@ -26,9 +26,13 @@ if [[ -z "$expected_tree" || "$expected_tree" == "null" ]]; then
 fi
 
 work_dir="$(mktemp -d)"
-trap 'rm -rf "$work_dir"' EXIT
+# Cleanup must not fail the lookup if a straggling git process still holds files.
+trap 'rm -rf "$work_dir" 2>/dev/null || true' EXIT
 
-git clone --filter=blob:none --no-checkout "$repo_url" "$work_dir/source" >&2
+# No detached auto-maintenance: it writes commit-graphs into the clone while the
+# EXIT trap is deleting it.
+git clone -c gc.auto=0 -c maintenance.auto=false -c fetch.writeCommitGraph=false \
+  --filter=blob:none --no-checkout "$repo_url" "$work_dir/source" >&2
 
 actual_tree=""
 actual_commit=""
