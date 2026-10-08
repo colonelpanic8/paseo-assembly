@@ -27,7 +27,6 @@ summary = "Add managed desktop host enrollment"
 [[entry]]
 branch = "mine:next-ready-thread"
 summary = "Add shortcut for next workspace needing attention"
-fixup = "patches/sidebar-project-view-shortcut-targets.patch"
 
 [[entry]]
 branch = "mine:assembly-fdroid-variant"

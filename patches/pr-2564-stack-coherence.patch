@@ -43,8 +43,36 @@ index ee5acb7f5..7ae294890 100644
        // Higher activation distance reduces accidental drag capture while nested
        // lists are inside a scroll container.
        activationDistance={20}
+diff --git a/packages/app/src/components/sidebar-workspace-list.test.tsx b/packages/app/src/components/sidebar-workspace-list.test.tsx
+index ffa25d3c5..f91f2cf00 100644
+--- a/packages/app/src/components/sidebar-workspace-list.test.tsx
++++ b/packages/app/src/components/sidebar-workspace-list.test.tsx
+@@ -354,6 +354,23 @@ describe("sidebar workspace render isolation", () => {
+     });
+   });
+ 
++  it("loads the directory when the sidebar is the only mounted consumer", async () => {
++    const acquire = vi.spyOn(getHostRuntimeStore(), "acquireDirectoryDemand");
++    const counts: RenderCounts = {
++      frame: 0,
++      headers: {},
++      rows: {},
++      projectSelection: {},
++      rowSelection: {},
++    };
++    try {
++      ({ root, container } = await renderProbe(counts));
++      expect(acquire).toHaveBeenCalledWith(SERVER_ID);
++    } finally {
++      acquire.mockRestore();
++    }
++  });
++
+   it("re-renders only the changed workspace row for a status update", async () => {
+     const counts: RenderCounts = {
+       frame: 0,
 diff --git a/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx b/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx
-index afe3c1b77..76cfc3323 100644
+index 71b797b1b..4744fcf9a 100644
 --- a/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx
 +++ b/packages/app/src/components/workspace-shortcut-targets-subscriber.test.tsx
 @@ -28,6 +28,7 @@ function workspaceDescriptor(input: {
@@ -65,12 +93,12 @@ index afe3c1b77..76cfc3323 100644
      diffStat: null,
      scripts: [],
 diff --git a/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx b/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx
-index 5c719ebcf..82223a043 100644
+index 67a1ab680..c4b0c7ddf 100644
 --- a/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx
 +++ b/packages/app/src/components/workspace-shortcut-targets-subscriber.tsx
-@@ -16,14 +16,14 @@ export function WorkspaceShortcutTargetsSubscriber({ enabled }: { enabled: boole
-       Array.from(workspaceEntriesByKey.values()),
+@@ -19,14 +19,14 @@ export function WorkspaceShortcutTargetsSubscriber({ enabled }: { enabled: boole
        projectNamesByViewKey,
+       t,
      );
 -    return statusGroups
 -      .filter((group) => group.bucket === "needs_input" || group.bucket === "attention")
@@ -85,21 +113,9 @@ index 5c719ebcf..82223a043 100644
          })),
 -      );
 +    );
-   }, [projectNamesByViewKey, workspaceEntriesByKey]);
+   }, [projectNamesByViewKey, t, workspaceEntriesByKey]);
  
    useEffect(() => {
-diff --git a/packages/app/src/composer/diff-stat-pill.test.tsx b/packages/app/src/composer/diff-stat-pill.test.tsx
-index 96e1e1139..124025e06 100644
---- a/packages/app/src/composer/diff-stat-pill.test.tsx
-+++ b/packages/app/src/composer/diff-stat-pill.test.tsx
-@@ -21,6 +21,7 @@ const workspace: WorkspaceDescriptor = {
-   name: "main",
-   status: "done",
-   statusEnteredAt: null,
-+  activityAt: null,
-   archivingAt: null,
-   diffStat: null,
-   scripts: [],
 diff --git a/packages/app/src/hooks/sidebar-workspaces-view-model.ts b/packages/app/src/hooks/sidebar-workspaces-view-model.ts
 index 86eaec472..337cb97f9 100644
 --- a/packages/app/src/hooks/sidebar-workspaces-view-model.ts
@@ -148,11 +164,28 @@ index 86eaec472..337cb97f9 100644
      activityAt: input.workspace.activityAt,
      readyToReview: effectiveStatus.readyToReview,
      archivingAt: input.workspace.archivingAt,
+diff --git a/packages/app/src/hooks/use-sidebar-workspaces-list.ts b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+index 4d465f0f6..487489c08 100644
+--- a/packages/app/src/hooks/use-sidebar-workspaces-list.ts
++++ b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
+@@ -123,6 +123,12 @@ export function useSidebarWorkspacesList(options?: {
+     [allServerIds, hostFilters, hostRegistryLoaded],
+   );
+ 
++  useEffect(() => {
++    if (!isActive) return;
++    const releases = serverIds.map((serverId) => runtime.acquireDirectoryDemand(serverId));
++    return () => releases.forEach((release) => release());
++  }, [isActive, runtime, serverIds]);
++
+   useEffect(() => {
+     if (!hostRegistryLoaded) {
+       return;
 diff --git a/packages/app/src/runtime/host-runtime.test.ts b/packages/app/src/runtime/host-runtime.test.ts
-index 46835adb4..90ec2e3a1 100644
+index a69d36b7e..96c859be0 100644
 --- a/packages/app/src/runtime/host-runtime.test.ts
 +++ b/packages/app/src/runtime/host-runtime.test.ts
-@@ -3795,12 +3795,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -4708,12 +4708,14 @@ describe("HostRuntimeStore managed host bootstrap", () => {
            endpoint: "ryzen-shine:6767",
            useTls: false,
            password: "ryzen-secret",
@@ -167,7 +200,7 @@ index 46835adb4..90ec2e3a1 100644
          },
        ],
      };
-@@ -3825,7 +3827,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -4738,7 +4740,15 @@ describe("HostRuntimeStore managed host bootstrap", () => {
        storage: createMemoryHostRuntimeStorage(),
      });
  
@@ -184,7 +217,7 @@ index 46835adb4..90ec2e3a1 100644
      store.boot();
      await hostsAdded;
  
-@@ -3853,6 +3863,69 @@ describe("HostRuntimeStore managed host bootstrap", () => {
+@@ -4766,6 +4776,69 @@ describe("HostRuntimeStore managed host bootstrap", () => {
          .map((host) => host.label)
          .sort(),
      ).toEqual(["Mac mini", "Ryzen"]);
@@ -255,10 +288,10 @@ index 46835adb4..90ec2e3a1 100644
      store.syncHosts([]);
    });
 diff --git a/packages/app/src/runtime/host-runtime.ts b/packages/app/src/runtime/host-runtime.ts
-index f33be1cf8..6ccba3a50 100644
+index a0abec1b9..5350191ae 100644
 --- a/packages/app/src/runtime/host-runtime.ts
 +++ b/packages/app/src/runtime/host-runtime.ts
-@@ -10,6 +10,7 @@ import {
+@@ -11,6 +11,7 @@ import {
  import {
    connectionFromListen,
    createRemoteSshHostConnection,
@@ -266,7 +299,7 @@ index f33be1cf8..6ccba3a50 100644
    normalizeStoredHostProfile,
    upsertHostConnectionInProfiles,
    registryHasConnection,
-@@ -1396,6 +1397,20 @@ interface ManagedHostBootstrapInput {
+@@ -1504,6 +1505,20 @@ interface ManagedHostBootstrapInput {
    label: string;
    endpoint: string;
    connection: HostConnection;
@@ -287,7 +320,7 @@ index f33be1cf8..6ccba3a50 100644
  }
  
  export class HostRuntimeStore {
-@@ -1547,22 +1562,33 @@ export class HostRuntimeStore {
+@@ -1657,22 +1672,33 @@ export class HostRuntimeStore {
          label: host.label,
          endpoint,
          connection,
@@ -387,48 +420,3 @@ index 5b91ccde3..73a0ce76f 100644
  });
  
  export const ManagedHostRegistrySchema = z.object({
-diff --git a/packages/app/src/components/sidebar-workspace-list.test.tsx b/packages/app/src/components/sidebar-workspace-list.test.tsx
-index 20287f9a6..adea6d5fa 100644
---- a/packages/app/src/components/sidebar-workspace-list.test.tsx
-+++ b/packages/app/src/components/sidebar-workspace-list.test.tsx
-@@ -355,6 +355,23 @@ describe("sidebar workspace render isolation", () => {
-     });
-   });
- 
-+  it("loads the directory when the sidebar is the only mounted consumer", async () => {
-+    const acquire = vi.spyOn(getHostRuntimeStore(), "acquireDirectoryDemand");
-+    const counts: RenderCounts = {
-+      frame: 0,
-+      headers: {},
-+      rows: {},
-+      projectSelection: {},
-+      rowSelection: {},
-+    };
-+    try {
-+      ({ root, container } = await renderProbe(counts));
-+      expect(acquire).toHaveBeenCalledWith(SERVER_ID);
-+    } finally {
-+      acquire.mockRestore();
-+    }
-+  });
-+
-   it("re-renders only the changed workspace row for a status update", async () => {
-     const counts: RenderCounts = {
-       frame: 0,
-diff --git a/packages/app/src/hooks/use-sidebar-workspaces-list.ts b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-index 4d465f0f6..487489c08 100644
---- a/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-+++ b/packages/app/src/hooks/use-sidebar-workspaces-list.ts
-@@ -123,6 +123,12 @@ export function useSidebarWorkspacesList(options?: {
-     [allServerIds, hostFilters, hostRegistryLoaded],
-   );
- 
-+  useEffect(() => {
-+    if (!isActive) return;
-+    const releases = serverIds.map((serverId) => runtime.acquireDirectoryDemand(serverId));
-+    return () => releases.forEach((release) => release());
-+  }, [isActive, runtime, serverIds]);
-+
-   useEffect(() => {
-     if (!hostRegistryLoaded) {
-       return;
