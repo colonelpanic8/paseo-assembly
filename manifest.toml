@@ -605,3 +605,7 @@ reason = "closed unmerged; superseded by upstream #5594 (690f5298c), which keeps
 [[exclude]]
 pr = 6013
 reason = "closed unmerged; superseded by upstream #6093 (a50e14b69), which carries its commit 46faa88 unchanged plus a safe-area correction"
+
+[[exclude]]
+pr = 5606
+reason = "alternative to carried pr-2820 for the same pre-chat command bug; it contains 2820's repair plus a session-free discovery refactor, and its description says to merge one, not both. Swap to it only by removing pr-2820"
