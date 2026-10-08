@@ -77,12 +77,17 @@ fetch_hash_in_ci() {
   echo "  pushing $commit to $remote:$candidate for the CI fetch" >&2
   git -C "$worktree" push --force --quiet "$remote_url" "$commit:refs/heads/$candidate" >&2
 
+  # Earlier runs can carry the same title, so only a run newer than every run
+  # that existed before the dispatch is ours.
+  local newest_before
+  newest_before="$(gh run list --workflow npm-deps-hash.yml --limit 1 \
+    --json databaseId -q '.[0].databaseId // 0')"
   gh workflow run npm-deps-hash.yml --ref main -f ref="$candidate" -f rev="$commit" >&2
   run_id=""
   for ((attempt = 1; attempt <= 30; attempt++)); do
     run_id="$(gh run list --workflow npm-deps-hash.yml --limit 20 \
       --json databaseId,displayTitle \
-      -q "map(select(.displayTitle == \"npm deps hash $commit\")) | .[0].databaseId // empty")"
+      -q "map(select(.displayTitle == \"npm deps hash $commit\" and .databaseId > $newest_before)) | .[0].databaseId // empty")"
     [[ -n "$run_id" ]] && break
     sleep 5
   done
