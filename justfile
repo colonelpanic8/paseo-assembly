@@ -8,15 +8,13 @@ continue:
     fork-assembler continue
 
 # Verify the assembled npm dependency hash against the assembled
-# package-lock.json. `publish` runs this after pushing; run it directly after
-# any build that moved a dependency-affecting entry. Add --write to regenerate
-# the patch.
+# package-lock.json by fetching in CI (--local fetches here instead). `publish`
+# runs this before pushing. Add --write to regenerate the patch.
 check-npm-deps-hash *ARGS:
     scripts/check-npm-deps-hash.sh {{ARGS}}
 
-# Push the assembled tree to the [publish] branch and verify the npm deps hash
-# in parallel. This is the final publish-stage check; ordinary update/build
-# operations do not run it.
+# Verify the npm deps hash in CI, then push the assembled tree to the [publish]
+# branch. Ordinary update/build operations do not run the check.
 publish:
     scripts/publish-assembly.sh
 

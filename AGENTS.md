@@ -130,27 +130,32 @@ So whenever a build reports `tree CHANGED`, finish the cycle:
 
 ```sh
 fork-assembler build --locked         # prove the tracked inputs reproduce the tree
-git commit && git push origin main     # publish the recipe
-just publish                           # push and check the final tree in parallel
+git commit                             # record the recipe (do not push yet)
+just publish                           # verify the npm deps hash in CI, then push the tree
+git push origin main                   # publish the recipe once its tree is live
 ```
 
-**Always push first; every slow verification is deferred behind the push.**
-Nothing is shipped until both pushes land, and the slow hash check is never part
-of an ordinary update or build. `just publish` starts the assembled push and the
-npm deps hash check together; the push is optimistic, and a failed check becomes
-a follow-up recipe correction. Use `just publish-fast` only when explicitly
-deferring the final check.
+**Verify the hash, then push the tree, then push the recipe.** `just publish`
+first runs `scripts/check-npm-deps-hash.sh --write`, which pushes the candidate
+commit to the scratch branch `mine:npm-deps-hash-candidate` and has the
+`Compute Assembly npm Deps Hash` workflow fetch the dependency tree (minutes on
+a runner; hours on this machine, which is why `--local` is not the default).
+Only a verified tree is pushed to `[publish]`. Push `main` after that: CI
+triggered by the recipe waits only a few minutes for the published tree, so
+pushing the recipe first can fail it on the check's latency. Use
+`just publish-fast` only when explicitly skipping the check.
 
 `just publish` refuses to push a dirty or stale build worktree, so it is safe
-to run when unsure; if the tree is already published it says so and exits. Its
-parallel `scripts/check-npm-deps-hash.sh` run exists because reproducing the
-locked tree proves the build is the one the lock pins, not that it is correct:
-the assembled npm deps hash goes stale silently and only breaks for consumers.
-Never verify that hash with a plain `nix build` — an FOD's store path is
-derived from its declared hash, so a stale one passes instantly on the path the
-last good build left behind. The script forces the re-fetch; `--write`
-regenerates the patch. If it finds a stale hash, regenerate it, rebuild, and
-push the correction as a follow-up recipe commit and a second publish.
+to run when unsure; if the tree is already published it says so and exits. The
+hash check exists because reproducing the locked tree proves the build is the
+one the lock pins, not that it is correct: the assembled npm deps hash goes
+stale silently and only breaks for consumers. Never verify that hash with a
+plain `nix build` — an FOD's store path is derived from its declared hash, so a
+stale one passes instantly on the path the last good build left behind. The CI
+fetch overrides the hash with a fake one so it always reports the real value.
+If the hash is stale, `just publish` rewrites the patch and stops without
+pushing: run `fork-assembler update assembled-npm-deps-hash`, rebuild, verify
+with `--locked`, amend or add to the recipe commit, and publish again.
 Push the commit that carries the locked *tree* — the commit id is not the
 invariant, and a `--locked` rerun legitimately re-commits the same tree under
 a new id. The push force-updates, because the assembled branch is compiled

@@ -1,0 +1,65 @@
+name: Compute Assembly npm Deps Hash
+
+# Fetches the npm dependency tree of a candidate assembly commit and reports
+# the fixed-output hash it produces. scripts/check-npm-deps-hash.sh dispatches
+# this before publishing, because the fetch is bandwidth-bound and finishes in
+# minutes on a runner instead of hours locally.
+#
+# The build overrides npmDepsHash with a fake hash so the fetch always runs and
+# fails with `got: <real hash>`; a declared hash could otherwise be satisfied
+# from a cached store path without proving anything.
+
+run-name: npm deps hash ${{ inputs.rev }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch on colonelpanic8/paseo carrying the candidate commit
+        required: true
+      rev:
+        description: Candidate assembly commit
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  hash:
+    name: Compute npm deps hash
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342 # v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch dependency tree
+        env:
+          REF: ${{ inputs.ref }}
+          REV: ${{ inputs.rev }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          flake="git+https://github.com/colonelpanic8/paseo?ref=${REF}&rev=${REV}"
+          log="$(mktemp)"
+          if nix build --no-link --print-build-logs --impure --expr "
+            let
+              flake = builtins.getFlake \"${flake}\";
+              paseo = flake.packages.x86_64-linux.paseo;
+            in
+            (paseo.override { npmDepsHash = flake.inputs.nixpkgs.lib.fakeHash; }).npmDeps
+          " >"$log" 2>&1; then
+            echo "::error::the fake-hash fetch unexpectedly succeeded"
+            exit 1
+          fi
+          got="$(grep -oE 'got: +sha256-[A-Za-z0-9+/=]+' "$log" | head -1 | grep -oE 'sha256-[A-Za-z0-9+/=]+' || true)"
+          if [[ -z "$got" ]]; then
+            tail -40 "$log"
+            echo "::error::the dependency fetch failed for a reason other than a hash mismatch"
+            exit 1
+          fi
+          echo "NPM_DEPS_HASH=${got}"
+          echo "### npm deps hash for \`${REV}\`: \`${got}\`" >> "$GITHUB_STEP_SUMMARY"
