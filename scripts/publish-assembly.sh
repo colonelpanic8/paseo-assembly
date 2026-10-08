@@ -16,10 +16,11 @@
 # a rebuild re-commits rather than fast-forwards -- but leased against the head
 # we observed, so a concurrent publish loses the race instead of being lost.
 #
-# Two CI checks run here in parallel, BEFORE the push, so a broken tree is
-# caught before any consumer sees it: the npm deps hash
-# (scripts/check-npm-deps-hash.sh, which regenerates a stale patch) and the
-# typecheck (scripts/check-candidate-typecheck.sh). Each takes a few minutes.
+# The push is optimistic: nothing waits on verification. The npm deps hash
+# check (scripts/check-npm-deps-hash.sh --write, a few minutes in CI) starts in
+# parallel with the push, and a stale hash becomes a follow-up recipe commit and
+# republish. Typecheck Assembly and the desktop build run on the published tree
+# as soon as it lands.
 #
 # Usage: publish-assembly.sh [--skip-checks] [BUILD_WORKTREE]
 
@@ -92,36 +93,11 @@ if [[ "$lease" == "$commit" ]]; then
 fi
 
 if [[ -n "$skip_checks" ]]; then
-  echo "pre-publish checks SKIPPED (--skip-checks)" >&2
+  hash_pid=""
 else
-  echo "running pre-publish checks in CI" >&2
+  echo "starting the npm deps hash check in parallel with the push" >&2
   "$repo_root/scripts/check-npm-deps-hash.sh" --write "$worktree" >&2 &
   hash_pid=$!
-  "$repo_root/scripts/check-candidate-typecheck.sh" "$worktree" >&2 &
-  typecheck_pid=$!
-  hash_status=0
-  typecheck_status=0
-  wait "$hash_pid" || hash_status=$?
-  wait "$typecheck_pid" || typecheck_status=$?
-
-  if (( hash_status != 0 )); then
-    echo >&2
-    echo "error: not publishing -- the assembled npm deps hash is stale or unverified." >&2
-    echo "       if the patch was rewritten above, rebuild and commit it, then publish:" >&2
-    echo "         fork-assembler update assembled-npm-deps-hash" >&2
-    echo "         fork-assembler build && fork-assembler build --locked" >&2
-    echo "         git commit -- patches manifest.lock.json resolutions" >&2
-    echo "         just publish" >&2
-  fi
-  if (( typecheck_status != 0 )); then
-    echo >&2
-    echo "error: not publishing -- the candidate assembly does not typecheck." >&2
-    echo "       fix it on the topic branch that broke (or in its coherence fixup when" >&2
-    echo "       the break is between entries), rebuild, and publish again." >&2
-  fi
-  if (( hash_status != 0 || typecheck_status != 0 )); then
-    exit 1
-  fi
 fi
 
 push_status=0
@@ -140,7 +116,26 @@ else
   push_status=$?
 fi
 
+hash_status=0
+if [[ -n "$hash_pid" ]]; then
+  wait "$hash_pid" || hash_status=$?
+fi
+
 if (( push_status != 0 )); then
   echo "error: assembled push failed" >&2
   exit "$push_status"
+fi
+if [[ -z "$hash_pid" ]]; then
+  echo "npm deps hash check SKIPPED (--skip-checks) -- run \`just check-npm-deps-hash\`" >&2
+  exit 0
+fi
+if (( hash_status != 0 )); then
+  echo >&2
+  echo "error: the published tree failed the npm deps hash check." >&2
+  echo "       if the patch was rewritten above, publish the correction:" >&2
+  echo "         fork-assembler update assembled-npm-deps-hash" >&2
+  echo "         fork-assembler build && fork-assembler build --locked" >&2
+  echo "         git commit -- patches manifest.lock.json resolutions && git push origin main" >&2
+  echo "         just publish" >&2
+  exit 1
 fi

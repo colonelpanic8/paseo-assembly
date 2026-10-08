@@ -130,22 +130,20 @@ So whenever a build reports `tree CHANGED`, finish the cycle:
 
 ```sh
 fork-assembler build --locked         # prove the tracked inputs reproduce the tree
-git commit                             # record the recipe (do not push yet)
-just publish                           # check the candidate in CI, then push the tree
-git push origin main                   # publish the recipe once its tree is live
+git commit && git push origin main     # publish the recipe
+just publish                           # push the tree; check the npm deps hash in parallel
 ```
 
-**Check the candidate, then push the tree, then push the recipe.** `just publish`
-first runs two CI checks in parallel against the build worktree's commit,
-pushed to the scratch branch `mine:assembly-candidate`:
-`scripts/check-npm-deps-hash.sh --write` (the `Compute Assembly npm Deps Hash`
-workflow fetches the dependency tree -- minutes on a runner, hours on this
-machine, which is why `--local` is not the default) and
-`scripts/check-candidate-typecheck.sh` (`Typecheck Assembly` on the candidate).
-Only a tree that passes both is pushed to `[publish]`. Push `main` after that:
-CI triggered by the recipe waits only a few minutes for the published tree, so
-pushing the recipe first can fail it on the checks' latency. Use
-`just publish-fast` only when explicitly skipping the checks.
+**Push first; verification never blocks a publish.** Refreshes optimize for
+getting the tree out: `just publish` pushes immediately and starts
+`scripts/check-npm-deps-hash.sh --write` alongside the push. That check runs in
+CI (`Compute Assembly npm Deps Hash`, a few minutes on a runner; `--local`
+fetches here, which takes hours), and a stale hash becomes a follow-up recipe
+commit and second publish. Typecheck and the desktop build run in CI on the
+published tree as soon as it lands; read their results and fix forward.
+`just typecheck-candidate` typechecks the build worktree before publishing,
+for when a change is risky enough to be worth the wait. Use
+`just publish-fast` only when explicitly skipping the hash check.
 
 `just publish` refuses to push a dirty or stale build worktree, so it is safe
 to run when unsure; if the tree is already published it says so and exits. The
@@ -155,9 +153,9 @@ stale silently and only breaks for consumers. Never verify that hash with a
 plain `nix build` — an FOD's store path is derived from its declared hash, so a
 stale one passes instantly on the path the last good build left behind. The CI
 fetch overrides the hash with a fake one so it always reports the real value.
-If the hash is stale, `just publish` rewrites the patch and stops without
-pushing: run `fork-assembler update assembled-npm-deps-hash`, rebuild, verify
-with `--locked`, amend or add to the recipe commit, and publish again.
+If the hash is stale, `just publish` has already rewritten the patch: run
+`fork-assembler update assembled-npm-deps-hash`, rebuild, verify with
+`--locked`, commit, push, and publish again.
 Push the commit that carries the locked *tree* — the commit id is not the
 invariant, and a `--locked` rerun legitimately re-commits the same tree under
 a new id. The push force-updates, because the assembled branch is compiled

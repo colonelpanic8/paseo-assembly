@@ -9,7 +9,7 @@ continue:
 
 # Verify the assembled npm dependency hash against the assembled
 # package-lock.json by fetching in CI (--local fetches here instead). `publish`
-# runs this before pushing. Add --write to regenerate the patch.
+# runs this alongside the push. Add --write to regenerate the patch.
 check-npm-deps-hash *ARGS:
     scripts/check-npm-deps-hash.sh {{ARGS}}
 
@@ -17,13 +17,12 @@ check-npm-deps-hash *ARGS:
 typecheck-candidate:
     scripts/check-candidate-typecheck.sh
 
-# Verify the npm deps hash and typecheck the candidate in CI, then push the
-# assembled tree to the [publish] branch. Ordinary update/build operations do
-# not run these checks.
+# Push the assembled tree to the [publish] branch, checking the npm deps hash in
+# CI in parallel. Ordinary update/build operations do not run the check.
 publish:
     scripts/publish-assembly.sh
 
-# Publish without the pre-publish CI checks.
+# Publish without the npm deps hash check.
 publish-fast:
     scripts/publish-assembly.sh --skip-checks
 

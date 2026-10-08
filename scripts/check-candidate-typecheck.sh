@@ -4,9 +4,9 @@
 # The assembler merges and never compiles, so a tree that `build --locked`
 # reproduces exactly can still fail to typecheck -- most often when a topic
 # calls an upstream API whose signature moved after the topic was written.
-# Typecheck Assembly normally runs on the published tree, which is too late:
-# every consumer already has it. This dispatches the same workflow against the
-# candidate commit instead.
+# Typecheck Assembly runs on the published tree after every publish; this
+# optional pre-check dispatches the same workflow against the build worktree's
+# commit for a change risky enough to be worth waiting on.
 #
 # Usage: check-candidate-typecheck.sh [BUILD_WORKTREE]
 
