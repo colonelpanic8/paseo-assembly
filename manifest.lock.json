@@ -76,6 +76,7 @@
       "prompt-cache-status": "d44319eff277502af829f96c208f634775762aa4",
       "prompt-mod-shortcuts": "4119c6a73f0301df7a520983b8809cf4d0becf7e",
       "relay-tailscale": "d9d40d402e64d5496b5c362f7007f5d2156d718e",
+      "sidebar-hide-hosts": "50a3ceb268025550974dcfed383db3e98e01eaf7",
       "skill-pills-config": "56154d1e531913451bb7a49069e2c676a213ab02",
       "subagent-param-visibility": "bf581751be7394e1a82fb69eea13802ef8a202d8",
       "t3code-4453": "6661a182bb58bf7e2afff7b12c057e343246e1c5",
@@ -111,13 +112,13 @@
     }
   },
   "build": {
-    "generated": "2026-10-08T04:55:18.000828411+00:00",
+    "generated": "2026-10-10T04:10:30.979600270+00:00",
     "base": "99fc204c55c8c1666477282eeba562ba87a3135f",
-    "commit": "7677562639e497053642b96c20125432c76b7366",
-    "pre_provenance_commit": "7677562639e497053642b96c20125432c76b7366",
-    "tree": "15e09fe45336421d943459de1c4fe0e6cb27ccf6",
-    "built_tree": "15e09fe45336421d943459de1c4fe0e6cb27ccf6",
-    "previous_tree": "f4110c6be538dfc03a18f5227d569426f17272b0",
+    "commit": "7d4ccf69ef37f7a1a2f8cd5e75a70aa98a3c9ec9",
+    "pre_provenance_commit": "7d4ccf69ef37f7a1a2f8cd5e75a70aa98a3c9ec9",
+    "tree": "c1ceffb586636772c9fea3de75131959b98241ec",
+    "built_tree": "c1ceffb586636772c9fea3de75131959b98241ec",
+    "previous_tree": "5ce9c141d3870acd524dace4ac2a64a7e13863f4",
     "tree_changed": true,
     "conflicts": 44,
     "manifest_entries": [
@@ -675,6 +676,13 @@
         "kind": "patch",
         "source": "patches/assembled-lint-complexity.patch",
         "pin": "b3ac376f8503efd28ed19994b1f3debe335c7634"
+      },
+      {
+        "name": "sidebar-hide-hosts",
+        "kind": "branch",
+        "source": "mine:sidebar-hide-hosts",
+        "pin": "50a3ceb268025550974dcfed383db3e98e01eaf7",
+        "fixup": "452617eeb494030cbdd9aa192d134f3e92258e57"
       }
     ],
     "results": [
@@ -799,8 +807,8 @@
         "resolution": "rerere",
         "fixup": "2e1a4b4cc61973e4fa031be52bdc9aaa3263ce1a",
         "derived": {
-          "base_tip": "8125657b1a16ea9322fba2f24f2eb5ae32359b98",
-          "tip": "fd1af5ff52401b95b52e1e2d38c8c2dd2b9bd9e8"
+          "base_tip": "7ded9976e21fc4f03d356a7a02be8ab6023fc0ae",
+          "tip": "564996543e11e8796f44d3a2224bddee9e414fb3"
         }
       },
       {
@@ -930,8 +938,8 @@
         "resolution": "rerere",
         "fixup": "d014d0feaa1ff706cd8c04f72c828a3b4c360033",
         "derived": {
-          "base_tip": "55e9452ff6abe26dd09c652efe7baa00071923ea",
-          "tip": "d965aa80fe76065ab7aa9490be84e89393dec1ba"
+          "base_tip": "dbdc5783d341e8b2e82fb54d8e87179569e13204",
+          "tip": "58cd5fff31d9b73a58606947f48c6c35b521b035"
         }
       },
       {
@@ -997,8 +1005,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "f84a7e18ff0a0fd9ccce22860751fa71e67085fc",
-          "tip": "011bd227d9696806df485f11b76c3753eb73f536"
+          "base_tip": "568b455033a1f80b4a4de1d9762234f3cfe22679",
+          "tip": "5117a5660e3eb999706437cd58b33b36655cb0b5"
         }
       },
       {
@@ -1141,8 +1149,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "a260cf62ef4ef09f306b44684a4b703047815e5b",
-          "tip": "3ff298b2823d9112c0e1d936d46485e8539ac3a1"
+          "base_tip": "aa8fd6dd0d3ddf7ccfed38365422cd40b3d3912b",
+          "tip": "78f44fe5906cd09f89240f0ae9302fb0a213816f"
         }
       },
       {
@@ -1253,6 +1261,13 @@
         "oid": "b3ac376f8503efd28ed19994b1f3debe335c7634",
         "status": "applied",
         "conflicted": false
+      },
+      {
+        "name": "sidebar-hide-hosts",
+        "oid": "50a3ceb268025550974dcfed383db3e98e01eaf7",
+        "status": "merged",
+        "conflicted": false,
+        "fixup": "452617eeb494030cbdd9aa192d134f3e92258e57"
       }
     ]
   }

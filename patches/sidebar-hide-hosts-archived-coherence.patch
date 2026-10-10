@@ -1,0 +1,29 @@
+diff --git a/packages/app/src/components/sidebar-workspace-list.tsx b/packages/app/src/components/sidebar-workspace-list.tsx
+index 62ae350c4..8087bfed3 100644
+--- a/packages/app/src/components/sidebar-workspace-list.tsx
++++ b/packages/app/src/components/sidebar-workspace-list.tsx
+@@ -1914,14 +1914,17 @@ export function SidebarWorkspaceList({
+   });
+   const serverIds = useMemo(() => hosts.map((host) => host.serverId), [hosts]);
+   const hostFilters = useSidebarViewStore((state) => state.hostFilters);
++  const statusHiddenHosts = useSidebarViewStore((state) => state.statusHiddenHosts);
+   const hostRegistryLoaded = useHostRegistryLoaded();
+-  const archivedServerIds = useMemo(
+-    () =>
+-      groupMode === "status"
+-        ? resolveSidebarServerIds({ allServerIds: serverIds, hostFilters, hostRegistryLoaded })
+-        : [],
+-    [groupMode, hostFilters, hostRegistryLoaded, serverIds],
+-  );
++  const archivedServerIds = useMemo(() => {
++    if (groupMode !== "status") return [];
++    const hidden = new Set(statusHiddenHosts);
++    return resolveSidebarServerIds({
++      allServerIds: serverIds,
++      hostFilters,
++      hostRegistryLoaded,
++    }).filter((serverId) => !hidden.has(serverId));
++  }, [groupMode, hostFilters, hostRegistryLoaded, serverIds, statusHiddenHosts]);
+   const archivedWorkspaces = useArchivedWorkspaces({ serverIds: archivedServerIds });
+   const supportsMultiplicityByServerId = useHostFeatureMap(serverIds, "workspaceMultiplicity");
+   const supportsPinningByServerId = useHostFeatureMap(serverIds, "workspacePinning");
