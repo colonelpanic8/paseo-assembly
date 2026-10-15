@@ -471,6 +471,12 @@ recorded = "2026-09-28T05:51:32.423627388+00:00"
 
 [[resolution]]
 entry = "android-intents"
+hash = "a539768af6a58549496918a802cc6ee95543b321"
+paths = ["CLAUDE.md"]
+recorded = "2026-10-15T03:15:37.154123703+00:00"
+
+[[resolution]]
+entry = "android-intents"
 hash = "a76663f84e07b3f03d5d6fe468d7aba427fdb18e"
 paths = ["packages/app/src/app/_layout.tsx"]
 recorded = "2026-09-19T23:52:15.925865188+00:00"
@@ -1131,7 +1137,7 @@ recorded = "2026-10-08T04:35:18.960225270+00:00"
 entry = "keyboard-shortcuts-mobile"
 hash = "72d9682d7c7ade3179006dde491ed126d74a0cbb"
 paths = ["packages/app/src/composer/index.tsx"]
-recorded = "2026-10-03T03:34:14.227463025+00:00"
+recorded = "2026-10-15T03:14:10.674690754+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
@@ -1756,6 +1762,12 @@ entry = "ntfy-push"
 hash = "18874f22a7f6242cabd9ce52d20ce88ce03ac034"
 paths = ["packages/server/src/server/daemon-config-store.ts"]
 recorded = "2026-09-13T04:08:17.209604120+00:00"
+
+[[resolution]]
+entry = "ntfy-push"
+hash = "38e6f49820c081a9e088cf1cd6edbcadb520218b"
+paths = ["packages/server/src/server/websocket-server.notifications.test.ts", "packages/server/src/server/websocket-server.terminal-notifications.test.ts"]
+recorded = "2026-10-15T03:15:25.580968701+00:00"
 
 [[resolution]]
 entry = "ntfy-push"
@@ -4008,6 +4020,12 @@ paths = ["packages/app/src/panels/agent-panel.tsx"]
 recorded = "2026-09-30T23:18:43.568456503+00:00"
 
 [[resolution]]
+entry = "subagent-param-visibility"
+hash = "acac51c130607aa347997f6414c8d97172cb405a"
+paths = ["packages/app/src/composer/index.tsx"]
+recorded = "2026-10-15T03:12:21.346424616+00:00"
+
+[[resolution]]
 entry = "t3code-4453"
 hash = "21519d71bfd6e2e7dbe749fa107e2c44048c97c7"
 paths = ["packages/app/src/composer/index.tsx"]
@@ -4023,7 +4041,7 @@ recorded = "2026-09-07T20:13:56.111057601+00:00"
 entry = "unarchive-threads"
 hash = "c6a815c622615152c661d3a26f583215b0d7e007"
 paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
-recorded = "2026-10-04T00:01:10.553573137+00:00"
+recorded = "2026-10-15T03:12:31.439147785+00:00"
 
 [[resolution]]
 entry = "usage-history"
@@ -4861,6 +4879,12 @@ recorded = "2026-08-07T20:13:10.482023068+00:00"
 
 [[resolution]]
 entry = "watch-live-voice"
+hash = "88f4ede347ff95d25818d59a47e8766abc46c817"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-10-15T03:12:45.974579043+00:00"
+
+[[resolution]]
+entry = "watch-live-voice"
 hash = "8de63f4f7fe0a939aa4a739cd00958ece43f822c"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-05T15:00:38.929884083+00:00"
@@ -5002,12 +5026,6 @@ entry = "watch-live-voice"
 hash = "f950004aaa9e4e265c6411be77c772d5a8800ddd"
 paths = ["nix/npm-deps.hash"]
 recorded = "2026-08-06T21:06:07.997943260+00:00"
-
-[[resolution]]
-entry = "workspace-snooze-mcp"
-hash = "88f4ede347ff95d25818d59a47e8766abc46c817"
-paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
-recorded = "2026-08-05T01:40:02.544281551+00:00"
 
 [[resolution]]
 entry = "xdg-paths"

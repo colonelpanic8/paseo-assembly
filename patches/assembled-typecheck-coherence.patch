@@ -1,20 +1,8 @@
-diff --git a/packages/server/src/server/daemon-config-store.ts b/packages/server/src/server/daemon-config-store.ts
-index e5f3d4500d..4d867a21c2 100644
---- a/packages/server/src/server/daemon-config-store.ts
-+++ b/packages/server/src/server/daemon-config-store.ts
-@@ -1,6 +1,7 @@
- import {
-   deepMerge,
-   loadConfigStack,
-+  loadPersistedConfig,
-   restoreConfigWriteTarget,
-   saveConfigStack,
-   type ConfigStack,
 diff --git a/packages/server/src/server/session.ts b/packages/server/src/server/session.ts
-index eebadd2e87..ae96a602d7 100644
+index 4453ff41c..07ec081d1 100644
 --- a/packages/server/src/server/session.ts
 +++ b/packages/server/src/server/session.ts
-@@ -114,6 +114,7 @@ import {
+@@ -120,6 +120,7 @@ import {
  
  import { AgentManager, AgentRunCancellationError } from "./agent/agent-manager.js";
  import { buildTimelinePromptIndex } from "./agent/timeline-prompt-index.js";

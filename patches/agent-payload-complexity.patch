@@ -1,5 +1,5 @@
 diff --git a/packages/app/src/utils/agent-snapshots.test.ts b/packages/app/src/utils/agent-snapshots.test.ts
-index 3e0672e2aa..480835edf3 100644
+index 3e0672e2a..480835edf 100644
 --- a/packages/app/src/utils/agent-snapshots.test.ts
 +++ b/packages/app/src/utils/agent-snapshots.test.ts
 @@ -3,6 +3,7 @@ import type { AgentSnapshotPayload } from "@getpaseo/protocol/messages";
@@ -10,20 +10,8 @@ index 3e0672e2aa..480835edf3 100644
  function createSnapshot(
    input: Partial<Omit<AgentSnapshotPayload, "labels">> & {
      labels?: Record<string, unknown>;
-diff --git a/packages/server/src/server/agent/agent-projections.ts b/packages/server/src/server/agent/agent-projections.ts
-index 0b441d6b31..84cff240b9 100644
---- a/packages/server/src/server/agent/agent-projections.ts
-+++ b/packages/server/src/server/agent/agent-projections.ts
-@@ -240,6 +240,7 @@ function buildStoredPersistenceHandle(
-   return toPublicPersistenceHandle(toAgentPersistenceHandle(validProviders, record.persistence));
- }
- 
-+// oxlint-disable-next-line complexity
- export function buildStoredAgentPayload(
-   record: StoredAgentRecord,
-   validProviders: Iterable<AgentProvider>,
 diff --git a/packages/client/src/daemon-client.ts b/packages/client/src/daemon-client.ts
-index 39437072ef..7a19197a9b 100644
+index 03f178e40..c7bb10db6 100644
 --- a/packages/client/src/daemon-client.ts
 +++ b/packages/client/src/daemon-client.ts
 @@ -179,7 +179,6 @@ import type {
@@ -35,10 +23,14 @@ index 39437072ef..7a19197a9b 100644
    LiveVoiceJsonObject,
    VoiceLiveAgentNotification,
 diff --git a/packages/server/src/server/bootstrap-auth.test.ts b/packages/server/src/server/bootstrap-auth.test.ts
-index 5deff827ef..2ad78cfa75 100644
+index 5deff827e..55dc1bedd 100644
 --- a/packages/server/src/server/bootstrap-auth.test.ts
 +++ b/packages/server/src/server/bootstrap-auth.test.ts
-@@ -6,3 +6,2 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
+@@ -6,7 +6,6 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
  
--import { hashDaemonPassword } from "./auth.js";
+ import { hashDaemonPassword } from "./auth.js";
  import { createTestPaseoDaemon } from "./test-utils/paseo-daemon.js";
+-import { hashDaemonPassword } from "./auth.js";
+ import { DaemonAuthenticationError, DaemonClient } from "@getpaseo/client/internal/daemon-client";
+ import { readLocalCredentialForTarget } from "./local-credential.js";
+ 

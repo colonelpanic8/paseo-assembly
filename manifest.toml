@@ -245,7 +245,6 @@ summary = "Preserve saved usage-display preferences and green remaining bars"
 [[entry]]
 branch = "mine:add-copy-conversation"
 summary = "Add conversation copy tab action"
-fixup = "patches/pr-2957-copy-conversation-dependency.patch"
 
 [[entry]]
 branch = "mine:thinking-control-reachability"

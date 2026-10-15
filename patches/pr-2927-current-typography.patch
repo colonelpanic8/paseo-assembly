@@ -1,17 +1,17 @@
 diff --git a/packages/app/src/components/adaptive-modal-sheet.tsx b/packages/app/src/components/adaptive-modal-sheet.tsx
-index 1e8831368..9a8d9f9ef 100644
+index e2310795c..d22416390 100644
 --- a/packages/app/src/components/adaptive-modal-sheet.tsx
 +++ b/packages/app/src/components/adaptive-modal-sheet.tsx
-@@ -519,7 +519,6 @@ export interface AdaptiveModalSheetProps {
+@@ -517,7 +517,6 @@ export interface AdaptiveModalSheetProps {
    onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
-   /** Re-establishes caller-owned contexts inside the compact bottom-sheet portal. */
+   /** Re-establishes caller-owned contexts inside the native or compact sheet portal. */
    contextBridge?: ContextBridge | null;
 -  onOverlayKeyDown?: (event: KeyboardEvent) => boolean;
  }
  
  export function AdaptiveModalSheet({
 diff --git a/packages/app/src/components/model-browser.tsx b/packages/app/src/components/model-browser.tsx
-index 952c4c9e5..cc56c1e77 100644
+index 765c81961..3777ccb17 100644
 --- a/packages/app/src/components/model-browser.tsx
 +++ b/packages/app/src/components/model-browser.tsx
 @@ -1,4 +1,13 @@
@@ -48,7 +48,7 @@ index 952c4c9e5..cc56c1e77 100644
  function ModelBrowserRow({
    label,
    description,
-@@ -1997,7 +2018,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2001,7 +2022,7 @@ const styles = StyleSheet.create((theme) => ({
    },
    sectionHeadingText: {
      flex: 1,
@@ -57,7 +57,7 @@ index 952c4c9e5..cc56c1e77 100644
      fontWeight: theme.fontWeight.normal,
      color: theme.colors.foregroundMuted,
    },
-@@ -2061,7 +2082,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2072,7 +2093,7 @@ const styles = StyleSheet.create((theme) => ({
      flexShrink: 0,
    },
    browserRowDescription: {
@@ -66,7 +66,7 @@ index 952c4c9e5..cc56c1e77 100644
      color: theme.colors.foregroundMuted,
      flexShrink: 1,
    },
-@@ -2082,7 +2103,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2093,7 +2114,7 @@ const styles = StyleSheet.create((theme) => ({
      gap: theme.spacing[1],
    },
    drillDownCount: {
@@ -75,7 +75,7 @@ index 952c4c9e5..cc56c1e77 100644
      color: theme.colors.foregroundMuted,
    },
    rowStateInline: {
-@@ -2121,7 +2142,7 @@ const styles = StyleSheet.create((theme) => ({
+@@ -2132,7 +2153,7 @@ const styles = StyleSheet.create((theme) => ({
      color: theme.colors.foregroundMuted,
    },
    tooltipText: {
@@ -84,32 +84,24 @@ index 952c4c9e5..cc56c1e77 100644
      color: theme.colors.foreground,
    },
    virtualizedModelList: {
-diff --git a/packages/app/src/components/ui/text-input/text-input.tsx b/packages/app/src/components/ui/text-input/text-input.tsx
-index eb3f68be8..248be2405 100644
---- a/packages/app/src/components/ui/text-input/text-input.tsx
-+++ b/packages/app/src/components/ui/text-input/text-input.tsx
-@@ -1 +1 @@
--export { EditingTextInput } from "./text-input.native";
-+export { EditingTextInput, hasFocusedTextInput } from "./text-input.native";
 diff --git a/packages/app/src/composer/input/input.tsx b/packages/app/src/composer/input/input.tsx
-index ce7806f79..331e81fff 100644
+index 564992ebf..4e8a6605c 100644
 --- a/packages/app/src/composer/input/input.tsx
 +++ b/packages/app/src/composer/input/input.tsx
-@@ -42,7 +42,7 @@ import { useComposerSigils } from "@/composer/tokens/use-composer-sigils";
- import type { ComposerSigils } from "@/composer/tokens/sigils";
- import { collectComposerTokens, type ComposerTokenCatalog } from "@/composer/tokens/tokens";
- import { ComposerTokenHighlightLayer } from "./token-highlight";
--import { focusWithRetries } from "@/utils/web-focus";
-+import { focusWithRetries } from "@/utils/focus-with-retries";
- import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
- import { Shortcut } from "@/components/ui/shortcut";
- import {
+@@ -2242,7 +2242,6 @@ export const MessageInput = forwardRef<MessageInputRef, MessageInputProps>(
+         testID="message-input-root"
+         dataSet={listNavigationDataSet(ownsListNavigation)}
+         onLayout={handleComposerLayout}
+-        dataSet={listNavigationDataSet(ownsListNavigation)}
+       >
+         <MessageInputAutoFocus
+           enabled={autoFocus}
 diff --git a/packages/app/src/hooks/use-agent-autocomplete.ts b/packages/app/src/hooks/use-agent-autocomplete.ts
-index 988584874..a174eed31 100644
+index 46fc35537..b7dc5e0b3 100644
 --- a/packages/app/src/hooks/use-agent-autocomplete.ts
 +++ b/packages/app/src/hooks/use-agent-autocomplete.ts
-@@ -9,7 +9,7 @@ import {
-   type DraftCommandConfig,
+@@ -10,7 +10,7 @@ import {
+   type DraftCommandTarget,
  } from "./use-agent-commands-query";
  import { orderAutocompleteOptions } from "@/components/ui/autocomplete-utils";
 -import { useAutocomplete, type AutocompleteKeyPressEvent } from "./use-autocomplete";
@@ -117,7 +109,7 @@ index 988584874..a174eed31 100644
  import { useSessionStore } from "@/stores/session-store";
  import { useHostRuntimeClient, useHostRuntimeIsConnected } from "@/runtime/host-runtime";
  import { CLIENT_SLASH_COMMANDS, type ClientSlashCommand } from "@/client-slash-commands";
-@@ -44,7 +44,7 @@ interface UseAgentAutocompleteInput {
+@@ -45,7 +45,7 @@ interface UseAgentAutocompleteInput {
    sigils: ComposerSigils;
  }
  
@@ -126,7 +118,7 @@ index 988584874..a174eed31 100644
    input: AgentAutocompleteInputSnapshot;
  }
  
-@@ -585,12 +585,15 @@ export function useAgentAutocomplete(input: UseAgentAutocompleteInput): AgentAut
+@@ -607,12 +607,15 @@ export function useAgentAutocomplete(input: UseAgentAutocompleteInput): AgentAut
    );
  
    const selectOptionFromKeyPress = useCallback(
@@ -144,15 +136,3 @@ index 988584874..a174eed31 100644
      isVisible,
      options,
      query: mode === "command" ? commandFilterQuery : fileFilterQuery,
-diff --git a/packages/app/src/composer/input/input.tsx b/packages/app/src/composer/input/input.tsx
-index e0ddf7ec96..6d5a68c9af 100644
---- a/packages/app/src/composer/input/input.tsx
-+++ b/packages/app/src/composer/input/input.tsx
-@@ -1866,7 +1866,6 @@ export const MessageInput = forwardRef<MessageInputRef, MessageInputProps>(
-         testID="message-input-root"
-         dataSet={listNavigationDataSet(ownsListNavigation)}
-         onLayout={handleComposerLayout}
--        dataSet={listNavigationDataSet(ownsListNavigation)}
-       >
-         <MessageInputAutoFocus
-           enabled={autoFocus}
