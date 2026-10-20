@@ -66,3 +66,23 @@ index 16817f6006..829c2cab84 100644
      this.codexHome = deps.codexHome ?? resolveCodexHomeDir(process.env);
      this.config.thinkingOptionId = normalizeCodexThinkingOptionId(this.config.thinkingOptionId);
      this.serviceTier = readCodexServiceTier(this.config.featureValues);
+diff --git a/packages/app/src/types/stream.ts b/packages/app/src/types/stream.ts
+--- a/packages/app/src/types/stream.ts
++++ b/packages/app/src/types/stream.ts
+@@ -1010,6 +1010,7 @@ function applyAssistantAttribution(
+   state: StreamItem[],
+   messageId: string,
+   attributionFields: AssistantMessageAttribution,
++  questionsPatch?: Pick<AssistantMessageItem, "questions">,
+ ): StreamItem[] {
+   for (let index = state.length - 1; index >= 0; index -= 1) {
+     const entry = state[index];
+@@ -1017,7 +1018,7 @@ function applyAssistantAttribution(
+     if (entry.kind !== "assistant_message" || entry.messageId !== messageId) {
+       continue;
+     }
+-    const updated: AssistantMessageItem = { ...entry, ...attributionFields };
++    const updated: AssistantMessageItem = { ...entry, ...attributionFields, ...questionsPatch };
+     return [...state.slice(0, index), updated, ...state.slice(index + 1)];
+   }
+   return state;

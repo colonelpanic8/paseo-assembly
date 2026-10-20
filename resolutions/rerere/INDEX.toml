@@ -465,6 +465,12 @@ recorded = "2026-09-15T05:18:13.429039868+00:00"
 
 [[resolution]]
 entry = "android-intents"
+hash = "8bc762a33df4eeeb57f1a9a1954d291e17efde36"
+paths = ["CLAUDE.md"]
+recorded = "2026-10-20T06:08:54.184447198+00:00"
+
+[[resolution]]
+entry = "android-intents"
 hash = "a377e2a99c57e32ae490676bdcd68292cc5bc8af"
 paths = ["packages/app/src/app/_layout.tsx"]
 recorded = "2026-09-28T05:51:32.423627388+00:00"
@@ -597,6 +603,12 @@ recorded = "2026-10-04T00:04:09.415624318+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
+hash = "463b6a96d8ceb77a74fcbdde699e7dc13f954ba2"
+paths = ["packages/server/src/server/plugins/usage-sources/index.ts"]
+recorded = "2026-10-20T06:08:35.078356348+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
 hash = "49f1fb30767712a50a0ec1e87bbdc04369ea1134"
 paths = ["packages/server/src/server/plugins/usage-sources/index.ts"]
 recorded = "2026-10-08T04:35:48.094637119+00:00"
@@ -612,6 +624,12 @@ entry = "assembly-codex-banked-resets"
 hash = "7e14e1cae3f7704240fb8efcf558ea869474599c"
 paths = ["packages/server/src/services/quota-fetcher/service.ts"]
 recorded = "2026-09-06T17:55:30+00:00"
+
+[[resolution]]
+entry = "assembly-codex-banked-resets"
+hash = "8cace468abee0293a8f6fd02c02f42baa57534d7"
+paths = ["packages/server/src/server/plugins/usage-sources/index.test.ts"]
+recorded = "2026-10-20T06:08:35.078359183+00:00"
 
 [[resolution]]
 entry = "assembly-codex-banked-resets"
@@ -783,6 +801,12 @@ recorded = "2026-09-23T02:51:56.456760488+00:00"
 
 [[resolution]]
 entry = "codex-astra-support"
+hash = "dded02d86ce91a6ae264052452a533fbfe3d81de"
+paths = ["packages/app/src/types/stream.ts"]
+recorded = "2026-10-20T06:08:20.822981837+00:00"
+
+[[resolution]]
+entry = "codex-astra-support"
 hash = "fffa96d953ce03784d8793a71e35eff8cc9a708d"
 paths = ["packages/server/src/server/agent/providers/codex-app-server-agent.ts"]
 recorded = "2026-09-28T05:25:17.173723340+00:00"
@@ -928,6 +952,12 @@ entry = "colonelpanic8/require-real-workspace-directory"
 hash = "159babbe1fc7baee46d8e2f2bdfb7f468e1621a9"
 paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
 recorded = "2026-09-28T05:21:21.350939579+00:00"
+
+[[resolution]]
+entry = "colonelpanic8/require-real-workspace-directory"
+hash = "da56e3aabbf19c3271f831de390daff0aad37150"
+paths = ["packages/server/src/server/agent/tools/paseo-tools.ts"]
+recorded = "2026-10-20T06:01:28.669615383+00:00"
 
 [[resolution]]
 entry = "colonelpanic8/worktree-detection-data"
@@ -1143,13 +1173,25 @@ recorded = "2026-10-15T03:14:10.674690754+00:00"
 entry = "keyboard-shortcuts-mobile"
 hash = "85abb40fcbaf88a9b5f1529f428b24cfbe65263f"
 paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
-recorded = "2026-09-28T05:24:09.164031883+00:00"
+recorded = "2026-10-20T06:04:34.543974570+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"
 hash = "c28cb7787845bd78d93ecb2129269f28967b0c7a"
 paths = ["packages/app/src/composer/index.tsx"]
 recorded = "2026-09-18T11:06:18.160954547+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
+hash = "cf0dc9814af325e708b4ec5406cab6968312b648"
+paths = ["packages/app/src/hooks/use-keyboard-shortcuts.ts"]
+recorded = "2026-10-20T06:02:32.917079395+00:00"
+
+[[resolution]]
+entry = "keyboard-shortcuts-mobile"
+hash = "d0fcf4019b26b24707a3f0ba6cc845ee1e9f6afb"
+paths = ["packages/app/src/components/adaptive-modal-sheet.tsx"]
+recorded = "2026-10-20T06:02:11.416082755+00:00"
 
 [[resolution]]
 entry = "keyboard-shortcuts-mobile"

@@ -54,10 +54,6 @@ summary = "Add Nix Android toolchain and release runner"
 branch = "mine:assembly-build-provenance"
 fixup = "patches/desktop-package-version-rec.patch"
 
-[[entry]]
-branch = "mine:monospaced-mobile-styling"
-summary = "Align inline code chips with the prose line on native"
-
 # Was getpaseo/paseo#2628, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
 branch = "mine:t3code-4453"
@@ -395,10 +391,6 @@ branch = "mine:fix/host-runtime-stop-during-start"
 summary = "Keep stopped host updates from probing and unsubscribe removed controllers"
 
 [[entry]]
-pr = 4827
-summary = "Keep per-delta stream work bounded by the head instead of the whole timeline"
-
-[[entry]]
 pr = 4828
 summary = "Refit the terminal once the keyboard settles rather than on every frame"
 
@@ -411,16 +403,14 @@ pr = 4830
 summary = "Stop forcing a style recalc and layout on every web composer keystroke"
 
 [[entry]]
-pr = 4831
-summary = "Overlay pending replica rows on read instead of forcing a persist per attempt"
+# PR #4831 closed after upstream #7074; retain the unmerged retry backoff.
+branch = "mine:perf/replica-read-overlay"
+summary = "Back off replica persistence retries after failures"
 
 [[entry]]
-pr = 4832
-summary = "Throttle workspace layout writes and skip no-op persists"
-
-[[entry]]
-pr = 4833
-summary = "Skip workspace agent-set and subagent rebuilds on stream ticks"
+# PR #4832 closed after upstream #7358; retain the unmerged write throttle.
+branch = "mine:perf/layout-persist-throttle"
+summary = "Throttle real workspace layout writes and flush when backgrounded"
 
 [[entry]]
 branch = "mine:perf/usage-history-token-fix"
@@ -613,3 +603,23 @@ reason = "closed unmerged; superseded by upstream #6093 (a50e14b69), which carri
 [[exclude]]
 pr = 5606
 reason = "alternative to carried pr-2820 for the same pre-chat command bug; it contains 2820's repair plus a session-free discovery refactor, and its description says to merge one, not both. Swap to it only by removing pr-2820"
+
+[[exclude]]
+branch = "mine:monospaced-mobile-styling"
+reason = "Superseded by upstream eb1a8a2ec7 (#6973): enriched Markdown replaces the flex-row text spans and removes markdown-styles.ts; its native inline code shares the paragraph layout without the old padding and line-height workaround"
+
+[[exclude]]
+pr = 4827
+reason = "Superseded by upstream #7052 (8d424e039ea3): bounded stream-head work, retention, and timeline timing optimizations are in the base; closed unmerged after upstream took the implementation"
+
+[[exclude]]
+pr = 4833
+reason = "Superseded by upstream #7342 (559c0200e098) and #7052 (8d424e039ea3): structurally shared workspace/subagent selectors and active-submission detection are in the base"
+
+[[exclude]]
+pr = 4831
+reason = "closed head frozen; remaining persist retry backoff carried by mine:perf/replica-read-overlay"
+
+[[exclude]]
+pr = 4832
+reason = "closed head frozen; remaining write throttle carried by mine:perf/layout-persist-throttle"

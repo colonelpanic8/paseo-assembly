@@ -1,30 +1,30 @@
 {
   "version": 1,
   "pins": {
-    "base": "8ff2424da1ae807999fd84fa61b10250a97e34ed",
+    "base": "3081b99b06aa29bf39b9a83aaed73cf854e4a89b",
     "entries": {
-      "add-copy-conversation": "d375169b39de956d6e01395668fd8343bc33c6a6",
-      "agent-environment-setup": "52e63c7f05eb28abfc14b05afe066a9cf8ceb8a9",
-      "agent-purpose-summaries": "a04d386ea52ad0c6675bc6d94252457f2b0d667c",
-      "agent/configurable-direct-model-shortcuts": "2eeaf46759ed9f16787d8a24886a6955bca3edaf",
+      "add-copy-conversation": "76ad29c8e1d624ff4e4e510e4672d17b30652b3e",
+      "agent-environment-setup": "fff9f297b3a48a8121bd39370633d8e71b0f8197",
+      "agent-purpose-summaries": "3944395dba1f9223fb25f9eba2af81dc957febca",
+      "agent/configurable-direct-model-shortcuts": "80566b1313b6711f2d6eaca60294e5359ae54d80",
       "agent/nix-android": "e3253469c483488d1ad0dac4a654e87036aa78f4",
-      "android-intents": "0204fcbbc3137078a66a0a39d1533bc18b49ac6a",
+      "android-intents": "29ea67ed68155c127ce9b09601a64e90d805f1e9",
       "assembled-ci-lint-fixes": "8f8d8c57300eca040a7b7c8e9c14a1a29679d407",
       "assembled-current-coherence": "5bd1a2f85d8c580aa5e57269679232638096b730",
       "assembled-lint-complexity": "b3ac376f8503efd28ed19994b1f3debe335c7634",
-      "assembled-npm-deps-hash": "bb7611fb70b713e15cfdaf493e3f6337c3ab556c",
+      "assembled-npm-deps-hash": "67a6ae06cd8016d436a55b2111577c8efa39a75c",
       "assembled-typecheck-coherence": "08daddcd60a8502d93c5da9cc58603480a65af03",
       "assembly-agent-env": "ef53f462e6f5b5cd92644998ce1f108f7d5fed56",
       "assembly-build-provenance": "c9a37d9fdb702071c53a881ec1e0a72ad8a2a9a9",
-      "assembly-codex-banked-resets": "cd900a15d714d1561f625f04f70208fd3ccbc1e0",
+      "assembly-codex-banked-resets": "6ccce3ffce9f72a770daa8cc3b580c4cd9d1d116",
       "assembly-fdroid-variant": "7ef949ab537ff446089495cae66e2062db0d7210",
-      "assembly-sidebar-unarchive": "9e654b060e1ff82fbe24d90ac26333979dc883c8",
+      "assembly-sidebar-unarchive": "4dd96127f7e65219cfd3d755f88dc246122aaaba",
       "assembly-workspace-restore": "bd2b75ecf9f0f24b75af2cf45a7ddf7b60196938",
       "claude-fable-5-1": "2a06d4dbfc6a7cb77a9e40ae18e2a4c74a009a1a",
-      "codex-astra-support": "c02e76bc0156748069878895c8127bb59de1288a",
+      "codex-astra-support": "81b34e7a88bcb3fdc6cc98a0b1cdda8ceba151b1",
       "colonelpanic8/client-settings-file-store": "8ff79279ca92aa1083a49e41da53dbcc47aa9efb",
       "colonelpanic8/desktop-adhoc-hardened-runtime": "7f402734102b13e04405a6719255a390f473c91b",
-      "colonelpanic8/require-real-workspace-directory": "c7b8e16a91eab04cbf20815e658e754f5c4718dc",
+      "colonelpanic8/require-real-workspace-directory": "c47635e0f0743bd20a982342d1b95ff1dbad3d70",
       "colonelpanic8/worktree-detection-data": "10c798466b84d0c4856927ad60f7275e3c1d5661",
       "colorblind-status-dots": "abe7e6a603f4ddeac3cd4dfb9b10815e26de819a",
       "configurable-usage-display": "97f1d088c68b464d27afad2288d513c9a514a825",
@@ -32,7 +32,7 @@
       "debug-mobile-image-add-error": "d7a1ea05c03888518ad1c95653a13e92f702c5b5",
       "disable-worktree-setup-callout": "7792cac1330cd94690c1f8688d0613e7f78072f0",
       "dismiss-failed-state": "706433a46775cfab375e7466265bc99ce90f3175",
-      "downed-host-model-selection": "af05b99b5fe7765f3e057bb577f2171ffdbd283e",
+      "downed-host-model-selection": "cc53e35d96db6ecc3a2cf811853db24a669a37ae",
       "fix/android-mouse-sidebar-selection": "a63248256831624c557d840cb98b83059a995292",
       "fix/codex-sqlite-init": "e44a15b47824426f3b3416cfb0c353109cee1f82",
       "fix/draft-tab-inflight-create": "dc497b45920de40142cdd15bfe1e429a3e3ff719",
@@ -42,51 +42,48 @@
       "fix/postinstall-patch-package-enoent": "5da5a31a8f86048e166e9bc6ec9e2858bd6cecfa",
       "fix/settings-sidebar-scroll-preservation": "e5d3da49cc5a4a0b547cb079538cddb9e6994baf",
       "fix/shared-provider-catalog": "31f8f9012520619c2f19326aeee8bb488974cd60",
-      "fix/workspace-message-timestamps": "f2664dedba3b500b59e76ac7bef59e429173391e",
-      "fork-native-session": "04d570053e2a70c777f064002299a4e817621e3d",
-      "host-selection-search": "e67a4e603db6c213ea54e72fee0ba610ad90065f",
+      "fix/workspace-message-timestamps": "a4cebb867fa76a14b626f569136409f642fff718",
+      "fork-native-session": "15c9a4de90a2187288c70ee0f8dd3cd8309135fc",
+      "host-selection-search": "800aeca894711da2b901841f772f61c98d469def",
       "host/default-color": "23bf6a48135c2ead24178e63d406af82f9a07a79",
-      "keyboard-shortcuts-mobile": "ada009a95c97cabccaa4a1837b5af81293c27c44",
-      "live-voice-quick-launch": "c65f6e55edc4caac4d791dd44837da9b6e46808f",
-      "live-voice-start-sound": "594a077208bd1df9ca2a8b2fe0e1f266b4fd6b7b",
-      "locked-extension-paseo": "c9b0b9aa0f7708379832739050e16cec8f363243",
-      "model-picker-search": "cc5e685e5469558517b3fb8108827ab610629772",
-      "monospaced-mobile-styling": "18e92098aa9ad5ded175afd4bd5358ee7c8634a1",
-      "multi-account-provider": "63916fe3003da650fe418fb94856d038c534caea",
+      "keyboard-shortcuts-mobile": "986b2bc756b8d66224b472260057497b3a2e2388",
+      "live-voice-quick-launch": "8a958b4cf980c2cc366bb68ea2736861ef8e9d6f",
+      "live-voice-start-sound": "51e73cefccca353b7d2b4b0c94cc8a724204881d",
+      "locked-extension-paseo": "cf979ab722f62bbbeb855edfe124fd68b3adefe8",
+      "model-picker-search": "30ff9ed036d9694878ddd8fc6bca52686873b91a",
+      "multi-account-provider": "c4a0322ced47c24676e9e02dd29eb9f7a3eebecb",
       "next-ready-thread": "ee1fde4fb750ab6884feea5ae9702aafb9aa5ff4",
       "ntfy-push": "3f81934b413b7d6c284bd9eef194a2b8231dc547",
       "opencode-catalog-revalidate": "3012cdbb3bd9f3eb5e1176914d43013e1e4794d0",
-      "perf/explorer-sidebar-resize": "6562d53003321f6a3270e242c26d1da143e6f553",
-      "perf/usage-history-token-fix": "cacac662b710d67edecfa4f2534872f585c6b2d9",
-      "personal/sidebar-workflow": "a09961d02791c8ae9196bd12e380c4cd5729187c",
-      "pr-2650": "d12a24ee73f2b6c3c0e026a6c638cfda573e52a6",
+      "perf/explorer-sidebar-resize": "172b7d21909a39e1e20cb89d5027fa7400d26726",
+      "perf/layout-persist-throttle": "3d8164f28dccd206bf838c383c8e7c56fc0c6f60",
+      "perf/replica-read-overlay": "864e9686fe8bf1f8a8d29fd7923411e1b6e241e3",
+      "perf/usage-history-token-fix": "cc7adb65de5b3a4bbdf1190bb471ea2f0f5aeba0",
+      "personal/sidebar-workflow": "e25896885c394db312a17eb4128db24f76760598",
+      "pr-2650": "32ba9fa21a630b4cd787bf3ea8ea7f149f276e33",
       "pr-2772": "32a11e96fe7535d636e792bab2956b6789926828",
       "pr-2820": "981597f64eb11e6313a55907ee10edda107ed45f",
       "pr-2873": "403289b656ebb759fc570adb7e35fb4df82134b6",
       "pr-2883": "ad2c333e67e6119b4cb82201759dbd3e3a6cb774",
       "pr-4256": "1577902719cf291e769c37988ebe79ee540d7fe5",
-      "pr-4827": "b198932e49eabd73bdb36503cc9eaaaa0b90bc5d",
-      "pr-4828": "a948d6424ccdbcfd3b3cee51241a53aca8b591e1",
+      "pr-4828": "40ab76125106f21768c616b1d0973fdf736cf8aa",
       "pr-4829": "d32d16639803f8c2b78a6cf37ccff63ae399e58f",
       "pr-4830": "cafdb39112f82a0771a9a54c4d25b7b3914c9a9b",
-      "pr-4831": "a2c798d00c6e8e417b48ea97120ca2fc5a99e381",
-      "pr-4832": "44c3e264df791f8e73c51b2077a73b9c6cddef47",
-      "pr-4833": "55cc3e2c68e06271934f2c94a342a46d0a96249d",
       "pr-5046": "f5b1d3b11d72be70e2cc56ceb8ac41c4aad0a7b4",
-      "prompt-cache-status": "5a4d5fc1a502e0ce6f799fd02e8454512f6193e5",
-      "prompt-mod-shortcuts": "92202b06040e8346cec3c0eef0c9269b4737a6c6",
+      "prompt-cache-status": "3e3e5bb5bf64e662d934e0efdf5ca14ec578af9b",
+      "prompt-mod-shortcuts": "503a3cd9e9127baddc1b77967243ca8bc2a8f2d3",
       "relay-tailscale": "cf8846f1df76a18b5284d0991b1f6cde9c31a6de",
       "sidebar-hide-hosts": "0ff6d00449e289bd3e6cf90bd1b40447f7d6acfc",
-      "skill-pills-config": "76bd0951a9181dca7adec84db7c9a7c15d7bf353",
-      "subagent-param-visibility": "27887bc7d25e57e3ec5cb8189956f4fb8ff1fbf0",
+      "skill-pills-config": "c615676845c285f7284d70a3feb5418b8aba4ed2",
+      "subagent-param-visibility": "d499151c7bb9c9b4a1bd022b7b840ec68315103c",
       "t3code-4453": "93ad949d7aab5db330aa0ae39442b2e108f14027",
       "thinking-control-reachability": "6a861f9cb2ae046c25dcc99be6f74f1e8e9f01ff",
       "touch-sidebar-resize": "5452a6de3c67768921bfee955a6e9ebb405764f6",
       "unarchive-threads": "17f74b9b3f050a9f2266f0cbab8465b20e5aac6f",
-      "unconditional-host-display": "f849af85b7fa9f452f5f8ba867c6cae5d3210789",
-      "usage-history": "7dc20c0503f94e02bf4732b060d60a134ef7a6a0",
-      "voice-actions": "f2fca21d45cac0caee30bb4499ef04ecc813bee7",
-      "watch-live-voice": "034f381bd604fd36a31ac594431e7a1115cd7879",
+      "unconditional-host-display": "cac3b3a5c09f215a9bfc9539aa42ba8bfa4429ec",
+      "usage-history": "3d639f585829310d97f18db8381b6e5043cc7f7f",
+      "voice-actions": "e64a00e1bc41c5a244f656217df50015f1f7301d",
+      "watch-live-voice": "18bbec4760348df9b0d6485510f2b8489b70f9c1",
       "xdg-paths": "31b9fda397a211e5bec34e227d0d99802cc0f9ce"
     },
     "parents": {
@@ -94,39 +91,39 @@
         "extend-cn-cp-omni-menu": "802d1e3c1b0e34f6ed90cace191a43a33457cccc"
       },
       "live-voice-quick-launch": {
-        "realtime-voice-actions": "18eda8f20bf8cf7e84a9fa9f3be83c5e29550b88"
+        "realtime-voice-actions": "13fe8b170c02cdce8136eacd141aeecf818b6905"
       },
       "live-voice-start-sound": {
-        "realtime-voice-actions": "18eda8f20bf8cf7e84a9fa9f3be83c5e29550b88"
+        "realtime-voice-actions": "13fe8b170c02cdce8136eacd141aeecf818b6905"
       },
       "watch-live-voice": {
         "assembly-wear-os": "3ec664a56d339834fb4e09ad0549fff1433fe258",
-        "realtime-voice-actions": "18eda8f20bf8cf7e84a9fa9f3be83c5e29550b88"
+        "realtime-voice-actions": "13fe8b170c02cdce8136eacd141aeecf818b6905"
       }
     },
     "anchors": {
-      "keyboard-shortcuts-mobile": "f6350805f9d00f0e8ac72fc1a04637dd1043b575",
-      "live-voice-quick-launch": "41171cd51922d8600d1b57584f28231ff6f5ab71",
-      "live-voice-start-sound": "220f0a2be405c917fdb998049810c19fc16ae98e",
-      "watch-live-voice": "71a9aa10525d5a9db31dc244c0a9b14a20439f71"
+      "keyboard-shortcuts-mobile": "66c758d7b58e498718f8eaf21e623c7a6e650748",
+      "live-voice-quick-launch": "2cffcb01708e32469852cb6aab0a470d0ad05f7b",
+      "live-voice-start-sound": "39987d9e3c0ce8f8d308693e06b4f848c085b3bb",
+      "watch-live-voice": "db5647caaf3aac1cad0fc33111bd858d8164b5fe"
     }
   },
   "build": {
-    "generated": "2026-10-15T03:27:58.946812590+00:00",
-    "base": "8ff2424da1ae807999fd84fa61b10250a97e34ed",
-    "commit": "537d51f0c731cf4ead90e80c241a1e0a23eb7fba",
-    "pre_provenance_commit": "537d51f0c731cf4ead90e80c241a1e0a23eb7fba",
-    "tree": "66ed477d8336b81f1fdd12772e23fd1be1d43897",
-    "built_tree": "66ed477d8336b81f1fdd12772e23fd1be1d43897",
-    "previous_tree": "8f400adcb0e4f696cfc32a693f023080bee46787",
+    "generated": "2026-10-20T06:10:00.928102456+00:00",
+    "base": "3081b99b06aa29bf39b9a83aaed73cf854e4a89b",
+    "commit": "f177dbe9d7ffd11571818ac6c3c664b255c70001",
+    "pre_provenance_commit": "f177dbe9d7ffd11571818ac6c3c664b255c70001",
+    "tree": "6d25a90f4e77063cef7e78874940a95df98af932",
+    "built_tree": "6d25a90f4e77063cef7e78874940a95df98af932",
+    "previous_tree": "b6a1b3accac092b9863623f024099ba2806b5d5d",
     "tree_changed": true,
-    "conflicts": 41,
+    "conflicts": 42,
     "manifest_entries": [
       {
         "name": "prompt-mod-shortcuts",
         "kind": "branch",
         "source": "mine:prompt-mod-shortcuts",
-        "pin": "92202b06040e8346cec3c0eef0c9269b4737a6c6"
+        "pin": "503a3cd9e9127baddc1b77967243ca8bc2a8f2d3"
       },
       {
         "name": "relay-tailscale",
@@ -150,20 +147,20 @@
         "name": "personal/sidebar-workflow",
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
-        "pin": "a09961d02791c8ae9196bd12e380c4cd5729187c",
+        "pin": "e25896885c394db312a17eb4128db24f76760598",
         "fixup": "2c775a0c59a0de1dd0f47e819cee71bbdbc0712c"
       },
       {
         "name": "model-picker-search",
         "kind": "branch",
         "source": "mine:model-picker-search",
-        "pin": "cc5e685e5469558517b3fb8108827ab610629772"
+        "pin": "30ff9ed036d9694878ddd8fc6bca52686873b91a"
       },
       {
         "name": "skill-pills-config",
         "kind": "branch",
         "source": "mine:skill-pills-config",
-        "pin": "76bd0951a9181dca7adec84db7c9a7c15d7bf353"
+        "pin": "c615676845c285f7284d70a3feb5418b8aba4ed2"
       },
       {
         "name": "agent/nix-android",
@@ -177,12 +174,6 @@
         "source": "mine:assembly-build-provenance",
         "pin": "c9a37d9fdb702071c53a881ec1e0a72ad8a2a9a9",
         "fixup": "a94efb8c32904edfbffbd355f4f98e27b26776f7"
-      },
-      {
-        "name": "monospaced-mobile-styling",
-        "kind": "branch",
-        "source": "mine:monospaced-mobile-styling",
-        "pin": "18e92098aa9ad5ded175afd4bd5358ee7c8634a1"
       },
       {
         "name": "t3code-4453",
@@ -206,19 +197,19 @@
         "name": "pr-2650",
         "kind": "pr",
         "source": "upstream#2650",
-        "pin": "d12a24ee73f2b6c3c0e026a6c638cfda573e52a6"
+        "pin": "32ba9fa21a630b4cd787bf3ea8ea7f149f276e33"
       },
       {
         "name": "agent-purpose-summaries",
         "kind": "branch",
         "source": "mine:agent-purpose-summaries",
-        "pin": "a04d386ea52ad0c6675bc6d94252457f2b0d667c"
+        "pin": "3944395dba1f9223fb25f9eba2af81dc957febca"
       },
       {
         "name": "subagent-param-visibility",
         "kind": "branch",
         "source": "mine:subagent-param-visibility",
-        "pin": "27887bc7d25e57e3ec5cb8189956f4fb8ff1fbf0",
+        "pin": "d499151c7bb9c9b4a1bd022b7b840ec68315103c",
         "fixup": "2485a5ad78781d06f50b647b706227418d8b29fb"
       },
       {
@@ -231,7 +222,7 @@
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "034f381bd604fd36a31ac594431e7a1115cd7879",
+        "pin": "18bbec4760348df9b0d6485510f2b8489b70f9c1",
         "fixup": "f4f60dd97b37f8401b1712a586abf54ae2211498",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -241,22 +232,22 @@
           },
           {
             "source": "mine:realtime-voice-actions",
-            "pin": "18eda8f20bf8cf7e84a9fa9f3be83c5e29550b88"
+            "pin": "13fe8b170c02cdce8136eacd141aeecf818b6905"
           }
         ],
-        "anchor": "71a9aa10525d5a9db31dc244c0a9b14a20439f71"
+        "anchor": "db5647caaf3aac1cad0fc33111bd858d8164b5fe"
       },
       {
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "bb7611fb70b713e15cfdaf493e3f6337c3ab556c"
+        "pin": "67a6ae06cd8016d436a55b2111577c8efa39a75c"
       },
       {
         "name": "host-selection-search",
         "kind": "branch",
         "source": "mine:host-selection-search",
-        "pin": "e67a4e603db6c213ea54e72fee0ba610ad90065f"
+        "pin": "800aeca894711da2b901841f772f61c98d469def"
       },
       {
         "name": "pr-2772",
@@ -274,7 +265,7 @@
         "name": "multi-account-provider",
         "kind": "branch",
         "source": "mine:multi-account-provider",
-        "pin": "63916fe3003da650fe418fb94856d038c534caea",
+        "pin": "c4a0322ced47c24676e9e02dd29eb9f7a3eebecb",
         "fixup": "7b8e79323fe33d4ef7709747270cd0aa2f0ce4f0"
       },
       {
@@ -288,13 +279,13 @@
         "name": "unconditional-host-display",
         "kind": "branch",
         "source": "mine:unconditional-host-display",
-        "pin": "f849af85b7fa9f452f5f8ba867c6cae5d3210789"
+        "pin": "cac3b3a5c09f215a9bfc9539aa42ba8bfa4429ec"
       },
       {
         "name": "agent/configurable-direct-model-shortcuts",
         "kind": "branch",
         "source": "mine:agent/configurable-direct-model-shortcuts",
-        "pin": "2eeaf46759ed9f16787d8a24886a6955bca3edaf"
+        "pin": "80566b1313b6711f2d6eaca60294e5359ae54d80"
       },
       {
         "name": "daemon-config-imports",
@@ -331,7 +322,7 @@
         "name": "colonelpanic8/require-real-workspace-directory",
         "kind": "branch",
         "source": "mine:colonelpanic8/require-real-workspace-directory",
-        "pin": "c7b8e16a91eab04cbf20815e658e754f5c4718dc"
+        "pin": "c47635e0f0743bd20a982342d1b95ff1dbad3d70"
       },
       {
         "name": "colonelpanic8/desktop-adhoc-hardened-runtime",
@@ -343,7 +334,7 @@
         "name": "fork-native-session",
         "kind": "branch",
         "source": "mine:fork-native-session",
-        "pin": "04d570053e2a70c777f064002299a4e817621e3d"
+        "pin": "15c9a4de90a2187288c70ee0f8dd3cd8309135fc"
       },
       {
         "name": "xdg-paths",
@@ -356,7 +347,7 @@
         "name": "keyboard-shortcuts-mobile",
         "kind": "branch",
         "source": "mine:keyboard-shortcuts-mobile",
-        "pin": "ada009a95c97cabccaa4a1837b5af81293c27c44",
+        "pin": "986b2bc756b8d66224b472260057497b3a2e2388",
         "fixup": "623072f0cf3ced1c5739db19302ac7a931444a35",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -365,7 +356,7 @@
             "pin": "802d1e3c1b0e34f6ed90cace191a43a33457cccc"
           }
         ],
-        "anchor": "f6350805f9d00f0e8ac72fc1a04637dd1043b575"
+        "anchor": "66c758d7b58e498718f8eaf21e623c7a6e650748"
       },
       {
         "name": "touch-sidebar-resize",
@@ -377,7 +368,7 @@
         "name": "agent-environment-setup",
         "kind": "branch",
         "source": "mine:agent-environment-setup",
-        "pin": "52e63c7f05eb28abfc14b05afe066a9cf8ceb8a9"
+        "pin": "fff9f297b3a48a8121bd39370633d8e71b0f8197"
       },
       {
         "name": "assembled-ci-lint-fixes",
@@ -395,7 +386,7 @@
         "name": "add-copy-conversation",
         "kind": "branch",
         "source": "mine:add-copy-conversation",
-        "pin": "d375169b39de956d6e01395668fd8343bc33c6a6"
+        "pin": "76ad29c8e1d624ff4e4e510e4672d17b30652b3e"
       },
       {
         "name": "thinking-control-reachability",
@@ -425,15 +416,15 @@
         "name": "live-voice-quick-launch",
         "kind": "branch",
         "source": "mine:live-voice-quick-launch",
-        "pin": "c65f6e55edc4caac4d791dd44837da9b6e46808f",
+        "pin": "8a958b4cf980c2cc366bb68ea2736861ef8e9d6f",
         "reconstruction_publish": "mine:live-voice-quick-launch",
         "parents": [
           {
             "source": "mine:realtime-voice-actions",
-            "pin": "18eda8f20bf8cf7e84a9fa9f3be83c5e29550b88"
+            "pin": "13fe8b170c02cdce8136eacd141aeecf818b6905"
           }
         ],
-        "anchor": "41171cd51922d8600d1b57584f28231ff6f5ab71"
+        "anchor": "2cffcb01708e32469852cb6aab0a470d0ad05f7b"
       },
       {
         "name": "colorblind-status-dots",
@@ -475,7 +466,7 @@
         "name": "downed-host-model-selection",
         "kind": "branch",
         "source": "mine:downed-host-model-selection",
-        "pin": "af05b99b5fe7765f3e057bb577f2171ffdbd283e"
+        "pin": "cc53e35d96db6ecc3a2cf811853db24a669a37ae"
       },
       {
         "name": "fix/draft-tab-inflight-create",
@@ -493,21 +484,21 @@
         "name": "codex-astra-support",
         "kind": "branch",
         "source": "mine:codex-astra-support",
-        "pin": "c02e76bc0156748069878895c8127bb59de1288a",
-        "fixup": "a832cb60f84ccf3364198cd468a449f5e9d30496"
+        "pin": "81b34e7a88bcb3fdc6cc98a0b1cdda8ceba151b1",
+        "fixup": "9a8e61b34932339eb890376072c6c7f7aab037b7"
       },
       {
         "name": "prompt-cache-status",
         "kind": "branch",
         "source": "mine:prompt-cache-status",
-        "pin": "5a4d5fc1a502e0ce6f799fd02e8454512f6193e5",
+        "pin": "3e3e5bb5bf64e662d934e0efdf5ca14ec578af9b",
         "fixup": "a8f7e1313b7956cc707543961436bd021923d1a4"
       },
       {
         "name": "assembly-codex-banked-resets",
         "kind": "branch",
         "source": "mine:assembly-codex-banked-resets",
-        "pin": "cd900a15d714d1561f625f04f70208fd3ccbc1e0"
+        "pin": "6ccce3ffce9f72a770daa8cc3b580c4cd9d1d116"
       },
       {
         "name": "assembly-workspace-restore",
@@ -519,7 +510,7 @@
         "name": "assembly-sidebar-unarchive",
         "kind": "branch",
         "source": "mine:assembly-sidebar-unarchive",
-        "pin": "9e654b060e1ff82fbe24d90ac26333979dc883c8"
+        "pin": "4dd96127f7e65219cfd3d755f88dc246122aaaba"
       },
       {
         "name": "host/default-color",
@@ -532,7 +523,7 @@
         "name": "usage-history",
         "kind": "branch",
         "source": "mine:usage-history",
-        "pin": "7dc20c0503f94e02bf4732b060d60a134ef7a6a0"
+        "pin": "3d639f585829310d97f18db8381b6e5043cc7f7f"
       },
       {
         "name": "assembled-current-coherence",
@@ -544,14 +535,14 @@
         "name": "voice-actions",
         "kind": "branch",
         "source": "mine:voice-actions",
-        "pin": "f2fca21d45cac0caee30bb4499ef04ecc813bee7",
+        "pin": "e64a00e1bc41c5a244f656217df50015f1f7301d",
         "fixup": "01015bb64f5e1994e7d30ac2e8b1ada17ed981f4"
       },
       {
         "name": "fix/workspace-message-timestamps",
         "kind": "branch",
         "source": "mine:fix/workspace-message-timestamps",
-        "pin": "f2664dedba3b500b59e76ac7bef59e429173391e",
+        "pin": "a4cebb867fa76a14b626f569136409f642fff718",
         "fixup": "b6bea6aa397d6fc6442d57213df890d46eaf2901"
       },
       {
@@ -564,15 +555,15 @@
         "name": "live-voice-start-sound",
         "kind": "branch",
         "source": "mine:live-voice-start-sound",
-        "pin": "594a077208bd1df9ca2a8b2fe0e1f266b4fd6b7b",
+        "pin": "51e73cefccca353b7d2b4b0c94cc8a724204881d",
         "reconstruction_publish": "mine:live-voice-start-sound",
         "parents": [
           {
             "source": "mine:realtime-voice-actions",
-            "pin": "18eda8f20bf8cf7e84a9fa9f3be83c5e29550b88"
+            "pin": "13fe8b170c02cdce8136eacd141aeecf818b6905"
           }
         ],
-        "anchor": "220f0a2be405c917fdb998049810c19fc16ae98e"
+        "anchor": "39987d9e3c0ce8f8d308693e06b4f848c085b3bb"
       },
       {
         "name": "ntfy-push",
@@ -593,16 +584,10 @@
         "pin": "06f37ea4c12aff29efc5c5e5035ff44d780e3923"
       },
       {
-        "name": "pr-4827",
-        "kind": "pr",
-        "source": "upstream#4827",
-        "pin": "b198932e49eabd73bdb36503cc9eaaaa0b90bc5d"
-      },
-      {
         "name": "pr-4828",
         "kind": "pr",
         "source": "upstream#4828",
-        "pin": "a948d6424ccdbcfd3b3cee51241a53aca8b591e1"
+        "pin": "40ab76125106f21768c616b1d0973fdf736cf8aa"
       },
       {
         "name": "pr-4829",
@@ -617,40 +602,34 @@
         "pin": "cafdb39112f82a0771a9a54c4d25b7b3914c9a9b"
       },
       {
-        "name": "pr-4831",
-        "kind": "pr",
-        "source": "upstream#4831",
-        "pin": "a2c798d00c6e8e417b48ea97120ca2fc5a99e381"
+        "name": "perf/replica-read-overlay",
+        "kind": "branch",
+        "source": "mine:perf/replica-read-overlay",
+        "pin": "864e9686fe8bf1f8a8d29fd7923411e1b6e241e3"
       },
       {
-        "name": "pr-4832",
-        "kind": "pr",
-        "source": "upstream#4832",
-        "pin": "44c3e264df791f8e73c51b2077a73b9c6cddef47"
-      },
-      {
-        "name": "pr-4833",
-        "kind": "pr",
-        "source": "upstream#4833",
-        "pin": "55cc3e2c68e06271934f2c94a342a46d0a96249d"
+        "name": "perf/layout-persist-throttle",
+        "kind": "branch",
+        "source": "mine:perf/layout-persist-throttle",
+        "pin": "3d8164f28dccd206bf838c383c8e7c56fc0c6f60"
       },
       {
         "name": "perf/usage-history-token-fix",
         "kind": "branch",
         "source": "mine:perf/usage-history-token-fix",
-        "pin": "cacac662b710d67edecfa4f2534872f585c6b2d9"
+        "pin": "cc7adb65de5b3a4bbdf1190bb471ea2f0f5aeba0"
       },
       {
         "name": "perf/explorer-sidebar-resize",
         "kind": "branch",
         "source": "mine:perf/explorer-sidebar-resize",
-        "pin": "6562d53003321f6a3270e242c26d1da143e6f553"
+        "pin": "172b7d21909a39e1e20cb89d5027fa7400d26726"
       },
       {
         "name": "android-intents",
         "kind": "branch",
         "source": "mine:android-intents",
-        "pin": "0204fcbbc3137078a66a0a39d1533bc18b49ac6a"
+        "pin": "29ea67ed68155c127ce9b09601a64e90d805f1e9"
       },
       {
         "name": "opencode-catalog-revalidate",
@@ -668,7 +647,7 @@
         "name": "locked-extension-paseo",
         "kind": "branch",
         "source": "mine:locked-extension-paseo",
-        "pin": "c9b0b9aa0f7708379832739050e16cec8f363243"
+        "pin": "cf979ab722f62bbbeb855edfe124fd68b3adefe8"
       },
       {
         "name": "assembled-lint-complexity",
@@ -687,7 +666,7 @@
     "results": [
       {
         "name": "prompt-mod-shortcuts",
-        "oid": "92202b06040e8346cec3c0eef0c9269b4737a6c6",
+        "oid": "503a3cd9e9127baddc1b77967243ca8bc2a8f2d3",
         "status": "merged",
         "conflicted": false
       },
@@ -712,21 +691,21 @@
       },
       {
         "name": "personal/sidebar-workflow",
-        "oid": "a09961d02791c8ae9196bd12e380c4cd5729187c",
+        "oid": "e25896885c394db312a17eb4128db24f76760598",
         "status": "merged",
         "conflicted": false,
         "fixup": "2c775a0c59a0de1dd0f47e819cee71bbdbc0712c"
       },
       {
         "name": "model-picker-search",
-        "oid": "cc5e685e5469558517b3fb8108827ab610629772",
+        "oid": "30ff9ed036d9694878ddd8fc6bca52686873b91a",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "skill-pills-config",
-        "oid": "76bd0951a9181dca7adec84db7c9a7c15d7bf353",
+        "oid": "c615676845c285f7284d70a3feb5418b8aba4ed2",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -744,12 +723,6 @@
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "a94efb8c32904edfbffbd355f4f98e27b26776f7"
-      },
-      {
-        "name": "monospaced-mobile-styling",
-        "oid": "18e92098aa9ad5ded175afd4bd5358ee7c8634a1",
-        "status": "merged",
-        "conflicted": false
       },
       {
         "name": "t3code-4453",
@@ -772,20 +745,20 @@
       },
       {
         "name": "pr-2650",
-        "oid": "d12a24ee73f2b6c3c0e026a6c638cfda573e52a6",
+        "oid": "32ba9fa21a630b4cd787bf3ea8ea7f149f276e33",
         "status": "merged",
         "conflicted": false
       },
       {
         "name": "agent-purpose-summaries",
-        "oid": "a04d386ea52ad0c6675bc6d94252457f2b0d667c",
+        "oid": "3944395dba1f9223fb25f9eba2af81dc957febca",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "subagent-param-visibility",
-        "oid": "27887bc7d25e57e3ec5cb8189956f4fb8ff1fbf0",
+        "oid": "d499151c7bb9c9b4a1bd022b7b840ec68315103c",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -800,25 +773,25 @@
       },
       {
         "name": "watch-live-voice",
-        "oid": "034f381bd604fd36a31ac594431e7a1115cd7879",
+        "oid": "18bbec4760348df9b0d6485510f2b8489b70f9c1",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "f4f60dd97b37f8401b1712a586abf54ae2211498",
         "derived": {
-          "base_tip": "db5647caaf3aac1cad0fc33111bd858d8164b5fe",
-          "tip": "18bbec4760348df9b0d6485510f2b8489b70f9c1"
+          "base_tip": "9020f9ca282d0eb6f56572f2a4a46d92065daf2f",
+          "tip": "deec03f78f49b5afe410caefb41c759fb10ad9ea"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "bb7611fb70b713e15cfdaf493e3f6337c3ab556c",
+        "oid": "67a6ae06cd8016d436a55b2111577c8efa39a75c",
         "status": "applied",
         "conflicted": false
       },
       {
         "name": "host-selection-search",
-        "oid": "e67a4e603db6c213ea54e72fee0ba610ad90065f",
+        "oid": "800aeca894711da2b901841f772f61c98d469def",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -838,7 +811,7 @@
       },
       {
         "name": "multi-account-provider",
-        "oid": "63916fe3003da650fe418fb94856d038c534caea",
+        "oid": "c4a0322ced47c24676e9e02dd29eb9f7a3eebecb",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -854,14 +827,14 @@
       },
       {
         "name": "unconditional-host-display",
-        "oid": "f849af85b7fa9f452f5f8ba867c6cae5d3210789",
+        "oid": "cac3b3a5c09f215a9bfc9539aa42ba8bfa4429ec",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
       },
       {
         "name": "agent/configurable-direct-model-shortcuts",
-        "oid": "2eeaf46759ed9f16787d8a24886a6955bca3edaf",
+        "oid": "80566b1313b6711f2d6eaca60294e5359ae54d80",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -903,7 +876,7 @@
       },
       {
         "name": "colonelpanic8/require-real-workspace-directory",
-        "oid": "c7b8e16a91eab04cbf20815e658e754f5c4718dc",
+        "oid": "c47635e0f0743bd20a982342d1b95ff1dbad3d70",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -916,7 +889,7 @@
       },
       {
         "name": "fork-native-session",
-        "oid": "04d570053e2a70c777f064002299a4e817621e3d",
+        "oid": "15c9a4de90a2187288c70ee0f8dd3cd8309135fc",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -931,14 +904,14 @@
       },
       {
         "name": "keyboard-shortcuts-mobile",
-        "oid": "ada009a95c97cabccaa4a1837b5af81293c27c44",
+        "oid": "986b2bc756b8d66224b472260057497b3a2e2388",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "623072f0cf3ced1c5739db19302ac7a931444a35",
         "derived": {
-          "base_tip": "66c758d7b58e498718f8eaf21e623c7a6e650748",
-          "tip": "986b2bc756b8d66224b472260057497b3a2e2388"
+          "base_tip": "3c64fb8c740ebbe0caa97de8ec70049df0f2c939",
+          "tip": "8e434dee6737424e9d443b4bb2677fb95f26121c"
         }
       },
       {
@@ -949,7 +922,7 @@
       },
       {
         "name": "agent-environment-setup",
-        "oid": "52e63c7f05eb28abfc14b05afe066a9cf8ceb8a9",
+        "oid": "fff9f297b3a48a8121bd39370633d8e71b0f8197",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -968,7 +941,7 @@
       },
       {
         "name": "add-copy-conversation",
-        "oid": "d375169b39de956d6e01395668fd8343bc33c6a6",
+        "oid": "76ad29c8e1d624ff4e4e510e4672d17b30652b3e",
         "status": "merged",
         "conflicted": false
       },
@@ -999,12 +972,12 @@
       },
       {
         "name": "live-voice-quick-launch",
-        "oid": "c65f6e55edc4caac4d791dd44837da9b6e46808f",
+        "oid": "8a958b4cf980c2cc366bb68ea2736861ef8e9d6f",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "2cffcb01708e32469852cb6aab0a470d0ad05f7b",
-          "tip": "8a958b4cf980c2cc366bb68ea2736861ef8e9d6f"
+          "base_tip": "d5b929e6392a624ec23603d126a1483c26699938",
+          "tip": "3021b19eb885ea0a7b59b69c0a66b51fcd797e99"
         }
       },
       {
@@ -1047,7 +1020,7 @@
       },
       {
         "name": "downed-host-model-selection",
-        "oid": "af05b99b5fe7765f3e057bb577f2171ffdbd283e",
+        "oid": "cc53e35d96db6ecc3a2cf811853db24a669a37ae",
         "status": "merged",
         "conflicted": false
       },
@@ -1065,15 +1038,15 @@
       },
       {
         "name": "codex-astra-support",
-        "oid": "c02e76bc0156748069878895c8127bb59de1288a",
+        "oid": "81b34e7a88bcb3fdc6cc98a0b1cdda8ceba151b1",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
-        "fixup": "a832cb60f84ccf3364198cd468a449f5e9d30496"
+        "fixup": "9a8e61b34932339eb890376072c6c7f7aab037b7"
       },
       {
         "name": "prompt-cache-status",
-        "oid": "5a4d5fc1a502e0ce6f799fd02e8454512f6193e5",
+        "oid": "3e3e5bb5bf64e662d934e0efdf5ca14ec578af9b",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -1081,7 +1054,7 @@
       },
       {
         "name": "assembly-codex-banked-resets",
-        "oid": "cd900a15d714d1561f625f04f70208fd3ccbc1e0",
+        "oid": "6ccce3ffce9f72a770daa8cc3b580c4cd9d1d116",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -1095,7 +1068,7 @@
       },
       {
         "name": "assembly-sidebar-unarchive",
-        "oid": "9e654b060e1ff82fbe24d90ac26333979dc883c8",
+        "oid": "4dd96127f7e65219cfd3d755f88dc246122aaaba",
         "status": "merged",
         "conflicted": false
       },
@@ -1109,7 +1082,7 @@
       },
       {
         "name": "usage-history",
-        "oid": "7dc20c0503f94e02bf4732b060d60a134ef7a6a0",
+        "oid": "3d639f585829310d97f18db8381b6e5043cc7f7f",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -1122,7 +1095,7 @@
       },
       {
         "name": "voice-actions",
-        "oid": "f2fca21d45cac0caee30bb4499ef04ecc813bee7",
+        "oid": "e64a00e1bc41c5a244f656217df50015f1f7301d",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -1130,7 +1103,7 @@
       },
       {
         "name": "fix/workspace-message-timestamps",
-        "oid": "f2664dedba3b500b59e76ac7bef59e429173391e",
+        "oid": "a4cebb867fa76a14b626f569136409f642fff718",
         "status": "merged",
         "conflicted": false,
         "fixup": "b6bea6aa397d6fc6442d57213df890d46eaf2901"
@@ -1143,12 +1116,12 @@
       },
       {
         "name": "live-voice-start-sound",
-        "oid": "594a077208bd1df9ca2a8b2fe0e1f266b4fd6b7b",
+        "oid": "51e73cefccca353b7d2b4b0c94cc8a724204881d",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "39987d9e3c0ce8f8d308693e06b4f848c085b3bb",
-          "tip": "51e73cefccca353b7d2b4b0c94cc8a724204881d"
+          "base_tip": "897f65ea0e976601d649afcc9993e23f1ac1d6d6",
+          "tip": "75fd82f40d188a4eaa1b0d5e9dd62140037c4374"
         }
       },
       {
@@ -1172,14 +1145,8 @@
         "conflicted": false
       },
       {
-        "name": "pr-4827",
-        "oid": "b198932e49eabd73bdb36503cc9eaaaa0b90bc5d",
-        "status": "merged",
-        "conflicted": false
-      },
-      {
         "name": "pr-4828",
-        "oid": "a948d6424ccdbcfd3b3cee51241a53aca8b591e1",
+        "oid": "40ab76125106f21768c616b1d0973fdf736cf8aa",
         "status": "merged",
         "conflicted": false
       },
@@ -1197,39 +1164,32 @@
         "conflicted": false
       },
       {
-        "name": "pr-4831",
-        "oid": "a2c798d00c6e8e417b48ea97120ca2fc5a99e381",
+        "name": "perf/replica-read-overlay",
+        "oid": "864e9686fe8bf1f8a8d29fd7923411e1b6e241e3",
         "status": "merged",
         "conflicted": false
       },
       {
-        "name": "pr-4832",
-        "oid": "44c3e264df791f8e73c51b2077a73b9c6cddef47",
+        "name": "perf/layout-persist-throttle",
+        "oid": "3d8164f28dccd206bf838c383c8e7c56fc0c6f60",
         "status": "merged",
         "conflicted": false
-      },
-      {
-        "name": "pr-4833",
-        "oid": "55cc3e2c68e06271934f2c94a342a46d0a96249d",
-        "status": "merged",
-        "conflicted": true,
-        "resolution": "rerere"
       },
       {
         "name": "perf/usage-history-token-fix",
-        "oid": "cacac662b710d67edecfa4f2534872f585c6b2d9",
+        "oid": "cc7adb65de5b3a4bbdf1190bb471ea2f0f5aeba0",
         "status": "merged",
         "conflicted": false
       },
       {
         "name": "perf/explorer-sidebar-resize",
-        "oid": "6562d53003321f6a3270e242c26d1da143e6f553",
+        "oid": "172b7d21909a39e1e20cb89d5027fa7400d26726",
         "status": "merged",
         "conflicted": false
       },
       {
         "name": "android-intents",
-        "oid": "0204fcbbc3137078a66a0a39d1533bc18b49ac6a",
+        "oid": "29ea67ed68155c127ce9b09601a64e90d805f1e9",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -1249,7 +1209,7 @@
       },
       {
         "name": "locked-extension-paseo",
-        "oid": "c9b0b9aa0f7708379832739050e16cec8f363243",
+        "oid": "cf979ab722f62bbbeb855edfe124fd68b3adefe8",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
