@@ -445,6 +445,10 @@ branch = "mine:sidebar-hide-hosts"
 summary = "Hide chosen hosts from status grouping"
 fixup = "patches/sidebar-hide-hosts-archived-coherence.patch"
 
+[[entry]]
+pr = 7509
+summary = "Fix Android native diff compilation against Skia 2.6.2"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.

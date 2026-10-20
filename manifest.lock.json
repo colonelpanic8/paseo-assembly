@@ -70,6 +70,7 @@
       "pr-4829": "d32d16639803f8c2b78a6cf37ccff63ae399e58f",
       "pr-4830": "cafdb39112f82a0771a9a54c4d25b7b3914c9a9b",
       "pr-5046": "f5b1d3b11d72be70e2cc56ceb8ac41c4aad0a7b4",
+      "pr-7509": "b4e953b79c46413c1a2ea0f32abc1073df05e7d7",
       "prompt-cache-status": "3e3e5bb5bf64e662d934e0efdf5ca14ec578af9b",
       "prompt-mod-shortcuts": "503a3cd9e9127baddc1b77967243ca8bc2a8f2d3",
       "relay-tailscale": "cf8846f1df76a18b5284d0991b1f6cde9c31a6de",
@@ -109,15 +110,15 @@
     }
   },
   "build": {
-    "generated": "2026-10-20T18:41:39.694445201+00:00",
+    "generated": "2026-10-20T18:56:27.887045833+00:00",
     "base": "068f272a00ffef3f00ec30ec4cfa3a631be97624",
-    "commit": "562b94d226291c38ce57cfafd27cb009958e342a",
-    "pre_provenance_commit": "562b94d226291c38ce57cfafd27cb009958e342a",
-    "tree": "6735d1391ee9d82dfbee89aa01e11d239feed9e1",
-    "built_tree": "6735d1391ee9d82dfbee89aa01e11d239feed9e1",
-    "previous_tree": "99349d462cd87808a4471a74d87c4a594f4da87b",
+    "commit": "92b7d6a8707916c64de5ceec9ede89ceaad0881d",
+    "pre_provenance_commit": "92b7d6a8707916c64de5ceec9ede89ceaad0881d",
+    "tree": "eeb4c26746d06d3fe9aa7027bddcd365548abfb1",
+    "built_tree": "eeb4c26746d06d3fe9aa7027bddcd365548abfb1",
+    "previous_tree": "6735d1391ee9d82dfbee89aa01e11d239feed9e1",
     "tree_changed": true,
-    "conflicts": 40,
+    "conflicts": 0,
     "manifest_entries": [
       {
         "name": "prompt-mod-shortcuts",
@@ -661,6 +662,12 @@
         "source": "mine:sidebar-hide-hosts",
         "pin": "0ff6d00449e289bd3e6cf90bd1b40447f7d6acfc",
         "fixup": "452617eeb494030cbdd9aa192d134f3e92258e57"
+      },
+      {
+        "name": "pr-7509",
+        "kind": "pr",
+        "source": "upstream#7509",
+        "pin": "b4e953b79c46413c1a2ea0f32abc1073df05e7d7"
       }
     ],
     "results": [
@@ -1226,6 +1233,12 @@
         "status": "merged",
         "conflicted": false,
         "fixup": "452617eeb494030cbdd9aa192d134f3e92258e57"
+      },
+      {
+        "name": "pr-7509",
+        "oid": "b4e953b79c46413c1a2ea0f32abc1073df05e7d7",
+        "status": "merged",
+        "conflicted": false
       }
     ]
   }
