@@ -71,6 +71,7 @@
       "pr-4830": "cafdb39112f82a0771a9a54c4d25b7b3914c9a9b",
       "pr-5046": "f5b1d3b11d72be70e2cc56ceb8ac41c4aad0a7b4",
       "pr-7509": "b4e953b79c46413c1a2ea0f32abc1073df05e7d7",
+      "pr-7512": "0bc8b69d829fe70004c687c961dfc86e5b9e4f3f",
       "prompt-cache-status": "3e3e5bb5bf64e662d934e0efdf5ca14ec578af9b",
       "prompt-mod-shortcuts": "503a3cd9e9127baddc1b77967243ca8bc2a8f2d3",
       "relay-tailscale": "cf8846f1df76a18b5284d0991b1f6cde9c31a6de",
@@ -110,13 +111,13 @@
     }
   },
   "build": {
-    "generated": "2026-10-20T18:56:27.887045833+00:00",
+    "generated": "2026-10-20T19:26:35.198106197+00:00",
     "base": "068f272a00ffef3f00ec30ec4cfa3a631be97624",
-    "commit": "92b7d6a8707916c64de5ceec9ede89ceaad0881d",
-    "pre_provenance_commit": "92b7d6a8707916c64de5ceec9ede89ceaad0881d",
-    "tree": "eeb4c26746d06d3fe9aa7027bddcd365548abfb1",
-    "built_tree": "eeb4c26746d06d3fe9aa7027bddcd365548abfb1",
-    "previous_tree": "6735d1391ee9d82dfbee89aa01e11d239feed9e1",
+    "commit": "706395f4c1929ea6421840eb2430f1e0f149b115",
+    "pre_provenance_commit": "706395f4c1929ea6421840eb2430f1e0f149b115",
+    "tree": "386269c43aed9b10f12651f51f7f4b8d9c9f1c71",
+    "built_tree": "386269c43aed9b10f12651f51f7f4b8d9c9f1c71",
+    "previous_tree": "eeb4c26746d06d3fe9aa7027bddcd365548abfb1",
     "tree_changed": true,
     "conflicts": 0,
     "manifest_entries": [
@@ -668,6 +669,12 @@
         "kind": "pr",
         "source": "upstream#7509",
         "pin": "b4e953b79c46413c1a2ea0f32abc1073df05e7d7"
+      },
+      {
+        "name": "pr-7512",
+        "kind": "pr",
+        "source": "upstream#7512",
+        "pin": "0bc8b69d829fe70004c687c961dfc86e5b9e4f3f"
       }
     ],
     "results": [
@@ -1237,6 +1244,12 @@
       {
         "name": "pr-7509",
         "oid": "b4e953b79c46413c1a2ea0f32abc1073df05e7d7",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "pr-7512",
+        "oid": "0bc8b69d829fe70004c687c961dfc86e5b9e4f3f",
         "status": "merged",
         "conflicted": false
       }

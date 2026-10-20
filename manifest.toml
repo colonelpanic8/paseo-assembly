@@ -449,6 +449,10 @@ fixup = "patches/sidebar-hide-hosts-archived-coherence.patch"
 pr = 7509
 summary = "Fix Android native diff compilation against Skia 2.6.2"
 
+[[entry]]
+pr = 7512
+summary = "Fix gesture-handler 2.32 Android Kotlin compatibility"
+
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
 # supersedes 2525, 2529, 2564, and 2892.
