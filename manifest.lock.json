@@ -1,11 +1,11 @@
 {
   "version": 1,
   "pins": {
-    "base": "3081b99b06aa29bf39b9a83aaed73cf854e4a89b",
+    "base": "068f272a00ffef3f00ec30ec4cfa3a631be97624",
     "entries": {
       "add-copy-conversation": "76ad29c8e1d624ff4e4e510e4672d17b30652b3e",
       "agent-environment-setup": "fff9f297b3a48a8121bd39370633d8e71b0f8197",
-      "agent-purpose-summaries": "3944395dba1f9223fb25f9eba2af81dc957febca",
+      "agent-purpose-summaries": "b9d737387a16b3ea89128551374c3f145f8167a4",
       "agent/configurable-direct-model-shortcuts": "80566b1313b6711f2d6eaca60294e5359ae54d80",
       "agent/nix-android": "e3253469c483488d1ad0dac4a654e87036aa78f4",
       "android-intents": "29ea67ed68155c127ce9b09601a64e90d805f1e9",
@@ -46,9 +46,9 @@
       "fork-native-session": "15c9a4de90a2187288c70ee0f8dd3cd8309135fc",
       "host-selection-search": "800aeca894711da2b901841f772f61c98d469def",
       "host/default-color": "23bf6a48135c2ead24178e63d406af82f9a07a79",
-      "keyboard-shortcuts-mobile": "986b2bc756b8d66224b472260057497b3a2e2388",
-      "live-voice-quick-launch": "8a958b4cf980c2cc366bb68ea2736861ef8e9d6f",
-      "live-voice-start-sound": "51e73cefccca353b7d2b4b0c94cc8a724204881d",
+      "keyboard-shortcuts-mobile": "2e9a309d8270c739364a7b4c4cebb6f8ac37e087",
+      "live-voice-quick-launch": "9e77ce1044af4e12f8979b244eaeafcaeef039ec",
+      "live-voice-start-sound": "3fa43757835f35f420cf330924ba4aa3df6bcae4",
       "locked-extension-paseo": "cf979ab722f62bbbeb855edfe124fd68b3adefe8",
       "model-picker-search": "30ff9ed036d9694878ddd8fc6bca52686873b91a",
       "multi-account-provider": "c4a0322ced47c24676e9e02dd29eb9f7a3eebecb",
@@ -62,7 +62,7 @@
       "personal/sidebar-workflow": "12e42ab55a6907a4dbbc003d535f332ccea9804c",
       "pr-2650": "32ba9fa21a630b4cd787bf3ea8ea7f149f276e33",
       "pr-2772": "32a11e96fe7535d636e792bab2956b6789926828",
-      "pr-2820": "981597f64eb11e6313a55907ee10edda107ed45f",
+      "pr-2820": "823e9ed569327db2947f766fc25ac13a8d83ce4f",
       "pr-2873": "403289b656ebb759fc570adb7e35fb4df82134b6",
       "pr-2883": "ad2c333e67e6119b4cb82201759dbd3e3a6cb774",
       "pr-4256": "1577902719cf291e769c37988ebe79ee540d7fe5",
@@ -79,11 +79,11 @@
       "t3code-4453": "93ad949d7aab5db330aa0ae39442b2e108f14027",
       "thinking-control-reachability": "6a861f9cb2ae046c25dcc99be6f74f1e8e9f01ff",
       "touch-sidebar-resize": "5452a6de3c67768921bfee955a6e9ebb405764f6",
-      "unarchive-threads": "17f74b9b3f050a9f2266f0cbab8465b20e5aac6f",
+      "unarchive-threads": "4881373b3a1c183e71d7c0a7be2415efbf31dcb8",
       "unconditional-host-display": "cac3b3a5c09f215a9bfc9539aa42ba8bfa4429ec",
       "usage-history": "3d639f585829310d97f18db8381b6e5043cc7f7f",
       "voice-actions": "e64a00e1bc41c5a244f656217df50015f1f7301d",
-      "watch-live-voice": "18bbec4760348df9b0d6485510f2b8489b70f9c1",
+      "watch-live-voice": "4a697921cacdaf626d93989a2791d7b1663b0e8f",
       "xdg-paths": "31b9fda397a211e5bec34e227d0d99802cc0f9ce"
     },
     "parents": {
@@ -102,22 +102,22 @@
       }
     },
     "anchors": {
-      "keyboard-shortcuts-mobile": "66c758d7b58e498718f8eaf21e623c7a6e650748",
-      "live-voice-quick-launch": "2cffcb01708e32469852cb6aab0a470d0ad05f7b",
-      "live-voice-start-sound": "39987d9e3c0ce8f8d308693e06b4f848c085b3bb",
-      "watch-live-voice": "db5647caaf3aac1cad0fc33111bd858d8164b5fe"
+      "keyboard-shortcuts-mobile": "bafe2e763a35e117ffa05d9f2f2c7a2631130640",
+      "live-voice-quick-launch": "89422a209a23c25f4a3716fb59b54e3fec3ea200",
+      "live-voice-start-sound": "8978eb2adfa21166a976d069abdc1176d4467f1a",
+      "watch-live-voice": "81b0e8e5d3662316c8e60d67ca22787ad8b94b81"
     }
   },
   "build": {
-    "generated": "2026-10-20T06:15:57.133747220+00:00",
-    "base": "3081b99b06aa29bf39b9a83aaed73cf854e4a89b",
-    "commit": "e98ce9910c215780b266de2cfe4e825a4ffbe9d6",
-    "pre_provenance_commit": "e98ce9910c215780b266de2cfe4e825a4ffbe9d6",
-    "tree": "99349d462cd87808a4471a74d87c4a594f4da87b",
-    "built_tree": "99349d462cd87808a4471a74d87c4a594f4da87b",
-    "previous_tree": "6d25a90f4e77063cef7e78874940a95df98af932",
+    "generated": "2026-10-20T18:41:39.694445201+00:00",
+    "base": "068f272a00ffef3f00ec30ec4cfa3a631be97624",
+    "commit": "562b94d226291c38ce57cfafd27cb009958e342a",
+    "pre_provenance_commit": "562b94d226291c38ce57cfafd27cb009958e342a",
+    "tree": "6735d1391ee9d82dfbee89aa01e11d239feed9e1",
+    "built_tree": "6735d1391ee9d82dfbee89aa01e11d239feed9e1",
+    "previous_tree": "99349d462cd87808a4471a74d87c4a594f4da87b",
     "tree_changed": true,
-    "conflicts": 42,
+    "conflicts": 40,
     "manifest_entries": [
       {
         "name": "prompt-mod-shortcuts",
@@ -203,7 +203,7 @@
         "name": "agent-purpose-summaries",
         "kind": "branch",
         "source": "mine:agent-purpose-summaries",
-        "pin": "3944395dba1f9223fb25f9eba2af81dc957febca"
+        "pin": "b9d737387a16b3ea89128551374c3f145f8167a4"
       },
       {
         "name": "subagent-param-visibility",
@@ -216,13 +216,13 @@
         "name": "unarchive-threads",
         "kind": "branch",
         "source": "mine:unarchive-threads",
-        "pin": "17f74b9b3f050a9f2266f0cbab8465b20e5aac6f"
+        "pin": "4881373b3a1c183e71d7c0a7be2415efbf31dcb8"
       },
       {
         "name": "watch-live-voice",
         "kind": "branch",
         "source": "mine:watch-live-voice",
-        "pin": "18bbec4760348df9b0d6485510f2b8489b70f9c1",
+        "pin": "4a697921cacdaf626d93989a2791d7b1663b0e8f",
         "fixup": "f4f60dd97b37f8401b1712a586abf54ae2211498",
         "reconstruction_publish": "mine:watch-live-voice",
         "parents": [
@@ -235,7 +235,7 @@
             "pin": "13fe8b170c02cdce8136eacd141aeecf818b6905"
           }
         ],
-        "anchor": "db5647caaf3aac1cad0fc33111bd858d8164b5fe"
+        "anchor": "81b0e8e5d3662316c8e60d67ca22787ad8b94b81"
       },
       {
         "name": "assembled-npm-deps-hash",
@@ -272,7 +272,7 @@
         "name": "pr-2820",
         "kind": "pr",
         "source": "upstream#2820",
-        "pin": "981597f64eb11e6313a55907ee10edda107ed45f",
+        "pin": "823e9ed569327db2947f766fc25ac13a8d83ce4f",
         "fixup": "9314f7dd4dd7284fbf84c4f2c886f539382ac1c2"
       },
       {
@@ -347,7 +347,7 @@
         "name": "keyboard-shortcuts-mobile",
         "kind": "branch",
         "source": "mine:keyboard-shortcuts-mobile",
-        "pin": "986b2bc756b8d66224b472260057497b3a2e2388",
+        "pin": "2e9a309d8270c739364a7b4c4cebb6f8ac37e087",
         "fixup": "623072f0cf3ced1c5739db19302ac7a931444a35",
         "reconstruction_publish": "mine:keyboard-shortcuts-mobile",
         "parents": [
@@ -356,7 +356,7 @@
             "pin": "802d1e3c1b0e34f6ed90cace191a43a33457cccc"
           }
         ],
-        "anchor": "66c758d7b58e498718f8eaf21e623c7a6e650748"
+        "anchor": "bafe2e763a35e117ffa05d9f2f2c7a2631130640"
       },
       {
         "name": "touch-sidebar-resize",
@@ -416,7 +416,7 @@
         "name": "live-voice-quick-launch",
         "kind": "branch",
         "source": "mine:live-voice-quick-launch",
-        "pin": "8a958b4cf980c2cc366bb68ea2736861ef8e9d6f",
+        "pin": "9e77ce1044af4e12f8979b244eaeafcaeef039ec",
         "reconstruction_publish": "mine:live-voice-quick-launch",
         "parents": [
           {
@@ -424,7 +424,7 @@
             "pin": "13fe8b170c02cdce8136eacd141aeecf818b6905"
           }
         ],
-        "anchor": "2cffcb01708e32469852cb6aab0a470d0ad05f7b"
+        "anchor": "89422a209a23c25f4a3716fb59b54e3fec3ea200"
       },
       {
         "name": "colorblind-status-dots",
@@ -555,7 +555,7 @@
         "name": "live-voice-start-sound",
         "kind": "branch",
         "source": "mine:live-voice-start-sound",
-        "pin": "51e73cefccca353b7d2b4b0c94cc8a724204881d",
+        "pin": "3fa43757835f35f420cf330924ba4aa3df6bcae4",
         "reconstruction_publish": "mine:live-voice-start-sound",
         "parents": [
           {
@@ -563,7 +563,7 @@
             "pin": "13fe8b170c02cdce8136eacd141aeecf818b6905"
           }
         ],
-        "anchor": "39987d9e3c0ce8f8d308693e06b4f848c085b3bb"
+        "anchor": "8978eb2adfa21166a976d069abdc1176d4467f1a"
       },
       {
         "name": "ntfy-push",
@@ -751,7 +751,7 @@
       },
       {
         "name": "agent-purpose-summaries",
-        "oid": "3944395dba1f9223fb25f9eba2af81dc957febca",
+        "oid": "b9d737387a16b3ea89128551374c3f145f8167a4",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere"
@@ -766,21 +766,21 @@
       },
       {
         "name": "unarchive-threads",
-        "oid": "17f74b9b3f050a9f2266f0cbab8465b20e5aac6f",
+        "oid": "4881373b3a1c183e71d7c0a7be2415efbf31dcb8",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolution": "rerere:3d4f6dce31ab6d9989cb4d9d03160d565464d75f"
       },
       {
         "name": "watch-live-voice",
-        "oid": "18bbec4760348df9b0d6485510f2b8489b70f9c1",
+        "oid": "4a697921cacdaf626d93989a2791d7b1663b0e8f",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "f4f60dd97b37f8401b1712a586abf54ae2211498",
         "derived": {
-          "base_tip": "81b0e8e5d3662316c8e60d67ca22787ad8b94b81",
-          "tip": "4a697921cacdaf626d93989a2791d7b1663b0e8f"
+          "base_tip": "cb0410b167fe1394677adfe5127a9e0342481c6d",
+          "tip": "2519a454d2eb11167110c331dfddbbbe7cf9543b"
         }
       },
       {
@@ -819,7 +819,7 @@
       },
       {
         "name": "pr-2820",
-        "oid": "981597f64eb11e6313a55907ee10edda107ed45f",
+        "oid": "823e9ed569327db2947f766fc25ac13a8d83ce4f",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
@@ -904,14 +904,14 @@
       },
       {
         "name": "keyboard-shortcuts-mobile",
-        "oid": "986b2bc756b8d66224b472260057497b3a2e2388",
+        "oid": "2e9a309d8270c739364a7b4c4cebb6f8ac37e087",
         "status": "merged",
         "conflicted": true,
         "resolution": "rerere",
         "fixup": "623072f0cf3ced1c5739db19302ac7a931444a35",
         "derived": {
-          "base_tip": "bafe2e763a35e117ffa05d9f2f2c7a2631130640",
-          "tip": "2e9a309d8270c739364a7b4c4cebb6f8ac37e087"
+          "base_tip": "07704310b903d54f483f80905d4d2553eefa6e66",
+          "tip": "05922e5c66f2349a14be00ba9776df0dbc7d683c"
         }
       },
       {
@@ -972,12 +972,12 @@
       },
       {
         "name": "live-voice-quick-launch",
-        "oid": "8a958b4cf980c2cc366bb68ea2736861ef8e9d6f",
+        "oid": "9e77ce1044af4e12f8979b244eaeafcaeef039ec",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "89422a209a23c25f4a3716fb59b54e3fec3ea200",
-          "tip": "9e77ce1044af4e12f8979b244eaeafcaeef039ec"
+          "base_tip": "be78d34f6ed872f11c1139de8f2f7c9f120ecef7",
+          "tip": "982f2580716545bbbb2f6b7576d3a6facfcbc187"
         }
       },
       {
@@ -1116,12 +1116,12 @@
       },
       {
         "name": "live-voice-start-sound",
-        "oid": "51e73cefccca353b7d2b4b0c94cc8a724204881d",
+        "oid": "3fa43757835f35f420cf330924ba4aa3df6bcae4",
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "8978eb2adfa21166a976d069abdc1176d4467f1a",
-          "tip": "3fa43757835f35f420cf330924ba4aa3df6bcae4"
+          "base_tip": "ad5a525323de416adbdfb54574f2f9a932cb8245",
+          "tip": "bb1b0c796eaa6e442b939a57264c0a4f85b6de88"
         }
       },
       {

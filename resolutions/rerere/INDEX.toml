@@ -4081,6 +4081,12 @@ recorded = "2026-09-07T20:13:56.111057601+00:00"
 
 [[resolution]]
 entry = "unarchive-threads"
+hash = "3d4f6dce31ab6d9989cb4d9d03160d565464d75f"
+paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
+recorded = "2026-10-20T18:41:09.630404423+00:00"
+
+[[resolution]]
+entry = "unarchive-threads"
 hash = "c6a815c622615152c661d3a26f583215b0d7e007"
 paths = ["packages/server/src/server/agent/agent-manager.test.ts"]
 recorded = "2026-10-15T03:12:31.439147785+00:00"
