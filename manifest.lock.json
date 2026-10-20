@@ -12,7 +12,7 @@
       "assembled-ci-lint-fixes": "8f8d8c57300eca040a7b7c8e9c14a1a29679d407",
       "assembled-current-coherence": "5bd1a2f85d8c580aa5e57269679232638096b730",
       "assembled-lint-complexity": "b3ac376f8503efd28ed19994b1f3debe335c7634",
-      "assembled-npm-deps-hash": "67a6ae06cd8016d436a55b2111577c8efa39a75c",
+      "assembled-npm-deps-hash": "f8c39872d96d9826c82876f2502b614c2592f9bd",
       "assembled-typecheck-coherence": "08daddcd60a8502d93c5da9cc58603480a65af03",
       "assembly-agent-env": "ef53f462e6f5b5cd92644998ce1f108f7d5fed56",
       "assembly-build-provenance": "c9a37d9fdb702071c53a881ec1e0a72ad8a2a9a9",
@@ -59,7 +59,7 @@
       "perf/layout-persist-throttle": "3d8164f28dccd206bf838c383c8e7c56fc0c6f60",
       "perf/replica-read-overlay": "864e9686fe8bf1f8a8d29fd7923411e1b6e241e3",
       "perf/usage-history-token-fix": "cc7adb65de5b3a4bbdf1190bb471ea2f0f5aeba0",
-      "personal/sidebar-workflow": "e25896885c394db312a17eb4128db24f76760598",
+      "personal/sidebar-workflow": "12e42ab55a6907a4dbbc003d535f332ccea9804c",
       "pr-2650": "32ba9fa21a630b4cd787bf3ea8ea7f149f276e33",
       "pr-2772": "32a11e96fe7535d636e792bab2956b6789926828",
       "pr-2820": "981597f64eb11e6313a55907ee10edda107ed45f",
@@ -109,13 +109,13 @@
     }
   },
   "build": {
-    "generated": "2026-10-20T06:10:00.928102456+00:00",
+    "generated": "2026-10-20T06:15:57.133747220+00:00",
     "base": "3081b99b06aa29bf39b9a83aaed73cf854e4a89b",
-    "commit": "f177dbe9d7ffd11571818ac6c3c664b255c70001",
-    "pre_provenance_commit": "f177dbe9d7ffd11571818ac6c3c664b255c70001",
-    "tree": "6d25a90f4e77063cef7e78874940a95df98af932",
-    "built_tree": "6d25a90f4e77063cef7e78874940a95df98af932",
-    "previous_tree": "b6a1b3accac092b9863623f024099ba2806b5d5d",
+    "commit": "e98ce9910c215780b266de2cfe4e825a4ffbe9d6",
+    "pre_provenance_commit": "e98ce9910c215780b266de2cfe4e825a4ffbe9d6",
+    "tree": "99349d462cd87808a4471a74d87c4a594f4da87b",
+    "built_tree": "99349d462cd87808a4471a74d87c4a594f4da87b",
+    "previous_tree": "6d25a90f4e77063cef7e78874940a95df98af932",
     "tree_changed": true,
     "conflicts": 42,
     "manifest_entries": [
@@ -147,7 +147,7 @@
         "name": "personal/sidebar-workflow",
         "kind": "branch",
         "source": "mine:personal/sidebar-workflow",
-        "pin": "e25896885c394db312a17eb4128db24f76760598",
+        "pin": "12e42ab55a6907a4dbbc003d535f332ccea9804c",
         "fixup": "2c775a0c59a0de1dd0f47e819cee71bbdbc0712c"
       },
       {
@@ -241,7 +241,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "67a6ae06cd8016d436a55b2111577c8efa39a75c"
+        "pin": "f8c39872d96d9826c82876f2502b614c2592f9bd"
       },
       {
         "name": "host-selection-search",
@@ -691,7 +691,7 @@
       },
       {
         "name": "personal/sidebar-workflow",
-        "oid": "e25896885c394db312a17eb4128db24f76760598",
+        "oid": "12e42ab55a6907a4dbbc003d535f332ccea9804c",
         "status": "merged",
         "conflicted": false,
         "fixup": "2c775a0c59a0de1dd0f47e819cee71bbdbc0712c"
@@ -779,13 +779,13 @@
         "resolution": "rerere",
         "fixup": "f4f60dd97b37f8401b1712a586abf54ae2211498",
         "derived": {
-          "base_tip": "9020f9ca282d0eb6f56572f2a4a46d92065daf2f",
-          "tip": "deec03f78f49b5afe410caefb41c759fb10ad9ea"
+          "base_tip": "81b0e8e5d3662316c8e60d67ca22787ad8b94b81",
+          "tip": "4a697921cacdaf626d93989a2791d7b1663b0e8f"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "67a6ae06cd8016d436a55b2111577c8efa39a75c",
+        "oid": "f8c39872d96d9826c82876f2502b614c2592f9bd",
         "status": "applied",
         "conflicted": false
       },
@@ -910,8 +910,8 @@
         "resolution": "rerere",
         "fixup": "623072f0cf3ced1c5739db19302ac7a931444a35",
         "derived": {
-          "base_tip": "3c64fb8c740ebbe0caa97de8ec70049df0f2c939",
-          "tip": "8e434dee6737424e9d443b4bb2677fb95f26121c"
+          "base_tip": "bafe2e763a35e117ffa05d9f2f2c7a2631130640",
+          "tip": "2e9a309d8270c739364a7b4c4cebb6f8ac37e087"
         }
       },
       {
@@ -976,8 +976,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "d5b929e6392a624ec23603d126a1483c26699938",
-          "tip": "3021b19eb885ea0a7b59b69c0a66b51fcd797e99"
+          "base_tip": "89422a209a23c25f4a3716fb59b54e3fec3ea200",
+          "tip": "9e77ce1044af4e12f8979b244eaeafcaeef039ec"
         }
       },
       {
@@ -1120,8 +1120,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "897f65ea0e976601d649afcc9993e23f1ac1d6d6",
-          "tip": "75fd82f40d188a4eaa1b0d5e9dd62140037c4374"
+          "base_tip": "8978eb2adfa21166a976d069abdc1176d4467f1a",
+          "tip": "3fa43757835f35f420cf330924ba4aa3df6bcae4"
         }
       },
       {
