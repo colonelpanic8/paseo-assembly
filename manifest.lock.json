@@ -11,7 +11,7 @@
       "android-intents": "29ea67ed68155c127ce9b09601a64e90d805f1e9",
       "assembled-ci-lint-fixes": "8f8d8c57300eca040a7b7c8e9c14a1a29679d407",
       "assembled-current-coherence": "5bd1a2f85d8c580aa5e57269679232638096b730",
-      "assembled-lint-complexity": "b3ac376f8503efd28ed19994b1f3debe335c7634",
+      "assembled-lint-complexity": "e47ede04d79d16db58bcbcdd467fb1478eb2615b",
       "assembled-npm-deps-hash": "f8c39872d96d9826c82876f2502b614c2592f9bd",
       "assembled-typecheck-coherence": "08daddcd60a8502d93c5da9cc58603480a65af03",
       "assembly-agent-env": "ef53f462e6f5b5cd92644998ce1f108f7d5fed56",
@@ -39,6 +39,7 @@
       "fix/host-runtime-stop-during-start": "06f37ea4c12aff29efc5c5e5035ff44d780e3923",
       "fix/model-browser-sheet-scope": "b5d856e145fcd6411c3014e9718a9e2c1a9ae0de",
       "fix/model-lists-host-switch": "34ab33c13a8b1f4448b88d616553aa01de9d2da9",
+      "fix/nix-postinstall-patches": "126c4cb441248429320a07071d08be0a98538ff3",
       "fix/postinstall-patch-package-enoent": "5da5a31a8f86048e166e9bc6ec9e2858bd6cecfa",
       "fix/settings-sidebar-scroll-preservation": "e5d3da49cc5a4a0b547cb079538cddb9e6994baf",
       "fix/shared-provider-catalog": "31f8f9012520619c2f19326aeee8bb488974cd60",
@@ -111,15 +112,15 @@
     }
   },
   "build": {
-    "generated": "2026-10-20T19:26:35.198106197+00:00",
+    "generated": "2026-10-22T20:50:21.097513504+00:00",
     "base": "068f272a00ffef3f00ec30ec4cfa3a631be97624",
-    "commit": "706395f4c1929ea6421840eb2430f1e0f149b115",
-    "pre_provenance_commit": "706395f4c1929ea6421840eb2430f1e0f149b115",
-    "tree": "386269c43aed9b10f12651f51f7f4b8d9c9f1c71",
-    "built_tree": "386269c43aed9b10f12651f51f7f4b8d9c9f1c71",
-    "previous_tree": "eeb4c26746d06d3fe9aa7027bddcd365548abfb1",
+    "commit": "436e3c69abf58889e52538a5b523d466cba09170",
+    "pre_provenance_commit": "436e3c69abf58889e52538a5b523d466cba09170",
+    "tree": "68b23e8e64de59125ef1659e96de56e56d290659",
+    "built_tree": "68b23e8e64de59125ef1659e96de56e56d290659",
+    "previous_tree": "386269c43aed9b10f12651f51f7f4b8d9c9f1c71",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 40,
     "manifest_entries": [
       {
         "name": "prompt-mod-shortcuts",
@@ -655,7 +656,7 @@
         "name": "assembled-lint-complexity",
         "kind": "patch",
         "source": "patches/assembled-lint-complexity.patch",
-        "pin": "b3ac376f8503efd28ed19994b1f3debe335c7634"
+        "pin": "e47ede04d79d16db58bcbcdd467fb1478eb2615b"
       },
       {
         "name": "sidebar-hide-hosts",
@@ -675,6 +676,12 @@
         "kind": "pr",
         "source": "upstream#7512",
         "pin": "0bc8b69d829fe70004c687c961dfc86e5b9e4f3f"
+      },
+      {
+        "name": "fix/nix-postinstall-patches",
+        "kind": "branch",
+        "source": "mine:fix/nix-postinstall-patches",
+        "pin": "126c4cb441248429320a07071d08be0a98538ff3"
       }
     ],
     "results": [
@@ -783,7 +790,7 @@
         "oid": "4881373b3a1c183e71d7c0a7be2415efbf31dcb8",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere:3d4f6dce31ab6d9989cb4d9d03160d565464d75f"
+        "resolution": "rerere"
       },
       {
         "name": "watch-live-voice",
@@ -793,8 +800,8 @@
         "resolution": "rerere",
         "fixup": "f4f60dd97b37f8401b1712a586abf54ae2211498",
         "derived": {
-          "base_tip": "cb0410b167fe1394677adfe5127a9e0342481c6d",
-          "tip": "2519a454d2eb11167110c331dfddbbbe7cf9543b"
+          "base_tip": "44a24610f489c18b2e3b78724c7b52b783442682",
+          "tip": "7b622fa4e4a4307237199da49559c48c3631596e"
         }
       },
       {
@@ -924,8 +931,8 @@
         "resolution": "rerere",
         "fixup": "623072f0cf3ced1c5739db19302ac7a931444a35",
         "derived": {
-          "base_tip": "07704310b903d54f483f80905d4d2553eefa6e66",
-          "tip": "05922e5c66f2349a14be00ba9776df0dbc7d683c"
+          "base_tip": "2c9a6fac55c7b0d64835f694385d64a61d8d5eba",
+          "tip": "bf9d5ebc00598f71cad6733bc0867c1cc1d7974e"
         }
       },
       {
@@ -990,8 +997,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "be78d34f6ed872f11c1139de8f2f7c9f120ecef7",
-          "tip": "982f2580716545bbbb2f6b7576d3a6facfcbc187"
+          "base_tip": "a0323ac19987c5e2df1fefbbd88725a943a49984",
+          "tip": "e3ab7c238a62f23a6532c1513a72fc3e6f9ab0f5"
         }
       },
       {
@@ -1134,8 +1141,8 @@
         "status": "merged",
         "conflicted": false,
         "derived": {
-          "base_tip": "ad5a525323de416adbdfb54574f2f9a932cb8245",
-          "tip": "bb1b0c796eaa6e442b939a57264c0a4f85b6de88"
+          "base_tip": "8511e730aef24979aeee782d5c75032eaa3ba5eb",
+          "tip": "a3d3ff6f06d8e7d84b3f5863639b990e52f6da78"
         }
       },
       {
@@ -1230,7 +1237,7 @@
       },
       {
         "name": "assembled-lint-complexity",
-        "oid": "b3ac376f8503efd28ed19994b1f3debe335c7634",
+        "oid": "e47ede04d79d16db58bcbcdd467fb1478eb2615b",
         "status": "applied",
         "conflicted": false
       },
@@ -1250,6 +1257,12 @@
       {
         "name": "pr-7512",
         "oid": "0bc8b69d829fe70004c687c961dfc86e5b9e4f3f",
+        "status": "merged",
+        "conflicted": false
+      },
+      {
+        "name": "fix/nix-postinstall-patches",
+        "oid": "126c4cb441248429320a07071d08be0a98538ff3",
         "status": "merged",
         "conflicted": false
       }
