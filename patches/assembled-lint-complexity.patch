@@ -175,3 +175,10 @@ index 79ed2a3fa4..3e46b8ba71 100644
  import { loadPersistedConfig } from "@getpaseo/server/configuration";
  import { resolvePaseoPaths, type PaseoPaths } from "@getpaseo/server/paths";
  import {
+diff --git a/docs/providers.md b/docs/providers.md
+--- a/docs/providers.md
++++ b/docs/providers.md
+@@ -103,3 +103,2 @@
+ 
+-
+ OpenCode reads its model catalogue once per process from a cache file it refreshes in the
