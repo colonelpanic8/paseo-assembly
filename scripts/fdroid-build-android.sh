@@ -92,6 +92,8 @@ fi
 cd "$assembled_root/packages/app/android"
 gradle_args=(
   -PreactNativeArchitectures=arm64-v8a
+  # Keep the APK below GitHub's 100 MiB file limit.
+  -Pandroid.enableBundleCompression=true
   --no-daemon
   --max-workers=1
   -Dorg.gradle.parallel=false
