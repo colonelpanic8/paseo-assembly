@@ -20,8 +20,9 @@ topic branches into a single branch, with tracked conflict resolutions.
 - `manifest.toml` is INTENT: named remotes, the base, and the ordered entries
   (branches, PRs, patch files).
 - `manifest.lock.json` is FACT: the OIDs the last build used, the assembled
-  commit, and its tree hash. The tree hash is the reproducibility invariant;
-  commit IDs are not.
+  commit, and its tree hash. Generated commits are deterministic, so the same
+  recipe reproduces the same assembled commit OID anywhere; `build --locked`
+  verifies the commit, not just the tree.
 - `resolutions/rerere/<hash>/{preimage,postimage}` are tracked git-rerere
   pairs replaying each conflicted merge's hunks. Every build seeds the build
   worktree's rr-cache exclusively from them (wiped first, so nothing ambient
@@ -51,7 +52,7 @@ topic branches into a single branch, with tracked conflict resolutions.
 - Rerere pairs capture only conflicted-hunk resolutions. If a correct
   resolution also needs edits outside the conflict hunks, put those edits in
   that entry's coherence fixup — a rebuild will otherwise surface them as a
-  tree mismatch. The lock's tree hash is the sole verification invariant.
+  tree mismatch.
 - Every entry boundary should be a coherent tree. A cross-entry repair
   belongs on the entry that made it necessary (its `fixup`), not in a patch
   entry parked later in the stack.
@@ -78,6 +79,8 @@ fork-assembler build                  # assemble from lock pins; incremental for
 fork-assembler build --locked         # reproduce exactly; no network, no new pins
 fork-assembler update [ENTRY...]      # batch bump: repin base + entries to live heads
 fork-assembler prune [--dry-run]      # drop entries whose changes landed in the base
+fork-assembler assembled [REV] [--checkout DIR]  # REV's assembled commit, regenerated if gone
+fork-assembler diff [FROM] [TO] [--carried]      # git diff between two revs' assembled branches
 just publish                     # push the locked tree to [publish] (not a fork-assembler verb)
 ```
 
@@ -156,9 +159,10 @@ fetch overrides the hash with a fake one so it always reports the real value.
 If the hash is stale, `just publish` has already rewritten the patch: run
 `fork-assembler update assembled-npm-deps-hash`, rebuild, verify with
 `--locked`, commit, push, and publish again.
-Push the commit that carries the locked *tree* — the commit id is not the
-invariant, and a `--locked` rerun legitimately re-commits the same tree under
-a new id. The push force-updates, because the assembled branch is compiled
+Push exactly the commit the lock pins — generated commits are deterministic,
+so a `--locked` rerun reproduces that very commit, and any later maintenance
+commit's assembled branch can be regenerated from its recipe. The push
+force-updates, because the assembled branch is compiled
 output that is re-committed rather than fast-forwarded.
 
 fork-assembler itself has no publish verb. It parses `[publish]` for the build's
