@@ -10,9 +10,9 @@
 # fork-assembler has no publish verb: `[publish]` is provenance metadata to it, and
 # the push is site policy. This script is that policy.
 #
-# The lock's tree hash is the invariant; the commit id is not. So this verifies
-# the build worktree carries the locked *tree* and then pushes whatever commit
-# holds it. The push is a force -- the assembled branch is compiled output and
+# The lock pins the commit, which fork-assembler builds deterministically, so
+# this pushes exactly that commit: any later maintenance commit's assembled
+# branch can then be regenerated bit-identically. The push is a force -- the assembled branch is compiled output and
 # a rebuild re-commits rather than fast-forwards -- but leased against the head
 # we observed, so a concurrent publish loses the race instead of being lost.
 #
@@ -81,6 +81,13 @@ actual_tree="$(git -C "$worktree" rev-parse 'HEAD^{tree}')"
 if [[ "$actual_tree" != "$expected_tree" ]]; then
   echo "error: $worktree carries tree $actual_tree, but $lock_file pins $expected_tree" >&2
   echo "       run \`fork-assembler build --locked\` to reproduce the locked tree first" >&2
+  exit 1
+fi
+
+expected_commit="$(jq -r '.build.commit' "$lock_file")"
+if [[ "$commit" != "$expected_commit" ]]; then
+  echo "error: $worktree is at $commit, but $lock_file pins $expected_commit" >&2
+  echo "       run \`fork-assembler build --locked\` to reproduce the locked commit first" >&2
   exit 1
 fi
 
