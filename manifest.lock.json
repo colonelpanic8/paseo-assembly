@@ -112,14 +112,15 @@
     }
   },
   "build": {
-    "generated": "2026-10-22T20:52:46.569009809+00:00",
+    "protocol": 1,
+    "generated": "2026-11-07T23:10:10.894145920+00:00",
     "base": "068f272a00ffef3f00ec30ec4cfa3a631be97624",
-    "commit": "6b12430fc1c97cf39a2885d0d9159b6c295ab4a2",
-    "pre_provenance_commit": "6b12430fc1c97cf39a2885d0d9159b6c295ab4a2",
+    "commit": "8abec061b2dfdee25148c9758cf1e2a095e1d1bf",
+    "pre_provenance_commit": "8abec061b2dfdee25148c9758cf1e2a095e1d1bf",
     "tree": "2cd543ec736fa0df4aa6d7b317bcde43ef21d32f",
     "built_tree": "2cd543ec736fa0df4aa6d7b317bcde43ef21d32f",
-    "previous_tree": "68b23e8e64de59125ef1659e96de56e56d290659",
-    "tree_changed": true,
+    "previous_tree": "2cd543ec736fa0df4aa6d7b317bcde43ef21d32f",
+    "tree_changed": false,
     "conflicts": 40,
     "manifest_entries": [
       {
@@ -689,32 +690,38 @@
         "name": "prompt-mod-shortcuts",
         "oid": "503a3cd9e9127baddc1b77967243ca8bc2a8f2d3",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "relay-tailscale",
         "oid": "cf8846f1df76a18b5284d0991b1f6cde9c31a6de",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "next-ready-thread",
         "oid": "ee1fde4fb750ab6884feea5ae9702aafb9aa5ff4",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "73a867ad2adb772629ebd1f8a6b46c4760f6d7ab"
+        ]
       },
       {
         "name": "assembly-fdroid-variant",
         "oid": "7ef949ab537ff446089495cae66e2062db0d7210",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "personal/sidebar-workflow",
         "oid": "12e42ab55a6907a4dbbc003d535f332ccea9804c",
         "status": "merged",
         "conflicted": false,
+        "resolutions": [],
         "fixup": "2c775a0c59a0de1dd0f47e819cee71bbdbc0712c"
       },
       {
@@ -722,27 +729,35 @@
         "oid": "30ff9ed036d9694878ddd8fc6bca52686873b91a",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "3265fcb70122d9e3bb8f44ffa011fcf4b3c60f12",
+          "3e3655e54d47003bdd12802e596b268d01c03f68"
+        ]
       },
       {
         "name": "skill-pills-config",
         "oid": "c615676845c285f7284d70a3feb5418b8aba4ed2",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "b5f59cfced311800dc21f4aebfc50ed12c6a87c0"
+        ]
       },
       {
         "name": "agent/nix-android",
         "oid": "e3253469c483488d1ad0dac4a654e87036aa78f4",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "assembly-build-provenance",
         "oid": "c9a37d9fdb702071c53a881ec1e0a72ad8a2a9a9",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "da6d2b65f2c967c3507f3e423674099fe439fec3"
+        ],
         "fixup": "a94efb8c32904edfbffbd355f4f98e27b26776f7"
       },
       {
@@ -750,39 +765,57 @@
         "oid": "93ad949d7aab5db330aa0ae39442b2e108f14027",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "21519d71bfd6e2e7dbe749fa107e2c44048c97c7",
+          "5900110910fe828d9e9ae69fe21d3e381ff332de"
+        ]
       },
       {
         "name": "assembly-agent-env",
         "oid": "ef53f462e6f5b5cd92644998ce1f108f7d5fed56",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "disable-worktree-setup-callout",
         "oid": "7792cac1330cd94690c1f8688d0613e7f78072f0",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "pr-2650",
         "oid": "32ba9fa21a630b4cd787bf3ea8ea7f149f276e33",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "agent-purpose-summaries",
         "oid": "b9d737387a16b3ea89128551374c3f145f8167a4",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "1936c320bbd0e402f2fb87c5b6bba241e6d2a6ec",
+          "e10435d994bc1d0b69ac8f0c4961ece645a1da05"
+        ]
       },
       {
         "name": "subagent-param-visibility",
         "oid": "d499151c7bb9c9b4a1bd022b7b840ec68315103c",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "086e9962b2987a562d950bc770d6e43747000e41",
+          "10a4591016ab539461843c046bcd9f46d2083809",
+          "3caa5d933493e2339c67420d8e3746fff4ae1f5c",
+          "5658be5840b1c07cf11570fe6ae732ab1144a52a",
+          "835c53edb0cf603d929319a5e7f84f4982295ca2",
+          "8e60dbb7e2ce9092bf6c9517e5b1a8aeca5797e2",
+          "acac51c130607aa347997f6414c8d97172cb405a",
+          "e8b1d65e47d05e9e39e22e2e0d701161a037a725"
+        ],
         "fixup": "2485a5ad78781d06f50b647b706227418d8b29fb"
       },
       {
@@ -790,52 +823,78 @@
         "oid": "4881373b3a1c183e71d7c0a7be2415efbf31dcb8",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "3d4f6dce31ab6d9989cb4d9d03160d565464d75f"
+        ]
       },
       {
         "name": "watch-live-voice",
         "oid": "4a697921cacdaf626d93989a2791d7b1663b0e8f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "13003f024162b0d55c84e01d4043d8a542a08f87",
+          "46ba9621c88f517782e8191b72486781ab18f9af",
+          "88f4ede347ff95d25818d59a47e8766abc46c817",
+          "bc2c7e8bcfb327983b4299e06a05b5fb1b9f035e",
+          "c15daa4694850ab389480991a103da3daf1b4a96",
+          "c23ab3acb6d258a17870f815f21a8180de24399e",
+          "cc7235a7d0416b7988c3b16772a1f39d4f025742",
+          "dbc44508a710373d8a17cd134d7168fe9cf6f37c",
+          "f10b3141c418308cc91ba66e379ab7d78197d84e",
+          "f407ba71bd05d4b7f56da2c9a81801471e55477d"
+        ],
         "fixup": "f4f60dd97b37f8401b1712a586abf54ae2211498",
         "derived": {
-          "base_tip": "368d61b0313fe054a96af8a08f769b2d3cb53b04",
-          "tip": "051bac8562b4fade0c582a91ad2571ef0ea64e4b"
+          "base_tip": "99d7565a9f22bbcf44e9f3e779dc40d233be5c3c",
+          "tip": "1fc1aebaa716ee5f5ad29f4b6afaf639551cf2dd"
         }
       },
       {
         "name": "assembled-npm-deps-hash",
         "oid": "f8c39872d96d9826c82876f2502b614c2592f9bd",
         "status": "applied",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "host-selection-search",
         "oid": "800aeca894711da2b901841f772f61c98d469def",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "bd720d5d0829cf74199ffe54fff55a4cfa1ea885"
+        ]
       },
       {
         "name": "pr-2772",
         "oid": "32a11e96fe7535d636e792bab2956b6789926828",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/postinstall-patch-package-enoent",
         "oid": "5da5a31a8f86048e166e9bc6ec9e2858bd6cecfa",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "53ef28766263312c4ad21c77cbd644ff47959217",
+          "e3221f7de33d7345a4245dd01193997407374756"
+        ]
       },
       {
         "name": "multi-account-provider",
         "oid": "c4a0322ced47c24676e9e02dd29eb9f7a3eebecb",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "8df18fe5993fadac03e361d1474a2853846a4d50",
+          "936168ae7039982d2e267e2d6644f1380ce8fc77",
+          "b4619e18a924518d08dab27436963757f5c2592f",
+          "d252132fc2184c77e17cf0251d91c673f0133785",
+          "dcdcd1da4e1c39d29a6e32379d68955ac1c08729"
+        ],
         "fixup": "7b8e79323fe33d4ef7709747270cd0aa2f0ce4f0"
       },
       {
@@ -843,7 +902,12 @@
         "oid": "823e9ed569327db2947f766fc25ac13a8d83ce4f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "0c9c999d8591249872cd28e9e21b3b8ad39aecd9",
+          "465ae81db433616414026a973109f19039940503",
+          "7fe8b394d9dae75a0d8af4789cbd4d5bba7afea8",
+          "c295d5cc41ba8dd7f6796ad35ee5877f9748fc2b"
+        ],
         "fixup": "9314f7dd4dd7284fbf84c4f2c886f539382ac1c2"
       },
       {
@@ -851,28 +915,39 @@
         "oid": "cac3b3a5c09f215a9bfc9539aa42ba8bfa4429ec",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "30bb26eb347c26dc3ab5f3c8f03125d4e4863806"
+        ]
       },
       {
         "name": "agent/configurable-direct-model-shortcuts",
         "oid": "5071caf6dc2f44071c828c19cf0753a489609d53",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "ce17f9d7ca44c981455a0e24292b39af8b924b72"
+        ]
       },
       {
         "name": "daemon-config-imports",
         "oid": "4e40bc9566c3e6ab6c307caa5130ac9d280b7447",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "dcb0552d241288265db73d9b8ac062aeed1b92b6",
+          "efb9045f414afc7c5b26892a79b6e9a760b481b5"
+        ]
       },
       {
         "name": "pr-2873",
         "oid": "403289b656ebb759fc570adb7e35fb4df82134b6",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "64aa3df433b9aa3b519f427366231233a2019f8a",
+          "69c1e8511a90b6f780ca276dc87db720b20709fd",
+          "ec8a3ccf807067bdf283ad290bef6dc0b7c06f95"
+        ],
         "fixup": "cd6f19920d368c312029700b20645137f675109b"
       },
       {
@@ -880,47 +955,68 @@
         "oid": "10c798466b84d0c4856927ad60f7275e3c1d5661",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "6ead06f01ce1bb5c20d2fed0d5935cee28eef2fa"
+        ]
       },
       {
         "name": "colonelpanic8/client-settings-file-store",
         "oid": "8ff79279ca92aa1083a49e41da53dbcc47aa9efb",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "pr-2883",
         "oid": "ad2c333e67e6119b4cb82201759dbd3e3a6cb774",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "24743d81511f64e538174da0113b031a882ae37f",
+          "38aa369c44948164a13027b99d8a80710338b8f1",
+          "5b9b76391bd0cb17bdadb6364d09a985f750b891",
+          "e54fcfc30b5d2c1c340f7637ec078874230994c4",
+          "ec8a3ccf807067bdf283ad290bef6dc0b7c06f95",
+          "f7ffcad7da176ecd93611d18c4ea94f365069475"
+        ]
       },
       {
         "name": "colonelpanic8/require-real-workspace-directory",
         "oid": "c47635e0f0743bd20a982342d1b95ff1dbad3d70",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "da56e3aabbf19c3271f831de390daff0aad37150",
+          "db70cbff566707c5b116893a23debef864380f67"
+        ]
       },
       {
         "name": "colonelpanic8/desktop-adhoc-hardened-runtime",
         "oid": "7f402734102b13e04405a6719255a390f473c91b",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fork-native-session",
         "oid": "15c9a4de90a2187288c70ee0f8dd3cd8309135fc",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "2cf64329c6eb73b418f658fe81ab28b09b486b13",
+          "4a5a3f3340bdea113d859991a3faa4497e3edfec",
+          "d5036cf0662db3d3f4c4a52b4c09c61c22c7e851"
+        ]
       },
       {
         "name": "xdg-paths",
         "oid": "31b9fda397a211e5bec34e227d0d99802cc0f9ce",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "45a5c182f43bdccc2d3b9ff27b00b69d9d35715e",
+          "a864bd029fb30875fcab226ba63e67a516bc5b5b"
+        ],
         "fixup": "4c52ddf69a166f6e4154e38b903f69a280405ed7"
       },
       {
@@ -928,141 +1024,196 @@
         "oid": "2e9a309d8270c739364a7b4c4cebb6f8ac37e087",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "131412b30b256fe2a4962b87b28726618289c962",
+          "14af869bd9915f430ed0025def0870c94db9323e",
+          "346e520ad5cca81011683dc3b742d7d772a8124a",
+          "482d6d7f28f5b881b17094c34b289a8034ab3d5b",
+          "6c05b189c2d1826cb12096321f4407a3778cc8b6",
+          "6d9b9618ea0b60f79227c8535ff2c6a5c430144a",
+          "72d9682d7c7ade3179006dde491ed126d74a0cbb",
+          "8105453894d3e946de1c02138a52143bd9989973",
+          "85abb40fcbaf88a9b5f1529f428b24cfbe65263f",
+          "a0dfc4e871216f80716ef8cabdde6d32aed2c992",
+          "a68dccfec09686625886e00bd5873b1e4b913dfe",
+          "a8de63f743b25529dba1efb53d2aa2e50d25aa93",
+          "c3748bf4bdf72fa88ec372bdd4c63be9febd0649",
+          "c6d3fe118eabd84ccbdfbe53cae0bbff8c4f5e88",
+          "cfb268ccce99c0cd1cc3ab19242aa8690b1c8565",
+          "ea1928cfc7290fc54b4f8e53624fa9a611925051",
+          "f1744a03c4c2cfee0723bc5c45f306a287693402",
+          "f44bd31f2800622894abc0394e492917776576c1"
+        ],
         "fixup": "623072f0cf3ced1c5739db19302ac7a931444a35",
         "derived": {
-          "base_tip": "7253a0b22053c3070f61a8a042bb46347c799fe9",
-          "tip": "b679ac1082b368577cad1c4d91a2371f5fc73c89"
+          "base_tip": "80b71abfd775dbef076c830d31f66c7757148e0d",
+          "tip": "8aff2174476ba8eed18dac6f6ca82080ec635fb3"
         }
       },
       {
         "name": "touch-sidebar-resize",
         "oid": "5452a6de3c67768921bfee955a6e9ebb405764f6",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "agent-environment-setup",
         "oid": "fff9f297b3a48a8121bd39370633d8e71b0f8197",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "5d51a6daa06996704125685e09cb888202994aea",
+          "5d5681afb03266603adf6c997ede9bad5da3723e",
+          "629aa01f5a45a7869b8372a8cd9dc7eda901f578",
+          "89de22aa58ba66e64eb6f9e22dcb3350047c8ee1",
+          "a2d60f99a0df19bff85faee40df6a1fbb8498812"
+        ]
       },
       {
         "name": "assembled-ci-lint-fixes",
         "oid": "8f8d8c57300eca040a7b7c8e9c14a1a29679d407",
         "status": "applied",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "configurable-usage-display",
         "oid": "97f1d088c68b464d27afad2288d513c9a514a825",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "add-copy-conversation",
         "oid": "76ad29c8e1d624ff4e4e510e4672d17b30652b3e",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "thinking-control-reachability",
         "oid": "6a861f9cb2ae046c25dcc99be6f74f1e8e9f01ff",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "debug-mobile-image-add-error",
         "oid": "d7a1ea05c03888518ad1c95653a13e92f702c5b5",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/model-lists-host-switch",
         "oid": "34ab33c13a8b1f4448b88d616553aa01de9d2da9",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/settings-sidebar-scroll-preservation",
         "oid": "e5d3da49cc5a4a0b547cb079538cddb9e6994baf",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "ce35590ded7c1adc64c4740b172c3aa7287c4b8e"
+        ]
       },
       {
         "name": "live-voice-quick-launch",
         "oid": "9e77ce1044af4e12f8979b244eaeafcaeef039ec",
         "status": "merged",
         "conflicted": false,
+        "resolutions": [],
         "derived": {
-          "base_tip": "cfe4abeccd5d5e574e5fc45c30086d63cff0c7b1",
-          "tip": "8558a27fb7d7f85523907705a0f937d02132a58b"
+          "base_tip": "fdc93d041db03aac0729836ab892f4c3e7d77d88",
+          "tip": "3d7cddcebb3159a59a8a76f22751334fb21eff22"
         }
       },
       {
         "name": "colorblind-status-dots",
         "oid": "abe7e6a603f4ddeac3cd4dfb9b10815e26de819a",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/codex-sqlite-init",
         "oid": "e44a15b47824426f3b3416cfb0c353109cee1f82",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "084c137c6c7d4819841a830b232f1c4c3423d1bf"
+        ]
       },
       {
         "name": "fix/android-mouse-sidebar-selection",
         "oid": "a63248256831624c557d840cb98b83059a995292",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/model-browser-sheet-scope",
         "oid": "b5d856e145fcd6411c3014e9718a9e2c1a9ae0de",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "f25c74fbb1614380bf842019c415fa9100e04015"
+        ]
       },
       {
         "name": "claude-fable-5-1",
         "oid": "2a06d4dbfc6a7cb77a9e40ae18e2a4c74a009a1a",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "pr-4256",
         "oid": "1577902719cf291e769c37988ebe79ee540d7fe5",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "downed-host-model-selection",
         "oid": "cc53e35d96db6ecc3a2cf811853db24a669a37ae",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/draft-tab-inflight-create",
         "oid": "dc497b45920de40142cdd15bfe1e429a3e3ff719",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/shared-provider-catalog",
         "oid": "31f8f9012520619c2f19326aeee8bb488974cd60",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "codex-astra-support",
         "oid": "81b34e7a88bcb3fdc6cc98a0b1cdda8ceba151b1",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "18df08296c347c2e93864c48b82744c1c99fcea0",
+          "2a7408656a1b8b3d4c605c447bd66a6044fa0ec3",
+          "6284ea0332b596cf4566941feb375aaa87ab960b",
+          "690b091996219f6d1252cb87e37fd5fa24acd6e4",
+          "78284cf832b7a0b626e6d9f283c46f6904217ad1",
+          "d19d5dcc451cb92faad38f46bb1a48771ded6e86",
+          "dded02d86ce91a6ae264052452a533fbfe3d81de",
+          "ff5720f8dc96303d69a084eca5a8afa2f0216976"
+        ],
         "fixup": "9a8e61b34932339eb890376072c6c7f7aab037b7"
       },
       {
@@ -1070,7 +1221,13 @@
         "oid": "3e3e5bb5bf64e662d934e0efdf5ca14ec578af9b",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "0469b2233b61c3b7f61ef745050b8b374aad9758",
+          "362cd47b44bb152a1a757b492ac219a9eaef302f",
+          "3b0800f80de4eb54cee2eb51857d808ab4fc2854",
+          "73903752bc7d2a14b265063f2ff30a4dec68ac0a",
+          "8abaf3a8fba9ce649b99a2649803be8c587a7aea"
+        ],
         "fixup": "a8f7e1313b7956cc707543961436bd021923d1a4"
       },
       {
@@ -1078,27 +1235,44 @@
         "oid": "6ccce3ffce9f72a770daa8cc3b580c4cd9d1d116",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "463b6a96d8ceb77a74fcbdde699e7dc13f954ba2",
+          "8cace468abee0293a8f6fd02c02f42baa57534d7"
+        ]
       },
       {
         "name": "assembly-workspace-restore",
         "oid": "bd2b75ecf9f0f24b75af2cf45a7ddf7b60196938",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "0cb25ad8e44eb36c2ed54199f1c07e998256fb20",
+          "1d0d624a39e87770cc0b74d765557f67b8293bcc"
+        ]
       },
       {
         "name": "assembly-sidebar-unarchive",
         "oid": "4dd96127f7e65219cfd3d755f88dc246122aaaba",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "host/default-color",
         "oid": "23bf6a48135c2ead24178e63d406af82f9a07a79",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "0d97a0ae17f2f2c978448d78ba6229277194ba2b",
+          "1364113b66ad45d230a244baeb18d474ab05c410",
+          "7342487e5715e3ffb42ca42a41e9afcb3e9dda04",
+          "7f0bdaef110bc5e080a16e39fca056a5da5ef628",
+          "9c843212423febc94a572c4960247edb6edccc78",
+          "9d3c2de762c18beddaaabb6cc184f1535fbc8d31",
+          "a5d1ba77ee57e38c861823befef2829f8ea4a01c",
+          "af063cfddbc046a37666d630178aafe6f43f008d",
+          "c6f505bf58d6e17e1490406645a466220114fbfc"
+        ],
         "fixup": "9fa49f69885eccef1b40a2e37b3d51565dca4fa8"
       },
       {
@@ -1106,20 +1280,44 @@
         "oid": "3d639f585829310d97f18db8381b6e5043cc7f7f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "0436e4b3867009adbf79696eb197e29399858b48",
+          "6cee06896cf0d44d425f00c543f3cb2da8eff7f6",
+          "752c6871e5bf15a98c2d8d3449939f4ee02cd9af",
+          "a6cc9cbf2ee49501f29369ae1603e2351e4bd91c"
+        ]
       },
       {
         "name": "assembled-current-coherence",
         "oid": "5bd1a2f85d8c580aa5e57269679232638096b730",
         "status": "applied",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "voice-actions",
         "oid": "e64a00e1bc41c5a244f656217df50015f1f7301d",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere",
+        "resolutions": [
+          "0d7f614b4c68216436a6c232d54446dc3a5dd0eb",
+          "21872bca4e8f71f56dcd5892701c45b4b9e516ac",
+          "22d9f75eccea363552025ecedb9d844326430600",
+          "29b0de577e33ec755b818033f2c4c5978138759b",
+          "29f092c52ccf60ca7e71182ab3e255281c6178cc",
+          "2e4c3f6905b2f69f286348587bd78f73dfeaa39b",
+          "321021cbbe57749909ba7a76fc88fea8931c5680",
+          "431477e7f1d648f7d6f12c7bfd6cf0807fe13bcd",
+          "7e93f3b1658b450b7a63b9c0df778b1169b93772",
+          "9043b419482d0096d46d1010a6ae56b88ef820c1",
+          "97d03d0f3f5097f67054387fa832ead171a76d20",
+          "a53834b4065315640f2a7b41618c96df54b1279a",
+          "a7e7ef32c8c93d9ee79fa2adac0159316e17817f",
+          "bd1bc5d125692db1870ed0d1ad47813bb962912f",
+          "d61a49c33fd252d8688583e9d27c38a7552d5c65",
+          "ea135bf7110de460d3480914c7673f662417828d",
+          "fbe3ec8508b57243ec75806337fa3c739d3e402b"
+        ],
         "fixup": "01015bb64f5e1994e7d30ac2e8b1ada17ed981f4"
       },
       {
@@ -1127,22 +1325,25 @@
         "oid": "a4cebb867fa76a14b626f569136409f642fff718",
         "status": "merged",
         "conflicted": false,
+        "resolutions": [],
         "fixup": "b6bea6aa397d6fc6442d57213df890d46eaf2901"
       },
       {
         "name": "assembled-typecheck-coherence",
         "oid": "08daddcd60a8502d93c5da9cc58603480a65af03",
         "status": "applied",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "live-voice-start-sound",
         "oid": "3fa43757835f35f420cf330924ba4aa3df6bcae4",
         "status": "merged",
         "conflicted": false,
+        "resolutions": [],
         "derived": {
-          "base_tip": "4496c755b5daf4f519ee5398f99d084458cf6f28",
-          "tip": "43365e4953b393fe99d3023af34640b02ba02f44"
+          "base_tip": "51bd9cf6c20e2a61d2ef34309de2e1ed746968c3",
+          "tip": "7df86cdb582e7645d7dc524ff045a2e72ffd2393"
         }
       },
       {
@@ -1150,121 +1351,157 @@
         "oid": "3f81934b413b7d6c284bd9eef194a2b8231dc547",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "040959e3346de73124d3e6f347eb8b6b97572890",
+          "0971acf933c67d044554f31f020f3ae7f51dd0ce",
+          "18874f22a7f6242cabd9ce52d20ce88ce03ac034",
+          "38e6f49820c081a9e088cf1cd6edbcadb520218b",
+          "5ccf782905e57819282ff2d88ff77036f0dab8f6",
+          "6e3b75dc39b97ab2e45b1134669411a3e6569f9c"
+        ]
       },
       {
         "name": "dismiss-failed-state",
         "oid": "706433a46775cfab375e7466265bc99ce90f3175",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "0fa73491d562724a218e2512553e9257105b4072",
+          "21c6e3ae3865ed5f922640cbef6927bf56c32776",
+          "68d05cf79328316761a06e6c787e35d3bd05a74c"
+        ]
       },
       {
         "name": "fix/host-runtime-stop-during-start",
         "oid": "06f37ea4c12aff29efc5c5e5035ff44d780e3923",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "pr-4828",
         "oid": "40ab76125106f21768c616b1d0973fdf736cf8aa",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "pr-4829",
         "oid": "d32d16639803f8c2b78a6cf37ccff63ae399e58f",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "2b4cc645b4a42a868da5f615a9a942b92a4b6bd2",
+          "4f8899eed2f0de68acc6fe7fbff3ee3c42353d70",
+          "9d61909d2b04751389bfb8e501e04cda6e941c8a"
+        ]
       },
       {
         "name": "pr-4830",
         "oid": "cafdb39112f82a0771a9a54c4d25b7b3914c9a9b",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "perf/replica-read-overlay",
         "oid": "864e9686fe8bf1f8a8d29fd7923411e1b6e241e3",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "perf/layout-persist-throttle",
         "oid": "3d8164f28dccd206bf838c383c8e7c56fc0c6f60",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "perf/usage-history-token-fix",
         "oid": "cc7adb65de5b3a4bbdf1190bb471ea2f0f5aeba0",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "perf/explorer-sidebar-resize",
         "oid": "172b7d21909a39e1e20cb89d5027fa7400d26726",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "android-intents",
         "oid": "ce5d34349265ff72a15d8d3cec78827c64d1d7cd",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "3dc789e9868c7952ea15567ffd9f2febd8bfd11c",
+          "8bc762a33df4eeeb57f1a9a1954d291e17efde36",
+          "a377e2a99c57e32ae490676bdcd68292cc5bc8af"
+        ]
       },
       {
         "name": "opencode-catalog-revalidate",
         "oid": "3012cdbb3bd9f3eb5e1176914d43013e1e4794d0",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "3b644f615daae7880e9fadf8ad72e2a38b95354c"
+        ]
       },
       {
         "name": "pr-5046",
         "oid": "f5b1d3b11d72be70e2cc56ceb8ac41c4aad0a7b4",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "locked-extension-paseo",
         "oid": "cf979ab722f62bbbeb855edfe124fd68b3adefe8",
         "status": "merged",
         "conflicted": true,
-        "resolution": "rerere"
+        "resolutions": [
+          "231d06315a933d315528f4a34ff602a8379e4ad7"
+        ]
       },
       {
         "name": "assembled-lint-complexity",
         "oid": "2ae66009e3d3486f2d4ac0c0a22ad81c41732f29",
         "status": "applied",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "sidebar-hide-hosts",
         "oid": "0ff6d00449e289bd3e6cf90bd1b40447f7d6acfc",
         "status": "merged",
         "conflicted": false,
+        "resolutions": [],
         "fixup": "452617eeb494030cbdd9aa192d134f3e92258e57"
       },
       {
         "name": "pr-7509",
         "oid": "b4e953b79c46413c1a2ea0f32abc1073df05e7d7",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "pr-7512",
         "oid": "0bc8b69d829fe70004c687c961dfc86e5b9e4f3f",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       },
       {
         "name": "fix/nix-postinstall-patches",
         "oid": "126c4cb441248429320a07071d08be0a98538ff3",
         "status": "merged",
-        "conflicted": false
+        "conflicted": false,
+        "resolutions": []
       }
     ]
   }
