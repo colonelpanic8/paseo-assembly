@@ -11,7 +11,7 @@
       "android-intents": "cde751c26b5bd4fa876a3444e46c90f09a3d598f",
       "assembled-ci-lint-fixes": "8f8d8c57300eca040a7b7c8e9c14a1a29679d407",
       "assembled-current-coherence": "5bd1a2f85d8c580aa5e57269679232638096b730",
-      "assembled-npm-deps-hash": "df3a1fa8422ea8cc78b59f6fd9cb563e3793d9c4",
+      "assembled-npm-deps-hash": "4def9f585380c1974fe836e337438843b8cb1d16",
       "assembled-tail-coherence": "f7d4910b01c9bfadf7851c732a61d1ae9e40f6ae",
       "assembled-typecheck-coherence": "08daddcd60a8502d93c5da9cc58603480a65af03",
       "assembly-agent-env": "16eb1e452048eef7366069b0d3e456e0cf97602a",
@@ -108,15 +108,15 @@
   },
   "build": {
     "protocol": 1,
-    "generated": "2026-11-09T21:10:56.318675149+00:00",
+    "generated": "2026-11-09T21:16:05.728705777+00:00",
     "base": "b7a308ca005fbd3e5fd5b3c936afcc9dda9f4a1b",
-    "commit": "1a6271240bd5bef35dc3b09bdcfddee123a2de42",
-    "pre_provenance_commit": "1a6271240bd5bef35dc3b09bdcfddee123a2de42",
-    "tree": "f620eb1cf50f5217fdf1e1a7067412daa7eaf50e",
-    "built_tree": "f620eb1cf50f5217fdf1e1a7067412daa7eaf50e",
-    "previous_tree": "63211ca53a031ab14a40bc42cc796c2f8f10fe16",
+    "commit": "0e0a89728336bc46d291ed514b81cce706e9a014",
+    "pre_provenance_commit": "0e0a89728336bc46d291ed514b81cce706e9a014",
+    "tree": "ca1e2b36c3aad006b5cb7d0c6cf248e261f3f86e",
+    "built_tree": "ca1e2b36c3aad006b5cb7d0c6cf248e261f3f86e",
+    "previous_tree": "f620eb1cf50f5217fdf1e1a7067412daa7eaf50e",
     "tree_changed": true,
-    "conflicts": 0,
+    "conflicts": 37,
     "manifest_entries": [
       {
         "name": "prompt-mod-shortcuts",
@@ -240,7 +240,7 @@
         "name": "assembled-npm-deps-hash",
         "kind": "patch",
         "source": "patches/assembled-npm-deps-hash.patch",
-        "pin": "df3a1fa8422ea8cc78b59f6fd9cb563e3793d9c4"
+        "pin": "4def9f585380c1974fe836e337438843b8cb1d16"
       },
       {
         "name": "host-selection-search",
@@ -812,7 +812,7 @@
       },
       {
         "name": "assembled-npm-deps-hash",
-        "oid": "df3a1fa8422ea8cc78b59f6fd9cb563e3793d9c4",
+        "oid": "4def9f585380c1974fe836e337438843b8cb1d16",
         "status": "applied",
         "conflicted": false,
         "resolutions": []
