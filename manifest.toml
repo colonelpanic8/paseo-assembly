@@ -143,7 +143,6 @@ fixup = "patches/multi-account-provider-stack-coherence.patch"
 [[entry]]
 pr = 2820
 summary = "Serialize draft provider introspection sessions"
-fixup = "patches/command-loading-session-errors.patch"
 
 # Was getpaseo/paseo#2843, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
@@ -255,10 +254,6 @@ summary = "Fix Android draft composer handoff race"
 branch = "mine:fix/model-lists-host-switch"
 summary = "fix(app): stop stale snapshot fetches from clobbering fresher pushes"
 
-# Was getpaseo/paseo#3506, closed upstream; its PR head is frozen, so this tracks the live branch.
-[[entry]]
-branch = "mine:fix/settings-sidebar-scroll-preservation"
-
 [[entry]]
 branch = "mine:live-voice-quick-launch"
 parents = [{ branch = "mine:realtime-voice-actions" }]
@@ -267,10 +262,6 @@ reconstruction_publish = "mine:live-voice-quick-launch"
 [[entry]]
 branch = "mine:colorblind-status-dots"
 summary = "Encode host status in dot shape, not only color, and brighten the dark success dot"
-
-[[entry]]
-branch = "mine:fix/codex-sqlite-init"
-summary = "Serialize and bound Codex SQLite app-server initialization"
 
 # Was getpaseo/paseo#3882, closed upstream; its PR head is frozen, so this tracks the live branch.
 [[entry]]
@@ -381,9 +372,6 @@ reconstruction_publish = "mine:live-voice-start-sound"
 [[entry]]
 branch = "mine:ntfy-push"
 
-[[entry]]
-branch = "mine:dismiss-failed-state"
-
 # Was getpaseo/paseo#4826, closed after upstream #5722 took the startup guard.
 # The live branch retains the stopped-probe guard and removal subscription cleanup.
 [[entry]]
@@ -433,28 +421,16 @@ summary = "Stop the sidebar drag-arm timer from swallowing held mouse clicks on 
 [[entry]]
 branch = "mine:locked-extension-paseo"
 
-# Assembly-wide lint/format coherence: functions that only exceed oxlint's
-# complexity limit once several topics stack (session-store,
-# daemon-config-store, agent-manager, config, agent-controls, keyboard
-# shortcuts), and oxfmt reflow at merge seams. No single entry owns either.
-[[entry]]
-patch = "patches/assembled-lint-complexity.patch"
-
 [[entry]]
 branch = "mine:sidebar-hide-hosts"
 summary = "Hide chosen hosts from status grouping"
 fixup = "patches/sidebar-hide-hosts-archived-coherence.patch"
 
 [[entry]]
-pr = 7509
-summary = "Fix Android native diff compilation against Skia 2.6.2"
-
-[[entry]]
-pr = 7512
-summary = "Fix gesture-handler 2.32 Android Kotlin compatibility"
-
-[[entry]]
 branch = "mine:fix/nix-postinstall-patches"
+
+[[entry]]
+patch = "patches/assembled-tail-coherence.patch"
 
 # Open targets deliberately not carried. Closed and merged PRs do not need an
 # entry here -- discovery only sweeps open ones. The personal sidebar workflow
@@ -634,3 +610,23 @@ reason = "closed head frozen; remaining persist retry backoff carried by mine:pe
 [[exclude]]
 pr = 4832
 reason = "closed head frozen; remaining write throttle carried by mine:perf/layout-persist-throttle"
+
+[[exclude]]
+pr = 7509
+reason = "Superseded by upstream #7476 (b36ff056ea), which makes the same SkFontScanner_Make_FreeType and SkUnicodes::ICU::Make fixes for Skia 2.6.2; both are in the base. PR can be closed."
+
+[[exclude]]
+pr = 7512
+reason = "Superseded by upstream #7476 (b36ff056ea): its gesture-handler 2.32 patch passes event and adds getChildInDrawingOrderAtIndex, preserving drawing order. PR can be closed."
+
+[[exclude]]
+branch = "mine:dismiss-failed-state"
+reason = "Superseded by upstream #8831 (59be8975a4): the failed bucket follows unread error attention, so reading the chat or Mark as read clears the red dot. Only a Dismiss error menu label remained."
+
+[[exclude]]
+branch = "mine:fix/codex-sqlite-init"
+reason = "Superseded by upstream #9008 (a48bc3aa6f): CodexAppServerStartupCoordinator queues and bounds app-server startups and retries sqlite_state_initialization, including the same reconnect-count test fix."
+
+[[exclude]]
+branch = "mine:fix/settings-sidebar-scroll-preservation"
+reason = "Superseded by upstream #7899 (5e53bb78c2): useSettingsSidebarScroll keeps the Settings sidebar scroll position, with its own e2e helpers."

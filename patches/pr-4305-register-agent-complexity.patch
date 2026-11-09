@@ -1,8 +1,8 @@
 diff --git a/packages/app/src/components/context-window-meter.tsx b/packages/app/src/components/context-window-meter.tsx
-index 555358942..7c807cc1e 100644
+index 60bb734203..20494cce3f 100644
 --- a/packages/app/src/components/context-window-meter.tsx
 +++ b/packages/app/src/components/context-window-meter.tsx
-@@ -293,6 +293,27 @@ function PromptCacheTooltipSection({
+@@ -301,6 +301,27 @@ function PromptCacheTooltipSection({
    );
  }
  
@@ -30,7 +30,7 @@ index 555358942..7c807cc1e 100644
  export function ContextWindowMeter({
    serverId,
    agentId,
-@@ -366,20 +387,7 @@ export function ContextWindowMeter({
+@@ -380,20 +401,7 @@ export function ContextWindowMeter({
    const accessibilityLabel = context
      ? t("contextWindow.accessibility", { percentage: context.percentage })
      : t("contextWindow.accessibilityNoData");
@@ -53,10 +53,10 @@ index 555358942..7c807cc1e 100644
    const cacheDetails = promptCache ? (
      <PromptCacheTooltipSection
 diff --git a/packages/server/src/server/agent/agent-manager.ts b/packages/server/src/server/agent/agent-manager.ts
-index 9fe11bd50..1641487db 100644
+index 8b62971ec4..ec90d895b8 100644
 --- a/packages/server/src/server/agent/agent-manager.ts
 +++ b/packages/server/src/server/agent/agent-manager.ts
-@@ -430,6 +430,24 @@ function resolveInitialLastMessageAt(
+@@ -488,6 +488,24 @@ function resolveInitialLastMessageAt(
    return options?.lastMessageAt ?? options?.lastUserMessageAt ?? null;
  }
  
@@ -81,15 +81,23 @@ index 9fe11bd50..1641487db 100644
  interface ManagedAgentBase {
    id: string;
    provider: AgentProvider;
-@@ -4057,10 +4075,7 @@ export class AgentManager {
+@@ -4540,7 +4558,6 @@ export class AgentManager {
+       summaryTurnsSinceUpdate,
+     } = params;
+     const options: NonNullable<typeof params.options> = params.options ?? {};
+-    const { lastUsage, promptCache, lastError } = options;
+     return {
+       id: resolvedAgentId,
+       provider: config.provider,
+@@ -4578,10 +4595,7 @@ export class AgentManager {
        summaryUpdatedAt,
        summaryCursor,
        summaryTurnsSinceUpdate,
--      lastUsage: options?.lastUsage,
--      promptCache: options?.promptCache,
--      lastError: options?.lastError,
--      lastFailure: options?.lastFailure,
+-      lastUsage,
+-      promptCache,
+-      lastError,
+-      lastFailure: options.lastFailure,
 +      ...resolveInitialAgentState(options),
-       attention: resolveInitialAttention(options?.attention),
+       attention: resolveInitialAttention(options.attention),
        internal: config.internal ?? false,
-       labels: options?.labels ?? {},
+       background: params.background,

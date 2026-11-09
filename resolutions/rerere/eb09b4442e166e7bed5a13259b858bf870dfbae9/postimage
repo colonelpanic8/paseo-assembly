@@ -1,0 +1,211 @@
+import { forwardRef, useCallback, type ComponentProps } from "react";
+import { Text, View, type PressableStateCallbackType } from "react-native";
+import { StyleSheet, withUnistyles } from "react-native-unistyles";
+import type { Theme } from "@/styles/theme";
+import { ComboboxTrigger } from "@/components/ui/combobox-trigger";
+import {
+  TOUCH_ICON_SIZE,
+  toolbarContentSlot,
+  toolbarGlyphColor,
+  toolbarSlot,
+  type ToolbarGlyphTone,
+} from "@/components/ui/control-geometry";
+import type { ShortcutHintPlacement } from "@/components/ui/shortcut-hint";
+import { useComposerControlLayout } from "@/composer/agent-controls/layout-context";
+import { ComposerToolbarGlyph } from "@/composer/agent-controls/glyph";
+import type { AgentControlIcon } from "@/agent-controls/icons";
+
+type AgentControlTriggerProps = Omit<
+  ComponentProps<typeof ComboboxTrigger>,
+  "accessibilityLabel" | "block" | "children" | "chevron" | "onPress" | "style"
+> & {
+  icon: AgentControlIcon;
+  /** Resolved inside the themed icon so the trigger's owner never subscribes to the theme. */
+  iconColor?: (theme: Theme) => string;
+  surface: "toolbar" | "sheet";
+  label: string;
+  value?: string;
+  showToolbarLabel?: boolean;
+  showCaret?: boolean;
+  open?: boolean;
+  onPress: () => void;
+  accessibilityLabel: string;
+  shortcutActionId?: string;
+  shortcutHintPlacement?: ShortcutHintPlacement;
+  showShortcutHint?: boolean;
+};
+
+function wrapIconWithTheme(Icon: AgentControlIcon) {
+  return withUnistyles(Icon);
+}
+
+type ThemedAgentControlIcon = ReturnType<typeof wrapIconWithTheme>;
+
+const themedIcons = new WeakMap<AgentControlIcon, ThemedAgentControlIcon>();
+
+// withUnistyles creates a new component type, so wrap each icon once or React remounts the
+// glyph on every render.
+function themedIcon(Icon: AgentControlIcon): ThemedAgentControlIcon {
+  const cached = themedIcons.get(Icon);
+  if (cached) return cached;
+  const Themed = wrapIconWithTheme(Icon);
+  themedIcons.set(Icon, Themed);
+  return Themed;
+}
+
+export const AgentControlTrigger = forwardRef<View, AgentControlTriggerProps>(
+  function AgentControlTrigger(
+    {
+      icon: Icon,
+      iconColor,
+      surface,
+      label,
+      value,
+      showToolbarLabel = true,
+      showCaret = false,
+      open = false,
+      disabled = false,
+      onPress,
+      accessibilityLabel,
+      testID,
+      shortcutActionId,
+      shortcutHintPlacement,
+      showShortcutHint = false,
+      ...triggerProps
+    },
+    ref,
+  ) {
+    const { glyphs } = useComposerControlLayout();
+    const glyphRole = showToolbarLabel ? "label" : "icon";
+    const glyph = glyphs[glyphRole];
+    const isSheet = surface === "sheet";
+    const ThemedIcon = themedIcon(Icon);
+    const restTone: ToolbarGlyphTone = isSheet ? "muted" : glyph.tone;
+    const iconUniProps = useCallback(
+      (theme: Theme) => ({
+        color: iconColor ? iconColor(theme) : toolbarGlyphColor(theme, restTone),
+      }),
+      [iconColor, restTone],
+    );
+    const showValue = isSheet || showToolbarLabel;
+    const triggerStyle = useCallback(
+      ({ pressed, hovered }: PressableStateCallbackType) => [
+        isSheet ? styles.sheetRow : styles.toolbarControl,
+        !isSheet && !showToolbarLabel && styles.toolbarIconOnly,
+        hovered && (isSheet ? styles.sheetRowInteractive : styles.hovered),
+        (pressed || open) && (isSheet ? styles.sheetRowInteractive : styles.pressed),
+        disabled && styles.disabled,
+      ],
+      [disabled, isSheet, open, showToolbarLabel],
+    );
+
+    return (
+      <ComboboxTrigger
+        {...triggerProps}
+        ref={ref}
+        collapsable={false}
+        disabled={disabled}
+        onPress={onPress}
+        style={triggerStyle}
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel}
+        testID={testID}
+        chevron={showCaret ? undefined : null}
+        shortcutActionId={shortcutActionId}
+        shortcutHintPlacement={shortcutHintPlacement}
+        showShortcutHint={showShortcutHint}
+      >
+        {isSheet ? (
+          <View style={styles.sheetGlyph}>
+            <ThemedIcon size={16} uniProps={iconUniProps} />
+          </View>
+        ) : (
+          <ComposerToolbarGlyph role={glyphRole}>
+            <ThemedIcon size={glyph.size} strokeWidth={glyph.strokeWidth} uniProps={iconUniProps} />
+          </ComposerToolbarGlyph>
+        )}
+        {isSheet ? (
+          <Text style={styles.sheetLabel} numberOfLines={1}>
+            {label}
+          </Text>
+        ) : null}
+        {showValue ? (
+          <Text style={isSheet ? styles.sheetValue : styles.toolbarValue} numberOfLines={1}>
+            {value ?? label}
+          </Text>
+        ) : null}
+      </ComboboxTrigger>
+    );
+  },
+);
+
+const styles = StyleSheet.create((theme) => ({
+  toolbarControl: {
+    minWidth: 0,
+    flexShrink: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[1],
+    ...toolbarContentSlot(theme.spacing[2]),
+    borderRadius: theme.borderRadius.full,
+    backgroundColor: "transparent",
+  },
+  toolbarIconOnly: {
+    ...toolbarSlot(TOUCH_ICON_SIZE.md),
+    flexShrink: 0,
+    paddingHorizontal: 0,
+    justifyContent: "center",
+  },
+  toolbarValue: {
+    minWidth: 0,
+    flexShrink: 1,
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.base,
+    fontWeight: theme.fontWeight.normal,
+  },
+  sheetRow: {
+    minHeight: 44,
+    minWidth: 0,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing[2],
+    marginHorizontal: -theme.spacing[1],
+    paddingHorizontal: theme.spacing[4],
+    borderRadius: theme.borderRadius["2xl"],
+    backgroundColor: theme.colors.surface1,
+  },
+  sheetRowInteractive: {
+    backgroundColor: theme.colors.surface2,
+  },
+  sheetGlyph: {
+    width: 20,
+    height: 20,
+    flexShrink: 0,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  sheetLabel: {
+    flex: 1,
+    minWidth: 0,
+    color: theme.colors.foreground,
+    fontSize: theme.fontSize.base,
+    fontWeight: theme.fontWeight.normal,
+  },
+  sheetValue: {
+    maxWidth: "45%",
+    minWidth: 0,
+    flexShrink: 1,
+    color: theme.colors.foregroundMuted,
+    fontSize: theme.fontSize.base,
+    fontWeight: theme.fontWeight.normal,
+  },
+  hovered: {
+    backgroundColor: theme.colors.surface2,
+  },
+  pressed: {
+    backgroundColor: theme.colors.surface2,
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+}));

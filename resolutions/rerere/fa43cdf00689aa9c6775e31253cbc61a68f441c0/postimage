@@ -1,0 +1,130 @@
+import { useShallow } from "zustand/shallow";
+import { useTranslation } from "react-i18next";
+import { i18n } from "@/i18n/i18next";
+import { useProviderIcon } from "@/components/provider-icons";
+import { resolveAgentPurposeSummary } from "@/agents/purpose-summary";
+import { buildAgentPurposePresentation } from "@/panels/agent-purpose-presentation";
+import type { AgentModelDisplay } from "@/composer/agent-controls/utils";
+import { useAgentModelDisplay } from "@/hooks/use-agent-model-display";
+import { buildAgentPanelSubtitle } from "@/panels/agent-panel-subtitle";
+import type { PanelDescriptor } from "@/panels/panel-registry";
+import { useSessionStore, selectAgentTurnPresentation, type Agent } from "@/stores/session-store";
+import { deriveSidebarStateBucket } from "@/utils/sidebar-agent-state";
+
+function formatProviderLabel(provider: Agent["provider"]): string {
+  if (!provider) {
+    return "Agent";
+  }
+  return provider
+    .split(/[-_\s]+/)
+    .filter((part) => part.length > 0)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+export function resolveAgentLabel(title: string | null | undefined): string | null {
+  if (typeof title !== "string") {
+    return null;
+  }
+  const normalized = title.trim();
+  if (!normalized) {
+    return null;
+  }
+  if (normalized.toLowerCase() === "new agent") {
+    return null;
+  }
+  return normalized;
+}
+
+export function useAgentDescriptor(
+  target: { kind: "agent"; agentId: string },
+  context: { serverId: string },
+): PanelDescriptor {
+  useTranslation();
+  const descriptorState = useSessionStore(
+    useShallow((state) => {
+      const session = state.sessions[context.serverId];
+      const agent =
+        session?.agents?.get(target.agentId) ?? session?.agentDetails?.get(target.agentId) ?? null;
+      return {
+        provider: agent?.provider ?? "codex",
+        title: agent?.title ?? null,
+        summary: resolveAgentPurposeSummary({
+          summary: agent?.summary,
+          serverInfo: session?.serverInfo,
+        }),
+        status: agent?.status ?? null,
+        backgroundWork: agent?.backgroundWork,
+        pendingPermissionCount: agent?.pendingPermissions.length ?? 0,
+        requiresAttention: agent?.requiresAttention ?? false,
+        attentionReason: agent?.attentionReason ?? null,
+        isTurnActive: selectAgentTurnPresentation(session, target.agentId).isActive,
+        cwd: agent?.cwd ?? null,
+        model: agent?.model ?? null,
+        runtimeModelId: agent?.runtimeInfo?.model ?? null,
+        thinkingOptionId: agent?.thinkingOptionId ?? null,
+        effectiveThinkingOptionId: agent?.effectiveThinkingOptionId,
+      };
+    }),
+  );
+  const { cwd, model, runtimeModelId, thinkingOptionId, effectiveThinkingOptionId, ...agentState } =
+    descriptorState;
+  const icon = useProviderIcon(agentState.provider, context.serverId);
+  const modelDisplay = useAgentModelDisplay({
+    serverId: context.serverId,
+    cwd,
+    provider: agentState.provider,
+    model,
+    runtimeModelId,
+    thinkingOptionId,
+    effectiveThinkingOptionId,
+  });
+  return buildAgentDescriptor({ ...agentState, icon, modelDisplay });
+}
+
+export function buildAgentDescriptor(input: {
+  provider: Agent["provider"];
+  title: string | null;
+  summary?: string | null;
+  status: Agent["status"] | null;
+  backgroundWork?: Agent["backgroundWork"];
+  pendingPermissionCount: number;
+  requiresAttention: boolean;
+  attentionReason: Agent["attentionReason"];
+  isTurnActive: boolean;
+  icon: PanelDescriptor["icon"];
+  modelDisplay?: AgentModelDisplay;
+}): PanelDescriptor {
+  const provider = input.provider;
+  const label = resolveAgentLabel(input.title);
+  const statusBucket = input.status
+    ? deriveSidebarStateBucket({
+        status: input.isTurnActive ? "running" : input.status,
+        backgroundWork: input.backgroundWork,
+        pendingPermissionCount: input.pendingPermissionCount,
+        requiresAttention: input.requiresAttention,
+        attentionReason: input.attentionReason,
+      })
+    : null;
+
+  const providerSubtitle = input.modelDisplay
+    ? buildAgentPanelSubtitle(provider, input.modelDisplay)
+    : `${formatProviderLabel(provider)} agent`;
+  const purpose = buildAgentPurposePresentation({
+    label,
+    summary: input.summary ?? null,
+    fallback: providerSubtitle,
+  });
+
+  return {
+    label: label ?? "",
+    subtitle:
+      statusBucket === "running" && !input.isTurnActive && input.status !== "running"
+        ? i18n.t("message.backgroundWork.running")
+        : purpose.subtitle,
+    tooltip: purpose.tooltip,
+    titleState: label ? "ready" : "loading",
+    icon: input.icon,
+    statusBucket,
+  };
+}

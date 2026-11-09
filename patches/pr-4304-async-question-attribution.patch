@@ -1,8 +1,38 @@
 diff --git a/packages/server/src/server/agent/providers/codex-app-server-agent.ts b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
-index cc8aea645..44370e953 100644
+index 335ca79ea9..d2b002d63e 100644
 --- a/packages/server/src/server/agent/providers/codex-app-server-agent.ts
 +++ b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
-@@ -6612,14 +6612,14 @@ export class CodexAppServerAgentSession implements AgentSession, AgentRealtimeVo
+@@ -4080,12 +4080,7 @@ export class CodexAppServerAgentSession implements AgentSession, AgentRealtimeVo
+     this.codexHome = deps.codexHome ?? resolveCodexHomeDir(process.env);
+     this.config.thinkingOptionId = normalizeCodexThinkingOptionId(this.config.thinkingOptionId);
+     this.serviceTier = readCodexServiceTier(this.config.featureValues);
+-    if (this.config.featureValues?.plan_mode) {
+-      this.planModeEnabled = true;
+-    }
+-    if (this.config.featureValues?.context_notes) {
+-      this.contextNotesEnabled = true;
+-    }
++    this.applyInitialFeatureToggles();
+ 
+     if (this.resumeHandle?.sessionId) {
+       this.currentThreadId = this.resumeHandle.sessionId;
+@@ -4100,6 +4095,15 @@ export class CodexAppServerAgentSession implements AgentSession, AgentRealtimeVo
+     return this.currentThreadId;
+   }
+ 
++  private applyInitialFeatureToggles(): void {
++    if (this.config.featureValues?.plan_mode) {
++      this.planModeEnabled = true;
++    }
++    if (this.config.featureValues?.context_notes) {
++      this.contextNotesEnabled = true;
++    }
++  }
++
+   get features(): AgentFeature[] {
+     return buildCodexFeatures({
+       serviceTiers: this.currentServiceTiers(),
+@@ -7130,14 +7134,14 @@ export class CodexAppServerAgentSession implements AgentSession, AgentRealtimeVo
          return;
        }
        const isFirstDeltaForItem = prev.length === 0;
@@ -20,69 +50,3 @@ index cc8aea645..44370e953 100644
        this.stampActiveTurnAttribution(timelineItem);
        this.emitEvent({
          type: "timeline",
-diff --git a/packages/app/src/types/stream.ts b/packages/app/src/types/stream.ts
---- a/packages/app/src/types/stream.ts
-+++ b/packages/app/src/types/stream.ts
-@@ -1053,7 +1053,17 @@
-   }
- 
-   if (chunk === "" && messageId !== undefined) {
--    return applyAssistantAttribution(state, messageId, attributionFields, questionsPatch);
-+    const attributed = applyAssistantAttribution(
-+      state,
-+      messageId,
-+      attributionFields,
-+      questionsPatch,
-+    );
-+    // An empty frame that only carries questions has no row to attribute yet, and the
-+    // questions still have to appear.
-+    if (attributed !== state || !hasQuestions) {
-+      return attributed;
-+    }
-   }
- 
-   if (!hasAssistantDisplayContent(hasContent, hasQuestions)) {
-diff --git a/packages/server/src/server/agent/providers/codex-app-server-agent.ts b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
-index 16817f6006..829c2cab84 100644
---- a/packages/server/src/server/agent/providers/codex-app-server-agent.ts
-+++ b/packages/server/src/server/agent/providers/codex-app-server-agent.ts
-@@ -3729,6 +3729,10 @@ function toCodexTextInput(text: string): Extract<CodexAppServerUserInput, { type
-   };
- }
- 
-+function restoredAsyncQuestions(handle: { metadata?: Record<string, unknown> } | null) {
-+  return new CodexAsyncQuestions(handle?.metadata?.asyncQuestions);
-+}
-+
- export function buildCodexAppServerEnv(
-   runtimeSettings?: ProviderRuntimeSettings,
-   launchEnv?: ProcessEnvRecord,
-@@ -4008,7 +4012,7 @@ export class CodexAppServerAgentSession implements AgentSession, AgentRealtimeVo
-       validateProviderOptions("codex", CodexProviderOptionsSchema, config.providerOptions) ?? {};
-     this.config = config;
-     this.harnessEnvironment = deps.environment ?? buildCodexAppServerEnv();
--    this.asyncQuestions = new CodexAsyncQuestions(resumeHandle?.metadata?.asyncQuestions);
-+    this.asyncQuestions = restoredAsyncQuestions(resumeHandle);
-     this.codexHome = deps.codexHome ?? resolveCodexHomeDir(process.env);
-     this.config.thinkingOptionId = normalizeCodexThinkingOptionId(this.config.thinkingOptionId);
-     this.serviceTier = readCodexServiceTier(this.config.featureValues);
-diff --git a/packages/app/src/types/stream.ts b/packages/app/src/types/stream.ts
---- a/packages/app/src/types/stream.ts
-+++ b/packages/app/src/types/stream.ts
-@@ -1010,6 +1010,7 @@ function applyAssistantAttribution(
-   state: StreamItem[],
-   messageId: string,
-   attributionFields: AssistantMessageAttribution,
-+  questionsPatch?: Pick<AssistantMessageItem, "questions">,
- ): StreamItem[] {
-   for (let index = state.length - 1; index >= 0; index -= 1) {
-     const entry = state[index];
-@@ -1017,7 +1018,7 @@ function applyAssistantAttribution(
-     if (entry.kind !== "assistant_message" || entry.messageId !== messageId) {
-       continue;
-     }
--    const updated: AssistantMessageItem = { ...entry, ...attributionFields };
-+    const updated: AssistantMessageItem = { ...entry, ...attributionFields, ...questionsPatch };
-     return [...state.slice(0, index), updated, ...state.slice(index + 1)];
-   }
-   return state;

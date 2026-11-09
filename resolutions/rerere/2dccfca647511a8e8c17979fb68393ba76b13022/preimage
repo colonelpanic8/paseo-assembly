@@ -1,0 +1,380 @@
+import { usesDesktopBindings } from "./internal/conventions";
+import { createKeyboardPipeline } from "./internal/pipeline";
+import { overlays } from "./internal/overlays";
+import { attachKeyboardSources, publishKeyboardPolicy } from "./internal/sources";
+import type { KeyboardSourceInput } from "./internal/sources/contract";
+import type { KeyboardInputEvent } from "./internal/overlays";
+import { hasActiveOverlay } from "./internal/overlay-dispatch";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { usePathname, useRouter } from "expo-router";
+import { useKeyboardShortcutsStore } from "@/stores/keyboard-shortcuts-store";
+import { navigateToWorkspace } from "@/stores/navigation-active-workspace-store";
+import {
+  holdReleaseAction,
+  type KeyboardActionDefinition,
+} from "@/keyboard/keyboard-action-dispatcher";
+import { useKeyboardActionDispatcher } from "@/keyboard/keyboard-action-dispatcher-context";
+import {
+  type ChordState,
+  buildCommandShortcutBindings,
+  buildEffectiveBindings,
+  getWorkspaceIndexJumpModifierKey,
+  isShortcutModifierDown,
+} from "@/keyboard/keyboard-shortcuts";
+import { shouldPublishBrowserShortcutPolicy } from "@/keyboard/internal/sources/electron-browser";
+import type { KeyboardShortcutPayload } from "@/keyboard/actions";
+import { resolveListSearchKeyAction } from "@/keyboard/list-search-keys";
+import {
+  routeKeyboardShortcut,
+  type ShortcutAction,
+  type ShortcutCallbackName,
+} from "@/keyboard/route-shortcut";
+import { getShortcutOs } from "@/utils/shortcut-platform";
+import { useOpenAddProject } from "@/hooks/use-open-add-project";
+import { useStableEvent } from "@/hooks/use-stable-event";
+import { useKeyboardShortcutOverrides } from "@/hooks/use-keyboard-shortcut-overrides";
+import { buildOpenProjectRoute } from "@/utils/host-routes";
+import {
+  type ActiveWorkspaceSelection,
+  navigateToLastWorkspace,
+  useActiveWorkspaceSelection,
+} from "@/stores/navigation-active-workspace-store";
+import {
+  useCommandCenterContributions,
+  useCommandCenterShortcutRunner,
+} from "@/command-center/provider";
+
+const HOLD_MODIFIER_KEYS = new Set(["Shift", "Control", "Alt", "Meta"]);
+
+export function useKeyboardShortcuts({
+  enabled,
+  isMobile,
+  isWorkspaceFocusModeEnabled,
+  toggleAgentList,
+  toggleBothSidebars,
+  exitFocusMode,
+  cycleTheme,
+}: {
+  enabled: boolean;
+  isMobile: boolean;
+  isWorkspaceFocusModeEnabled: boolean;
+  toggleAgentList: () => void;
+  toggleBothSidebars?: () => void;
+  exitFocusMode: () => void;
+  cycleTheme?: () => void;
+}) {
+  const keyboardActionDispatcher = useKeyboardActionDispatcher();
+  const pathname = usePathname();
+  const router = useRouter();
+  const resetModifiers = useKeyboardShortcutsStore((s) => s.resetModifiers);
+  const { overrides } = useKeyboardShortcutOverrides();
+  const commandCenterSnapshot = useCommandCenterContributions();
+  const runCommandCenterShortcut = useCommandCenterShortcutRunner();
+  const isMac = getShortcutOs() === "mac";
+<<<<<<<
+  // The press-and-hold chord currently down, if any: the release action to
+  // dispatch and the keys whose key-up ends the hold. Held outside the source
+  // effect so re-running that effect (rebinding, disabling shortcuts) releases
+  // rather than strands the hold.
+  const heldShortcutRef = useRef<{
+    release: KeyboardActionDefinition;
+    key: string;
+    code: string;
+  } | null>(null);
+  const releaseHeldShortcut = useCallback(() => {
+    const held = heldShortcutRef.current;
+    if (!held) return;
+    heldShortcutRef.current = null;
+    keyboardActionDispatcher.dispatch(held.release);
+  }, [keyboardActionDispatcher]);
+=======
+  const bindings = useMemo(() => {
+    const commandShortcutIds = commandCenterSnapshot.contributions.flatMap((contribution) =>
+      contribution.shortcutId ? [contribution.shortcutId] : [],
+    );
+    const effectiveBindings = buildEffectiveBindings(overrides);
+    return [
+      ...effectiveBindings,
+      ...buildCommandShortcutBindings(commandShortcutIds, overrides, effectiveBindings, {
+        isMac,
+        usesDesktopBindings,
+      }),
+    ];
+  }, [commandCenterSnapshot.contributions, isMac, overrides]);
+>>>>>>>
+  const openProjectPickerAction = useOpenAddProject();
+  const activeWorkspaceSelection = useActiveWorkspaceSelection();
+  const keyboardWorkspaceSelectionRef = useRef<ActiveWorkspaceSelection | null>(null);
+  const publishBrowserShortcutPolicy = useCallback(
+    (chordState?: ChordState) => {
+      publishKeyboardPolicy({ bindings, chordState, isMac, enabled });
+    },
+    [bindings, enabled, isMac],
+  );
+
+  useEffect(() => {
+    if (activeWorkspaceSelection) {
+      keyboardWorkspaceSelectionRef.current = activeWorkspaceSelection;
+    }
+  }, [activeWorkspaceSelection]);
+
+  useEffect(() => {
+    publishBrowserShortcutPolicy();
+  }, [publishBrowserShortcutPolicy]);
+
+  // Only the modifier that actually performs the workspace-index jump on this
+  // runtime should reveal the sidebar number badges (Alt on web, Cmd on
+  // desktop Mac, Ctrl on desktop non-Mac). The store ORs altDown/cmdOrCtrlDown
+  // to drive badge visibility, so we set the flag matching this runtime.
+  // Derived from the effective bindings: `null` when the user unassigned or
+  // rebound the jump shortcut, and no `event.key` ever equals null, so the
+  // badges simply never appear.
+  const badgeModifierKey = getWorkspaceIndexJumpModifierKey(
+    { isMac, usesDesktopBindings: usesDesktopBindings },
+    bindings,
+  );
+  const controlShortcutModifierKey = "Alt";
+
+  // The keyup listener matches the released key against the current modifier,
+  // so a modifier held while the jump binding changes could never be released
+  // and the badges would stay up until a blur. Clear them when it changes.
+  useEffect(() => {
+    resetModifiers();
+  }, [badgeModifierKey, resetModifiers]);
+
+  const setBadgeModifierDown = (down: boolean) => {
+    const state = useKeyboardShortcutsStore.getState();
+    if (usesDesktopBindings) {
+      state.setCmdOrCtrlDown(down);
+    } else {
+      state.setAltDown(down);
+    }
+  };
+
+  const callbacksByName: Record<ShortcutCallbackName, (() => void) | undefined> = {
+    "toggle-agent-list": toggleAgentList,
+    "toggle-both-sidebars": toggleBothSidebars,
+    "cycle-theme": cycleTheme,
+  };
+
+  const performShortcutAction = (
+    action: ShortcutAction,
+    captureFocusRestore: () => void,
+  ): boolean => {
+    switch (action.kind) {
+      case "none":
+        return false;
+      case "dispatch":
+        return keyboardActionDispatcher.dispatch(action.action);
+      case "navigate-workspace":
+        keyboardWorkspaceSelectionRef.current = {
+          serverId: action.serverId,
+          workspaceId: action.workspaceId,
+        };
+        navigateToWorkspace({ serverId: action.serverId, workspaceId: action.workspaceId });
+        return true;
+      case "navigate-last-workspace":
+        if (navigateToLastWorkspace()) {
+          return true;
+        }
+        router.replace(buildOpenProjectRoute());
+        return true;
+      case "router-replace":
+        router.replace(action.route as Parameters<typeof router.replace>[0]);
+        return true;
+      case "router-back":
+        router.back();
+        return true;
+      case "router-push":
+        router.push(action.route as Parameters<typeof router.push>[0]);
+        return true;
+      case "open-project-picker":
+        void openProjectPickerAction();
+        return true;
+      case "callback":
+        callbacksByName[action.name]?.();
+        return true;
+      case "command-center-toggle": {
+        if (action.nextOpen) {
+          captureFocusRestore();
+        }
+        useKeyboardShortcutsStore
+          .getState()
+          .setCommandCenterOpen(action.nextOpen, action.scope ?? null);
+        return true;
+      }
+      case "shortcuts-dialog-toggle":
+        useKeyboardShortcutsStore.getState().setShortcutsDialogOpen(action.nextOpen);
+        return true;
+    }
+  };
+
+  const routeAndPerformShortcut = (input: {
+    action: string;
+    payload: KeyboardShortcutPayload;
+    captureFocusRestore: () => void;
+  }): { handled: boolean; performed: ShortcutAction } => {
+    const store = useKeyboardShortcutsStore.getState();
+    const shortcutAction = routeKeyboardShortcut(
+      { action: input.action, payload: input.payload },
+      {
+        pathname,
+        isMobile,
+        sidebarShortcutTargets: store.sidebarShortcutWorkspaceTargets,
+        readyWaitingWorkspaceTargets: store.readyWaitingWorkspaceTargets,
+        navigationActiveWorkspace:
+          keyboardWorkspaceSelectionRef.current ?? activeWorkspaceSelection,
+        commandCenterOpen: store.commandCenterOpen,
+        shortcutsDialogOpen: store.shortcutsDialogOpen,
+      },
+    );
+    const handled = performShortcutAction(shortcutAction, input.captureFocusRestore);
+    if (handled && isWorkspaceFocusModeEnabled && input.action.startsWith("sidebar.")) {
+      exitFocusMode();
+    }
+    return { handled, performed: shortcutAction };
+  };
+
+  const getContext = useStableEvent(() => ({
+    isMac,
+    usesDesktopBindings: usesDesktopBindings,
+    commandCenterOpen: useKeyboardShortcutsStore.getState().commandCenterOpen,
+  }));
+  const getBindings = useStableEvent(() => bindings);
+  const isCapturing = useStableEvent(() => useKeyboardShortcutsStore.getState().capturingShortcut);
+  const dispatchMatch = useStableEvent(
+<<<<<<<
+    (match: import("./keyboard-shortcuts").KeyboardShortcutMatch, input: KeyboardSourceInput) =>
+      match.commandShortcutId
+        ? runCommandCenterShortcut(match.commandShortcutId)
+        : routeAndPerformShortcut({
+            action: match.action,
+            payload: match.payload,
+            captureFocusRestore: input.captureFocusRestore,
+          }),
+=======
+    (match: import("./keyboard-shortcuts").KeyboardShortcutMatch, input: KeyboardSourceInput) => {
+      // Browser-forwarded input never reports a key-up, so a hold could not end.
+      if (match.hold && "browserId" in input.event) {
+        return false;
+      }
+      releaseHeldShortcut();
+      const { handled, performed } = routeAndPerformShortcut({
+        action: match.action,
+        payload: match.payload,
+        captureFocusRestore: input.captureFocusRestore,
+      });
+      if (handled && match.hold && performed.kind === "dispatch") {
+        const release = holdReleaseAction(performed.action);
+        if (release) {
+          heldShortcutRef.current = {
+            release,
+            key: (input.event.key ?? "").toLowerCase(),
+            code: input.event.code,
+          };
+        }
+      }
+      return handled;
+    },
+>>>>>>>
+  );
+  const chordChanged = useStableEvent(
+    (previous: ChordState, next: ChordState, input: KeyboardSourceInput | null) => {
+      const isBrowserInput = input !== null && "browserId" in input.event;
+      if (
+        !input ||
+        shouldPublishBrowserShortcutPolicy({
+          isBrowserInput,
+          previousChordState: previous,
+          nextChordState: next,
+        })
+      ) {
+        publishBrowserShortcutPolicy(next);
+      }
+    },
+  );
+  const beforeResolve = useStableEvent((input: KeyboardSourceInput) => {
+    const event = input.event;
+    if (input.ownsListNavigation && resolveListSearchKeyAction(event) !== null) return false;
+    const key = event.key ?? "";
+    if (key === "Escape" && pathname.startsWith("/settings") && !isMobile && hasActiveOverlay()) {
+      return false;
+    }
+    if (key === badgeModifierKey && !event.shiftKey) {
+      setBadgeModifierDown(true);
+    }
+    if (key === controlShortcutModifierKey && !event.shiftKey) {
+      useKeyboardShortcutsStore.getState().setControlShortcutModifierDown(true);
+    }
+    if (key === "Shift") {
+      // Shift chords hide workspace badges and prompt-control hints.
+      const state = useKeyboardShortcutsStore.getState();
+      if (state.altDown || state.cmdOrCtrlDown) {
+        state.setAltDown(false);
+        state.setCmdOrCtrlDown(false);
+      }
+      state.setControlShortcutModifierDown(false);
+    }
+
+    return true;
+  });
+
+  const pipeline = useMemo(
+    () =>
+      createKeyboardPipeline({
+        getContext,
+        getBindings,
+        isCapturing,
+        dispatch: dispatchMatch,
+        overlays,
+        beforeResolve,
+        chordChanged,
+      }),
+    [getContext, getBindings, isCapturing, dispatchMatch, beforeResolve, chordChanged],
+  );
+
+  const handleKeyUp = useStableEvent((event: KeyboardInputEvent) => {
+    const key = event.key ?? "";
+    if (key === badgeModifierKey) {
+      setBadgeModifierDown(false);
+    }
+    if (key === controlShortcutModifierKey) {
+      useKeyboardShortcutsStore.getState().setControlShortcutModifierDown(false);
+    }
+    if (key === "Shift") {
+      setBadgeModifierDown(isShortcutModifierDown(event, badgeModifierKey));
+      useKeyboardShortcutsStore.getState().setControlShortcutModifierDown(event.altKey);
+    }
+    const held = heldShortcutRef.current;
+    if (
+      held &&
+      (key.toLowerCase() === held.key || event.code === held.code || HOLD_MODIFIER_KEYS.has(key))
+    ) {
+      releaseHeldShortcut();
+    }
+  });
+
+  const handleBlur = useStableEvent(() => {
+    // The key-up lands in whatever took focus, so a hold that survived a blur
+    // would never end.
+    releaseHeldShortcut();
+    resetModifiers();
+  });
+
+  useEffect(() => {
+    if (!enabled) return;
+    const detach = attachKeyboardSources({
+      keyDown: pipeline.keyDown,
+      keyUp: handleKeyUp,
+      blur: handleBlur,
+      commandCenterOpen: () => useKeyboardShortcutsStore.getState().commandCenterOpen,
+    });
+    return () => {
+      // Rebinding, unmounting, or disabling shortcuts must not leave a call
+      // stuck in the inverted state this hold applied.
+      releaseHeldShortcut();
+      detach();
+      pipeline.dispose();
+    };
+  }, [enabled, pipeline, handleKeyUp, handleBlur, releaseHeldShortcut]);
+}
